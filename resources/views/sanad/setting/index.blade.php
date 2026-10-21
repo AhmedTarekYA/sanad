@@ -332,13 +332,13 @@
             </fieldset>
         </div>
         <div class="col-3">
-            <label for="TextInput" class="form-label">{{__('auth.map_link')}}</label>
+            <label for="TextInput" class="form-label">{{__('auth.tiktok_link')}}</label>
             <fieldset class="form-icon-group right-icon position-relative">
                 <div class="form-icon position-absolute">
-                    <i class="ti ti-link" aria-hidden="true"></i>
+                    <i class="ti ti-brand-tiktok" aria-hidden="true"></i>
                 </div>
-                <input type="text" name="map_link" class="form-control"
-                       value="{{ isset($settings) ? $settings->map_link : '' }}">
+                <input type="text" name="tiktok" class="form-control"
+                       value="{{ isset($settings) ? $settings->tiktok : '' }}">
             </fieldset>
         </div>
 

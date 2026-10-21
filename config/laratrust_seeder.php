@@ -19,7 +19,7 @@ return [
             'profile' => 'r,u',
             'change-password' => 'r,u',
 
-            // new permissions
+            'blogs' => 'c,r,u,d',
 
         ],
     ],

@@ -80,6 +80,11 @@
                                     aria-hidden="true"></span><span
                                 class="pc-mtext">{{ __('permission.roles') }}</span></a></li>
                 @endif
+                @if(checkIfHasPermission('blogs-read'))
+                    <li class="pc-item {{ Str::startsWith($currentRoute, 'blogs.') ? 'active' : '' }}"><a
+                            href="{{ route('blogs.index') }}" class="pc-link"><span class="pc-micon"><i class="ph-duotone ph-article-medium" aria-hidden="true"></i></span><span
+                                class="pc-mtext">{{ __('auth.blogs') }}</span></a></li>
+                @endif
                 @if(auth('admin')->user()?->admin_type === \App\Enums\AdminTypeisEnum::Developer->value)
 {{--                    <li class="pc-item {{ Str::startsWith($currentRoute, 'permissions.') ? 'active' : '' }}"><a--}}
 {{--                            href="{{ route('permissions.index') }}" class="pc-link"><span class="pc-micon"><img--}}

@@ -24,7 +24,7 @@ class StoreSettingRequest extends MainRequest
     public function rules()
     {
         $rules = [];
-        foreach(config('translatable.locales') as $locale){
+        foreach (config('translatable.locales') as $locale) {
             $rules[$locale.'*.website_name'] = 'nullable|string|max:255';
             $rules[$locale.'*.location'] = 'nullable|string|max:255';
             $rules[$locale.'*.copyright'] = 'nullable|string|max:255';
@@ -46,7 +46,7 @@ class StoreSettingRequest extends MainRequest
             'email' => 'nullable|email',
             'phone' => 'nullable',
             'other_phone' => 'nullable',
-            'map_link' => 'nullable',
+            'tiktok' => 'nullable',
         ]);
     }
 }

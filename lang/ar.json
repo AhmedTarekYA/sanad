@@ -82,7 +82,7 @@
     "whatsapp_link": "رابط واتساب",
     "instgram_link": "رابط الانستجرام",
     "snapchat_link": "رابط سناب شات",
-    "map_link": "رابط الخريطة",
+    "tiktok_link": "رابط تيك توك",
     "fax": "فاكس",
     "default_lang": "اللغة الافتراضية",
     "our_clients_title": "عنوان سكشن العملاء",
@@ -942,5 +942,8 @@
     "Update Failed": "فشل التحديث",
     "Updating System...": "جاري التحديث",
     "Please wait...": "الرجاء الانتظار",
-    "OK": "حسنا"
+    "OK": "حسنا",
+    "add_blog": "إضافة مقال",
+    "edit_blog": "تعديل مقال",
+    "slug": "الرابط المختصر"
 }

@@ -82,7 +82,7 @@
     "whatsapp_link": "WhatsApp Link",
     "instgram_link": "Instagram Link",
     "snapchat_link": "Snapchat Link",
-    "map_link": "Map Link",
+    "tiktok_link": "TikTok Link",
     "fax": "Fax",
     "default_lang": "Default Language",
     "our_clients_title": "Our Clients Section Title",
@@ -942,5 +942,8 @@
     "Update Failed": "Update Failed",
     "Updating System...": "Updating System...",
     "Please wait...": "Please wait...",
-    "OK": "OK"
+    "OK": "OK",
+    "add_blog": "Add Blog Post",
+    "edit_blog": "Edit Blog Post",
+    "slug": "Slug"
 }
