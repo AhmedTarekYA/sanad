@@ -1,0 +1,169 @@
+<html>
+  <head>
+   
+  </head>
+  <body>
+    <div id="wrapper">
+    <!--
+      <table id="sampletable2" border="1">
+        <tr>
+          <th colspan="6" data-b-a-s="thin" data-a-h="center" data-f-bold="true">
+            Things
+          </th>
+        </tr>
+        <tr>
+          <th colspan="2">Letters</th>
+          <th colspan="2">Numbers</th>
+          <th colspan="2">Sp chars</th>
+        </tr>
+        <tr>
+          <td rowspan="2">A</td>
+          <td>B</td>
+          <td>1</td>
+          <td>2</td>
+          <td>*</td>
+          <td>#</td>
+        </tr>
+        <tr>
+          <td>Y</td>
+          <td>3</td>
+          <td>4</td>
+          <td>$</td>
+          <td>%</td>
+        </tr>
+        <tr>
+          <td rowspan="2">C</td>
+          <td>B</td>
+          <td>1</td>
+          <td>2</td>
+          <td>*</td>
+          <td>#</td>
+        </tr>
+        <tr>
+          <td>Y</td>
+          <td>3</td>
+          <td>4</td>
+          <td>$</td>
+          <td>%</td>
+        </tr>
+        <tr>
+          <td rowspan="2">D</td>
+          <td>B</td>
+          <td>1</td>
+          <td>2</td>
+          <td>*</td>
+          <td>#</td>
+        </tr>
+        <tr>
+          <td>Y</td>
+          <td>3</td>
+          <td>4</td>
+          <td>$</td>
+          <td>%</td>
+        </tr>
+      </table>
+  -->
+  <table id="sampletable2" class="table table-bordered table-striped table-fixed tablepager">
+        <thead id="tablehead">
+        <tr>
+            <th>كود الحساب</th>
+            <th>إسم الحساب</th>
+            <th>طبيعة  الحساب</th>
+            <th>رصيد الفترة مدين</th>
+            <th>رصيد الفترة دائن</th>
+            <th>اجمالى   مدين</th>
+            <th>اجمالى دائن</th>
+            <th>الرصيد مدين</th>
+            <th>الرصيد دائن</th>
+        </tr>
+        </thead>
+        <tbody>
+
+                    <tr>
+                <td>1</td>
+                <td> الأصول</td>
+                <td style="color: green">مدين</td>
+                <!-------------------------past ------------------------------------>
+                <!-------------------------- move ----------------------------------->
+                <td>75198.72</td>
+                <td style="color: red">33125.00</td>
+                <!-------------------------- current --------------------------------->
+                <td>75198.72</td>
+                <td>33125</td>
+                <td style="">42073.72</td>
+                <td style="">0.00</td>
+                <!------------------------------------------------------------->
+            </tr>
+            <tr>
+                <td>2</td>
+                <td> الخصوم و حقوق الملكية</td>
+                <td style="color: red">دائن</td>
+                <!-------------------------past ------------------------------------>
+                <!-------------------------- move ----------------------------------->
+                <td>1749.09</td>
+                <td style="color: red">6074.93</td>
+                <!-------------------------- current --------------------------------->
+                <td>1749.09</td>
+                <td>6074.93</td>
+                <td style="">0.00</td>
+                <td style="">4325.84</td>
+                <!------------------------------------------------------------->
+            </tr>
+            <tr>
+                <td>3</td>
+                <td> المصروفات</td>
+                <td style="color: green">مدين</td>
+                <!-------------------------past ------------------------------------>
+                <!-------------------------- move ----------------------------------->
+                <td>22804.25</td>
+                <td style="color: red">515.00</td>
+                <!-------------------------- current --------------------------------->
+                <td>22804.25</td>
+                <td>515</td>
+                <td style="">22289.25</td>
+                <td style="">0.00</td>
+                <!------------------------------------------------------------->
+            </tr>
+            <tr>
+                <td>4</td>
+                <td> الإيرادات</td>
+                <td style="color: red">دائن</td>
+                <!-------------------------past ------------------------------------>
+                <!-------------------------- move ----------------------------------->
+                <td>4922.08</td>
+                <td style="color: red">18994.15</td>
+                <!-------------------------- current --------------------------------->
+                <td>4922.08</td>
+                <td>18994.15</td>
+                <td style="">0.00</td>
+                <td style="">14072.07</td>
+                <!------------------------------------------------------------->
+            </tr>
+            <tr>
+                <td colspan="3">الإجمالى</td>
+                <td>104674.14</td>
+                <td>58709.08</td>
+                <td>104674.14</td>
+                <td>58709.08</td>
+                <td>64362.97</td>
+                <td>18397.91</td>
+            </tr>
+        
+        </tbody>
+    </table>
+      <br>
+      <button id="toExcel">Convert to Excel table 2</button>
+    </div>
+    <script src="./tableToExcel.517b1af9.js"></script>
+
+    <script>function exportExcel() {
+  TableToExcel.convert(document.getElementById('simpleTable1'));
+}
+
+var button = document.querySelector('#toExcel');
+button.addEventListener('click', function (e) {
+  var table = document.querySelector('#sampletable2');
+  TableToExcel.convert(table);
+});</script>
+  </body>
+</html>

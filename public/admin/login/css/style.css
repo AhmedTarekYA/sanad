@@ -1,0 +1,217 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400..800&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Baloo Bhaijaan 2", sans-serif;
+  font-weight: 500;
+}
+@keyframes bg-move {
+  0%,
+  100% {
+    background-position: 0 100%;
+  }
+  50% {
+    background-position: 100% 0;
+  }
+}
+.logo {
+  height: 48px;
+  margin-bottom: 16px;
+}
+.container {
+  width: 100vw;
+  min-height: 100dvh;
+  display: flex;
+}
+.animation {
+  flex: 4;
+  background-image: linear-gradient(to right top, #ffd8d8, #ffecd8, #dcdfff, #d6fff2);
+  background-size: 200vw 200vh;
+  background-position: top left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: bg-move 20s ease-in-out infinite;
+}
+.animation #globe {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 70dvh;
+  padding: 20px 0;
+}
+@media screen and (max-width: 768px) {
+  .animation #globe {
+    height: 550px;
+  }
+}
+.animation #globe canvas {
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+}
+
+.side {
+  flex: 3;
+  position: relative;
+  border-radius: 24px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.side .inner {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: min(100% - 40px, 450px);
+}
+.form-wrap {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: center;
+}
+.form-wrap h1 {
+  font-weight: 600;
+  font-size: 28px;
+  text-align: center;
+  color: #000;
+  margin-bottom: 10px;
+}
+@media screen and (max-width: 768px) {
+  .form-wrap h1 {
+    font-size: 22px;
+  }
+}
+.form-wrap p {
+  font-size: 14px;
+  text-align: center;
+  color: #000;
+}
+.form-group {
+  width: 100%;
+  margin-top: 32px;
+  gap: 24px;
+  display: flex;
+  flex-direction: column;
+}
+.form-group .input-field {
+  display: flex;
+  flex-direction: column;
+}
+.form-group .input-field input {
+  height: 50px;
+  padding: 10px;
+  background: none;
+  outline: none;
+  border-radius: 6px;
+  border: 1px solid #bababa;
+}
+.check {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.check a {
+  color: #4931a8;
+  text-decoration: none;
+}
+.check div {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.check input {
+  width: 16px;
+  height: 16px;
+  appearance: none;
+  position: relative;
+}
+.check input::after {
+  width: 16px;
+  height: 16px;
+  content: "";
+  border: 1px solid #bababa;
+  border-radius: 4px;
+  position: absolute;
+  cursor: pointer;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "Font Awesome 6 pro";
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  justify-content: center;
+}
+.check input:checked:after {
+  content: "\f00c";
+  background: #4931a8;
+  color: #fff;
+  border: 0;
+}
+.form-group .input-field label {
+  font-size: 14px;
+  color: #000;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.form-group .input-field label img {
+  height: 14px;
+}
+form button {
+  margin-top: 32px;
+  width: 100%;
+  height: 50px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: #fff;
+  font-size: 16px;
+  background: #4931a8;
+  font-weight: 400;
+}
+@media (max-width: 992px) {
+  .animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+  }
+  form {
+    width: 100%;
+  }
+  .form-wrap {
+    z-index: 999999999999;
+    padding: 32px 24px;
+    background-color: #f3f3f960;
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(6px);
+    border-radius: 24px;
+    border: 3px solid #ffffff38;
+  }
+}
+.footer {
+  width: 100%;
+  padding: 16px 24px;
+  margin-top: auto;
+  z-index: 99;
+  color: #000;
+  text-align: center;
+  font-size: 14px;
+}
+
+.footer a {
+  color: #4931a8;
+  text-decoration: none;
+}

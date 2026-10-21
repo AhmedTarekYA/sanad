@@ -1,0 +1,78 @@
+/****   srart tree ahmed ali ************************/
+.tree li {
+    list-style-type: none;
+    margin: 0;
+    padding: 10px 5px 0 5px;
+    position: relative;
+}
+.tree li::before,
+.tree li::after {
+    content: "";
+    left: -20px;
+    right: auto;
+    position: absolute;
+}
+.tree li::before {
+    border-left: unset;
+    border-right: 2px solid #99999980;
+    bottom: 50px;
+    height: 100%;
+    top: 0;
+    width: 1px;
+}
+.tree li::after {
+    border-top: 2px solid #99999980;
+    height: 20px;
+    top: 25px;
+    width: 25px;
+}
+/*
+.tree li i{
+    color: #99999980;
+}*/
+.tree li span {
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border: 2px solid #99999980;
+    border-radius: 12px;
+    display: inline-block;
+    padding: 4px 8px;
+    text-decoration: none;
+    cursor: pointer;
+}
+.tree > ul > li::before,
+.tree > ul > li::after {
+    border: 0;
+}
+.tree li:last-child::before {
+    height: 27px;
+}
+.tree li span:hover {
+    background: #d0d0d0;
+    border: 2px solid #adadad;
+}
+[aria-expanded="false"] > .expanded,
+[aria-expanded="true"] > .collapsed {
+    display: none;
+}
+.tree li a {
+    text-decoration: none;
+    color: #666;
+}
+.searchTree ul {
+    padding-left: 40px !important;
+    padding-right: unset !important;
+}
+.rtl_mode .tree li::before,
+.rtl_mode .tree li::after {
+    right: -20px;
+    left: auto;
+}
+.rtl_mode .tree li::before {
+    border-right: unset;
+    border-left: 2px solid #99999980;
+}
+.rtl_mode .searchTree ul {
+    padding-right: 40px !important;
+    padding-left: unset !important;
+}

@@ -1,0 +1,6 @@
+@extends('errors::minimal')
+@section('title', __('Not Found'))
+@section('message', __('Page Not Found'))
+@section('firstDigit',4)
+@section('secondDigit', 0)
+@section('thirdDigit', 4)

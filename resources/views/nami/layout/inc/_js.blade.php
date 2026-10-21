@@ -1,0 +1,17 @@
+<script src="{{ asset('light-able/assets/js/plugins/popper.min.js') }}"></script>
+<script src="{{ asset('light-able/assets/js/plugins/simplebar.min.js') }}"></script>
+<script src="{{ asset('light-able/assets/js/plugins/bootstrap.min.js') }}"></script>
+<script src="{{ asset('light-able/assets/js/plugins/feather.min.js') }}"></script>
+<script src="{{ asset('light-able/assets/js/icon/custom-font.js') }}"></script>
+<script src="{{ asset('light-able/assets/js/script.js') }}"></script>
+<script src="{{ asset('light-able/assets/js/theme.js') }}"></script>
+<script src="{{ asset('admin/assets/js/plugins.js') }}"></script>
+<script src="{{ asset('admin/assets/js/bundle/sweetalert2.bundle.js') }}"></script>
+<script>window.Swal = window.Swal || window.Sweetalert2 || window.sweetAlert || window.SweetAlert;</script>
+<script src="{{ asset('admin/assets/vendor/jquery_validator/form_validator/jquery.form-validator.min.js') }}"></script>
+<script src="{{ asset('admin/assets/js/bundle/select2.bundle.js') }}"></script>
+<script src="{{ asset('admin/assets/vendor/toster/js/jquery.toast.js') }}"></script>
+<script src="{{ asset('admin/assets/js/custom.js') }}"></script>
+<script src="{{ asset('admin/assets/js/bundle/dropify.bundle.js') }}"></script>
+<script src="{{ asset('admin/assets/js/fancybox.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
