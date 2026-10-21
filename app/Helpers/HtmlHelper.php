@@ -61,7 +61,7 @@ if (!function_exists('addUpButton')) {
  * @return string
  */
 if (!function_exists('editButton')) {
-    function editButton($route, $text = "", $icon='pencil', $color='primary')
+    function editButton($route, $text = "", $icon='edit', $color='primary')
     {
         if(checkIfHasPermission(getRouteNameFromRoute($route) . '-update')){
             $fullText = __("buttons.edit") . ' ' . $text;
@@ -75,7 +75,7 @@ if (!function_exists('editButton')) {
 }
 
 if (!function_exists('addOfferButton')) {
-    function addOfferButton($route, $text = "", $icon='pencil', $color='primary')
+    function addOfferButton($route, $text = "", $icon='edit', $color='primary')
     {
         if(checkIfHasPermission(getRouteNameFromRoute($route) . '-update')){
             $fullText = __("buttons.addOffer") . ' ' . $text;
@@ -103,7 +103,7 @@ if (!function_exists('showButton')) {
 }
 
 if (!function_exists('customButton')) {
-    function customButton($route,  $text = "", $color = 'primary', $icon = 'pencil', $type = 'addButton', $count = null)
+    function customButton($route,  $text = "", $color = 'primary', $icon = 'edit', $type = 'addButton', $count = null)
     {
         if(checkIfHasPermission(getRouteNameFromRoute($route) . '-create')){
             $count = $count == 0 || is_null($count) ? '' : '<span class="bg-danger text-white rounded px-1">' . $count . '</span>';
@@ -117,7 +117,7 @@ if (!function_exists('customButton')) {
 }
 
 if (!function_exists('verificationButton')) {
-    function verificationButton($route,  $text = "", $color = 'primary', $icon = 'pencil', $type = 'addButton')
+    function verificationButton($route,  $text = "", $color = 'primary', $icon = 'edit', $type = 'addButton')
     {
         if(checkIfHasPermission(getRouteNameFromRoute($route) . '-create')){
             return '<button type="button" class="btn btn-' . $color . ' ' . $type . '" data-bs-toggle="modal" data-bs-target="#createModal"

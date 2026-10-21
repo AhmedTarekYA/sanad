@@ -2,10 +2,14 @@
 @php($sidebarLogo = isset($settings) && $settings->logo_header && file_exists(public_path('/storage/' . $settings->logo_header)) ? showFile($settings->logo_header) : asset('brand/logo.svg'))
 <nav class="pc-sidebar">
     <div class="navbar-wrapper">
-        <div class="m-header"><a href="{{ route('dashboard.index') }}" class="b-brand text-primary"><img
-                    src="{{ $sidebarLogo }}" alt="{{ $settings->website_name ?? config('app.name') }}"
-                    class="logo-lg sanad-fallback-logo"
-                    onerror="this.onerror=null;this.src='{{ asset('brand/logo.svg') }}';"></a></div>
+        <div class="m-header"><a href="{{ route('dashboard.index') }}" class="b-brand text-primary">
+            <img src="{{ $sidebarLogo }}" alt="{{ $settings->website_name ?? config('app.name') }}"
+                 class="logo-lg sanad-fallback-logo sanad-logo-light"
+                 onerror="this.onerror=null;this.src='{{ asset('brand/logo.svg') }}';">
+            <img src="{{ asset('brand/logo_dark.png') }}" alt="{{ $settings->website_name ?? config('app.name') }}"
+                 class="logo-lg sanad-logo-dark"
+                 onerror="this.onerror=null;this.src='{{ asset('brand/logo_dark.png') }}';">
+        </a></div>
         <div class="navbar-content">
             <ul class="pc-navbar">
                 <li class="pc-item pc-caption"><label><i class="ph-duotone ph-squares-four me-1"
@@ -18,7 +22,7 @@
                 @if(checkIfHasPermission('settings-read'))
                     <li class="pc-item {{ Str::startsWith($currentRoute, 'settings.') ? 'active' : '' }}"><a
                             href="{{ route('settings.index') }}" class="pc-link"><span class="pc-micon"><img
-                                    class="sanad-sidebar-svg" src="{{ asset('admin/assets/icons/category.svg') }}" alt=""
+                                    class="sanad-sidebar-svg" src="{{ asset('admin/assets/icons/settings.svg') }}" alt=""
                                     aria-hidden="true"></span><span
                                 class="pc-mtext">{{ __('auth.site_settings') }}</span></a></li>
                 @endif
@@ -65,31 +69,31 @@
                 @if(checkIfHasPermission('admins-read'))
                     <li class="pc-item {{ Str::startsWith($currentRoute, 'admins.') ? 'active' : '' }}"><a
                             href="{{ route('admins.index') }}" class="pc-link"><span class="pc-micon"><img
-                                    class="sanad-sidebar-svg" src="{{ asset('admin/assets/icons/users.svg') }}" alt=""
+                                    class="sanad-sidebar-svg" src="{{ asset('admin/assets/icons/admin.svg') }}" alt=""
                                     aria-hidden="true"></span><span class="pc-mtext">{{ __('auth.users') }}</span></a>
                     </li>
                 @endif
                 @if(checkIfHasPermission('roles-read'))
                     <li class="pc-item {{ Str::startsWith($currentRoute, 'roles.') ? 'active' : '' }}"><a
                             href="{{ route('roles.index') }}" class="pc-link"><span class="pc-micon"><img
-                                    class="sanad-sidebar-svg" src="{{ asset('admin/assets/icons/manager.svg') }}" alt=""
+                                    class="sanad-sidebar-svg" src="{{ asset('admin/assets/icons/roles.svg') }}" alt=""
                                     aria-hidden="true"></span><span
                                 class="pc-mtext">{{ __('permission.roles') }}</span></a></li>
                 @endif
                 @if(auth('admin')->user()?->admin_type === \App\Enums\AdminTypeisEnum::Developer->value)
-                    <li class="pc-item {{ Str::startsWith($currentRoute, 'permissions.') ? 'active' : '' }}"><a
-                            href="{{ route('permissions.index') }}" class="pc-link"><span class="pc-micon"><img
-                                    class="sanad-sidebar-svg"
-                                    src="{{ asset('admin/assets/icons/profile-overview.svg') }}" alt=""
-                                    aria-hidden="true"></span><span
-                                class="pc-mtext">{{ __('permission.permissions') }}</span></a></li>
+{{--                    <li class="pc-item {{ Str::startsWith($currentRoute, 'permissions.') ? 'active' : '' }}"><a--}}
+{{--                            href="{{ route('permissions.index') }}" class="pc-link"><span class="pc-micon"><img--}}
+{{--                                    class="sanad-sidebar-svg"--}}
+{{--                                    src="{{ asset('admin/assets/icons/profile-overview.svg') }}" alt=""--}}
+{{--                                    aria-hidden="true"></span><span--}}
+{{--                                class="pc-mtext">{{ __('permission.permissions') }}</span></a></li>--}}
                 @endif
-                @if(checkIfHasPermission('configs-read'))
-                    <li class="pc-item {{ Str::startsWith($currentRoute, 'configs.') ? 'active' : '' }}"><a
-                            href="{{ route('configs.index') }}" class="pc-link"><span class="pc-micon"><img
-                                    class="sanad-sidebar-svg" src="{{ asset('admin/assets/icons/bank.svg') }}" alt=""
-                                    aria-hidden="true"></span><span class="pc-mtext">{{ __('config') }}</span></a></li>
-                @endif
+{{--                @if(checkIfHasPermission('configs-read'))--}}
+{{--                    <li class="pc-item {{ Str::startsWith($currentRoute, 'configs.') ? 'active' : '' }}"><a--}}
+{{--                            href="{{ route('configs.index') }}" class="pc-link"><span class="pc-micon"><img--}}
+{{--                                    class="sanad-sidebar-svg" src="{{ asset('admin/assets/icons/bank.svg') }}" alt=""--}}
+{{--                                    aria-hidden="true"></span><span class="pc-mtext">{{ __('config') }}</span></a></li>--}}
+{{--                @endif--}}
             </ul>
         </div>
     </div>

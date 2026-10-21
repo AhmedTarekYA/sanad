@@ -17,7 +17,7 @@
                                 <h1 class="mb-2">{{ __('auth.welcomeback') }}، {{ $authUser?->name }}</h1>
                                 <p class="mb-0">{{ app()->getLocale() === 'ar' ? 'إدارة مشروعك تبدأ من هنا. اختر مساحة العمل التي تريد الوصول إليها.' : 'Manage your workspace from one place. Choose where you want to start.' }}</p>
                             </div>
-                            <i class="ph-duotone ph-chart-line-up dashboard-welcome-icon" aria-hidden="true"></i>
+                            <img src="{{ asset('admin/assets/img/earth.png') }}" alt="" class="dashboard-welcome-img" aria-hidden="true">
                         </div>
                     </div>
                 </div>

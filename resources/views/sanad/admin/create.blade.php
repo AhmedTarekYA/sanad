@@ -38,7 +38,7 @@
     </div>
 
     <div class="col-12">
-        <label for="image" class="form-label">{{ __("tameem.image") }}</label>
+        <label for="image" class="form-label">{{ __("image") }}</label>
         <input type="file" id="image" name="image" class="dropify" data-validation="required">
     </div>
 

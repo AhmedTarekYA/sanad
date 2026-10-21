@@ -59,7 +59,7 @@
                     <button type="submit" id="loginSubmit"><span>{{ __('auth.sign in') }}</span><i class="fal fa-arrow-left" aria-hidden="true"></i></button>
                 </form>
             </div>
-            <footer class="sanad-login__footer"><span>{{ $main_setting->copyright_text ?? __('auth.All Rights Reserved.') }}</span><span>© {{ date('Y') }}</span><a href="https://sanad-tec.com" target="_blank" rel="noopener">Sanad</a></footer>
+            <footer class="sanad-login__footer"><span>{{ $main_setting->copyright_text ?? __('auth.All Rights Reserved.') }}</span><span>© {{ date('Y') }}</span><a href="http://sanadcx.com" target="_blank" rel="noopener">Sanad</a></footer>
         </section>
 
         <section class="sanad-login__image-side" aria-label="Sanad">

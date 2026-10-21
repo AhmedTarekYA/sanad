@@ -30,7 +30,7 @@ class RoleController extends Controller
                     $canEdit = checkIfHasPermission('roles-update'); //Auth::guard('admin')->user()->hasPermission('roles-update', 'admin');
                     $editButton = $canEdit
                         ? '<a href="' . route($this->mainRoute . ".edit", $row->id) . '" class="btn btn-primary shadow btn-xs sharp me-1" title="' . __('admin.edit') . '" data-id="' . $id . '">
-                            <i class="fa fa-pencil"></i>
+                            <i class="ti ti-edit"></i>
                             </a>'
                         : '';
                     $canDelete = checkIfHasPermission('roles-delete'); //Auth::guard('admin')->user()->hasPermission('roles-delete', 'admin');

@@ -42,7 +42,7 @@
     </div>
 
     <div class="col-12">
-        <label class="form-label">{{ __('auth.image') }}</label>
+        <label for="image" class="form-label">{{ __("image") }}</label>
         <input type="file" name="image" class="dropify"
             data-default-file="{{ showFile($obj->image, 'admin') }}">
     </div>

@@ -12,7 +12,7 @@
                 delete-route="{{ route('notes.destroy', $note->id) }}"><i class="fa fa-trash favourite-note"></i></a>
             <a class="btn btn-sm btn-outline-secondary editButton" data-bs-toggle="modal" data-bs-target="#createModal"
                 model-route="{{ route('notes.edit', $note->id) }}">
-                <i class="fa fa-pencil"></i>
+                <i class="ti ti-edit"></i>
             </a>
         </div>
     </div>
