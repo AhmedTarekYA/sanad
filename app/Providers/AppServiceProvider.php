@@ -2,11 +2,11 @@
 
 namespace App\Providers;
 
-use App\Models\Nami\MainSetting;
+use App\Models\Sanad\MainSetting;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 use Illuminate\Support\ServiceProvider;
-use App\Models\Nami\Setting;
+use App\Models\Sanad\Setting;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Auth;

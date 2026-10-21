@@ -3897,7 +3897,7 @@
         tn = l() ? "left-start" : "right-start", nn = l() ? "right-start" : "left-start", on = {
             autoClose: !0,
             boundary: "clippingParents",
-            display: "dynamic",
+            display: "dysanadc",
             offset: [0, 2],
             popperConfig: null,
             reference: "toggle"

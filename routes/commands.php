@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Nami\Command\BackUpDatabaseController;
+use App\Http\Controllers\Sanad\Command\BackUpDatabaseController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Route;
@@ -76,6 +76,6 @@ Route::resource('download-database-backup', BackUpDatabaseController::class);
 
 
 
-// php artisan translate:setup // to setup translation 
-// php artisan translate:scan  // to start translation 
- 
+// php artisan translate:setup // to setup translation
+// php artisan translate:scan  // to start translation
+

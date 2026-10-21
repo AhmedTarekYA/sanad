@@ -1,7 +1,7 @@
 /**
 =========================================================================
 =========================================================================
-Template Name: Light Able - Bootstrap Admin Template
+Template Name: Light Able - Bootstrap Sanad Template
 Author: Phoenixcoded
 Support: https://phoenixcoded.authordesk.app
 File: script.js

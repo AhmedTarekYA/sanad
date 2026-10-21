@@ -1,7 +1,7 @@
 <?php
 
 use App\Models\User;
-use App\Models\Nami\Admin;
+use App\Models\Sanad\Admin;
 
 return [
 

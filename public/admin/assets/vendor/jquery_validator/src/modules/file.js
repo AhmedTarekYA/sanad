@@ -322,7 +322,7 @@
         }
       },
       errorMessage : '',
-      errorMessageKey: '' // error message created dynamically
+      errorMessageKey: '' // error message created dysanadcally
     //  errorMessageKey: 'wrongFileDim'
     });
 

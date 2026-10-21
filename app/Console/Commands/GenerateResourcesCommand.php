@@ -26,7 +26,7 @@ class GenerateResourcesCommand extends Command
 
     public function handle()
     {
-        $projectName = $this->argument('projectName') ?? 'nami';
+        $projectName = $this->argument('projectName') ?? 'sanad';
         $path = database_path('migrations/'.$projectName);
         $files = scandir($path);
 
@@ -105,17 +105,17 @@ class GenerateResourcesCommand extends Command
         $columns = Schema::getColumnListing(Str::snake($migrationName));
 //        $column_type = Schema::getColumnType('users','updated_at');
 //dd($column_type);
-        // Generate the dynamic toArray method
-        $dynamicToArray = $this->generateDynamicToArray($columns,$tableName);
+        // Generate the dysanadc toArray method
+        $dysanadcToArray = $this->generateDysanadcToArray($columns,$tableName);
 
-        // Replace the existing toArray method with the dynamic one
+        // Replace the existing toArray method with the dysanadc one
         file_put_contents(
             $resourceClassPath,
-            preg_replace('/public function toArray\(.*\)/s', $dynamicToArray, file_get_contents($resourceClassPath))
+            preg_replace('/public function toArray\(.*\)/s', $dysanadcToArray, file_get_contents($resourceClassPath))
         );
     }
 
-    protected function generateDynamicToArray($columns,$tableName)
+    protected function generateDysanadcToArray($columns,$tableName)
     {
         $toArray = 'public function toArray($request)
         {

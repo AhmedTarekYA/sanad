@@ -99,7 +99,7 @@ return [
     |
     */
     'user_models' => [
-        'users' => \App\Models\Nami\Admin::class,
+        'users' => \App\Models\Sanad\Admin::class,
     ],
 
     /*

@@ -377,30 +377,30 @@
   width: 100%;
 }
 /* Bullets */
-.swiper-pagination-bullets-dynamic {
+.swiper-pagination-bullets-dysanadc {
   overflow: hidden;
   font-size: 0;
 }
-.swiper-pagination-bullets-dynamic .swiper-pagination-bullet {
+.swiper-pagination-bullets-dysanadc .swiper-pagination-bullet {
   transform: scale(0.33);
   position: relative;
 }
-.swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active {
+.swiper-pagination-bullets-dysanadc .swiper-pagination-bullet-active {
   transform: scale(1);
 }
-.swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-main {
+.swiper-pagination-bullets-dysanadc .swiper-pagination-bullet-active-main {
   transform: scale(1);
 }
-.swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-prev {
+.swiper-pagination-bullets-dysanadc .swiper-pagination-bullet-active-prev {
   transform: scale(0.66);
 }
-.swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-prev-prev {
+.swiper-pagination-bullets-dysanadc .swiper-pagination-bullet-active-prev-prev {
   transform: scale(0.33);
 }
-.swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-next {
+.swiper-pagination-bullets-dysanadc .swiper-pagination-bullet-active-next {
   transform: scale(0.66);
 }
-.swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-next-next {
+.swiper-pagination-bullets-dysanadc .swiper-pagination-bullet-active-next-next {
   transform: scale(0.33);
 }
 .swiper-pagination-bullet {
@@ -441,14 +441,14 @@ button.swiper-pagination-bullet {
   margin: var(--swiper-pagination-bullet-vertical-gap, 6px) 0;
   display: block;
 }
-.swiper-vertical > .swiper-pagination-bullets.swiper-pagination-bullets-dynamic,
-.swiper-pagination-vertical.swiper-pagination-bullets.swiper-pagination-bullets-dynamic {
+.swiper-vertical > .swiper-pagination-bullets.swiper-pagination-bullets-dysanadc,
+.swiper-pagination-vertical.swiper-pagination-bullets.swiper-pagination-bullets-dysanadc {
   top: 50%;
   transform: translateY(-50%);
   width: 8px;
 }
-.swiper-vertical > .swiper-pagination-bullets.swiper-pagination-bullets-dynamic .swiper-pagination-bullet,
-.swiper-pagination-vertical.swiper-pagination-bullets.swiper-pagination-bullets-dynamic .swiper-pagination-bullet {
+.swiper-vertical > .swiper-pagination-bullets.swiper-pagination-bullets-dysanadc .swiper-pagination-bullet,
+.swiper-pagination-vertical.swiper-pagination-bullets.swiper-pagination-bullets-dysanadc .swiper-pagination-bullet {
   display: inline-block;
   transition: 200ms transform,
         200ms top;
@@ -457,18 +457,18 @@ button.swiper-pagination-bullet {
 .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
   margin: 0 var(--swiper-pagination-bullet-horizontal-gap, 4px);
 }
-.swiper-horizontal > .swiper-pagination-bullets.swiper-pagination-bullets-dynamic,
-.swiper-pagination-horizontal.swiper-pagination-bullets.swiper-pagination-bullets-dynamic {
+.swiper-horizontal > .swiper-pagination-bullets.swiper-pagination-bullets-dysanadc,
+.swiper-pagination-horizontal.swiper-pagination-bullets.swiper-pagination-bullets-dysanadc {
   left: 50%;
   transform: translateX(-50%);
   white-space: nowrap;
 }
-.swiper-horizontal > .swiper-pagination-bullets.swiper-pagination-bullets-dynamic .swiper-pagination-bullet,
-.swiper-pagination-horizontal.swiper-pagination-bullets.swiper-pagination-bullets-dynamic .swiper-pagination-bullet {
+.swiper-horizontal > .swiper-pagination-bullets.swiper-pagination-bullets-dysanadc .swiper-pagination-bullet,
+.swiper-pagination-horizontal.swiper-pagination-bullets.swiper-pagination-bullets-dysanadc .swiper-pagination-bullet {
   transition: 200ms transform,
         200ms left;
 }
-.swiper-horizontal.swiper-rtl > .swiper-pagination-bullets-dynamic .swiper-pagination-bullet {
+.swiper-horizontal.swiper-rtl > .swiper-pagination-bullets-dysanadc .swiper-pagination-bullet {
   transition: 200ms transform,
     200ms right;
 }

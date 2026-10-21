@@ -1392,7 +1392,7 @@ var Swiper = (function () {
     const len = swiper.slides.length;
     if (!len || !amount || amount < 0) return;
     amount = Math.min(amount, len);
-    const slidesPerView = swiper.params.slidesPerView === 'auto' ? swiper.slidesPerViewDynamic() : Math.ceil(swiper.params.slidesPerView);
+    const slidesPerView = swiper.params.slidesPerView === 'auto' ? swiper.slidesPerViewDysanadc() : Math.ceil(swiper.params.slidesPerView);
     const activeIndex = swiper.activeIndex;
     if (swiper.params.grid && swiper.params.grid.rows > 1) {
       const activeColumn = activeIndex;
@@ -2026,7 +2026,7 @@ var Swiper = (function () {
         } = swiper.params;
         let slidesPerView = swiper.params.slidesPerView;
         if (slidesPerView === 'auto') {
-          slidesPerView = swiper.slidesPerViewDynamic();
+          slidesPerView = swiper.slidesPerViewDysanadc();
         } else {
           slidesPerView = Math.ceil(parseFloat(swiper.params.slidesPerView, 10));
           if (centeredSlides && slidesPerView % 2 === 0) {
@@ -2080,7 +2080,7 @@ var Swiper = (function () {
     }
     let perGroup = params.slidesPerGroup;
     if (params.slidesPerView === 'auto' && params.slidesPerGroup === 1 && params.slidesPerGroupAuto) {
-      perGroup = Math.max(swiper.slidesPerViewDynamic('current', true), 1);
+      perGroup = Math.max(swiper.slidesPerViewDysanadc('current', true), 1);
     }
     const increment = swiper.activeIndex < params.slidesPerGroupSkip ? 1 : perGroup;
     const isVirtual = swiper.virtual && params.virtual.enabled;
@@ -2156,7 +2156,7 @@ var Swiper = (function () {
       prevIndex = slidesGrid.indexOf(prevSnap);
       if (prevIndex < 0) prevIndex = swiper.activeIndex - 1;
       if (params.slidesPerView === 'auto' && params.slidesPerGroup === 1 && params.slidesPerGroupAuto) {
-        prevIndex = prevIndex - swiper.slidesPerViewDynamic('previous', true) + 1;
+        prevIndex = prevIndex - swiper.slidesPerViewDysanadc('previous', true) + 1;
         prevIndex = Math.max(prevIndex, 0);
       }
     }
@@ -2231,7 +2231,7 @@ var Swiper = (function () {
       params,
       slidesEl
     } = swiper;
-    const slidesPerView = params.slidesPerView === 'auto' ? swiper.slidesPerViewDynamic() : params.slidesPerView;
+    const slidesPerView = params.slidesPerView === 'auto' ? swiper.slidesPerViewDysanadc() : params.slidesPerView;
     let slideToIndex = swiper.clickedIndex;
     let realIndex;
     const slideSelector = swiper.isElement ? `swiper-slide` : `.${params.slideClass}`;
@@ -2366,7 +2366,7 @@ var Swiper = (function () {
     }
     let slidesPerView = params.slidesPerView;
     if (slidesPerView === 'auto') {
-      slidesPerView = swiper.slidesPerViewDynamic();
+      slidesPerView = swiper.slidesPerViewDysanadc();
     } else {
       slidesPerView = Math.ceil(parseFloat(params.slidesPerView, 10));
       if (centeredSlides && slidesPerView % 2 === 0) {
@@ -2932,7 +2932,7 @@ var Swiper = (function () {
         swiper.loopFix({
           direction: 'next',
           setTranslate: true,
-          activeSlideIndex: swiper.slides.length - (params.slidesPerView === 'auto' ? swiper.slidesPerViewDynamic() : Math.ceil(parseFloat(params.slidesPerView, 10)))
+          activeSlideIndex: swiper.slides.length - (params.slidesPerView === 'auto' ? swiper.slidesPerViewDysanadc() : Math.ceil(parseFloat(params.slidesPerView, 10)))
         });
       }
       if (data.currentTranslate < swiper.maxTranslate()) {
@@ -4020,7 +4020,7 @@ var Swiper = (function () {
       });
       swiper.emit('_slideClasses', updates);
     }
-    slidesPerViewDynamic(view, exact) {
+    slidesPerViewDysanadc(view, exact) {
       if (view === void 0) {
         view = 'current';
       }
@@ -5469,8 +5469,8 @@ var Swiper = (function () {
         progressbarOpposite: false,
         type: 'bullets',
         // 'bullets' or 'progressbar' or 'fraction' or 'custom'
-        dynamicBullets: false,
-        dynamicMainBullets: 1,
+        dysanadcBullets: false,
+        dysanadcMainBullets: 1,
         formatFractionCurrent: number => number,
         formatFractionTotal: number => number,
         bulletClass: `${pfx}-bullet`,
@@ -5493,7 +5493,7 @@ var Swiper = (function () {
       bullets: []
     };
     let bulletSize;
-    let dynamicBulletIndex = 0;
+    let dysanadcBulletIndex = 0;
     function isPaginationDisabled() {
       return !swiper.params.pagination.el || !swiper.pagination.el || Array.isArray(swiper.pagination.el) && swiper.pagination.el.length === 0;
     }
@@ -5570,21 +5570,21 @@ var Swiper = (function () {
         let firstIndex;
         let lastIndex;
         let midIndex;
-        if (params.dynamicBullets) {
+        if (params.dysanadcBullets) {
           bulletSize = elementOuterSize(bullets[0], swiper.isHorizontal() ? 'width' : 'height', true);
           el.forEach(subEl => {
-            subEl.style[swiper.isHorizontal() ? 'width' : 'height'] = `${bulletSize * (params.dynamicMainBullets + 4)}px`;
+            subEl.style[swiper.isHorizontal() ? 'width' : 'height'] = `${bulletSize * (params.dysanadcMainBullets + 4)}px`;
           });
-          if (params.dynamicMainBullets > 1 && previousIndex !== undefined) {
-            dynamicBulletIndex += current - (previousIndex || 0);
-            if (dynamicBulletIndex > params.dynamicMainBullets - 1) {
-              dynamicBulletIndex = params.dynamicMainBullets - 1;
-            } else if (dynamicBulletIndex < 0) {
-              dynamicBulletIndex = 0;
+          if (params.dysanadcMainBullets > 1 && previousIndex !== undefined) {
+            dysanadcBulletIndex += current - (previousIndex || 0);
+            if (dysanadcBulletIndex > params.dysanadcMainBullets - 1) {
+              dysanadcBulletIndex = params.dysanadcMainBullets - 1;
+            } else if (dysanadcBulletIndex < 0) {
+              dysanadcBulletIndex = 0;
             }
           }
-          firstIndex = Math.max(current - dynamicBulletIndex, 0);
-          lastIndex = firstIndex + (Math.min(bullets.length, params.dynamicMainBullets) - 1);
+          firstIndex = Math.max(current - dysanadcBulletIndex, 0);
+          lastIndex = firstIndex + (Math.min(bullets.length, params.dysanadcMainBullets) - 1);
           midIndex = (lastIndex + firstIndex) / 2;
         }
         bullets.forEach(bulletEl => {
@@ -5599,7 +5599,7 @@ var Swiper = (function () {
             } else if (swiper.isElement) {
               bullet.setAttribute('part', 'bullet');
             }
-            if (params.dynamicBullets) {
+            if (params.dysanadcBullets) {
               if (bulletIndex >= firstIndex && bulletIndex <= lastIndex) {
                 bullet.classList.add(...`${params.bulletActiveClass}-main`.split(' '));
               }
@@ -5621,7 +5621,7 @@ var Swiper = (function () {
               bulletEl.setAttribute('part', bulletIndex === current ? 'bullet-active' : 'bullet');
             });
           }
-          if (params.dynamicBullets) {
+          if (params.dysanadcBullets) {
             const firstDisplayedBullet = bullets[firstIndex];
             const lastDisplayedBullet = bullets[lastIndex];
             for (let i = firstIndex; i <= lastIndex; i += 1) {
@@ -5633,9 +5633,9 @@ var Swiper = (function () {
             setSideBullets(lastDisplayedBullet, 'next');
           }
         }
-        if (params.dynamicBullets) {
-          const dynamicBulletsLength = Math.min(bullets.length, params.dynamicMainBullets + 4);
-          const bulletsOffset = (bulletSize * dynamicBulletsLength - bulletSize) / 2 - midIndex * bulletSize;
+        if (params.dysanadcBullets) {
+          const dysanadcBulletsLength = Math.min(bullets.length, params.dysanadcMainBullets + 4);
+          const bulletsOffset = (bulletSize * dysanadcBulletsLength - bulletSize) / 2 - midIndex * bulletSize;
           const offsetProp = rtl ? 'right' : 'left';
           bullets.forEach(bullet => {
             bullet.style[swiper.isHorizontal() ? offsetProp : 'top'] = `${bulletsOffset}px`;
@@ -5770,11 +5770,11 @@ var Swiper = (function () {
         }
         subEl.classList.add(params.modifierClass + params.type);
         subEl.classList.add(swiper.isHorizontal() ? params.horizontalClass : params.verticalClass);
-        if (params.type === 'bullets' && params.dynamicBullets) {
-          subEl.classList.add(`${params.modifierClass}${params.type}-dynamic`);
-          dynamicBulletIndex = 0;
-          if (params.dynamicMainBullets < 1) {
-            params.dynamicMainBullets = 1;
+        if (params.type === 'bullets' && params.dysanadcBullets) {
+          subEl.classList.add(`${params.modifierClass}${params.type}-dysanadc`);
+          dysanadcBulletIndex = 0;
+          if (params.dysanadcMainBullets < 1) {
+            params.dysanadcMainBullets = 1;
           }
         }
         if (params.type === 'progressbar' && params.progressbarOpposite) {
@@ -8169,7 +8169,7 @@ var Swiper = (function () {
     function update(initial) {
       const thumbsSwiper = swiper.thumbs.swiper;
       if (!thumbsSwiper || thumbsSwiper.destroyed) return;
-      const slidesPerView = thumbsSwiper.params.slidesPerView === 'auto' ? thumbsSwiper.slidesPerViewDynamic() : thumbsSwiper.params.slidesPerView;
+      const slidesPerView = thumbsSwiper.params.slidesPerView === 'auto' ? thumbsSwiper.slidesPerViewDysanadc() : thumbsSwiper.params.slidesPerView;
 
       // Activate thumbs
       let thumbsToActivate = 1;

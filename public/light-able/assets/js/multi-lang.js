@@ -1,7 +1,7 @@
 /**
 =========================================================================
 =========================================================================
-Template Name: Light-able - Admin Template
+Template Name: Light-able - Sanad Template
 Author: Phoenixcoded
 Support: https://phoenixcoded.authordesk.app
 File: multi-lang.js
@@ -58,7 +58,7 @@ class Translator {
     langSwitchers.forEach((langSwitcher) => {
       langSwitcher.addEventListener('click', () => {
         this._currentLng = langSwitcher.getAttribute('data-lng');
-        
+
         i18next.changeLanguage(this._currentLng).then(() => {
           this._translateAll();
           // this._setPickedLanguageFlag();

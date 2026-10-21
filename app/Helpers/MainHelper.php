@@ -209,9 +209,9 @@ if (! function_exists('getFieldLanguage')) {
 if (! function_exists('assetAdmin')) {
     function assetAdmin($path = null)
     {
-        // $url = 'https://raw.githubusercontent.com/Nami-BackEnd/nami-dashboard/main';
+        // $url = 'https://raw.githubusercontent.com/Sanad-BackEnd/sanad-dashboard/main';
 
-        $url = 'https://nami-BackEnd.github.io/'.config('app.name');
+        $url = 'https://sanad-BackEnd.github.io/'.config('app.name');
 
         if ($path != null) {
             return $url.'/'.$path;

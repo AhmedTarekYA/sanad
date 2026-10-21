@@ -81,7 +81,7 @@ setTimeout(function () {
         animations: {
           enabled: true,
           easing: 'linear',
-          dynamicAnimation: {
+          dysanadcAnimation: {
             speed: 2000
           }
         },

@@ -5,7 +5,7 @@ namespace App\Utils\views;
 class IndexTemplate
 {
     public const TEMPLATE_CONTENT = <<<HTML
-@extends('nami.layout.indexs.index')
+@extends('sanad.layout.indexs.index')
 @section("style")
     <link rel="stylesheet" href="{{ asset('admin') }}/assets/cssbundle/dataTables.min.css">
 @endsection

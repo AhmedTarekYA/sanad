@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(AdminSeeder::class);
         $this->call(LaratrustSeeder::class);
+        $this->call(PermissionTranslationSeeder::class);
         $this->call(CommandSeeder::class);
     }
 }

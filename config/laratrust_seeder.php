@@ -12,7 +12,7 @@ return [
     'truncate_tables' => false,
 
     'roles_structure' => [
-        'superadministrator' => [
+        'system_manager' => [
             'admins' => 'c,r,u,d',
             'roles' => 'c,r,u,d',
             'settings' => 'c,r,u,d',

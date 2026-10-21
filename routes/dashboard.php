@@ -1,21 +1,21 @@
 <?php
 
-use App\Http\Controllers\Nami\Env\EnvController;
-use App\Http\Controllers\Nami\Settings\MainSettingController;
+use App\Http\Controllers\Sanad\Env\EnvController;
+use App\Http\Controllers\Sanad\Settings\MainSettingController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
-use App\Http\Controllers\Nami\DashboardController;
-use App\Http\Controllers\Nami\Authentication\AdminLoginController;
-use App\Http\Controllers\Nami\Settings\SettingController;
-use App\Http\Controllers\Nami\Authentication\ProfileController;
-use App\Http\Controllers\Nami\Authentication\ChangePasswordController;
-use App\Http\Controllers\Nami\Authentication\AdminController;
-use App\Http\Controllers\Nami\Command\CommandController;
-use App\Http\Controllers\Nami\Command\TerminalController;
-use App\Http\Controllers\Nami\Command\UpdateController;
-use App\Http\Controllers\Nami\Permission\PermissionController;
-use App\Http\Controllers\Nami\Permission\RoleController;
-use App\Http\Controllers\Nami\Translator\TranslatorController;
+use App\Http\Controllers\Sanad\DashboardController;
+use App\Http\Controllers\Sanad\Authentication\AdminLoginController;
+use App\Http\Controllers\Sanad\Settings\SettingController;
+use App\Http\Controllers\Sanad\Authentication\ProfileController;
+use App\Http\Controllers\Sanad\Authentication\ChangePasswordController;
+use App\Http\Controllers\Sanad\Authentication\AdminController;
+use App\Http\Controllers\Sanad\Command\CommandController;
+use App\Http\Controllers\Sanad\Command\TerminalController;
+use App\Http\Controllers\Sanad\Command\UpdateController;
+use App\Http\Controllers\Sanad\Permission\PermissionController;
+use App\Http\Controllers\Sanad\Permission\RoleController;
+use App\Http\Controllers\Sanad\Translator\TranslatorController;
 
 /*
 |--------------------------------------------------------------------------

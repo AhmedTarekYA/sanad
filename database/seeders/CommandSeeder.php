@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Nami\Command;
+use App\Models\Sanad\Command;
 use Illuminate\Database\Seeder;
 
 class CommandSeeder extends Seeder

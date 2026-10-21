@@ -3,115 +3,98 @@
 namespace Database\Seeders;
 
 use App\Enums\AdminTypeisEnum;
-use App\Models\Nami\Admin;
+use App\Models\Sanad\Admin;
 use App\Models\Permission;
-use Illuminate\Support\Facades\Schema;
+use App\Models\Role;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 class LaratrustSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
+    private array $roleDisplayNames = [
+        'system_manager' => 'مدير النظام',
+    ];
+
+    public function run(): void
     {
-        // لا تحذف الصلاحيات المعطاة للمستخدمين
-        $this->truncateLaratrustTables(false);
+        $this->truncateLaratrustTables();
 
         $config = Config::get('laratrust_seeder.roles_structure');
 
         if ($config === null) {
-            $this->command->error("The configuration has not been published. Did you run `php artisan vendor:publish --tag=\"laratrust-seeder\"`?");
-            $this->command->line('');
-            return false;
+            $this->command->error('The configuration has not been published. Did you run `php artisan vendor:publish --tag="laratrust-seeder"`?');
+
+            return;
         }
 
         $mapPermission = collect(config('laratrust_seeder.permissions_map'));
 
         foreach ($config as $roleName => $modules) {
-
-            // جلب الدور إذا كان موجودًا، وإلا يتم إنشاؤه
-            $role = \App\Models\Role::firstOrCreate([
-                'name' => $roleName,
-            ]);
+            $role = Role::updateOrCreate(
+                ['name' => $roleName],
+                ['display_name' => $this->roleDisplayNames[$roleName] ?? ucfirst($roleName)]
+            );
 
             $permissions = [];
 
-            $this->command->info('Processing Role: ' . strtoupper($roleName));
+            $this->command->info('Processing Role: '.strtoupper($roleName));
 
-            // قراءة الصلاحيات المرتبطة بالدور
             foreach ($modules as $module => $list_per) {
-
-                // التأكد من أن $list_per عبارة عن مصفوفة، وإذا لم تكن مصفوفة نحولها باستخدام explode
                 $permissionsArray = is_array($list_per) ? $list_per : explode(',', $list_per);
 
                 foreach ($permissionsArray as $perm) {
                     $permissionValue = $mapPermission->get(trim($perm));
 
-                    // التحقق مما إذا كانت الصلاحية موجودة قبل إنشائها
-                    $permission = \App\Models\Permission::firstOrCreate([
-                        'name' => $module . '-' . $permissionValue,
-                    ], [
-                        'display_name' => ucfirst($permissionValue) . ' ' . ucfirst($module),
-                        'description' => ucfirst($permissionValue) . ' ' . ucfirst($module),
-                    ]);
+                    $permission = Permission::firstOrCreate(
+                        ['name' => $module.'-'.$permissionValue],
+                        [
+                            'display_name' => ucfirst($permissionValue).' '.ucfirst($module),
+                            'description' => ucfirst($permissionValue).' '.ucfirst($module),
+                        ]
+                    );
 
                     $permissions[] = $permission->id;
                 }
             }
 
-            // إضافة الصلاحيات الجديدة فقط دون حذف القديمة
-            if (!empty($permissions)) {
+            if (! empty($permissions)) {
                 $role->permissions()->syncWithoutDetaching($permissions);
             }
         }
 
-        // التأكد من أن الأدمن الرئيسي لديه جميع الصلاحيات
-        $adminUser = Admin::where('id', 1)->orWhere('admin_type', AdminTypeisEnum::Developer->value)->get();
+        // Give all permissions to admin@admin.com and all Developer admins
         $allPermissions = Permission::pluck('id')->toArray();
-        foreach ($adminUser as $admin) {
-            $admin->permissions()->syncWithoutDetaching($allPermissions);
-        }
 
-        // التأكد من أن العلاقة بين الدور والمستخدم لا تُحذف
-        if (!DB::table('role_user')->where("user_id", 1)->where("role_id", 1)->exists()) {
-            DB::table('role_user')->insert([
-                [
-                    "role_id" => 1,
-                    "user_id" => 1,
-                    "user_type" => 'App\Models\Nami\Admin',
-                ]
-            ]);
+        $superAdmins = Admin::where('email', 'admin@admin.com')
+            ->orWhere('admin_type', AdminTypeisEnum::Developer->value)
+            ->get();
+
+        foreach ($superAdmins as $admin) {
+            $admin->permissions()->syncWithoutDetaching($allPermissions);
+            $this->command->info('Permissions synced for: '.$admin->email);
         }
     }
 
-    /**
-     * Truncates Laratrust tables except permission-user assignments.
-     *
-     * @param bool $truncatePermissions Whether to truncate permissions or not.
-     */
-    public function truncateLaratrustTables($truncatePermissions = true)
+    public function truncateLaratrustTables(): void
     {
-        $this->command->info('Truncating Role and Permission tables (excluding user assignments)');
+        $this->command->info('Removing superadministrator role if exists…');
         Schema::disableForeignKeyConstraints();
 
-        // لا تحذف الصلاحيات من المستخدمين
+        // Remove the old superadministrator role completely
+        $oldRole = Role::where('name', 'superadministrator')->first();
+        if ($oldRole) {
+            DB::table('permission_role')->where('role_id', $oldRole->id)->delete();
+            DB::table('role_user')->where('role_id', $oldRole->id)->delete();
+            $oldRole->delete();
+            $this->command->info('superadministrator role removed.');
+        }
+
         if (Config::get('laratrust_seeder.truncate_tables')) {
             DB::table('roles')->truncate();
             DB::table('permission_role')->truncate();
             DB::table('role_user')->truncate();
-            if ($truncatePermissions) {
-                DB::table('permissions')->truncate();
-            }
-
-            if (Config::get('laratrust_seeder.create_users')) {
-                $usersTable = (new \App\Models\User)->getTable();
-                DB::table($usersTable)->truncate();
-            }
         }
 
         Schema::enableForeignKeyConstraints();

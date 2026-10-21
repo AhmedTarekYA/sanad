@@ -30,7 +30,7 @@ $.fn.extend({
             })
             branch.children().children().toggle();
         });
-        //fire event from the dynamically added icon
+        //fire event from the dysanadcally added icon
         tree.find('.branch .indicator').each(function () {
             $(this).on('click', function () {
                 $(this).closest('li').click();

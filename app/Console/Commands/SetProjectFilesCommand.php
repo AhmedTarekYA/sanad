@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Services\Nami\CommandService;
+use App\Services\Sanad\CommandService;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
@@ -46,7 +46,7 @@ class SetProjectFilesCommand extends Command
 
     private function getProjectName(): string
     {
-        return $this->argument('projectName') ?? 'Nami';
+        return $this->argument('projectName') ?? 'Sanad';
     }
 
     private function getMigrations(CommandService $commandService, string $projectName): array

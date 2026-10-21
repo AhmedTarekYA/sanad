@@ -19,7 +19,7 @@ This project has domain-specific skills available in `**/skills/**`. You MUST ac
 
 ## Conventions
 
-- You must follow all existing code conventions used in this application. When creating or editing a file, check sibling files for the correct structure, approach, and naming.
+- You must follow all existing code conventions used in this application. When creating or editing a file, check sibling files for the correct structure, approach, and sanadng.
 - Use descriptive names for variables and methods. For example, `isRegisteredForDiscounts`, not `discount()`.
 - Check for existing components to reuse before writing a new one.
 
@@ -148,7 +148,7 @@ This project has domain-specific skills available in `**/skills/**`. You MUST ac
 
 - This project uses PHPUnit. Create tests with `php artisan make:test --phpunit {name}`.
 - Do not include the test suite directory in `{name}`. Use `SomeFeatureTest`, not `Feature/SomeFeatureTest`.
-- Read the `testing-best-practices` skill for guidance on coverage, naming, structure, dependency isolation, and review.
+- Read the `testing-best-practices` skill for guidance on coverage, sanadng, structure, dependency isolation, and review.
 
 ## Running Tests
 

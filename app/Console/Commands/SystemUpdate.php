@@ -21,9 +21,9 @@ class SystemUpdate extends Command
         // --- Prepare Git Pull Command ---
         $repoUrl = sprintf(
             "https://%s:%s@github.com/%s/%s.git",
-            env('GITHUB_PROVIDER', 'Nami-BackEnd'),
+            env('GITHUB_PROVIDER', 'Sanad-BackEnd'),
             env('GITHUB_TOKEN'),
-            env('GITHUB_PROVIDER', 'Nami-BackEnd'),
+            env('GITHUB_PROVIDER', 'Sanad-BackEnd'),
             env('GITHUB_REPO'),
         );
 

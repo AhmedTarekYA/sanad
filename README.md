@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="public/admin/login/imgs/Frame_36125.svg" width="260" alt="Nami Dashboard">
+  <img src="public/admin/login/imgs/Frame_36125.svg" width="260" alt="Sanad Dashboard">
 </p>
 
-<h1 align="center">Nami Dashboard</h1>
+<h1 align="center">Sanad Dashboard</h1>
 
 <p align="center">
   A clean Laravel admin dashboard starter for building structured, scalable projects faster.
@@ -16,7 +16,7 @@
 
 ## Overview
 
-Nami Dashboard is a Laravel-based admin starter designed around a consistent application structure:
+Sanad Dashboard is a Laravel-based admin starter designed around a consistent application structure:
 
 `Model → Request → Service → Controller → Resource / Blade`
 
@@ -33,7 +33,7 @@ It includes a responsive admin interface, Arabic and English localization, authe
 
 ```bash
 git clone <repository-url>
-cd nami-v13
+cd sanad-v13
 composer install
 cp .env.example .env
 php artisan key:generate

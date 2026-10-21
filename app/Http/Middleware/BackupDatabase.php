@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Storage;
-use App\Models\Nami\Backup;
+use App\Models\Sanad\Backup;
 use Carbon\Carbon;
 
 class BackupDatabase

@@ -11846,12 +11846,12 @@ wi-wind-default._345-deg {
     --primary-gradient: linear-gradient(145deg, var(--primary-color), var(--secondary-color))
 }
 
-[data-luno=theme-dynamic] {
+[data-luno=theme-dysanadc] {
     --primary-rgb: 0, 189, 170;
     --primary-gradient: linear-gradient(145deg, var(--primary-color), var(--secondary-color))
 }
 
-[data-luno=theme-dynamic] .dt-setting {
+[data-luno=theme-dysanadc] .dt-setting {
     display: block
 }
 
@@ -28578,7 +28578,7 @@ button:focus:not(:focus-visible) {
     border-radius: .4rem
 }
 
-.choose-skin li.active .dynamic {
+.choose-skin li.active .dysanadc {
     background: var(--primary-color);
     color: #fff
 }

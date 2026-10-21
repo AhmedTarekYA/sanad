@@ -12,7 +12,7 @@ class MakeServiceCommand extends Command
 
     public function handle()
     {
-        $projectName = $this->argument('projectName') ?? 'nami';
+        $projectName = $this->argument('projectName') ?? 'sanad';
         $modelName = $this->argument('model');
 
         $namespace = "App\Services\\{$projectName}";

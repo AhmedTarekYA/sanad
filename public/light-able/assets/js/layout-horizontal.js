@@ -1,7 +1,7 @@
 /**
 =========================================================================
 =========================================================================
-Template Name: Light-able - Admin Template
+Template Name: Light-able - Sanad Template
 Author: Phoenixcoded
 Support: https://phoenixcoded.authordesk.app
 File: layout-horizontal.js
