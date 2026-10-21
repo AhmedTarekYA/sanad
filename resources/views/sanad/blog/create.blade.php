@@ -6,7 +6,8 @@
         {{-- Image --}}
         <div class="col-12">
             <label class="form-label fw-semibold">{{ __('auth.image') }}</label>
-            <input type="file" name="image" class="dropify" accept="image/*">
+            <input type="file" name="image" class="dropify" accept="image/*"
+               data-max-file-size="20M" data-allowed-file-extensions="jpg jpeg png gif webp">
         </div>
 
         {{-- Language Tabs --}}
