@@ -3,9 +3,9 @@
 namespace Database\Seeders;
 
 use App\Enums\AdminTypeisEnum;
-use App\Models\Sanad\Admin;
 use App\Models\Permission;
 use App\Models\Role;
+use App\Models\Sanad\Admin;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
@@ -15,6 +15,42 @@ class LaratrustSeeder extends Seeder
 {
     private array $roleDisplayNames = [
         'system_manager' => 'مدير النظام',
+    ];
+
+    /** @var array<string, array<string, string>> */
+    private array $permissionDisplayNames = [
+        'admins' => [
+            'create' => 'إضافة مشرف',
+            'read' => 'عرض المشرفين',
+            'update' => 'تعديل مشرف',
+            'delete' => 'حذف مشرف',
+        ],
+        'roles' => [
+            'create' => 'إضافة دور',
+            'read' => 'عرض الأدوار',
+            'update' => 'تعديل دور',
+            'delete' => 'حذف دور',
+        ],
+        'settings' => [
+            'create' => 'إضافة إعداد',
+            'read' => 'عرض الإعدادات',
+            'update' => 'تعديل إعداد',
+            'delete' => 'حذف إعداد',
+        ],
+        'profile' => [
+            'read' => 'عرض اللف الشخصي',
+            'update' => 'تعديل اللف الشخصي',
+        ],
+        'change-password' => [
+            'read' => 'عرض تغيير كلمة المرور',
+            'update' => 'تغيير كلمة المرور',
+        ],
+        'blogs' => [
+            'create' => 'إضافة مقال',
+            'read' => 'عرض المقالات',
+            'update' => 'تعديل مقال',
+            'delete' => 'حذف مقال',
+        ],
     ];
 
     public function run(): void
@@ -47,11 +83,14 @@ class LaratrustSeeder extends Seeder
                 foreach ($permissionsArray as $perm) {
                     $permissionValue = $mapPermission->get(trim($perm));
 
-                    $permission = Permission::firstOrCreate(
+                    $displayName = $this->permissionDisplayNames[$module][$permissionValue]
+                        ?? ucfirst($permissionValue).' '.ucfirst($module);
+
+                    $permission = Permission::updateOrCreate(
                         ['name' => $module.'-'.$permissionValue],
                         [
-                            'display_name' => ucfirst($permissionValue).' '.ucfirst($module),
-                            'description' => ucfirst($permissionValue).' '.ucfirst($module),
+                            'display_name' => $displayName,
+                            'description' => $displayName,
                         ]
                     );
 

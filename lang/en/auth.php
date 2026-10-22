@@ -233,4 +233,13 @@ return [
     'title' => 'Title',
     'description' => 'Description',
     'slug' => 'Slug',
+    'slug_hint' => 'Auto-generated from the title — you can edit it manually',
+    'slug_reset' => 'Regenerate',
+    'featured' => 'Featured',
+    'not_featured' => 'Regular',
+    'featured_note' => 'Featured posts appear on the homepage and top of the blog page — one random featured post is shown',
+    'all' => 'All',
+    'filter' => 'Filter',
+    'date_from' => 'From Date',
+    'date_to' => 'To Date',
 ];

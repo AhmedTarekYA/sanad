@@ -219,16 +219,121 @@ Model::updateOrCreate(['name' => $data['name']], $data);
 
 ---
 
-## 9. Permissions
+## 9. DataTable Filters
+
+Every CRUD index **must** have a filter bar above the table. Add whichever filters make sense for the resource (featured flag, status, date range, category, etc.).
+
+### Pattern
+
+**View** — filter bar + `showDataTableWithFilters` instead of `showDataTable`:
+
+```blade
+{{-- Filter Bar --}}
+<div class="card mb-3">
+    <div class="card-body py-2">
+        <div class="row g-2 align-items-end">
+            <div class="col-12 col-md-3">
+                <label class="form-label mb-1 small fw-semibold">{{ __('auth.status') }}</label>
+                <select id="filter-status" class="form-select form-select-sm">
+                    <option value="">{{ __('auth.all') }}</option>
+                    <option value="1">{{ __('auth.active') }}</option>
+                    <option value="0">{{ __('auth.inactive') }}</option>
+                </select>
+            </div>
+            <div class="col-6 col-md-3">
+                <label class="form-label mb-1 small fw-semibold">{{ __('auth.date_from') }}</label>
+                <input type="date" id="filter-date-from" class="form-control form-control-sm">
+            </div>
+            <div class="col-6 col-md-3">
+                <label class="form-label mb-1 small fw-semibold">{{ __('auth.date_to') }}</label>
+                <input type="date" id="filter-date-to" class="form-control form-control-sm">
+            </div>
+            <div class="col-12 col-md-3 d-flex gap-2">
+                <button id="btn-filter" class="btn btn-primary btn-sm flex-grow-1">
+                    <i class="ti ti-filter me-1"></i>{{ __('auth.filter') }}
+                </button>
+                <button id="btn-reset-filter" class="btn btn-outline-secondary btn-sm">
+                    <i class="ti ti-refresh"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+```
+
+```js
+// Use showDataTableWithFilters instead of showDataTable
+showDataTableWithFilters("{{ $dataTableRoute }}", columns, function () {
+    return {
+        status:    $('#filter-status').val(),
+        date_from: $('#filter-date-from').val(),
+        date_to:   $('#filter-date-to').val(),
+    };
+});
+
+$('#btn-filter').on('click', function () { window.reloadDataTable(); });
+$('#btn-reset-filter').on('click', function () {
+    $('#filter-status, #filter-date-from, #filter-date-to').val('');
+    window.reloadDataTable();
+});
+```
+
+**Controller** — read filter params and apply `where` clauses before passing to DataTables:
+
+```php
+if ($request->ajax()) {
+    $data = $service->getDataTable();
+
+    if ($request->filled('status')) {
+        $data->where('is_active', (bool) $request->status);
+    }
+    if ($request->filled('date_from')) {
+        $data->whereDate('created_at', '>=', $request->date_from);
+    }
+    if ($request->filled('date_to')) {
+        $data->whereDate('created_at', '<=', $request->date_to);
+    }
+
+    return DataTables::of($data)->...->make(true);
+}
+```
+
+**Common filter keys to add to lang files:** `all`, `filter`, `date_from`, `date_to`.
+
+---
+
+## 10. Permissions
 
 Permissions follow the pattern `{resource}-{action}` e.g. `blogs-create`, `blogs-read`.
+
+### 1. Register the resource
 
 Add to `config/laratrust_seeder.php` under `roles_structure.system_manager`:
 ```php
 'blogs' => 'c,r,u,d',
 ```
 
-Use in controllers and views:
+### 2. Translate the permissions (REQUIRED)
+
+Add Arabic display names to `$permissionDisplayNames` in `database/seeders/LaratrustSeeder.php`:
+```php
+'blogs' => [
+    'create' => 'إضافة مقال',
+    'read'   => 'عرض المقالات',
+    'update' => 'تعديل مقال',
+    'delete' => 'حذف مقال',
+],
+```
+
+Then re-run the seeder to apply:
+```bash
+php artisan db:seed --class=LaratrustSeeder
+```
+
+Without this step, permissions appear in English (`Create Blogs`) instead of Arabic.
+
+### 3. Use in code
+
 ```php
 checkIfHasPermission('blogs-read')   // returns bool; Developer always returns true
 ```
@@ -237,13 +342,54 @@ checkIfHasPermission('blogs-read')   // returns bool; Developer always returns t
 
 ## 10. Localization
 
-- Lang files: `lang/ar.json` and `lang/en.json` — flat JSON key/value.
 - Use `__('auth.key')` in controllers and Blade views.
-- Add keys to **both** files whenever adding new UI strings.
+- Keys for `__('auth.key')` go in **`lang/ar/auth.php`** and **`lang/en/auth.php`** (PHP array, not JSON).
+- `lang/ar.json` / `lang/en.json` are for flat `__('key')` lookups — do NOT put `auth.*` keys there.
+- Add keys to **both** language files (`ar` and `en`) whenever adding new UI strings.
 
 ---
 
-## 11. Checklist — New Admin Resource
+## 11. Testing — يجب اختبار كل تغيير قبل الإنهاء
+
+**قاعدة:** كل تغيير يجب اختباره قبل اعتباره مكتملاً. لا يكفي أن الكود يبدو صحيحاً.
+
+### ماذا تختبر؟
+
+| ما تغير | اختبر |
+|---|---|
+| Controller جديد | كل route (index / create / store / edit / update / destroy) |
+| Form Request | store بدون بيانات مطلوبة → يرجع validation error |
+| Service / Model | create, update, delete — تحقق من القاعدة |
+| File upload | رفع صورة صغيرة وكبيرة — تتخزن؟ تُعرض؟ |
+| ترجمة | افتح الصفحة بالعربي والإنجليزي — لا يظهر `auth.key` |
+| صلاحيات | تحقق أن `checkIfHasPermission` يُظهر/يُخفي الأزرار |
+| Modal CRUD | افتح modal الإضافة والتعديل — يحمّل؟ يُرسل؟ |
+
+### كيف تختبر؟
+
+```bash
+# تشغيل feature tests
+php artisan test --compact
+
+# تشغيل test بعينه
+php artisan test --filter=BlogTest --compact
+
+# إنشاء feature test جديد
+php artisan make:test --phpunit BlogTest
+```
+
+### عند اختبار CRUD يدوياً:
+1. افتح الصفحة — تظهر بلا أخطاء؟
+2. اضغط "إضافة" — يفتح المودل؟
+3. أرسل بيانات ناقصة — يظهر error validation؟
+4. أرسل بيانات صحيحة — تُضاف السجل في الجدول؟
+5. اضغط تعديل — يفتح المودل بالبيانات الموجودة؟
+6. عدّل وأرسل — يُحدَّث السجل؟
+7. احذف — يُحذف السجل من الجدول؟
+
+---
+
+## 12. Checklist — New Admin Resource
 
 1. Route in `routes/dashboard.php` with `->parameters(['x' => 'id'])`
 2. Controller in `app/Http/Controllers/Sanad/{Domain}/`
@@ -253,8 +399,10 @@ checkIfHasPermission('blogs-read')   // returns bool; Developer always returns t
 6. Migrations (main table + `_translations` table if multilingual)
 7. Views: `index.blade.php`, `create.blade.php`, `edit.blade.php`
 8. Sidebar link in `resources/views/sanad/layout/inc/sidebar.blade.php`
-9. Permission entry in `config/laratrust_seeder.php`
-10. Lang keys in `lang/ar.json` + `lang/en.json`
+9. Permission entry in `config/laratrust_seeder.php` + Arabic display name in `LaratrustSeeder::$permissionDisplayNames` → re-run seeder
+10. Lang keys in `lang/ar/auth.php` + `lang/en/auth.php` (include `all`, `filter`, `date_from`, `date_to`)
+11. Filter bar in index view using `showDataTableWithFilters` — see section 9
+12. Test manually (open page, create, edit, delete) — see section 12
 
 ---
 

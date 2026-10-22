@@ -8,5 +8,5 @@ class BlogTranslation extends Model
 {
     public $timestamps = false;
 
-    protected $fillable = ['title', 'description'];
+    protected $fillable = ['title', 'description', 'slug'];
 }

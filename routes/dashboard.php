@@ -37,7 +37,7 @@ Route::group(
         'middleware' => ['adminLocale', 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath'],
     ], function () {
         // --------------------------------------------------------
-        Route::get('/', [AdminLoginController::class, 'index'])->name('admin.root');
+        Route::get('/login', [AdminLoginController::class, 'index'])->name('admin.root');
 
         Route::group(['prefix' => 'dashboard'], function () {
             Route::group(['middleware' => ['admin', 'preventBack', 'checkPermission']], function () {

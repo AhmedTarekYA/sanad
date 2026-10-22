@@ -1,10 +1,22 @@
 <?php
 
+use App\Http\Middleware\CheckIfAdmin;
+use App\Http\Middleware\CheckPermission;
+use App\Http\Middleware\DeveloperOnly;
+use App\Http\Middleware\LogViewerMiddleware;
+use App\Http\Middleware\RevalidateBackHistory;
+use App\Http\Middleware\SetAdminLocalization;
+use App\Http\Middleware\TrackVisitor;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter;
+use Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes;
+use Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath;
+use Mcamara\LaravelLocalization\Middleware\LocaleCookieRedirect;
+use Mcamara\LaravelLocalization\Middleware\LocaleSessionRedirect;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -22,18 +34,22 @@ return Application::configure(basePath: dirname(__DIR__))
         __DIR__.'/../app/Console/Commands',
     ])
     ->withMiddleware(function (Middleware $middleware): void {
+        $middleware->web(append: [
+            TrackVisitor::class,
+        ]);
+
         $middleware->alias([
-            'admin' => App\Http\Middleware\CheckIfAdmin::class,
-            'developer' => App\Http\Middleware\DeveloperOnly::class,
-            'preventBack' => App\Http\Middleware\RevalidateBackHistory::class,
-            'adminLocale' => App\Http\Middleware\SetAdminLocalization::class,
-            'localize' => Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes::class,
-            'localizationRedirect' => Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter::class,
-            'localeSessionRedirect' => Mcamara\LaravelLocalization\Middleware\LocaleSessionRedirect::class,
-            'localeCookieRedirect' => Mcamara\LaravelLocalization\Middleware\LocaleCookieRedirect::class,
-            'localeViewPath' => Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath::class,
-            'checkPermission' => App\Http\Middleware\CheckPermission::class,
-            'logviewer' => App\Http\Middleware\LogViewerMiddleware::class,
+            'admin' => CheckIfAdmin::class,
+            'developer' => DeveloperOnly::class,
+            'preventBack' => RevalidateBackHistory::class,
+            'adminLocale' => SetAdminLocalization::class,
+            'localize' => LaravelLocalizationRoutes::class,
+            'localizationRedirect' => LaravelLocalizationRedirectFilter::class,
+            'localeSessionRedirect' => LocaleSessionRedirect::class,
+            'localeCookieRedirect' => LocaleCookieRedirect::class,
+            'localeViewPath' => LaravelLocalizationViewPath::class,
+            'checkPermission' => CheckPermission::class,
+            'logviewer' => LogViewerMiddleware::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

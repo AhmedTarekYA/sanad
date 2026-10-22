@@ -23,12 +23,30 @@ class BlogController extends Controller
         if ($request->ajax()) {
             $data = $service->getDataTable();
 
+            if ($request->filled('is_featured')) {
+                $data->where('is_featured', (bool) $request->is_featured);
+            }
+
+            if ($request->filled('date_from')) {
+                $data->whereDate('created_at', '>=', $request->date_from);
+            }
+
+            if ($request->filled('date_to')) {
+                $data->whereDate('created_at', '<=', $request->date_to);
+            }
+
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('image', function ($row) {
                     return '<img src="'.showFile($row->image).'" style="width:48px;height:48px;object-fit:cover;border-radius:6px;" alt="">';
                 })
                 ->addColumn('title', fn ($row) => e($row->title ?? '—'))
+                ->addColumn('slug', fn ($row) => '<code>'.e($row->slug ?? '—').'</code>')
+                ->addColumn('is_featured', function ($row) {
+                    return $row->is_featured
+                        ? '<span class="badge bg-warning text-dark">'.e(__('auth.featured')).'</span>'
+                        : '<span class="badge bg-light text-muted">'.e(__('auth.not_featured')).'</span>';
+                })
                 ->addColumn('actions', function ($row) {
                     $editBtn = checkIfHasPermission('blogs-update')
                         ? editButton(route($this->mainRoute.'.edit', $row->id), $row->title ?? '')

@@ -27,6 +27,8 @@
                 </li>
             </ul>
             <div class="tab-content border border-top-0 rounded-bottom p-3">
+
+                {{-- Arabic Tab --}}
                 <div class="tab-pane fade show active" id="blog-create-ar" role="tabpanel">
                     <div class="row g-3">
                         <div class="col-12">
@@ -40,8 +42,24 @@
                             <label class="form-label fw-semibold">{{ __('auth.description') }}</label>
                             <textarea name="ar[description]" class="form-control" rows="3"></textarea>
                         </div>
+                        <div class="col-12">
+                            <label class="form-label fw-semibold d-flex align-items-center gap-2">
+                                {{ __('auth.slug') }} <span class="text-danger">*</span>
+                                <button type="button" id="bc-ar-slug-reset"
+                                        class="btn btn-sm btn-outline-secondary py-0 px-2 ms-auto"
+                                        title="{{ __('auth.slug_reset') }}">
+                                    <i class="ti ti-refresh"></i>
+                                </button>
+                            </label>
+                            <input type="text" name="ar[slug]" id="bc-ar-slug"
+                                   class="form-control font-monospace"
+                                   placeholder="مقال-جديد" data-validation="required">
+                            <small class="text-muted">{{ __('auth.slug_hint') }}</small>
+                        </div>
                     </div>
                 </div>
+
+                {{-- English Tab --}}
                 <div class="tab-pane fade" id="blog-create-en" role="tabpanel">
                     <div class="row g-3">
                         <div class="col-12">
@@ -53,25 +71,40 @@
                             <label class="form-label fw-semibold">{{ __('auth.description') }}</label>
                             <textarea name="en[description]" class="form-control" rows="3" dir="ltr"></textarea>
                         </div>
+                        <div class="col-12">
+                            <label class="form-label fw-semibold d-flex align-items-center gap-2">
+                                {{ __('auth.slug') }}
+                                <button type="button" id="bc-en-slug-reset"
+                                        class="btn btn-sm btn-outline-secondary py-0 px-2 ms-auto"
+                                        title="{{ __('auth.slug_reset') }}">
+                                    <i class="ti ti-refresh"></i>
+                                </button>
+                            </label>
+                            <input type="text" name="en[slug]" id="bc-en-slug"
+                                   class="form-control font-monospace" dir="ltr"
+                                   placeholder="new-post">
+                            <small class="text-muted">{{ __('auth.slug_hint') }}</small>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
 
-        {{-- Slug --}}
+        {{-- Featured --}}
         <div class="col-12">
-            <label class="form-label fw-semibold d-flex align-items-center gap-2">
-                {{ __('auth.slug') }} <span class="text-danger">*</span>
-                <button type="button" id="bc-slug-reset"
-                        class="btn btn-sm btn-outline-secondary py-0 px-2 ms-auto"
-                        title="{{ __('auth.slug_reset') ?? 'إعادة توليد' }}">
-                    <i class="ti ti-refresh"></i>
-                </button>
-            </label>
-            <input type="text" name="slug" id="bc-slug"
-                   class="form-control font-monospace" dir="ltr"
-                   placeholder="my-blog-post" data-validation="required">
-            <small class="text-muted">{{ __('auth.slug_hint') ?? 'يتم توليده تلقائياً من العنوان — يمكنك تعديله يدوياً' }}</small>
+            <div class="card border-warning">
+                <div class="card-body py-2 px-3 d-flex align-items-center justify-content-between gap-3">
+                    <div>
+                        <div class="fw-semibold">{{ __('auth.featured') }}</div>
+                        <small class="text-muted">{{ __('auth.featured_note') }}</small>
+                    </div>
+                    <div class="form-check form-switch mb-0">
+                        <input class="form-check-input" type="checkbox" role="switch"
+                               name="is_featured" id="bc-is-featured" value="1">
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>
@@ -84,8 +117,6 @@
 
 <script>
 (function () {
-    var manualSlug = false;
-
     function slugify(text) {
         return text.trim()
             .replace(/\s+/g, '-')
@@ -95,25 +126,34 @@
             .toLowerCase();
     }
 
-    function updateSlug() {
-        if (manualSlug) return;
-        var en = $('#bc-en-title').val().trim();
-        var ar = $('#bc-ar-title').val().trim();
-        var source = en || ar;
-        if (source) {
-            $('#bc-slug').val(slugify(source));
+    // Arabic slug auto-fill
+    var arManual = false;
+    $('#bc-ar-title').on('input', function () {
+        if (!arManual) {
+            $('#bc-ar-slug').val(slugify($(this).val()));
         }
-    }
-
-    $('#bc-ar-title, #bc-en-title').on('input', updateSlug);
-
-    $('#bc-slug').on('input', function () {
-        manualSlug = !!$(this).val().trim();
+    });
+    $('#bc-ar-slug').on('input', function () {
+        arManual = !!$(this).val().trim();
+    });
+    $('#bc-ar-slug-reset').on('click', function () {
+        arManual = false;
+        $('#bc-ar-slug').val(slugify($('#bc-ar-title').val()));
     });
 
-    $('#bc-slug-reset').on('click', function () {
-        manualSlug = false;
-        updateSlug();
+    // English slug auto-fill
+    var enManual = false;
+    $('#bc-en-title').on('input', function () {
+        if (!enManual) {
+            $('#bc-en-slug').val(slugify($(this).val()));
+        }
+    });
+    $('#bc-en-slug').on('input', function () {
+        enManual = !!$(this).val().trim();
+    });
+    $('#bc-en-slug-reset').on('click', function () {
+        enManual = false;
+        $('#bc-en-slug').val(slugify($('#bc-en-title').val()));
     });
 })();
 </script>

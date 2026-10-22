@@ -18,9 +18,11 @@ class Blog extends Model
 {
     use HasFactory, Translatable;
 
-    protected $fillable = ['image', 'slug'];
+    protected $fillable = ['image', 'is_featured'];
 
-    public $translatedAttributes = ['title', 'description'];
+    protected $casts = ['is_featured' => 'boolean'];
+
+    public $translatedAttributes = ['title', 'description', 'slug'];
 
     protected $translationForeignKey = 'blog_id';
 

@@ -152,6 +152,48 @@ $(function(){var input=$('#search-input'),results=$('#sidebar-search-results');i
         })
     }
 
+    /**
+     * showDataTableWithFilters(url, columns, getFilterData)
+     * getFilterData: function() { return { key: value, ... } }
+     * Call window.reloadDataTable() to refresh after filter change.
+     */
+    function showDataTableWithFilters(url, columns, getFilterData) {
+        var dt = $("#dataTableObject").DataTable({
+            responsive: 1,
+            processing: true,
+            serverSide: false,
+            ordering: true,
+            searching: true,
+            iDisplayLength: 10,
+            lengthMenu: [[5, 10, 25, 50, -1], [5, 10, 25, 50, @json(app()->getLocale() === 'ar' ? 'الكل' : 'All')]],
+            ajax: {
+                url: url,
+                data: function (d) {
+                    var extra = getFilterData ? getFilterData() : {};
+                    $.extend(d, extra);
+                }
+            },
+            columns: columns,
+            language: {
+                sProcessing: "{{trans('dataTable.sProcessing')}}",
+                sLengthMenu: "{{trans('dataTable.sLengthMenu')}}",
+                sZeroRecords: "{{trans('dataTable.sZeroRecords')}}",
+                sInfo: "{{trans('dataTable.sInfo')}}",
+                sInfoEmpty: "{{trans('dataTable.sInfoEmpty')}}",
+                sInfoFiltered: "{{trans('dataTable.sInfoFiltered')}}",
+                sSearch: "{{trans('dataTable.sSearch')}}:",
+                oPaginate: {
+                    sFirst: "{{trans('dataTable.sFirst')}}",
+                    sPrevious: "{{trans('dataTable.sPrevious')}}",
+                    sNext: "{{trans('dataTable.sNext')}}",
+                    sLast: "{{trans('dataTable.sLast')}}"
+                }
+            },
+            order: [[0, "asc"]]
+        });
+        window.reloadDataTable = function () { dt.ajax.reload(); };
+    }
+
     function handleErrorResponce(errorObj, formElement) {
         const isValidationError = Number(errorObj.status) === 422;
         const response = errorObj.responseJSON || (() => {
