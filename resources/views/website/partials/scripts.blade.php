@@ -1,0 +1,4 @@
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL" crossorigin="anonymous"></script>
+<script defer src="{{ asset('website/assets/js/main.js') }}"></script>
+@stack('scripts')

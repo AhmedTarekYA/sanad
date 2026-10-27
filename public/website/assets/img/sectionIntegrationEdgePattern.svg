@@ -1,0 +1,15 @@
+<!-- T15 derived tile: the user asset assets/image/svg/sectionEdgeDecorationLayer_43x52.svg
+     repeated at the source frame 89:15274 step of 31.959319px, clipped to one period.
+     Same paths, no restyling. Origin = the source motif box (ink top-left). -->
+<svg width="31.959319" height="53" viewBox="0 0 31.959319 53" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(-2.500000 -2.5)">
+    <path d="M7.26758 2.5C28.7218 2.5 45.4085 14.419 45.4085 33.4895C45.4085 45.4085 35.8733 52.56 23.9542 52.56H14.419" stroke-width="5" stroke-linecap="round" stroke="#132C51"/>
+    <path d="M40.6409 54.9438C19.1866 54.9438 2.5 43.0247 2.5 23.9543C2.5 12.0352 12.0352 4.88379 23.9543 4.88379H33.4895" stroke-width="5" stroke-linecap="round" stroke="#1E40AF"/>
+    <path d="M23.9545 32.0591C25.7977 32.0591 27.2918 30.5649 27.2918 28.7217C27.2918 26.8786 25.7977 25.3844 23.9545 25.3844C22.1114 25.3844 20.6172 26.8786 20.6172 28.7217C20.6172 30.5649 22.1114 32.0591 23.9545 32.0591Z" fill="#132C51"/>
+  </g>
+  <g transform="translate(-34.459319 -2.5)">
+    <path d="M7.26758 2.5C28.7218 2.5 45.4085 14.419 45.4085 33.4895C45.4085 45.4085 35.8733 52.56 23.9542 52.56H14.419" stroke-width="5" stroke-linecap="round" stroke="#132C51"/>
+    <path d="M40.6409 54.9438C19.1866 54.9438 2.5 43.0247 2.5 23.9543C2.5 12.0352 12.0352 4.88379 23.9543 4.88379H33.4895" stroke-width="5" stroke-linecap="round" stroke="#1E40AF"/>
+    <path d="M23.9545 32.0591C25.7977 32.0591 27.2918 30.5649 27.2918 28.7217C27.2918 26.8786 25.7977 25.3844 23.9545 25.3844C22.1114 25.3844 20.6172 26.8786 20.6172 28.7217C20.6172 30.5649 22.1114 32.0591 23.9545 32.0591Z" fill="#132C51"/>
+  </g>
+</svg>

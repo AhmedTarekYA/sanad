@@ -1,0 +1,32 @@
+<svg width="519" height="640" viewBox="0 0 519 640" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g opacity="0.1" clip-path="url(#clip0_technicalGridPattern_519x640)">
+<mask id="mask0_technicalGridPattern_519x640" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="519" height="640">
+<path d="M0 0H519V640H0V0Z" fill="url(#paint0_radial_technicalGridPattern_519x640)"/>
+</mask>
+<g mask="url(#mask0_technicalGridPattern_519x640)">
+<path d="M40.5 0L40.5 640" stroke="#38BDF8"/>
+<path d="M120.5 0L120.5 640" stroke="#38BDF8"/>
+<path d="M200.5 0L200.5 640" stroke="#38BDF8"/>
+<path d="M280.5 0L280.5 640" stroke="#38BDF8"/>
+<path d="M360.5 0L360.5 640" stroke="#38BDF8"/>
+<path d="M440.5 0L440.5 640" stroke="#38BDF8"/>
+<path d="M0 79.5H519" stroke="#38BDF8"/>
+<path d="M0 159.5H519" stroke="#38BDF8"/>
+<path d="M0 239.5H519" stroke="#38BDF8"/>
+<path d="M0 319.5H519" stroke="#38BDF8"/>
+<path d="M0 399.5H519" stroke="#38BDF8"/>
+<path d="M0 479.5H519" stroke="#38BDF8"/>
+<path d="M0 559.5H519" stroke="#38BDF8"/>
+</g>
+</g>
+<defs>
+<radialGradient id="paint0_radial_technicalGridPattern_519x640" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(259.5 320) scale(259.5 320)">
+<stop stop-color="white"/>
+<stop offset="0.5" stop-color="white"/>
+<stop offset="1" stop-color="white" stop-opacity="0"/>
+</radialGradient>
+<clipPath id="clip0_technicalGridPattern_519x640">
+<rect width="519" height="640" fill="white"/>
+</clipPath>
+</defs>
+</svg>
