@@ -20,6 +20,7 @@ return [
             'change-password' => 'r,u',
 
             'blogs' => 'c,r,u,d',
+            'consultation-requests' => 'r,d',
 
         ],
     ],

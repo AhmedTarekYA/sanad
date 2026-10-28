@@ -51,6 +51,10 @@ class LaratrustSeeder extends Seeder
             'update' => 'تعديل مقال',
             'delete' => 'حذف مقال',
         ],
+        'consultation-requests' => [
+            'read' => 'عرض طلبات الاستشارة',
+            'delete' => 'حذف طلب استشارة',
+        ],
     ];
 
     public function run(): void

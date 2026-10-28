@@ -21,7 +21,7 @@ class Visit extends Model
 {
     public $timestamps = false;
 
-    protected $fillable = ['ip', 'user_agent', 'device', 'browser', 'os', 'url', 'referer', 'session_id', 'is_unique'];
+    protected $fillable = ['ip', 'user_agent', 'device', 'browser', 'os', 'country', 'country_code', 'url', 'referer', 'session_id', 'is_unique'];
 
     protected $casts = [
         'is_unique' => 'boolean',

@@ -167,4 +167,17 @@ return [
     'filter' => 'فلتر',
     'date_from' => 'من تاريخ',
     'date_to' => 'إلى تاريخ',
+
+    'consultation_requests' => 'طلبات الاستشارة',
+    'consultation_details' => 'تفاصيل طلب الاستشارة',
+    'consultation_sent_success' => 'تم إرسال طلبك بنجاح، سيتواصل معك فريقنا قريباً.',
+    'full_name' => 'الاسم الكريم',
+    'company_name' => 'اسم الشركة',
+    'mobile_whatsapp' => 'رقم الموبايل / الواتساب',
+    'daily_contact_volume' => 'حجم التواصل اليومي',
+    'current_systems' => 'البرامج / الأنظمة الحالية',
+    'read' => 'مقروء',
+    'unread' => 'غير مقروء',
+    'date' => 'التاريخ',
+    'status' => 'الحالة',
 ];

@@ -22,6 +22,7 @@ Route::get('/', [LandingController::class, 'index'])->name('landing');
 | Website Routes
 |--------------------------------------------------------------------------
 */
+use App\Http\Controllers\Website\ConsultationController;
 use App\Http\Controllers\Website\WebsiteController;
 
 Route::group(
@@ -39,4 +40,5 @@ Route::group(
         Route::get('/privacy-policy', [WebsiteController::class, 'privacy'])->name('privacy');
         Route::get('/terms', [WebsiteController::class, 'terms'])->name('terms');
         Route::get('/404', [WebsiteController::class, 'notFound'])->name('404');
+        Route::post('/consultation', [ConsultationController::class, 'store'])->name('consultation.store');
     });

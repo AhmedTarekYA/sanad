@@ -22,7 +22,7 @@ class Blog extends Model
 
     protected $casts = ['is_featured' => 'boolean'];
 
-    public $translatedAttributes = ['title', 'description', 'slug'];
+    public $translatedAttributes = ['title', 'description', 'slug', 'content'];
 
     protected $translationForeignKey = 'blog_id';
 

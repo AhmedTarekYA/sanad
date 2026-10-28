@@ -5,6 +5,7 @@ use App\Http\Controllers\Sanad\Authentication\AdminLoginController;
 use App\Http\Controllers\Sanad\Authentication\ChangePasswordController;
 use App\Http\Controllers\Sanad\Authentication\ProfileController;
 use App\Http\Controllers\Sanad\Blog\BlogController;
+use App\Http\Controllers\Sanad\Consultation\ConsultationController as ConsultationDashboardController;
 use App\Http\Controllers\Sanad\Command\CommandController;
 use App\Http\Controllers\Sanad\Command\TerminalController;
 use App\Http\Controllers\Sanad\Command\UpdateController;
@@ -61,6 +62,12 @@ Route::group(
                 Route::resource('roles', RoleController::class);
 
                 Route::resource('blogs', BlogController::class)->parameters(['blogs' => 'id']);
+
+                Route::resource('consultation-requests', ConsultationDashboardController::class)
+                    ->parameters(['consultation-requests' => 'id'])
+                    ->only(['index', 'show', 'destroy']);
+                Route::post('consultation-requests/{id}/toggle-read', [ConsultationDashboardController::class, 'toggleRead'])
+                    ->name('consultation-requests.toggle-read');
 
             });
 

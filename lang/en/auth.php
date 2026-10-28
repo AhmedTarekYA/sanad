@@ -242,4 +242,17 @@ return [
     'filter' => 'Filter',
     'date_from' => 'From Date',
     'date_to' => 'To Date',
+
+    'consultation_requests' => 'Consultation Requests',
+    'consultation_details' => 'Consultation Request Details',
+    'consultation_sent_success' => 'Your request was sent successfully. Our team will contact you soon.',
+    'full_name' => 'Full Name',
+    'company_name' => 'Company Name',
+    'mobile_whatsapp' => 'Mobile / WhatsApp',
+    'daily_contact_volume' => 'Daily Contact Volume',
+    'current_systems' => 'Current Systems / Software',
+    'read' => 'Read',
+    'unread' => 'Unread',
+    'date' => 'Date',
+    'status' => 'Status',
 ];

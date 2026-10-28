@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Website;
 
 use App\Http\Controllers\Controller;
+use App\Models\Sanad\Blog;
 use Illuminate\View\View;
 
 class WebsiteController extends Controller
@@ -29,12 +30,18 @@ class WebsiteController extends Controller
 
     public function blog(): View
     {
-        return view('website.pages.blog');
+        $featured = Blog::where('is_featured', true)->with('translations')->first();
+        $articles = Blog::where('is_featured', false)->with('translations')->get();
+
+        return view('website.pages.blog', compact('featured', 'articles'));
     }
 
-    public function blogArticle(): View
+    public function blogArticle(string $slug): View
     {
-        return view('website.pages.blog-article');
+        $article = Blog::whereTranslation('slug', $slug)->with('translations')->firstOrFail();
+        $related = Blog::where('id', '!=', $article->id)->with('translations')->limit(3)->get();
+
+        return view('website.pages.blog-article', compact('article', 'related'));
     }
 
     public function privacy(): View

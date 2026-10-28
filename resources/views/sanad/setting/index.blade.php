@@ -352,7 +352,7 @@
                         <i class="ti ti-copyright" aria-hidden="true"></i>
                     </div>
                     <input type="text" name="{{ $locale }}[copyright]" class="form-control translate-input"
-                           value="{{ isset($settings) ?  $settings->translate($locale)->copyright : '' }}">
+                           value="{{ isset($settings) && $settings->translate($locale) ?  $settings->translate($locale)->copyright : '' }}">
                 </fieldset>
             </div>
         @endforeach

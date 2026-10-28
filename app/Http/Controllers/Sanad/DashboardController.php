@@ -19,9 +19,12 @@ class DashboardController extends Controller
             'uniqueCount' => $visits->uniqueCount(),
             'deviceBreakdown' => $visits->deviceBreakdown(),
             'browserBreakdown' => $visits->browserBreakdown(),
+            'osBreakdown' => $visits->osBreakdown(),
             'topPages' => $visits->topPages(),
             'dailyChart' => $visits->dailyChart(),
             'recentVisits' => $visits->recentVisits(),
+            'countryBreakdown' => $visits->countryBreakdown(),
+            'avgSessionDuration' => $visits->avgSessionDuration(),
         ];
 
         return view('sanad.dashboard', $data);
