@@ -12,7 +12,7 @@
         // Format seconds → "Xm Ys"
         $avgMin = intdiv($avgSessionDuration, 60);
         $avgSec = $avgSessionDuration % 60;
-        $avgLabel = $avgMin > 0 ? "{$avgMin}م {$avgSec}ث" : "{$avgSec}ث";
+        $avgLabel = $avgMin > 0 ? "{$avgMin} دق {$avgSec} ث" : "{$avgSec} ث";
         if (!$isAr) { $avgLabel = $avgMin > 0 ? "{$avgMin}m {$avgSec}s" : "{$avgSec}s"; }
 
         $osIcons = [
