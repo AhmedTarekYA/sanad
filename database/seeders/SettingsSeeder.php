@@ -17,24 +17,23 @@ class SettingsSeeder extends Seeder
                 'logo_footer'  => '',
                 'favicon'      => '',
                 'email'        => 'info@sanadcx.com',
-                'phone'        => '920022379',
-                'other_phone'  => '+966506591444',
-                'whatsapp'     => '+966506591444',
+                'phone'        => '01099977904',
+                'other_phone'  => '+201099977904',
+                'whatsapp'     => '+201099977904',
                 'facebook'     => '#',
                 'instagram'    => '#',
                 'twitter'      => '#',
                 'snapchat'     => '#',
                 'linkedin'     => '#',
                 'youtube'      => '#',
-                'whatsapp'     => '#',
                 'tiktok'       => '#',
             ]);
         } else {
             $setting->update([
                 'email'       => 'info@sanadcx.com',
-                'phone'       => '920022379',
-                'other_phone' => '+966506591444',
-                'whatsapp'    => '+966506591444',
+                'phone'       => '+201099977904',
+                'other_phone' => '+201099977904',
+                'whatsapp'    => '+201099977904',
             ]);
         }
 
