@@ -5,10 +5,12 @@ use App\Http\Controllers\Sanad\Authentication\AdminLoginController;
 use App\Http\Controllers\Sanad\Authentication\ChangePasswordController;
 use App\Http\Controllers\Sanad\Authentication\ProfileController;
 use App\Http\Controllers\Sanad\Blog\BlogController;
-use App\Http\Controllers\Sanad\Consultation\ConsultationController as ConsultationDashboardController;
+use App\Http\Controllers\Sanad\ClientReview\ClientReviewController;
+use App\Http\Controllers\Sanad\Faq\FaqController;
 use App\Http\Controllers\Sanad\Command\CommandController;
 use App\Http\Controllers\Sanad\Command\TerminalController;
 use App\Http\Controllers\Sanad\Command\UpdateController;
+use App\Http\Controllers\Sanad\Consultation\ConsultationController as ConsultationDashboardController;
 use App\Http\Controllers\Sanad\DashboardController;
 use App\Http\Controllers\Sanad\Env\EnvController;
 use App\Http\Controllers\Sanad\Permission\PermissionController;
@@ -16,6 +18,7 @@ use App\Http\Controllers\Sanad\Permission\RoleController;
 use App\Http\Controllers\Sanad\Settings\MainSettingController;
 use App\Http\Controllers\Sanad\Settings\SettingController;
 use App\Http\Controllers\Sanad\Translator\TranslatorController;
+use App\Http\Controllers\Sanad\WhyChooseUs\WhyChooseUsController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -62,6 +65,12 @@ Route::group(
                 Route::resource('roles', RoleController::class);
 
                 Route::resource('blogs', BlogController::class)->parameters(['blogs' => 'id']);
+
+                Route::resource('why-choose-us', WhyChooseUsController::class)->parameters(['why-choose-us' => 'id']);
+
+                Route::resource('client-reviews', ClientReviewController::class)->parameters(['client-reviews' => 'id']);
+
+                Route::resource('faqs', FaqController::class)->parameters(['faqs' => 'id']);
 
                 Route::resource('consultation-requests', ConsultationDashboardController::class)
                     ->parameters(['consultation-requests' => 'id'])

@@ -4,17 +4,11 @@ namespace Database\Seeders;
 
 use App\Models\Sanad\Blog;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class WebsiteBlogSeeder extends Seeder
 {
     public function run(): void
     {
-        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-        DB::table('blog_translations')->delete();
-        DB::table('blogs')->delete();
-        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
-
         $blogs = [
             [
                 'is_featured' => true,
@@ -73,13 +67,16 @@ class WebsiteBlogSeeder extends Seeder
         ];
 
         foreach ($blogs as $item) {
-            $blog = Blog::create([
-                'image' => $item['image'],
-                'is_featured' => $item['is_featured'],
-            ]);
+            $arSlug = $item['translations']['ar']['slug'];
+
+            $existing = Blog::whereHas('translations', fn ($q) => $q->where('locale', 'ar')->where('slug', $arSlug))->first();
+
+            $blog = $existing ?? Blog::create(['image' => $item['image'], 'is_featured' => $item['is_featured']]);
+
+            $blog->update(['image' => $item['image'], 'is_featured' => $item['is_featured']]);
 
             foreach ($item['translations'] as $locale => $trans) {
-                $blog->translations()->create(array_merge($trans, ['locale' => $locale]));
+                $blog->translations()->updateOrCreate(['locale' => $locale], $trans);
             }
         }
     }

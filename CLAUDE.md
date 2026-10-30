@@ -1,3 +1,7 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
 <laravel-boost-guidelines>
 === foundation rules ===
 
@@ -157,3 +161,119 @@ This project has domain-specific skills available in `**/skills/**`. You MUST ac
 - Run `vendor/bin/phpunit` to call the test runner directly. It accepts the same file path and `--filter=testName` arguments.
 
 </laravel-boost-guidelines>
+
+---
+
+## About This Application
+
+**Sanad** is a bilingual (Arabic RTL / English LTR) Laravel admin dashboard. It manages blog content, consultation requests, admins, roles/permissions, site settings, and provides developer tools (terminal, DB backups, system update). The full architecture guide is in `starter.md` — read it before adding any feature.
+
+## Common Commands
+
+```bash
+# Run all tests
+php artisan test --compact
+
+# Run a single test
+php artisan test --filter=BlogTest --compact
+
+# Format PHP after edits
+vendor/bin/pint --dirty --format agent
+
+# Seed roles & permissions
+php artisan db:seed --class=LaratrustSeeder
+
+# Generate a full CRUD scaffold
+php artisan app:set-project-files YourResourceName --resources --blades
+
+# Build frontend assets
+npm run build
+```
+
+## Architecture
+
+The application follows a strict layered pattern: **Route → Controller → Service → Model**.
+
+- **Routes**: `routes/dashboard.php` (authenticated admin), `routes/web.php` (public), `routes/api.php`
+- **Controllers**: `app/Http/Controllers/Sanad/{Domain}/` — thin, delegate all business logic to services
+- **Services**: `app/Services/Sanad/` — extend `MainService`, which provides `find`, `store`, `update`, `delete`, `getDataTable`, `clearRequest` (auto-uploads files, hashes passwords)
+- **Requests**: `app/Http/Requests/Sanad/{Domain}/` — extend `MainRequest`, split rules into `store()` / `update()` matched by HTTP method
+- **Models**: `app/Models/Sanad/` — translatable models come in pairs (e.g. `Blog` + `BlogTranslation`)
+
+### Authentication & Guards
+
+| Guard | Model | Used by |
+|---|---|---|
+| `admin` | `Admin` | Dashboard — all routes protected by `auth:admin` |
+| `web` | `User` | Public website |
+| `api` | `User` | API (Sanctum + JWT) |
+
+- `getAuthUser()` — returns the authenticated admin
+- `checkIfHasPermission('resource-action')` — permission gate; `Developer` type bypasses all checks
+
+### Route Convention
+
+```php
+// Always use ->parameters(['resource' => 'id']) so the param is always $id
+Route::resource('my-things', MyThingController::class)->parameters(['my-things' => 'id']);
+```
+
+### Response Convention
+
+```php
+// Mutating actions (store / update)
+return response()->json(['code' => 200, 'message' => __('auth.done successfully'), 'url' => route('resource.index')]);
+
+// Destroy
+return jsonSuccess();
+
+// Validation errors are handled automatically by MainRequest::failedValidation → jsonValid()
+```
+
+### File Uploads
+
+- Declare `$this->fileFolder = 'images/folder/';` and `$this->files = ['image'];` in the service constructor — `clearRequest()` handles upload automatically, converting to `.webp` at 90% quality.
+- Manual helpers: `uploadFile()`, `showFile()`, `deleteFile()` (from `app/Helpers/ImageHelper.php`)
+
+### Multilingual Models (astrotomic/laravel-translatable)
+
+Translatable resources require two tables (`blogs` + `blog_translations`) and two models (`Blog` + `BlogTranslation`). Store with locale-keyed arrays: `['ar' => ['title' => '...'], 'en' => ['title' => '...']]`. Read with `$obj->title` (current locale) or `$obj->translate('ar')?->title`.
+
+### Permissions
+
+Pattern: `{resource}-{action}` (e.g. `blogs-create`).
+
+1. Add to `config/laratrust_seeder.php` under `roles_structure.system_manager`
+2. Add Arabic display names to `$permissionDisplayNames` in `database/seeders/LaratrustSeeder.php`
+3. Re-run `php artisan db:seed --class=LaratrustSeeder`
+
+### Localization
+
+- Use `__('auth.key')` everywhere — never hardcode Arabic strings in Blade views.
+- Keys go in `lang/ar/auth.php` and `lang/en/auth.php` (PHP arrays). Add to **both** files simultaneously.
+- `lang/ar.json` / `lang/en.json` are for flat `__('key')` lookups only.
+
+### DataTable Filters
+
+Every index page must include a filter bar above the table. Use `showDataTableWithFilters(url, columns, filterFn)` in JS and apply `where` clauses server-side in the controller's `if ($request->ajax())` block. See `starter.md` §9 for the full template.
+
+### Views
+
+- Extend `sanad.layout.indexs.index`.
+- Submit forms via AJAX with `FormData`; success handler calls `successToster(...)` then redirects to `response.url`.
+- Error handler: `handleErrorResponce(response)`.
+- Delete: `deleteButton(route('resource.destroy', id))`.
+- File inputs: class `dropify` + load `dropify.min.css` / `dropify.min.js`.
+
+### Checklist — New Admin Resource
+
+1. Route in `routes/dashboard.php` with `->parameters(['x' => 'id'])`
+2. Controller in `app/Http/Controllers/Sanad/{Domain}/`
+3. Service in `app/Services/Sanad/` extending `MainService`
+4. FormRequest in `app/Http/Requests/Sanad/{Domain}/` extending `MainRequest`
+5. Model + Translation model (if multilingual) with migrations
+6. Views: `index.blade.php`, `create.blade.php`, `edit.blade.php`
+7. Sidebar link in `resources/views/sanad/layout/inc/sidebar.blade.php`
+8. Permission entry + Arabic display names → re-run LaratrustSeeder
+9. Lang keys in both `lang/ar/auth.php` and `lang/en/auth.php`
+10. Filter bar in index using `showDataTableWithFilters`

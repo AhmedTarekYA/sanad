@@ -3,12 +3,12 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'SANAD CX')</title>
-    <meta name="description" content="@yield('meta_description', 'فريق متخصص يتكامل مباشرة مع أنظمة الاتصالات والواتساب والمنصات الحالية لديك، لإدارة تفاعلات العملاء بكفاءة وتحقيق نتائج ملموسة.')">
+    <meta name="description" content="@yield('meta_description', __('website.meta_description'))">
     <meta property="og:type" content="website">
-    <meta property="og:locale" content="ar_SA">
+    <meta property="og:locale" content="{{ app()->getLocale() === 'ar' ? 'ar_SA' : 'en_US' }}">
     <meta property="og:site_name" content="Sanad CX">
     <meta property="og:title" content="@yield('og_title', 'SANAD CX')">
-    <meta property="og:description" content="@yield('og_description', 'فريق متخصص يتكامل مباشرة مع أنظمة الاتصالات والواتساب والمنصات الحالية لديك، لإدارة تفاعلات العملاء بكفاءة وتحقيق نتائج ملموسة.')">
+    <meta property="og:description" content="@yield('og_description', __('website.meta_description'))">
     <meta name="twitter:card" content="summary">
     <script type="application/ld+json">{"@@context":"https://schema.org","@@type":"Organization","name":"Sanad CX","email":"info@@sanadcx.com","telephone":["920022379","+966506591444"]}</script>
     <script>

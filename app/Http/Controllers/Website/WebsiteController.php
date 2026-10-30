@@ -4,13 +4,29 @@ namespace App\Http\Controllers\Website;
 
 use App\Http\Controllers\Controller;
 use App\Models\Sanad\Blog;
+use App\Models\Sanad\ClientReview;
+use App\Models\Sanad\Faq;
+use App\Models\Sanad\WhyChooseUs;
 use Illuminate\View\View;
 
 class WebsiteController extends Controller
 {
     public function home(): View
     {
-        return view('website.pages.home');
+        $whyChooseUs = WhyChooseUs::with(['translations', 'features.translations'])
+            ->orderBy('sort_order')
+            ->get();
+
+        $clientReviewSlides = ClientReview::with('translations')
+            ->get()
+            ->chunk(2);
+
+        $faqs = Faq::with('translations')
+            ->where('is_active', true)
+            ->orderBy('sort_order')
+            ->get();
+
+        return view('website.pages.home', compact('whyChooseUs', 'clientReviewSlides', 'faqs'));
     }
 
     public function about(): View

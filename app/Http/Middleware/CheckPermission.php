@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Enums\AdminTypeisEnum;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,12 +14,11 @@ class CheckPermission
     /**
      * Handle an incoming request.
      *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     * @param  Closure(Request): (Response)  $next
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::guard('admin')->user()->admin_type == \App\Enums\AdminTypeisEnum::Developer->value)
-        {
+        if (Auth::guard('admin')->user()->admin_type == AdminTypeisEnum::Developer->value) {
             return $next($request);
         }
 
@@ -35,19 +35,22 @@ class CheckPermission
             'edit' => 'update',
             'update' => 'update',
             'destroy' => 'delete',
+            'toggle-read' => 'read',
         ];
         $userRole = @Auth::guard('admin')->user()->roles->first();
         $permissions = $userRole ? $userRole->first()->permissions->pluck('name')->toArray() : [];
-        if(in_array($routeName, $permissions)||
-            checkIfHasPermission($baseRouteName .'-'. $permissions_map[$method]) ||
-            in_array($baseRouteName,[
+        $mappedPermission = $permissions_map[$method] ?? null;
+        if (in_array($routeName, $permissions) ||
+            ($mappedPermission !== null && checkIfHasPermission($baseRouteName.'-'.$mappedPermission)) ||
+            in_array($baseRouteName, [
                 'dashboard',
                 'env',
                 'terminal',
                 'commands',
-        ])) {
+            ])) {
             return $next($request);
         }
+
         return abort(403);
     }
 }

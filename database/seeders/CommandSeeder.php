@@ -30,7 +30,7 @@ class CommandSeeder extends Seeder
         ];
 
         foreach ($commands as $command) {
-            Command::create(['command' => $command]);
+            Command::updateOrCreate(['command' => $command]);
         }
     }
 }

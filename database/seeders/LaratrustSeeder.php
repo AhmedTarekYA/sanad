@@ -51,9 +51,27 @@ class LaratrustSeeder extends Seeder
             'update' => 'تعديل مقال',
             'delete' => 'حذف مقال',
         ],
+        'why-choose-us' => [
+            'create' => 'إضافة مقطع لماذا تختارنا',
+            'read' => 'عرض لماذا تختارنا',
+            'update' => 'تعديل لماذا تختارنا',
+            'delete' => 'حذف لماذا تختارنا',
+        ],
         'consultation-requests' => [
             'read' => 'عرض طلبات الاستشارة',
             'delete' => 'حذف طلب استشارة',
+        ],
+        'client-reviews' => [
+            'create' => 'إضافة تقييم عميل',
+            'read' => 'عرض تقييمات العملاء',
+            'update' => 'تعديل تقييم عميل',
+            'delete' => 'حذف تقييم عميل',
+        ],
+        'faqs' => [
+            'create' => 'إضافة سؤال شائع',
+            'read' => 'عرض الأسئلة الشائعة',
+            'update' => 'تعديل سؤال شائع',
+            'delete' => 'حذف سؤال شائع',
         ],
     ];
 
@@ -107,8 +125,9 @@ class LaratrustSeeder extends Seeder
             }
         }
 
-        // Give all permissions to admin@admin.com and all Developer admins
+        // Give all permissions and roles to admin@admin.com and all Developer admins
         $allPermissions = Permission::pluck('id')->toArray();
+        $allRoles = Role::pluck('id')->toArray();
 
         $superAdmins = Admin::where('email', 'admin@admin.com')
             ->orWhere('admin_type', AdminTypeisEnum::Developer->value)
@@ -116,7 +135,8 @@ class LaratrustSeeder extends Seeder
 
         foreach ($superAdmins as $admin) {
             $admin->permissions()->syncWithoutDetaching($allPermissions);
-            $this->command->info('Permissions synced for: '.$admin->email);
+            $admin->roles()->syncWithoutDetaching($allRoles);
+            $this->command->info('Permissions and roles synced for: '.$admin->email);
         }
     }
 

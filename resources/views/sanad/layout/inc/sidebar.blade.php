@@ -8,7 +8,7 @@
                      class="logo-lg sanad-fallback-logo sanad-logo-light"
                      onerror="this.onerror=null;this.src='{{ asset('brand/logo.svg') }}';">
                 <img src="{{ $sidebarLogoDark }}" alt="{{ $settings->website_name ?? config('app.name') }}"
-                     class="logo-lg sanad-logo-dark"
+                     class="logo-lg sanad-fallback-logo sanad-logo-dark"
                      onerror="this.onerror=null;this.src='{{ $sidebarLogoDark }}';">
             </a></div>
         <div class="navbar-content">
@@ -94,6 +94,33 @@
                                      aria-hidden="true">
                             </span>
                             <span class="pc-mtext">{{ __('auth.blogs') }}</span></a></li>
+                @endif
+                @if(checkIfHasPermission('why-choose-us-read'))
+                    <li class="pc-item {{ Str::startsWith($currentRoute, 'why-choose-us.') ? 'active' : '' }}"><a
+                            href="{{ route('why-choose-us.index') }}" class="pc-link">
+                            <span class="pc-micon">
+                                <img class="sanad-sidebar-svg" src="{{ asset('admin/assets/icons/category.svg') }}" alt=""
+                                     aria-hidden="true">
+                            </span>
+                            <span class="pc-mtext">{{ __('auth.why_choose_us') }}</span></a></li>
+                @endif
+                @if(checkIfHasPermission('client-reviews-read'))
+                    <li class="pc-item {{ Str::startsWith($currentRoute, 'client-reviews.') ? 'active' : '' }}"><a
+                            href="{{ route('client-reviews.index') }}" class="pc-link">
+                            <span class="pc-micon">
+                                <img class="sanad-sidebar-svg" src="{{ asset('admin/assets/icons/star.svg') }}" alt=""
+                                     aria-hidden="true">
+                            </span>
+                            <span class="pc-mtext">{{ __('auth.client_reviews') }}</span></a></li>
+                @endif
+                @if(checkIfHasPermission('faqs-read'))
+                    <li class="pc-item {{ Str::startsWith($currentRoute, 'faqs.') ? 'active' : '' }}"><a
+                            href="{{ route('faqs.index') }}" class="pc-link">
+                            <span class="pc-micon">
+                                <img class="sanad-sidebar-svg" src="{{ asset('admin/assets/icons/orders.svg') }}" alt=""
+                                     aria-hidden="true">
+                            </span>
+                            <span class="pc-mtext">{{ __('auth.faqs') }}</span></a></li>
                 @endif
                 @if(checkIfHasPermission('consultation-requests-read'))
                     <li class="pc-item {{ Str::startsWith($currentRoute, 'consultation-requests.') ? 'active' : '' }}"><a

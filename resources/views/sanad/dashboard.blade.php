@@ -46,6 +46,50 @@
             </div>
         </div>
 
+        {{-- ── WhatsApp Stats ── --}}
+        <div class="row g-3 mb-4">
+            <div class="col-12 col-lg-4">
+                <div class="card border-0 h-100" style="border-inline-start: 4px solid #25d366 !important;">
+                    <div class="card-body d-flex align-items-center gap-3">
+                        <span class="dashboard-tile-icon flex-shrink-0" style="background:rgba(37,211,102,.12);color:#25d366;">
+                            <svg width="22" height="22" viewBox="0 0 32 32" fill="currentColor"><path d="M16 0C7.164 0 0 7.164 0 16c0 2.825.745 5.482 2.041 7.783L.057 31.72a.667.667 0 00.823.823l7.937-1.984A15.933 15.933 0 0016 32c8.836 0 16-7.164 16-16S24.836 0 16 0zm9.208 22.792c-.384.384-1.579 1.192-2.171 1.192-.592 0-1.133-.267-2.683-1.049-1.133-.571-2.563-1.429-4.272-3.136-1.707-1.709-2.565-3.139-3.136-4.272-.782-1.55-1.049-2.091-1.049-2.683 0-.592.808-1.787 1.192-2.171.272-.272.635-.397.981-.397.171 0 .333.029.469.085.171.072.363.2.573.381.389.336.853.859 1.363 1.531.653.861 1.115 1.779 1.115 2.096 0 .205-.027.353-.091.512-.085.208-.235.397-.477.717-.139.184-.304.397-.488.64-.048.064-.096.131-.141.2.4.848 1.0 1.717 1.781 2.5.784.784 1.653 1.381 2.5 1.781.069-.045.136-.093.2-.141.243-.184.456-.349.64-.488.32-.242.509-.392.717-.477.159-.064.307-.091.512-.091.317 0 1.235.462 2.096 1.115.672.51 1.195.974 1.531 1.363.181.21.309.402.381.573.056.136.085.298.085.469 0 .346-.125.709-.397.981z"/></svg>
+                        </span>
+                        <div>
+                            <div class="fs-3 fw-bold lh-1">{{ number_format($waTotal) }}</div>
+                            <div class="text-muted small mt-1">{{ $isAr ? 'إجمالي ضغطات واتساب' : 'Total WhatsApp Clicks' }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-8">
+                <div class="card border-0 h-100">
+                    <div class="card-header bg-transparent border-0 pb-0 fw-semibold d-flex align-items-center gap-2">
+                        <svg width="16" height="16" viewBox="0 0 32 32" fill="#25d366"><path d="M16 0C7.164 0 0 7.164 0 16c0 2.825.745 5.482 2.041 7.783L.057 31.72a.667.667 0 00.823.823l7.937-1.984A15.933 15.933 0 0016 32c8.836 0 16-7.164 16-16S24.836 0 16 0zm9.208 22.792c-.384.384-1.579 1.192-2.171 1.192-.592 0-1.133-.267-2.683-1.049-1.133-.571-2.563-1.429-4.272-3.136-1.707-1.709-2.565-3.139-3.136-4.272-.782-1.55-1.049-2.091-1.049-2.683 0-.592.808-1.787 1.192-2.171.272-.272.635-.397.981-.397.171 0 .333.029.469.085.171.072.363.2.573.381.389.336.853.859 1.363 1.531.653.861 1.115 1.779 1.115 2.096 0 .205-.027.353-.091.512-.085.208-.235.397-.477.717-.139.184-.304.397-.488.64-.048.064-.096.131-.141.2.4.848 1.0 1.717 1.781 2.5.784.784 1.653 1.381 2.5 1.781.069-.045.136-.093.2-.141.243-.184.456-.349.64-.488.32-.242.509-.392.717-.477.159-.064.307-.091.512-.091.317 0 1.235.462 2.096 1.115.672.51 1.195.974 1.531 1.363.181.21.309.402.381.573.056.136.085.298.085.469 0 .346-.125.709-.397.981z"/></svg>
+                        {{ $isAr ? 'ضغطات واتساب — آخر 7 أيام' : 'WhatsApp Clicks — Last 7 Days' }}
+                    </div>
+                    <div class="card-body pt-2">
+                        <div class="d-flex align-items-end gap-2 h-100" style="min-height:80px;">
+                            @php $waMax = max(array_values($waDailyChart) ?: [1]); @endphp
+                            @foreach($waDailyChart as $day => $clicks)
+                                @php
+                                    $barH   = $waMax > 0 ? round($clicks / $waMax * 100) : 0;
+                                    $dayLabel = \Carbon\Carbon::parse($day)->locale($isAr ? 'ar' : 'en')->isoFormat('ddd D/M');
+                                    $isToday  = $day === now()->format('Y-m-d');
+                                @endphp
+                                <div class="d-flex flex-column align-items-center flex-fill gap-1" title="{{ $dayLabel }}: {{ $clicks }}">
+                                    <span class="small fw-semibold {{ $clicks > 0 ? 'text-success' : 'text-muted' }}">{{ $clicks }}</span>
+                                    <div style="width:100%;height:70px;display:flex;align-items:flex-end;">
+                                        <div style="width:100%;height:{{ max($barH,4) }}%;background:{{ $isToday ? '#25d366' : '#a8e6c3' }};border-radius:4px 4px 0 0;transition:height .3s;"></div>
+                                    </div>
+                                    <span class="text-muted" style="font-size:.65rem;white-space:nowrap;">{{ \Carbon\Carbon::parse($day)->isoFormat('D/M') }}</span>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         {{-- ── Visitor Stats ── --}}
         <div class="dashboard-section-heading">
             <div>

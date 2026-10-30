@@ -27,7 +27,7 @@
 @endsection
 @section('js')
     <script src="{{asset("admin")}}/assets/js/bundle/dataTables.bundle.js"></script>
-       @include('sanad.layout.inc._js_buttons')
+
     <script>
         $(document).ready(function () {
             let columns = [

@@ -126,6 +126,13 @@
                 });
             } else if (result.status === 422 && result.data.errors) {
                 showFieldErrors(result.data.errors);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'خطأ في البيانات',
+                    text: result.data.message || 'يرجى مراجعة الحقول المطلوبة.',
+                    confirmButtonText: 'حسناً',
+                    confirmButtonColor: 'var(--sanad-color-primary, #6c5ce7)',
+                });
             } else {
                 Swal.fire({
                     icon: 'error',

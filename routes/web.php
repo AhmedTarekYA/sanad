@@ -41,4 +41,8 @@ Route::group(
         Route::get('/terms', [WebsiteController::class, 'terms'])->name('terms');
         Route::get('/404', [WebsiteController::class, 'notFound'])->name('404');
         Route::post('/consultation', [ConsultationController::class, 'store'])->name('consultation.store');
+        Route::post('/whatsapp-click', function () {
+            \App\Models\Sanad\WhatsAppClick::create(['page' => request('page', 'home')]);
+            return response()->json(['ok' => true]);
+        })->name('whatsapp.click');
     });

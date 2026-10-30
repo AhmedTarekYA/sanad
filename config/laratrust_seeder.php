@@ -20,7 +20,10 @@ return [
             'change-password' => 'r,u',
 
             'blogs' => 'c,r,u,d',
+            'why-choose-us' => 'c,r,u,d',
+            'client-reviews' => 'c,r,u,d',
             'consultation-requests' => 'r,d',
+            'faqs' => 'c,r,u,d',
 
         ],
     ],

@@ -43,24 +43,27 @@
         }
         .settings-page .form-icon-group { margin-top: .45rem; }
         .settings-page .form-icon-group .form-icon {
-            top: 50%;
+            inset-block-start: 50%;
+            inset-inline-end: 0;
             transform: translateY(-50%);
-            width: 36px;
-            height: 36px;
+            width: 40px;
+            height: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #6a7c93;
-            font-size: 1.2rem !important;
+            font-size: 1.1rem !important;
             z-index: 2;
+            pointer-events: none;
         }
         .settings-page .form-icon-group .form-icon .ti {
             display: inline-block;
-            font-size: 1.2rem !important;
+            font-size: 1.1rem !important;
             line-height: 1;
         }
         .settings-page .form-icon-group .form-control {
             min-height: 44px;
+            padding-inline-end: 2.75rem;
             border-color: #dce5ee;
             border-radius: 10px;
             background: #f9fbfd;
@@ -332,7 +335,7 @@
             </fieldset>
         </div>
         <div class="col-3">
-            <label for="TextInput" class="form-label">{{__('auth.tiktok_link')}}</label>
+            <label for="TextInput" class="form-label">{{__('tiktok_link')}}</label>
             <fieldset class="form-icon-group right-icon position-relative">
                 <div class="form-icon position-absolute">
                     <i class="ti ti-brand-tiktok" aria-hidden="true"></i>

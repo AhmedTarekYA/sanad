@@ -115,7 +115,7 @@ class SomethingService extends MainService
 // Store / Update — redirect after success
 return response()->json([
     'code'    => 200,
-    'message' => __('auth.done successfully'),
+    'message' => __('done successfully'),
     'url'     => route('resource.index'),
 ]);
 
@@ -233,24 +233,24 @@ Every CRUD index **must** have a filter bar above the table. Add whichever filte
     <div class="card-body py-2">
         <div class="row g-2 align-items-end">
             <div class="col-12 col-md-3">
-                <label class="form-label mb-1 small fw-semibold">{{ __('auth.status') }}</label>
+                <label class="form-label mb-1 small fw-semibold">{{ __('status') }}</label>
                 <select id="filter-status" class="form-select form-select-sm">
-                    <option value="">{{ __('auth.all') }}</option>
-                    <option value="1">{{ __('auth.active') }}</option>
-                    <option value="0">{{ __('auth.inactive') }}</option>
+                    <option value="">{{ __('all') }}</option>
+                    <option value="1">{{ __('active') }}</option>
+                    <option value="0">{{ __('inactive') }}</option>
                 </select>
             </div>
             <div class="col-6 col-md-3">
-                <label class="form-label mb-1 small fw-semibold">{{ __('auth.date_from') }}</label>
+                <label class="form-label mb-1 small fw-semibold">{{ __('date_from') }}</label>
                 <input type="date" id="filter-date-from" class="form-control form-control-sm">
             </div>
             <div class="col-6 col-md-3">
-                <label class="form-label mb-1 small fw-semibold">{{ __('auth.date_to') }}</label>
+                <label class="form-label mb-1 small fw-semibold">{{ __('date_to') }}</label>
                 <input type="date" id="filter-date-to" class="form-control form-control-sm">
             </div>
             <div class="col-12 col-md-3 d-flex gap-2">
                 <button id="btn-filter" class="btn btn-primary btn-sm flex-grow-1">
-                    <i class="ti ti-filter me-1"></i>{{ __('auth.filter') }}
+                    <i class="ti ti-filter me-1"></i>{{ __('filter') }}
                 </button>
                 <button id="btn-reset-filter" class="btn btn-outline-secondary btn-sm">
                     <i class="ti ti-refresh"></i>
@@ -342,8 +342,8 @@ checkIfHasPermission('blogs-read')   // returns bool; Developer always returns t
 
 ## 10. Localization
 
-- Use `__('auth.key')` in controllers and Blade views.
-- Keys for `__('auth.key')` go in **`lang/ar/auth.php`** and **`lang/en/auth.php`** (PHP array, not JSON).
+- Use `__('key')` in controllers and Blade views.
+- Keys for `__('key')` go in **`lang/ar.json`** and **`lang/en.json`** (PHP array, not JSON).
 - `lang/ar.json` / `lang/en.json` are for flat `__('key')` lookups — do NOT put `auth.*` keys there.
 - Add keys to **both** language files (`ar` and `en`) whenever adding new UI strings.
 
