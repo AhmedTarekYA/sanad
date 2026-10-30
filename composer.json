@@ -6,7 +6,7 @@
     "keywords": ["laravel", "framework"],
     "license": "MIT",
     "require": {
-        "php": "^8.3",
+        "php": "^8.4.1",
         "anhskohbo/no-captcha": "^3.7",
         "artesaos/seotools": "^1.3",
         "astrotomic/laravel-translatable": "^11.17",
