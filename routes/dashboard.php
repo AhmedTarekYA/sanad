@@ -48,6 +48,12 @@ Route::group(
                 Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index')->middleware('admin', 'preventBack');
 
                 // ---------------------------------------------------
+                Route::patch('settings/font', function (\Illuminate\Http\Request $request) {
+                    $font = $request->validate(['font' => ['required', 'in:ibm,thmanya']])['font'];
+                    \App\Models\Sanad\Setting::first()?->update(['font' => $font]);
+
+                    return jsonSuccess();
+                })->name('settings.update-font');
                 Route::resource('settings', SettingController::class);
                 Route::resource('main-settings', MainSettingController::class);
 

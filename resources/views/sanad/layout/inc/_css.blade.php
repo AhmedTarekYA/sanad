@@ -4,7 +4,11 @@
 @font-face{font-family:'IBM Plex Sans Arabic';src:url('{{ asset('brand/fonts/IBMPlexSansArabic-Medium.ttf') }}') format('truetype');font-weight:500;font-style:normal;font-display:swap}
 @font-face{font-family:'IBM Plex Sans Arabic';src:url('{{ asset('brand/fonts/IBMPlexSansArabic-SemiBold.ttf') }}') format('truetype');font-weight:600;font-style:normal;font-display:swap}
 @font-face{font-family:'IBM Plex Sans Arabic';src:url('{{ asset('brand/fonts/IBMPlexSansArabic-Bold.ttf') }}') format('truetype');font-weight:700;font-style:normal;font-display:swap}
-@font-face{font-family:'Thmanya';src:url('{{ asset('brand/fonts/thmanya.woff2') }}') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face { font-family: 'Thmanya'; src: url('https://framerusercontent.com/assets/x6EBzvXf1Fi35XhsRoHxePDVo.woff2') format('woff2'); font-display: swap; font-style: normal; font-weight: 400; }
+@font-face { font-family: 'Thmanya'; src: url('https://framerusercontent.com/assets/Lh8puxCFq405qBv7dKpg9NsHZNk.woff2') format('woff2'); font-display: swap; font-style: normal; font-weight: 300; }
+@font-face { font-family: 'Thmanya'; src: url('https://framerusercontent.com/assets/oE98mOPE28KTzUeptOLRIaqW1I.woff2') format('woff2'); font-display: swap; font-style: normal; font-weight: 500; }
+@font-face { font-family: 'Thmanya'; src: url('https://framerusercontent.com/assets/LZvgFRUsP7pGWYj3tKxMUrKuhSY.woff2') format('woff2'); font-display: swap; font-style: normal; font-weight: 700; }
+@font-face { font-family: 'Thmanya'; src: url('https://framerusercontent.com/assets/ulQLGTktcl2Qq4AmD6RuVgELZKg.woff2') format('woff2'); font-display: swap; font-style: normal; font-weight: 900; }
 /* SANAD CX brand defaults — override theme preset before JS loads */
 :root{
     --bs-primary:#2D71F0;--bs-primary-rgb:45,113,240;
@@ -16,7 +20,8 @@
     --sanad-primary-hover:#1640C6;
     --pc-sidebar-active-color:#2D71F0;
 }
-body{font-family:'IBM Plex Sans Arabic','Thmanya',sans-serif;}
+@php $activeFont = ($settings?->font ?? 'ibm') === 'thmanya' ? "'Thmanya','IBM Plex Sans Arabic'" : "'IBM Plex Sans Arabic','Thmanya'"; @endphp
+body{font-family:{{ $activeFont }},sans-serif;}
 </style>
 <link rel="stylesheet" href="{{ asset('light-able/assets/fonts/phosphor/duotone/style.css') }}">
 <link rel="stylesheet" href="{{ asset('light-able/assets/fonts/tabler-icons.min.css') }}">

@@ -23,7 +23,7 @@
             width: 60px;
             height: 60px;
             bottom: 30px;
-            left: 30px;
+            right: 30px;
             background-color: #25d366;
             color: #fff;
             border: none;
@@ -44,19 +44,19 @@
             transform: scale(1.1);
         }
         [dir="rtl"] .whatsapp-float {
-            left: auto;
-            right: 30px;
+            right: auto;
+            left: 30px;
         }
         @media (max-width: 768px) {
             .whatsapp-float {
                 width: 50px;
                 height: 50px;
                 bottom: 20px;
-                left: 20px;
+                right: 20px;
             }
             [dir="rtl"] .whatsapp-float {
-                left: auto;
-                right: 20px;
+                right: auto;
+                left: 20px;
             }
             .whatsapp-float svg {
                 width: 26px;

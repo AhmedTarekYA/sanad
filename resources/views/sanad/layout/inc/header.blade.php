@@ -36,16 +36,20 @@
 document.addEventListener('DOMContentLoaded',function(){
     /* ── Font switcher ── */
     var FONTS={ibm:"'IBM Plex Sans Arabic','Thmanya',sans-serif",thmanya:"'Thmanya','IBM Plex Sans Arabic',sans-serif"};
+    var FONT_SAVE_URL="{{ route('settings.update-font') }}";
+    var CSRF_TOKEN=document.querySelector('meta[name="csrf-token"]')?.content||'';
     function applyFont(name,save){
         if(!FONTS[name])name='ibm';
         var ff=FONTS[name];
-        /* inject <style> to override ALL font declarations site-wide */
         var tag=document.getElementById('sanad-font-override');
         if(!tag){tag=document.createElement('style');tag.id='sanad-font-override';document.head.appendChild(tag);}
         tag.textContent=':root{--bs-font-sans-serif:'+ff+';--bs-body-font-family:'+ff+';}'+
             'body,button,input,select,textarea,h1,h2,h3,h4,h5,h6,p,span,a,td,th,label,small{font-family:'+ff+'!important}';
         document.querySelectorAll('.sanad-font-option').forEach(function(opt){opt.classList.toggle('is-active',opt.dataset.font===name)});
-        if(save)localStorage.setItem('sanad-font',name);
+        if(save){
+            localStorage.setItem('sanad-font',name);
+            fetch(FONT_SAVE_URL,{method:'PATCH',headers:{'Content-Type':'application/json','X-CSRF-TOKEN':CSRF_TOKEN},body:JSON.stringify({font:name})}).catch(function(){});
+        }
     }
     document.querySelectorAll('.sanad-font-option').forEach(function(opt){
         opt.addEventListener('click',function(e){
@@ -57,7 +61,8 @@ document.addEventListener('DOMContentLoaded',function(){
             if(t)t.setAttribute('aria-expanded','false');
         });
     });
-    applyFont(localStorage.getItem('sanad-font')||'ibm',false);
+    var serverFont="{{ $settings?->font ?? 'ibm' }}";
+    applyFont(localStorage.getItem('sanad-font')||serverFont,false);
 
     /* ── Restore saved settings ── */
     function rgb(hex){var v=hex.replace('#',''),f=v.length===3?v.split('').map(function(x){return x+x}).join(''):v;return parseInt(f.substring(0,2),16)+', '+parseInt(f.substring(2,4),16)+', '+parseInt(f.substring(4,6),16)}

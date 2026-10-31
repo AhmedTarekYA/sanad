@@ -34,6 +34,7 @@ class CheckPermission
             'show' => 'read',
             'edit' => 'update',
             'update' => 'update',
+            'update-font' => 'update',
             'destroy' => 'delete',
             'toggle-read' => 'read',
         ];
