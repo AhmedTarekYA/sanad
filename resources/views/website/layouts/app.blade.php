@@ -8,6 +8,9 @@
 </main>
 @include('website.partials.footer')
 @include('website.partials.consultation')
+@include('website.partials.free-trial')
+@include('website.partials.exit-intent')
+<link rel="stylesheet" href="{{ asset('website/assets/css/pages/modals.css') }}">
 @php $waNumber = isset($settings) ? preg_replace('/[^0-9]/', '', $settings->whatsapp) : ''; @endphp
 @if($waNumber)
     <button type="button" id="whatsapp-float-btn" class="whatsapp-float" aria-label="{{ __('auth.contact_via_whatsapp') }}"
@@ -84,5 +87,6 @@
     </script>
 @endif
 @include('website.partials.scripts')
+<script src="{{ asset('website/assets/js/modals.js') }}" defer></script>
 </body>
 </html>

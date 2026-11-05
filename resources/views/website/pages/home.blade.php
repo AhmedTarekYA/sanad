@@ -6,6 +6,10 @@
 @section('og_title', 'الرئيسية — SANAD CX')
 @section('og_description', 'فريق متخصص يتكامل مباشرة مع أنظمة الاتصالات والواتساب والمنصات الحالية لديك، لإدارة تفاعلات العملاء بكفاءة وتحقيق نتائج ملموسة.')
 
+@push('styles')
+<link rel="stylesheet" href="{{ asset('website/assets/css/pages/home.css') }}">
+@endpush
+
 @section('content')
     <section class="sanad-hero" aria-labelledby="sanad-hero-heading">
         <div class="sanad-hero__content">
@@ -60,16 +64,21 @@
         </div>
     </section>
     <section class="sanad-stats" aria-label="{{ __('auth.stats_aria_label') }}">
-        <ul class="sanad-stats__list">
-            <li class="sanad-stats__item"><span class="sanad-stats__value" dir="ltr">&lt; 60s</span> <span class="sanad-stats__label">{{ __('auth.stats_speed_title') }}</span> <span class="sanad-stats__detail">{{ __('auth.stats_speed_desc') }}</span>
-            </li>
-            <li class="sanad-stats__item"><span class="sanad-stats__value" dir="ltr">100%</span> <span class="sanad-stats__label">{{ __('auth.stats_integration_title') }}</span> <span class="sanad-stats__detail">{{ __('auth.stats_integration_desc') }}</span>
-            </li>
-            <li class="sanad-stats__item"><span class="sanad-stats__value" dir="ltr">40%</span> <span class="sanad-stats__label">{{ __('auth.stats_efficiency_title') }}</span> <span class="sanad-stats__detail">{{ __('auth.stats_efficiency_desc') }}</span>
-            </li>
-            <li class="sanad-stats__item"><span class="sanad-stats__value" dir="ltr">+35%</span> <span class="sanad-stats__label">{{ __('auth.stats_growth_title') }}</span> <span class="sanad-stats__detail">{{ __('auth.stats_growth_desc') }}</span>
-            </li>
-        </ul>
+        @php
+            $statItems = [
+                ['&lt; 60 ثانية', 'speed'], ['100%', 'integration'], ['24/7', 'coverage'], ['+35%', 'growth'],
+                ['40%', 'efficiency'], ['Zero Setup Fees', 'setup'], ['95%+', 'qa'],
+            ];
+        @endphp
+        <div class="sanad-stats__marquee">
+            @foreach([false, true] as $isClone)
+            <ul class="sanad-stats__list" @if($isClone) aria-hidden="true" @endif>
+                @foreach($statItems as [$statValue, $statKey])
+                <li class="sanad-stats__item"><span class="sanad-stats__value" dir="ltr">{!! $statValue !!}</span> <span class="sanad-stats__label">{{ __('auth.stats_'.$statKey.'_title') }}</span> <span class="sanad-stats__detail">{{ __('auth.stats_'.$statKey.'_desc') }}</span></li>
+                @endforeach
+            </ul>
+            @endforeach
+        </div>
     </section>
     <section class="sanad-integration" aria-labelledby="sanad-integration-heading">
         <div class="sanad-integration__container">
@@ -100,40 +109,6 @@
             </ul>
         </div>
     </section>
-    <section class="sanad-comparison" aria-labelledby="sanad-comparison-heading">
-        <div class="sanad-comparison__container">
-            <div class="sanad-comparison__header">
-                <h2 class="sanad-comparison__title" id="sanad-comparison-heading">{{ __('auth.comparison_heading_before') }} <span
-                        class="sanad-comparison__title-accent">Sanad CX</span>{{ __('auth.comparison_heading_after') }}</h2>
-                <p class="sanad-comparison__intro">{{ __('auth.comparison_intro') }}</p>
-            </div>
-            @if($whyChooseUs->isNotEmpty())
-                <ul class="sanad-comparison__cards">
-                    @foreach($whyChooseUs as $item)
-                        <li class="sanad-comparison__card {{ $item->is_featured ? 'sanad-comparison__card--sanad' : '' }} sanad-card-hoverable">
-                            <div class="sanad-comparison__card-head">
-                                <h3 class="sanad-comparison__card-title">{{ $item->title }}</h3>
-                                @if($item->subtitle)
-                                    <p class="sanad-comparison__card-subtitle">{{ $item->subtitle }}</p>
-                                @endif
-                            </div>
-                            @if($item->features->isNotEmpty())
-                                <dl class="sanad-comparison__criteria">
-                                    @foreach($item->features as $feature)
-                                        <div class="sanad-comparison__criterion">
-                                            <dt class="sanad-comparison__criterion-label">{{ $feature->title }}</dt>
-                                            <dd class="sanad-comparison__criterion-value">{{ $feature->description }}</dd>
-                                        </div>
-                                    @endforeach
-                                </dl>
-                            @endif
-                            <div class="sanad-card-hover-overlay" aria-hidden="true"></div>
-                        </li>
-                    @endforeach
-                </ul>
-            @endif
-        </div>
-    </section>
     <section class="sanad-home-services" aria-labelledby="sanad-home-services-heading">
         <div class="sanad-home-services__header"><h2 class="sanad-home-services__title"
                                                      id="sanad-home-services-heading">{{ __('auth.services_heading_before') }} <span class="sanad-home-services__title-accent">{{ __('auth.services_heading_accent') }}</span></h2>
@@ -150,14 +125,11 @@
                 <div class="sanad-service-card__compat">
                     <div class="sanad-service-card__compat-divider" aria-hidden="true"></div>
                     <p class="sanad-service-card__compat-label">{{ __('auth.services_compat_label') }}</p>
-                    <div class="sanad-service-card__chips"><span class="sanad-service-card__chip" lang="en" dir="ltr">SMSA</span>
-                        <span class="sanad-service-card__chip" lang="en" dir="ltr">Aramex</span> <span
-                            class="sanad-service-card__chip" lang="en" dir="ltr">Torod</span> <span
-                            class="sanad-service-card__chip" lang="en" dir="ltr">Oto</span></div>
+                    <div class="sanad-service-card__chips"><span class="sanad-service-card__chip" lang="en" dir="ltr">SMSA</span> <span class="sanad-service-card__chip" lang="en" dir="ltr">Aramex</span> <span class="sanad-service-card__chip" lang="en" dir="ltr">Torod</span> <span class="sanad-service-card__chip" lang="en" dir="ltr">Oto</span></div>
                 </div>
             </li>
             <li class="sanad-service-card sanad-home-services__card"><img class="sanad-service-card__icon"
-                                                                          src="{{ asset('website/assets/image/svg/Service-Icon-messaging_48x48.svg') }}"
+                                                                          src="{{ asset('website/assets/image/svg/Service-Icon-growth_48x48.svg') }}"
                                                                           alt="" width="48" height="48"
                                                                           decoding="async">
                 <div class="sanad-service-card__copy">
@@ -167,13 +139,11 @@
                 <div class="sanad-service-card__compat">
                     <div class="sanad-service-card__compat-divider" aria-hidden="true"></div>
                     <p class="sanad-service-card__compat-label">{{ __('auth.services_compat_label') }}</p>
-                    <div class="sanad-service-card__chips"><span class="sanad-service-card__chip" lang="en" dir="ltr">MessageBird</span>
-                        <span class="sanad-service-card__chip" lang="en" dir="ltr">Unifonic</span> <span
-                            class="sanad-service-card__chip" lang="en" dir="ltr">Intercom</span></div>
+                    <div class="sanad-service-card__chips"><span class="sanad-service-card__chip" lang="en" dir="ltr">Zid</span> <span class="sanad-service-card__chip" lang="en" dir="ltr">Salla</span> <span class="sanad-service-card__chip" lang="en" dir="ltr">Shopify</span></div>
                 </div>
             </li>
             <li class="sanad-service-card sanad-home-services__card"><img class="sanad-service-card__icon"
-                                                                          src="{{ asset('website/assets/image/svg/Service-Icon-growth_48x48.svg') }}"
+                                                                          src="{{ asset('website/assets/image/svg/Service-Icon-messaging_48x48.svg') }}"
                                                                           alt="" width="48" height="48"
                                                                           decoding="async">
                 <div class="sanad-service-card__copy">
@@ -183,10 +153,7 @@
                 <div class="sanad-service-card__compat">
                     <div class="sanad-service-card__compat-divider" aria-hidden="true"></div>
                     <p class="sanad-service-card__compat-label">{{ __('auth.services_compat_label') }}</p>
-                    <div class="sanad-service-card__chips"><span class="sanad-service-card__chip" lang="en" dir="ltr">Zid</span>
-                        <span class="sanad-service-card__chip" lang="en" dir="ltr">Zid</span> <span
-                            class="sanad-service-card__chip" lang="en" dir="ltr">Salla</span> <span
-                            class="sanad-service-card__chip" lang="en" dir="ltr">Shopify</span></div>
+                    <div class="sanad-service-card__chips"><span class="sanad-service-card__chip" lang="en" dir="ltr">MessageBird</span> <span class="sanad-service-card__chip" lang="en" dir="ltr">Unifonic</span> <span class="sanad-service-card__chip" lang="en" dir="ltr">Intercom</span></div>
                 </div>
             </li>
             <li class="sanad-service-card sanad-home-services__card"><img class="sanad-service-card__icon"
@@ -200,10 +167,7 @@
                 <div class="sanad-service-card__compat">
                     <div class="sanad-service-card__compat-divider" aria-hidden="true"></div>
                     <p class="sanad-service-card__compat-label">{{ __('auth.services_compat_label') }}</p>
-                    <div class="sanad-service-card__chips"><span class="sanad-service-card__chip" lang="en" dir="ltr">Zendesk</span>
-                        <span class="sanad-service-card__chip" lang="en" dir="ltr">Salesforce</span> <span
-                            class="sanad-service-card__chip" lang="en" dir="ltr">Zoho</span> <span
-                            class="sanad-service-card__chip" lang="en" dir="ltr">Freshdesk</span></div>
+                    <div class="sanad-service-card__chips"><span class="sanad-service-card__chip" lang="en" dir="ltr">Zendesk</span> <span class="sanad-service-card__chip" lang="en" dir="ltr">Salesforce</span> <span class="sanad-service-card__chip" lang="en" dir="ltr">Zoho</span> <span class="sanad-service-card__chip" lang="en" dir="ltr">Freshdesk</span></div>
                 </div>
             </li>
         </ul>
@@ -296,6 +260,95 @@
                     src="{{ asset('website/assets/image/svg/section-edge-layer-alt.svg') }}" alt=""></div>
             <div class="sanad-home-services__edge-layer" data-node-id="89:16195" aria-hidden="true"><img
                     src="{{ asset('website/assets/image/svg/section-edge-layer-alt.svg') }}" alt=""></div>
+        </div>
+    </section>
+    <section class="sanad-home-fkr" aria-labelledby="sanad-home-fkr-heading">
+        <div class="sanad-home-fkr__container">
+            <div class="sanad-home-fkr__copy">
+                <span class="sanad-home-fkr__logo"><img src="{{ asset('website/assets/image/home/fkr-logo.png') }}" alt="{{ __('auth.fkr_eyebrow') }}" width="72" height="56" loading="lazy" decoding="async"></span>
+                <p class="sanad-home-fkr__eyebrow">{{ __('auth.fkr_eyebrow') }}</p>
+                <h2 class="sanad-home-fkr__title" id="sanad-home-fkr-heading">{{ __('auth.fkr_title') }}</h2>
+                <p class="sanad-home-fkr__subtitle">{{ __('auth.fkr_subtitle') }}</p>
+                <p class="sanad-home-fkr__body">{{ __('auth.fkr_body') }}</p>
+                <a class="sanad-btn" href="{{ route('website.fkr') }}">{{ __('auth.fkr_cta') }}</a>
+            </div>
+            <ul class="sanad-home-fkr__items">
+                @foreach([1, 2, 3] as $n)
+                <li class="sanad-home-fkr__item">
+                    <span class="sanad-home-fkr__icon" aria-hidden="true"></span>
+                    <h3 class="sanad-home-fkr__item-title">{{ __('auth.fkr_item'.$n.'_title') }}</h3>
+                    <p class="sanad-home-fkr__item-desc">{{ __('auth.fkr_item'.$n.'_desc') }}</p>
+                </li>
+                @endforeach
+            </ul>
+        </div>
+    </section>
+    <section class="sanad-comparison" aria-labelledby="sanad-comparison-heading">
+        <div class="sanad-comparison__container">
+            <div class="sanad-comparison__header">
+                <h2 class="sanad-comparison__title" id="sanad-comparison-heading">{{ __('auth.comparison_heading_before') }} <span
+                        class="sanad-comparison__title-accent">Sanad CX</span>{{ __('auth.comparison_heading_after') }}</h2>
+                <p class="sanad-comparison__intro">{{ __('auth.comparison_intro') }}</p>
+            </div>
+            @if($whyChooseUs->isNotEmpty())
+                <ul class="sanad-comparison__cards">
+                    @foreach($whyChooseUs as $item)
+                        <li class="sanad-comparison__card {{ $item->is_featured ? 'sanad-comparison__card--sanad' : '' }} sanad-card-hoverable">
+                            <div class="sanad-comparison__card-head">
+                                <h3 class="sanad-comparison__card-title">{{ $item->title }}</h3>
+                                @if($item->subtitle)
+                                    <p class="sanad-comparison__card-subtitle">{{ $item->subtitle }}</p>
+                                @endif
+                            </div>
+                            @if($item->features->isNotEmpty())
+                                <dl class="sanad-comparison__criteria">
+                                    @foreach($item->features as $feature)
+                                        <div class="sanad-comparison__criterion">
+                                            <dt class="sanad-comparison__criterion-label">{{ $feature->title }}</dt>
+                                            <dd class="sanad-comparison__criterion-value">{{ $feature->description }}</dd>
+                                        </div>
+                                    @endforeach
+                                </dl>
+                            @endif
+                            <div class="sanad-card-hover-overlay" aria-hidden="true"></div>
+                        </li>
+                    @endforeach
+                </ul>
+            @endif
+        </div>
+    </section>
+    <section class="sanad-home-ai" aria-labelledby="sanad-home-ai-heading">
+        <div class="sanad-home-ai__container">
+            <div class="sanad-home-ai__copy">
+                <h2 class="sanad-home-ai__title" id="sanad-home-ai-heading">{{ __('auth.ai_title') }}</h2>
+                <p class="sanad-home-ai__description">{{ __('auth.ai_description') }}</p>
+            </div>
+            <div class="sanad-home-ai__stage">
+                <div class="sanad-home-ai__side">
+                    <h3 class="sanad-home-ai__subtitle">{{ __('auth.ai_features_heading') }}</h3>
+                    <ul class="sanad-home-ai__features">
+                        @foreach([1, 2, 3] as $n)
+                        <li class="sanad-home-ai__feature">
+                            <span class="sanad-home-ai__check" aria-hidden="true"></span>
+                            <h4 class="sanad-home-ai__feature-title">{{ __('auth.ai_feature'.$n.'_title') }}</h4>
+                            <p class="sanad-home-ai__feature-desc">{{ __('auth.ai_feature'.$n.'_desc') }}</p>
+                        </li>
+                        @endforeach
+                    </ul>
+                </div>
+                <div class="sanad-home-ai__visual" aria-hidden="true">
+                    <div class="sanad-home-ai__orbit">
+                        <span class="sanad-home-ai__core">SANAD AI</span>
+                        @foreach(['replies', 'chats', 'clients', 'analytics'] as $k)
+                        <span class="sanad-home-ai__node sanad-home-ai__node--{{ $k }}">{{ __('auth.ai_mock_'.$k) }}</span>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+            <div class="sanad-home-ai__actions">
+                <button type="button" class="sanad-btn sanad-btn--outline" data-free-trial-open>{{ __('auth.ai_cta_trial') }}</button>
+                <a class="sanad-btn" href="{{ route('website.ai-assistant') }}">{{ __('auth.ai_cta_features') }}</a>
+            </div>
         </div>
     </section>
     <section class="sanad-testimonials" aria-labelledby="sanad-testimonials-heading">
@@ -662,33 +715,6 @@
                     src="{{ asset('website/assets/image/svg/section-edge-layer-alt.svg') }}" alt=""></div>
         </div>
     </section>
-    <section class="sanad-faq" id="faq" aria-labelledby="sanad-faq-title">
-        <div class="sanad-faq__container">
-            <div class="sanad-faq__header"><h2 class="sanad-faq__title" id="sanad-faq-title">
-                    <span>{{ __('auth.faqs_heading_1') }} </span><span class="sanad-faq__accent">{{ __('auth.faqs_heading_2') }}</span></h2></div>
-            <div class="sanad-faq__list">
-                @foreach($faqs as $faqIndex => $faqItem)
-                <div class="sanad-faq__item sanad-card-hoverable">
-                    <h3 class="sanad-faq__heading">
-                        <button type="button" class="sanad-faq__trigger" id="sanad-faq-q{{ $faqIndex + 1 }}" aria-expanded="false"
-                                aria-controls="sanad-faq-a{{ $faqIndex + 1 }}"><span
-                                class="sanad-faq__question">{{ $faqItem->question }}</span>
-                            <span class="sanad-faq__icon" aria-hidden="true"> <img
-                                    class="sanad-faq__chevron sanad-faq__chevron--light"
-                                    src="{{ asset('website/assets/image/svg/Group_16x8_homepage-light.svg') }}" alt=""
-                                    width="16" height="8"> <img
-                                    class="sanad-faq__chevron sanad-faq__chevron--dark"
-                                    src="{{ asset('website/assets/image/svg/Group_16x8_homepage-dark.svg') }}" alt=""
-                                    width="16" height="8"> </span></button>
-                    </h3>
-                    <div class="sanad-faq__panel" id="sanad-faq-a{{ $faqIndex + 1 }}" role="region" aria-labelledby="sanad-faq-q{{ $faqIndex + 1 }}" hidden>
-                        <p class="sanad-faq__answer">{{ $faqItem->answer }}</p></div>
-                    <div class="sanad-card-hover-overlay" aria-hidden="true"></div>
-                </div>
-                @endforeach
-            </div>
-        </div>
-    </section>
     <section class="sanad-privacy-banner" data-node-id="136:8399" aria-labelledby="sanad-privacy-banner-title">
         <div class="sanad-privacy-banner__decor" aria-hidden="true"><span class="sanad-privacy-banner__glow"
                                                                           data-node-id="136:8400"></span><span
@@ -800,6 +826,33 @@
                 <img class="sanad-privacy-banner__glow-effect"
                      src="{{ asset('website/assets/image/png/bannerGlowEffect_184x184.png') }}" alt="" width="184"
                      height="184" decoding="async" data-node-id="136:8760"></picture>
+        </div>
+    </section>
+    <section class="sanad-faq" id="faq" aria-labelledby="sanad-faq-title">
+        <div class="sanad-faq__container">
+            <div class="sanad-faq__header"><h2 class="sanad-faq__title" id="sanad-faq-title">
+                    <span>{{ __('auth.faqs_heading_1') }} </span><span class="sanad-faq__accent">{{ __('auth.faqs_heading_2') }}</span></h2></div>
+            <div class="sanad-faq__list">
+                @foreach($faqs as $faqIndex => $faqItem)
+                <div class="sanad-faq__item sanad-card-hoverable">
+                    <h3 class="sanad-faq__heading">
+                        <button type="button" class="sanad-faq__trigger" id="sanad-faq-q{{ $faqIndex + 1 }}" aria-expanded="false"
+                                aria-controls="sanad-faq-a{{ $faqIndex + 1 }}"><span
+                                class="sanad-faq__question">{{ $faqItem->question }}</span>
+                            <span class="sanad-faq__icon" aria-hidden="true"> <img
+                                    class="sanad-faq__chevron sanad-faq__chevron--light"
+                                    src="{{ asset('website/assets/image/svg/Group_16x8_homepage-light.svg') }}" alt=""
+                                    width="16" height="8"> <img
+                                    class="sanad-faq__chevron sanad-faq__chevron--dark"
+                                    src="{{ asset('website/assets/image/svg/Group_16x8_homepage-dark.svg') }}" alt=""
+                                    width="16" height="8"> </span></button>
+                    </h3>
+                    <div class="sanad-faq__panel" id="sanad-faq-a{{ $faqIndex + 1 }}" role="region" aria-labelledby="sanad-faq-q{{ $faqIndex + 1 }}" hidden>
+                        <p class="sanad-faq__answer">{{ $faqItem->answer }}</p></div>
+                    <div class="sanad-card-hover-overlay" aria-hidden="true"></div>
+                </div>
+                @endforeach
+            </div>
         </div>
     </section>
     <section class="sanad-contact" id="contact" aria-labelledby="sanad-contact-title" data-node-id="85:10840">

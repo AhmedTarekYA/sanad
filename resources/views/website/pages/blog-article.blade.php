@@ -16,7 +16,7 @@
    <p class="sanad-article-hero__description">{{ $article->description }}</p>
    @if($article->created_at)
    <div class="sanad-article-hero__meta">
-    <p class="sanad-article-hero__meta-text">{{ $article->created_at->translatedFormat('j F Y') }} · قراءة</p>
+    <p class="sanad-article-hero__meta-text">{{ $article->created_at->translatedFormat('j F Y') }} · {{ $article->reading_minutes }} {{ $article->reading_minutes >= 3 && $article->reading_minutes <= 10 ? 'دقائق' : 'دقيقة' }} قراءة</p>
    </div>
    @endif
   </div>

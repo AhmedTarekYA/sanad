@@ -1,0 +1,50 @@
+/* Stats marquee */
+.sanad-stats__marquee{display:flex;overflow:hidden;direction:ltr}
+.sanad-stats__marquee .sanad-stats__list{display:flex;flex:none;gap:var(--sanad-spacing-space-24);padding-inline-end:var(--sanad-spacing-space-24);animation:sanad-stats-scroll 40s linear infinite}
+.sanad-stats__marquee .sanad-stats__item{flex:none;inline-size:260px;direction:rtl}
+.sanad-stats__marquee:hover .sanad-stats__list{animation-play-state:paused}
+@keyframes sanad-stats-scroll{to{transform:translateX(-100%)}}
+@media (prefers-reduced-motion:reduce){
+.sanad-stats__marquee{overflow-x:auto}
+.sanad-stats__marquee .sanad-stats__list{animation:none}
+.sanad-stats__marquee .sanad-stats__list[aria-hidden="true"]{display:none}
+}
+/* Fikr + Sanad AI sections */
+.sanad-home-fkr,.sanad-home-ai{inline-size:min(1400px,calc(100vw - 48px));margin:var(--sanad-spacing-space-24) auto;padding:56px 48px;border-radius:40px;background:linear-gradient(180deg,#0e1c33,#0b1730);border:1px solid var(--sanad-border-default)}
+.sanad-home-fkr__container{display:grid;gap:40px;align-items:center}
+.sanad-home-fkr__logo{display:inline-grid;place-items:center;inline-size:128px;block-size:64px;margin-block-end:16px;border-radius:16px;background:#12244a}
+.sanad-home-fkr__logo img{inline-size:72px;block-size:auto}
+.sanad-home-fkr__eyebrow{margin:0 0 8px;color:var(--sanad-text-accent);font-size:14px}
+.sanad-home-fkr__title{margin:0 0 4px;color:var(--sanad-text-primary);font-size:var(--sanad-typography-size-24)}
+.sanad-home-fkr__subtitle{margin:0 0 16px;color:var(--sanad-text-primary);font-size:clamp(28px,4vw,44px);font-weight:700;line-height:1.35}
+.sanad-home-fkr__body{margin:0 0 24px;color:var(--sanad-text-secondary);font-size:18px;line-height:1.8}
+.sanad-home-fkr__items{display:grid;margin:0;padding:0;list-style:none}
+.sanad-home-fkr__item{display:grid;grid-template-columns:44px 1fr;column-gap:16px;padding-block:20px;border-block-end:1px solid var(--sanad-border-default)}
+.sanad-home-fkr__item:last-child{border:0}
+.sanad-home-fkr__icon{grid-row:1/3;inline-size:44px;block-size:44px;border:2px solid #38bdf8;border-radius:50%;background:radial-gradient(circle,#38bdf8 0 5px,transparent 6px)}
+.sanad-home-fkr__item-title{margin:0 0 6px;color:var(--sanad-text-primary);font-size:var(--sanad-typography-size-20);font-weight:500}
+.sanad-home-fkr__item:first-child .sanad-home-fkr__item-title{color:#38bdf8}
+.sanad-home-fkr__item-desc{margin:0;color:var(--sanad-text-secondary);line-height:1.7}
+.sanad-home-ai__container{display:grid;gap:40px;justify-items:center}
+.sanad-home-ai__copy{text-align:center;max-inline-size:900px}
+.sanad-home-ai__title{margin:0 0 16px;color:var(--sanad-text-primary);font-size:var(--sanad-typography-size-32);line-height:1.3}
+.sanad-home-ai__description{margin:0;color:var(--sanad-text-secondary);line-height:1.8}
+.sanad-home-ai__stage{display:grid;gap:32px;inline-size:100%;align-items:center}
+.sanad-home-ai__subtitle{margin:0 0 16px;color:#38bdf8;font-size:var(--sanad-typography-size-20)}
+.sanad-home-ai__features{display:grid;gap:16px;margin:0;padding:0;list-style:none}
+.sanad-home-ai__feature{display:grid;grid-template-columns:28px 1fr;column-gap:12px;padding:20px;border:1px solid var(--sanad-border-default);border-radius:12px;background:rgba(30,58,138,.18)}
+.sanad-home-ai__check{position:relative;grid-row:1/3;inline-size:28px;block-size:28px;border:1px solid #3b5bdb;border-radius:6px;background:#12244a}
+.sanad-home-ai__check::after{content:"";position:absolute;inset-block-start:5px;inset-inline-start:9px;inline-size:6px;block-size:11px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
+.sanad-home-ai__feature-title{margin:0 0 6px;color:var(--sanad-text-primary);font-size:var(--sanad-typography-size-20);font-weight:500}
+.sanad-home-ai__feature:first-child .sanad-home-ai__feature-title{color:#38bdf8}
+.sanad-home-ai__feature-desc{margin:0;color:var(--sanad-text-secondary);line-height:1.7}
+.sanad-home-ai__orbit{position:relative;inline-size:min(100%,340px);aspect-ratio:1;margin-inline:auto;border:1px dashed rgba(56,189,248,.35);border-radius:50%;box-shadow:0 0 80px rgba(37,99,235,.35);display:grid;place-items:center}
+.sanad-home-ai__core{display:grid;place-items:center;inline-size:68%;aspect-ratio:1;border:1px solid #34d399;border-radius:50%;background:radial-gradient(circle,#0b2a3a,#07152a);color:#fff;font-size:24px;font-weight:700;direction:ltr}
+.sanad-home-ai__node{position:absolute;padding:2px 8px;border-radius:999px;background:#0b1730;border:1px solid #34d399;color:var(--sanad-text-primary);font-size:12px}
+.sanad-home-ai__node--replies{inset:12% auto auto 4%}
+.sanad-home-ai__node--chats{inset:auto auto 12% 4%}
+.sanad-home-ai__node--clients{inset:12% 4% auto auto}
+.sanad-home-ai__node--analytics{inset:auto 4% 12% auto}
+.sanad-home-ai__actions{display:flex;flex-wrap:wrap;justify-content:center;gap:16px}
+@media (min-width:1024px){.sanad-home-fkr__container{grid-template-columns:1fr 1fr}.sanad-home-ai__stage{grid-template-columns:1fr 340px}}
+@media (max-width:767px){.sanad-home-fkr,.sanad-home-ai{padding:32px 20px;border-radius:28px}}
