@@ -17,9 +17,7 @@
    <a class="sanad-footer__brand-link" href="{{ route('website.home') }}">
     <img class="sanad-footer__logo" src="{{ $footerLogo }}" alt="{{ $settings?->website_name ?? 'SANAD CX' }}" width="181" height="60">
    </a>
-   @if($settings?->footer_text)
-   <p class="sanad-footer__description">{{ $settings->footer_text }}</p>
-   @endif
+   <p class="sanad-footer__description">{{ $settings?->footer_text ?: __('auth.footer_tagline') }}</p>
    <ul class="sanad-footer__social">
     @foreach($socialLinks as $key => $social)
         @php($url = $settings?->$key ?? '#')
@@ -40,6 +38,8 @@
    <ul class="sanad-footer__link-list">
     <li><a class="sanad-footer__link" href="{{ route('website.home') }}">{{ __('auth.nav_home') }}</a></li>
     <li><a class="sanad-footer__link" href="{{ route('website.services') }}">{{ __('auth.nav_services') }}</a></li>
+    <li><a class="sanad-footer__link" href="{{ route('website.ai-assistant') }}">{{ __('auth.nav_ai_assistant') }}</a></li>
+    <li><a class="sanad-footer__link" href="{{ route('website.fkr') }}">{{ __('auth.nav_fkr') }}</a></li>
     <li><a class="sanad-footer__link" href="{{ route('website.how-it-works') }}">{{ __('auth.nav_how_it_works') }}</a></li>
     <li><a class="sanad-footer__link" href="{{ route('website.blog') }}">{{ __('auth.nav_blog') }}</a></li>
    </ul>
@@ -78,5 +78,6 @@
  </div>
  <div class="sanad-footer__legal">
   <p class="sanad-footer__copyright" lang="en" dir="ltr">{{ $settings?->copyright ?: '© ' . date('Y') . ' Sanad CX. All rights reserved.' }}</p>
+  <p class="sanad-footer__copyright" lang="en" dir="ltr">{{ __('auth.footer_powered_by') }}</p>
  </div>
 </footer>

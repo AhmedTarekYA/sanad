@@ -44,6 +44,16 @@ class WebsiteController extends Controller
         return view('website.pages.how-it-works');
     }
 
+    public function aiAssistant(): View
+    {
+        return view('website.pages.ai-assistant');
+    }
+
+    public function fkr(): View
+    {
+        return view('website.pages.fkr');
+    }
+
     public function blog(): View
     {
         $featured = Blog::where('is_featured', true)->with('translations')->first();

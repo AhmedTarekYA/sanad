@@ -1,0 +1,4 @@
+.sanad-modal-alert{padding:.75rem 1rem;border-radius:12px;border:1px solid currentColor;color:#d63031;font-size:.9rem}
+.sanad-modal-alert[hidden],[data-state][hidden]{display:none!important}
+[data-state=loading],[data-state=success],[data-state=error]{text-align:center;flex-direction:column;align-items:center;gap:1rem;padding-block:2rem;display:flex}
+.sanad-consultation .sanad-btn[aria-busy=true]{opacity:.6;cursor:progress}

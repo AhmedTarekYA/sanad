@@ -27,4 +27,11 @@ class Blog extends Model
     protected $translationForeignKey = 'blog_id';
 
     public $translationModel = BlogTranslation::class;
+
+    public function getReadingMinutesAttribute(): int
+    {
+        $words = count(preg_split('/\s+/u', trim(strip_tags((string) $this->content)), -1, PREG_SPLIT_NO_EMPTY));
+
+        return max(1, (int) ceil($words / 200));
+    }
 }

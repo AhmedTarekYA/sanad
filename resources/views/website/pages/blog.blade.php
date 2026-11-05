@@ -24,7 +24,7 @@
     <span class="sanad-blog-hero__label-text">مقال مميز</span>
    </span>
   </div>
-  <p class="sanad-blog-hero__meta">تجربة العملاء · قراءة</p>
+  <p class="sanad-blog-hero__meta">تجربة العملاء · {{ $featured->reading_minutes }} {{ $featured->reading_minutes >= 3 && $featured->reading_minutes <= 10 ? 'دقائق' : 'دقيقة' }} قراءة</p>
   <h2 class="sanad-blog-hero__title">{{ $featured->title }}</h2>
   <p class="sanad-blog-hero__excerpt">{{ $featured->description }}</p>
   <a class="sanad-btn sanad-btn--md sanad-blog-hero__read" href="{{ route('website.blog.article', ['slug' => $featured->slug]) }}">اقرأ المقال</a>
