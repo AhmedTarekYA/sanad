@@ -318,6 +318,8 @@ return [
 
     // Stats section
     'stats_aria_label' => 'Performance Indicators',
+    'stats_prev' => 'Previous',
+    'stats_next' => 'Next',
     'stats_speed_title' => 'Response Speed',
     'stats_speed_desc' => 'Average response time for calls and messages.',
     'stats_integration_title' => 'Direct Operation',
@@ -408,6 +410,7 @@ return [
 
     // Contact / Consultation form section
     'contact_title' => 'Ready to Elevate Your Customer Experience and Accelerate Your Growth?',
+    'contact_title_accent' => 'Accelerate Your Growth',
     'contact_description' => 'Leave your details and one of our experts will contact you to provide a free analysis and a custom package that fits your company\'s size and activity.',
     'contact_name_label' => 'Full Name',
     'contact_company_label' => 'Company / Brand Name',
@@ -463,4 +466,9 @@ return [
     'ai_mock_chats' => 'Chats',
     'ai_mock_clients' => 'Customers',
     'ai_mock_analytics' => 'Analytics',
+    'ai_mock_performance' => 'Performance',
+    'ai_mock_sales' => 'Sales',
+    'ai_outcome1' => 'Increase sales, reduce operating costs,',
+    'ai_outcome2' => 'Boost employee productivity, improve customer experience,',
+    'ai_outcome3' => 'Faster, more accurate decisions, administrative or operational',
 ];

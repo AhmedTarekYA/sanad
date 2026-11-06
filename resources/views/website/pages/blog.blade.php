@@ -42,7 +42,7 @@
   @foreach($articles as $article)
   <article class="sanad-blog-card sanad-card-hoverable">
    <div class="sanad-blog-card__cover">
-    <img class="sanad-blog-card__cover-image" src="{{ $article->image ? asset($article->image) : asset('website/assets/image/svg/blog-cover-calls.svg') }}" alt="" width="384" height="216" loading="lazy" decoding="async">
+    <img class="sanad-blog-card__cover-image" src="{{ $article->image ? asset($article->image) : asset('website/assets/image/svg/blog-cover-'.['calls','outsourcing','kpis','whatsapp','crm','security'][$loop->index % 6].'.svg') }}" alt="" width="384" height="216" loading="lazy" decoding="async">
    </div>
    <div class="sanad-blog-card__body">
     <h3 class="sanad-blog-card__title">{{ $article->title }}</h3>

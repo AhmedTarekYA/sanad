@@ -1,0 +1,8 @@
+.sanad-our-story__body{flex:1 1 auto;min-inline-size:0;display:flex;flex-direction:column;gap:20px}
+.sanad-our-story__list{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px;font-size:var(--sanad-typography-size-20);line-height:32px;color:var(--sanad-text-secondary)}
+.sanad-our-story__description{line-height:32px}
+.sanad-partnership__card-value,.sanad-partnership__card-unit{text-align:left}
+@media(min-width:1024px){
+.sanad-about-hero__description{margin-block-start:8px}
+.sanad-about-hero__cta{margin-block-start:82px;margin-inline-start:57px}
+}
