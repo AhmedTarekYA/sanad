@@ -1,0 +1,13 @@
+/* Article body: style DB-rendered HTML like the Figma components */
+.sanad-article-body{min-block-size:0}
+.sanad-article-related{min-block-size:0}
+.sanad-article-body__content{display:flex;flex-direction:column;gap:24px}
+.sanad-article-body__content>*{margin:0;text-align:start}
+.sanad-article-body__content p{font-size:16px;line-height:26px;color:var(--sanad-text-secondary)}
+.sanad-article-body__content>p:first-child{font-size:20px;line-height:32px;color:var(--sanad-text-primary)}
+.sanad-article-body__content h2,.sanad-article-body__content h3{font-size:22px;font-weight:700;line-height:36px;color:var(--sanad-text-primary)}
+.sanad-article-body__content ul,.sanad-article-body__content ol{display:flex;flex-direction:column;gap:20px;padding:0;list-style:none;counter-reset:s}
+.sanad-article-body__content li{position:relative;padding-inline-start:56px;font-size:16px;line-height:26px;color:var(--sanad-text-secondary);counter-increment:s}
+.sanad-article-body__content li::before{content:counter(s);position:absolute;inset-inline-start:0;inset-block-start:0;display:flex;align-items:center;justify-content:center;inline-size:40px;block-size:40px;border-radius:12px;background-color:var(--sanad-surface-raised);font-weight:600;color:var(--sanad-text-accent)}
+.sanad-article-body__content li strong{display:block;font-weight:600;color:var(--sanad-text-primary)}
+.sanad-article-body__content blockquote{padding-block:8px;padding-inline-start:16px;border-inline-start:4px solid var(--sanad-text-accent);font-size:20px;font-weight:500;line-height:30px;color:var(--sanad-text-primary)}

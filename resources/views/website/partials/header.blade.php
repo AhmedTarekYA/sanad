@@ -16,8 +16,6 @@
     <li><a class="sanad-header__link {{ request()->routeIs('website.fkr') ? 'sanad-header__link--active' : '' }}" href="{{ route('website.fkr') }}">{{ __('auth.nav_fkr') }}</a></li>
     <li><a class="sanad-header__link {{ request()->routeIs('website.how-it-works') ? 'sanad-header__link--active' : '' }}" href="{{ route('website.how-it-works') }}">{{ __('auth.nav_how_it_works') }}</a></li>
     <li><a class="sanad-header__link {{ request()->routeIs('website.about') ? 'sanad-header__link--active' : '' }}" href="{{ route('website.about') }}">{{ __('auth.nav_about') }}</a></li>
-    <li><a class="sanad-header__link {{ request()->routeIs('website.blog*') ? 'sanad-header__link--active' : '' }}" href="{{ route('website.blog') }}">{{ __('auth.nav_blog') }}</a></li>
-    <li><a class="sanad-header__link" href="{{ route('website.home') }}#faq">{{ __('auth.nav_faq') }}</a></li>
    </ul>
   </nav>
   <div class="sanad-header__actions">

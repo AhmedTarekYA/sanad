@@ -194,7 +194,7 @@ return [
     'date' => 'التاريخ',
     'status' => 'الحالة',
 
-    'hero_eyebrow' => 'Plug & Play Operations — تشغيل فوري دون تعقيد',
+    'hero_eyebrow' => 'تشغيل فوري دون تعقيد — Plug & Play Operations',
     'hero_headline' => 'شغّل تجربة عملاء استثنائية',
     'hero_headline_accent' => 'دون تغيير أنظمتك الحالية',
     'hero_description' => 'فريق متخصص يتكامل مباشرة مع أنظمة الاتصالات والواتساب والمنصات الحالية لديك، لإدارة تفاعلات العملاء بكفاءة وتحقيق نتائج ملموسة.',
@@ -243,6 +243,8 @@ return [
 
     // Stats section
     'stats_aria_label' => 'مؤشرات الأداء',
+    'stats_prev' => 'السابق',
+    'stats_next' => 'التالي',
     'stats_speed_title' => 'سرعة الاستجابة',
     'stats_speed_desc' => 'متوسط زمن الاستجابة للمكالمات والرسائل.',
     'stats_integration_title' => 'التشغيل المباشر',
@@ -333,6 +335,7 @@ return [
 
     // Contact / Consultation form section
     'contact_title' => 'جاهز للارتقاء بتجربة عملائك وتسريع نموك؟',
+    'contact_title_accent' => 'وتسريع نموك',
     'contact_description' => 'اترك بياناتك وسيتواصل معك أحد خبرائنا لتقديم تحليل مجاني وحزمة مخصصة تناسب حجم ونشاط شركتك.',
     'contact_name_label' => 'الاسم الكريم',
     'contact_company_label' => 'اسم الشركة / البراند',
@@ -388,4 +391,9 @@ return [
     'ai_mock_chats' => 'المحادثات',
     'ai_mock_clients' => 'العملاء',
     'ai_mock_analytics' => 'التحليلات',
+    'ai_mock_performance' => 'الأداء',
+    'ai_mock_sales' => 'المبيعات',
+    'ai_outcome1' => 'زيادة المبيعات، تقليل المصاريف التشغيلية،',
+    'ai_outcome2' => 'رفع إنتاجية الموظفين، تحسين تجربة العملاء،',
+    'ai_outcome3' => 'قرارات أسرع وأدق سواء ادارية او تشغيلية',
 ];

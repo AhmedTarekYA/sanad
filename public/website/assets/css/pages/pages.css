@@ -1,6 +1,2 @@
-.sanad-our-story__list{margin:16px 0 0;padding-inline-start:20px;display:grid;gap:8px;line-height:1.8}
-.sanad-pillars .sanad-values__grid{grid-template-columns:repeat(3,1fr)}
-@media(max-width:900px){.sanad-pillars .sanad-values__grid{grid-template-columns:1fr}}
-.sanad-pillars--four .sanad-values__grid{grid-template-columns:repeat(4,1fr)}
-@media(max-width:1100px){.sanad-pillars--four .sanad-values__grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:900px){.sanad-pillars--four .sanad-values__grid{grid-template-columns:1fr}}
+.sanad-pillars__grid>.sanad-values__card:nth-child(3):last-child{grid-column:1/-1;min-height:304px}
+@media(max-width:900px){.sanad-pillars__grid>.sanad-values__card:nth-child(3):last-child{grid-column:auto}}
