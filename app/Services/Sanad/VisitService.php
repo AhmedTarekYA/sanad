@@ -139,17 +139,19 @@ class VisitService
      */
     public function avgSessionDuration(): int
     {
-        $result = DB::select('
-            SELECT COALESCE(AVG(duration), 0) AS avg_duration
-            FROM (
-                SELECT session_id, TIMESTAMPDIFF(SECOND, MIN(created_at), MAX(created_at)) AS duration
-                FROM visits
-                WHERE session_id IS NOT NULL
-                GROUP BY session_id
-                HAVING COUNT(*) > 1
-            ) AS sessions
-        ');
+        $sessions = Visit::query()
+            ->select('session_id')
+            ->selectRaw('MIN(created_at) as started_at')
+            ->selectRaw('MAX(created_at) as ended_at')
+            ->whereNotNull('session_id')
+            ->groupBy('session_id')
+            ->havingRaw('COUNT(*) > 1')
+            ->get();
 
-        return (int) round($result[0]->avg_duration ?? 0);
+        $durations = $sessions->map(
+            fn ($session): int => max(0, strtotime((string) $session->ended_at) - strtotime((string) $session->started_at))
+        );
+
+        return (int) round($durations->avg() ?? 0);
     }
 }

@@ -61,14 +61,13 @@
     </section>
     <section class="sanad-stats" aria-label="{{ __('auth.stats_aria_label') }}">
         <ul class="sanad-stats__list">
-            <li class="sanad-stats__item"><span class="sanad-stats__value" dir="ltr">&lt; 60s</span> <span class="sanad-stats__label">{{ __('auth.stats_speed_title') }}</span> <span class="sanad-stats__detail">{{ __('auth.stats_speed_desc') }}</span>
-            </li>
-            <li class="sanad-stats__item"><span class="sanad-stats__value" dir="ltr">100%</span> <span class="sanad-stats__label">{{ __('auth.stats_integration_title') }}</span> <span class="sanad-stats__detail">{{ __('auth.stats_integration_desc') }}</span>
-            </li>
-            <li class="sanad-stats__item"><span class="sanad-stats__value" dir="ltr">40%</span> <span class="sanad-stats__label">{{ __('auth.stats_efficiency_title') }}</span> <span class="sanad-stats__detail">{{ __('auth.stats_efficiency_desc') }}</span>
-            </li>
-            <li class="sanad-stats__item"><span class="sanad-stats__value" dir="ltr">+35%</span> <span class="sanad-stats__label">{{ __('auth.stats_growth_title') }}</span> <span class="sanad-stats__detail">{{ __('auth.stats_growth_desc') }}</span>
-            </li>
+            <li class="sanad-stats__item"><span class="sanad-stats__value" data-stat-value="&lt; 60 ثانية">{{ __('auth.parity_stat1_value') }}</span> <span class="sanad-stats__label">{{ __('auth.parity_stat1_title') }}</span> <span class="sanad-stats__detail">{{ __('auth.parity_stat1_desc') }}</span></li>
+            <li class="sanad-stats__item"><span class="sanad-stats__value" data-stat-value="100%">{{ __('auth.parity_stat2_value') }}</span> <span class="sanad-stats__label">{{ __('auth.parity_stat2_title') }}</span> <span class="sanad-stats__detail">{{ __('auth.parity_stat2_desc') }}</span></li>
+            <li class="sanad-stats__item"><span class="sanad-stats__value" data-stat-value="24/7">{{ __('auth.parity_stat3_value') }}</span> <span class="sanad-stats__label">{{ __('auth.parity_stat3_title') }}</span> <span class="sanad-stats__detail">{{ __('auth.parity_stat3_desc') }}</span></li>
+            <li class="sanad-stats__item"><span class="sanad-stats__value" data-stat-value="+35%">{{ __('auth.parity_stat4_value') }}</span> <span class="sanad-stats__label">{{ __('auth.parity_stat4_title') }}</span> <span class="sanad-stats__detail">{{ __('auth.parity_stat4_desc') }}</span></li>
+            <li class="sanad-stats__item"><span class="sanad-stats__value" data-stat-value="40%">{{ __('auth.parity_stat5_value') }}</span> <span class="sanad-stats__label">{{ __('auth.parity_stat5_title') }}</span> <span class="sanad-stats__detail">{{ __('auth.parity_stat5_desc') }}</span></li>
+            <li class="sanad-stats__item"><span class="sanad-stats__value" data-stat-value="Zero Setup Fees">{{ __('auth.parity_stat6_value') }}</span> <span class="sanad-stats__label">{{ __('auth.parity_stat6_title') }}</span> <span class="sanad-stats__detail">{{ __('auth.parity_stat6_desc') }}</span></li>
+            <li class="sanad-stats__item"><span class="sanad-stats__value" data-stat-value="95%+">{{ __('auth.parity_stat7_value') }}</span> <span class="sanad-stats__label">{{ __('auth.parity_stat7_title') }}</span> <span class="sanad-stats__detail">{{ __('auth.parity_stat7_desc') }}</span></li>
         </ul>
     </section>
     <section class="sanad-integration" aria-labelledby="sanad-integration-heading">
@@ -100,41 +99,8 @@
             </ul>
         </div>
     </section>
-    <section class="sanad-comparison" aria-labelledby="sanad-comparison-heading">
-        <div class="sanad-comparison__container">
-            <div class="sanad-comparison__header">
-                <h2 class="sanad-comparison__title" id="sanad-comparison-heading">{{ __('auth.comparison_heading_before') }} <span
-                        class="sanad-comparison__title-accent">Sanad CX</span>{{ __('auth.comparison_heading_after') }}</h2>
-                <p class="sanad-comparison__intro">{{ __('auth.comparison_intro') }}</p>
-            </div>
-            @if($whyChooseUs->isNotEmpty())
-                <ul class="sanad-comparison__cards">
-                    @foreach($whyChooseUs as $item)
-                        <li class="sanad-comparison__card {{ $item->is_featured ? 'sanad-comparison__card--sanad' : '' }} sanad-card-hoverable">
-                            <div class="sanad-comparison__card-head">
-                                <h3 class="sanad-comparison__card-title">{{ $item->title }}</h3>
-                                @if($item->subtitle)
-                                    <p class="sanad-comparison__card-subtitle">{{ $item->subtitle }}</p>
-                                @endif
-                            </div>
-                            @if($item->features->isNotEmpty())
-                                <dl class="sanad-comparison__criteria">
-                                    @foreach($item->features as $feature)
-                                        <div class="sanad-comparison__criterion">
-                                            <dt class="sanad-comparison__criterion-label">{{ $feature->title }}</dt>
-                                            <dd class="sanad-comparison__criterion-value">{{ $feature->description }}</dd>
-                                        </div>
-                                    @endforeach
-                                </dl>
-                            @endif
-                            <div class="sanad-card-hover-overlay" aria-hidden="true"></div>
-                        </li>
-                    @endforeach
-                </ul>
-            @endif
-        </div>
-    </section>
-    <section class="sanad-home-services" aria-labelledby="sanad-home-services-heading">
+
+<section class="sanad-home-services" aria-labelledby="sanad-home-services-heading">
         <div class="sanad-home-services__header"><h2 class="sanad-home-services__title"
                                                      id="sanad-home-services-heading">{{ __('auth.services_heading_before') }} <span class="sanad-home-services__title-accent">{{ __('auth.services_heading_accent') }}</span></h2>
             <p class="sanad-home-services__intro">{{ __('auth.services_intro') }}</p></div>
@@ -298,7 +264,140 @@
                     src="{{ asset('website/assets/image/svg/section-edge-layer-alt.svg') }}" alt=""></div>
         </div>
     </section>
-    <section class="sanad-testimonials" aria-labelledby="sanad-testimonials-heading">
+<section class="sanad-home-fkr" id="sanad-home-fkr" data-gsap-section="home-fkr" data-node-id="349:8857" aria-labelledby="sanad-home-fkr-title">
+<div class="sanad-home-fkr__portal">
+    <div class="sanad-home-fkr__header">
+        <p class="sanad-home-fkr__eyebrow">فِكر | الاستشارات التسويقية وهندسة النمو</p>
+        <h2 class="sanad-home-fkr__title" id="sanad-home-fkr-title">لا نُطلق إعلانات عابرة.. نحن نهندس هويات تجارية وقنوات مبيعات تُحقق النمو</h2>
+        <p class="sanad-home-fkr__description">تحت مظلة سند CX، يقدم ذراع "فِكر" حلولاً استشارية تسويقية موجهة لقيادات الشركات ومؤسسي الأعمال. نحن ندمج بين جماليات الهوية البصرية وعقلية الأرقام والعائد على الاستثمار (ROI)، لنضمن أن كل ما تُنفقه في التسويق يُترجم إلى نمو حقيقي ومبيعات مستدامة.</p>
+    </div>
+    <div class="sanad-home-fkr__pillars">
+        <article class="sanad-home-fkr__pillar sanad-card-hoverable">
+            <span class="sanad-home-fkr__pillar-num" dir="ltr">01</span>
+            <h3 class="sanad-home-fkr__pillar-title">تموضع استراتيجي حاد <span dir="ltr">(Brand Positioning)</span></h3>
+            <p class="sanad-home-fkr__pillar-desc">نحدد ميزتك التنافسية لنضع براندك في صدارة منافسيك ويستحيل تجاهله.</p>
+        </article>
+        <article class="sanad-home-fkr__pillar sanad-card-hoverable">
+            <span class="sanad-home-fkr__pillar-num" dir="ltr">02</span>
+            <h3 class="sanad-home-fkr__pillar-title">حملات تسويقية عالية التحويل <span dir="ltr">(High-Intent Campaigns)</span></h3>
+            <p class="sanad-home-fkr__pillar-desc">تصميم وتخطيط حملات جلب العملاء المحتملين (Lead Generation) مع تصفية الزحام والعملاء غير الجادين.</p>
+        </article>
+        <article class="sanad-home-fkr__pillar sanad-card-hoverable">
+            <span class="sanad-home-fkr__pillar-num" dir="ltr">03</span>
+            <h3 class="sanad-home-fkr__pillar-title">ربط التسويق بالمبيعات <span dir="ltr">(Marketing-to-Sales Alignment)</span></h3>
+            <p class="sanad-home-fkr__pillar-desc">سد الفجوة بين الإعلان وإغلاق الصفقة عبر دمج الحملات مباشرة بفرق المبيعات والمساعد الذكي في سند CX.</p>
+        </article>
+    </div>
+    <div class="sanad-home-fkr__actions">
+        <a class="sanad-btn sanad-home-fkr__cta" href="{{ url('/fikr') }}">استكشف العقلية التسويقية لـ فِكر</a>
+    </div>
+</div>
+</section>
+<section class="sanad-comparison" aria-labelledby="sanad-comparison-heading">
+        <div class="sanad-comparison__container">
+            <div class="sanad-comparison__header">
+                <h2 class="sanad-comparison__title" id="sanad-comparison-heading">{{ __('auth.comparison_heading_before') }} <span
+                        class="sanad-comparison__title-accent">Sanad CX</span>{{ __('auth.comparison_heading_after') }}</h2>
+                <p class="sanad-comparison__intro">{{ __('auth.comparison_intro') }}</p>
+            </div>
+            @if($whyChooseUs->isNotEmpty())
+                <ul class="sanad-comparison__cards">
+                    @foreach($whyChooseUs as $item)
+                        <li class="sanad-comparison__card {{ $item->is_featured ? 'sanad-comparison__card--sanad' : '' }} sanad-card-hoverable">
+                            <div class="sanad-comparison__card-head">
+                                <h3 class="sanad-comparison__card-title">{{ $item->title }}</h3>
+                                @if($item->subtitle)
+                                    <p class="sanad-comparison__card-subtitle">{{ $item->subtitle }}</p>
+                                @endif
+                            </div>
+                            @if($item->features->isNotEmpty())
+                                <dl class="sanad-comparison__criteria">
+                                    @foreach($item->features as $feature)
+                                        <div class="sanad-comparison__criterion">
+                                            <dt class="sanad-comparison__criterion-label">{{ $feature->title }}</dt>
+                                            <dd class="sanad-comparison__criterion-value">{{ $feature->description }}</dd>
+                                        </div>
+                                    @endforeach
+                                </dl>
+                            @endif
+                            <div class="sanad-card-hover-overlay" aria-hidden="true"></div>
+                        </li>
+                    @endforeach
+                </ul>
+            @else
+                <ul class="sanad-comparison__cards"><li class="sanad-comparison__card  sanad-card-hoverable"><div class="sanad-comparison__card-head"><h3 class="sanad-comparison__card-title">التوظيف الداخلي</h3><p class="sanad-comparison__card-subtitle" lang="en">In-House Hiring</p></div><dl class="sanad-comparison__criteria"><div class="sanad-comparison__criterion"><dt class="sanad-comparison__criterion-label">التكلفة التشغيلية والتأسيسية</dt><dd class="sanad-comparison__criterion-value">تكاليف رواتب ثابتة، تأمينات، وتجهيز مكاتب</dd></div><div class="sanad-comparison__criterion"><dt class="sanad-comparison__criterion-label">التقنية والذكاء الاصطناعي</dt><dd class="sanad-comparison__criterion-value">يعتمد على كفاءة الموظف الفردية فقط</dd></div><div class="sanad-comparison__criterion"><dt class="sanad-comparison__criterion-label">الشمول الاستراتيجي والنمو</dt><dd class="sanad-comparison__criterion-value">يتطلب فريق منفصل للتسويق والإدارة</dd></div><div class="sanad-comparison__criterion"><dt class="sanad-comparison__criterion-label">ملكية البيانات والخصوصية</dt><dd class="sanad-comparison__criterion-value">مستضافة داخلياً ولكن تحت إدارتك الكاملة</dd></div><div class="sanad-comparison__criterion"><dt class="sanad-comparison__criterion-label">سرعة التوسع والجاهزية</dt><dd class="sanad-comparison__criterion-value">تستغرق أشهراً للتوظيف والتدريب والفصل</dd></div><div class="sanad-comparison__criterion"><dt class="sanad-comparison__criterion-label">التكامل البرمجي</dt><dd class="sanad-comparison__criterion-value">يتطلب صيانة وبنية تحتية برمجية مستمرة</dd></div></dl></li><li class="sanad-comparison__card  sanad-card-hoverable"><div class="sanad-comparison__card-head"><h3 class="sanad-comparison__card-title">شركات التعهيد التقليدية</h3><p class="sanad-comparison__card-subtitle" lang="en">Traditional BPO</p></div><dl class="sanad-comparison__criteria"><div class="sanad-comparison__criterion"><dt class="sanad-comparison__criterion-label">التكلفة التشغيلية والتأسيسية</dt><dd class="sanad-comparison__criterion-value">رسوم ربط وتأسيس باهظة وعقود معقدة</dd></div><div class="sanad-comparison__criterion"><dt class="sanad-comparison__criterion-label">التقنية والذكاء الاصطناعي</dt><dd class="sanad-comparison__criterion-value">أنظمة كول سنتر تقليدية وثابتة</dd></div><div class="sanad-comparison__criterion"><dt class="sanad-comparison__criterion-label">الشمول الاستراتيجي والنمو</dt><dd class="sanad-comparison__criterion-value">خدمات رد وتشغيل فقط دون استراتيجيات تسويق</dd></div><div class="sanad-comparison__criterion"><dt class="sanad-comparison__criterion-label">ملكية البيانات والخصوصية</dt><dd class="sanad-comparison__criterion-value">تنتقل وتُستضاف غالباً على منصات خارجية</dd></div><div class="sanad-comparison__criterion"><dt class="sanad-comparison__criterion-label">سرعة التوسع والجاهزية</dt><dd class="sanad-comparison__criterion-value">تستغرق أسابيع طويلة لإعادة التوجيه والإعداد</dd></div><div class="sanad-comparison__criterion"><dt class="sanad-comparison__criterion-label">التكامل البرمجي</dt><dd class="sanad-comparison__criterion-value">إلزام بالانتقال لأنظمتهم ومنصاتهم الخاصة</dd></div></dl></li><li class="sanad-comparison__card sanad-comparison__card--sanad sanad-card-hoverable"><div class="sanad-comparison__card-head"><h3 class="sanad-comparison__card-title">Sanad CX</h3><p class="sanad-comparison__card-subtitle" lang="en">Plug &amp; Play Hub</p></div><dl class="sanad-comparison__criteria"><div class="sanad-comparison__criterion"><dt class="sanad-comparison__criterion-label">التكلفة التشغيلية والتأسيسية</dt><dd class="sanad-comparison__criterion-value">Zero Setup Fees (بدون تكاليف إعداد أو بنية تحتية)</dd></div><div class="sanad-comparison__criterion"><dt class="sanad-comparison__criterion-label">التقنية والذكاء الاصطناعي</dt><dd class="sanad-comparison__criterion-value">مدعوم بـ Sanad AI (سرعة رد واقتراحات لحظية للموظفين)</dd></div><div class="sanad-comparison__criterion"><dt class="sanad-comparison__criterion-label">الشمول الاستراتيجي والنمو</dt><dd class="sanad-comparison__criterion-value">منظومة متكاملة + "فِكر" (حلول تشغيلية + هندسة نمو وتسويق)</dd></div><div class="sanad-comparison__criterion"><dt class="sanad-comparison__criterion-label">ملكية البيانات والخصوصية</dt><dd class="sanad-comparison__criterion-value">السيادة المطلقة لك (تظل بالكامل على أنظمتك وسيرفراتك)</dd></div><div class="sanad-comparison__criterion"><dt class="sanad-comparison__criterion-label">سرعة التوسع والجاهزية</dt><dd class="sanad-comparison__criterion-value">انطلاق فوري (خلال 48 ساعة) (مرونة تامة في رفع وخفض الطاقات)</dd></div><div class="sanad-comparison__criterion"><dt class="sanad-comparison__criterion-label">التكامل البرمجي</dt><dd class="sanad-comparison__criterion-value">تشغيل مباشر (Plug &amp; Play) (على برامجك الحالية دون تغيير السنترال)</dd></div></dl></li></ul>
+            @endif
+        </div>
+    </section>
+
+    <section class="sanad-home-ai" id="sanad-home-ai" data-gsap-section="home-ai" data-node-id="349:8476" aria-labelledby="sanad-home-ai-title">
+<div class="sanad-home-ai__container">
+    <div class="sanad-home-ai__header">
+        <span class="sanad-home-ai__eyebrow" lang="en" dir="ltr">SANAD AI</span>
+        <h2 class="sanad-home-ai__title" id="sanad-home-ai-title">الذكاء الاصطناعي في خدمة فريقك: إضافة المساعد الذكي <span lang="en" dir="ltr">Sanad CX</span></h2>
+        <p class="sanad-home-ai__description">مَكّن فريق المبيعات وخدمة العملاء لديك من الرد بذكاء وسرعة فائقة مباشرة من داخل الواتساب ونظام الـ CRM الخاص بك دون الحاجة لتغيير أدواتك الحالية.</p>
+    </div>
+    <div class="sanad-home-ai__grid">
+        <div class="sanad-home-ai__content">
+            <h3 class="sanad-home-ai__subtitle">كيف ترفع إضافة <span lang="en" dir="ltr">Sanad CX</span> من كفاءة فريقك؟</h3>
+            <ul class="sanad-home-ai__features">
+                <li class="sanad-home-ai__feature sanad-card-hoverable">
+                    <span class="sanad-home-ai__feature-badge" dir="ltr">01</span>
+                    <div class="sanad-home-ai__feature-copy">
+                        <h4 class="sanad-home-ai__feature-title">اقتراحات ردود فورية</h4>
+                        <p class="sanad-home-ai__feature-desc">يقرأ المساعد الذكي سياق المحادثة ويولّد ردوداً دقيقة متوافقة مع هويتك وقواعد عملك بنقرة زر.</p>
+                    </div>
+                </li>
+                <li class="sanad-home-ai__feature sanad-card-hoverable">
+                    <span class="sanad-home-ai__feature-badge" dir="ltr">02</span>
+                    <div class="sanad-home-ai__feature-copy">
+                        <h4 class="sanad-home-ai__feature-title">تحليل نبرة العملاء <span dir="ltr">(Sentiment Analysis)</span></h4>
+                        <p class="sanad-home-ai__feature-desc">كشف تلقائي لمشاعر واحتياجات العميل لحظياً لمساعدة الموظف على التفاعل الأنسب.</p>
+                    </div>
+                </li>
+                <li class="sanad-home-ai__feature sanad-card-hoverable">
+                    <span class="sanad-home-ai__feature-badge" dir="ltr">03</span>
+                    <div class="sanad-home-ai__feature-copy">
+                        <h4 class="sanad-home-ai__feature-title">لوحة تحكم وتحليلات للمدراء</h4>
+                        <p class="sanad-home-ai__feature-desc">متابعة دقيقة لأداء الموظفين، سرعة الرد، وأبرز اعتراضات العملاء عبر داشبورد إدارية متكاملة.</p>
+                    </div>
+                </li>
+            </ul>
+            <p class="sanad-home-ai__summary">زيادة المبيعات، تقليل المصاريف التشغيلية، رفع إنتاجية الموظفين، تحسين تجربة العملاء، قرارات أسرع وأدق سواء ادارية او تشغيلية</p>
+            <div class="sanad-home-ai__actions">
+                <a class="sanad-btn sanad-home-ai__btn-primary" href="{{ url('/ai-assistant') }}">اكتشف مميزات الإضافة</a>
+                <button type="button" class="sanad-btn sanad-btn--outline sanad-home-ai__btn-secondary" data-consultation-open>ابدأ التجربة المجانية</button>
+            </div>
+        </div>
+        <div class="sanad-home-ai__visual">
+            <div class="sanad-home-ai__mockup">
+                <div class="sanad-home-ai__mockup-top">
+                    <span class="ai-copilot-badge" lang="en" dir="ltr">SANAD AI CO-PILOT</span>
+                    <div class="sanad-home-ai__tags">
+                        <span class="sanad-home-ai__tag">الردود</span>
+                        <span class="sanad-home-ai__tag">المحادثات</span>
+                        <span class="sanad-home-ai__tag">العملاء</span>
+                        <span class="sanad-home-ai__tag">التحليلات</span>
+                        <span class="sanad-home-ai__tag">الأداء</span>
+                        <span class="sanad-home-ai__tag">المبيعات</span>
+                    </div>
+                </div>
+                <div class="sanad-home-ai__chat">
+                    <div class="chat-incoming">
+                        <span class="chat-incoming__label">رسالة العميل — WhatsApp Web</span>
+                        <p class="chat-incoming__text">مرحباً، هل يمكن توضيح تفاصيل باقات التشغيل وسرعة الربط مع نظامنا؟</p>
+                    </div>
+                    <div class="ai-reply-card">
+                        <span class="ai-reply-card__header">اقتراح المساعد الذكي (Sanad AI) — متوافق مع نبرة البراند</span>
+                        <p class="ai-reply-text">أهلاً بك! نعمل بنظام الربط المباشر (Plug &amp; Play) على أنظمتكم الحالية خلال 48 ساعة فقط دون أي رسوم تأسيس، مع ضمان زمن استجابة أقل من 60 ثانية.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+<section class="sanad-testimonials" aria-labelledby="sanad-testimonials-heading">
         <div class="sanad-testimonials__header">
             <h2 class="sanad-testimonials__title" id="sanad-testimonials-heading">{{ __('auth.testimonials_heading') }}</h2>
         </div>
@@ -518,7 +617,7 @@
                         class="sanad-calculator__label" id="sanad-calculator-volume-label"
                         data-node-id="I136:11813;140:14669">{{ __('auth.calc_volume_label') }}</p>
                     <p class="sanad-calculator__volume" data-node-id="I136:11813;140:14670" data-calculator-value>
-                        100</p>
+                        50</p>
                     <p class="sanad-calculator__unit" data-node-id="I136:11813;140:14671">{{ __('auth.calc_unit') }}</p>
                     <div class="sanad-calculator__range" dir="ltr" data-node-id="I136:11813;140:14672"
                          data-calculator-range><span class="sanad-calculator__track"
@@ -533,38 +632,25 @@
                                                              data-node-id="I136:11813;140:14678"
                                                              aria-hidden="true"></span>
                         <div class="sanad-calculator__thumb" role="slider" tabindex="0"
-                             aria-labelledby="sanad-calculator-volume-label" aria-valuemin="100" aria-valuemax="5000"
-                             aria-valuenow="100" aria-valuetext="100" data-node-id="I136:11813;140:14679"
+                             aria-labelledby="sanad-calculator-volume-label" aria-valuemin="50" aria-valuemax="1000"
+                             aria-valuenow="50" aria-valuetext="50" data-node-id="I136:11813;140:14679"
                              data-calculator-thumb><span class="sanad-calculator__knob"
                                                          data-node-id="I136:11813;140:14680"></span></div>
                     </div>
                     <div class="sanad-calculator__limits" dir="ltr" data-node-id="I136:11813;140:14681"><span
-                            data-node-id="I136:11813;140:14682">100</span> <span data-node-id="I136:11813;140:14683">5,000</span>
+                            data-node-id="I136:11813;140:14682">50</span> <span data-node-id="I136:11813;140:14683">+1,000</span>
                     </div>
-                    <div class="sanad-calculator__presets" dir="ltr" data-node-id="I136:11813;140:14684">
-                        <button type="button" class="sanad-calculator__preset" data-calculator-preset="100"
-                                aria-pressed="true" data-node-id="I136:11813;140:14685"><span
-                                data-node-id="I136:11813;140:14686">100</span></button>
-                        <button type="button" class="sanad-calculator__preset" data-calculator-preset="1000"
-                                aria-pressed="false" data-node-id="I136:11813;140:14687"><span
-                                data-node-id="I136:11813;140:14688">1,000</span></button>
-                        <button type="button" class="sanad-calculator__preset" data-calculator-preset="2500"
-                                aria-pressed="false" data-node-id="I136:11813;140:14689"><span
-                                data-node-id="I136:11813;140:14690">2,500</span></button>
-                        <button type="button" class="sanad-calculator__preset" data-calculator-preset="5000"
-                                aria-pressed="false" data-node-id="I136:11813;140:14691"><span
-                                data-node-id="I136:11813;140:14692">5,000</span></button>
-                    </div>
+                    <div class="sanad-calculator__presets" dir="ltr"><button type="button" class="sanad-calculator__preset" data-calculator-preset="50" aria-pressed="true"><span>50</span></button> <button type="button" class="sanad-calculator__preset" data-calculator-preset="100" aria-pressed="false"><span>100</span></button> <button type="button" class="sanad-calculator__preset" data-calculator-preset="500" aria-pressed="false"><span>500</span></button> <button type="button" class="sanad-calculator__preset" data-calculator-preset="1000" aria-pressed="false"><span>+1,000</span></button></div>
                 </div>
                 <div class="sanad-calculator__outputs" data-node-id="I136:11813;140:14659">
                     <div class="sanad-calculator__output" data-node-id="I136:11813;140:14660"><p
                             class="sanad-calculator__output-label" data-node-id="I136:11813;140:14661">{{ __('auth.calc_output1_label') }}</p>
-                        <p class="sanad-calculator__output-value" data-node-id="I136:11813;140:14662">{{ __('auth.calc_output1_value') }}</p>
-                        <p class="sanad-calculator__output-note" data-node-id="I136:11813;140:14663">{{ __('auth.calc_output1_note') }}</p></div>
+                        <p class="sanad-calculator__output-value" data-node-id="I136:11813;140:14662" data-calculator-package-name data-calculator-package-name>{{ __('auth.calc_output1_value') }}</p>
+                        <p class="sanad-calculator__output-note" data-node-id="I136:11813;140:14663" data-calculator-package-note data-calculator-package-note>{{ __('auth.calc_output1_note') }}</p></div>
                     <div class="sanad-calculator__output" data-node-id="I136:11813;140:14664"><p
                             class="sanad-calculator__output-label" data-node-id="I136:11813;140:14665">{{ __('auth.calc_output2_label') }}</p>
-                        <p class="sanad-calculator__output-value" data-node-id="I136:11813;140:14666">{{ __('auth.calc_output2_value') }}</p>
-                        <p class="sanad-calculator__output-note" data-node-id="I136:11813;140:14667">{{ __('auth.calc_output2_note') }}</p></div>
+                        <p class="sanad-calculator__output-value" data-node-id="I136:11813;140:14666" data-calculator-savings-value data-calculator-savings-value>{{ __('auth.calc_output2_value') }}</p>
+                        <p class="sanad-calculator__output-note" data-node-id="I136:11813;140:14667" data-calculator-savings-note data-calculator-savings-note>{{ __('auth.calc_output2_note') }}</p></div>
                 </div>
             </div>
             <button type="button" class="sanad-calculator__cta" data-consultation-open
@@ -662,34 +748,8 @@
                     src="{{ asset('website/assets/image/svg/section-edge-layer-alt.svg') }}" alt=""></div>
         </div>
     </section>
-    <section class="sanad-faq" id="faq" aria-labelledby="sanad-faq-title">
-        <div class="sanad-faq__container">
-            <div class="sanad-faq__header"><h2 class="sanad-faq__title" id="sanad-faq-title">
-                    <span>{{ __('auth.faqs_heading_1') }} </span><span class="sanad-faq__accent">{{ __('auth.faqs_heading_2') }}</span></h2></div>
-            <div class="sanad-faq__list">
-                @foreach($faqs as $faqIndex => $faqItem)
-                <div class="sanad-faq__item sanad-card-hoverable">
-                    <h3 class="sanad-faq__heading">
-                        <button type="button" class="sanad-faq__trigger" id="sanad-faq-q{{ $faqIndex + 1 }}" aria-expanded="false"
-                                aria-controls="sanad-faq-a{{ $faqIndex + 1 }}"><span
-                                class="sanad-faq__question">{{ $faqItem->question }}</span>
-                            <span class="sanad-faq__icon" aria-hidden="true"> <img
-                                    class="sanad-faq__chevron sanad-faq__chevron--light"
-                                    src="{{ asset('website/assets/image/svg/Group_16x8_homepage-light.svg') }}" alt=""
-                                    width="16" height="8"> <img
-                                    class="sanad-faq__chevron sanad-faq__chevron--dark"
-                                    src="{{ asset('website/assets/image/svg/Group_16x8_homepage-dark.svg') }}" alt=""
-                                    width="16" height="8"> </span></button>
-                    </h3>
-                    <div class="sanad-faq__panel" id="sanad-faq-a{{ $faqIndex + 1 }}" role="region" aria-labelledby="sanad-faq-q{{ $faqIndex + 1 }}" hidden>
-                        <p class="sanad-faq__answer">{{ $faqItem->answer }}</p></div>
-                    <div class="sanad-card-hover-overlay" aria-hidden="true"></div>
-                </div>
-                @endforeach
-            </div>
-        </div>
-    </section>
-    <section class="sanad-privacy-banner" data-node-id="136:8399" aria-labelledby="sanad-privacy-banner-title">
+
+<section class="sanad-privacy-banner" data-node-id="136:8399" aria-labelledby="sanad-privacy-banner-title">
         <div class="sanad-privacy-banner__decor" aria-hidden="true"><span class="sanad-privacy-banner__glow"
                                                                           data-node-id="136:8400"></span><span
                 class="sanad-privacy-banner__accent" data-node-id="136:8401"></span></div>
@@ -802,6 +862,41 @@
                      height="184" decoding="async" data-node-id="136:8760"></picture>
         </div>
     </section>
+<section class="sanad-faq" id="faq" aria-labelledby="sanad-faq-title">
+        <div class="sanad-faq__container">
+            <div class="sanad-faq__header"><h2 class="sanad-faq__title" id="sanad-faq-title">
+                    <span>{{ __('auth.faqs_heading_1') }} </span><span class="sanad-faq__accent">{{ __('auth.faqs_heading_2') }}</span></h2></div>
+            <div class="sanad-faq__list">
+                @forelse($faqs as $faqIndex => $faqItem)
+                <div class="sanad-faq__item sanad-card-hoverable">
+                    <h3 class="sanad-faq__heading">
+                        <button type="button" class="sanad-faq__trigger" id="sanad-faq-q{{ $faqIndex + 1 }}" aria-expanded="false"
+                                aria-controls="sanad-faq-a{{ $faqIndex + 1 }}"><span
+                                class="sanad-faq__question">{{ $faqItem->question }}</span>
+                            <span class="sanad-faq__icon" aria-hidden="true"> <img
+                                    class="sanad-faq__chevron sanad-faq__chevron--light"
+                                    src="{{ asset('website/assets/image/svg/Group_16x8_homepage-light.svg') }}" alt=""
+                                    width="16" height="8"> <img
+                                    class="sanad-faq__chevron sanad-faq__chevron--dark"
+                                    src="{{ asset('website/assets/image/svg/Group_16x8_homepage-dark.svg') }}" alt=""
+                                    width="16" height="8"> </span></button>
+                    </h3>
+                    <div class="sanad-faq__panel" id="sanad-faq-a{{ $faqIndex + 1 }}" role="region" aria-labelledby="sanad-faq-q{{ $faqIndex + 1 }}" hidden>
+                        <p class="sanad-faq__answer">{{ $faqItem->answer }}</p></div>
+                    <div class="sanad-card-hover-overlay" aria-hidden="true"></div>
+                </div>
+                @empty
+<div class="sanad-faq__item sanad-card-hoverable"><h3 class="sanad-faq__heading"><button type="button" class="sanad-faq__trigger" id="sanad-faq-fallback-q1" aria-expanded="false" aria-controls="sanad-faq-fallback-a1"><span class="sanad-faq__question">هل نحتاج لتغيير السنترال أو سيستم الواتساب أو الـ CRM الحالي لديكم؟</span><span class="sanad-faq__icon" aria-hidden="true">+</span></button></h3><div class="sanad-faq__panel" id="sanad-faq-fallback-a1" role="region" aria-labelledby="sanad-faq-fallback-q1" hidden><p class="sanad-faq__answer">لا نهائياً. نعمل بنظام التشغيل المباشر (Plug &amp; Play) على كافة البرامج والأنظمة التي تستخدمها بالفعل عبر حسابات مستخدمين (Users) معتمدة، دون الحاجة لأي رسوم ربط أو تعديل تقني من طرفك.</p></div></div>
+<div class="sanad-faq__item sanad-card-hoverable"><h3 class="sanad-faq__heading"><button type="button" class="sanad-faq__trigger" id="sanad-faq-fallback-q2" aria-expanded="false" aria-controls="sanad-faq-fallback-a2"><span class="sanad-faq__question">كيف تضمنون جودة الردود ومعرفة الموظفين بمنتجاتنا أو خدماتنا الطبية/الخدمية؟</span><span class="sanad-faq__icon" aria-hidden="true">+</span></button></h3><div class="sanad-faq__panel" id="sanad-faq-fallback-a2" role="region" aria-labelledby="sanad-faq-fallback-q2" hidden><p class="sanad-faq__answer">نقوم بصياغة واستيعاب دليل الأسئلة الشائعة (FAQ Script) وقواعد العمل الخاصة بشركتك، ونُخضع الفريق لتدريب مكثف ومحاكاة حية قبل البدء. كما ندعم فرقنا بـ المساعد الذكي (Sanad AI) لتزويدهم بإجابات دقيقة واقتراحات لحظية وفق نبرة صوت براندك.</p></div></div>
+<div class="sanad-faq__item sanad-card-hoverable"><h3 class="sanad-faq__heading"><button type="button" class="sanad-faq__trigger" id="sanad-faq-fallback-q3" aria-expanded="false" aria-controls="sanad-faq-fallback-a3"><span class="sanad-faq__question">هل يمكننا الاستفادة من خدمات "فِكر" التسويقية دون التعاقد على التشغيل، أم أنها منظومة مدمجة؟</span><span class="sanad-faq__icon" aria-hidden="true">+</span></button></h3><div class="sanad-faq__panel" id="sanad-faq-fallback-a3" role="region" aria-labelledby="sanad-faq-fallback-q3" hidden><p class="sanad-faq__answer">يمكنك الاستفادة من ذراع "فِكر" بشكل مستقل لهندسة الهوية والتخطيط الاستراتيجي للحملات، أو دمجها مع خدمات التشغيل والمبيعات في سند CX لبناء منظومة نمو متكاملة تبدأ من الإعلان وتنتهي بإغلاق الصفقة وتأكيد الحجز.</p></div></div>
+<div class="sanad-faq__item sanad-card-hoverable"><h3 class="sanad-faq__heading"><button type="button" class="sanad-faq__trigger" id="sanad-faq-fallback-q4" aria-expanded="false" aria-controls="sanad-faq-fallback-a4"><span class="sanad-faq__question">كيف تتعاملون مع سرية البيانات والقطاعات الحساسة مثل الرعاية الصحية (Medical CX)؟</span><span class="sanad-faq__icon" aria-hidden="true">+</span></button></h3><div class="sanad-faq__panel" id="sanad-faq-fallback-a4" role="region" aria-labelledby="sanad-faq-fallback-q4" hidden><p class="sanad-faq__answer">نوقع اتفاقية حماية بيانات ورسمية (NDA) قبل بدء العمل. تبقى كافة بياناتك وعملائك محفوظة بالكامل على سيرفراتك وأنظمتك الخاصة دون نقلها، مع تطبيق أعلى معايير الخصوصية والاحترافية في التعامل مع بيانات المستفيدين والمرضى.</p></div></div>
+<div class="sanad-faq__item sanad-card-hoverable"><h3 class="sanad-faq__heading"><button type="button" class="sanad-faq__trigger" id="sanad-faq-fallback-q5" aria-expanded="false" aria-controls="sanad-faq-fallback-a5"><span class="sanad-faq__question">ما هي ضمانات جودة الأداء والـ SLA المعتمدة لديكم؟ وهل توجد تكاليف تأسيس مخفية؟</span><span class="sanad-faq__icon" aria-hidden="true">+</span></button></h3><div class="sanad-faq__panel" id="sanad-faq-fallback-a5" role="region" aria-labelledby="sanad-faq-fallback-q5" hidden><p class="sanad-faq__answer">لا توجد أي تكاليف تأسيس (Zero Setup Cost). ونلتزم باتفاقيات مستوى خدمة (SLA) صارمة تضمن معدل جودة ردود (QA Score) يتجاوز 95%، وزمن استجابة أقل من 60 ثانية، مع تقديم تقارير أداء دورية لمتابعة المبيعات والوفورات التشغيلية التي تصل إلى 40%.</p></div></div>
+<div class="sanad-faq__item sanad-card-hoverable"><h3 class="sanad-faq__heading"><button type="button" class="sanad-faq__trigger" id="sanad-faq-fallback-q6" aria-expanded="false" aria-controls="sanad-faq-fallback-a6"><span class="sanad-faq__question">هل توجد رسوم إعداد أو حد أدنى للتعاقد؟</span><span class="sanad-faq__icon" aria-hidden="true">+</span></button></h3><div class="sanad-faq__panel" id="sanad-faq-fallback-a6" role="region" aria-labelledby="sanad-faq-fallback-q6" hidden><p class="sanad-faq__answer">نقبل جميع طرق الدفع: بطاقات الائتمان، التحويل البنكي، والدفع النقدي عند الاستلام.</p></div></div>
+                @endforelse
+            </div>
+        </div>
+    </section>
+
     <section class="sanad-contact" id="contact" aria-labelledby="sanad-contact-title" data-node-id="85:10840">
         <div class="sanad-contact__container" data-node-id="85:10841">
             <div class="sanad-contact__layout" data-node-id="85:10842">
@@ -850,14 +945,22 @@
                                 <span class="sanad-input__status" id="sanad-contact-mobile-status"
                                       data-consultation-status aria-live="polite">{{ __('auth.contact_field_error') }}</span></div>
                         </div>
-                        <div class="sanad-input sanad-input--select" data-node-id="85:10852"><label
+                        <div class="sanad-input sanad-input--select"><label class="sanad-input__label" for="sanad-contact-interest">الاهتمام الأساسي أو الخدمة المطلوبة</label><div class="sanad-input__field"><select class="sanad-input__control" id="sanad-contact-interest" name="serviceInterest"><option value="">اختر</option><option value="تشغيل خدمة العملاء والمبيعات (BPO)">تشغيل خدمة العملاء والمبيعات (BPO)</option>
+<option value="المساعد الذكي والتكنولوجيا (Sanad AI)">المساعد الذكي والتكنولوجيا (Sanad AI)</option>
+<option value="الاستشارات التسويقية وهندسة الهوية (فِكر)">الاستشارات التسويقية وهندسة الهوية (فِكر)</option>
+<option value="منظومة النمو المتكاملة (الكل)">منظومة النمو المتكاملة (الكل)</option></select></div></div>
+
+                            <div class="sanad-input sanad-input--select" data-node-id="85:10852"><label
                                 class="sanad-input__label" for="sanad-contact-volume"><span
                                     data-node-id="I85:10852;58:947">{{ __('auth.contact_volume_label') }}</span></label>
                             <div class="sanad-input__field" data-node-id="I85:10852;58:924"><select
                                     class="sanad-input__control" id="sanad-contact-volume" name="dailyContactVolume"
                                     aria-describedby="sanad-contact-volume-status">
-                                    <option value="">{{ __('auth.contact_select_placeholder') }}</option>
-                                </select> <span class="sanad-contact__placeholder" aria-hidden="true"
+<option value="">اختر</option>
+<option value="أقل من 100">أقل من 100</option>
+<option value="100 - 500">100 - 500</option>
+<option value="أكثر من 500">أكثر من 500</option>
+</select> <span class="sanad-contact__placeholder" aria-hidden="true"
                                                 data-node-id="I85:10852;58:929">{{ __('auth.contact_select_placeholder') }}</span> <span
                                     class="sanad-input__toggle sanad-contact__toggle" aria-hidden="true"
                                     data-node-id="I85:10852;58:931"> <img

@@ -13,6 +13,7 @@ return new class extends Migration
         });
 
         Schema::table('blogs', function (Blueprint $table) {
+            $table->dropUnique(['slug']);
             $table->dropColumn('slug');
         });
     }
