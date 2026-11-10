@@ -36,8 +36,16 @@
     </style>
     @endif
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('website/assets/css/styles.css') }}">
+    <style>
+        .sanad-header--scrolled { background: color-mix(in srgb, var(--sanad-color-background, #0e1e30) 92%, transparent); backdrop-filter: blur(16px); box-shadow: 0 4px 24px #00000012; }
+        .sanad-line-mask { display: block; overflow: hidden; }
+        .sanad-word { display: inline-block; }
+        .sanad-reading-progress { position: fixed; top: 0; inset-inline: 0; height: 3px; background: #38d39b; z-index: 10000; pointer-events: none; }
+        .sanad-privacy-hero__toc-link.is-active, .sanad-privacy-contents__link.is-active, .sanad-terms-contents__link.is-active, .sanad-legal__toc-link.is-active { color: var(--sanad-color-primary, #1e40af); text-decoration: underline; text-underline-offset: 6px; }
+        .differ-card, .sanad-differ__card { background-image: radial-gradient(400px circle at var(--mouse-x, -500px) var(--mouse-y, -500px), #337efc12, transparent 70%); }
+        @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto !important; } }
+    </style>
     @stack('styles')
     @if(($settings?->font ?? 'ibm') === 'thmanya')
     <style>

@@ -25,3 +25,11 @@ _ide_helper.php
 Homestead.json
 Homestead.yaml
 Thumbs.db
+
+# Playwright & Audit files
+/playwright-report
+/screenshots
+/public/assets
+codex-audit-brief.txt
+test-browser.cjs
+

@@ -11,10 +11,10 @@
   <nav class="sanad-header__nav" data-site-header-nav id="sanad-site-navigation" aria-label="{{ __('auth.main_nav') }}">
    <ul class="sanad-header__list">
     <li><a class="sanad-header__link {{ request()->routeIs('website.home') ? 'sanad-header__link--active' : '' }}" href="{{ route('website.home') }}">{{ __('auth.nav_home') }}</a></li>
-    <li><a class="sanad-header__link {{ request()->routeIs('website.services') ? 'sanad-header__link--active' : '' }}" href="{{ route('website.services') }}">{{ __('auth.nav_services') }}</a></li>
-    <li><a class="sanad-header__link {{ request()->routeIs('website.ai-assistant') ? 'sanad-header__link--active' : '' }}" href="{{ route('website.ai-assistant') }}">{{ __('auth.nav_ai_assistant') }}</a></li>
-    <li><a class="sanad-header__link {{ request()->routeIs('website.fkr') ? 'sanad-header__link--active' : '' }}" href="{{ route('website.fkr') }}">{{ __('auth.nav_fkr') }}</a></li>
-    <li><a class="sanad-header__link {{ request()->routeIs('website.how-it-works') ? 'sanad-header__link--active' : '' }}" href="{{ route('website.how-it-works') }}">{{ __('auth.nav_how_it_works') }}</a></li>
+    <li><a class="sanad-header__link {{ request()->routeIs('website.services') ? 'sanad-header__link--active' : '' }}" href="{{ route('website.services') }}">{{ app()->getLocale() === 'ar' ? 'حلول التشغيل' : 'Operations Solutions' }}</a></li>
+    <li><a class="sanad-header__link" href="{{ url('/ai-assistant') }}">{{ app()->getLocale() === 'ar' ? 'المساعد الذكي' : 'AI Assistant' }}</a></li>
+    <li><a class="sanad-header__link" href="{{ url('/fikr') }}">{{ app()->getLocale() === 'ar' ? 'فِكر' : 'Fikr' }}</a></li>
+    <li><a class="sanad-header__link {{ request()->routeIs('website.how-it-works') ? 'sanad-header__link--active' : '' }}" href="{{ route('website.how-it-works') }}">{{ app()->getLocale() === 'ar' ? 'رحلة التشغيل' : 'Operations Journey' }}</a></li>
     <li><a class="sanad-header__link {{ request()->routeIs('website.about') ? 'sanad-header__link--active' : '' }}" href="{{ route('website.about') }}">{{ __('auth.nav_about') }}</a></li>
    </ul>
   </nav>
