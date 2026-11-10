@@ -811,13 +811,14 @@
         };
         spec('privacy.01.legal', '.sanad-privacy-hero, .sanad-legal--privacy', () => legal('privacy'));
         spec('terms.01.legal', '.sanad-terms-hero, .sanad-legal--terms', () => legal('terms'));
-        spec('fikr.01.hero', '.fikr-hero', section => {
-          heading('.fikr-hero__title', { yPercent: 120, duration: 1.15, ease: 'power4.out', stagger: 0.05 });
-          from('.editorial-img-wrap', { y: 0, clipPath: 'inset(100% 0% 0% 0%)', duration: 1.3, ease: 'expo.inOut' }, section);
-          from('.fikr-original-logo', { y: 0, scale: 1.25, duration: 1.3, ease: 'power4.out' }, section);
+        spec('fikr.01.hero', '.fikr-hero, .fkr__hero', section => {
+          heading('.fikr-hero__title, #fkr-title, .fkr__hero h1', { yPercent: 120, duration: 1.15, ease: 'power4.out', stagger: 0.05 });
+          from('.editorial-img-wrap, .fkr__hero-copy p, .fkr__lead', { y: 20, stagger: 0.08, duration: 0.8 }, section);
+          from('.fikr-original-logo, .fkr__logo', { y: 0, scale: 1.15, duration: 1.3, ease: 'power4.out' }, section);
+          from('.fkr__btn, .fikr-button', { scale: 0.9, duration: 0.7, ease: 'back.out(1.8)' }, section);
         });
-        spec('fikr.02.marquee-philosophy', '.fikr-expertise', section => {
-          const track = $('.fikr-marquee-track', section);
+        spec('fikr.02.marquee-philosophy', '.fikr-expertise, .fkr__strip', section => {
+          const track = $('.fikr-marquee-track, .fkr__track', section);
           if (track) {
             const loop = g.fromTo(track, { xPercent: -50 }, { xPercent: 0, duration: 34, repeat: -1, ease: 'none', onReverseComplete() { this.totalTime(this.rawTime() + this.duration() * 100); } });
             const settle = g.quickTo(loop, 'timeScale', { duration: 0.8, ease: 'power2.out' });
@@ -826,42 +827,52 @@
             on(document, 'visibilitychange', () => document.hidden ? loop.pause() : loop.play());
             on(window, 'sanad:motion-reset', () => clearTimeout(idle));
           }
-          heading('.fikr-philosophy h2');
-          $$('.fikr-philosophy__text p').forEach(paragraph => g.fromTo(splitText(paragraph, 'words').words, { opacity: 0.3 }, { opacity: 1, stagger: 0.04, ease: 'none', scrollTrigger: { trigger: paragraph, start: 'top 85%', end: 'bottom 55%', scrub: 0.5 } }));
+          heading('.fikr-philosophy h2, .fkr__phil h2');
+          $$('.fikr-philosophy__text p, .fkr__phil-copy p').forEach(paragraph => g.fromTo(splitText(paragraph, 'words').words, { opacity: 0.3 }, { opacity: 1, stagger: 0.04, ease: 'none', scrollTrigger: { trigger: paragraph, start: 'top 85%', end: 'bottom 55%', scrub: 0.5 } }));
         });
-        spec('fikr.03.disciplines', '.fikr-services-section', section => {
-          heading('.fikr-services-section h2');
-          $$('.fkr-discipline', section).forEach(row => { from([row], { y: 24 }); const divider = $('.divider', row); if (divider) g.from(divider, { scaleX: 0, transformOrigin: 'right', duration: 1, ease: 'expo.out', scrollTrigger: trigger(row) }); const number = $('b', row); if (number) g.fromTo(number, { y: 12 }, { y: -12, ease: 'none', scrollTrigger: { trigger: row, start: 'top bottom', end: 'bottom top', scrub: true } }); });
+        spec('fikr.03.disciplines', '.fikr-services-section, .fkr__svcs', section => {
+          heading('.fikr-services-section h2, .fkr__head h2');
+          $$('.fkr-discipline, .fkr__svc', section).forEach(row => {
+            from([row], { y: 24 });
+            const divider = $('.divider, .fkr__rule', row);
+            if (divider) g.from(divider, { scaleX: 0, transformOrigin: 'right', duration: 1, ease: 'expo.out', scrollTrigger: trigger(row) });
+            const number = $('b, .fkr__num', row);
+            if (number) g.fromTo(number, { y: 12 }, { y: -12, ease: 'none', scrollTrigger: { trigger: row, start: 'top bottom', end: 'bottom top', scrub: true } });
+          });
         });
-        spec('fikr.04.portraits', '.fikr-industries', () => {
-          heading('.fikr-industries h2');
-          $$('.fikr-photo').forEach(photo => { from([photo], { y: 0, clipPath: 'inset(100% 0% 0% 0%)', duration: 1.2 }); const inner = $('.portrait-img', photo); if (inner) g.fromTo(inner, { yPercent: -10 }, { yPercent: 10, ease: 'none', scrollTrigger: { trigger: photo, start: 'top bottom', end: 'bottom top', scrub: true } }); });
+        spec('fikr.04.portraits', '.fikr-industries, .fkr__inds', () => {
+          heading('.fikr-industries h2, .fkr__inds h2');
+          $$('.fikr-photo, .fkr__ind').forEach(photo => {
+            from([photo], { y: 24, duration: 1.2 });
+            const inner = $('.portrait-img, img', photo);
+            if (inner) g.fromTo(inner, { yPercent: -8 }, { yPercent: 8, ease: 'none', scrollTrigger: { trigger: photo, start: 'top bottom', end: 'bottom top', scrub: true } });
+          });
         });
-        spec('fikr.05.method-consultation', '.fikr-method', section => {
-          heading('.fikr-method h2, .fikr-cta h2', { duration: 1.15, ease: 'power4.out' });
-          from('.method-step', { y: 40, stagger: 0.15, duration: 0.9 }, section);
+        spec('fikr.05.method-consultation', '.fikr-method, .fkr__meth', section => {
+          heading('.fikr-method h2, .fikr-cta h2, .fkr__meth h2, .fkr__cta h2', { duration: 1.15, ease: 'power4.out' });
+          from('.method-step, .fkr__step', { y: 40, stagger: 0.15, duration: 0.9 }, section);
           draw('.growth-loop__path', section, true);
-          $$('.method-step', section).forEach(step => ST.create({ trigger: step, start: 'top 70%', end: 'bottom 30%', toggleClass: 'is-active' }));
+          $$('.method-step, .fkr__step', section).forEach(step => ST.create({ trigger: step, start: 'top 70%', end: 'bottom 30%', toggleClass: 'is-active' }));
         });
         spec('ai.01.hero', '.ai-hero', section => {
-          heading('.ai-hero__title', { stagger: 0.035, duration: 0.85 });
-          from('.ai-dashboard-mockup', { rotationX: 14, scale: 0.92, y: 50, duration: 1.1 }, section);
-          from('.ai-flow-node', { y: 20, stagger: 0.16 }, section);
+          heading('.ai-hero__title, #ai-hero-title', { stagger: 0.035, duration: 0.85 });
+          from('.ai-dashboard-mockup, .ai-art', { rotationX: 14, scale: 0.92, y: 50, duration: 1.1 }, section);
+          from('.ai-flow-node, .ai-hcard', { y: 20, stagger: 0.16 }, section);
         });
-        spec('ai.02.ecosystem-shift', '.ai-ecosystem, .ai-shift', () => {
+        spec('ai.02.ecosystem-shift', '.ai-ecosystem, .ai-eco, .ai-shift', () => {
           const lines = $$('.data-stream-line');
           if (lines.length) {
             const pulse = g.to(lines, { strokeDashoffset: -120, repeat: -1, duration: 1.8, ease: 'none', paused: true });
-            ST.create({ trigger: $('.ai-ecosystem'), start: 'top bottom', end: 'bottom top', onToggle: self => self.isActive ? pulse.play() : pulse.pause() });
-            on(document, 'visibilitychange', () => document.hidden ? pulse.pause() : ST.isInViewport($('.ai-ecosystem')) && pulse.play());
+            ST.create({ trigger: $('.ai-ecosystem, .ai-eco'), start: 'top bottom', end: 'bottom top', onToggle: self => self.isActive ? pulse.play() : pulse.pause() });
+            on(document, 'visibilitychange', () => document.hidden ? pulse.pause() : ST.isInViewport($('.ai-ecosystem, .ai-eco')) && pulse.play());
           }
-          from('.ai-pills span', { scale: 0.8, y: 20, stagger: 0.1 }, $('.ai-ecosystem'));
-          from('.ai-shift__card', { x: i => i ? -40 : 40, y: 0, stagger: 0.12 }, $('.ai-shift'));
-          const after = $('.ai-shift__card--after');
+          from('.ai-pills span, .ai-eco__hub, .ai-eco__node', { scale: 0.8, y: 20, stagger: 0.08 }, $('.ai-ecosystem, .ai-eco'));
+          from('.ai-shift__card, .ai-canvas', { x: i => i ? -40 : 40, y: 0, stagger: 0.12 }, $('.ai-shift'));
+          const after = $('.ai-shift__card--after, .ai-canvas--after');
           if (after) { const reply = $('.ai-reply-text', after); const timeline = g.timeline({ scrollTrigger: trigger(after, 'top 68%') }); timeline.from($('.chat-incoming', after), { y: 24, opacity: 0 }).from($('.ai-copilot-badge', after), { scale: 0.8, opacity: 0, ease: 'back.out(1.7)' }); if (reply) timeline.from(splitText(reply, 'words').words, { opacity: 0, stagger: 0.025, duration: 0.4 }); }
         });
-        spec('ai.03.walkthrough', '.ai-walkthrough', section => {
-          const steps = $$('.ai-walkthrough__step', section), visual = $('.copilot-visual', section), stage = $('.copilot-stage', section);
+        spec('ai.03.walkthrough', '.ai-walkthrough, .ai-steps', section => {
+          const steps = $$('.ai-walkthrough__step, .ai-step', section), visual = $('.copilot-visual, .ai-demo', section), stage = $('.copilot-stage', section);
           from(steps, { stagger: 0.15 }, section);
           if (visual && stage && window.innerWidth >= 1024 && visual.offsetHeight < window.innerHeight - 160) {
             ST.create({ trigger: visual, start: 'top 128px', end: () => `+=${Math.min(600, Math.max(240, window.innerHeight * 0.5))}`, pin: visual, pinSpacing: true, invalidateOnRefresh: true, onUpdate: self => {
@@ -870,14 +881,14 @@
               const caption = $('[data-copilot-caption]', visual); if (caption && steps[current]) caption.textContent = $('h3', steps[current]).textContent;
             } });
             g.from('.copilot-extension', { rotationY: -8, scale: 0.95, duration: 1, scrollTrigger: { trigger: visual, start: 'top 70%', end: 'top 25%', scrub: 1 } });
-          } else from('.copilot-visual', { scale: 0.96 });
+          } else from('.copilot-visual, .ai-demo', { scale: 0.96 });
         });
-        spec('ai.04.telemetry-pricing', '.ai-ops, .ai-pricing-section', () => {
-          from('.telemetry-bar', { scaleY: 0, y: 0, transformOrigin: 'bottom', stagger: 0.06, duration: 0.8, ease: 'expo.out' }, $('.ai-ops'));
-          from('.ai-pricing__card', { stagger: 0.1 }, $('.ai-pricing-section'));
-          const featured = $('.ai-pricing--featured');
+        spec('ai.04.telemetry-pricing', '.ai-ops, .ai-pricing-section, .ai-plans', () => {
+          from('.telemetry-bar, .ai-kpi__chart i', { scaleY: 0, y: 0, transformOrigin: 'bottom', stagger: 0.06, duration: 0.8, ease: 'expo.out' }, $('.ai-ops'));
+          from('.ai-pricing__card, .ai-plan', { stagger: 0.1 }, $('.ai-pricing-section, .ai-plans'));
+          const featured = $('.ai-pricing--featured, .ai-plan--p');
           if (featured) g.to(featured, { boxShadow: '0 0 32px rgba(51,126,252,.2)', duration: 1.2, scrollTrigger: trigger(featured) });
-          batch('.ai-faq__item'); heading('.ai-ops>h2, .ai-pricing-section>h2');
+          batch('.ai-faq__item, .ai-faq__row'); heading('.ai-ops>h2, .ai-pricing-section>h2, .ai-plans>h2');
         });
       });
       ST.refresh();

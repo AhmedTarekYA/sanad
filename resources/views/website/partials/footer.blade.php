@@ -44,8 +44,8 @@
     <li><a class="sanad-footer__link" href="{{ route('website.home') }}">{{ __('auth.nav_home') }}</a></li>
     <li><a class="sanad-footer__link" href="{{ route('website.services') }}">{{ app()->getLocale() === 'ar' ? 'حلول التشغيل' : 'Operations Solutions' }}</a></li>
     <li><a class="sanad-footer__link" href="{{ route('website.how-it-works') }}">{{ app()->getLocale() === 'ar' ? 'رحلة التشغيل' : 'Operations Journey' }}</a></li>
-    <li><a class="sanad-footer__link" href="{{ url('/ai-assistant') }}">{{ app()->getLocale() === 'ar' ? 'المساعد الذكي' : 'AI Assistant' }}</a></li>
-    <li><a class="sanad-footer__link" href="{{ url('/fikr') }}">{{ app()->getLocale() === 'ar' ? 'فِكر' : 'Fikr' }}</a></li>
+    <li><a class="sanad-footer__link" href="{{ route('website.ai-assistant') }}">{{ app()->getLocale() === 'ar' ? 'المساعد الذكي' : 'AI Assistant' }}</a></li>
+    <li><a class="sanad-footer__link" href="{{ route('website.fkr') }}">{{ app()->getLocale() === 'ar' ? 'فِكر' : 'Fikr' }}</a></li>
     <li><a class="sanad-footer__link" href="{{ route('website.blog') }}">{{ __('auth.nav_blog') }}</a></li>
    </ul>
   </nav>

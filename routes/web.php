@@ -17,11 +17,6 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 Route::get('/', [LandingController::class, 'index'])->name('landing');
 
-// Frontend-only campaign pages. Their presentation remains in public assets;
-// no controller or backend workflow is involved.
-Route::get('/fikr', fn () => response()->file(public_path('fikr.html')))->name('fikr');
-Route::get('/ai-assistant', fn () => response()->file(public_path('ai-assistant.html')))->name('ai-assistant');
-
 /*
 |--------------------------------------------------------------------------
 | Website Routes
@@ -43,6 +38,7 @@ Route::group(
         Route::get('/how-it-works', [WebsiteController::class, 'howItWorks'])->name('how-it-works');
         Route::get('/ai-assistant', [WebsiteController::class, 'aiAssistant'])->name('ai-assistant');
         Route::get('/fkr', [WebsiteController::class, 'fkr'])->name('fkr');
+        Route::get('/fikr', [WebsiteController::class, 'fkr'])->name('fikr');
         Route::get('/blog', [WebsiteController::class, 'blog'])->name('blog');
         Route::get('/blog/{slug?}', [WebsiteController::class, 'blogArticle'])->name('blog.article');
         Route::get('/privacy-policy', [WebsiteController::class, 'privacy'])->name('privacy');
