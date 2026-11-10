@@ -4,6 +4,7 @@ const path = require('path');
 
 const PORT = 8000;
 const PUBLIC_DIR = path.join(__dirname, 'public');
+const VIEWS_DIR = path.join(__dirname, 'resources', 'views', 'website');
 
 const MIME_TYPES = {
     '.html': 'text/html; charset=utf-8',
@@ -37,15 +38,19 @@ const server = http.createServer((req, res) => {
 
     let filePath = path.join(PUBLIC_DIR, reqUrl);
 
-    // If file doesn't exist, try appending .html (Laravel style routes)
+    // If file doesn't exist in public, check with .html, or fallback to views/website
     if (!fs.existsSync(filePath)) {
         if (fs.existsSync(filePath + '.html')) {
             filePath = filePath + '.html';
+        } else if (fs.existsSync(path.join(VIEWS_DIR, reqUrl))) {
+            filePath = path.join(VIEWS_DIR, reqUrl);
+        } else if (fs.existsSync(path.join(VIEWS_DIR, reqUrl + '.html'))) {
+            filePath = path.join(VIEWS_DIR, reqUrl + '.html');
         }
     }
 
     // Security check to prevent directory traversal
-    if (!filePath.startsWith(PUBLIC_DIR)) {
+    if (!filePath.startsWith(PUBLIC_DIR) && !filePath.startsWith(VIEWS_DIR)) {
         res.writeHead(403, { 'Content-Type': 'text/plain; charset=utf-8' });
         res.end('403 Forbidden');
         return;
@@ -54,7 +59,10 @@ const server = http.createServer((req, res) => {
     fs.stat(filePath, (err, stats) => {
         if (err || !stats.isFile()) {
             // Fallback to 404.html if available
-            const notFoundPath = path.join(PUBLIC_DIR, '404.html');
+            const notFoundPath = fs.existsSync(path.join(PUBLIC_DIR, '404.html'))
+                ? path.join(PUBLIC_DIR, '404.html')
+                : path.join(VIEWS_DIR, '404.html');
+
             if (fs.existsSync(notFoundPath)) {
                 res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
                 fs.createReadStream(notFoundPath).pipe(res);
