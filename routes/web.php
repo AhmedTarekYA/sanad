@@ -29,6 +29,7 @@ Route::get('/ai-assistant', fn () => response()->file(public_path('ai-assistant.
 */
 use App\Http\Controllers\Website\ConsultationController;
 use App\Http\Controllers\Website\WebsiteController;
+use App\Models\Sanad\WhatsAppClick;
 
 Route::group(
     [
@@ -40,6 +41,8 @@ Route::group(
         Route::get('/about', [WebsiteController::class, 'about'])->name('about');
         Route::get('/services', [WebsiteController::class, 'services'])->name('services');
         Route::get('/how-it-works', [WebsiteController::class, 'howItWorks'])->name('how-it-works');
+        Route::get('/ai-assistant', [WebsiteController::class, 'aiAssistant'])->name('ai-assistant');
+        Route::get('/fkr', [WebsiteController::class, 'fkr'])->name('fkr');
         Route::get('/blog', [WebsiteController::class, 'blog'])->name('blog');
         Route::get('/blog/{slug?}', [WebsiteController::class, 'blogArticle'])->name('blog.article');
         Route::get('/privacy-policy', [WebsiteController::class, 'privacy'])->name('privacy');
@@ -47,7 +50,8 @@ Route::group(
         Route::get('/404', [WebsiteController::class, 'notFound'])->name('404');
         Route::post('/consultation', [ConsultationController::class, 'store'])->name('consultation.store');
         Route::post('/whatsapp-click', function () {
-            \App\Models\Sanad\WhatsAppClick::create(['page' => request('page', 'home')]);
+            WhatsAppClick::create(['page' => request('page', 'home')]);
+
             return response()->json(['ok' => true]);
         })->name('whatsapp.click');
     });

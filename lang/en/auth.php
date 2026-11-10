@@ -283,8 +283,10 @@ return [
     'hero_trust_launch_detail' => 'Activate the team and start work within just 48 hours.',
 
     'nav_home' => 'Home',
-    'nav_services' => 'Our Services',
-    'nav_how_it_works' => 'How We Work',
+    'nav_services' => 'Operations Solutions',
+    'nav_how_it_works' => 'Operations Journey',
+    'nav_ai_assistant' => 'AI Assistant',
+    'nav_fkr' => 'Fkr',
     'nav_about' => 'About Sanad',
     'nav_blog' => 'Blog',
     'nav_faq' => 'FAQ',
@@ -298,14 +300,17 @@ return [
     'faq' => 'FAQ',
     'question' => 'Question',
     'answer' => 'Answer',
-    'faqs_heading_1' => 'Frequently Asked',
-    'faqs_heading_2' => 'Questions',
+    'faqs_heading_1' => 'Transparent answers to partners\' most important questions before launch',
+    'faqs_heading_2' => '',
 
     'footer_quick_links' => 'Quick Links',
     'footer_important_links' => 'Important Links',
     'footer_contact_us' => 'Contact Us',
     'footer_terms' => 'Terms & Conditions',
     'footer_privacy' => 'Privacy Policy',
+
+    'footer_tagline' => 'Your strategic partner for outsourcing and managing customer care and communications, running directly on your systems',
+    'footer_powered_by' => 'Sanad CX is an operational brand powered by Mada CX.',
     'social_facebook' => 'Facebook',
     'social_instagram' => 'Instagram',
     'social_twitter' => 'X (Twitter)',
@@ -314,6 +319,7 @@ return [
 
     // Stats section
     'stats_aria_label' => 'Performance Indicators',
+
     'stats_speed_title' => 'Response Speed',
     'stats_speed_desc' => 'Average response time across all channels',
     'stats_integration_title' => 'Technical Integration',
@@ -322,6 +328,15 @@ return [
     'stats_efficiency_desc' => 'Average reduction in operational costs',
     'stats_growth_title' => 'Growth & Sales',
     'stats_growth_desc' => 'Increase in sales conversion rate through conversations',
+    'stats_prev' => 'Previous',
+    'stats_next' => 'Next',
+    'stats_speed_title' => 'Response Speed',
+    'stats_speed_desc' => 'Average response time for calls and messages.',
+    'stats_integration_title' => 'Direct Operation',
+    'stats_integration_desc' => 'Run directly on the client\'s systems with no new software required.',
+    'stats_efficiency_title' => 'Financial Efficiency',
+    'stats_efficiency_desc' => 'Average reduction in operational and administrative costs compared with traditional in-house hiring.',
+    'stats_growth_title' => 'Growth & Sales',
 
     // Integration section
     'integration_title_before' => 'Flexible Operations That',
@@ -354,6 +369,7 @@ return [
     'services_card4_title' => 'Inbound and outbound call management (Voice Operations)',
     'services_card4_desc' => 'Provide professional support and respond to calls in under 60 seconds through your cloud telephone system, in your brand voice.',
 
+
     // Testimonials section
     'testimonials_heading' => 'What Do Our Growth Partners Say About the Sanad CX Experience?',
     'testimonials_carousel_label' => 'Customer Reviews',
@@ -377,6 +393,7 @@ return [
     'steps_step4_title' => '4. Launch and continuous growth (Launch & Scale)',
     'steps_step4_desc' => 'The team begins responding, caring for customers and closing deals, with accurate periodic reports on KPIs, sales conversions and return on investment (ROI).',
     'steps_step4_summary' => 'Periodic reports',
+
     'steps_fact1_title' => 'Launch Within 48h',
     'steps_fact1_text' => 'Go live immediately',
     'steps_fact2_title' => 'Granting Permissions',
@@ -405,6 +422,7 @@ return [
     // Contact / Consultation form section
     'contact_title' => 'Ready to Elevate Your Customer Experience and Accelerate Your Growth?',
     'contact_description' => 'Leave your details and one of our experts will contact you with a free analysis and a tailored package for your company\'s size and activity.',
+
     'contact_name_label' => 'Full Name',
     'contact_company_label' => 'Company / Brand Name',
     'contact_mobile_label' => 'Mobile / WhatsApp Number',
@@ -448,4 +466,42 @@ return [
     'parity_stat7_value' => '95%+',
     'parity_stat7_title' => 'QA Score & SLA Guarantee',
     'parity_stat7_desc' => 'A quality performance guarantee, response in under 60 seconds and a strict non-disclosure agreement (NDA).',
+
+    'stats_coverage_title' => 'Continuous Coverage',
+    'stats_coverage_desc' => 'Constant presence caring for your customers and protecting your brand reputation.',
+    'stats_setup_title' => 'Setup Costs',
+    'stats_setup_desc' => 'Zero setup or initial onboarding fees to get started.',
+    'stats_qa_title' => 'QA Score & SLA Guarantee',
+    'stats_qa_desc' => 'Guaranteed standard performance quality with a firm commitment to reply in under 60 seconds and absolute confidentiality (NDA).',
+    'fkr_eyebrow' => 'Fikr',
+    'fkr_title' => 'Marketing Consulting & Growth Engineering',
+    'fkr_subtitle' => 'We don\'t run passing ads. We engineer brand identities and sales channels that deliver growth.',
+    'fkr_body' => 'Under the Sanad CX umbrella, the "Fikr" arm offers marketing consulting for company leaders and founders. We combine visual identity aesthetics with a numbers and ROI mindset, so everything you spend on marketing turns into real growth and sustainable sales.',
+    'fkr_cta' => 'Explore the Fikr Marketing Mindset',
+    'fkr_item1_title' => 'Sharp Strategic Positioning (Brand Positioning)',
+    'fkr_item1_desc' => 'We define your competitive edge to put your brand ahead of competitors, impossible to ignore.',
+    'fkr_item2_title' => 'High-Converting Campaigns (High-Intent Campaigns)',
+    'fkr_item2_desc' => 'Designing and planning lead generation campaigns that filter out noise and non-serious prospects.',
+    'fkr_item3_title' => 'Marketing-to-Sales Alignment',
+    'fkr_item3_desc' => 'Closing the gap between advertising and closing the deal by integrating campaigns directly with sales teams and the Sanad CX smart assistant.',
+    'ai_title' => 'AI at Your Team\'s Service: the Sanad CX Smart Assistant Add-on',
+    'ai_description' => 'Empower your sales and customer service team to reply smartly and fast, right inside WhatsApp and your CRM, without changing your current tools.',
+    'ai_features_heading' => 'How does the Sanad CX add-on raise your team\'s efficiency?',
+    'ai_feature1_title' => 'Instant Reply Suggestions',
+    'ai_feature1_desc' => 'The smart assistant reads the conversation context and generates accurate replies that match your identity and business rules at the click of a button.',
+    'ai_feature2_title' => 'Customer Tone Analysis (Sentiment Analysis)',
+    'ai_feature2_desc' => 'Automatic, real-time detection of customer emotions and needs to help the agent respond appropriately.',
+    'ai_feature3_title' => 'Manager Dashboard & Analytics',
+    'ai_feature3_desc' => 'Close tracking of agent performance, reply speed, and top customer objections through a full management dashboard.',
+    'ai_cta_features' => 'Discover the Add-on Features',
+    'ai_cta_trial' => 'Start Your Free Trial',
+    'ai_mock_replies' => 'Replies',
+    'ai_mock_chats' => 'Chats',
+    'ai_mock_clients' => 'Customers',
+    'ai_mock_analytics' => 'Analytics',
+    'ai_mock_performance' => 'Performance',
+    'ai_mock_sales' => 'Sales',
+    'ai_outcome1' => 'Increase sales, reduce operating costs,',
+    'ai_outcome2' => 'Boost employee productivity, improve customer experience,',
+    'ai_outcome3' => 'Faster, more accurate decisions, administrative or operational',
 ];

@@ -6,6 +6,10 @@
 @section('og_title', $article->title . ' — SANAD CX')
 @section('og_description', $article->description)
 
+@push('styles')
+<link rel="stylesheet" href="{{ asset('website/assets/css/pages/blog.css') }}">
+@endpush
+
 @section('content')
 <section class="sanad-article-hero" id="sanad-article-hero" aria-labelledby="sanad-article-hero-title">
  <div class="sanad-article-hero__row">
@@ -16,7 +20,7 @@
    <p class="sanad-article-hero__description">{{ $article->description }}</p>
    @if($article->created_at)
    <div class="sanad-article-hero__meta">
-    <p class="sanad-article-hero__meta-text">{{ $article->created_at->translatedFormat('j F Y') }} · قراءة</p>
+    <p class="sanad-article-hero__meta-text">{{ $article->created_at->translatedFormat('j F Y') }} · {{ $article->reading_minutes }} {{ $article->reading_minutes >= 3 && $article->reading_minutes <= 10 ? 'دقائق' : 'دقيقة' }} قراءة</p>
    </div>
    @endif
   </div>
@@ -52,15 +56,16 @@
  </div>
  <ul class="sanad-article-related__list">
   @foreach($related as $relatedArticle)
+  @php [$coverKey, $coverIcon, $coverMod] = [['whatsapp','whatsappChatIcon_24x24',''],['kpis','performanceAnalyticsIcon_24x24','analytics'],['outsourcing','customerSupportIcon_24x24','support']][$loop->index % 3]; @endphp
   <li class="sanad-article-related__item">
    <article class="sanad-article-card sanad-card-hoverable">
-    <div class="sanad-article-card__cover">
+    <div class="sanad-article-card__cover sanad-article-card__cover--{{ $coverKey }}">
      <span class="sanad-article-card__ring sanad-article-card__ring--one" aria-hidden="true"></span>
      <span class="sanad-article-card__ring sanad-article-card__ring--two" aria-hidden="true"></span>
      <span class="sanad-article-card__ring sanad-article-card__ring--three" aria-hidden="true"></span>
      <span class="sanad-article-card__cover-badge">
       <span class="sanad-article-card__cover-icon">
-       <img class="sanad-article-card__cover-icon-image sanad-article-card__cover-icon-image--support" src="{{ asset('website/assets/image/svg/customerSupportIcon_24x24.svg') }}" alt="" width="26.67" height="26.67" decoding="async">
+       <img class="sanad-article-card__cover-icon-image{{ $coverMod ? ' sanad-article-card__cover-icon-image--'.$coverMod : '' }}" src="{{ asset('website/assets/image/svg/'.$coverIcon.'.svg') }}" alt="" width="26.67" height="26.67" decoding="async">
       </span>
      </span>
     </div>

@@ -24,7 +24,7 @@
     <span class="sanad-blog-hero__label-text">مقال مميز</span>
    </span>
   </div>
-  <p class="sanad-blog-hero__meta">تجربة العملاء · قراءة</p>
+  <p class="sanad-blog-hero__meta">تجربة العملاء · {{ $featured->reading_minutes }} {{ $featured->reading_minutes >= 3 && $featured->reading_minutes <= 10 ? 'دقائق' : 'دقيقة' }} قراءة</p>
   <h2 class="sanad-blog-hero__title">{{ $featured->title }}</h2>
   <p class="sanad-blog-hero__excerpt">{{ $featured->description }}</p>
   <a class="sanad-btn sanad-btn--md sanad-blog-hero__read" href="{{ route('website.blog.article', ['slug' => $featured->slug]) }}">اقرأ المقال</a>
@@ -42,7 +42,7 @@
   @foreach($articles as $article)
   <article class="sanad-blog-card sanad-card-hoverable">
    <div class="sanad-blog-card__cover">
-    <img class="sanad-blog-card__cover-image" src="{{ $article->image ? asset($article->image) : asset('website/assets/image/svg/blog-cover-calls.svg') }}" alt="" width="384" height="216" loading="lazy" decoding="async">
+    <img class="sanad-blog-card__cover-image" src="{{ $article->image ? asset($article->image) : asset('website/assets/image/svg/blog-cover-'.['calls','outsourcing','kpis','whatsapp','crm','security'][$loop->index % 6].'.svg') }}" alt="" width="384" height="216" loading="lazy" decoding="async">
    </div>
    <div class="sanad-blog-card__body">
     <h3 class="sanad-blog-card__title">{{ $article->title }}</h3>

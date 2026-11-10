@@ -1,0 +1,2 @@
+.sanad-pillars__grid>.sanad-values__card:nth-child(3):last-child{grid-column:1/-1;min-height:304px}
+@media(max-width:900px){.sanad-pillars__grid>.sanad-values__card:nth-child(3):last-child{grid-column:auto}}

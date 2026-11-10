@@ -1,10 +1,14 @@
-﻿@extends('website.layouts.app')
+@extends('website.layouts.app')
 
 @section('page_key', 'index.html')
 @section('title', 'الرئيسية — SANAD CX')
 @section('meta_description', 'فريق متخصص يتكامل مباشرة مع أنظمة الاتصالات والواتساب والمنصات الحالية لديك، لإدارة تفاعلات العملاء بكفاءة وتحقيق نتائج ملموسة.')
 @section('og_title', 'الرئيسية — SANAD CX')
 @section('og_description', 'فريق متخصص يتكامل مباشرة مع أنظمة الاتصالات والواتساب والمنصات الحالية لديك، لإدارة تفاعلات العملاء بكفاءة وتحقيق نتائج ملموسة.')
+
+@push('styles')
+<link rel="stylesheet" href="{{ asset('website/assets/css/pages/home.css') }}">
+@endpush
 
 @section('content')
     <section class="sanad-hero" aria-labelledby="sanad-hero-heading">
@@ -106,36 +110,12 @@
             <p class="sanad-home-services__intro">{{ __('auth.services_intro') }}</p></div>
         <ul class="sanad-home-services__grid">
             <li class="sanad-service-card sanad-home-services__card"><img class="sanad-service-card__icon"
-                                                                          src="{{ asset('website/assets/image/svg/Service-Icon-logistics_48x48.svg') }}"
+                                                                          src="{{ asset('website/assets/image/home/service-quality-shield.svg') }}"
                                                                           alt="" width="48" height="48"
                                                                           decoding="async">
                 <div class="sanad-service-card__copy">
                     <div class="sanad-home-services__title-area"><h3 class="sanad-service-card__title">{{ __('auth.services_card1_title') }}</h3></div>
                     <div class="sanad-home-services__desc-area"><p class="sanad-service-card__desc">{{ __('auth.services_card1_desc') }}</p></div>
-                </div>
-                <div class="sanad-service-card__compat">
-                    <div class="sanad-service-card__compat-divider" aria-hidden="true"></div>
-                    <p class="sanad-service-card__compat-label">{{ __('auth.services_compat_label') }}</p>
-                    <div class="sanad-service-card__chips"><span class="sanad-service-card__chip" lang="en" dir="ltr">SMSA</span>
-                        <span class="sanad-service-card__chip" lang="en" dir="ltr">Aramex</span> <span
-                            class="sanad-service-card__chip" lang="en" dir="ltr">Torod</span> <span
-                            class="sanad-service-card__chip" lang="en" dir="ltr">Oto</span></div>
-                </div>
-            </li>
-            <li class="sanad-service-card sanad-home-services__card"><img class="sanad-service-card__icon"
-                                                                          src="{{ asset('website/assets/image/svg/Service-Icon-messaging_48x48.svg') }}"
-                                                                          alt="" width="48" height="48"
-                                                                          decoding="async">
-                <div class="sanad-service-card__copy">
-                    <div class="sanad-home-services__title-area"><h3 class="sanad-service-card__title">{{ __('auth.services_card2_title') }}</h3></div>
-                    <div class="sanad-home-services__desc-area"><p class="sanad-service-card__desc">{{ __('auth.services_card2_desc') }}</p></div>
-                </div>
-                <div class="sanad-service-card__compat">
-                    <div class="sanad-service-card__compat-divider" aria-hidden="true"></div>
-                    <p class="sanad-service-card__compat-label">{{ __('auth.services_compat_label') }}</p>
-                    <div class="sanad-service-card__chips"><span class="sanad-service-card__chip" lang="en" dir="ltr">MessageBird</span>
-                        <span class="sanad-service-card__chip" lang="en" dir="ltr">Unifonic</span> <span
-                            class="sanad-service-card__chip" lang="en" dir="ltr">Intercom</span></div>
                 </div>
             </li>
             <li class="sanad-service-card sanad-home-services__card"><img class="sanad-service-card__icon"
@@ -143,16 +123,17 @@
                                                                           alt="" width="48" height="48"
                                                                           decoding="async">
                 <div class="sanad-service-card__copy">
+                    <div class="sanad-home-services__title-area"><h3 class="sanad-service-card__title">{{ __('auth.services_card2_title') }}</h3></div>
+                    <div class="sanad-home-services__desc-area"><p class="sanad-service-card__desc">{{ __('auth.services_card2_desc') }}</p></div>
+                </div>
+            </li>
+            <li class="sanad-service-card sanad-home-services__card"><img class="sanad-service-card__icon"
+                                                                          src="{{ asset('website/assets/image/svg/Service-Icon-messaging_48x48.svg') }}"
+                                                                          alt="" width="48" height="48"
+                                                                          decoding="async">
+                <div class="sanad-service-card__copy">
                     <div class="sanad-home-services__title-area"><h3 class="sanad-service-card__title">{{ __('auth.services_card3_title') }}</h3></div>
                     <div class="sanad-home-services__desc-area"><p class="sanad-service-card__desc">{{ __('auth.services_card3_desc') }}</p></div>
-                </div>
-                <div class="sanad-service-card__compat">
-                    <div class="sanad-service-card__compat-divider" aria-hidden="true"></div>
-                    <p class="sanad-service-card__compat-label">{{ __('auth.services_compat_label') }}</p>
-                    <div class="sanad-service-card__chips"><span class="sanad-service-card__chip" lang="en" dir="ltr">Zid</span>
-                        <span class="sanad-service-card__chip" lang="en" dir="ltr">Zid</span> <span
-                            class="sanad-service-card__chip" lang="en" dir="ltr">Salla</span> <span
-                            class="sanad-service-card__chip" lang="en" dir="ltr">Shopify</span></div>
                 </div>
             </li>
             <li class="sanad-service-card sanad-home-services__card"><img class="sanad-service-card__icon"
@@ -162,14 +143,6 @@
                 <div class="sanad-service-card__copy">
                     <div class="sanad-home-services__title-area"><h3 class="sanad-service-card__title">{{ __('auth.services_card4_title') }}</h3></div>
                     <div class="sanad-home-services__desc-area"><p class="sanad-service-card__desc">{{ __('auth.services_card4_desc') }}</p></div>
-                </div>
-                <div class="sanad-service-card__compat">
-                    <div class="sanad-service-card__compat-divider" aria-hidden="true"></div>
-                    <p class="sanad-service-card__compat-label">{{ __('auth.services_compat_label') }}</p>
-                    <div class="sanad-service-card__chips"><span class="sanad-service-card__chip" lang="en" dir="ltr">Zendesk</span>
-                        <span class="sanad-service-card__chip" lang="en" dir="ltr">Salesforce</span> <span
-                            class="sanad-service-card__chip" lang="en" dir="ltr">Zoho</span> <span
-                            class="sanad-service-card__chip" lang="en" dir="ltr">Freshdesk</span></div>
                 </div>
             </li>
         </ul>
@@ -399,7 +372,7 @@
 </section>
 <section class="sanad-testimonials" aria-labelledby="sanad-testimonials-heading">
         <div class="sanad-testimonials__header">
-            <h2 class="sanad-testimonials__title" id="sanad-testimonials-heading">{{ __('auth.testimonials_heading') }}</h2>
+            <h2 class="sanad-testimonials__title" id="sanad-testimonials-heading">{!! str_replace('Sanad CX', '<span class="sanad-testimonials__title-accent">Sanad CX</span>', e(__('auth.testimonials_heading'))) !!}</h2>
         </div>
         @if($clientReviewSlides->isNotEmpty())
         @php($slideCount = $clientReviewSlides->count())
@@ -902,7 +875,7 @@
             <div class="sanad-contact__layout" data-node-id="85:10842">
                 <div class="sanad-contact__header" data-node-id="136:8766"><h2 class="sanad-contact__title"
                                                                                id="sanad-contact-title"
-                                                                               data-node-id="136:8767">{{ __('auth.contact_title') }}</h2>
+                                                                               data-node-id="136:8767">{!! str_replace(e(__('auth.contact_title_accent')), '<span class="sanad-contact__title-accent">'.e(__('auth.contact_title_accent')).'</span>', e(__('auth.contact_title'))) !!}</h2>
                     <p class="sanad-contact__description" data-node-id="136:8768">{{ __('auth.contact_description') }}</p>
                 </div>
                 <div class="sanad-contact__form-container" data-node-id="85:10843">
@@ -999,6 +972,34 @@
     </section>
 
 
+    @push('scripts')
+        <script>
+            (function () {
+                var root = document.querySelector('[data-stats-slider]');
+                if (!root) { return; }
+                var track = root.querySelector('[data-stats-track]');
+                var items = Array.prototype.slice.call(track.children);
+                var count = items.length, pos = 0, timer = null;
+                var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                function perView() { return window.innerWidth < 640 ? 1 : (window.innerWidth < 1024 ? 2 : 3); }
+                function render() {
+                    var n = perView(), vw = root.querySelector('.sanad-stats__viewport').clientWidth, w = vw / n;
+                    items.forEach(function (it) { it.style.flex = '0 0 ' + w + 'px'; });
+                    track.style.transform = 'translateX(' + (-pos * w) + 'px)';
+                }
+                function go(d) {
+                    var max = count - perView();
+                    pos = pos + d; if (pos > max) { pos = 0; } if (pos < 0) { pos = max; }
+                    render();
+                }
+                root.querySelector('[data-stats-next]').addEventListener('click', function () { go(1); restart(); });
+                root.querySelector('[data-stats-prev]').addEventListener('click', function () { go(-1); restart(); });
+                function restart() { clearInterval(timer); if (!reduce) { timer = setInterval(function () { go(1); }, 4000); } }
+                window.addEventListener('resize', function () { pos = 0; render(); });
+                render(); restart();
+            })();
+        </script>
+    @endpush
     @push('scripts')
         <script>
             document.addEventListener('DOMContentLoaded', function () {

@@ -1,0 +1,5 @@
+@media(min-width:1024px){
+.sanad-how-hero .sanad-how-hero__cta{margin-block-start:53px}
+.sanad-how-cta{margin-block-start:96px}
+main:has(>.sanad-how-cta){padding-block-end:96px}
+}

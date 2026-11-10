@@ -1,0 +1,132 @@
+/* Stats slider */
+.sanad-stats__slider{display:flex;align-items:center;gap:24px}
+.sanad-stats__viewport{flex:1;overflow:hidden;min-inline-size:0}
+.sanad-stats__track{display:flex;margin:0;padding:0;list-style:none;transition:transform .45s ease}
+.sanad-stats .sanad-stats__item{box-sizing:border-box;padding-inline:24px;min-block-size:141px}
+.sanad-stats__arrow{flex:none;display:grid;place-items:center;inline-size:48px;block-size:48px;border:0;border-radius:50%;background:#1e40af;color:#fff;cursor:pointer}
+.sanad-stats__arrow:focus-visible{outline:2px solid var(--sanad-text-accent);outline-offset:2px}
+.sanad-stats__label{color:#0a192f}
+.sanad-stats__detail{color:#545454}
+.sanad-stats__value{color:#1e40af}
+.sanad-stats__value[dir=rtl]{direction:rtl}
+[data-theme=dark] .sanad-stats__label{color:#fff}
+[data-theme=dark] .sanad-stats__detail{color:var(--sanad-text-secondary)}
+[data-theme=dark] .sanad-stats__value{color:#3b82f6}
+@media (prefers-reduced-motion:reduce){.sanad-stats__track{transition:none}}
+/* Fikr + Sanad AI sections */
+.sanad-home-fkr,.sanad-home-ai{inline-size:min(1400px,calc(100vw - 48px));margin:var(--sanad-spacing-space-24) auto;padding:56px 48px;border-radius:40px;background:linear-gradient(180deg,#0e1c33,#0b1730);border:1px solid var(--sanad-border-default)}
+.sanad-home-fkr__container{display:grid;gap:40px;align-items:center}
+.sanad-home-fkr__logo{display:inline-grid;place-items:center;inline-size:128px;block-size:64px;margin-block-end:16px;border-radius:16px;background:#12244a}
+.sanad-home-fkr__logo img{inline-size:72px;block-size:auto}
+.sanad-home-fkr__eyebrow{margin:0 0 8px;color:var(--sanad-text-accent);font-size:14px}
+.sanad-home-fkr__title{margin:0 0 4px;color:var(--sanad-text-primary);font-size:var(--sanad-typography-size-24)}
+.sanad-home-fkr__subtitle{margin:0 0 16px;color:var(--sanad-text-primary);font-size:clamp(28px,4vw,44px);font-weight:700;line-height:1.35}
+.sanad-home-fkr__body{margin:0 0 24px;color:var(--sanad-text-secondary);font-size:18px;line-height:1.8}
+.sanad-home-fkr__items{display:grid;margin:0;padding:0;list-style:none}
+.sanad-home-fkr__item{display:grid;grid-template-columns:44px 1fr;column-gap:16px;padding-block:20px;border-block-end:1px solid var(--sanad-border-default)}
+.sanad-home-fkr__item:last-child{border:0}
+.sanad-home-fkr__icon{grid-row:1/3;inline-size:44px;block-size:44px;border:2px solid #38bdf8;border-radius:50%;background:radial-gradient(circle,#38bdf8 0 5px,transparent 6px)}
+.sanad-home-fkr__item-title{margin:0 0 6px;color:var(--sanad-text-primary);font-size:var(--sanad-typography-size-20);font-weight:500}
+.sanad-home-fkr__item:first-child .sanad-home-fkr__item-title{color:#38bdf8}
+.sanad-home-fkr__item-desc{margin:0;color:var(--sanad-text-secondary);line-height:1.7}
+.sanad-home-ai__container{display:grid;gap:40px;justify-items:center}
+.sanad-home-ai__copy{text-align:center;max-inline-size:900px}
+.sanad-home-ai__title{margin:0 0 16px;color:var(--sanad-text-primary);font-size:var(--sanad-typography-size-32);line-height:1.3}
+.sanad-home-ai__description{margin:0;color:var(--sanad-text-secondary);line-height:1.8}
+.sanad-home-ai__stage{display:grid;gap:32px;inline-size:100%;align-items:center}
+.sanad-home-ai__subtitle{margin:0 0 16px;color:#38bdf8;font-size:var(--sanad-typography-size-20)}
+.sanad-home-ai__features{display:grid;gap:16px;margin:0;padding:0;list-style:none}
+.sanad-home-ai__feature{display:grid;grid-template-columns:28px 1fr;column-gap:12px;padding:20px;border:1px solid var(--sanad-border-default);border-radius:12px;background:rgba(30,58,138,.18)}
+.sanad-home-ai__check{position:relative;grid-row:1/3;inline-size:28px;block-size:28px;border:1px solid #3b5bdb;border-radius:6px;background:#12244a}
+.sanad-home-ai__check::after{content:"";position:absolute;inset-block-start:5px;inset-inline-start:9px;inline-size:6px;block-size:11px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
+.sanad-home-ai__feature-title{margin:0 0 6px;color:var(--sanad-text-primary);font-size:var(--sanad-typography-size-20);font-weight:500}
+.sanad-home-ai__feature:first-child .sanad-home-ai__feature-title{color:#38bdf8}
+.sanad-home-ai__feature-desc{margin:0;color:var(--sanad-text-secondary);line-height:1.7}
+.sanad-home-ai__actions{display:flex;flex-wrap:wrap;justify-content:center;gap:16px}
+@media (min-width:1024px){.sanad-home-fkr__container{grid-template-columns:1fr 1fr}.sanad-home-ai__stage{grid-template-columns:1fr 340px}}
+@media (max-width:767px){.sanad-home-fkr,.sanad-home-ai{padding:32px 20px;border-radius:28px}}
+/* Fkr + AI: dark cards in both themes (Figma) */
+.sanad-home-fkr,.sanad-home-ai{inline-size:min(1400px,calc(100vw - 48px));border:0;color:#fff}
+.sanad-home-fkr{padding:120px 0;background:#0e1e30;border-radius:40px}
+.sanad-home-fkr__container{position:relative;padding-inline:88px;gap:48px;align-items:start}
+.sanad-home-fkr__logo{position:absolute;inset-block-start:-90px;inset-inline-start:88px;margin:0;background:#132848}
+.sanad-home-fkr__eyebrow{margin:0 0 8px;color:#38bdf8;font-size:14px;font-weight:500}
+.sanad-home-fkr__subtitle{margin:0 0 8px;color:#fff;font-size:clamp(30px,4vw,48px);font-weight:700;line-height:1.5}
+.sanad-home-fkr__body{margin:0 0 8px;color:#c4c4c4;font-size:20px;line-height:1.5}
+.sanad-home-fkr__items{margin-block-start:0}
+.sanad-home-fkr__item{padding:16px 8px;column-gap:8px;border-block-end:1px solid #162a4c}
+.sanad-home-fkr__item:last-child{border:0}
+.sanad-home-fkr__icon{position:relative;inline-size:48px;block-size:48px;border:1.5px solid #38bdf8;border-radius:50%;background:none}
+.sanad-home-fkr__icon::before{content:"";position:absolute;inset:5px;border:1.5px solid #38bdf8;border-radius:50%}
+.sanad-home-fkr__icon::after{content:"";position:absolute;inset:20px;border-radius:50%;background:#38bdf8}
+.sanad-home-fkr__item-title{color:#f2f2f2;font-size:18px;font-weight:500}
+.sanad-home-fkr__item:first-child .sanad-home-fkr__item-title{color:#38bdf8}
+.sanad-home-fkr__item-desc{color:#c4c4c4;font-size:16px;line-height:1.5}
+.sanad-home-ai{padding:56px 80px 120px;border-radius:32px;background:linear-gradient(180deg,#0b1730,#0e1e30)}
+.sanad-home-ai__container{gap:56px}
+.sanad-home-ai__title{color:#fff;font-size:32px;font-weight:700;margin:0 0 24px}
+.sanad-home-ai__description{color:#c4c4c4;font-size:18px;line-height:1.5}
+.sanad-home-ai__stage{display:grid;grid-template-columns:370px 1fr 370px;gap:48px;align-items:start;inline-size:100%}
+.sanad-home-ai__features,.sanad-home-ai__outcome-list{display:grid;gap:16px;margin:0;padding:0;list-style:none}
+.sanad-home-ai__feature,.sanad-home-ai__outcome{position:relative;min-block-size:134px;padding:20px 24px 16px 48px;border:1px solid rgba(30,64,175,.35);border-radius:16px;background:#132848;display:block}
+.sanad-home-ai__check{position:absolute;inset-block-start:20px;inset-inline:auto;left:12px;inline-size:28px;block-size:28px;border:1px solid #2d71f0;border-radius:8px;background:rgba(30,64,175,.28)}
+.sanad-home-ai__check::after{inset-block-start:5px;inset-inline-start:9px}
+.sanad-home-ai__feature-title{margin:0 0 8px;color:#f2f2f2;font-size:18px;font-weight:500}
+.sanad-home-ai__feature:first-child .sanad-home-ai__feature-title{color:#38bdf8}
+.sanad-home-ai__feature-desc{margin:0;color:#c4c4c4;font-size:16px;line-height:1.5}
+.sanad-home-ai__outcome{color:#c4c4c4;font-size:18px;line-height:1.5;padding-block-start:24px}
+.sanad-home-ai__subtitle{margin:0 0 24px;color:#38bdf8;font-size:20px;font-weight:500}
+.sanad-home-ai__visual{align-self:center;justify-self:center}
+.sanad-home-ai__orb{position:relative;inline-size:385px;block-size:297px;direction:ltr}
+.sanad-home-ai__orb>img{position:absolute;inset:0;inline-size:100%;block-size:100%}
+.sanad-home-ai__glow,.sanad-home-ai__ring,.sanad-home-ai__core{position:absolute;border-radius:50%}
+.sanad-home-ai__glow{left:44px;top:5px;inline-size:298px;block-size:298px;background:rgba(30,64,175,.18)}
+.sanad-home-ai__ring{left:52px;top:13px;inline-size:282px;block-size:282px;border:1px dashed rgba(48,189,125,.42)}
+.sanad-home-ai__core{left:79px;top:40px;inline-size:228px;block-size:228px;background:#0e1e30;border:1px solid rgba(51,204,145,.8)}
+.sanad-home-ai__label{position:absolute;left:23px;top:120px;inline-size:340px;line-height:58px;text-align:center;color:#f8f8f9;font-size:28px;font-weight:700}
+.sanad-home-ai__node{position:absolute;inline-size:84px;block-size:32px;display:flex;align-items:flex-start;color:#fff;font-size:12px;font-weight:500;line-height:20px}
+.sanad-home-ai__node i{position:absolute;top:2px;inline-size:28px;block-size:28px;box-sizing:border-box;border-radius:50%;background:#132848 radial-gradient(circle,#40e8ad 0 4px,transparent 4.5px);border:1px solid rgba(38,163,102,.8)}
+.sanad-home-ai__node--l1,.sanad-home-ai__node--l2,.sanad-home-ai__node--l3{padding-top:6px;padding-right:34px;justify-content:flex-end}
+.sanad-home-ai__node--l1 i,.sanad-home-ai__node--l2 i,.sanad-home-ai__node--l3 i{left:58px}
+.sanad-home-ai__node--r1,.sanad-home-ai__node--r2,.sanad-home-ai__node--r3{padding-top:6px;padding-left:34px;justify-content:flex-end}
+.sanad-home-ai__node--r1 i,.sanad-home-ai__node--r2 i,.sanad-home-ai__node--r3 i{left:0}
+.sanad-home-ai__node--l1{left:15px;top:40px}.sanad-home-ai__node--l2{left:1px;top:118px}.sanad-home-ai__node--l3{left:15px;top:196px}
+.sanad-home-ai__node--r1{left:287px;top:40px}.sanad-home-ai__node--r2{left:301px;top:118px}.sanad-home-ai__node--r3{left:287px;top:196px}
+.sanad-home-ai__actions{gap:24px}
+@media (max-width:1100px){.sanad-home-fkr__container{padding-inline:32px}.sanad-home-ai{padding:40px 24px 64px}.sanad-home-ai__stage{grid-template-columns:1fr}.sanad-home-fkr__logo{inset-inline-start:32px}}
+@media (max-width:767px){.sanad-home-fkr{padding:96px 0 40px}.sanad-home-fkr__container{padding-inline:20px}.sanad-home-ai__orb{transform:scale(.8);transform-origin:center}}
+.sanad-home-ai__features{margin-block-start:54px}
+@media (max-width:1100px){.sanad-home-ai__features{margin-block-start:0}}
+/* Core services (Figma): visual order logistics→care left to right, no compat chips */
+.sanad-home-services{background-color:#0a192f;border-radius:24px}
+.sanad-home-services__title-accent{color:inherit}
+.sanad-home-services__grid{direction:ltr}
+.sanad-home-services .sanad-service-card{direction:rtl;background-color:#0e203b;border-color:#334155;padding:28px 24px}
+.sanad-home-services .sanad-service-card__title{color:#fff}
+.sanad-home-services .sanad-service-card__desc{color:#c4c4c4}
+.sanad-home-services{min-block-size:0}
+.sanad-comparison__title-accent{color:inherit}
+/* Testimonials (Figma): all cards visible, two per row, no carousel controls */
+.sanad-testimonials__controls{display:none}
+.sanad-testimonials__track{grid-template-columns:minmax(0,1fr);gap:24px}
+.sanad-testimonials__slide{grid-area:auto;opacity:1;visibility:visible;transition:none;direction:rtl;align-items:start}
+.sanad-testimonials__card{padding:32px}
+@media (min-width:768px){.sanad-testimonials__slide{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.sanad-stats{min-block-size:378px;display:flex;flex-direction:column;justify-content:center}
+/* How it works (Figma): staggered card heights, left-aligned number, numbered titles */
+.sanad-home-steps__timeline{counter-reset:sanad-step;align-items:flex-start}
+.sanad-home-steps__card{flex:1 1 0;align-self:flex-start;counter-increment:sanad-step}
+.sanad-home-steps__connector{align-self:flex-start;margin-block-start:44px}
+.sanad-home-steps__number-wrap{align-items:flex-start;inline-size:auto}
+.sanad-home-steps__number,.sanad-home-steps__stage{text-align:left}
+.sanad-home-steps__card-title::before{content:counter(sanad-step) ". "}
+/* Privacy banner: same gradient in both themes */
+.sanad-privacy-banner,[data-theme=dark] .sanad-privacy-banner{background-image:linear-gradient(90deg,#0a192f 16%,#1b3559 66%,#325a8f 100%);background-color:#0a192f}
+.sanad-privacy-banner__edge{opacity:1}
+.sanad-contact__form{max-inline-size:912px;margin-inline:auto;inline-size:100%}
+.sanad-testimonials__title-accent{color:#1e40af}
+[data-theme=dark] .sanad-testimonials__title-accent{color:#38bdf8}
+/* Hero: 1400 card with 40px radius like the other sections */
+.sanad-hero{inline-size:min(1400px,calc(100vw - 40px));margin-inline:auto;margin-block-start:24px;border-radius:40px;overflow:hidden}
+.sanad-home-ai__subtitle{line-height:30px}
+@media (min-width:1101px){.sanad-home-ai__container{gap:96px}}
