@@ -13,8 +13,8 @@ class TrackVisitor
 {
     public function handle(Request $request, Closure $next): Response
     {
-        // Skip dashboard, API, and AJAX requests
-        if ($request->is('dashboard*') || $request->is('api/*') || $request->ajax()) {
+        // Skip dashboard, API, AJAX requests, and authenticated admins
+        if ($request->is('dashboard*') || $request->is('api/*') || $request->ajax() || auth('admin')->check()) {
             return $next($request);
         }
 
