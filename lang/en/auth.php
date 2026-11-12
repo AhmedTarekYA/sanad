@@ -421,6 +421,7 @@ return [
 
     // Contact / Consultation form section
     'contact_title' => 'Ready to Elevate Your Customer Experience and Accelerate Your Growth?',
+    'contact_title_accent' => 'and Accelerate Your Growth',
     'contact_description' => 'Leave your details and one of our experts will contact you with a free analysis and a tailored package for your company\'s size and activity.',
 
     'contact_name_label' => 'Full Name',

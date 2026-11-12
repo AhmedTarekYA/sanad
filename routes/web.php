@@ -39,7 +39,7 @@ Route::group(
         Route::get('/ai-assistant', [WebsiteController::class, 'aiAssistant'])->name('ai-assistant');
         Route::get('/fkr', [WebsiteController::class, 'fkr'])->name('fkr');
         Route::get('/blog', [WebsiteController::class, 'blog'])->name('blog');
-        Route::get('/blog/{slug?}', [WebsiteController::class, 'blogArticle'])->name('blog.article');
+        Route::get('/blog/{slug}', [WebsiteController::class, 'blogArticle'])->name('blog.article');
         Route::get('/privacy-policy', [WebsiteController::class, 'privacy'])->name('privacy');
         Route::get('/terms', [WebsiteController::class, 'terms'])->name('terms');
         Route::get('/404', [WebsiteController::class, 'notFound'])->name('404');
