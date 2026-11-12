@@ -82,3 +82,38 @@ html[data-theme="dark"] .sanad-home-ai__feature-badge { color: #c4c60b; }
 .sanad-hero__chip:hover {
   transform: translateY(-4px) scale(1.05);
 }
+
+/* Consultation modal & contact section: readable text in dark mode */
+html[data-theme="dark"] .sanad-consultation__title,
+html[data-theme="dark"] .sanad-contact__title {
+  color: var(--sanad-color-dark-text-primary);
+}
+html[data-theme="dark"] .sanad-consultation__description,
+html[data-theme="dark"] .sanad-consultation__notice,
+html[data-theme="dark"] .sanad-contact__description {
+  color: var(--sanad-color-dark-text-secondary);
+}
+
+/* Consultation modal & contact section: neutralize blue focus highlight */
+.sanad-contact .sanad-input__field:focus-within,
+.sanad-consultation .sanad-input__field:focus-within {
+  border-color: var(--sanad-color-light-surface-card);
+  border-width: 1px;
+  box-shadow: none;
+}
+html[data-theme="dark"] .sanad-contact .sanad-input__field:focus-within,
+html[data-theme="dark"] .sanad-consultation .sanad-input__field:focus-within {
+  border-color: var(--sanad-color-dark-border-default);
+  border-width: 1px;
+  box-shadow: none;
+}
+.sanad-contact select.sanad-input__control option:checked,
+.sanad-consultation select.sanad-input__control option:checked {
+  background-color: transparent;
+  color: inherit;
+}
+.sanad-contact .sanad-input__control:focus,
+.sanad-consultation .sanad-input__control:focus {
+  outline: none;
+  box-shadow: none;
+}
