@@ -7,7 +7,7 @@
 @section('og_description', $article->description)
 
 @push('styles')
-<link rel="stylesheet" href="{{ asset('website/assets/css/pages/blog.css') }}">
+<link rel="stylesheet" href="{{ asset('website/assets/css/pages/blog.css') }}?v={{ @filemtime(public_path('website/assets/css/pages/blog.css')) ?: '2.0.1' }}">
 @endpush
 
 @section('content')

@@ -7,7 +7,7 @@
 @section('og_description', 'فريق متخصص يتكامل مباشرة مع أنظمة الاتصالات والواتساب والمنصات الحالية لديك، لإدارة تفاعلات العملاء بكفاءة وتحقيق نتائج ملموسة.')
 
 @push('styles')
-<link rel="stylesheet" href="{{ asset('website/assets/css/pages/home.css') }}">
+<link rel="stylesheet" href="{{ asset('website/assets/css/pages/home.css') }}?v={{ @filemtime(public_path('website/assets/css/pages/home.css')) ?: '2.0.1' }}">
 @endpush
 
 @section('content')

@@ -7,7 +7,7 @@
 @section('og_description', 'نموذج تشغيلي مرن لا يتطلب أي تعديل على أنظمتك أو تغيير في سنترالك الحالي. نلتقط الخدمة فوراً دون تكاليف تأسيس أو تعقيدات تقنية.')
 
 @push('styles')
-<link rel="stylesheet" href="{{ asset('website/assets/css/pages/how-it-works.css') }}">
+<link rel="stylesheet" href="{{ asset('website/assets/css/pages/how-it-works.css') }}?v={{ @filemtime(public_path('website/assets/css/pages/how-it-works.css')) ?: '2.0.1' }}">
 @endpush
 
 @section('content')

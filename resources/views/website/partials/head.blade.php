@@ -36,7 +36,7 @@
     </style>
     @endif
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('website/assets/css/styles.css') }}">
+    <link rel="stylesheet" href="{{ asset('website/assets/css/styles.css') }}?v={{ @filemtime(public_path('website/assets/css/styles.css')) ?: '2.0.1' }}">
     <style>
         .sanad-header--scrolled { background: color-mix(in srgb, var(--sanad-color-background, #0e1e30) 92%, transparent); backdrop-filter: blur(16px); box-shadow: 0 4px 24px #00000012; }
         .sanad-line-mask { display: block; overflow: hidden; }

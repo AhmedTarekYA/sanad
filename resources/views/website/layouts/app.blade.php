@@ -10,8 +10,8 @@
 @include('website.partials.consultation')
 @include('website.partials.free-trial')
 @include('website.partials.exit-intent')
-<link rel="stylesheet" href="{{ asset('website/assets/css/pages/modals.css') }}">
-<link rel="stylesheet" href="{{ asset('website/assets/css/layout.css') }}">
+<link rel="stylesheet" href="{{ asset('website/assets/css/pages/modals.css') }}?v={{ @filemtime(public_path('website/assets/css/pages/modals.css')) ?: '2.0.1' }}">
+<link rel="stylesheet" href="{{ asset('website/assets/css/layout.css') }}?v={{ @filemtime(public_path('website/assets/css/layout.css')) ?: '2.0.1' }}">
 @php $waNumber = isset($settings) ? preg_replace('/[^0-9]/', '', $settings->whatsapp) : ''; @endphp
 @if($waNumber)
     <button type="button" id="whatsapp-float-btn" class="whatsapp-float" aria-label="{{ __('auth.contact_via_whatsapp') }}"
@@ -41,6 +41,6 @@
     </script>
 @endif
 @include('website.partials.scripts')
-<script src="{{ asset('website/assets/js/modals.js') }}" defer></script>
+<script src="{{ asset('website/assets/js/modals.js') }}?v={{ @filemtime(public_path('website/assets/js/modals.js')) ?: '2.0.1' }}" defer></script>
 </body>
 </html>

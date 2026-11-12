@@ -7,8 +7,8 @@
 @section('og_description', 'تأسست Sanad CX لتكون الشريك الموثوق للشركات والمؤسسات في تعهيد وإدارة عمليات تجربة العملاء (Managed CX &amp; BPO) عبر نموذج تشغيل يجمع بين الكفاءة البشرية والتكامل التقني السلس.')
 
 @push('styles')
-<link rel="stylesheet" href="{{ asset('website/assets/css/pages/pages.css') }}">
-<link rel="stylesheet" href="{{ asset('website/assets/css/pages/about.css') }}">
+<link rel="stylesheet" href="{{ asset('website/assets/css/pages/pages.css') }}?v={{ @filemtime(public_path('website/assets/css/pages/pages.css')) ?: '2.0.1' }}">
+<link rel="stylesheet" href="{{ asset('website/assets/css/pages/about.css') }}?v={{ @filemtime(public_path('website/assets/css/pages/about.css')) ?: '2.0.1' }}">
 @endpush
 
 @section('content')

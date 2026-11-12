@@ -7,7 +7,7 @@
 @section('og_description', app()->getLocale() === 'ar' ? 'ضاعف سرعة مبيعاتك ورضا عملائك بذكاء اصطناعي يعمل بجانب فريقك لحظة بلحظة.' : 'Double your sales speed and customer satisfaction with AI that works alongside your team moment by moment.')
 
 @push('styles')
-<link rel="stylesheet" href="{{ asset('website/assets/css/pages/ai-assistant.css') }}">
+<link rel="stylesheet" href="{{ asset('website/assets/css/pages/ai-assistant.css') }}?v={{ @filemtime(public_path('website/assets/css/pages/ai-assistant.css')) ?: '2.0.1' }}">
 @endpush
 
 @section('content')

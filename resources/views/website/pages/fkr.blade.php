@@ -7,7 +7,7 @@
 @section('og_description', app()->getLocale() === 'ar' ? 'الذراع الاستشاري والإبداعي المخصص لبناء البراندات الكبرى، هندسة العروض التسويقية، واختراق الأسواق بنمو مستدام.' : 'The specialized consulting and creative arm dedicated to building major brands, engineering marketing offerings, and penetrating markets with sustainable growth.')
 
 @push('styles')
-<link rel="stylesheet" href="{{ asset('website/assets/css/pages/fkr.css') }}">
+<link rel="stylesheet" href="{{ asset('website/assets/css/pages/fkr.css') }}?v={{ @filemtime(public_path('website/assets/css/pages/fkr.css')) ?: '2.0.1' }}">
 @endpush
 
 @section('content')
