@@ -37,7 +37,7 @@ Route::group(
         Route::get('/services', [WebsiteController::class, 'services'])->name('services');
         Route::get('/how-it-works', [WebsiteController::class, 'howItWorks'])->name('how-it-works');
         Route::get('/ai-assistant', [WebsiteController::class, 'aiAssistant'])->name('ai-assistant');
-        Route::get('/fikr', [WebsiteController::class, 'fkr'])->name('fikr');
+        Route::get('/fkr', [WebsiteController::class, 'fkr'])->name('fkr');
         Route::get('/blog', [WebsiteController::class, 'blog'])->name('blog');
         Route::get('/blog/{slug?}', [WebsiteController::class, 'blogArticle'])->name('blog.article');
         Route::get('/privacy-policy', [WebsiteController::class, 'privacy'])->name('privacy');
