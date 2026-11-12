@@ -1,3 +1,8 @@
+html, body {
+    overflow-x: hidden;
+    max-inline-size: 100vw;
+}
+
 .sanad-footer__legal{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:.5rem 3rem;min-height:81px;padding-block:1.5rem}
 .sanad-footer__legal p{margin:0;font-size:14px;line-height:21px}
 .whatsapp-float{position:fixed;inset-block-end:36px;right:36px;left:auto;width:56px;height:56px;border:0;border-radius:9999px;background:#25d366;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(37,211,102,.4);z-index:9999;cursor:pointer;transition:transform .2s,background-color .2s}
@@ -6,3 +11,96 @@
 .whatsapp-float svg{width:28px;height:28px}
 @media (max-width:768px){.whatsapp-float{width:48px;height:48px;inset-block-end:20px;right:20px}.whatsapp-float svg{width:24px;height:24px}}
 @media (prefers-reduced-motion:reduce){.whatsapp-float{transition:none}.whatsapp-float:hover{transform:none}}
+
+/* Figma Site Header Styling */
+.sanad-header__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: 16px;
+    max-inline-size: 1400px;
+    margin-inline: auto;
+}
+@media (min-width: 1024px) {
+    .sanad-header__nav {
+        background: #0d1b2a;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 9999px;
+        padding: 6px 20px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    }
+    .sanad-header__list {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    .sanad-header__link {
+        color: #cbd5e1;
+        font-size: 15px;
+        font-weight: 500;
+        text-decoration: none;
+        padding: 8px 12px;
+        border-radius: 9999px;
+        transition: color 0.2s, background-color 0.2s;
+    }
+    .sanad-header__link:hover,
+    .sanad-header__link--active {
+        color: #ffffff;
+        background: rgba(255, 255, 255, 0.08);
+    }
+}
+.sanad-header__actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.sanad-header__cta {
+    background-color: #1e40af;
+    color: #ffffff;
+    border-radius: 9999px;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 10px 22px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+}
+.sanad-header__cta:hover {
+    background-color: #2563eb;
+    transform: translateY(-1px);
+}
+.sanad-header__language {
+    display: grid;
+    place-items: center;
+    inline-size: 44px;
+    block-size: 44px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 13px;
+    text-decoration: none;
+    transition: border-color 0.2s, background-color 0.2s;
+}
+.sanad-header__language:hover {
+    border-color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.08);
+}
+.sanad-theme-toggle {
+    display: grid;
+    place-items: center;
+    inline-size: 44px;
+    block-size: 44px;
+    border-radius: 50%;
+    border: none;
+    background: transparent;
+    color: #d97706;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.sanad-theme-toggle:hover {
+    transform: rotate(15deg);
+}

@@ -1,2 +1,79 @@
 .sanad-roi__card-description{font-size:16px;line-height:26px}
+.sanad-roi__ring { position: absolute; inset-block-start: 16px; inset-inline-start: 24px; color: var(--sanad-text-accent); opacity: .45; pointer-events: none; }
 .sanad-services-hero__content{gap:16px}
+
+html[data-sanad-page="services.html"] main > section {
+    min-inline-size: 0;
+}
+.sanad-services-detail__card {
+    border-inline-start: 3px solid transparent;
+}
+.sanad-services-detail__card.is-active {
+    border-inline-start-color: var(--sanad-text-accent);
+}
+.sanad-differ {
+    padding: 0;
+    margin: 0 auto 96px;
+    inline-size: min(1200px, calc(100% - 40px));
+}
+.sanad-differ__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    margin-block: 56px 0;
+}
+html[data-sanad-page="services.html"] .sanad-differ__card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    min-inline-size: 0;
+    min-block-size: 300px;
+    padding: 32px;
+    border: 1px solid var(--sanad-border-default);
+    border-radius: 20px;
+    background-color: var(--sanad-surface-card);
+    color: var(--sanad-text-primary);
+}
+.sanad-differ__card-title { order: 1; margin: 0; font-size: 24px; line-height: 1.5; }
+html[data-sanad-page="services.html"] .sanad-differ__badge { order: 2; color: var(--sanad-text-accent); font-size: 14px; }
+.sanad-differ__card-desc { order: 3; margin: 0; color: var(--sanad-text-secondary); font-size: 20px; line-height: 1.6; }
+.sanad-differ__icon { flex: none; }
+.sanad-differ__icon--dark { display: none; }
+[data-theme="dark"] .sanad-differ__icon--light { display: none; }
+[data-theme="dark"] .sanad-differ__icon--dark { display: block; }
+.sanad-service-form__field { min-inline-size: 0; }
+.sanad-service-form__form .sanad-input__control { inline-size: 100%; min-inline-size: 0; }
+.sanad-service-form__form .sanad-input__status:empty,
+.sanad-service-form__notice:empty { display: none; }
+.sanad-service-form__form .sanad-input__status:not(:empty) { display: block; color: var(--sanad-text-primary); font-size: 14px; }
+.sanad-service-form__form [aria-invalid="true"] { outline: 2px solid var(--sanad-text-accent); outline-offset: 2px; }
+.sanad-service-form__notice { color: var(--sanad-text-primary); line-height: 1.6; }
+.sanad-service-form__submit:disabled { opacity: .65; cursor: wait; }
+.sanad-industries__icon { transition: transform .25s ease; }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .sanad-industries__card:hover .sanad-industries__icon { transform: scale(1.08); }
+}
+.sanad-services-cta {
+    box-sizing: border-box;
+    inline-size: min(1200px, calc(100% - 40px));
+    margin: 0 auto 96px;
+    padding: 48px 40px;
+    border-radius: 24px;
+    background: var(--sanad-surface-section);
+    text-align: center;
+}
+.sanad-services-cta__container { display: grid; justify-items: center; gap: 24px; }
+.sanad-services-cta__title, .sanad-services-cta__description { margin: 0; }
+.sanad-services-cta__description { color: var(--sanad-text-secondary); font-size: 20px; line-height: 1.6; }
+.sanad-services-cta__button { background: var(--sanad-action-primary); color: var(--sanad-text-inverse); }
+@media (max-width: 767px) {
+    .sanad-differ { margin-block-end: 48px; }
+    .sanad-differ__grid { grid-template-columns: 1fr; margin-block-start: 24px; }
+    .sanad-differ__card { padding: 24px; min-block-size: 0; }
+    .sanad-differ__card-desc { font-size: 16px; }
+    .sanad-services-cta { padding: 32px 20px; margin-block-end: 48px; }
+    .sanad-services-hero__actions > *, .sanad-service-form__submit { max-inline-size: 100%; white-space: normal; text-align: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .sanad-services-detail__card { transition: none !important; }
+}

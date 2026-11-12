@@ -13,6 +13,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Flip.min.js" defer></script>
   <script src="/website/assets/js/main.js" defer></script>
+
+    <link rel="stylesheet" href="/website/assets/css/pages/ai-assistant.css">
+    <link rel="stylesheet" href="/website/assets/css/pages/modals.css">
+    <link rel="stylesheet" href="/website/assets/css/layout.css">
 </head>
 <body>
 <a class="skip-link" href="#main">انتقل إلى المحتوى</a>
@@ -23,45 +27,361 @@
   <div class="ai-nav__actions"><button class="ai-button" type="button" data-free-trial-open>احجز استشارة مجانية</button><a href="/en" lang="en" aria-label="Switch to English">EN</a><button class="ai-theme" type="button" data-theme-toggle aria-pressed="true" aria-label="تفعيل المظهر الفاتح">◐</button></div>
 </header>
 <main id="main">
-  <section class="ai-hero" aria-labelledby="ai-hero-title">
-    <div class="ai-hero__copy"><p class="ai-kicker">SANAD CX AI — المساعد الذكي</p><h1 id="ai-hero-title" class="ai-hero__title">ضاعف سرعة مبيعاتك ورضا عملائك بذكاء اصطناعي يعمل بجانب فريقك لحظة بلحظة</h1><p class="ai-hero__desc">إضافة متصفح (Chrome Extension) ذكية تُدمج مباشرة فوق الواتساب ونظام الـ CRM لتزويد موظفيك بإجابات دقيقة وتقارير تحليلية لحظية.</p><div class="ai-actions"><button class="ai-button magnetic-btn" type="button" data-free-trial-open>ابدأ التجربة المجانية</button><a class="ai-button ai-button--ghost" href="#copilot-walkthrough">اكتشف كيف يعمل</a></div></div>
-    <div class="ai-dashboard-mockup"><div class="ai-dashboard-mockup__badge" lang="en" dir="ltr">SANAD AI — CO-PILOT</div><div class="ai-intelligence-art" aria-hidden="true"></div>
-      <div class="ai-flow-node ai-flow-node--incoming"><small>01 / رسالة العميل</small><p>محادثة العميل على WhatsApp Web</p></div>
-      <div class="ai-flow-node ai-flow-node--knowledge"><small>02 / قاعدة المعرفة</small><p>معلومات المنتجات والأسعار</p></div>
-      <div class="ai-flow-node ai-flow-node--suggestion"><small>03 / اقتراح المساعد</small><p>ردود دقيقة بجانب فريقك</p></div>
-      <div class="ai-tags" aria-label="قدرات المساعد"><span>الردود</span><span>المحادثات</span><span>العملاء</span><span>التحليلات</span><span>الأداء</span><span>المبيعات</span></div>
-      <p class="ai-visual-caption">تصوّر توضيحي لطريقة عمل المساعد</p>
+@php($isAr = app()->getLocale() === 'ar')
+<div class="ai-page">
+<section class="ai-hero" aria-labelledby="ai-hero-title">
+<div class="ai-hero__in">
+<p class="ai-badge">SANAD CX AI — المساعد الذكي</p>
+<h1 id="ai-hero-title" class="ai-hero__title">المساعد الذكي (Sanad AI) — الذكاء الاصطناعي في خدمة فريقك</h1>
+<p class="ai-hero__lead">إضافة متصفح (Chrome Extension) ذكية تُدمج مباشرة فوق الواتساب ونظام الـ CRM لتزويد موظفيك بإجابات دقيقة وتقارير تحليلية لحظية.</p>
+<button type="button" class="ai-btn" data-consultation-open>احجز استشارة مجانية</button>
+<div class="ai-hcard ai-flow-node ai-hcard--1">
+<svg viewBox="0 0 28 28" width="28" height="28" aria-hidden="true">
+<rect x=".5" y=".5" width="27" height="27" rx="8" fill="rgba(30,64,175,.28)" stroke="rgba(45,113,240,.7)"/>
+<path d="M8 14.5l4 4 8-8" fill="none" stroke="#f8f8f9" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+<small>01 / رسالة العميل</small>
+<span>محادثة العميل على WhatsApp Web</span>
+</div>
+<div class="ai-hcard ai-flow-node ai-hcard--2">
+<svg viewBox="0 0 28 28" width="28" height="28" aria-hidden="true">
+<rect x=".5" y=".5" width="27" height="27" rx="8" fill="rgba(30,64,175,.28)" stroke="rgba(45,113,240,.7)"/>
+<path d="M8 14.5l4 4 8-8" fill="none" stroke="#f8f8f9" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+<small>02 / قاعدة المعرفة</small>
+<span>معلومات المنتجات والأسعار</span>
+</div>
+<div class="ai-hcard ai-flow-node ai-hcard--3">
+<svg viewBox="0 0 28 28" width="28" height="28" aria-hidden="true">
+<rect x=".5" y=".5" width="27" height="27" rx="8" fill="rgba(30,64,175,.28)" stroke="rgba(45,113,240,.7)"/>
+<path d="M8 14.5l4 4 8-8" fill="none" stroke="#f8f8f9" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+<small>03 / اقتراح المساعد</small>
+<span>ردود دقيقة بجانب فريقك</span>
+</div>
+<div class="ai-art ai-dashboard-mockup" role="img" aria-label="تصوّر توضيحي لمحرك SANAD AI">
+<svg viewBox="0 0 424 327" width="424" height="327" aria-hidden="true" fill="none" overflow="visible">
+<defs>
+<filter id="aiBlur" x="-50%" y="-50%" width="200%" height="200%">
+<feGaussianBlur stdDeviation="27.5"/>
+</filter>
+</defs>
+<circle cx="212" cy="170" r="164" fill="#1e40af" fill-opacity=".18" filter="url(#aiBlur)"/>
+<circle cx="212" cy="169" r="155" stroke="#30bd7d" stroke-opacity=".42" stroke-width="1.1" stroke-dasharray="3.3 7.7"/>
+<circle cx="211.5" cy="169.5" r="125.5" fill="#0e1e30" stroke="#33cc91" stroke-opacity=".8" stroke-width="1.1"/>
+<image href="/website/assets/image/home/ai-orb.png" width="424" height="327"/>
+<path transform="translate(102 216.1)" d="M0 31.3C44-9.3 73.7 61 121 25.8S187-4.9 220 17M0 36.8C44-3.8 73.7 66.5 121 31.3S187 .5 220 22.5M0 42.3C44 1.6 73.7 72 121 36.8S187 6 220 28M0 47.8C44 7.1 73.7 77.5 121 42.3S187 11.5 220 33.5M0 53.3C44 12.6 73.7 83 121 47.8S187 17 220 39" stroke="#1fc98c" stroke-opacity=".65" stroke-width="1.1" stroke-dasharray="1.1 3.3"/>
+</svg>
+<span class="ai-art__name" dir="ltr">SANAD AI</span>
+<span class="ai-tag ai-tag--l" style="left:16px;top:44px">
+<i>
+</i>
+<b>الردود</b>
+</span>
+<span class="ai-tag ai-tag--l" style="left:1px;top:130px">
+<i>
+</i>
+<b>المحادثات</b>
+</span>
+<span class="ai-tag ai-tag--l" style="left:16px;top:216px">
+<i>
+</i>
+<b>العملاء</b>
+</span>
+<span class="ai-tag ai-tag--r" style="left:315px;top:44px">
+<i>
+</i>
+<b>التحليلات</b>
+</span>
+<span class="ai-tag ai-tag--r" style="left:331px;top:130px">
+<i>
+</i>
+<b>الأداء</b>
+</span>
+<span class="ai-tag ai-tag--r" style="left:315px;top:216px">
+<i>
+</i>
+<b>المبيعات</b>
+</span>
+</div>
+<p class="ai-hero__cap">تصوّر توضيحي لطريقة عمل المساعد</p>
+</div>
+</section>
+<section class="ai-sec ai-eco ai-ecosystem" aria-labelledby="ai-eco-title">
+<h2 id="ai-eco-title">تتكامل بسلاسة مع الأنظمة التي تستخدمها يومياً</h2>
+<div class="ai-eco__hub" dir="ltr">SANAD CX AI</div>
+<svg class="ai-eco__streams" viewBox="0 0 1200 200" preserveAspectRatio="none" fill="none" aria-hidden="true">
+<path class="data-stream-line" d="M110 190V70H600V0M354 190V70H600M598 150V0M842 190V70H600M1086 150V70H600" />
+</svg>
+<div class="ai-eco__node ai-eco__node--0" dir="ltr">WhatsApp Web</div>
+<div class="ai-eco__node ai-eco__node--1" dir="ltr">Zoho CRM</div>
+<div class="ai-eco__node ai-eco__node--2" dir="ltr">HubSpot</div>
+<div class="ai-eco__node ai-eco__node--3" dir="ltr">Salesforce</div>
+<div class="ai-eco__node ai-eco__node--4" dir="ltr">Zendesk</div>
+</section>
+<section class="ai-sec ai-shift" aria-labelledby="ai-shift-title">
+<h2 id="ai-shift-title">الفارق الذي تحدثه إضافة Sanad CX AI في عملياتك:</h2>
+
+<article class="ai-canvas ai-canvas--before ai-shift__card">
+<h3>قبل استخدام Sanad CX AI</h3>
+<p class="ai-canvas__q chat-incoming">هل يمكن توضيح تفاصيل الخدمة؟</p>
+<p class="ai-canvas__a ai-reply-text">جارٍ مراجعة المعلومات…</p>
+<ul>
+<li>بطء في الرد وتأخر في إغلاق الصفقات</li>
+<li>تباين جودة الأداء واختلاف إجابات الموظفين</li>
+<li>صعوبة معرفة مدى رضا العميل أثناء الشات</li>
+<li>غياب التحليلات الدقيقة عن أسباب ضياع الفرص</li>
+</ul>
+<small>مثال توضيحي</small>
+</article>
+<article class="ai-canvas ai-canvas--after ai-shift__card ai-shift__card--after">
+<h3>بعد استخدام Sanad CX AI</h3>
+<p class="ai-canvas__q chat-incoming">هل يمكن توضيح تفاصيل الخدمة؟</p>
+<p class="ai-canvas__a ai-reply-text">يمكنك الاطلاع على تفاصيل الخدمة والأسعار من قاعدة المعرفة.</p><span class="ai-copilot-badge">اقتراح فوري · Sanad AI</span>
+<ul>
+<li>ردود مقترحة عالية الدقة خلال ثوانٍ معدودة</li>
+<li>توحيد لغة الخطاب والتزام تام بقواعد الشركة</li>
+<li>كشف تلقائي لنبرة ومشاعر العميل (Sentiment)</li>
+<li>داشبورد متكاملة توضح أبرز اعتراضات العملاء وأداء الفريق</li>
+</ul>
+<small>مثال توضيحي</small>
+</article>
+
+</section>
+<section class="ai-sec ai-steps ai-walkthrough" aria-labelledby="ai-steps-title">
+    <h2 id="ai-steps-title">فعّل مساعد فريقك في أربع مراحل</h2>
+    <div class="ai-walkthrough__steps" role="group" aria-label="مراحل عمل المساعد">
+        <article class="ai-step ai-walkthrough__step is-active">
+            <button type="button" data-copilot-step="0" aria-pressed="true" aria-controls="copilot-stage-0">
+<span class="ai-step__number">01</span>
+<h3>فهم اللهجة</h3>
+</button>
+            <p>يفهم سياق المحادثة ولهجة العميل.</p>
+        </article>
+        <article class="ai-step ai-walkthrough__step">
+            <button type="button" data-copilot-step="1" aria-pressed="false" aria-controls="copilot-stage-1">
+<span class="ai-step__number">02</span>
+<h3>اقتراح الرد</h3>
+</button>
+            <p>يقترح إجابة من قاعدة المعرفة ليراجعها الموظف.</p>
+        </article>
+        <article class="ai-step ai-walkthrough__step">
+            <button type="button" data-copilot-step="2" aria-pressed="false" aria-controls="copilot-stage-2">
+<span class="ai-step__number">03</span>
+<h3>أتمتة الإجراء</h3>
+</button>
+            <p>يساعد الموظف في تنفيذ الإجراء المناسب.</p>
+        </article>
+        <article class="ai-step ai-walkthrough__step">
+            <button type="button" data-copilot-step="3" aria-pressed="false" aria-controls="copilot-stage-3">
+<span class="ai-step__number">04</span>
+<h3>تحديث الـ CRM</h3>
+</button>
+            <p>يلخص المحادثة ويجهز تحديث سجل العميل.</p>
+        </article>
     </div>
-  </section>
-  <section id="integrations" class="ai-section ai-shell ai-ecosystem" aria-labelledby="integrations-title"><h2 id="integrations-title">تتكامل بسلاسة مع الأنظمة التي تستخدمها يومياً</h2><div class="ai-ecosystem__diagram"><strong class="ai-hub" dir="ltr">SANAD CX AI</strong><svg viewBox="0 0 1000 180" preserveAspectRatio="none" fill="none" aria-hidden="true"><path d="M500 0V80H80V180M500 80H920V180M290 80V180M500 80V180M710 80V180" stroke="currentColor" opacity=".25"/><path class="data-stream-line" d="M500 0V80H80V180M500 80H920V180M290 80V180M500 80V180M710 80V180" stroke="#38d39b" stroke-width="2" stroke-dasharray="6 24"/></svg><div class="ai-pills" dir="ltr"><span>WhatsApp Web</span><span>Zoho CRM</span><span>HubSpot</span><span>Salesforce</span><span>Zendesk</span></div></div></section>
-  <section id="shift" class="ai-section ai-shell ai-shift" aria-labelledby="shift-title"><h2 id="shift-title">الفارق الذي تحدثه إضافة Sanad CX AI في عملياتك:</h2><div class="ai-shift__grid">
-    <article class="ai-shift__card ai-shift__card--before"><h3>قبل استخدام Sanad CX AI</h3><ul><li>بطء في الرد وتأخر في إغلاق الصفقات</li><li>تباين جودة الأداء واختلاف إجابات الموظفين</li><li>صعوبة معرفة مدى رضا العميل أثناء الشات</li><li>غياب التحليلات الدقيقة عن أسباب ضياع الفرص</li></ul><div class="ai-chat"><small>مثال توضيحي</small><p class="chat-incoming">هل يمكن توضيح تفاصيل الخدمة؟</p><p class="ai-chat__pending">جارٍ مراجعة المعلومات…</p></div></article>
-    <article class="ai-shift__card ai-shift__card--after"><h3>بعد استخدام Sanad CX AI</h3><ul><li>ردود مقترحة عالية الدقة خلال ثوانٍ معدودة</li><li>توحيد لغة الخطاب والتزام تام بقواعد الشركة</li><li>كشف تلقائي لنبرة ومشاعر العميل (Sentiment)</li><li>داشبورد متكاملة توضح أبرز اعتراضات العملاء وأداء الفريق</li></ul><div class="ai-chat"><small>مثال توضيحي</small><p class="chat-incoming">هل يمكن توضيح تفاصيل الخدمة؟</p><p class="ai-chat__suggestion"><span class="ai-copilot-badge" lang="en">AI Co-Pilot</span><span class="ai-reply-text">رد مقترح من قاعدة المعرفة</span></p></div></article>
-  </div></section>
-  <section id="copilot-walkthrough" class="ai-section ai-shell ai-walkthrough" aria-labelledby="walkthrough-title"><h2 id="walkthrough-title">ابدأ العمل خلال 3 خطوات بسيطة:</h2><div class="ai-walkthrough__steps">
-    <article class="ai-walkthrough__step"><b>01</b><div class="ai-step-art" aria-hidden="true">↓</div><h3>تثبيت الإضافة (Install)</h3><p>إضافة Sanad CX لمتصفح كروم بضغطة زر.</p></article>
-    <article class="ai-walkthrough__step"><b>02</b><div class="ai-step-art ai-step-art--kb" aria-hidden="true"><i></i><i></i><i></i></div><h3>ربط قاعدة المعرفة (Connect KB)</h3><p>رفع ملفات المنتجات والأسعار في لوحة التحكم.</p></article>
-    <article class="ai-walkthrough__step"><b>03</b><div class="ai-step-art ai-step-art--reply" aria-hidden="true"><i></i><i></i></div><h3>التوجيه اللحظي (Co-Pilot Advantage)</h3><p>يبدأ الموظف في استقبال الاقتراحات والتحليلات أثناء المحادثة فوراً.</p></article>
-  </div><div class="copilot-stage"><div class="copilot-stage__heading"><h3>واجهة إضافة Sanad CX</h3><p>معاينة توضيحية للإضافة</p><small>موضع فيديو أو صورة متحركة توضح الإضافة بجانب WhatsApp Web</small><p>إضافة متصفح (Chrome Extension) ذكية تُدمج مباشرة فوق الواتساب ونظام الـ CRM لتزويد موظفيك بإجابات دقيقة وتقارير تحليلية لحظية.</p></div>
-    <div class="copilot-visual" aria-label="معاينة توضيحية لواجهة إضافة Sanad CX"><div class="copilot-visual__top"><span lang="en" dir="ltr">SANAD CX / AI</span><span>معاينة توضيحية</span></div><div class="copilot-visual__browser"><div class="copilot-browser-bar"><span>● ● ●</span><span lang="en" dir="ltr">SANAD CX AI / Extension</span></div><div class="copilot-visual__workspace"><div class="copilot-chat-lines" aria-hidden="true"><i></i><i></i><i></i><i></i></div><div class="copilot-extension"><span class="copilot-extension__icon" lang="en">AI</span><strong dir="ltr">SANAD CX AI</strong><span data-copilot-caption>تثبيت الإضافة (Install)</span><p>مساعدك الذكي داخل واتساب</p><button type="button" class="ai-button" data-free-trial-open>ابدأ التجربة المجانية</button></div></div><div class="copilot-visual__bottom">فهم اللهجة　 ·　 اقتراح الرد　 ·　 تحديث الـ CRM</div></div></div>
-    <button type="button" class="ai-button" data-free-trial-open>ابدأ التجربة المجانية</button>
-  </div></section>
-  <section id="intelligence" class="ai-section ai-shell ai-ops" aria-labelledby="ops-title"><h2 id="ops-title">تحكّم كامل ورؤية شاملة لمدراء الكول سنتر والمبيعات:</h2><div class="ai-ops__grid">
-    <article class="ai-ops__card ai-ops__card--kpi"><h3>مؤشرات الأداء اللحظية (Agent KPIs)</h3><p>متابعة سرعة الرد ونسبة التزام الموظف باقتراحات الذكاء الاصطناعي.</p><div class="ai-telemetry" aria-label="تصوّر توضيحي للتحليلات"><i class="telemetry-bar" style="--bar-height:26%"></i><i class="telemetry-bar" style="--bar-height:34%"></i><i class="telemetry-bar" style="--bar-height:25%"></i><i class="telemetry-bar" style="--bar-height:47%"></i><i class="telemetry-bar" style="--bar-height:43%"></i><i class="telemetry-bar" style="--bar-height:58%"></i><i class="telemetry-bar" style="--bar-height:53%"></i><i class="telemetry-bar" style="--bar-height:75%"></i><i class="telemetry-bar" style="--bar-height:67%"></i><i class="telemetry-bar" style="--bar-height:88%"></i><i class="telemetry-bar" style="--bar-height:80%"></i><i class="telemetry-bar" style="--bar-height:100%"></i></div><small>تصوّر توضيحي للتحليلات</small></article>
-    <article class="ai-ops__card"><h3>تحليل المشاعر العامة</h3><p>إحصائيات دقيقة لنسبة العملاء السعداء مقابل الغاضبين.</p><div class="ai-sentiment" aria-hidden="true"><span></span></div><div class="ai-sentiment__legend"><span>سعداء <b>92%</b></span><span>غاضبون <b>8%</b></span></div><small>تصوّر توضيحي للتحليلات</small></article>
-    <article class="ai-ops__card"><h3>تقرير الاعتراضات الشائعة (Top Objections)</h3><p>معرفة الأسباب الحقيقية لتردد العملاء (السعر، الشحن، التوصيل) لتطوير خطتك التسويقية.</p><div class="ai-objections" aria-hidden="true"><i></i><i></i><i></i></div></article>
-  </div></section>
-  <section id="pricing" class="ai-section ai-shell ai-pricing-section" aria-labelledby="pricing-title"><h2 id="pricing-title">باقات مرنة تناسب حجم فريقك:</h2><div class="ai-billing" role="group" aria-label="فترة الفوترة" data-billing-toggle><button type="button" data-billing="monthly" aria-pressed="true">شهرياً</button><button type="button" data-billing="yearly" aria-pressed="false">سنوياً (وفر شهرين)</button></div><div class="ai-pricing">
-    <article class="ai-pricing__card"><strong data-price-monthly="$49 / شهرياً" data-price-yearly="$490 / سنوياً">$49 / شهرياً</strong><small data-price-note data-note-monthly="$490 / سنوياً" data-note-yearly="$49 / شهرياً">$490 / سنوياً</small><h3 lang="en">Starter</h3><ul><li>حتى 3 موظفين</li><li>3,000 اقتراح ذكي شهرياً</li></ul><button type="button" class="ai-button" data-free-trial-open>ابدأ التجربة المجانية</button></article>
-    <article class="ai-pricing__card ai-pricing--featured"><span class="ai-pricing__badge">الأكثر طلباً</span><strong data-price-monthly="$149 / شهرياً" data-price-yearly="$1490 / سنوياً">$149 / شهرياً</strong><small data-price-note data-note-monthly="$1490 / سنوياً" data-note-yearly="$149 / شهرياً">$1490 / سنوياً</small><h3 lang="en">Pro</h3><ul><li>حتى 10 موظفين</li><li>12,000 اقتراح ذكي شهرياً</li></ul><button type="button" class="ai-button ai-button--ghost" data-free-trial-open>ابدأ التجربة المجانية</button></article>
-    <article class="ai-pricing__card"><strong data-price-monthly="$349 / شهرياً" data-price-yearly="$3490 / سنوياً">$349 / شهرياً</strong><small data-price-note data-note-monthly="$3490 / سنوياً" data-note-yearly="$349 / شهرياً">$3490 / سنوياً</small><h3>Business (الأكثر توفيراً)</h3><ul><li>حتى 25 موظف</li><li>35,000 اقتراح ذكي شهرياً</li></ul><button type="button" class="ai-button" data-free-trial-open>ابدأ التجربة المجانية</button></article>
-  </div><p class="ai-enterprise">هل تحتاج باقة خاصة لكول سنتر كبير؟ <a href="/#contact">تواصل مع فريق المبيعات</a></p></section>
-  <section id="faq" class="ai-section ai-shell ai-faq-section" aria-labelledby="faq-title"><h2 id="faq-title">الأسئلة الشائعة</h2><div class="ai-faq">
-    <article class="ai-faq__item"><h3><button class="ai-faq__trigger" type="button" aria-expanded="false" aria-controls="ai-faq-1">هل أحتاج لمطورين لتثبيت الأداة؟<span aria-hidden="true">⌄</span></button></h3><div id="ai-faq-1" hidden><p>لا، التثبيت يتم بنقرة زر واحدة من متجر كروم ويتم الإعداد خلال دقائق.</p></div></article>
-    <article class="ai-faq__item"><h3><button class="ai-faq__trigger" type="button" aria-expanded="false" aria-controls="ai-faq-2">هل تعمل الأداة مع اللهجة المحلية ؟<span aria-hidden="true">⌄</span></button></h3><div id="ai-faq-2" hidden><p>نعم، تم تدريب النموذج على فهم مختلف اللهجات العربية واللغة الإنجليزية بدقة عالية.</p></div></article>
-    <article class="ai-faq__item"><h3><button class="ai-faq__trigger" type="button" aria-expanded="false" aria-controls="ai-faq-3">هل بيانات محادثاتنا آمنة؟<span aria-hidden="true">⌄</span></button></h3><div id="ai-faq-3" hidden><p>نلتزم بأعلى معايير التشفير والخصوصية، ولا يتم مشاركة بيانات عملائك مع أي طرف ثالث.</p></div></article>
-  </div></section>
-  <section class="ai-cta ai-shell" aria-label="ابدأ محادثتك التالية"><h2 class="ai-kicker">SANAD CX AI — المساعد الذكي</h2><button class="ai-button magnetic-btn" type="button" data-free-trial-open>ابدأ التجربة المجانية</button></section>
+    <p class="ai-steps__label">معاينة توضيحية للمساعد داخل المحادثة</p>
+    <div class="ai-demo copilot-visual">
+        <div class="ai-demo__toolbar">
+<span dir="ltr">SANAD CX / AI</span>
+<span>مثال توضيحي</span>
+</div>
+        <h3 data-copilot-caption>فهم اللهجة</h3>
+        <div class="copilot-stage">
+            <section class="copilot-extension" id="copilot-stage-0" aria-label="فهم اللهجة">
+                <span class="ai-demo__logo" aria-hidden="true">AI</span>
+                <p class="copilot-extension__label" dir="ltr">SANAD CX AI / 01</p>
+                <p>متى يوصل طلبي؟</p>
+            </section>
+            <section class="copilot-extension" id="copilot-stage-1" aria-label="اقتراح الرد" hidden>
+                <span class="ai-demo__logo" aria-hidden="true">AI</span>
+                <p class="copilot-extension__label" dir="ltr">SANAD CX AI / 02</p>
+                <p>طلبك قيد الشحن. إليك رابط تتبع الشحنة.</p>
+            </section>
+            <section class="copilot-extension" id="copilot-stage-2" aria-label="أتمتة الإجراء" hidden>
+                <span class="ai-demo__logo" aria-hidden="true">AI</span>
+                <p class="copilot-extension__label" dir="ltr">SANAD CX AI / 03</p>
+                <p>الإجراء المقترح: إرسال رابط التتبع.</p>
+            </section>
+            <section class="copilot-extension" id="copilot-stage-3" aria-label="تحديث الـ CRM" hidden>
+                <span class="ai-demo__logo" aria-hidden="true">AI</span>
+                <p class="copilot-extension__label" dir="ltr">SANAD CX AI / 04</p>
+                <p>ملخص جاهز للمراجعة: استفسار عن الشحن، تمت مشاركة رابط التتبع.</p>
+            </section>
+        </div>
+        <div class="ai-demo__prog" aria-hidden="true">
+<i class="is-active">
+</i>
+<i>
+</i>
+<i>
+</i>
+<i>
+</i>
+</div>
+        <span class="ai-demo__n" dir="ltr" data-copilot-number>01 / 04</span>
+    </div>
+    <button type="button" class="ai-btn ai-steps__btn" data-consultation-open>احجز استشارة مجانية</button>
+</section>
+
+<section class="ai-sec ai-ops" aria-labelledby="ai-ops-title">
+<h2 id="ai-ops-title">تحكّم كامل ورؤية شاملة لمدراء الكول سنتر والمبيعات:</h2>
+<article class="ai-box ai-kpi">
+<h3>مؤشرات الأداء اللحظية (Agent KPIs)</h3>
+<p>متابعة سرعة الرد ونسبة التزام الموظف باقتراحات الذكاء الاصطناعي.</p>
+<div class="ai-kpi__chart" aria-hidden="true">
+<span style="top:270px">
+</span>
+<span style="top:334px">
+</span>
+<span style="top:398px">
+</span>
+<span style="top:462px">
+</span>
+<span style="top:526px">
+</span>
+<i class="telemetry-bar " style="height:72px;--i:0">
+</i>
+<i class="telemetry-bar " style="height:94px;--i:1">
+</i>
+<i class="telemetry-bar " style="height:68px;--i:2">
+</i>
+<i class="telemetry-bar " style="height:130px;--i:3">
+</i>
+<i class="telemetry-bar " style="height:118px;--i:4">
+</i>
+<i class="telemetry-bar " style="height:160px;--i:5">
+</i>
+<i class="telemetry-bar " style="height:145px;--i:6">
+</i>
+<i class="telemetry-bar " style="height:205px;--i:7">
+</i>
+<i class="telemetry-bar " style="height:184px;--i:8">
+</i>
+<i class="telemetry-bar g" style="height:240px;--i:9">
+</i>
+<i class="telemetry-bar g" style="height:218px;--i:10">
+</i>
+<i class="telemetry-bar g" style="height:272px;--i:11">
+</i>
+</div>
+<small>تصوّر توضيحي للتحليلات</small>
+</article>
+<article class="ai-box ai-sent">
+<h3>تحليل المشاعر العامة</h3>
+<p>إحصائيات دقيقة لنسبة العملاء السعداء مقابل الغاضبين.</p>
+<div class="ai-sent__bar" aria-hidden="true">
+<i>
+</i>
+</div>
+<div class="ai-sent__leg">
+<span>
+<i class="g">
+</i>سعداء</span>
+<span>
+<i>
+</i>غاضبون</span>
+</div>
+</article>
+<article class="ai-box ai-obj">
+<h3>تقرير الاعتراضات الشائعة (Top Objections)</h3>
+<p>معرفة الأسباب الحقيقية لتردد العملاء (السعر، الشحن، التوصيل) لتطوير خطتك التسويقية.</p>
+<div class="ai-obj__l" aria-hidden="true">
+<i>
+</i>
+<i>
+</i>
+<i>
+</i>
+</div>
+</article>
+</section>
+<section class="ai-sec ai-plans ai-pricing-section" aria-labelledby="ai-plans-title">
+<h2 id="ai-plans-title">باقات مرنة تناسب حجم فريقك:</h2>
+<div class="ai-panel">
+<article class="ai-plan ai-pricing__card ai-plan--s">
+<p class="ai-plan__price">$49 / شهرياً</p>
+<p class="ai-plan__annual">$490 / سنوياً</p>
+<h3 class="ai-plan__name" dir=ltr>Starter</h3>
+<span class="ai-plan__rule">
+</span>
+<p class="ai-plan__sub">حتى 3 موظفين</p>
+<p class="ai-plan__feat">3,000 اقتراح ذكي شهرياً</p>
+<svg class="ai-ok" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true">
+<circle cx="10" cy="10" r="9.5" fill="none" stroke="currentColor" opacity=".35"/>
+<path d="M6 10.4l2.8 2.8L14 7.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+<svg class="ai-ok" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true">
+<circle cx="10" cy="10" r="9.5" fill="none" stroke="currentColor" opacity=".35"/>
+<path d="M6 10.4l2.8 2.8L14 7.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+<button type="button" class="ai-btn" data-consultation-open>احجز استشارة مجانية</button>
+</article>
+<article class="ai-plan ai-pricing__card ai-pricing--featured ai-plan--p">
+<span class="ai-plan__badge">الأكثر طلباً</span>
+<p class="ai-plan__price">$149 / شهرياً</p>
+<p class="ai-plan__annual">$1490 / سنوياً</p>
+<h3 class="ai-plan__name" dir=ltr>Pro</h3>
+<span class="ai-plan__rule">
+</span>
+<p class="ai-plan__sub">حتى 10 موظفين</p>
+<p class="ai-plan__feat">12,000 اقتراح ذكي شهرياً</p>
+<svg class="ai-ok" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true">
+<circle cx="10" cy="10" r="9.5" fill="none" stroke="currentColor" opacity=".35"/>
+<path d="M6 10.4l2.8 2.8L14 7.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+<svg class="ai-ok" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true">
+<circle cx="10" cy="10" r="9.5" fill="none" stroke="currentColor" opacity=".35"/>
+<path d="M6 10.4l2.8 2.8L14 7.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+<button type="button" class="ai-btn" data-consultation-open>احجز استشارة مجانية</button>
+</article>
+<article class="ai-plan ai-pricing__card ai-plan--b">
+<p class="ai-plan__price">$349 / شهرياً</p>
+<p class="ai-plan__annual">$3490 / سنوياً</p>
+<h3 class="ai-plan__name">Business (الأكثر توفيراً)</h3>
+<span class="ai-plan__rule">
+</span>
+<p class="ai-plan__sub">حتى 25 موظف</p>
+<p class="ai-plan__feat">35,000 اقتراح ذكي شهرياً</p>
+<svg class="ai-ok" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true">
+<circle cx="10" cy="10" r="9.5" fill="none" stroke="currentColor" opacity=".35"/>
+<path d="M6 10.4l2.8 2.8L14 7.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+<svg class="ai-ok" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true">
+<circle cx="10" cy="10" r="9.5" fill="none" stroke="currentColor" opacity=".35"/>
+<path d="M6 10.4l2.8 2.8L14 7.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+<button type="button" class="ai-btn" data-consultation-open>احجز استشارة مجانية</button>
+</article>
+</div>
+<p class="ai-plans__note">هل تحتاج باقة خاصة لكول سنتر كبير؟ <button type="button" data-consultation-open>تواصل مع فريق المبيعات</button>
+</p>
+</section>
+<section class="ai-sec ai-faq" id="faq" aria-labelledby="ai-faq-title">
+<h2 id="ai-faq-title">الأسئلة الشائعة</h2>
+<div class="ai-faq__list">
+
+<details class="ai-faq__row">
+<summary>هل أحتاج لمطورين لتثبيت الأداة؟</summary>
+<p>لا، التثبيت يتم بنقرة زر واحدة من متجر كروم ويتم الإعداد خلال دقائق.</p>
+</details>
+<details class="ai-faq__row">
+<summary>هل تعمل الأداة مع اللهجة المحلية ؟</summary>
+<p>نعم، تم تدريب النموذج على فهم مختلف اللهجات العربية واللغة الإنجليزية بدقة عالية.</p>
+</details>
+<details class="ai-faq__row">
+<summary>هل بيانات محادثاتنا آمنة؟</summary>
+<p>نلتزم بأعلى معايير التشفير والخصوصية، ولا يتم مشاركة بيانات عملائك مع أي طرف ثالث.</p>
+</details>
+
+</div>
+</section>
+<section class="ai-final" aria-labelledby="ai-final-title">
+<h2 id="ai-final-title">SANAD CX AI — المساعد الذكي</h2>
+<button type="button" class="ai-btn" data-consultation-open>احجز استشارة مجانية</button>
+</section>
+</div>
 </main>
 <footer class="ai-footer"><div class="ai-shell ai-footer__grid">
   <div class="ai-footer__brand"><a href="/" aria-label="SANAD CX | GROWTH PARTNER"><img src="/website/assets/image/darkmode-logo.svg" width="181" height="60" alt="SANAD CX | GROWTH PARTNER"></a><p>شريكك الاستراتيجي لتعهيد وإدارة خدمات رعاية العملاء والاتصالات بالتشغيل المباشر</p></div>

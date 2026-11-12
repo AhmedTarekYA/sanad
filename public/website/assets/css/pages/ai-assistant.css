@@ -208,3 +208,81 @@
 .ai-demo__box{align-items:flex-start!important}
 .ai-demo__cta{white-space:nowrap;gap:6px;grid-auto-flow:column}
 @media(max-width:1250px){.ai-demo__box{align-items:center!important}}
+
+.ai-eco__streams { position: absolute; left: 0; top: 200px; width: 100%; height: 130px; pointer-events: none; }
+.data-stream-line { stroke: var(--a-green); stroke-width: 1.5; stroke-dasharray: 8 12; vector-effect: non-scaling-stroke; }
+.ai-canvas .ai-copilot-badge { position: absolute; top: 184px; inset-inline-end: 48px; color: var(--a-ink); background: var(--a-bg); font-size: 12px; }
+.ai-canvas__a { max-inline-size: calc(100% - 100px); }
+.ai-canvas .chat-incoming { padding: 10px 16px; top: 96px; background: var(--a-bg); color: var(--a-ink); }
+.ai-canvas .ai-reply-text { padding: 0; background: transparent; color: var(--a-muted); }
+.ai-steps { height: auto; display: flex; flex-direction: column; gap: 32px; }
+.ai-steps > h2 { position: static; }
+.ai-walkthrough__steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+.ai-walkthrough .ai-step { position: relative; inset: auto; width: auto; height: auto; padding: 24px; transition: border-color .2s; }
+.ai-walkthrough .ai-step.is-active { border-color: var(--a-green); }
+.ai-step button { display: flex; flex-direction: column; align-items: flex-start; gap: 20px; width: 100%; padding: 0; color: inherit; background: transparent; border: 0; cursor: pointer; text-align: start; font: inherit; }
+.ai-step button:focus-visible { outline: 2px solid var(--a-green); outline-offset: 8px; }
+.ai-step__number { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--a-blue); color: white; }
+.ai-walkthrough .ai-step h3, .ai-walkthrough .ai-step p { position: static; height: auto; margin: 0; font-size: 20px; line-height: 1.6; }
+.ai-walkthrough .ai-step p { margin-block-start: 16px; font-size: 16px; }
+.ai-walkthrough .ai-steps__label { position: static; }
+.ai-walkthrough .ai-demo { position: relative; inset: auto; width: 100%; height: auto; min-height: 420px; padding: 32px; }
+.ai-demo__toolbar { display: flex; justify-content: space-between; gap: 16px; font-size: 14px; color: #c1c7d1; }
+.ai-walkthrough .ai-demo h3 { position: static; margin-block: 24px; font-size: 28px; }
+.copilot-stage { padding: 24px; border-radius: 16px; background: #132848; }
+.copilot-extension { position: relative; min-height: 180px; padding: 24px; padding-inline-start: 100px; border-radius: 12px; background: #0d1b2a; font-size: 20px; line-height: 1.6; }
+.copilot-extension[hidden] { display: none !important; }
+.copilot-extension .ai-demo__logo { inset-inline-start: 20px; left: auto; top: 24px; transform: none; width: 56px; height: 56px; }
+.copilot-extension__label { color: #38d39b; font-size: 14px; margin-block-end: 16px !important; }
+.ai-walkthrough .ai-demo__prog { position: static; margin-block: 24px 12px; }
+.ai-demo__prog i { background: #204783; }
+.ai-demo__prog i:first-child { background: #204783; }
+.ai-demo__prog i.is-active { background: #38d39b; }
+.ai-walkthrough .ai-demo__n { position: static; }
+.ai-walkthrough .ai-steps__btn { position: static; align-self: center; width: auto; padding-inline: 32px; }
+.ai-kpi__chart .telemetry-bar { left: calc(6% + var(--i) * 7.3%); width: 3.6%; }
+.ai-plan--p { border: 1px solid #99bffe; }
+.ai-faq { height: auto; min-height: 0; display: grid; grid-template-columns: 340px minmax(0, 1fr); gap: 68px; }
+.ai-faq > h2 { position: static; width: auto; text-align: start; }
+.ai-faq__list { position: static; }
+.ai-faq__row { position: static; width: auto; height: auto; min-height: 100px; padding: 28px 0; }
+.ai-faq__row summary { cursor: pointer; color: var(--a-ink); font-size: 24px; line-height: 1.5; font-weight: 700; }
+.ai-faq__row summary:focus-visible { outline: 2px solid var(--a-green); outline-offset: 4px; }
+.ai-faq__row p { padding-inline-end: 16px; }
+.ai-btn { width: auto; min-height: 56px; height: auto; padding: 14px 24px; font-size: 16px; line-height: 1.5; text-align: center; }
+@media (max-width: 1250px) {
+    .ai-art { inset: auto; width: 424px !important; max-width: none !important; align-self: center; }
+    .ai-hero h1 { max-width: 850px; }
+    .ai-eco { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .ai-eco > h2, .ai-eco__hub { grid-column: 1 / -1; }
+    .ai-eco__streams { display: none; }
+    .ai-walkthrough__steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .ai-walkthrough .ai-step { padding: 24px; }
+    .ai-walkthrough .ai-demo { padding: 24px; }
+    .ai-walkthrough .ai-demo > * { margin-bottom: 16px; }
+    .ai-walkthrough .ai-demo__prog { display: grid !important; }
+    .ai-walkthrough .ai-demo__logo { position: absolute !important; margin: 0; }
+    .ai-kpi__chart .telemetry-bar { left: calc(2% + var(--i) * 8%) !important; width: 5%; max-height: 100%; }
+    .ai-faq { display: flex; gap: 24px; min-height: 0; }
+    .ai-canvas .ai-copilot-badge { position: static; display: inline-block; margin-block: 12px !important; }
+    .ai-canvas__a { max-inline-size: 100%; }
+    .ai-panel { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .ai-plan { min-width: 0; padding: 20px; }
+    .ai-panel .ai-plan { width: 100%; max-width: 100%; box-sizing: border-box; }
+    .ai-plan__price { font-size: 26px; overflow-wrap: anywhere; }
+    .ai-plan__sub, .ai-plan__feat { font-size: 17px; }
+    .ai-plan .ai-btn { width: 100% !important; padding-inline: 8px; }
+}
+@media (max-width: 600px) {
+    .ai-art { transform: scale(.65); margin-block: -55px; }
+    .ai-walkthrough__steps, .ai-panel { grid-template-columns: 1fr; }
+    .ai-walkthrough .ai-demo { padding: 16px; }
+    .ai-demo__toolbar { flex-wrap: wrap; }
+    .copilot-stage { padding: 12px; }
+    .copilot-extension { padding: 16px; padding-block-start: 88px; font-size: 18px; }
+    .ai-walkthrough .ai-step { padding: 20px; }
+    .ai-faq__row summary { font-size: 20px; }
+    .ai-hero__in { min-width: 0; }
+    .ai-hcard { min-width: 0; }
+    .ai-art { flex: none; }
+}

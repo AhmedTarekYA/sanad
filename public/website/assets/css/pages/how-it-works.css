@@ -1,5 +1,6 @@
-@media(min-width:1024px){
-.sanad-how-hero .sanad-how-hero__cta{margin-block-start:53px}
-.sanad-how-cta{margin-block-start:96px}
-main:has(>.sanad-how-cta){padding-block-end:96px}
-}
+.sanad-how-hero__actions{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-block-start:32px}
+.sanad-how-hero .sanad-how-hero__cta{margin:0}
+.sanad-how-hero__consult{border:1px solid currentColor;background:transparent!important;color:var(--sanad-primitives-neutral-white)}
+.sanad-how-hero__consult:hover,.sanad-how-hero__consult:focus-visible{background:var(--sanad-primitives-neutral-white)!important;color:var(--sanad-primitives-brand-navy)}
+@media(max-width:480px){.sanad-how-hero__actions{align-self:stretch}.sanad-how-hero__actions .sanad-btn{flex:1 1 auto}}
+@media(min-width:1024px){.sanad-how-hero__actions{margin-block-start:53px}.sanad-how-cta{margin-block-start:96px}main:has(>.sanad-how-cta){padding-block-end:96px}}

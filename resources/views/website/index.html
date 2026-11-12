@@ -47,6 +47,10 @@
             integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL"
             crossorigin="anonymous"></script>
     <script defer src="./assets/js/main.js"></script>
+
+    <link rel="stylesheet" href="/website/assets/css/pages/home.css">
+    <link rel="stylesheet" href="/website/assets/css/pages/modals.css">
+    <link rel="stylesheet" href="/website/assets/css/layout.css">
 </head>
 <body><a class="sanad-skip-link" href="#main">الانتقال إلى المحتوى الرئيسي</a>
 <header class="sanad-header" data-site-header>
@@ -99,700 +103,453 @@
     </div>
 </header>
 <main id="main" tabindex="-1">
-    <section class="sanad-hero" aria-labelledby="sanad-hero-heading">
+<section class="sanad-hero" aria-labelledby="sanad-hero-heading">
         <div class="sanad-hero__content">
-            <div class="sanad-hero__message"><p class="sanad-hero__eyebrow">Plug &amp; Play Operations</p>
-                <h1 class="sanad-hero__headline" id="sanad-hero-heading">شغّل تجربة عملاء استثنائية<br><span
-                    class="sanad-hero__headline-accent">دون تغيير أنظمتك الحالية</span></h1>
-                <p class="sanad-hero__description">فريق متخصص يتكامل مباشرة مع أنظمة الاتصالات والواتساب والمنصات
-                    الحالية لديك، لإدارة تفاعلات العملاء بكفاءة وتحقيق نتائج ملموسة.</p></div>
+            <div class="sanad-hero__message">
+                <p class="sanad-hero__eyebrow">Plug & Play Operations — تشغيل فوري دون تعقيد</p>
+                <h1 class="sanad-hero__headline" id="sanad-hero-heading">شّغل تجربة عملاء استثنائية<br><span class="sanad-hero__headline-accent">دون تغيير أنظمتك الحالية</span></h1>
+                <p class="sanad-hero__description">فريق متخصص يتكامل مباشِراً مع أنظمة الاتصالات والواتساب والمنصات الحالية لديك، لإدارة تفاعلات العملاء بكفاءة وتحقيق نتائج ملموسة.</p>
+            </div>
             <div class="sanad-hero__actions">
-                <button type="button" class="sanad-btn sanad-hero__cta" data-consultation-open>احجز استشارة مجانية
-                </button>
-                <a class="sanad-btn sanad-btn--outline sanad-hero__cta-outline" href="./how-it-works.html">شاهد كيف
-                    نعمل</a></div>
+                <button type="button" class="sanad-btn sanad-hero__cta" data-consultation-open>احجز استشارة مجانية</button>
+                <a class="sanad-btn sanad-btn--outline sanad-hero__cta-outline" href="how-it-works.html">شاهد كيف نعمل</a>
+            </div>
             <ul class="sanad-hero__trust">
-                <li class="sanad-hero__trust-item"><img class="sanad-hero__trust-icon"
-                                                        src="./assets/image/svg/dataSecurityIcon_24x24.svg" alt=""
-                                                        width="24" height="24" decoding="async"> <span
-                    class="sanad-hero__trust-copy"> <span class="sanad-hero__trust-title">بيانات آمنة</span> <span
-                    class="sanad-hero__trust-detail">اتفاقية NDA رسمية</span> </span></li>
+                <li class="sanad-hero__trust-item">
+                    <img class="sanad-hero__trust-icon" src="/website/assets/image/svg/dataSecurityIcon_24x24.svg" alt="" width="24" height="24" decoding="async">
+                    <span class="sanad-hero__trust-copy">
+                        <span class="sanad-hero__trust-title">حماية وخصوصية</span>
+                        <span class="sanad-hero__trust-detail">اتفاقية عدم إفصاح (NDA) رسمية.</span>
+                    </span>
+                </li>
                 <li class="sanad-hero__trust-divider" aria-hidden="true"></li>
-                <li class="sanad-hero__trust-item"><img class="sanad-hero__trust-icon"
-                                                        src="./assets/image/svg/directIntegrationIcon_24x24.svg" alt=""
-                                                        width="24" height="24" decoding="async"> <span
-                    class="sanad-hero__trust-copy"> <span class="sanad-hero__trust-title">تكامل مباشر</span> <span
-                    class="sanad-hero__trust-detail">مع أنظمتك الحالية</span> </span></li>
+                <li class="sanad-hero__trust-item">
+                    <img class="sanad-hero__trust-icon" src="/website/assets/image/svg/directIntegrationIcon_24x24.svg" alt="" width="24" height="24" decoding="async">
+                    <span class="sanad-hero__trust-copy">
+                        <span class="sanad-hero__trust-title">تكامل مباشر</span>
+                        <span class="sanad-hero__trust-detail">ربط فوري مع أنظمتك دون تعقيد تقني.</span>
+                    </span>
+                </li>
                 <li class="sanad-hero__trust-divider" aria-hidden="true"></li>
-                <li class="sanad-hero__trust-item"><img class="sanad-hero__trust-icon"
-                                                        src="./assets/image/svg/fastLaunchIcon_24x24.svg" alt=""
-                                                        width="24" height="24" decoding="async"> <span
-                    class="sanad-hero__trust-copy"> <span class="sanad-hero__trust-title">انطلاق سريع</span> <span
-                    class="sanad-hero__trust-detail">خلال 48 ساعة</span> </span></li>
+                <li class="sanad-hero__trust-item">
+                    <img class="sanad-hero__trust-icon" src="/website/assets/image/svg/fastLaunchIcon_24x24.svg" alt="" width="24" height="24" decoding="async">
+                    <span class="sanad-hero__trust-copy">
+                        <span class="sanad-hero__trust-title">انطلاق سريع</span>
+                        <span class="sanad-hero__trust-detail">تفعيل الفريق وبدء العمل خلال 48 ساعة فقط.</span>
+                    </span>
+                </li>
             </ul>
         </div>
-        <div class="sanad-hero__visual" aria-hidden="true"><span class="sanad-hero__glow"></span> <img
-            class="sanad-hero__grid" src="./assets/image/svg/technicalGridPattern_519x640.svg" alt="" width="519"
-            height="640" decoding="async">
+        <div class="sanad-hero__visual" aria-hidden="true">
+            <span class="sanad-hero__glow"></span>
+            <img class="sanad-hero__grid" src="/website/assets/image/svg/technicalGridPattern_519x640.svg" alt="" width="519" height="640" decoding="async">
             <picture class="sanad-hero__globe-picture">
-                <source type="image/webp" srcset="./assets/image/webp/globeIllustration_494x494.webp">
-                <img class="sanad-hero__globe" src="./assets/image/png/globeIllustration_494x494.png" alt="" width="494"
-                     height="494" fetchpriority="high" decoding="async"></picture>
-            <img class="sanad-hero__connections" src="./assets/image/svg/channelConnectionLayer_370x365.svg" alt=""
-                 width="371" height="366" decoding="async"> <span class="sanad-hero__chip sanad-hero__chip--phone"><img
-                src="./assets/image/svg/phoneOperationsIcon_24x24.svg" alt="" width="24" height="24"
-                decoding="async"></span> <span class="sanad-hero__chip sanad-hero__chip--chat"><img
-                src="./assets/image/svg/whatsappChatIcon_24x24.svg" alt="" width="24" height="24"
-                decoding="async"></span> <span class="sanad-hero__chip sanad-hero__chip--support"><img
-                src="./assets/image/svg/customerSupportIcon_24x24.svg" alt="" width="24" height="24"
-                decoding="async"></span> <span class="sanad-hero__chip sanad-hero__chip--crm"><img
-                src="./assets/image/svg/crmSystemsIcon_24x24.svg" alt="" width="24" height="24" decoding="async"></span>
-            <span class="sanad-hero__chip sanad-hero__chip--analytics"><img
-                src="./assets/image/svg/performanceAnalyticsIcon_24x24.svg" alt="" width="24" height="24"
-                decoding="async"></span></div>
-    </section>
-    <section class="sanad-stats" aria-label="مؤشرات الأداء">
-        <ul class="sanad-stats__list">
-            <li class="sanad-stats__item"><span class="sanad-stats__value" dir="ltr">&lt; 60s</span> <span
-                class="sanad-stats__label">سرعة الاستجابة</span> <span class="sanad-stats__detail">متوسط زمن الرد على جميع القنوات</span>
-            </li>
-            <li class="sanad-stats__item"><span class="sanad-stats__value" dir="ltr">100%</span> <span
-                class="sanad-stats__label">التكامل التقني</span> <span class="sanad-stats__detail">ربط مباشر بدون نقل بيانات &#x2066;Plug&nbsp;&amp;&nbsp;Play&#x2069;</span>
-            </li>
-            <li class="sanad-stats__item"><span class="sanad-stats__value" dir="ltr">40%</span> <span
-                class="sanad-stats__label">الكفاءة المالية</span> <span class="sanad-stats__detail">متوسط خفض التكاليف التشغيلية</span>
-            </li>
-            <li class="sanad-stats__item"><span class="sanad-stats__value" dir="ltr">+35%</span> <span
-                class="sanad-stats__label">النمو والبيع</span> <span class="sanad-stats__detail">زيادة نسبة تحويل المبيعات عبر المحادثات</span>
-            </li>
-        </ul>
-    </section>
-    <section class="sanad-integration" aria-labelledby="sanad-integration-heading">
-        <div class="sanad-integration__container">
-            <div class="sanad-integration__header"><h2 class="sanad-integration__title" id="sanad-integration-heading">
-                تشغيل مرن <span class="sanad-integration__title-accent">يتكامل</span> مع أنظمتك الحالية</h2>
-                <p class="sanad-integration__description">لا حاجة إلى الانتقال لمنصات جديدة أو تحمّل تكاليف ربط إضافية.
-                    يتكامل فريق SANAD CX مباشرةً مع الأنظمة التي تستخدمها بالفعل، ويبدأ التشغيل من خلال حسابات مستخدمين
-                    بصلاحيات محددة، مع الحفاظ على بياناتك داخل بيئتك الحالية.</p></div>
-            <ul class="sanad-integration__benefits">
-                <li class="sanad-integration__benefit"><img class="sanad-integration__benefit-icon"
-                                                            src="./assets/image/png/dataProtectionIllustration_auto.png"
-                                                            alt="" width="53" height="48" decoding="async">
-                    <div class="sanad-integration__benefit-copy"><h3
-                        class="sanad-integration__benefit-title sanad-integration__benefit-title--accent">بياناتك تحت
-                        سيطرتك</h3>
-                        <p class="sanad-integration__benefit-description">تظل المحادثات والتقارير وسجلات العملاء ضمن
-                            أنظمتك وحساباتك، مع تحديد صلاحيات الوصول وفقًا لسياسات الأمان المتفق عليها.</p></div>
-                </li>
-                <li class="sanad-integration__benefit"><img class="sanad-integration__benefit-icon"
-                                                            src="./assets/image/png/userGrowthIllustration_auto.png"
-                                                            alt="" width="53" height="48" decoding="async">
-                    <div class="sanad-integration__benefit-copy"><h3 class="sanad-integration__benefit-title">توسّع حسب
-                        احتياجاتك</h3>
-                        <p class="sanad-integration__benefit-description">عدّل حجم فريق التشغيل وفقًا لحجم أعمالك ومواسم
-                            الطلب، دون الدخول في دورات توظيف طويلة أو تحمّل أعباء إدارة فريق داخلي متغير</p></div>
-                </li>
-                <li class="sanad-integration__benefit"><img class="sanad-integration__benefit-icon"
-                                                            src="./assets/image/png/noSetupFeesIllustration_auto.png"
-                                                            alt="" width="47" height="48" decoding="async">
-                    <div class="sanad-integration__benefit-copy"><h3 class="sanad-integration__benefit-title">بدون
-                        تكاليف إعداد إضافية</h3>
-                        <p class="sanad-integration__benefit-description">ابدأ دون الحاجة إلى الاستثمار في سيرفرات أو
-                            تراخيص برامج جديدة، واستفد من أنظمتك الحالية لتقليل تكاليف التأسيس وتسريع بدء التشغيل</p>
-                    </div>
-                </li>
-            </ul>
+                <source type="image/webp" srcset="/website/assets/image/webp/globeIllustration_494x494.webp">
+                <img class="sanad-hero__globe" src="/website/assets/image/png/globeIllustration_494x494.png" alt="" width="494" height="494" fetchpriority="high" decoding="async">
+            </picture>
+            <img class="sanad-hero__connections" src="/website/assets/image/svg/channelConnectionLayer_370x365.svg" alt="" width="371" height="366" decoding="async">
+            <span class="sanad-hero__chip sanad-hero__chip--phone"><img src="/website/assets/image/svg/phoneOperationsIcon_24x24.svg" alt="" width="24" height="24" decoding="async"></span>
+            <span class="sanad-hero__chip sanad-hero__chip--chat"><img src="/website/assets/image/svg/whatsappChatIcon_24x24.svg" alt="" width="24" height="24" decoding="async"></span>
+            <span class="sanad-hero__chip sanad-hero__chip--support"><img src="/website/assets/image/svg/customerSupportIcon_24x24.svg" alt="" width="24" height="24" decoding="async"></span>
+            <span class="sanad-hero__chip sanad-hero__chip--crm"><img src="/website/assets/image/svg/crmSystemsIcon_24x24.svg" alt="" width="24" height="24" decoding="async"></span>
+            <span class="sanad-hero__chip sanad-hero__chip--analytics"><img src="/website/assets/image/svg/performanceAnalyticsIcon_24x24.svg" alt="" width="24" height="24" decoding="async"></span>
         </div>
     </section>
-    <section class="sanad-comparison" aria-labelledby="sanad-comparison-heading">
-        <div class="sanad-comparison__container">
-            <div class="sanad-comparison__header"><h2 class="sanad-comparison__title" id="sanad-comparison-heading">
-                لماذا تختار <span class="sanad-comparison__title-accent">Sanad CX</span>؟</h2>
-                <p class="sanad-comparison__intro">قارن بين نماذج تشغيل خدمة العملاء واختر الأنسب لنمو أعمالك.</p></div>
-            <ul class="sanad-comparison__cards">
-                <li class="sanad-comparison__card sanad-comparison__card--sanad sanad-card-hoverable">
-                    <div class="sanad-comparison__card-head"><h3 class="sanad-comparison__card-title">Sanad CX</h3>
-                        <p class="sanad-comparison__card-subtitle">شريك النمو</p></div>
-                    <dl class="sanad-comparison__criteria">
-                        <div class="sanad-comparison__criterion">
-                            <dt class="sanad-comparison__criterion-label">سرعة الانطلاق</dt>
-                            <dd class="sanad-comparison__criterion-value">⚡ خلال 48 ساعة</dd>
-                        </div>
-                        <div class="sanad-comparison__criterion">
-                            <dt class="sanad-comparison__criterion-label">التكامل مع الأنظمة</dt>
-                            <dd class="sanad-comparison__criterion-value">🔗 مباشر على أنظمتك (Plug &amp; Play)</dd>
-                        </div>
-                        <div class="sanad-comparison__criterion">
-                            <dt class="sanad-comparison__criterion-label">تكاليف الإعداد</dt>
-                            <dd class="sanad-comparison__criterion-value">💚 صفر ريال</dd>
-                        </div>
-                        <div class="sanad-comparison__criterion">
-                            <dt class="sanad-comparison__criterion-label">قابلية التوسع</dt>
-                            <dd class="sanad-comparison__criterion-value">📈 مرونة كاملة وزيادة فورية</dd>
-                        </div>
-                    </dl>
-                    <div class="sanad-card-hover-overlay" aria-hidden="true"></div>
-                </li>
-                <li class="sanad-comparison__card sanad-card-hoverable">
-                    <div class="sanad-comparison__card-head"><h3 class="sanad-comparison__card-title">التعهيد
-                        التقليدي</h3>
-                        <p class="sanad-comparison__card-subtitle">Outsourcing</p></div>
-                    <dl class="sanad-comparison__criteria">
-                        <div class="sanad-comparison__criterion">
-                            <dt class="sanad-comparison__criterion-label">سرعة الانطلاق</dt>
-                            <dd class="sanad-comparison__criterion-value">⏳ &#x2066;3 - 6&#x2069; أسابيع</dd>
-                        </div>
-                        <div class="sanad-comparison__criterion">
-                            <dt class="sanad-comparison__criterion-label">التكامل مع الأنظمة</dt>
-                            <dd class="sanad-comparison__criterion-value">❌ يتطلب نقل بيانات وأنظمة جديدة</dd>
-                        </div>
-                        <div class="sanad-comparison__criterion">
-                            <dt class="sanad-comparison__criterion-label">تكاليف الإعداد</dt>
-                            <dd class="sanad-comparison__criterion-value">💸 رسوم تأسيس عالية</dd>
-                        </div>
-                        <div class="sanad-comparison__criterion">
-                            <dt class="sanad-comparison__criterion-label">قابلية التوسع</dt>
-                            <dd class="sanad-comparison__criterion-value">📉 عقود جامدة وشروط معقدة</dd>
-                        </div>
-                    </dl>
-                    <div class="sanad-card-hover-overlay" aria-hidden="true"></div>
-                </li>
-                <li class="sanad-comparison__card sanad-card-hoverable">
-                    <div class="sanad-comparison__card-head"><h3 class="sanad-comparison__card-title">التوظيف
-                        الداخلي</h3>
-                        <p class="sanad-comparison__card-subtitle">In-house Team</p></div>
-                    <dl class="sanad-comparison__criteria">
-                        <div class="sanad-comparison__criterion">
-                            <dt class="sanad-comparison__criterion-label">سرعة الانطلاق</dt>
-                            <dd class="sanad-comparison__criterion-value">⏳ &#x2066;1 - 2&#x2069; شهر</dd>
-                        </div>
-                        <div class="sanad-comparison__criterion">
-                            <dt class="sanad-comparison__criterion-label">التكامل مع الأنظمة</dt>
-                            <dd class="sanad-comparison__criterion-value">⚠&#xFE0F; مكلف ويحتاج إعداد طويل</dd>
-                        </div>
-                        <div class="sanad-comparison__criterion">
-                            <dt class="sanad-comparison__criterion-label">تكاليف الإعداد</dt>
-                            <dd class="sanad-comparison__criterion-value">💸 استقطاب وتدريب وتجهيز</dd>
-                        </div>
-                        <div class="sanad-comparison__criterion">
-                            <dt class="sanad-comparison__criterion-label">قابلية التوسع</dt>
-                            <dd class="sanad-comparison__criterion-value">❌ صعوبة في إعادة الهيكلة</dd>
-                        </div>
-                    </dl>
-                    <div class="sanad-card-hover-overlay" aria-hidden="true"></div>
-                </li>
-            </ul>
+    <section class="sanad-stats" aria-label="مؤشرات الأداء" data-stats-slider>
+        <div class="sanad-stats__slider">
+            <button type="button" class="sanad-stats__arrow sanad-stats__arrow--prev" data-stats-prev aria-label="السابق">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 19l-7-7 7-7"/></svg>
+            </button>
+            <div class="sanad-stats__viewport">
+                <ul class="sanad-stats__track" data-stats-track>
+                    <li class="sanad-stats__item">
+                        <span class="sanad-stats__value" data-stat-value="&lt; 60 ثانية" dir="rtl">&lt; 60 ثانية</span>
+                        <span class="sanad-stats__label">سرعة الاستجابة</span>
+                        <span class="sanad-stats__detail">رد فوري ومباشر على مدار الساعة</span>
+                    </li>
+                    <li class="sanad-stats__item">
+                        <span class="sanad-stats__value" data-stat-value="100%">100%</span>
+                        <span class="sanad-stats__label">التشغيل المباشر</span>
+                        <span class="sanad-stats__detail">فريق عمل متفرغ لخدمة عملائك</span>
+                    </li>
+                    <li class="sanad-stats__item">
+                        <span class="sanad-stats__value" data-stat-value="24/7">24/7</span>
+                        <span class="sanad-stats__label">التغطية المستمرة</span>
+                        <span class="sanad-stats__detail">لا نتوقف أبداً، دعم دائم بلا انقطاع</span>
+                    </li>
+                </ul>
+            </div>
+            <button type="button" class="sanad-stats__arrow sanad-stats__arrow--next" data-stats-next aria-label="التالي">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+            </button>
         </div>
     </section>
-    <section class="sanad-home-services" aria-labelledby="sanad-home-services-heading">
+
+<section class="sanad-home-services" aria-labelledby="sanad-home-services-heading">
         <div class="sanad-home-services__header"><h2 class="sanad-home-services__title"
-                                                     id="sanad-home-services-heading">حلول متكاملة لإدارة <span
-            class="sanad-home-services__title-accent">وتطوير تجربة العميل</span></h2>
-            <p class="sanad-home-services__intro">نساعدك على تقديم تجربة عملاء أفضل، وتحسين كفاءة التشغيل، وتحويل كل
-                تفاعل إلى فرصة لبناء الثقة وتحقيق النمو.</p></div>
+                                                     id="sanad-home-services-heading">حلول متكاملة تدمج التشغيل البشري، الذكاء الاصطناعي، <span class="sanad-home-services__title-accent">وهندسة تجربة العميل (CX)</span></h2>
+            <p class="sanad-home-services__intro">نساعدك على تقديم تجربة عملاء أفضل، وتحسين كفاءة التشغيل، وتحويل كل تفاعل إلى فرصة لبناء الثقة وتحقيق النمو.</p></div>
         <ul class="sanad-home-services__grid">
             <li class="sanad-service-card sanad-home-services__card"><img class="sanad-service-card__icon"
-                                                                          src="./assets/image/svg/Service-Icon-logistics_48x48.svg"
+                                                                          src="/website/assets/image/home/service-quality-shield.svg"
                                                                           alt="" width="48" height="48"
                                                                           decoding="async">
                 <div class="sanad-service-card__copy">
-                    <div class="sanad-home-services__title-area"><h3 class="sanad-service-card__title">دعم العمليات
-                        اللوجستية والمايل الأخير</h3></div>
-                    <div class="sanad-home-services__desc-area"><p class="sanad-service-card__desc">متابعة الشحنات،
-                        تحديث العناوين مع العملاء، وتقليل نسبة الشحنات المرتجعة (RTO).</p></div>
-                </div>
-                <div class="sanad-service-card__compat">
-                    <div class="sanad-service-card__compat-divider" aria-hidden="true"></div>
-                    <p class="sanad-service-card__compat-label">متوافق مع</p>
-                    <div class="sanad-service-card__chips"><span class="sanad-service-card__chip" lang="en" dir="ltr">SMSA</span>
-                        <span class="sanad-service-card__chip" lang="en" dir="ltr">Aramex</span> <span
-                            class="sanad-service-card__chip" lang="en" dir="ltr">Torod</span> <span
-                            class="sanad-service-card__chip" lang="en" dir="ltr">Oto</span></div>
+                    <div class="sanad-home-services__title-area"><h3 class="sanad-service-card__title">تطوير رحلة العميل وجهود الجودة (QA & CX Analytics)</h3></div>
+                    <div class="sanad-home-services__desc-area"><p class="sanad-service-card__desc">تحليل أداء التفاعلات، تقديم تقارير دورية دقيقة لقياس مؤشرات (CSAT & NPS)، وضمان أعلى مستويات الالتزام بمعايير الجودة لحماية سمعة براندك.</p></div>
                 </div>
             </li>
             <li class="sanad-service-card sanad-home-services__card"><img class="sanad-service-card__icon"
-                                                                          src="./assets/image/svg/Service-Icon-messaging_48x48.svg"
+                                                                          src="/website/assets/image/svg/Service-Icon-growth_48x48.svg"
                                                                           alt="" width="48" height="48"
                                                                           decoding="async">
                 <div class="sanad-service-card__copy">
-                    <div class="sanad-home-services__title-area"><h3 class="sanad-service-card__title">إدارة محادثات
-                        الواتساب والأعمال</h3></div>
-                    <div class="sanad-home-services__desc-area"><p class="sanad-service-card__desc">ردود أوتوماتيكية
-                        وبشرية سريعة عبر حساب واتساب موحد لخدمة آلاف العملاء بنفس اللحظة.</p></div>
-                </div>
-                <div class="sanad-service-card__compat">
-                    <div class="sanad-service-card__compat-divider" aria-hidden="true"></div>
-                    <p class="sanad-service-card__compat-label">متوافق مع</p>
-                    <div class="sanad-service-card__chips"><span class="sanad-service-card__chip" lang="en" dir="ltr">MessageBird</span>
-                        <span class="sanad-service-card__chip" lang="en" dir="ltr">Unifonic</span> <span
-                            class="sanad-service-card__chip" lang="en" dir="ltr">Intercom</span></div>
+                    <div class="sanad-home-services__title-area"><h3 class="sanad-service-card__title">إدارة محادثات الواتساب والمتاجر الإلكترونية</h3></div>
+                    <div class="sanad-home-services__desc-area"><p class="sanad-service-card__desc">ردود بشرية مدعومة بالذكاء الاصطناعي وتأكيد طلبات ومعالجة السلات المتروكة عبر قنواتك الحالية على مدار الساعة.</p></div>
                 </div>
             </li>
             <li class="sanad-service-card sanad-home-services__card"><img class="sanad-service-card__icon"
-                                                                          src="./assets/image/svg/Service-Icon-growth_48x48.svg"
+                                                                          src="/website/assets/image/svg/Service-Icon-messaging_48x48.svg"
                                                                           alt="" width="48" height="48"
                                                                           decoding="async">
                 <div class="sanad-service-card__copy">
-                    <div class="sanad-home-services__title-area"><h3 class="sanad-service-card__title">المبيعات وإغلاق
-                        الصفقات ⁦(Sales Acceleration)⁩</h3></div>
-                    <div class="sanad-home-services__desc-area"><p class="sanad-service-card__desc">فريق متخصص في متابعة
-                        السلات متروكة، الرد على الاستفسارات، وتأكيد الطلبات لزيادة معدل التحويل.</p></div>
-                </div>
-                <div class="sanad-service-card__compat">
-                    <div class="sanad-service-card__compat-divider" aria-hidden="true"></div>
-                    <p class="sanad-service-card__compat-label">متوافق مع</p>
-                    <div class="sanad-service-card__chips"><span class="sanad-service-card__chip" lang="en" dir="ltr">Zid</span>
-                        <span class="sanad-service-card__chip" lang="en" dir="ltr">Zid</span> <span
-                            class="sanad-service-card__chip" lang="en" dir="ltr">Salla</span> <span
-                            class="sanad-service-card__chip" lang="en" dir="ltr">Shopify</span></div>
+                    <div class="sanad-home-services__title-area"><h3 class="sanad-service-card__title">المبيعات الهاتفية وإغلاق الصفقات (Telesales & Conversion)</h3></div>
+                    <div class="sanad-home-services__desc-area"><p class="sanad-service-card__desc">فريق متخصص في متابعة العملاء المحتملين (Leads)، التعامل الاحترافي مع الاعتراضات، وإغلاق الصفقات لزيادة معدل التحويل.</p></div>
                 </div>
             </li>
             <li class="sanad-service-card sanad-home-services__card"><img class="sanad-service-card__icon"
-                                                                          src="./assets/image/svg/Service-Icon-support_48x48.svg"
+                                                                          src="/website/assets/image/svg/Service-Icon-support_48x48.svg"
                                                                           alt="" width="48" height="48"
                                                                           decoding="async">
                 <div class="sanad-service-card__copy">
-                    <div class="sanad-home-services__title-area"><h3 class="sanad-service-card__title">إدارة رعاية
-                        العملاء المتكاملة</h3></div>
-                    <div class="sanad-home-services__desc-area"><p class="sanad-service-card__desc">تقديم دعم احترافي
-                        على مدار الساعة عبر المكالمات والمحادثات المباشرة بنفس هوية علامتك التجارية.</p></div>
-                </div>
-                <div class="sanad-service-card__compat">
-                    <div class="sanad-service-card__compat-divider" aria-hidden="true"></div>
-                    <p class="sanad-service-card__compat-label">متوافق مع</p>
-                    <div class="sanad-service-card__chips"><span class="sanad-service-card__chip" lang="en" dir="ltr">Zendesk</span>
-                        <span class="sanad-service-card__chip" lang="en" dir="ltr">Salesforce</span> <span
-                            class="sanad-service-card__chip" lang="en" dir="ltr">Zoho</span> <span
-                            class="sanad-service-card__chip" lang="en" dir="ltr">Freshdesk</span></div>
+                    <div class="sanad-home-services__title-area"><h3 class="sanad-service-card__title">إدارة الاتصالات الواردة والصادرة (Voice Operations)</h3></div>
+                    <div class="sanad-home-services__desc-area"><p class="sanad-service-card__desc">تقديم دعم احترافي واستجابة فورية للمكالمات في أقل من 60 ثانية عبر السنترال السحابي الخاص بك بنفس هوية علامتك التجارية.</p></div>
                 </div>
             </li>
         </ul>
         <div class="sanad-home-services__edge" aria-hidden="true">
             <div class="sanad-home-services__edge-layer" data-node-id="89:16023" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer.svg" alt=""></div>
             <div class="sanad-home-services__edge-layer" data-node-id="89:16027" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer.svg" alt=""></div>
             <div class="sanad-home-services__edge-layer" data-node-id="89:16031" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer.svg" alt=""></div>
             <div class="sanad-home-services__edge-layer" data-node-id="89:16035" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer.svg" alt=""></div>
             <div class="sanad-home-services__edge-layer" data-node-id="89:16039" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer.svg" alt=""></div>
             <div class="sanad-home-services__edge-layer" data-node-id="89:16043" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer.svg" alt=""></div>
             <div class="sanad-home-services__edge-layer" data-node-id="89:16047" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer.svg" alt=""></div>
             <div class="sanad-home-services__edge-layer" data-node-id="89:16051" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer.svg" alt=""></div>
             <div class="sanad-home-services__edge-layer" data-node-id="89:16055" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer.svg" alt=""></div>
             <div class="sanad-home-services__edge-layer" data-node-id="89:16059" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer.svg" alt=""></div>
             <div class="sanad-home-services__edge-layer" data-node-id="89:16063" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer.svg" alt=""></div>
             <div class="sanad-home-services__edge-layer" data-node-id="89:16067" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer.svg" alt=""></div>
             <div class="sanad-home-services__edge-layer" data-node-id="89:16071" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer.svg" alt=""></div>
             <div class="sanad-home-services__edge-layer" data-node-id="89:16075" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer.svg" alt=""></div>
             <div class="sanad-home-services__edge-layer" data-node-id="89:16079" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer.svg" alt=""></div>
             <div class="sanad-home-services__edge-layer" data-node-id="89:16083" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer.svg" alt=""></div>
             <div class="sanad-home-services__edge-layer" data-node-id="89:16087" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer.svg" alt=""></div>
             <div class="sanad-home-services__edge-layer" data-node-id="89:16091" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer.svg" alt=""></div>
             <div class="sanad-home-services__edge-layer" data-node-id="89:16095" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer.svg" alt=""></div>
             <div class="sanad-home-services__edge-layer" data-node-id="89:16099" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer.svg" alt=""></div>
             <div class="sanad-home-services__edge-layer" data-node-id="89:16103" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer.svg" alt=""></div>
             <div class="sanad-home-services__edge-layer" data-node-id="89:16107" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer.svg" alt=""></div>
             <div class="sanad-home-services__edge-layer" data-node-id="89:16111" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer.svg" alt=""></div>
             <div class="sanad-home-services__edge-layer" data-node-id="89:16115" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer.svg" alt=""></div>
             <div class="sanad-home-services__edge-layer" data-node-id="89:16119" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer.svg" alt=""></div>
             <div class="sanad-home-services__edge-layer" data-node-id="89:16123" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer.svg" alt=""></div>
             <div class="sanad-home-services__edge-layer" data-node-id="89:16127" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer.svg" alt=""></div>
             <div class="sanad-home-services__edge-layer" data-node-id="89:16131" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer.svg" alt=""></div>
             <div class="sanad-home-services__edge-layer" data-node-id="89:16135" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
             <div class="sanad-home-services__edge-layer" data-node-id="89:16139" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
             <div class="sanad-home-services__edge-layer" data-node-id="89:16143" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
             <div class="sanad-home-services__edge-layer" data-node-id="89:16147" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
             <div class="sanad-home-services__edge-layer" data-node-id="89:16151" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
             <div class="sanad-home-services__edge-layer" data-node-id="89:16155" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
             <div class="sanad-home-services__edge-layer" data-node-id="89:16159" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
             <div class="sanad-home-services__edge-layer" data-node-id="89:16163" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
             <div class="sanad-home-services__edge-layer" data-node-id="89:16167" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
             <div class="sanad-home-services__edge-layer" data-node-id="89:16171" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
             <div class="sanad-home-services__edge-layer" data-node-id="89:16175" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
             <div class="sanad-home-services__edge-layer" data-node-id="89:16179" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
             <div class="sanad-home-services__edge-layer" data-node-id="89:16183" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
             <div class="sanad-home-services__edge-layer" data-node-id="89:16187" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
             <div class="sanad-home-services__edge-layer" data-node-id="89:16191" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
             <div class="sanad-home-services__edge-layer" data-node-id="89:16195" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
         </div>
     </section>
-    <section class="sanad-testimonials" aria-labelledby="sanad-testimonials-heading" data-node-id="85:10437">
-        <div class="sanad-testimonials__header" data-node-id="85:10438"><h2 class="sanad-testimonials__title"
-                                                                            id="sanad-testimonials-heading"
-                                                                            data-node-id="85:10439">ماذا يقول شركاء
-            نمونا عن تجربة <span class="sanad-testimonials__title-accent">Sanad CX</span>؟</h2></div>
-        <div class="sanad-testimonials__carousel" data-carousel role="region" aria-roledescription="carousel"
-             aria-label="آراء العملاء" tabindex="0" data-node-id="85:10441">
+<section class="sanad-home-fkr" id="sanad-home-fkr" data-gsap-section="home-fkr" data-node-id="349:8857" aria-labelledby="sanad-home-fkr-title">
+<div class="sanad-home-fkr__portal">
+    <div class="sanad-home-fkr__header">
+        <p class="sanad-home-fkr__eyebrow">فِكر | الاستشارات التسويقية وهندسة النمو</p>
+        <h2 class="sanad-home-fkr__title" id="sanad-home-fkr-title">لا نُطلق إعلانات عابرة.. نحن نهندس هويات تجارية وقنوات مبيعات تُحقق النمو</h2>
+        <p class="sanad-home-fkr__description">تحت مظلة سند CX، يقدم ذراع "فِكر" حلولاً استشارية تسويقية موجهة لقيادات الشركات ومؤسسي الأعمال. نحن ندمج بين جماليات الهوية البصرية وعقلية الأرقام والعائد على الاستثمار (ROI)، لنضمن أن كل ما تُنفقه في التسويق يُترجم إلى نمو حقيقي ومبيعات مستدامة.</p>
+    </div>
+    <div class="sanad-home-fkr__pillars">
+        <article class="sanad-home-fkr__pillar sanad-card-hoverable">
+            <span class="sanad-home-fkr__pillar-num" dir="ltr">01</span>
+            <h3 class="sanad-home-fkr__pillar-title">تموضع استراتيجي حاد <span dir="ltr">(Brand Positioning)</span></h3>
+            <p class="sanad-home-fkr__pillar-desc">نحدد ميزتك التنافسية لنضع براندك في صدارة منافسيك ويستحيل تجاهله.</p>
+        </article>
+        <article class="sanad-home-fkr__pillar sanad-card-hoverable">
+            <span class="sanad-home-fkr__pillar-num" dir="ltr">02</span>
+            <h3 class="sanad-home-fkr__pillar-title">حملات تسويقية عالية التحويل <span dir="ltr">(High-Intent Campaigns)</span></h3>
+            <p class="sanad-home-fkr__pillar-desc">تصميم وتخطيط حملات جلب العملاء المحتملين (Lead Generation) مع تصفية الزحام والعملاء غير الجادين.</p>
+        </article>
+        <article class="sanad-home-fkr__pillar sanad-card-hoverable">
+            <span class="sanad-home-fkr__pillar-num" dir="ltr">03</span>
+            <h3 class="sanad-home-fkr__pillar-title">ربط التسويق بالمبيعات <span dir="ltr">(Marketing-to-Sales Alignment)</span></h3>
+            <p class="sanad-home-fkr__pillar-desc">سد الفجوة بين الإعلان وإغلاق الصفقة عبر دمج الحملات مباشرة بفرق المبيعات والمساعد الذكي في سند CX.</p>
+        </article>
+    </div>
+    <div class="sanad-home-fkr__actions">
+        <a class="sanad-btn sanad-home-fkr__cta" href="/fkr.html">استكشف العقلية التسويقية لـ فِكر</a>
+    </div>
+</div>
+</section>
+<section class="sanad-comparison" aria-labelledby="sanad-comparison-heading">
+        <div class="sanad-comparison__container">
+            <div class="sanad-comparison__header">
+                <h2 class="sanad-comparison__title" id="sanad-comparison-heading">لماذا تختار <span
+                        class="sanad-comparison__title-accent">Sanad CX</span> بدلاً من الخيارات التقليدية؟</h2>
+                <p class="sanad-comparison__intro">قارن بين نماذج تشغيل خدمة العملاء واختر الأنسب لنمو أعمالك.</p>
+            </div>
+            
+                <ul class="sanad-comparison__cards"><li class="sanad-comparison__card  sanad-card-hoverable"><div class="sanad-comparison__card-head"><h3 class="sanad-comparison__card-title">التوظيف الداخلي</h3><p class="sanad-comparison__card-subtitle" lang="en">In-House Hiring</p></div><dl class="sanad-comparison__criteria"><div class="sanad-comparison__criterion"><dt class="sanad-comparison__criterion-label">التكلفة التشغيلية والتأسيسية</dt><dd class="sanad-comparison__criterion-value">تكاليف رواتب ثابتة، تأمينات، وتجهيز مكاتب</dd></div><div class="sanad-comparison__criterion"><dt class="sanad-comparison__criterion-label">التقنية والذكاء الاصطناعي</dt><dd class="sanad-comparison__criterion-value">يعتمد على كفاءة الموظف الفردية فقط</dd></div><div class="sanad-comparison__criterion"><dt class="sanad-comparison__criterion-label">الشمول الاستراتيجي والنمو</dt><dd class="sanad-comparison__criterion-value">يتطلب فريق منفصل للتسويق والإدارة</dd></div><div class="sanad-comparison__criterion"><dt class="sanad-comparison__criterion-label">ملكية البيانات والخصوصية</dt><dd class="sanad-comparison__criterion-value">مستضافة داخلياً ولكن تحت إدارتك الكاملة</dd></div><div class="sanad-comparison__criterion"><dt class="sanad-comparison__criterion-label">سرعة التوسع والجاهزية</dt><dd class="sanad-comparison__criterion-value">تستغرق أشهراً للتوظيف والتدريب والفصل</dd></div><div class="sanad-comparison__criterion"><dt class="sanad-comparison__criterion-label">التكامل البرمجي</dt><dd class="sanad-comparison__criterion-value">يتطلب صيانة وبنية تحتية برمجية مستمرة</dd></div></dl></li><li class="sanad-comparison__card  sanad-card-hoverable"><div class="sanad-comparison__card-head"><h3 class="sanad-comparison__card-title">شركات التعهيد التقليدية</h3><p class="sanad-comparison__card-subtitle" lang="en">Traditional BPO</p></div><dl class="sanad-comparison__criteria"><div class="sanad-comparison__criterion"><dt class="sanad-comparison__criterion-label">التكلفة التشغيلية والتأسيسية</dt><dd class="sanad-comparison__criterion-value">رسوم ربط وتأسيس باهظة وعقود معقدة</dd></div><div class="sanad-comparison__criterion"><dt class="sanad-comparison__criterion-label">التقنية والذكاء الاصطناعي</dt><dd class="sanad-comparison__criterion-value">أنظمة كول سنتر تقليدية وثابتة</dd></div><div class="sanad-comparison__criterion"><dt class="sanad-comparison__criterion-label">الشمول الاستراتيجي والنمو</dt><dd class="sanad-comparison__criterion-value">خدمات رد وتشغيل فقط دون استراتيجيات تسويق</dd></div><div class="sanad-comparison__criterion"><dt class="sanad-comparison__criterion-label">ملكية البيانات والخصوصية</dt><dd class="sanad-comparison__criterion-value">تنتقل وتُستضاف غالباً على منصات خارجية</dd></div><div class="sanad-comparison__criterion"><dt class="sanad-comparison__criterion-label">سرعة التوسع والجاهزية</dt><dd class="sanad-comparison__criterion-value">تستغرق أسابيع طويلة لإعادة التوجيه والإعداد</dd></div><div class="sanad-comparison__criterion"><dt class="sanad-comparison__criterion-label">التكامل البرمجي</dt><dd class="sanad-comparison__criterion-value">إلزام بالانتقال لأنظمتهم ومنصاتهم الخاصة</dd></div></dl></li><li class="sanad-comparison__card sanad-comparison__card--sanad sanad-card-hoverable"><div class="sanad-comparison__card-head"><h3 class="sanad-comparison__card-title">Sanad CX</h3><p class="sanad-comparison__card-subtitle" lang="en">Plug &amp; Play Hub</p></div><dl class="sanad-comparison__criteria"><div class="sanad-comparison__criterion"><dt class="sanad-comparison__criterion-label">التكلفة التشغيلية والتأسيسية</dt><dd class="sanad-comparison__criterion-value">Zero Setup Fees (بدون تكاليف إعداد أو بنية تحتية)</dd></div><div class="sanad-comparison__criterion"><dt class="sanad-comparison__criterion-label">التقنية والذكاء الاصطناعي</dt><dd class="sanad-comparison__criterion-value">مدعوم بـ Sanad AI (سرعة رد واقتراحات لحظية للموظفين)</dd></div><div class="sanad-comparison__criterion"><dt class="sanad-comparison__criterion-label">الشمول الاستراتيجي والنمو</dt><dd class="sanad-comparison__criterion-value">منظومة متكاملة + "فِكر" (حلول تشغيلية + هندسة نمو وتسويق)</dd></div><div class="sanad-comparison__criterion"><dt class="sanad-comparison__criterion-label">ملكية البيانات والخصوصية</dt><dd class="sanad-comparison__criterion-value">السيادة المطلقة لك (تظل بالكامل على أنظمتك وسيرفراتك)</dd></div><div class="sanad-comparison__criterion"><dt class="sanad-comparison__criterion-label">سرعة التوسع والجاهزية</dt><dd class="sanad-comparison__criterion-value">انطلاق فوري (خلال 48 ساعة) (مرونة تامة في رفع وخفض الطاقات)</dd></div><div class="sanad-comparison__criterion"><dt class="sanad-comparison__criterion-label">التكامل البرمجي</dt><dd class="sanad-comparison__criterion-value">تشغيل مباشر (Plug &amp; Play) (على برامجك الحالية دون تغيير السنترال)</dd></div></dl></li></ul>
+            
+        </div>
+    </section>
+
+    <section class="sanad-home-ai" id="sanad-home-ai" data-gsap-section="home-ai" data-node-id="349:8476" aria-labelledby="sanad-home-ai-title">
+<div class="sanad-home-ai__container">
+    <div class="sanad-home-ai__header">
+        <span class="sanad-home-ai__eyebrow" lang="en" dir="ltr">SANAD AI</span>
+        <h2 class="sanad-home-ai__title" id="sanad-home-ai-title">الذكاء الاصطناعي في خدمة فريقك: إضافة المساعد الذكي <span lang="en" dir="ltr">Sanad CX</span></h2>
+        <p class="sanad-home-ai__description">مَكّن فريق المبيعات وخدمة العملاء لديك من الرد بذكاء وسرعة فائقة مباشرة من داخل الواتساب ونظام الـ CRM الخاص بك دون الحاجة لتغيير أدواتك الحالية.</p>
+    </div>
+    <div class="sanad-home-ai__grid">
+        <div class="sanad-home-ai__content">
+            <h3 class="sanad-home-ai__subtitle">كيف ترفع إضافة <span lang="en" dir="ltr">Sanad CX</span> من كفاءة فريقك؟</h3>
+            <ul class="sanad-home-ai__features">
+                <li class="sanad-home-ai__feature sanad-card-hoverable">
+                    <span class="sanad-home-ai__feature-badge" dir="ltr">01</span>
+                    <div class="sanad-home-ai__feature-copy">
+                        <h4 class="sanad-home-ai__feature-title">اقتراحات ردود فورية</h4>
+                        <p class="sanad-home-ai__feature-desc">يقرأ المساعد الذكي سياق المحادثة ويولّد ردوداً دقيقة متوافقة مع هويتك وقواعد عملك بنقرة زر.</p>
+                    </div>
+                </li>
+                <li class="sanad-home-ai__feature sanad-card-hoverable">
+                    <span class="sanad-home-ai__feature-badge" dir="ltr">02</span>
+                    <div class="sanad-home-ai__feature-copy">
+                        <h4 class="sanad-home-ai__feature-title">تحليل نبرة العملاء <span dir="ltr">(Sentiment Analysis)</span></h4>
+                        <p class="sanad-home-ai__feature-desc">كشف تلقائي لمشاعر واحتياجات العميل لحظياً لمساعدة الموظف على التفاعل الأنسب.</p>
+                    </div>
+                </li>
+                <li class="sanad-home-ai__feature sanad-card-hoverable">
+                    <span class="sanad-home-ai__feature-badge" dir="ltr">03</span>
+                    <div class="sanad-home-ai__feature-copy">
+                        <h4 class="sanad-home-ai__feature-title">لوحة تحكم وتحليلات للمدراء</h4>
+                        <p class="sanad-home-ai__feature-desc">متابعة دقيقة لأداء الموظفين، سرعة الرد، وأبرز اعتراضات العملاء عبر داشبورد إدارية متكاملة.</p>
+                    </div>
+                </li>
+            </ul>
+            <p class="sanad-home-ai__summary">زيادة المبيعات، تقليل المصاريف التشغيلية، رفع إنتاجية الموظفين، تحسين تجربة العملاء، قرارات أسرع وأدق سواء ادارية او تشغيلية</p>
+            <div class="sanad-home-ai__actions">
+                <a class="sanad-btn sanad-home-ai__btn-primary" href="/ai-assistant.html">اكتشف مميزات الإضافة</a>
+                <button type="button" class="sanad-btn sanad-btn--outline sanad-home-ai__btn-secondary" data-consultation-open>ابدأ التجربة المجانية</button>
+            </div>
+        </div>
+        <div class="sanad-home-ai__visual">
+            <div class="sanad-home-ai__mockup">
+                <div class="sanad-home-ai__mockup-top">
+                    <span class="ai-copilot-badge" lang="en" dir="ltr">SANAD AI CO-PILOT</span>
+                    <div class="sanad-home-ai__tags">
+                        <span class="sanad-home-ai__tag">الردود</span>
+                        <span class="sanad-home-ai__tag">المحادثات</span>
+                        <span class="sanad-home-ai__tag">العملاء</span>
+                        <span class="sanad-home-ai__tag">التحليلات</span>
+                        <span class="sanad-home-ai__tag">الأداء</span>
+                        <span class="sanad-home-ai__tag">المبيعات</span>
+                    </div>
+                </div>
+                <div class="sanad-home-ai__chat">
+                    <div class="chat-incoming">
+                        <span class="chat-incoming__label">رسالة العميل — WhatsApp Web</span>
+                        <p class="chat-incoming__text">مرحباً، هل يمكن توضيح تفاصيل باقات التشغيل وسرعة الربط مع نظامنا؟</p>
+                    </div>
+                    <div class="ai-reply-card">
+                        <span class="ai-reply-card__header">اقتراح المساعد الذكي (Sanad AI) — متوافق مع نبرة البراند</span>
+                        <p class="ai-reply-text">أهلاً بك! نعمل بنظام الربط المباشر (Plug &amp; Play) على أنظمتكم الحالية خلال 48 ساعة فقط دون أي رسوم تأسيس، مع ضمان زمن استجابة أقل من 60 ثانية.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+<section class="sanad-testimonials" aria-labelledby="sanad-testimonials-heading">
+        <div class="sanad-testimonials__header">
+            <h2 class="sanad-testimonials__title" id="sanad-testimonials-heading">{!! str_replace('Sanad CX', '<span class="sanad-testimonials__title-accent">Sanad CX</span>', e(__('auth.testimonials_heading'))) !!}</h2>
+            <p class="sanad-testimonials__subtitle">قصص حقيقية من قادة وشركات وثقوا في سند لتشغيل وإدارة تجربة عملائهم بكفاءة استثنائية.</p>
+        </div>
+        @if(isset($clientReviewSlides) && $clientReviewSlides->isNotEmpty())
+        @php($slideCount = $clientReviewSlides->count())
+        <div class="sanad-testimonials__carousel" data-carousel role="region" aria-roledescription="carousel" aria-label="آراء العملاء" tabindex="0">
             <div class="sanad-testimonials__viewport" data-carousel-viewport>
-                <div class="sanad-testimonials__track" data-carousel-track data-node-id="I85:10441;139:13174">
-                    <div class="sanad-testimonials__slide" data-carousel-slide data-carousel-active role="group"
-                         aria-roledescription="slide" aria-label="1 من 5">
-                        <article class="sanad-testimonials__card" data-node-id="I85:10441;139:13175">
-                            <div class="sanad-testimonials__industry" data-node-id="I85:10441;139:13175;139:12743"><img
-                                class="sanad-testimonials__industry-icon sanad-testimonials__industry-icon--light"
-                                src="./assets/image/svg/Illustrative-Industry-Icon_40x40_homepage-light.svg" alt=""
-                                width="40" height="40" decoding="async" data-node-id="I85:10441;139:13175;139:12745">
-                                <img class="sanad-testimonials__industry-icon sanad-testimonials__industry-icon--dark"
-                                     src="./assets/image/svg/Illustrative-Industry-Icon_40x40_homepage-dark.svg" alt=""
-                                     width="40" height="40" aria-hidden="true" decoding="async">
-                                <p class="sanad-testimonials__industry-label"
-                                   data-node-id="I85:10441;139:13175;139:12744">قطاع خدمات B2B والشركات — توفير التكاليف
-                                    والأمان</p></div>
-                            <div class="sanad-testimonials__quotation" data-node-id="I85:10441;139:13175;139:12761">
-                                <blockquote class="sanad-testimonials__quote"
-                                            data-node-id="I85:10441;139:13175;139:12762">"أكبر تحدي كان عندنا هو ضبط
-                                    التكاليف التشغيلية للاتصالات ودعم العملاء. فريق Sanad CX اشتغل مباشرة على سيستم
-                                    السنترال والـ CRM الخاص بنا بنفس معايير الحوكمة والسرية، ونجحنا في خفض المصاريف
-                                    التشغيلية بأكثر من
-                                    <bdi dir="ltr">35%</bdi>
-                                    مع رفع كفاءة الجودة."
-                                </blockquote>
+                <div class="sanad-testimonials__track" data-carousel-track>
+                    @foreach($clientReviewSlides as $slideIndex => $slide)
+                    <div class="sanad-testimonials__slide" data-carousel-slide {{ $slideIndex === 0 ? 'data-carousel-active' : '' }} role="group" aria-roledescription="slide" aria-label="{{ $slideIndex + 1 }} من {{ $slideCount }}">
+                        @foreach($slide as $review)
+                        <article class="sanad-testimonials__card">
+                            <div class="sanad-testimonials__industry">
+                                <span class="sanad-badge sanad-badge--partner">شريك نمو</span>
+                                <p class="sanad-testimonials__industry-label">{{ $review->job }}، {{ $review->company_name }}</p>
                             </div>
-                            <div class="sanad-testimonials__author" data-node-id="I85:10441;139:13175;139:12763"><span
-                                class="sanad-testimonials__divider" aria-hidden="true"
-                                data-node-id="I85:10441;139:13175;139:12764"></span>
-                                <h3 class="sanad-testimonials__name" data-node-id="I85:10441;139:13175;139:12765">م.
-                                    خالد القحطاني</h3>
-                                <p class="sanad-testimonials__role" data-node-id="I85:10441;139:13175;139:12766">الرئيس
-                                    التنفيذي، شركة حلول واستشارات B2B</p></div>
-                        </article>
-                        <article class="sanad-testimonials__card" data-node-id="I85:10441;139:13176">
-                            <div class="sanad-testimonials__industry" data-node-id="I85:10441;139:13176;139:12718"><img
-                                class="sanad-testimonials__industry-icon sanad-testimonials__industry-icon--light"
-                                src="./assets/image/svg/Illustrative-Industry-Icon_40x40_homepage-light.svg" alt=""
-                                width="40" height="40" decoding="async" data-node-id="I85:10441;139:13176;139:12720">
-                                <img class="sanad-testimonials__industry-icon sanad-testimonials__industry-icon--dark"
-                                     src="./assets/image/svg/Illustrative-Industry-Icon_40x40_homepage-dark.svg" alt=""
-                                     width="40" height="40" aria-hidden="true" decoding="async">
-                                <p class="sanad-testimonials__industry-label"
-                                   data-node-id="I85:10441;139:13176;139:12719">قطاع التجارة الإلكترونية — التجزئة
-                                    والنمو</p></div>
-                            <div class="sanad-testimonials__quotation" data-node-id="I85:10441;139:13176;139:12736">
-                                <blockquote class="sanad-testimonials__quote"
-                                            data-node-id="I85:10441;139:13176;139:12737">"المرونة وسرعة الاستجابة عندهم
-                                    فرقت معانا بشكل ملموس. قدرنا نغطي السلات المتروكة واستفسارات الواتساب على مدار 24
-                                    ساعة بدون ما نتحمل أي تكاليف تأسيس أو تعقيدات توظيف. النتيجة كانت زيادة في المبيعات
-                                    وتجربة عميل مختلفة تماماً عن السوق."
-                                </blockquote>
+                            <div class="sanad-testimonials__quotation">
+                                <blockquote class="sanad-testimonials__quote">"{{ $review->review_message }}"</blockquote>
                             </div>
-                            <div class="sanad-testimonials__author" data-node-id="I85:10441;139:13176;139:12738"><span
-                                class="sanad-testimonials__divider" aria-hidden="true"
-                                data-node-id="I85:10441;139:13176;139:12739"></span>
-                                <h3 class="sanad-testimonials__name" data-node-id="I85:10441;139:13176;139:12740">أ. فهد
-                                    السبيعي</h3>
-                                <p class="sanad-testimonials__role" data-node-id="I85:10441;139:13176;139:12741">مدير
-                                    العمليات، متجر تجزئة رائد بالرياض</p></div>
+                            <div class="sanad-testimonials__author">
+                                <span class="sanad-testimonials__divider" aria-hidden="true"></span>
+                                <h3 class="sanad-testimonials__name">{{ $review->name }}</h3>
+                                <p class="sanad-testimonials__role">{{ $review->job }}، {{ $review->company_name }}</p>
+                            </div>
                         </article>
+                        @endforeach
                     </div>
-                    <div class="sanad-testimonials__slide" data-carousel-slide role="group" aria-roledescription="slide"
-                         aria-label="2 من 5">
-                        <article class="sanad-testimonials__card">
-                            <div class="sanad-testimonials__industry"><img
-                                class="sanad-testimonials__industry-icon sanad-testimonials__industry-icon--light"
-                                src="./assets/image/svg/Illustrative-Industry-Icon_40x40_homepage-light.svg" alt=""
-                                width="40" height="40" decoding="async"> <img
-                                class="sanad-testimonials__industry-icon sanad-testimonials__industry-icon--dark"
-                                src="./assets/image/svg/Illustrative-Industry-Icon_40x40_homepage-dark.svg" alt=""
-                                width="40" height="40" aria-hidden="true" decoding="async">
-                                <p class="sanad-testimonials__industry-label">قطاع الرعاية الصحية والخدمات المنزلية —
-                                    الاحترافية والتوسع</p></div>
-                            <div class="sanad-testimonials__quotation">
-                                <blockquote class="sanad-testimonials__quote">"التعاون مع Sanad CX لم يكن مجرد إسناد كول
-                                    سنتر، بل شراكة استراتيجية حقيقية. استيعابهم السريع لطبيعة خدماتنا الطبية ودقة متابعة
-                                    طلبات العملاء أتاح لنا التوسع في مناطق جديدة بالرياض بثقة وبدون الحاجة لزيادة الهيكل
-                                    الإداري."
-                                </blockquote>
-                            </div>
-                            <div class="sanad-testimonials__author"><span class="sanad-testimonials__divider"
-                                                                          aria-hidden="true"></span>
-                                <h3 class="sanad-testimonials__name">د. معاذ الشمري</h3>
-                                <p class="sanad-testimonials__role">المدير التنفيذي للتشغيل، مجموعة مراكز طبية</p></div>
-                        </article>
-                        <article class="sanad-testimonials__card">
-                            <div class="sanad-testimonials__industry"><img
-                                class="sanad-testimonials__industry-icon sanad-testimonials__industry-icon--light"
-                                src="./assets/image/svg/Illustrative-Industry-Icon_40x40_homepage-light.svg" alt=""
-                                width="40" height="40" decoding="async"> <img
-                                class="sanad-testimonials__industry-icon sanad-testimonials__industry-icon--dark"
-                                src="./assets/image/svg/Illustrative-Industry-Icon_40x40_homepage-dark.svg" alt=""
-                                width="40" height="40" aria-hidden="true" decoding="async">
-                                <p class="sanad-testimonials__industry-label">قطاع خدمات B2B والشركات — توفير التكاليف
-                                    والأمان</p></div>
-                            <div class="sanad-testimonials__quotation">
-                                <blockquote class="sanad-testimonials__quote">"أكبر تحدي كان عندنا هو ضبط التكاليف
-                                    التشغيلية للاتصالات ودعم العملاء. فريق Sanad CX اشتغل مباشرة على سيستم السنترال والـ
-                                    CRM الخاص بنا بنفس معايير الحوكمة والسرية، ونجحنا في خفض المصاريف التشغيلية بأكثر من
-                                    <bdi dir="ltr">35%</bdi>
-                                    مع رفع كفاءة الجودة."
-                                </blockquote>
-                            </div>
-                            <div class="sanad-testimonials__author"><span class="sanad-testimonials__divider"
-                                                                          aria-hidden="true"></span>
-                                <h3 class="sanad-testimonials__name">م. خالد القحطاني</h3>
-                                <p class="sanad-testimonials__role">الرئيس التنفيذي، شركة حلول واستشارات B2B</p></div>
-                        </article>
-                    </div>
-                    <div class="sanad-testimonials__slide" data-carousel-slide role="group" aria-roledescription="slide"
-                         aria-label="3 من 5">
-                        <article class="sanad-testimonials__card">
-                            <div class="sanad-testimonials__industry"><img
-                                class="sanad-testimonials__industry-icon sanad-testimonials__industry-icon--light"
-                                src="./assets/image/svg/Illustrative-Industry-Icon_40x40_homepage-light.svg" alt=""
-                                width="40" height="40" decoding="async"> <img
-                                class="sanad-testimonials__industry-icon sanad-testimonials__industry-icon--dark"
-                                src="./assets/image/svg/Illustrative-Industry-Icon_40x40_homepage-dark.svg" alt=""
-                                width="40" height="40" aria-hidden="true" decoding="async">
-                                <p class="sanad-testimonials__industry-label">قطاع التطبيقات والحلول الرقمية — زيادة
-                                    المبيعات والتحويل</p></div>
-                            <div class="sanad-testimonials__quotation">
-                                <blockquote class="sanad-testimonials__quote">"احترافية فريق المبيعات الهاتفي ودرايتهم
-                                    بسلوك المستهلك السعودي ساهمت في رفع معدل إغلاق الصفقات وتحويل العملاء المحتملين
-                                    بنسبة
-                                    <bdi dir="ltr">40%</bdi>
-                                    خلال أول 90 يوم عمل متواصل. التكامل والسرعة عندهم شي يُشكرون عليه."
-                                </blockquote>
-                            </div>
-                            <div class="sanad-testimonials__author"><span class="sanad-testimonials__divider"
-                                                                          aria-hidden="true"></span>
-                                <h3 class="sanad-testimonials__name">أ. عبدالأول الغامدي</h3>
-                                <p class="sanad-testimonials__role">مدير نمو المبيعات (Head of Growth)، منصة SaaS
-                                    رقمية</p></div>
-                        </article>
-                        <article class="sanad-testimonials__card">
-                            <div class="sanad-testimonials__industry"><img
-                                class="sanad-testimonials__industry-icon sanad-testimonials__industry-icon--light"
-                                src="./assets/image/svg/Illustrative-Industry-Icon_40x40_homepage-light.svg" alt=""
-                                width="40" height="40" decoding="async"> <img
-                                class="sanad-testimonials__industry-icon sanad-testimonials__industry-icon--dark"
-                                src="./assets/image/svg/Illustrative-Industry-Icon_40x40_homepage-dark.svg" alt=""
-                                width="40" height="40" aria-hidden="true" decoding="async">
-                                <p class="sanad-testimonials__industry-label">قطاع الرعاية الصحية والخدمات المنزلية —
-                                    الاحترافية والتوسع</p></div>
-                            <div class="sanad-testimonials__quotation">
-                                <blockquote class="sanad-testimonials__quote">"التعاون مع Sanad CX لم يكن مجرد إسناد كول
-                                    سنتر، بل شراكة استراتيجية حقيقية. استيعابهم السريع لطبيعة خدماتنا الطبية ودقة متابعة
-                                    طلبات العملاء أتاح لنا التوسع في مناطق جديدة بالرياض بثقة وبدون الحاجة لزيادة الهيكل
-                                    الإداري."
-                                </blockquote>
-                            </div>
-                            <div class="sanad-testimonials__author"><span class="sanad-testimonials__divider"
-                                                                          aria-hidden="true"></span>
-                                <h3 class="sanad-testimonials__name">د. معاذ الشمري</h3>
-                                <p class="sanad-testimonials__role">المدير التنفيذي للتشغيل، مجموعة مراكز طبية</p></div>
-                        </article>
-                    </div>
-                    <div class="sanad-testimonials__slide" data-carousel-slide role="group" aria-roledescription="slide"
-                         aria-label="4 من 5">
-                        <article class="sanad-testimonials__card">
-                            <div class="sanad-testimonials__industry"><img
-                                class="sanad-testimonials__industry-icon sanad-testimonials__industry-icon--light"
-                                src="./assets/image/svg/Illustrative-Industry-Icon_40x40_homepage-light.svg" alt=""
-                                width="40" height="40" decoding="async"> <img
-                                class="sanad-testimonials__industry-icon sanad-testimonials__industry-icon--dark"
-                                src="./assets/image/svg/Illustrative-Industry-Icon_40x40_homepage-dark.svg" alt=""
-                                width="40" height="40" aria-hidden="true" decoding="async">
-                                <p class="sanad-testimonials__industry-label">قطاع اللوجستيات وسلاسل الإمداد — الاستدامة
-                                    وجودة الخدمة</p></div>
-                            <div class="sanad-testimonials__quotation">
-                                <blockquote class="sanad-testimonials__quote">"ما يميز Sanad CX هو الثبات والجودة
-                                    العالية حتى في مواسم الضغط العالي. سهولة الربط المباشر على أنظمتنا الحالية مع متابعة
-                                    الـ KPIs بدقة جعلتنا نعتمد عليهم كشريك دائم ومستمر لجميع خدمات تجربة العملاء."
-                                </blockquote>
-                            </div>
-                            <div class="sanad-testimonials__author"><span class="sanad-testimonials__divider"
-                                                                          aria-hidden="true"></span>
-                                <h3 class="sanad-testimonials__name">أ. سلمان الدوسري</h3>
-                                <p class="sanad-testimonials__role">مدير تجربة العملاء (CX Director)، شركة لوجستيات
-                                    وسلاسل إمداد</p></div>
-                        </article>
-                        <article class="sanad-testimonials__card">
-                            <div class="sanad-testimonials__industry"><img
-                                class="sanad-testimonials__industry-icon sanad-testimonials__industry-icon--light"
-                                src="./assets/image/svg/Illustrative-Industry-Icon_40x40_homepage-light.svg" alt=""
-                                width="40" height="40" decoding="async"> <img
-                                class="sanad-testimonials__industry-icon sanad-testimonials__industry-icon--dark"
-                                src="./assets/image/svg/Illustrative-Industry-Icon_40x40_homepage-dark.svg" alt=""
-                                width="40" height="40" aria-hidden="true" decoding="async">
-                                <p class="sanad-testimonials__industry-label">قطاع التطبيقات والحلول الرقمية — زيادة
-                                    المبيعات والتحويل</p></div>
-                            <div class="sanad-testimonials__quotation">
-                                <blockquote class="sanad-testimonials__quote">"احترافية فريق المبيعات الهاتفي ودرايتهم
-                                    بسلوك المستهلك السعودي ساهمت في رفع معدل إغلاق الصفقات وتحويل العملاء المحتملين
-                                    بنسبة
-                                    <bdi dir="ltr">40%</bdi>
-                                    خلال أول 90 يوم عمل متواصل. التكامل والسرعة عندهم شي يُشكرون عليه."
-                                </blockquote>
-                            </div>
-                            <div class="sanad-testimonials__author"><span class="sanad-testimonials__divider"
-                                                                          aria-hidden="true"></span>
-                                <h3 class="sanad-testimonials__name">أ. عبدالأول الغامدي</h3>
-                                <p class="sanad-testimonials__role">مدير نمو المبيعات (Head of Growth)، منصة SaaS
-                                    رقمية</p></div>
-                        </article>
-                    </div>
-                    <div class="sanad-testimonials__slide" data-carousel-slide role="group" aria-roledescription="slide"
-                         aria-label="5 من 5">
-                        <article class="sanad-testimonials__card">
-                            <div class="sanad-testimonials__industry"><img
-                                class="sanad-testimonials__industry-icon sanad-testimonials__industry-icon--light"
-                                src="./assets/image/svg/Illustrative-Industry-Icon_40x40_homepage-light.svg" alt=""
-                                width="40" height="40" decoding="async"> <img
-                                class="sanad-testimonials__industry-icon sanad-testimonials__industry-icon--dark"
-                                src="./assets/image/svg/Illustrative-Industry-Icon_40x40_homepage-dark.svg" alt=""
-                                width="40" height="40" aria-hidden="true" decoding="async">
-                                <p class="sanad-testimonials__industry-label">قطاع التجارة الإلكترونية — التجزئة
-                                    والنمو</p></div>
-                            <div class="sanad-testimonials__quotation">
-                                <blockquote class="sanad-testimonials__quote">"المرونة وسرعة الاستجابة عندهم فرقت معانا
-                                    بشكل ملموس. قدرنا نغطي السلات المتروكة واستفسارات الواتساب على مدار 24 ساعة بدون ما
-                                    نتحمل أي تكاليف تأسيس أو تعقيدات توظيف. النتيجة كانت زيادة في المبيعات وتجربة عميل
-                                    مختلفة تماماً عن السوق."
-                                </blockquote>
-                            </div>
-                            <div class="sanad-testimonials__author"><span class="sanad-testimonials__divider"
-                                                                          aria-hidden="true"></span>
-                                <h3 class="sanad-testimonials__name">أ. فهد السبيعي</h3>
-                                <p class="sanad-testimonials__role">مدير العمليات، متجر تجزئة رائد بالرياض</p></div>
-                        </article>
-                        <article class="sanad-testimonials__card">
-                            <div class="sanad-testimonials__industry"><img
-                                class="sanad-testimonials__industry-icon sanad-testimonials__industry-icon--light"
-                                src="./assets/image/svg/Illustrative-Industry-Icon_40x40_homepage-light.svg" alt=""
-                                width="40" height="40" decoding="async"> <img
-                                class="sanad-testimonials__industry-icon sanad-testimonials__industry-icon--dark"
-                                src="./assets/image/svg/Illustrative-Industry-Icon_40x40_homepage-dark.svg" alt=""
-                                width="40" height="40" aria-hidden="true" decoding="async">
-                                <p class="sanad-testimonials__industry-label">قطاع اللوجستيات وسلاسل الإمداد — الاستدامة
-                                    وجودة الخدمة</p></div>
-                            <div class="sanad-testimonials__quotation">
-                                <blockquote class="sanad-testimonials__quote">"ما يميز Sanad CX هو الثبات والجودة
-                                    العالية حتى في مواسم الضغط العالي. سهولة الربط المباشر على أنظمتنا الحالية مع متابعة
-                                    الـ KPIs بدقة جعلتنا نعتمد عليهم كشريك دائم ومستمر لجميع خدمات تجربة العملاء."
-                                </blockquote>
-                            </div>
-                            <div class="sanad-testimonials__author"><span class="sanad-testimonials__divider"
-                                                                          aria-hidden="true"></span>
-                                <h3 class="sanad-testimonials__name">أ. سلمان الدوسري</h3>
-                                <p class="sanad-testimonials__role">مدير تجربة العملاء (CX Director)، شركة لوجستيات
-                                    وسلاسل إمداد</p></div>
-                        </article>
-                    </div>
+                    @endforeach
                 </div>
             </div>
-            <div class="sanad-testimonials__controls">
-                <div class="sanad-testimonials__controls-group" data-node-id="I85:10441;139:13177">
-                    <button type="button" class="sanad-testimonials__arrow" data-carousel-prev
-                            aria-label="الشريحة السابقة" data-node-id="I85:10441;139:13186"><img
-                        class="sanad-testimonials__chevron sanad-testimonials__chevron--light sanad-testimonials__chevron--previous"
-                        src="./assets/image/svg/Navigation-Chevron_24x24_homepage-light.svg" alt="" width="24"
-                        height="24" decoding="async" data-node-id="I85:10441;139:13187"> <img
-                        class="sanad-testimonials__chevron sanad-testimonials__chevron--dark sanad-testimonials__chevron--previous"
-                        src="./assets/image/svg/Navigation-Chevron_24x24_homepage-dark.svg" alt="" width="24"
-                        height="24" aria-hidden="true" decoding="async"></button>
-                    <div class="sanad-testimonials__dots" role="group" aria-label="التنقل بين شرائح آراء العملاء"
-                         data-node-id="I85:10441;139:13181">
-                        <button type="button" class="sanad-testimonials__dot" data-carousel-dot="1"
-                                aria-label="الانتقال إلى الشريحة 1" aria-current="true"
-                                data-node-id="I85:10441;157:21111"><span class="sanad-testimonials__dot-marker"
-                                                                         data-node-id="I85:10441;157:21112"></span>
-                        </button>
-                        <button type="button" class="sanad-testimonials__dot" data-carousel-dot="2"
-                                aria-label="الانتقال إلى الشريحة 2" data-node-id="I85:10441;157:21109"><span
-                            class="sanad-testimonials__dot-marker" data-node-id="I85:10441;157:21110"></span></button>
-                        <button type="button" class="sanad-testimonials__dot" data-carousel-dot="3"
-                                aria-label="الانتقال إلى الشريحة 3" data-node-id="I85:10441;157:21107"><span
-                            class="sanad-testimonials__dot-marker" data-node-id="I85:10441;157:21108"></span></button>
-                        <button type="button" class="sanad-testimonials__dot" data-carousel-dot="4"
-                                aria-label="الانتقال إلى الشريحة 4" data-node-id="I85:10441;157:21105"><span
-                            class="sanad-testimonials__dot-marker" data-node-id="I85:10441;157:21106"></span></button>
-                        <button type="button" class="sanad-testimonials__dot" data-carousel-dot="5"
-                                aria-label="الانتقال إلى الشريحة 5" data-node-id="I85:10441;157:21103"><span
-                            class="sanad-testimonials__dot-marker" data-node-id="I85:10441;157:21104"></span></button>
-                    </div>
-                    <button type="button" class="sanad-testimonials__arrow" data-carousel-next
-                            aria-label="الشريحة التالية" data-node-id="I85:10441;139:13178"><img
-                        class="sanad-testimonials__chevron sanad-testimonials__chevron--light"
-                        src="./assets/image/svg/Navigation-Chevron_24x24_homepage-light.svg" alt="" width="24"
-                        height="24" decoding="async" data-node-id="I85:10441;139:13179"> <img
-                        class="sanad-testimonials__chevron sanad-testimonials__chevron--dark"
-                        src="./assets/image/svg/Navigation-Chevron_24x24_homepage-dark.svg" alt="" width="24"
-                        height="24" aria-hidden="true" decoding="async"></button>
+        </div>
+        @else
+        <div class="sanad-testimonials__grid">
+            <article class="sanad-testimonials__card sanad-card-hoverable">
+                <div class="sanad-testimonials__industry">
+                    <span class="sanad-badge sanad-badge--partner">شريك نمو</span>
+                    <p class="sanad-testimonials__industry-label">منصة وصلة</p>
                 </div>
-            </div>
-            <p class="sanad-visually-hidden" data-carousel-status aria-live="polite">الشريحة 1 من 5</p></div>
+                <div class="sanad-testimonials__quotation">
+                    <blockquote class="sanad-testimonials__quote">"منذ بدء شراكتنا مع سند، انخفضت نسبة الشكاوى المعلقة بأكثر من 45% وتحسنت سرعة الاستجابة بشكل ملحوظ. فريق محترف يفهم طبيعة السوق السعودي."</blockquote>
+                </div>
+                <div class="sanad-testimonials__author">
+                    <span class="sanad-testimonials__divider" aria-hidden="true"></span>
+                    <h3 class="sanad-testimonials__name">م. خالد العتيبي</h3>
+                    <p class="sanad-testimonials__role">شريك إداري — منصة وصلة</p>
+                </div>
+            </article>
+            <article class="sanad-testimonials__card sanad-card-hoverable">
+                <div class="sanad-testimonials__industry">
+                    <span class="sanad-badge sanad-badge--partner">شريك نمو</span>
+                    <p class="sanad-testimonials__industry-label">دار العافية الطبية</p>
+                </div>
+                <div class="sanad-testimonials__quotation">
+                    <blockquote class="sanad-testimonials__quote">"سند ليست مجرد جهة تعهيد، بل امتداد حقيقي لفريقنا الداخلي. الدقة في التعامل والالتزام بمعايير الجودة منحنا راحة بال تامة."</blockquote>
+                </div>
+                <div class="sanad-testimonials__author">
+                    <span class="sanad-testimonials__divider" aria-hidden="true"></span>
+                    <h3 class="sanad-testimonials__name">د. معاذ الدوسري</h3>
+                    <p class="sanad-testimonials__role">الرئيس التنفيذي — دار العافية الطبية</p>
+                </div>
+            </article>
+            <article class="sanad-testimonials__card sanad-card-hoverable">
+                <div class="sanad-testimonials__industry">
+                    <span class="sanad-badge sanad-badge--partner">شريك نمو</span>
+                    <p class="sanad-testimonials__industry-label">تطبيق زاجل بلس</p>
+                </div>
+                <div class="sanad-testimonials__quotation">
+                    <blockquote class="sanad-testimonials__quote">"التكامل السريع وسهولة الربط مع أنظمتنا ساعدنا على إطلاق الخدمة خلال 48 ساعة فقط دون أي تعطل. أنصح بشدة بالعمل معهم."</blockquote>
+                </div>
+                <div class="sanad-testimonials__author">
+                    <span class="sanad-testimonials__divider" aria-hidden="true"></span>
+                    <h3 class="sanad-testimonials__name">أ. عبدالأول الشمري</h3>
+                    <p class="sanad-testimonials__role">مدير العمليات — تطبيق زاجل بلس</p>
+                </div>
+            </article>
+            <article class="sanad-testimonials__card sanad-card-hoverable">
+                <div class="sanad-testimonials__industry">
+                    <span class="sanad-badge sanad-badge--partner">شريك نمو</span>
+                    <p class="sanad-testimonials__industry-label">متاجر أفق</p>
+                </div>
+                <div class="sanad-testimonials__quotation">
+                    <blockquote class="sanad-testimonials__quote">"المرونة العالية في توسيع الفريق حسب المواسم والمبيعات كانت العامل الحاسم لنمونا. سند أثبتت جدارتها في أصعب أوقات الذروة."</blockquote>
+                </div>
+                <div class="sanad-testimonials__author">
+                    <span class="sanad-testimonials__divider" aria-hidden="true"></span>
+                    <h3 class="sanad-testimonials__name">أ. فهد القحطاني</h3>
+                    <p class="sanad-testimonials__role">مؤسس — متاجر أفق</p>
+                </div>
+            </article>
+        </div>
+        @endif
     </section>
     <section class="sanad-home-steps" aria-labelledby="sanad-home-steps-title" data-node-id="85:10442">
         <div class="sanad-home-steps__header" data-node-id="85:10443"><h2 class="sanad-home-steps__title"
                                                                           id="sanad-home-steps-title"
-                                                                          data-node-id="85:10444">كيف نبدأ العمل معك في
-            <span class="sanad-home-steps__title-accent">4</span> <span
-                class="sanad-home-steps__title-accent">خطوات</span>؟</h2>
-            <p class="sanad-home-steps__description" data-node-id="85:10445">أربع خطوات واضحة لنقل تجربة عملائك إلى
-                مستوى جديد، من الربط الأولي إلى التشغيل المباشر خلال 48 ساعة.</p></div>
+                                                                          data-node-id="85:10444">كيف نبدأ العمل معاً ونطلق عملياتك خلال 48 ساعة فقط؟</h2>
+            <p class="sanad-home-steps__description" data-node-id="85:10445">نموذج تشغيلي مرن لا يتطلب أي تعديل على أنظمتك أو تغيير في سنترالك الحالي</p></div>
         <div class="sanad-home-steps__timeline" data-node-id="I85:10446;139:13609" role="group"
              aria-label="خطوات العمل الأربع">
             <div class="sanad-home-steps__card" role="button" tabindex="0" aria-pressed="false"
                  data-node-id="I85:10446;139:13626"><span class="sanad-home-steps__milestone" aria-hidden="true"></span>
                 <div class="sanad-home-steps__identity" data-node-id="I85:10446;139:13626;139:13020"><span
-                    class="sanad-home-steps__icon" data-node-id="I85:10446;139:13626;139:13024"> <img
-                    class="sanad-home-steps__icon-img" src="./assets/image/svg/Editable-Analysis-Icon_32x32.svg" alt=""
-                    width="32" height="32" data-node-id="I85:10446;139:13626;139:13025"> </span> <span
-                    class="sanad-home-steps__number-wrap" data-node-id="I85:10446;139:13626;139:13021"> <span
-                    class="sanad-home-steps__number" data-node-id="I85:10446;139:13626;139:13022">01</span> <span
-                    class="sanad-home-steps__stage" data-node-id="I85:10446;139:13626;139:13023" lang="en" dir="ltr">STEP</span> </span>
+                        class="sanad-home-steps__icon" data-node-id="I85:10446;139:13626;139:13024"> <img
+                            class="sanad-home-steps__icon-img"
+                            src="/website/assets/image/svg/Editable-Analysis-Icon_32x32.svg" alt=""
+                            width="32" height="32" data-node-id="I85:10446;139:13626;139:13025"> </span> <span
+                        class="sanad-home-steps__number-wrap" data-node-id="I85:10446;139:13626;139:13021"> <span
+                            class="sanad-home-steps__number"
+                            data-node-id="I85:10446;139:13626;139:13022">01</span> <span class="sanad-home-steps__stage"
+                                                                                         data-node-id="I85:10446;139:13626;139:13023"
+                                                                                         lang="en" dir="ltr">STEP</span> </span>
                 </div>
                 <div class="sanad-home-steps__content" data-node-id="I85:10446;139:13626;139:13026"><h3
-                    class="sanad-home-steps__card-title" data-node-id="I85:10446;139:13626;139:13028">الربط
-                    والتحليل</h3>
-                    <p class="sanad-home-steps__card-description" data-node-id="I85:10446;139:13626;139:13030">فهم
-                        احتياجك وتحديد قنوات التواصل المطلوبة دون أي تغيير في بنيتك التحتية.</p></div>
+                        class="sanad-home-steps__card-title" data-node-id="I85:10446;139:13626;139:13028">1. التحليل والاستكشاف (Discovery)</h3>
+                    <p class="sanad-home-steps__card-description" data-node-id="I85:10446;139:13626;139:13030">ندرس طبيعة عملك، حجم المحادثات اليومية، وقنوات التواصل المعتمدة لتحديد خطة التشغيل المثالية.</p></div>
                 <div class="sanad-home-steps__summary" data-node-id="I85:10446;139:13626;139:13031"><span
-                    class="sanad-home-steps__summary-text"
-                    data-node-id="I85:10446;139:13626;139:13034">فهم احتياجك</span> <img
-                    class="sanad-home-steps__summary-icon" src="./assets/image/svg/Summary-Direction-Icon_16x16.svg"
-                    alt="" width="16" height="16" data-node-id="I85:10446;139:13626;139:13032"></div>
+                        class="sanad-home-steps__summary-text"
+                        data-node-id="I85:10446;139:13626;139:13034">فهم احتياجك</span> <img
+                        class="sanad-home-steps__summary-icon"
+                        src="/website/assets/image/svg/Summary-Direction-Icon_16x16.svg" alt="" width="16"
+                        height="16" data-node-id="I85:10446;139:13626;139:13032"></div>
             </div>
             <div class="sanad-home-steps__connector" data-node-id="I85:10446;139:13622" aria-hidden="true">
                 <svg class="sanad-home-steps__arrow" data-node-id="I85:10446;139:13624" width="24" height="10"
@@ -804,22 +561,24 @@
             <div class="sanad-home-steps__card" role="button" tabindex="0" aria-pressed="false"
                  data-node-id="I85:10446;139:13621"><span class="sanad-home-steps__milestone" aria-hidden="true"></span>
                 <div class="sanad-home-steps__identity" data-node-id="I85:10446;139:13621;139:13020"><span
-                    class="sanad-home-steps__icon" data-node-id="I85:10446;139:13621;139:13024"> <img
-                    class="sanad-home-steps__icon-img" src="./assets/image/svg/Editable-Security-Icon_32x32.svg" alt=""
-                    width="32" height="32" data-node-id="I85:10446;139:13621;139:13025"> </span> <span
-                    class="sanad-home-steps__number-wrap" data-node-id="I85:10446;139:13621;139:13021"> <span
-                    class="sanad-home-steps__number" data-node-id="I85:10446;139:13621;139:13022">02</span> <span
-                    class="sanad-home-steps__stage" data-node-id="I85:10446;139:13621;139:13023" lang="en" dir="ltr">STEP</span> </span>
+                        class="sanad-home-steps__icon" data-node-id="I85:10446;139:13621;139:13024"> <img
+                            class="sanad-home-steps__icon-img"
+                            src="/website/assets/image/svg/Editable-Security-Icon_32x32.svg" alt=""
+                            width="32" height="32" data-node-id="I85:10446;139:13621;139:13025"> </span> <span
+                        class="sanad-home-steps__number-wrap" data-node-id="I85:10446;139:13621;139:13021"> <span
+                            class="sanad-home-steps__number"
+                            data-node-id="I85:10446;139:13621;139:13022">02</span> <span class="sanad-home-steps__stage"
+                                                                                         data-node-id="I85:10446;139:13621;139:13023"
+                                                                                         lang="en" dir="ltr">STEP</span> </span>
                 </div>
                 <div class="sanad-home-steps__content" data-node-id="I85:10446;139:13621;139:13026"><h3
-                    class="sanad-home-steps__card-title" data-node-id="I85:10446;139:13621;139:13028">منح الصلاحيات</h3>
-                    <p class="sanad-home-steps__card-description" data-node-id="I85:10446;139:13621;139:13030">ربط آمن
-                        وسريع لأنظمتك الحالية ⁦(Plug & Play)⁩ تحت اتفاقية سرية معلومات صارمة ⁦(NDA)⁩.</p></div>
+                        class="sanad-home-steps__card-title" data-node-id="I85:10446;139:13621;139:13028">2. منح صلاحيات الدخول (Plug & Play)</h3>
+                    <p class="sanad-home-steps__card-description" data-node-id="I85:10446;139:13621;139:13030">ربط آمن وسريع عبر حسابات مستخدمين (Users) على أنظمتك الحالية تحت اتفاقية سرية معلومات صارمة (NDA).</p></div>
                 <div class="sanad-home-steps__summary" data-node-id="I85:10446;139:13621;139:13031"><span
-                    class="sanad-home-steps__summary-text"
-                    data-node-id="I85:10446;139:13621;139:13034">ربط آمن وسريع</span> <img
-                    class="sanad-home-steps__summary-icon" src="./assets/image/svg/Summary-Direction-Icon_16x16.svg"
-                    alt="" width="16" height="16" data-node-id="I85:10446;139:13621;139:13032"></div>
+                        class="sanad-home-steps__summary-text" data-node-id="I85:10446;139:13621;139:13034">ربط آمن وسريع</span>
+                    <img class="sanad-home-steps__summary-icon"
+                         src="/website/assets/image/svg/Summary-Direction-Icon_16x16.svg" alt=""
+                         width="16" height="16" data-node-id="I85:10446;139:13621;139:13032"></div>
             </div>
             <div class="sanad-home-steps__connector" data-node-id="I85:10446;139:13617" aria-hidden="true">
                 <svg class="sanad-home-steps__arrow" data-node-id="I85:10446;139:13619" width="24" height="10"
@@ -831,23 +590,25 @@
             <div class="sanad-home-steps__card" role="button" tabindex="0" aria-pressed="false"
                  data-node-id="I85:10446;139:13616"><span class="sanad-home-steps__milestone" aria-hidden="true"></span>
                 <div class="sanad-home-steps__identity" data-node-id="I85:10446;139:13616;139:13020"><span
-                    class="sanad-home-steps__icon" data-node-id="I85:10446;139:13616;139:13024"> <img
-                    class="sanad-home-steps__icon-img" src="./assets/image/svg/Editable-Training-Icon_32x32.svg" alt=""
-                    width="32" height="32" data-node-id="I85:10446;139:13616;139:13025"> </span> <span
-                    class="sanad-home-steps__number-wrap" data-node-id="I85:10446;139:13616;139:13021"> <span
-                    class="sanad-home-steps__number" data-node-id="I85:10446;139:13616;139:13022">03</span> <span
-                    class="sanad-home-steps__stage" data-node-id="I85:10446;139:13616;139:13023" lang="en" dir="ltr">STEP</span> </span>
+                        class="sanad-home-steps__icon" data-node-id="I85:10446;139:13616;139:13024"> <img
+                            class="sanad-home-steps__icon-img"
+                            src="/website/assets/image/svg/Editable-Training-Icon_32x32.svg" alt=""
+                            width="32" height="32" data-node-id="I85:10446;139:13616;139:13025"> </span> <span
+                        class="sanad-home-steps__number-wrap" data-node-id="I85:10446;139:13616;139:13021"> <span
+                            class="sanad-home-steps__number"
+                            data-node-id="I85:10446;139:13616;139:13022">03</span> <span class="sanad-home-steps__stage"
+                                                                                         data-node-id="I85:10446;139:13616;139:13023"
+                                                                                         lang="en" dir="ltr">STEP</span> </span>
                 </div>
                 <div class="sanad-home-steps__content" data-node-id="I85:10446;139:13616;139:13026"><h3
-                    class="sanad-home-steps__card-title" data-node-id="I85:10446;139:13616;139:13028">الملمحة
-                    والتدريب</h3>
-                    <p class="sanad-home-steps__card-description" data-node-id="I85:10446;139:13616;139:13030">محاكاة
-                        أسلوب علامتك التجارية وإعداد أدلة الردود الذكية وتدريب الفريق.</p></div>
+                        class="sanad-home-steps__card-title" data-node-id="I85:10446;139:13616;139:13028">3. التدريب ودليل الخدمة (Onboarding)</h3>
+                    <p class="sanad-home-steps__card-description" data-node-id="I85:10446;139:13616;139:13030">استيعاب دليل الأسئلة الشائعة (FAQ Script) وتدريب الفريق مع محاكاة حية ودعم المساعد الذكي (Sanad AI).</p></div>
                 <div class="sanad-home-steps__summary" data-node-id="I85:10446;139:13616;139:13031"><span
-                    class="sanad-home-steps__summary-text"
-                    data-node-id="I85:10446;139:13616;139:13034">تدريب الفريق</span> <img
-                    class="sanad-home-steps__summary-icon" src="./assets/image/svg/Summary-Direction-Icon_16x16.svg"
-                    alt="" width="16" height="16" data-node-id="I85:10446;139:13616;139:13032"></div>
+                        class="sanad-home-steps__summary-text"
+                        data-node-id="I85:10446;139:13616;139:13034">تدريب الفريق</span> <img
+                        class="sanad-home-steps__summary-icon"
+                        src="/website/assets/image/svg/Summary-Direction-Icon_16x16.svg" alt="" width="16"
+                        height="16" data-node-id="I85:10446;139:13616;139:13032"></div>
             </div>
             <div class="sanad-home-steps__connector" data-node-id="I85:10446;139:13612" aria-hidden="true">
                 <svg class="sanad-home-steps__arrow" data-node-id="I85:10446;139:13614" width="24" height="10"
@@ -861,52 +622,52 @@
                                                                               aria-hidden="true"
                                                                               data-node-id="I85:10446;139:13611;139:13067"></span>
                 <div class="sanad-home-steps__identity" data-node-id="I85:10446;139:13611;139:13052"><span
-                    class="sanad-home-steps__icon" data-node-id="I85:10446;139:13611;139:13056"> <img
-                    class="sanad-home-steps__icon-img" src="./assets/image/svg/Editable-Launch-Icon_32x32.svg" alt=""
-                    width="32" height="32" data-node-id="I85:10446;139:13611;139:13057"> </span> <span
-                    class="sanad-home-steps__number-wrap" data-node-id="I85:10446;139:13611;139:13053"> <span
-                    class="sanad-home-steps__number" data-node-id="I85:10446;139:13611;139:13054">04</span> <span
-                    class="sanad-home-steps__stage" data-node-id="I85:10446;139:13611;139:13055" lang="en" dir="ltr">MILESTONE</span> </span>
+                        class="sanad-home-steps__icon" data-node-id="I85:10446;139:13611;139:13056"> <img
+                            class="sanad-home-steps__icon-img"
+                            src="/website/assets/image/svg/Editable-Launch-Icon_32x32.svg" alt=""
+                            width="32" height="32" data-node-id="I85:10446;139:13611;139:13057"> </span> <span
+                        class="sanad-home-steps__number-wrap" data-node-id="I85:10446;139:13611;139:13053"> <span
+                            class="sanad-home-steps__number"
+                            data-node-id="I85:10446;139:13611;139:13054">04</span> <span class="sanad-home-steps__stage"
+                                                                                         data-node-id="I85:10446;139:13611;139:13055"
+                                                                                         lang="en"
+                                                                                         dir="ltr">MILESTONE</span> </span>
                 </div>
                 <div class="sanad-home-steps__content" data-node-id="I85:10446;139:13611;139:13058"><h3
-                    class="sanad-home-steps__card-title" data-node-id="I85:10446;139:13611;139:13060">الانطلاق خلال
-                    ⁦48h⁩</h3>
-                    <p class="sanad-home-steps__card-description" data-node-id="I85:10446;139:13611;139:13062">بدء
-                        التشغيل المباشر مع لوحة متابعة فورية للأداء وتقارير يومية.</p></div>
+                        class="sanad-home-steps__card-title" data-node-id="I85:10446;139:13611;139:13060">4. الانطلاق والنمو المستمر (Launch & Scale)</h3>
+                    <p class="sanad-home-steps__card-description" data-node-id="I85:10446;139:13611;139:13062">يبدأ الفريق بالرد المباشر، رعاية العملاء، وإغلاق الصفقات، مع إمدادك بتقارير دورية دقيقة لمتابعة مؤشرات الأداء (KPIs)، تحويلات المبيعات، وعائد الاستثمار (ROI).</p></div>
                 <div class="sanad-home-steps__summary" data-node-id="I85:10446;139:13611;139:13063"><span
-                    class="sanad-home-steps__summary-text"
-                    data-node-id="I85:10446;139:13611;139:13066">تقارير يومية</span> <img
-                    class="sanad-home-steps__summary-icon" src="./assets/image/svg/Summary-Direction-Icon_16x16.svg"
-                    alt="" width="16" height="16" data-node-id="I85:10446;139:13611;139:13064"></div>
+                        class="sanad-home-steps__summary-text"
+                        data-node-id="I85:10446;139:13611;139:13066">تقارير دورية</span> <img
+                        class="sanad-home-steps__summary-icon"
+                        src="/website/assets/image/svg/Summary-Direction-Icon_16x16.svg" alt="" width="16"
+                        height="16" data-node-id="I85:10446;139:13611;139:13064"></div>
             </div>
         </div>
         <div class="sanad-home-steps__band" data-node-id="85:10447">
             <div class="sanad-home-steps__fact" data-node-id="85:10458"><img class="sanad-home-steps__fact-icon"
-                                                                             src="./assets/image/svg/Editable-Launch-Icon_32x32.svg"
+                                                                             src="/website/assets/image/svg/Editable-Launch-Icon_32x32.svg"
                                                                              alt="" width="32" height="32"
                                                                              data-node-id="I85:10462;139:13150">
                 <div class="sanad-home-steps__fact-copy" data-node-id="85:10459"><p class="sanad-home-steps__fact-title"
-                                                                                    data-node-id="85:10460">الانطلاق
-                    خلال 48h</p>
+                                                                                    data-node-id="85:10460">الانطلاق خلال 48h</p>
                     <p class="sanad-home-steps__fact-text" data-node-id="85:10461">بدء التشغيل المباشر</p></div>
             </div>
             <div class="sanad-home-steps__fact" data-node-id="85:10453"><img class="sanad-home-steps__fact-icon"
-                                                                             src="./assets/image/svg/Editable-Security-Icon_32x32.svg"
+                                                                             src="/website/assets/image/svg/Editable-Security-Icon_32x32.svg"
                                                                              alt="" width="32" height="32"
                                                                              data-node-id="I85:10457;139:13142">
                 <div class="sanad-home-steps__fact-copy" data-node-id="85:10454"><p class="sanad-home-steps__fact-title"
-                                                                                    data-node-id="85:10455">منح
-                    الصلاحيات</p>
+                                                                                    data-node-id="85:10455">منح الصلاحيات</p>
                     <p class="sanad-home-steps__fact-text" data-node-id="85:10456">اتفاقية سرية معلومات صارمة (NDA)</p>
                 </div>
             </div>
             <div class="sanad-home-steps__fact" data-node-id="85:10448"><img class="sanad-home-steps__fact-icon"
-                                                                             src="./assets/image/svg/Editable-Analysis-Icon_32x32.svg"
+                                                                             src="/website/assets/image/svg/Editable-Analysis-Icon_32x32.svg"
                                                                              alt="" width="32" height="32"
                                                                              data-node-id="I85:10452;139:13138">
                 <div class="sanad-home-steps__fact-copy" data-node-id="85:10449"><p class="sanad-home-steps__fact-title"
-                                                                                    data-node-id="85:10450">الربط
-                    والتحليل</p>
+                                                                                    data-node-id="85:10450">الربط والتحليل</p>
                     <p class="sanad-home-steps__fact-text" data-node-id="85:10451">دون أي تغيير في بنيتك التحتية</p>
                 </div>
             </div>
@@ -917,67 +678,48 @@
         <div class="sanad-calculator__header" data-node-id="136:11540"><h2 class="sanad-calculator__title"
                                                                            id="sanad-calculator-title"
                                                                            data-node-id="136:11541">احسب الحزمة <span>المناسبة لعملياتك</span>
-        </h2>
-            <p class="sanad-calculator__description" data-node-id="136:11542">حدّد حجم المحادثات اليومية لاستكشاف
-                احتياجك التشغيلي.</p></div>
+            </h2>
+            <p class="sanad-calculator__description" data-node-id="136:11542">حدّد حجم المحادثات اليومية لاستكشاف احتياجك التشغيلي.</p></div>
         <div class="sanad-calculator__card" data-node-id="136:11813">
             <div class="sanad-calculator__body" data-node-id="I136:11813;140:14658">
                 <div class="sanad-calculator__control" data-node-id="I136:11813;140:14668"><p
-                    class="sanad-calculator__label" id="sanad-calculator-volume-label"
-                    data-node-id="I136:11813;140:14669">حجم المحادثات اليومية</p>
+                        class="sanad-calculator__label" id="sanad-calculator-volume-label"
+                        data-node-id="I136:11813;140:14669">حجم المحادثات اليومية</p>
                     <p class="sanad-calculator__volume" data-node-id="I136:11813;140:14670" data-calculator-value>
-                        100</p>
-                    <p class="sanad-calculator__unit" data-node-id="I136:11813;140:14671">محادثة / تذكرة / مكالمة
-                        يوميًا</p>
+                        50</p>
+                    <p class="sanad-calculator__unit" data-node-id="I136:11813;140:14671">محادثة / تذكرة / مكالمة يوميًا</p>
                     <div class="sanad-calculator__range" dir="ltr" data-node-id="I136:11813;140:14672"
                          data-calculator-range><span class="sanad-calculator__track"
                                                      data-node-id="I136:11813;140:14673"></span> <span
-                        class="sanad-calculator__fill" data-node-id="I136:11813;140:14674"></span> <span
-                        class="sanad-calculator__stop" data-node-id="I136:11813;140:14675" aria-hidden="true"></span>
-                        <span class="sanad-calculator__stop" data-node-id="I136:11813;140:14676"
-                              aria-hidden="true"></span> <span class="sanad-calculator__stop"
-                                                               data-node-id="I136:11813;140:14677"
-                                                               aria-hidden="true"></span> <span
-                            class="sanad-calculator__stop" data-node-id="I136:11813;140:14678"
-                            aria-hidden="true"></span>
+                            class="sanad-calculator__fill" data-node-id="I136:11813;140:14674"></span> <span
+                            class="sanad-calculator__stop" data-node-id="I136:11813;140:14675"
+                            aria-hidden="true"></span> <span class="sanad-calculator__stop"
+                                                             data-node-id="I136:11813;140:14676"
+                                                             aria-hidden="true"></span> <span
+                            class="sanad-calculator__stop" data-node-id="I136:11813;140:14677"
+                            aria-hidden="true"></span> <span class="sanad-calculator__stop"
+                                                             data-node-id="I136:11813;140:14678"
+                                                             aria-hidden="true"></span>
                         <div class="sanad-calculator__thumb" role="slider" tabindex="0"
-                             aria-labelledby="sanad-calculator-volume-label" aria-valuemin="100" aria-valuemax="5000"
-                             aria-valuenow="100" aria-valuetext="100" data-node-id="I136:11813;140:14679"
+                             aria-labelledby="sanad-calculator-volume-label" aria-valuemin="50" aria-valuemax="1000"
+                             aria-valuenow="50" aria-valuetext="50" data-node-id="I136:11813;140:14679"
                              data-calculator-thumb><span class="sanad-calculator__knob"
                                                          data-node-id="I136:11813;140:14680"></span></div>
                     </div>
                     <div class="sanad-calculator__limits" dir="ltr" data-node-id="I136:11813;140:14681"><span
-                        data-node-id="I136:11813;140:14682">100</span> <span
-                        data-node-id="I136:11813;140:14683">5,000</span></div>
-                    <div class="sanad-calculator__presets" dir="ltr" data-node-id="I136:11813;140:14684">
-                        <button type="button" class="sanad-calculator__preset" data-calculator-preset="100"
-                                aria-pressed="true" data-node-id="I136:11813;140:14685"><span
-                            data-node-id="I136:11813;140:14686">100</span></button>
-                        <button type="button" class="sanad-calculator__preset" data-calculator-preset="1000"
-                                aria-pressed="false" data-node-id="I136:11813;140:14687"><span
-                            data-node-id="I136:11813;140:14688">1,000</span></button>
-                        <button type="button" class="sanad-calculator__preset" data-calculator-preset="2500"
-                                aria-pressed="false" data-node-id="I136:11813;140:14689"><span
-                            data-node-id="I136:11813;140:14690">2,500</span></button>
-                        <button type="button" class="sanad-calculator__preset" data-calculator-preset="5000"
-                                aria-pressed="false" data-node-id="I136:11813;140:14691"><span
-                            data-node-id="I136:11813;140:14692">5,000</span></button>
+                            data-node-id="I136:11813;140:14682">50</span> <span data-node-id="I136:11813;140:14683">+1,000</span>
                     </div>
+                    <div class="sanad-calculator__presets" dir="ltr"><button type="button" class="sanad-calculator__preset" data-calculator-preset="50" aria-pressed="true"><span>50</span></button> <button type="button" class="sanad-calculator__preset" data-calculator-preset="100" aria-pressed="false"><span>100</span></button> <button type="button" class="sanad-calculator__preset" data-calculator-preset="500" aria-pressed="false"><span>500</span></button> <button type="button" class="sanad-calculator__preset" data-calculator-preset="1000" aria-pressed="false"><span>+1,000</span></button></div>
                 </div>
                 <div class="sanad-calculator__outputs" data-node-id="I136:11813;140:14659">
                     <div class="sanad-calculator__output" data-node-id="I136:11813;140:14660"><p
-                        class="sanad-calculator__output-label" data-node-id="I136:11813;140:14661">الباقة المناسبة</p>
-                        <p class="sanad-calculator__output-value" data-node-id="I136:11813;140:14662">بانتظار تعريف
-                            الباقات</p>
-                        <p class="sanad-calculator__output-note" data-node-id="I136:11813;140:14663">تُحدَّد التوصية بعد
-                            توفير حدود الباقات وأسعارها.</p></div>
+                            class="sanad-calculator__output-label" data-node-id="I136:11813;140:14661">الباقة المناسبة</p>
+                        <p class="sanad-calculator__output-value" data-node-id="I136:11813;140:14662" data-calculator-package-name data-calculator-package-name>باقة البداية — 12 ساعة</p>
+                        <p class="sanad-calculator__output-note" data-node-id="I136:11813;140:14663" data-calculator-package-note data-calculator-package-note>مناسبة تجريبياً لـ 50–99 محادثة يومياً.</p></div>
                     <div class="sanad-calculator__output" data-node-id="I136:11813;140:14664"><p
-                        class="sanad-calculator__output-label" data-node-id="I136:11813;140:14665">التوفير المالي
-                        المتوقع</p>
-                        <p class="sanad-calculator__output-value" data-node-id="I136:11813;140:14666">غير متاح
-                            حاليًا</p>
-                        <p class="sanad-calculator__output-note" data-node-id="I136:11813;140:14667">يلزم تحديد سعر
-                            الباقة وتكلفة الفريق الداخلي.</p></div>
+                            class="sanad-calculator__output-label" data-node-id="I136:11813;140:14665">التوفير المالي المتوقع</p>
+                        <p class="sanad-calculator__output-value" data-node-id="I136:11813;140:14666" data-calculator-savings-value data-calculator-savings-value>توفير تقديري 15%</p>
+                        <p class="sanad-calculator__output-note" data-node-id="I136:11813;140:14667" data-calculator-savings-note data-calculator-savings-note>أرقام افتراضية للعرض وليست عرض سعر.</p></div>
                 </div>
             </div>
             <button type="button" class="sanad-calculator__cta" data-consultation-open
@@ -986,224 +728,105 @@
         </div>
         <div class="sanad-calculator__edge" data-node-id="136:11549" aria-hidden="true">
             <div class="sanad-calculator__edge-layer" data-node-id="136:11550" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer.svg" alt=""></div>
             <div class="sanad-calculator__edge-layer" data-node-id="136:11554" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer.svg" alt=""></div>
             <div class="sanad-calculator__edge-layer" data-node-id="136:11558" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer.svg" alt=""></div>
             <div class="sanad-calculator__edge-layer" data-node-id="136:11562" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer.svg" alt=""></div>
             <div class="sanad-calculator__edge-layer" data-node-id="136:11566" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer.svg" alt=""></div>
             <div class="sanad-calculator__edge-layer" data-node-id="136:11570" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer.svg" alt=""></div>
             <div class="sanad-calculator__edge-layer" data-node-id="136:11574" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer.svg" alt=""></div>
             <div class="sanad-calculator__edge-layer" data-node-id="136:11578" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer.svg" alt=""></div>
             <div class="sanad-calculator__edge-layer" data-node-id="136:11582" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer.svg" alt=""></div>
             <div class="sanad-calculator__edge-layer" data-node-id="136:11586" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer.svg" alt=""></div>
             <div class="sanad-calculator__edge-layer" data-node-id="136:11590" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer.svg" alt=""></div>
             <div class="sanad-calculator__edge-layer" data-node-id="136:11594" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer.svg" alt=""></div>
             <div class="sanad-calculator__edge-layer" data-node-id="136:11598" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer.svg" alt=""></div>
             <div class="sanad-calculator__edge-layer" data-node-id="136:11602" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer.svg" alt=""></div>
             <div class="sanad-calculator__edge-layer" data-node-id="136:11606" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer.svg" alt=""></div>
             <div class="sanad-calculator__edge-layer" data-node-id="136:11610" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer.svg" alt=""></div>
             <div class="sanad-calculator__edge-layer" data-node-id="136:11614" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer.svg" alt=""></div>
             <div class="sanad-calculator__edge-layer" data-node-id="136:11618" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer.svg" alt=""></div>
             <div class="sanad-calculator__edge-layer" data-node-id="136:11622" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer.svg" alt=""></div>
             <div class="sanad-calculator__edge-layer" data-node-id="136:11626" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer.svg" alt=""></div>
             <div class="sanad-calculator__edge-layer" data-node-id="136:11630" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer.svg" alt=""></div>
             <div class="sanad-calculator__edge-layer" data-node-id="136:11634" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer.svg" alt=""></div>
             <div class="sanad-calculator__edge-layer" data-node-id="136:11638" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer.svg" alt=""></div>
             <div class="sanad-calculator__edge-layer" data-node-id="136:11642" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer.svg" alt=""></div>
             <div class="sanad-calculator__edge-layer" data-node-id="136:11646" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer.svg" alt=""></div>
             <div class="sanad-calculator__edge-layer" data-node-id="136:11650" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer.svg" alt=""></div>
             <div class="sanad-calculator__edge-layer" data-node-id="136:11654" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer.svg" alt=""></div>
             <div class="sanad-calculator__edge-layer" data-node-id="136:11658" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer.svg" alt=""></div>
             <div class="sanad-calculator__edge-layer" data-node-id="136:11662" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
             <div class="sanad-calculator__edge-layer" data-node-id="136:11666" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
             <div class="sanad-calculator__edge-layer" data-node-id="136:11670" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
             <div class="sanad-calculator__edge-layer" data-node-id="136:11674" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
             <div class="sanad-calculator__edge-layer" data-node-id="136:11678" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
             <div class="sanad-calculator__edge-layer" data-node-id="136:11682" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
             <div class="sanad-calculator__edge-layer" data-node-id="136:11686" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
             <div class="sanad-calculator__edge-layer" data-node-id="136:11690" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
             <div class="sanad-calculator__edge-layer" data-node-id="136:11694" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
             <div class="sanad-calculator__edge-layer" data-node-id="136:11698" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
             <div class="sanad-calculator__edge-layer" data-node-id="136:11702" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
             <div class="sanad-calculator__edge-layer" data-node-id="136:11706" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
             <div class="sanad-calculator__edge-layer" data-node-id="136:11710" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
             <div class="sanad-calculator__edge-layer" data-node-id="136:11714" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
             <div class="sanad-calculator__edge-layer" data-node-id="136:11718" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
             <div class="sanad-calculator__edge-layer" data-node-id="136:11722" aria-hidden="true"><img
-                src="./assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
+                    src="/website/assets/image/svg/section-edge-layer-alt.svg" alt=""></div>
         </div>
     </section>
-    <section class="sanad-faq" id="faq" aria-labelledby="sanad-faq-title" data-node-id="85:10828">
-        <div class="sanad-faq__container" data-node-id="85:10829">
-            <div class="sanad-faq__header" data-node-id="85:10830"><h2 class="sanad-faq__title" id="sanad-faq-title"
-                                                                       data-node-id="85:10831">
-                <span>الأسئلة </span><span class="sanad-faq__accent">الشائعة</span></h2></div>
-            <div class="sanad-faq__list" data-node-id="85:10833">
-                <div class="sanad-faq__item sanad-card-hoverable" data-node-id="157:21740">
-                    <h3 class="sanad-faq__heading">
-                        <button type="button" class="sanad-faq__trigger" id="sanad-faq-q1" aria-expanded="false"
-                                aria-controls="sanad-faq-a1" data-node-id="I157:21740;747:10262"><span
-                            class="sanad-faq__question" data-node-id="I157:21740;747:10264">هل نحتاج إلى تغيير السنترال أو نظام الواتساب الحالي لدينا؟</span>
-                            <span class="sanad-faq__icon" data-node-id="I157:21740;747:11739" aria-hidden="true"> <img
-                                class="sanad-faq__chevron sanad-faq__chevron--light"
-                                src="./assets/image/svg/Group_16x8_homepage-light.svg" alt="" width="16" height="8"
-                                data-node-id="I157:21740;747:11740"> <img
-                                class="sanad-faq__chevron sanad-faq__chevron--dark"
-                                src="./assets/image/svg/Group_16x8_homepage-dark.svg" alt="" width="16"
-                                height="8"> </span></button>
-                    </h3>
-                    <div class="sanad-faq__panel" id="sanad-faq-a1" role="region" aria-labelledby="sanad-faq-q1" hidden>
-                        <p class="sanad-faq__answer">نوفر تأجيراً يومياً، طويل الأجل، مع سائق، تأجير لدول الخليج،
-                            والتأجير المنتهي بالتمليك. اختر ما يناسبك!</p></div>
-                    <div class="sanad-card-hover-overlay" aria-hidden="true"></div>
-                </div>
-                <div class="sanad-faq__item sanad-card-hoverable" data-node-id="157:21748">
-                    <h3 class="sanad-faq__heading">
-                        <button type="button" class="sanad-faq__trigger" id="sanad-faq-q2" aria-expanded="false"
-                                aria-controls="sanad-faq-a2" data-node-id="I157:21748;747:10262"><span
-                            class="sanad-faq__question" data-node-id="I157:21748;747:10264"> كيف تضمنون جودة الردود وإلمام الفريق بمنتجاتنا وخدماتنا؟</span>
-                            <span class="sanad-faq__icon" data-node-id="I157:21748;747:11739" aria-hidden="true"> <img
-                                class="sanad-faq__chevron sanad-faq__chevron--light"
-                                src="./assets/image/svg/Group_16x8_homepage-light.svg" alt="" width="16" height="8"
-                                data-node-id="I157:21748;747:11740"> <img
-                                class="sanad-faq__chevron sanad-faq__chevron--dark"
-                                src="./assets/image/svg/Group_16x8_homepage-dark.svg" alt="" width="16"
-                                height="8"> </span></button>
-                    </h3>
-                    <div class="sanad-faq__panel" id="sanad-faq-a2" role="region" aria-labelledby="sanad-faq-q2" hidden>
-                        <p class="sanad-faq__answer">يمكنك الحجز عبر موقعنا أو الاتصال بفروعنا المنتشرة في مطارات
-                            المملكة. فريقنا جاهز لخدمتك على مدار الساعة.</p></div>
-                    <div class="sanad-card-hover-overlay" aria-hidden="true"></div>
-                </div>
-                <div class="sanad-faq__item sanad-card-hoverable" data-node-id="157:21756">
-                    <h3 class="sanad-faq__heading">
-                        <button type="button" class="sanad-faq__trigger" id="sanad-faq-q3" aria-expanded="false"
-                                aria-controls="sanad-faq-a3" data-node-id="I157:21756;747:10262"><span
-                            class="sanad-faq__question" data-node-id="I157:21756;747:10264">هل توجد رسوم إعداد أو حد أدنى للتعاقد؟</span>
-                            <span class="sanad-faq__icon" data-node-id="I157:21756;747:11739" aria-hidden="true"> <img
-                                class="sanad-faq__chevron sanad-faq__chevron--light"
-                                src="./assets/image/svg/Group_16x8_homepage-light.svg" alt="" width="16" height="8"
-                                data-node-id="I157:21756;747:11740"> <img
-                                class="sanad-faq__chevron sanad-faq__chevron--dark"
-                                src="./assets/image/svg/Group_16x8_homepage-dark.svg" alt="" width="16"
-                                height="8"> </span></button>
-                    </h3>
-                    <div class="sanad-faq__panel" id="sanad-faq-a3" role="region" aria-labelledby="sanad-faq-q3" hidden>
-                        <p class="sanad-faq__answer">جميع عقودنا تشمل تأميناً شاملاً وضمانات تغطي الحوادث والسرقات، مع
-                            صيانة دورية واستبدال فوري للمركبة.</p></div>
-                    <div class="sanad-card-hover-overlay" aria-hidden="true"></div>
-                </div>
-                <div class="sanad-faq__item sanad-card-hoverable" data-node-id="157:21764">
-                    <h3 class="sanad-faq__heading">
-                        <button type="button" class="sanad-faq__trigger" id="sanad-faq-q4" aria-expanded="false"
-                                aria-controls="sanad-faq-a4" data-node-id="I157:21764;747:10262"><span
-                            class="sanad-faq__question" data-node-id="I157:21764;747:10264">هل نحتاج إلى تغيير السنترال أو نظام الواتساب الحالي لدينا؟</span>
-                            <span class="sanad-faq__icon" data-node-id="I157:21764;747:11739" aria-hidden="true"> <img
-                                class="sanad-faq__chevron sanad-faq__chevron--light"
-                                src="./assets/image/svg/Group_16x8_homepage-light.svg" alt="" width="16" height="8"
-                                data-node-id="I157:21764;747:11740"> <img
-                                class="sanad-faq__chevron sanad-faq__chevron--dark"
-                                src="./assets/image/svg/Group_16x8_homepage-dark.svg" alt="" width="16"
-                                height="8"> </span></button>
-                    </h3>
-                    <div class="sanad-faq__panel" id="sanad-faq-a4" role="region" aria-labelledby="sanad-faq-q4" hidden>
-                        <p class="sanad-faq__answer">لدينا ١٦ فرعاً موزعة في جميع مناطق المملكة ومطاراتها الدولية. زوروا
-                            أقرب فرع لكم!</p></div>
-                    <div class="sanad-card-hover-overlay" aria-hidden="true"></div>
-                </div>
-                <div class="sanad-faq__item sanad-card-hoverable" data-node-id="157:21772">
-                    <h3 class="sanad-faq__heading">
-                        <button type="button" class="sanad-faq__trigger" id="sanad-faq-q5" aria-expanded="false"
-                                aria-controls="sanad-faq-a5" data-node-id="I157:21772;747:10262"><span
-                            class="sanad-faq__question" data-node-id="I157:21772;747:10264">كيف تضمنون جودة الردود وإلمام الفريق بمنتجاتنا وخدماتنا؟</span>
-                            <span class="sanad-faq__icon" data-node-id="I157:21772;747:11739" aria-hidden="true"> <img
-                                class="sanad-faq__chevron sanad-faq__chevron--light"
-                                src="./assets/image/svg/Group_16x8_homepage-light.svg" alt="" width="16" height="8"
-                                data-node-id="I157:21772;747:11740"> <img
-                                class="sanad-faq__chevron sanad-faq__chevron--dark"
-                                src="./assets/image/svg/Group_16x8_homepage-dark.svg" alt="" width="16"
-                                height="8"> </span></button>
-                    </h3>
-                    <div class="sanad-faq__panel" id="sanad-faq-a5" role="region" aria-labelledby="sanad-faq-q5" hidden>
-                        <p class="sanad-faq__answer">نعم، نوفر خدمات التأجير للجميع بغض النظر عن الجنسية، فقط أحضر هويتك
-                            أو جواز سفرك.</p></div>
-                    <div class="sanad-card-hover-overlay" aria-hidden="true"></div>
-                </div>
-                <div class="sanad-faq__item sanad-card-hoverable" data-node-id="157:21780">
-                    <h3 class="sanad-faq__heading">
-                        <button type="button" class="sanad-faq__trigger" id="sanad-faq-q6" aria-expanded="false"
-                                aria-controls="sanad-faq-a6" data-node-id="I157:21780;747:10262"><span
-                            class="sanad-faq__question" data-node-id="I157:21780;747:10264">هل توجد رسوم إعداد أو حد أدنى للتعاقد؟</span>
-                            <span class="sanad-faq__icon" data-node-id="I157:21780;747:11739" aria-hidden="true"> <img
-                                class="sanad-faq__chevron sanad-faq__chevron--light"
-                                src="./assets/image/svg/Group_16x8_homepage-light.svg" alt="" width="16" height="8"
-                                data-node-id="I157:21780;747:11740"> <img
-                                class="sanad-faq__chevron sanad-faq__chevron--dark"
-                                src="./assets/image/svg/Group_16x8_homepage-dark.svg" alt="" width="16"
-                                height="8"> </span></button>
-                    </h3>
-                    <div class="sanad-faq__panel" id="sanad-faq-a6" role="region" aria-labelledby="sanad-faq-q6" hidden>
-                        <p class="sanad-faq__answer">نقبل جميع طرق الدفع: بطاقات الائتمان، التحويل البنكي، والدفع النقدي
-                            عند الاستلام.</p></div>
-                    <div class="sanad-card-hover-overlay" aria-hidden="true"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="sanad-privacy-banner" data-node-id="136:8399" aria-labelledby="sanad-privacy-banner-title">
+
+<section class="sanad-privacy-banner" data-node-id="136:8399" aria-labelledby="sanad-privacy-banner-title">
         <div class="sanad-privacy-banner__decor" aria-hidden="true"><span class="sanad-privacy-banner__glow"
                                                                           data-node-id="136:8400"></span><span
-            class="sanad-privacy-banner__accent" data-node-id="136:8401"></span></div>
+                class="sanad-privacy-banner__accent" data-node-id="136:8401"></span></div>
         <div class="sanad-privacy-banner__container" data-node-id="136:8402">
             <div class="sanad-privacy-banner__copy" data-node-id="136:8403"><h2 class="sanad-privacy-banner__title"
                                                                                 id="sanad-privacy-banner-title"
-                                                                                data-node-id="136:8404">بيانات عملائك
-                أمانة نلتزم بحمايتها</h2>
-                <p class="sanad-privacy-banner__description" data-node-id="136:8405">نضع سرية بياناتك وحماية معلومات
-                    عملائك في صميم عملياتنا. نوقّع اتفاقية عدم الإفصاح (NDA) قبل بدء التشغيل، بما يدعم حماية معلومات
-                    أعمالك وبيانات عملائك، مع الالتزام بضوابط الوصول والصلاحيات المتفق عليها.</p></div>
+                                                                                data-node-id="136:8404">بيانات عملائك في أمان تام</h2>
+                <p class="sanad-privacy-banner__description" data-node-id="136:8405">نلتزم بأعلى معايير حماية البيانات وسريتها. يتم توقيع اتفاقية عدم الإفصاح عن البيانات (NDA) رسمياً قبل بدء أي نشاط تشغيلي، لضمان حماية أسرار أعمالك وقواعد بيانات عملاء براندك.</p></div>
         </div>
         <div class="sanad-privacy-banner__edge sanad-privacy-banner__edge--bottom" data-node-id="136:8406"
              aria-hidden="true">
@@ -1301,87 +924,134 @@
         </div>
         <div class="sanad-privacy-banner__decor" aria-hidden="true">
             <picture class="sanad-privacy-banner__glow-effect-picture">
-                <source type="image/webp" srcset="./assets/image/webp/bannerGlowEffect_184x184.webp">
-                <img class="sanad-privacy-banner__glow-effect" src="./assets/image/png/bannerGlowEffect_184x184.png"
-                     alt="" width="184" height="184" decoding="async" data-node-id="136:8760"></picture>
+                <source type="image/webp"
+                        srcset="/website/assets/image/webp/bannerGlowEffect_184x184.webp">
+                <img class="sanad-privacy-banner__glow-effect"
+                     src="/website/assets/image/png/bannerGlowEffect_184x184.png" alt="" width="184"
+                     height="184" decoding="async" data-node-id="136:8760"></picture>
         </div>
     </section>
+<section class="sanad-faq" id="faq" aria-labelledby="sanad-faq-title">
+        <div class="sanad-faq__container">
+            <div class="sanad-faq__header"><h2 class="sanad-faq__title" id="sanad-faq-title">
+                    <span>إجابات شفافة على أهم استفسارات الشركاء قبل الانطلاق </span><span class="sanad-faq__accent"></span></h2></div>
+            <div class="sanad-faq__list">
+                @forelse($faqs as $faqIndex => $faqItem)
+                <div class="sanad-faq__item sanad-card-hoverable">
+                    <h3 class="sanad-faq__heading">
+                        <button type="button" class="sanad-faq__trigger" id="sanad-faq-q{{ $faqIndex + 1 }}" aria-expanded="false"
+                                aria-controls="sanad-faq-a{{ $faqIndex + 1 }}"><span
+                                class="sanad-faq__question">{{ $faqItem->question }}</span>
+                            <span class="sanad-faq__icon" aria-hidden="true"> <img
+                                    class="sanad-faq__chevron sanad-faq__chevron--light"
+                                    src="/website/assets/image/svg/Group_16x8_homepage-light.svg" alt=""
+                                    width="16" height="8"> <img
+                                    class="sanad-faq__chevron sanad-faq__chevron--dark"
+                                    src="/website/assets/image/svg/Group_16x8_homepage-dark.svg" alt=""
+                                    width="16" height="8"> </span></button>
+                    </h3>
+                    <div class="sanad-faq__panel" id="sanad-faq-a{{ $faqIndex + 1 }}" role="region" aria-labelledby="sanad-faq-q{{ $faqIndex + 1 }}" hidden>
+                        <p class="sanad-faq__answer">{{ $faqItem->answer }}</p></div>
+                    <div class="sanad-card-hover-overlay" aria-hidden="true"></div>
+                </div>
+                @empty
+<div class="sanad-faq__item sanad-card-hoverable"><h3 class="sanad-faq__heading"><button type="button" class="sanad-faq__trigger" id="sanad-faq-fallback-q1" aria-expanded="false" aria-controls="sanad-faq-fallback-a1"><span class="sanad-faq__question">هل نحتاج لتغيير السنترال أو سيستم الواتساب أو الـ CRM الحالي لديكم؟</span><span class="sanad-faq__icon" aria-hidden="true">+</span></button></h3><div class="sanad-faq__panel" id="sanad-faq-fallback-a1" role="region" aria-labelledby="sanad-faq-fallback-q1" hidden><p class="sanad-faq__answer">لا نهائياً. نعمل بنظام التشغيل المباشر (Plug &amp; Play) على كافة البرامج والأنظمة التي تستخدمها بالفعل عبر حسابات مستخدمين (Users) معتمدة، دون الحاجة لأي رسوم ربط أو تعديل تقني من طرفك.</p></div></div>
+<div class="sanad-faq__item sanad-card-hoverable"><h3 class="sanad-faq__heading"><button type="button" class="sanad-faq__trigger" id="sanad-faq-fallback-q2" aria-expanded="false" aria-controls="sanad-faq-fallback-a2"><span class="sanad-faq__question">كيف تضمنون جودة الردود ومعرفة الموظفين بمنتجاتنا أو خدماتنا الطبية/الخدمية؟</span><span class="sanad-faq__icon" aria-hidden="true">+</span></button></h3><div class="sanad-faq__panel" id="sanad-faq-fallback-a2" role="region" aria-labelledby="sanad-faq-fallback-q2" hidden><p class="sanad-faq__answer">نقوم بصياغة واستيعاب دليل الأسئلة الشائعة (FAQ Script) وقواعد العمل الخاصة بشركتك، ونُخضع الفريق لتدريب مكثف ومحاكاة حية قبل البدء. كما ندعم فرقنا بـ المساعد الذكي (Sanad AI) لتزويدهم بإجابات دقيقة واقتراحات لحظية وفق نبرة صوت براندك.</p></div></div>
+<div class="sanad-faq__item sanad-card-hoverable"><h3 class="sanad-faq__heading"><button type="button" class="sanad-faq__trigger" id="sanad-faq-fallback-q3" aria-expanded="false" aria-controls="sanad-faq-fallback-a3"><span class="sanad-faq__question">هل يمكننا الاستفادة من خدمات "فِكر" التسويقية دون التعاقد على التشغيل، أم أنها منظومة مدمجة؟</span><span class="sanad-faq__icon" aria-hidden="true">+</span></button></h3><div class="sanad-faq__panel" id="sanad-faq-fallback-a3" role="region" aria-labelledby="sanad-faq-fallback-q3" hidden><p class="sanad-faq__answer">يمكنك الاستفادة من ذراع "فِكر" بشكل مستقل لهندسة الهوية والتخطيط الاستراتيجي للحملات، أو دمجها مع خدمات التشغيل والمبيعات في سند CX لبناء منظومة نمو متكاملة تبدأ من الإعلان وتنتهي بإغلاق الصفقة وتأكيد الحجز.</p></div></div>
+<div class="sanad-faq__item sanad-card-hoverable"><h3 class="sanad-faq__heading"><button type="button" class="sanad-faq__trigger" id="sanad-faq-fallback-q4" aria-expanded="false" aria-controls="sanad-faq-fallback-a4"><span class="sanad-faq__question">كيف تتعاملون مع سرية البيانات والقطاعات الحساسة مثل الرعاية الصحية (Medical CX)؟</span><span class="sanad-faq__icon" aria-hidden="true">+</span></button></h3><div class="sanad-faq__panel" id="sanad-faq-fallback-a4" role="region" aria-labelledby="sanad-faq-fallback-q4" hidden><p class="sanad-faq__answer">نوقع اتفاقية حماية بيانات ورسمية (NDA) قبل بدء العمل. تبقى كافة بياناتك وعملائك محفوظة بالكامل على سيرفراتك وأنظمتك الخاصة دون نقلها، مع تطبيق أعلى معايير الخصوصية والاحترافية في التعامل مع بيانات المستفيدين والمرضى.</p></div></div>
+<div class="sanad-faq__item sanad-card-hoverable"><h3 class="sanad-faq__heading"><button type="button" class="sanad-faq__trigger" id="sanad-faq-fallback-q5" aria-expanded="false" aria-controls="sanad-faq-fallback-a5"><span class="sanad-faq__question">ما هي ضمانات جودة الأداء والـ SLA المعتمدة لديكم؟ وهل توجد تكاليف تأسيس مخفية؟</span><span class="sanad-faq__icon" aria-hidden="true">+</span></button></h3><div class="sanad-faq__panel" id="sanad-faq-fallback-a5" role="region" aria-labelledby="sanad-faq-fallback-q5" hidden><p class="sanad-faq__answer">لا توجد أي تكاليف تأسيس (Zero Setup Cost). ونلتزم باتفاقيات مستوى خدمة (SLA) صارمة تضمن معدل جودة ردود (QA Score) يتجاوز 95%، وزمن استجابة أقل من 60 ثانية، مع تقديم تقارير أداء دورية لمتابعة المبيعات والوفورات التشغيلية التي تصل إلى 40%.</p></div></div>
+<div class="sanad-faq__item sanad-card-hoverable"><h3 class="sanad-faq__heading"><button type="button" class="sanad-faq__trigger" id="sanad-faq-fallback-q6" aria-expanded="false" aria-controls="sanad-faq-fallback-a6"><span class="sanad-faq__question">هل توجد رسوم إعداد أو حد أدنى للتعاقد؟</span><span class="sanad-faq__icon" aria-hidden="true">+</span></button></h3><div class="sanad-faq__panel" id="sanad-faq-fallback-a6" role="region" aria-labelledby="sanad-faq-fallback-q6" hidden><p class="sanad-faq__answer">نقبل جميع طرق الدفع: بطاقات الائتمان، التحويل البنكي، والدفع النقدي عند الاستلام.</p></div></div>
+                @endforelse
+            </div>
+        </div>
+    </section>
+
     <section class="sanad-contact" id="contact" aria-labelledby="sanad-contact-title" data-node-id="85:10840">
         <div class="sanad-contact__container" data-node-id="85:10841">
             <div class="sanad-contact__layout" data-node-id="85:10842">
                 <div class="sanad-contact__header" data-node-id="136:8766"><h2 class="sanad-contact__title"
                                                                                id="sanad-contact-title"
-                                                                               data-node-id="136:8767">جاهز للارتقاء
-                    بتجربة عملائك <span class="sanad-contact__title-accent">وتسريع نموك</span>؟</h2>
-                    <p class="sanad-contact__description" data-node-id="136:8768">اترك بياناتك و سيتواصل معك أحد خبراء
-                        التشغيل في <span lang="en" dir="ltr">Sanad CX</span> <br>لتقديم استشارة مجانية وحزمة مخصصة.</p>
+                                                                               data-node-id="136:8767">{!! str_replace(e(__('auth.contact_title_accent')), '<span class="sanad-contact__title-accent">'.e(__('auth.contact_title_accent')).'</span>', e(__('auth.contact_title'))) !!}</h2>
+                    <p class="sanad-contact__description" data-node-id="136:8768">اترك بياناتك وسيتواصل معك أحد خبرائنا لتقديم تحليل مجاني وحزمة مخصصة تناسب حجم ونشاط شركتك.</p>
                 </div>
                 <div class="sanad-contact__form-container" data-node-id="85:10843">
-                    <form class="sanad-contact__form" data-consultation-form novalidate data-node-id="85:10847">
+                    <form class="sanad-contact__form" data-consultation-form
+                          data-action="/consultation" novalidate data-node-id="85:10847">
                         <div class="sanad-contact__group" data-node-id="85:10848">
                             <div class="sanad-input" data-node-id="85:10849"><label class="sanad-input__label"
                                                                                     for="sanad-contact-full-name"><span
-                                data-node-id="I85:10849;58:947">الاسم الكريم</span></label>
+                                        data-node-id="I85:10849;58:947">الاسم الكريم</span></label>
                                 <div class="sanad-input__field" data-node-id="I85:10849;58:924"><input
-                                    class="sanad-input__control" id="sanad-contact-full-name" type="text"
-                                    name="fullName" placeholder="الاسم الكريم" autocomplete="name"
-                                    aria-describedby="sanad-contact-full-name-status"><span
-                                    class="sanad-contact__placeholder" aria-hidden="true"
-                                    data-node-id="I85:10849;58:929">الاسم الكريم</span></div>
+                                        class="sanad-input__control" id="sanad-contact-full-name" type="text"
+                                        name="fullName" placeholder="الاسم الكريم" autocomplete="name"
+                                        aria-describedby="sanad-contact-full-name-status"><span
+                                        class="sanad-contact__placeholder" aria-hidden="true"
+                                        data-node-id="I85:10849;58:929">الاسم الكريم</span></div>
                                 <span class="sanad-input__status" id="sanad-contact-full-name-status"
                                       data-consultation-status aria-live="polite">خطاء في البيانات</span></div>
                             <div class="sanad-input" data-node-id="85:10850"><label class="sanad-input__label"
                                                                                     for="sanad-contact-company-name"><span
-                                data-node-id="I85:10850;58:947">اسم الشركة / البراند</span></label>
+                                        data-node-id="I85:10850;58:947">اسم الشركة / البراند</span></label>
                                 <div class="sanad-input__field" data-node-id="I85:10850;58:924"><input
-                                    class="sanad-input__control" id="sanad-contact-company-name" type="text"
-                                    name="companyName" placeholder="اسم الشركة / البراند" autocomplete="organization"
-                                    aria-describedby="sanad-contact-company-name-status"><span
-                                    class="sanad-contact__placeholder" aria-hidden="true"
-                                    data-node-id="I85:10850;58:929">اسم الشركة / البراند</span></div>
+                                        class="sanad-input__control" id="sanad-contact-company-name" type="text"
+                                        name="companyName" placeholder="اسم الشركة / البراند"
+                                        autocomplete="organization"
+                                        aria-describedby="sanad-contact-company-name-status"><span
+                                        class="sanad-contact__placeholder" aria-hidden="true"
+                                        data-node-id="I85:10850;58:929">اسم الشركة / البراند</span></div>
                                 <span class="sanad-input__status" id="sanad-contact-company-name-status"
                                       data-consultation-status aria-live="polite">خطاء في البيانات</span></div>
                             <div class="sanad-input" data-node-id="85:10851"><label class="sanad-input__label"
                                                                                     for="sanad-contact-mobile"><span
-                                data-node-id="I85:10851;58:947">رقم الموبايل / الواتساب</span></label>
+                                        data-node-id="I85:10851;58:947">رقم الموبايل / الواتساب</span></label>
                                 <div class="sanad-input__field" data-node-id="I85:10851;58:924"><input
-                                    class="sanad-input__control" id="sanad-contact-mobile" type="tel"
-                                    name="mobileWhatsapp" inputmode="tel" placeholder="رقم الموبايل / الواتساب"
-                                    autocomplete="tel" data-consultation-phone pattern="\+?[0-9](?: ?[0-9]){6,14} ?"
-                                    aria-describedby="sanad-contact-mobile-status"><span
-                                    class="sanad-contact__placeholder" aria-hidden="true"
-                                    data-node-id="I85:10851;58:929">رقم الموبايل / الواتساب</span></div>
+                                        class="sanad-input__control" id="sanad-contact-mobile" type="tel"
+                                        name="mobileWhatsapp" inputmode="tel" placeholder="رقم الموبايل / الواتساب"
+                                        autocomplete="tel" data-consultation-phone pattern="\+?[0-9](?: ?[0-9]){6,14} ?"
+                                        aria-describedby="sanad-contact-mobile-status"><span
+                                        class="sanad-contact__placeholder" aria-hidden="true"
+                                        data-node-id="I85:10851;58:929">رقم الموبايل / الواتساب</span></div>
                                 <span class="sanad-input__status" id="sanad-contact-mobile-status"
                                       data-consultation-status aria-live="polite">خطاء في البيانات</span></div>
                         </div>
-                        <div class="sanad-input sanad-input--select" data-node-id="85:10852"><label
-                            class="sanad-input__label" for="sanad-contact-volume"><span data-node-id="I85:10852;58:947">حجم التواصل اليومي</span></label>
+                        <div class="sanad-input sanad-input--select"><label class="sanad-input__label" for="sanad-contact-interest">الاهتمام الأساسي أو الخدمة المطلوبة</label><div class="sanad-input__field"><select class="sanad-input__control" id="sanad-contact-interest" name="serviceInterest"><option value="">اختر</option><option value="تشغيل خدمة العملاء والمبيعات (BPO)">تشغيل خدمة العملاء والمبيعات (BPO)</option>
+<option value="المساعد الذكي والتكنولوجيا (Sanad AI)">المساعد الذكي والتكنولوجيا (Sanad AI)</option>
+<option value="الاستشارات التسويقية وهندسة الهوية (فِكر)">الاستشارات التسويقية وهندسة الهوية (فِكر)</option>
+<option value="منظومة النمو المتكاملة (الكل)">منظومة النمو المتكاملة (الكل)</option></select></div></div>
+
+                            <div class="sanad-input sanad-input--select" data-node-id="85:10852"><label
+                                class="sanad-input__label" for="sanad-contact-volume"><span
+                                    data-node-id="I85:10852;58:947">حجم التواصل اليومي</span></label>
                             <div class="sanad-input__field" data-node-id="I85:10852;58:924"><select
-                                class="sanad-input__control" id="sanad-contact-volume" name="dailyContactVolume"
-                                aria-describedby="sanad-contact-volume-status">
-                                <option value="">اختر</option>
-                            </select> <span class="sanad-contact__placeholder" aria-hidden="true"
-                                            data-node-id="I85:10852;58:929">اختر</span> <span
-                                class="sanad-input__toggle sanad-contact__toggle" aria-hidden="true"
-                                data-node-id="I85:10852;58:931"> <img
-                                class="sanad-contact__arrow sanad-contact__arrow--light"
-                                src="./assets/image/svg/Group_9x5_homepage-light.svg" alt="" width="9" height="5"
-                                data-node-id="I85:10852;58:931;7:282"> <img
-                                class="sanad-contact__arrow sanad-contact__arrow--dark"
-                                src="./assets/image/svg/Group_9x5_homepage-dark.svg" alt="" width="9"
-                                height="5"> </span></div>
+                                    class="sanad-input__control" id="sanad-contact-volume" name="dailyContactVolume"
+                                    aria-describedby="sanad-contact-volume-status">
+<option value="">اختر</option>
+<option value="أقل من 100">أقل من 100</option>
+<option value="100 - 500">100 - 500</option>
+<option value="أكثر من 500">أكثر من 500</option>
+</select> <span class="sanad-contact__placeholder" aria-hidden="true"
+                                                data-node-id="I85:10852;58:929">اختر</span> <span
+                                    class="sanad-input__toggle sanad-contact__toggle" aria-hidden="true"
+                                    data-node-id="I85:10852;58:931"> <img
+                                        class="sanad-contact__arrow sanad-contact__arrow--light"
+                                        src="/website/assets/image/svg/Group_9x5_homepage-light.svg"
+                                        alt="" width="9" height="5" data-node-id="I85:10852;58:931;7:282"> <img
+                                        class="sanad-contact__arrow sanad-contact__arrow--dark"
+                                        src="/website/assets/image/svg/Group_9x5_homepage-dark.svg" alt=""
+                                        width="9" height="5"> </span></div>
                             <span class="sanad-input__status" id="sanad-contact-volume-status" data-consultation-status
                                   aria-live="polite">خطاء في البيانات</span></div>
                         <div class="sanad-input" data-node-id="85:10853"><label class="sanad-input__label"
                                                                                 for="sanad-contact-systems"><span
-                            data-node-id="I85:10853;58:947">&#160;البرامج أو الأنظمة المستخدمة حالياً</span><span
-                            class="sanad-input__optional" data-node-id="I85:10853;58:925">“اختياري”</span></label>
+                                    data-node-id="I85:10853;58:947">البرامج أو الأنظمة المستخدمة حالياً</span><span
+                                    class="sanad-input__optional"
+                                    data-node-id="I85:10853;58:925">"اختياري"</span></label>
                             <div class="sanad-input__field" data-node-id="I85:10853;58:924"><input
-                                class="sanad-input__control" id="sanad-contact-systems" type="text"
-                                name="currentSystems" placeholder=" البرامج أو الأنظمة المستخدمة حالياً "
-                                aria-describedby="sanad-contact-systems-status"><span class="sanad-contact__placeholder"
-                                                                                      aria-hidden="true"
-                                                                                      data-node-id="I85:10853;58:929">&#160;البرامج أو الأنظمة المستخدمة حالياً</span>
+                                    class="sanad-input__control" id="sanad-contact-systems" type="text"
+                                    name="currentSystems" placeholder="البرامج أو الأنظمة المستخدمة حالياً"
+                                    aria-describedby="sanad-contact-systems-status"><span
+                                    class="sanad-contact__placeholder" aria-hidden="true"
+                                    data-node-id="I85:10853;58:929">البرامج أو الأنظمة المستخدمة حالياً</span>
                             </div>
                             <span class="sanad-input__status" id="sanad-contact-systems-status" data-consultation-status
                                   aria-live="polite">خطاء في البيانات</span></div>
@@ -1396,6 +1066,148 @@
             </div>
         </div>
     </section>
+
+
+    @push('scripts')
+        <script>
+            (function () {
+                var root = document.querySelector('[data-stats-slider]');
+                if (!root) { return; }
+                var track = root.querySelector('[data-stats-track]');
+                var items = Array.prototype.slice.call(track.children);
+                var count = items.length, pos = 0, timer = null;
+                var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                function perView() { return window.innerWidth < 640 ? 1 : (window.innerWidth < 1024 ? 2 : 3); }
+                function render() {
+                    var n = perView(), vw = root.querySelector('.sanad-stats__viewport').clientWidth, w = vw / n;
+                    items.forEach(function (it) { it.style.flex = '0 0 ' + w + 'px'; });
+                    track.style.transform = 'translateX(' + (-pos * w) + 'px)';
+                }
+                function go(d) {
+                    var max = count - perView();
+                    pos = pos + d; if (pos > max) { pos = 0; } if (pos < 0) { pos = max; }
+                    render();
+                }
+                root.querySelector('[data-stats-next]').addEventListener('click', function () { go(1); restart(); });
+                root.querySelector('[data-stats-prev]').addEventListener('click', function () { go(-1); restart(); });
+                function restart() { clearInterval(timer); if (!reduce) { timer = setInterval(function () { go(1); }, 4000); } }
+                window.addEventListener('resize', function () { pos = 0; render(); });
+                render(); restart();
+            })();
+        </script>
+    @endpush
+    @push('scripts')
+        <script>
+            (function () {
+                var el = document.querySelector('[data-stat-countdown]');
+                if (!el || !window.gsap) { return; }
+                var startValue = parseInt(el.getAttribute('data-stat-countdown'), 10) || 1000;
+                var counter = { value: startValue };
+                window.gsap.to(counter, {
+                    value: 0,
+                    duration: 1.8,
+                    ease: 'power2.out',
+                    scrollTrigger: { trigger: el, start: 'top 82%', once: true },
+                    onStart: function () { el.textContent = startValue; },
+                    onUpdate: function () { el.textContent = Math.round(counter.value); },
+                    onComplete: function () { el.textContent = '0'; }
+                });
+            })();
+        </script>
+    @endpush
+    @push('scripts')
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var csrfToken = (document.querySelector('meta[name="csrf-token"]') || {}).content || '';
+                document.querySelectorAll('[data-consultation-form]').forEach(function (form) {
+                    var btn = form.querySelector('[data-consultation-submit]');
+                    if (!btn) return;
+                    var fresh = btn.cloneNode(true);
+                    btn.parentNode.replaceChild(fresh, btn);
+                    var actionUrl = form.dataset.action || '';
+                    fresh.addEventListener('click', async function () {
+                        if (!form.checkValidity()) {
+                            var inv = form.querySelector(':invalid');
+                            inv && inv.focus();
+                            return;
+                        }
+                        var notice = form.querySelector('[data-consultation-notice]');
+                        if (notice) notice.textContent = '';
+                        fresh.disabled = true;
+                        try {
+                            var raw = new FormData(form);
+                            var body = new FormData();
+                            body.append('_token', csrfToken);
+                            body.append('full_name', raw.get('fullName') || '');
+                            body.append('company_name', raw.get('companyName') || '');
+                            body.append('mobile_whatsapp', raw.get('mobileWhatsapp') || '');
+                            body.append('daily_contact_volume', raw.get('dailyContactVolume') || '');
+                            body.append('current_systems', raw.get('currentSystems') || '');
+                            var res = await fetch(actionUrl, {
+                                method: 'POST',
+                                headers: {'X-Requested-With': 'XMLHttpRequest'},
+                                body: body
+                            });
+                            var json = await res.json();
+                            if (res.ok && json.code === 200) {
+                                form.reset();
+                                if (window.Swal) {
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'تم الإرسال بنجاح',
+                                        text: json.message || 'سيتواصل معك فريقنا قريباً',
+                                        confirmButtonText: 'حسناً',
+                                        confirmButtonColor: 'var(--sanad-color-primary, #6c5ce7)',
+                                        timer: 5000,
+                                        timerProgressBar: true
+                                    });
+                                }
+                            } else if (res.status === 422 && json.errors) {
+                                if (window.Swal) {
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'خطأ في البيانات',
+                                        text: json.message || 'يرجى مراجعة الحقول المطلوبة.',
+                                        confirmButtonText: 'حسناً',
+                                        confirmButtonColor: 'var(--sanad-color-primary, #6c5ce7)'
+                                    });
+                                } else {
+                                    var msgs = Object.values(json.errors).flat().join(' | ');
+                                    if (notice) notice.textContent = msgs;
+                                }
+                            } else {
+                                if (window.Swal) {
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'حدث خطأ',
+                                        text: json.message || 'يرجى المحاولة مرة أخرى.',
+                                        confirmButtonText: 'حسناً',
+                                        confirmButtonColor: 'var(--sanad-color-primary, #6c5ce7)'
+                                    });
+                                } else if (notice) {
+                                    notice.textContent = json.message || 'حدث خطأ، يرجى المحاولة مرة أخرى.';
+                                }
+                            }
+                        } catch (e) {
+                            if (window.Swal) {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'حدث خطأ',
+                                    text: 'تعذر الاتصال بالخادم، يرجى المحاولة مرة أخرى.',
+                                    confirmButtonText: 'حسناً',
+                                    confirmButtonColor: 'var(--sanad-color-primary, #6c5ce7)'
+                                });
+                            } else if (notice) {
+                                notice.textContent = 'تعذر الاتصال بالخادم، يرجى المحاولة مرة أخرى.';
+                            }
+                        } finally {
+                            fresh.disabled = false;
+                        }
+                    });
+                });
+            });
+        </script>
+    @endpush
 </main>
 <footer class="sanad-footer" data-site-footer>
     <div class="sanad-footer__content">

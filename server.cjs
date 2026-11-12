@@ -34,6 +34,8 @@ const server = http.createServer((req, res) => {
 
     if (reqUrl === '/') {
         reqUrl = '/index.html';
+    } else if (reqUrl === '/fkr' || reqUrl === '/fikr') {
+        reqUrl = '/fikr.html';
     }
 
     let filePath = path.join(PUBLIC_DIR, reqUrl);

@@ -130,3 +130,151 @@
 .sanad-hero{inline-size:min(1400px,calc(100vw - 40px));margin-inline:auto;margin-block-start:24px;border-radius:40px;overflow:hidden}
 .sanad-home-ai__subtitle{line-height:30px}
 @media (min-width:1101px){.sanad-home-ai__container{gap:96px}}
+
+/* Testimonials Grid (Figma: 2x2 static grid) */
+.sanad-testimonials__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    max-inline-size: 1200px;
+    margin-inline: auto;
+}
+@media (min-width: 768px) {
+    .sanad-testimonials__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+.sanad-testimonials__subtitle {
+    text-align: center;
+    color: var(--sanad-text-secondary);
+    font-size: 18px;
+    margin-block-start: 8px;
+    margin-block-end: 40px;
+}
+.sanad-badge--partner {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 9999px;
+    background: rgba(30, 64, 175, 0.15);
+    border: 1px solid rgba(59, 130, 246, 0.35);
+    color: #38bdf8;
+    font-size: 13px;
+    font-weight: 600;
+}
+/* Contact Form Pill Inputs (Figma) */
+.sanad-contact__form .sanad-input__field {
+    border-radius: 9999px;
+    padding-inline: 20px;
+}
+.sanad-contact__form .sanad-input__control {
+    border-radius: 9999px;
+}
+.sanad-contact__submit {
+    border-radius: 9999px;
+    background-color: #1e40af;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 18px;
+    padding: 16px 36px;
+    min-block-size: 56px;
+    transition: background-color 0.2s, transform 0.2s;
+}
+.sanad-contact__submit:hover {
+    background-color: #2563eb;
+    transform: translateY(-2px);
+}
+/* Calculator Emerald CTA (Figma) */
+.sanad-calculator__cta {
+    background: #10b981 !important;
+    border-radius: 9999px !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    font-size: 18px !important;
+    min-block-size: 56px !important;
+    box-shadow: 0 4px 20px rgba(16, 185, 129, 0.3) !important;
+}
+.sanad-calculator__cta:hover {
+    background: #059669 !important;
+}
+/* Light Mode Hybrid Aesthetic (Figma): Ice-blue canvas, dark section containers */
+[data-theme="light"] {
+    background-color: #eaf0f9;
+}
+[data-theme="light"] .sanad-hero,
+[data-theme="light"] .sanad-home-services,
+[data-theme="light"] .sanad-home-fkr,
+[data-theme="light"] .sanad-comparison,
+[data-theme="light"] .sanad-home-ai,
+[data-theme="light"] .sanad-testimonials,
+[data-theme="light"] .sanad-home-steps,
+[data-theme="light"] .sanad-calculator,
+[data-theme="light"] .sanad-faq,
+[data-theme="light"] .sanad-contact {
+    color: #ffffff;
+}
+[data-theme="light"] .sanad-home-services {
+    background-color: #0a192f;
+}
+[data-theme="light"] .sanad-comparison {
+    background-color: #0e1e30;
+    border-radius: 40px;
+    padding-block: 64px;
+    inline-size: min(1400px, calc(100vw - 40px));
+    margin-inline: auto;
+}
+[data-theme="light"] .sanad-comparison__intro {
+    color: #c4c4c4;
+}
+[data-theme="light"] .sanad-testimonials {
+    background-color: #0a192f;
+    border-radius: 40px;
+    padding: 64px 40px;
+    inline-size: min(1400px, calc(100vw - 40px));
+    margin-inline: auto;
+}
+[data-theme="light"] .sanad-home-steps {
+    background-color: #0e1e30;
+    border-radius: 40px;
+    padding: 64px 40px;
+    inline-size: min(1400px, calc(100vw - 40px));
+    margin-inline: auto;
+}
+[data-theme="light"] .sanad-calculator {
+    background-color: #0a192f;
+    border-radius: 40px;
+    padding: 64px 40px;
+    inline-size: min(1400px, calc(100vw - 40px));
+    margin-inline: auto;
+}
+[data-theme="light"] .sanad-faq {
+    background-color: #0e1e30;
+    border-radius: 40px;
+    padding: 64px 40px;
+    inline-size: min(1400px, calc(100vw - 40px));
+    margin-inline: auto;
+}
+[data-theme="light"] .sanad-contact {
+    background-color: #0a192f;
+    border-radius: 40px;
+    padding: 64px 40px;
+    inline-size: min(1400px, calc(100vw - 40px));
+    margin-inline: auto;
+}
+
+/* Mobile & Global Overflow Protection */
+body, #main {
+    overflow-x: clip;
+}
+.sanad-hero, .sanad-home-services, .sanad-home-fkr, .sanad-home-ai, .sanad-comparison, .sanad-testimonials, .sanad-home-steps, .sanad-calculator, .sanad-faq, .sanad-contact {
+    overflow-x: clip;
+}
+.sanad-hero__visual {
+    overflow: hidden;
+}
+.sanad-home-services__edge {
+    overflow: hidden;
+    max-inline-size: 100vw;
+}
+

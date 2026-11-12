@@ -63,44 +63,33 @@
             <span class="sanad-hero__chip sanad-hero__chip--analytics"><img src="{{ asset('website/assets/image/svg/performanceAnalyticsIcon_24x24.svg') }}" alt="" width="24" height="24" decoding="async"></span>
         </div>
     </section>
-    <section class="sanad-stats" aria-label="{{ __('auth.stats_aria_label') }}">
-        <ul class="sanad-stats__list">
-            <li class="sanad-stats__item"><span class="sanad-stats__value" data-stat-value="&lt; 60 ثانية">{{ __('auth.parity_stat1_value') }}</span> <span class="sanad-stats__label">{{ __('auth.parity_stat1_title') }}</span> <span class="sanad-stats__detail">{{ __('auth.parity_stat1_desc') }}</span></li>
-            <li class="sanad-stats__item"><span class="sanad-stats__value" data-stat-value="100%">{{ __('auth.parity_stat2_value') }}</span> <span class="sanad-stats__label">{{ __('auth.parity_stat2_title') }}</span> <span class="sanad-stats__detail">{{ __('auth.parity_stat2_desc') }}</span></li>
-            <li class="sanad-stats__item"><span class="sanad-stats__value" data-stat-value="24/7">{{ __('auth.parity_stat3_value') }}</span> <span class="sanad-stats__label">{{ __('auth.parity_stat3_title') }}</span> <span class="sanad-stats__detail">{{ __('auth.parity_stat3_desc') }}</span></li>
-            <li class="sanad-stats__item"><span class="sanad-stats__value" data-stat-value="+35%">{{ __('auth.parity_stat4_value') }}</span> <span class="sanad-stats__label">{{ __('auth.parity_stat4_title') }}</span> <span class="sanad-stats__detail">{{ __('auth.parity_stat4_desc') }}</span></li>
-            <li class="sanad-stats__item"><span class="sanad-stats__value" data-stat-value="40%">{{ __('auth.parity_stat5_value') }}</span> <span class="sanad-stats__label">{{ __('auth.parity_stat5_title') }}</span> <span class="sanad-stats__detail">{{ __('auth.parity_stat5_desc') }}</span></li>
-            <li class="sanad-stats__item"><span class="sanad-stats__value" data-stat-value="0" data-stat-countdown="1000">{{ __('auth.parity_stat6_value') }}</span> <span class="sanad-stats__label">{{ __('auth.parity_stat6_title') }}</span> <span class="sanad-stats__detail">{{ __('auth.parity_stat6_desc') }}</span></li>
-            <li class="sanad-stats__item"><span class="sanad-stats__value" data-stat-value="95%+">{{ __('auth.parity_stat7_value') }}</span> <span class="sanad-stats__label">{{ __('auth.parity_stat7_title') }}</span> <span class="sanad-stats__detail">{{ __('auth.parity_stat7_desc') }}</span></li>
-        </ul>
-    </section>
-    <section class="sanad-integration" aria-labelledby="sanad-integration-heading">
-        <div class="sanad-integration__container">
-            <div class="sanad-integration__header"><h2 class="sanad-integration__title" id="sanad-integration-heading">
-                    {{ __('auth.integration_title_before') }} <span class="sanad-integration__title-accent">{{ __('auth.integration_title_accent') }}</span> {{ __('auth.integration_title_after') }}</h2>
-                <p class="sanad-integration__description">{{ __('auth.integration_description') }}</p></div>
-            <ul class="sanad-integration__benefits">
-                <li class="sanad-integration__benefit"><img class="sanad-integration__benefit-icon"
-                                                            src="{{ asset('website/assets/image/png/dataProtectionIllustration_auto.png') }}"
-                                                            alt="" width="53" height="48" decoding="async">
-                    <div class="sanad-integration__benefit-copy"><h3
-                            class="sanad-integration__benefit-title sanad-integration__benefit-title--accent">{{ __('auth.integration_benefit1_title') }}</h3>
-                        <p class="sanad-integration__benefit-description">{{ __('auth.integration_benefit1_desc') }}</p></div>
-                </li>
-                <li class="sanad-integration__benefit"><img class="sanad-integration__benefit-icon"
-                                                            src="{{ asset('website/assets/image/png/userGrowthIllustration_auto.png') }}"
-                                                            alt="" width="53" height="48" decoding="async">
-                    <div class="sanad-integration__benefit-copy"><h3 class="sanad-integration__benefit-title">{{ __('auth.integration_benefit2_title') }}</h3>
-                        <p class="sanad-integration__benefit-description">{{ __('auth.integration_benefit2_desc') }}</p></div>
-                </li>
-                <li class="sanad-integration__benefit"><img class="sanad-integration__benefit-icon"
-                                                            src="{{ asset('website/assets/image/png/noSetupFeesIllustration_auto.png') }}"
-                                                            alt="" width="47" height="48" decoding="async">
-                    <div class="sanad-integration__benefit-copy"><h3 class="sanad-integration__benefit-title">{{ __('auth.integration_benefit3_title') }}</h3>
-                        <p class="sanad-integration__benefit-description">{{ __('auth.integration_benefit3_desc') }}</p>
-                    </div>
-                </li>
-            </ul>
+    <section class="sanad-stats" aria-label="{{ __('auth.stats_aria_label') }}" data-stats-slider>
+        <div class="sanad-stats__slider">
+            <button type="button" class="sanad-stats__arrow sanad-stats__arrow--prev" data-stats-prev aria-label="السابق">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 19l-7-7 7-7"/></svg>
+            </button>
+            <div class="sanad-stats__viewport">
+                <ul class="sanad-stats__track" data-stats-track>
+                    <li class="sanad-stats__item">
+                        <span class="sanad-stats__value" data-stat-value="&lt; 60 ثانية" dir="rtl">&lt; 60 ثانية</span>
+                        <span class="sanad-stats__label">سرعة الاستجابة</span>
+                        <span class="sanad-stats__detail">رد فوري ومباشر على مدار الساعة</span>
+                    </li>
+                    <li class="sanad-stats__item">
+                        <span class="sanad-stats__value" data-stat-value="100%">100%</span>
+                        <span class="sanad-stats__label">التشغيل المباشر</span>
+                        <span class="sanad-stats__detail">فريق عمل متفرغ لخدمة عملائك</span>
+                    </li>
+                    <li class="sanad-stats__item">
+                        <span class="sanad-stats__value" data-stat-value="24/7">24/7</span>
+                        <span class="sanad-stats__label">التغطية المستمرة</span>
+                        <span class="sanad-stats__detail">لا نتوقف أبداً، دعم دائم بلا انقطاع</span>
+                    </li>
+                </ul>
+            </div>
+            <button type="button" class="sanad-stats__arrow sanad-stats__arrow--next" data-stats-next aria-label="التالي">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+            </button>
         </div>
     </section>
 
@@ -373,8 +362,9 @@
 <section class="sanad-testimonials" aria-labelledby="sanad-testimonials-heading">
         <div class="sanad-testimonials__header">
             <h2 class="sanad-testimonials__title" id="sanad-testimonials-heading">{!! str_replace('Sanad CX', '<span class="sanad-testimonials__title-accent">Sanad CX</span>', e(__('auth.testimonials_heading'))) !!}</h2>
+            <p class="sanad-testimonials__subtitle">قصص حقيقية من قادة وشركات وثقوا في سند لتشغيل وإدارة تجربة عملائهم بكفاءة استثنائية.</p>
         </div>
-        @if($clientReviewSlides->isNotEmpty())
+        @if(isset($clientReviewSlides) && $clientReviewSlides->isNotEmpty())
         @php($slideCount = $clientReviewSlides->count())
         <div class="sanad-testimonials__carousel" data-carousel role="region" aria-roledescription="carousel" aria-label="{{ __('auth.testimonials_carousel_label') }}" tabindex="0">
             <div class="sanad-testimonials__viewport" data-carousel-viewport>
@@ -384,8 +374,7 @@
                         @foreach($slide as $review)
                         <article class="sanad-testimonials__card">
                             <div class="sanad-testimonials__industry">
-                                <img class="sanad-testimonials__industry-icon sanad-testimonials__industry-icon--light" src="{{ asset('website/assets/image/svg/Illustrative-Industry-Icon_40x40_homepage-light.svg') }}" alt="" width="40" height="40" decoding="async">
-                                <img class="sanad-testimonials__industry-icon sanad-testimonials__industry-icon--dark" src="{{ asset('website/assets/image/svg/Illustrative-Industry-Icon_40x40_homepage-dark.svg') }}" alt="" width="40" height="40" aria-hidden="true" decoding="async">
+                                <span class="sanad-badge sanad-badge--partner">شريك نمو</span>
                                 <p class="sanad-testimonials__industry-label">{{ $review->job }}، {{ $review->company_name }}</p>
                             </div>
                             <div class="sanad-testimonials__quotation">
@@ -402,26 +391,65 @@
                     @endforeach
                 </div>
             </div>
-            <div class="sanad-testimonials__controls">
-                <div class="sanad-testimonials__controls-group">
-                    <button type="button" class="sanad-testimonials__arrow" data-carousel-prev aria-label="{{ __('auth.testimonials_prev') }}">
-                        <img class="sanad-testimonials__chevron sanad-testimonials__chevron--light sanad-testimonials__chevron--previous" src="{{ asset('website/assets/image/svg/Navigation-Chevron_24x24_homepage-light.svg') }}" alt="" width="24" height="24" decoding="async">
-                        <img class="sanad-testimonials__chevron sanad-testimonials__chevron--dark sanad-testimonials__chevron--previous" src="{{ asset('website/assets/image/svg/Navigation-Chevron_24x24_homepage-dark.svg') }}" alt="" width="24" height="24" aria-hidden="true" decoding="async">
-                    </button>
-                    <div class="sanad-testimonials__dots" role="group" aria-label="{{ __('auth.testimonials_dots_label') }}">
-                        @foreach($clientReviewSlides as $dotIndex => $unused)
-                        <button type="button" class="sanad-testimonials__dot" data-carousel-dot="{{ $dotIndex + 1 }}" aria-label="الانتقال إلى الشريحة {{ $dotIndex + 1 }}" {!! $dotIndex === 0 ? 'aria-current="true"' : '' !!}>
-                            <span class="sanad-testimonials__dot-marker"></span>
-                        </button>
-                        @endforeach
-                    </div>
-                    <button type="button" class="sanad-testimonials__arrow" data-carousel-next aria-label="{{ __('auth.testimonials_next') }}">
-                        <img class="sanad-testimonials__chevron sanad-testimonials__chevron--light" src="{{ asset('website/assets/image/svg/Navigation-Chevron_24x24_homepage-light.svg') }}" alt="" width="24" height="24" decoding="async">
-                        <img class="sanad-testimonials__chevron sanad-testimonials__chevron--dark" src="{{ asset('website/assets/image/svg/Navigation-Chevron_24x24_homepage-dark.svg') }}" alt="" width="24" height="24" aria-hidden="true" decoding="async">
-                    </button>
+        </div>
+        @else
+        <div class="sanad-testimonials__grid">
+            <article class="sanad-testimonials__card sanad-card-hoverable">
+                <div class="sanad-testimonials__industry">
+                    <span class="sanad-badge sanad-badge--partner">شريك نمو</span>
+                    <p class="sanad-testimonials__industry-label">منصة وصلة</p>
                 </div>
-            </div>
-            <p class="sanad-visually-hidden" data-carousel-status aria-live="polite">الشريحة 1 من {{ $slideCount }}</p>
+                <div class="sanad-testimonials__quotation">
+                    <blockquote class="sanad-testimonials__quote">"منذ بدء شراكتنا مع سند، انخفضت نسبة الشكاوى المعلقة بأكثر من 45% وتحسنت سرعة الاستجابة بشكل ملحوظ. فريق محترف يفهم طبيعة السوق السعودي."</blockquote>
+                </div>
+                <div class="sanad-testimonials__author">
+                    <span class="sanad-testimonials__divider" aria-hidden="true"></span>
+                    <h3 class="sanad-testimonials__name">م. خالد العتيبي</h3>
+                    <p class="sanad-testimonials__role">شريك إداري — منصة وصلة</p>
+                </div>
+            </article>
+            <article class="sanad-testimonials__card sanad-card-hoverable">
+                <div class="sanad-testimonials__industry">
+                    <span class="sanad-badge sanad-badge--partner">شريك نمو</span>
+                    <p class="sanad-testimonials__industry-label">دار العافية الطبية</p>
+                </div>
+                <div class="sanad-testimonials__quotation">
+                    <blockquote class="sanad-testimonials__quote">"سند ليست مجرد جهة تعهيد، بل امتداد حقيقي لفريقنا الداخلي. الدقة في التعامل والالتزام بمعايير الجودة منحنا راحة بال تامة."</blockquote>
+                </div>
+                <div class="sanad-testimonials__author">
+                    <span class="sanad-testimonials__divider" aria-hidden="true"></span>
+                    <h3 class="sanad-testimonials__name">د. معاذ الدوسري</h3>
+                    <p class="sanad-testimonials__role">الرئيس التنفيذي — دار العافية الطبية</p>
+                </div>
+            </article>
+            <article class="sanad-testimonials__card sanad-card-hoverable">
+                <div class="sanad-testimonials__industry">
+                    <span class="sanad-badge sanad-badge--partner">شريك نمو</span>
+                    <p class="sanad-testimonials__industry-label">تطبيق زاجل بلس</p>
+                </div>
+                <div class="sanad-testimonials__quotation">
+                    <blockquote class="sanad-testimonials__quote">"التكامل السريع وسهولة الربط مع أنظمتنا ساعدنا على إطلاق الخدمة خلال 48 ساعة فقط دون أي تعطل. أنصح بشدة بالعمل معهم."</blockquote>
+                </div>
+                <div class="sanad-testimonials__author">
+                    <span class="sanad-testimonials__divider" aria-hidden="true"></span>
+                    <h3 class="sanad-testimonials__name">أ. عبدالأول الشمري</h3>
+                    <p class="sanad-testimonials__role">مدير العمليات — تطبيق زاجل بلس</p>
+                </div>
+            </article>
+            <article class="sanad-testimonials__card sanad-card-hoverable">
+                <div class="sanad-testimonials__industry">
+                    <span class="sanad-badge sanad-badge--partner">شريك نمو</span>
+                    <p class="sanad-testimonials__industry-label">متاجر أفق</p>
+                </div>
+                <div class="sanad-testimonials__quotation">
+                    <blockquote class="sanad-testimonials__quote">"المرونة العالية في توسيع الفريق حسب المواسم والمبيعات كانت العامل الحاسم لنمونا. سند أثبتت جدارتها في أصعب أوقات الذروة."</blockquote>
+                </div>
+                <div class="sanad-testimonials__author">
+                    <span class="sanad-testimonials__divider" aria-hidden="true"></span>
+                    <h3 class="sanad-testimonials__name">أ. فهد القحطاني</h3>
+                    <p class="sanad-testimonials__role">مؤسس — متاجر أفق</p>
+                </div>
+            </article>
         </div>
         @endif
     </section>

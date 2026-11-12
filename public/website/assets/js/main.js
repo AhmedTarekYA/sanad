@@ -703,22 +703,24 @@
           if (badge) tl.from(badge, { y: -25, autoAlpha: 0, duration: 0.6, ease: 'back.out(1.8)' });
           if (headline) {
             const split = splitText(headline);
-            if (split.words.length) tl.from(split.words, { y: 45, autoAlpha: 0, stagger: 0.04, duration: 0.85, ease: 'power4.out' }, '-=0.4');
+            if (split.words.length) tl.from(split.words, { yPercent: 110, autoAlpha: 0, stagger: 0.04, duration: 0.85, ease: 'expo.out' }, '-=0.4');
             else tl.from(headline, { y: 35, autoAlpha: 0, duration: 0.8 }, '-=0.4');
           }
           if (desc) tl.from(desc, { y: 25, autoAlpha: 0, duration: 0.7 }, '-=0.5');
           if (actions.length) tl.from(actions, { y: 20, autoAlpha: 0, scale: 0.9, stagger: 0.1, duration: 0.7, ease: 'back.out(2)' }, '-=0.4');
           if (panel) tl.from(panel, { scale: 0.85, autoAlpha: 0, duration: 1.1, ease: 'power3.out' }, 0.1);
           if (tiles.length) tl.from(tiles, { scale: 0.8, autoAlpha: 0, y: 20, stagger: 0.08, duration: 0.7, ease: 'back.out(1.8)' }, '-=0.5');
+          scrub('.sanad-services-hero__panel', { yPercent: -3 }, { yPercent: 3 }, hero);
         });
         spec('services.02.disciplines', '.sanad-services-detail', () => {
           $$('.sanad-services-detail__card').forEach(card => {
+            ST.create({ trigger: card, start: 'top 65%', end: 'bottom 40%', toggleClass: 'is-active' });
             from([card]);
             from($$('.sanad-services-detail__detail, .sanad-services-detail__tag', card), { x: -24, y: 0, stagger: 0.07 }, card);
           });
         });
         spec('services.03.difference', '.sanad-differ', () => {
-          batch('.differ-card, .sanad-differ__card', { scale: 1 });
+          batch('.differ-card, .sanad-differ__card', { y: 50, scale: 0.96 });
           if (finePointer.matches) $$('.differ-card, .sanad-differ__card').forEach(card => {
             on(card, 'pointermove', event => { const rect = card.getBoundingClientRect(); card.style.setProperty('--mouse-x', `${event.clientX - rect.left}px`); card.style.setProperty('--mouse-y', `${event.clientY - rect.top}px`); });
             on(card, 'pointerleave', () => { card.style.removeProperty('--mouse-x'); card.style.removeProperty('--mouse-y'); });
@@ -875,10 +877,14 @@
           const steps = $$('.ai-walkthrough__step, .ai-step', section), visual = $('.copilot-visual, .ai-demo', section), stage = $('.copilot-stage', section);
           from(steps, { stagger: 0.15 }, section);
           if (visual && stage && window.innerWidth >= 1024 && visual.offsetHeight < window.innerHeight - 160) {
-            ST.create({ trigger: visual, start: 'top 128px', end: () => `+=${Math.min(600, Math.max(240, window.innerHeight * 0.5))}`, pin: visual, pinSpacing: true, invalidateOnRefresh: true, onUpdate: self => {
+            let previous = -1;
+            ST.create({ trigger: visual, start: 'top 128px', end: '+=1400', pin: visual, pinSpacing: true, scrub: 1, invalidateOnRefresh: true, onUpdate: self => {
               const current = Math.min(steps.length - 1, Math.floor(self.progress * steps.length));
+              if (current === previous) return;
+              previous = current;
               steps.forEach((step, index) => step.classList.toggle('is-active', index === current));
               const caption = $('[data-copilot-caption]', visual); if (caption && steps[current]) caption.textContent = $('h3', steps[current]).textContent;
+              section.dispatchEvent(new CustomEvent('sanad:copilot-stage', { detail: current }));
             } });
             g.from('.copilot-extension', { rotationY: -8, scale: 0.95, duration: 1, scrollTrigger: { trigger: visual, start: 'top 70%', end: 'top 25%', scrub: 1 } });
           } else from('.copilot-visual, .ai-demo', { scale: 0.96 });
@@ -887,7 +893,11 @@
           from('.telemetry-bar, .ai-kpi__chart i', { scaleY: 0, y: 0, transformOrigin: 'bottom', stagger: 0.06, duration: 0.8, ease: 'expo.out' }, $('.ai-ops'));
           from('.ai-pricing__card, .ai-plan', { stagger: 0.1 }, $('.ai-pricing-section, .ai-plans'));
           const featured = $('.ai-pricing--featured, .ai-plan--p');
-          if (featured) g.to(featured, { boxShadow: '0 0 32px rgba(51,126,252,.2)', duration: 1.2, scrollTrigger: trigger(featured) });
+          if (featured) {
+            const glow = g.to(featured, { boxShadow: '0 0 32px rgba(51,126,252,.35)', duration: 1.2, repeat: -1, yoyo: true, paused: true });
+            ST.create({ trigger: featured, start: 'top bottom', end: 'bottom top', onToggle: self => self.isActive ? glow.play() : glow.pause() });
+            on(document, 'visibilitychange', () => document.hidden ? glow.pause() : ST.isInViewport(featured) && glow.play());
+          }
           batch('.ai-faq__item, .ai-faq__row'); heading('.ai-ops>h2, .ai-pricing-section>h2, .ai-plans>h2');
         });
       });
