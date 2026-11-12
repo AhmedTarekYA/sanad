@@ -70,7 +70,7 @@
             <li class="sanad-stats__item"><span class="sanad-stats__value" data-stat-value="24/7">{{ __('auth.parity_stat3_value') }}</span> <span class="sanad-stats__label">{{ __('auth.parity_stat3_title') }}</span> <span class="sanad-stats__detail">{{ __('auth.parity_stat3_desc') }}</span></li>
             <li class="sanad-stats__item"><span class="sanad-stats__value" data-stat-value="+35%">{{ __('auth.parity_stat4_value') }}</span> <span class="sanad-stats__label">{{ __('auth.parity_stat4_title') }}</span> <span class="sanad-stats__detail">{{ __('auth.parity_stat4_desc') }}</span></li>
             <li class="sanad-stats__item"><span class="sanad-stats__value" data-stat-value="40%">{{ __('auth.parity_stat5_value') }}</span> <span class="sanad-stats__label">{{ __('auth.parity_stat5_title') }}</span> <span class="sanad-stats__detail">{{ __('auth.parity_stat5_desc') }}</span></li>
-            <li class="sanad-stats__item"><span class="sanad-stats__value" data-stat-value="Zero Setup Fees">{{ __('auth.parity_stat6_value') }}</span> <span class="sanad-stats__label">{{ __('auth.parity_stat6_title') }}</span> <span class="sanad-stats__detail">{{ __('auth.parity_stat6_desc') }}</span></li>
+            <li class="sanad-stats__item"><span class="sanad-stats__value" data-stat-value="0" data-stat-countdown="1000">{{ __('auth.parity_stat6_value') }}</span> <span class="sanad-stats__label">{{ __('auth.parity_stat6_title') }}</span> <span class="sanad-stats__detail">{{ __('auth.parity_stat6_desc') }}</span></li>
             <li class="sanad-stats__item"><span class="sanad-stats__value" data-stat-value="95%+">{{ __('auth.parity_stat7_value') }}</span> <span class="sanad-stats__label">{{ __('auth.parity_stat7_title') }}</span> <span class="sanad-stats__detail">{{ __('auth.parity_stat7_desc') }}</span></li>
         </ul>
     </section>
@@ -997,6 +997,30 @@
                 function restart() { clearInterval(timer); if (!reduce) { timer = setInterval(function () { go(1); }, 4000); } }
                 window.addEventListener('resize', function () { pos = 0; render(); });
                 render(); restart();
+            })();
+        </script>
+    @endpush
+    @push('scripts')
+        <script>
+            (function () {
+                var el = document.querySelector('[data-stat-countdown]');
+                if (!el || !window.gsap || !window.ScrollTrigger) { return; }
+                var startValue = parseInt(el.getAttribute('data-stat-countdown'), 10) || 1000;
+                var counter = { value: startValue };
+                var tween = window.gsap.to(counter, {
+                    value: 0,
+                    duration: 1.8,
+                    ease: 'power2.out',
+                    paused: true,
+                    onUpdate: function () { el.textContent = Math.round(counter.value); },
+                    onComplete: function () { el.textContent = '0'; }
+                });
+                window.ScrollTrigger.create({
+                    trigger: el,
+                    start: 'top 82%',
+                    once: true,
+                    onEnter: function () { el.textContent = startValue; tween.play(); }
+                });
             })();
         </script>
     @endpush
