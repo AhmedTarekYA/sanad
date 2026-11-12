@@ -72,11 +72,6 @@ Route::get('set-debug-mode', function () {
 });
 
 Route::resource('download-database-backup', BackUpDatabaseController::class);
-
-Route::get('clear-visits', function () {
-    \App\Models\Visit::truncate();
-    return 'All visitor statistics cleared.';
-});
 });
 
 
