@@ -1004,22 +1004,17 @@
         <script>
             (function () {
                 var el = document.querySelector('[data-stat-countdown]');
-                if (!el || !window.gsap || !window.ScrollTrigger) { return; }
+                if (!el || !window.gsap) { return; }
                 var startValue = parseInt(el.getAttribute('data-stat-countdown'), 10) || 1000;
                 var counter = { value: startValue };
-                var tween = window.gsap.to(counter, {
+                window.gsap.to(counter, {
                     value: 0,
                     duration: 1.8,
                     ease: 'power2.out',
-                    paused: true,
+                    scrollTrigger: { trigger: el, start: 'top 82%', once: true },
+                    onStart: function () { el.textContent = startValue; },
                     onUpdate: function () { el.textContent = Math.round(counter.value); },
                     onComplete: function () { el.textContent = '0'; }
-                });
-                window.ScrollTrigger.create({
-                    trigger: el,
-                    start: 'top 82%',
-                    once: true,
-                    onEnter: function () { el.textContent = startValue; tween.play(); }
                 });
             })();
         </script>
