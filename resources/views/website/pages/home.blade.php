@@ -262,7 +262,7 @@
         </article>
     </div>
     <div class="sanad-home-fkr__actions">
-        <a class="sanad-btn sanad-home-fkr__cta" href="{{ url('/fikr') }}">استكشف العقلية التسويقية لـ فِكر</a>
+        <a class="sanad-btn sanad-home-fkr__cta" href="{{ url('/fkr') }}">استكشف العقلية التسويقية لـ فِكر</a>
     </div>
 </div>
 </section>
