@@ -18,6 +18,6 @@
   </div>
   <div data-state="loading" hidden><h2 class="sanad-consultation__title" tabindex="-1">جارٍ إرسال طلبك</h2><p class="sanad-consultation__description">لحظات ونؤكد استلام بياناتك.</p></div>
   <div data-state="success" hidden><h2 class="sanad-consultation__title" tabindex="-1">تم استلام طلب التجربة المجانية</h2><p class="sanad-consultation__description">شكرًا لتواصلك. سيتواصل معك فريق سند عبر الرقم الذي أدخلته.</p><button type="button" class="sanad-btn sanad-btn--md sanad-btn--primary" data-modal-close>تم</button></div>
-  <div data-state="error" hidden><h2 class="sanad-consultation__title" tabindex="-1">تعذّر إرسال طلبك</h2><p class="sanad-consultation__description">بياناتك محفوظة في هذه الخطوة. حاول مرة أخرى أو تواصل معنا عبر واتساب.</p><button type="button" class="sanad-btn sanad-btn--md sanad-btn--primary" data-modal-retry>إعادة المحاولة</button> <a class="sanad-btn sanad-btn--md" href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $settings->whatsapp ?? '') }}" target="_blank" rel="noopener noreferrer">تواصل عبر واتساب</a></div>
+  <div data-state="error" hidden><h2 class="sanad-consultation__title" tabindex="-1">تعذّر إرسال طلبك</h2><p class="sanad-consultation__description">بياناتك محفوظة في هذه الخطوة. حاول مرة أخرى أو تواصل معنا عبر واتساب.</p><button type="button" class="sanad-btn sanad-btn--md sanad-btn--primary" data-modal-retry>إعادة المحاولة</button> <a class="sanad-btn sanad-btn--md" href="https://wa.me/{{ $waNumber }}" target="_blank" rel="noopener noreferrer">تواصل عبر واتساب</a></div>
  </div></div></div>
 </dialog>

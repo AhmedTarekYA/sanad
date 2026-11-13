@@ -264,6 +264,7 @@ return [
     'mobile_whatsapp' => 'Mobile / WhatsApp',
     'daily_contact_volume' => 'Daily Contact Volume',
     'current_systems' => 'Current Systems / Software',
+    'service_interest' => 'Primary Interest',
     'read' => 'Read',
     'unread' => 'Unread',
     'date' => 'Date',
@@ -368,7 +369,6 @@ return [
     'services_card3_desc' => 'A dedicated team follows up with leads, handles objections professionally and closes deals to increase conversion.',
     'services_card4_title' => 'Inbound and outbound call management (Voice Operations)',
     'services_card4_desc' => 'Provide professional support and respond to calls in under 60 seconds through your cloud telephone system, in your brand voice.',
-
 
     // Testimonials section
     'testimonials_heading' => 'What Do Our Growth Partners Say About the Sanad CX Experience?',

@@ -62,6 +62,7 @@
 <p class="sanad-services-detail__eyebrow" data-node-id="150:20099">OUR SERVICES — خدماتنا التفصيلية</p>
 <h2 class="sanad-services-detail__heading" data-node-id="150:20100" id="sanad-services-detail-heading">أربع خدمات تشغيلية متكاملة على أنظمتك الحالية</h2>
 </div>
+<div class="sanad-services-detail__progress" aria-hidden="true"></div>
 <article class="sanad-services-detail__card sanad-card-hoverable" data-node-id="150:20104" id="sanad-service-voice-operations" aria-labelledby="sanad-service-voice-operations-title">
 <div class="sanad-services-detail__content" data-node-id="150:20105">
 <div class="sanad-services-detail__meta" data-node-id="150:20107">

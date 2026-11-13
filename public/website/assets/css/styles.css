@@ -55,9 +55,11 @@ html[data-theme="dark"] .sanad-home-ai__feature-badge { color: #c4c60b; }
   will-change: transform;
 }
 .sanad-card-hoverable:hover, .sanad-services-detail__card:hover, .sanad-roi__card:hover, .sanad-differ__card:hover, .sanad-how-process__step:hover, .sanad-values__card:hover, .sanad-home-services__card:hover, .sanad-comparison__card:hover {
-  transform: translateY(-8px) scale(1.01) !important;
   box-shadow: 0 24px 48px -12px rgba(0, 64, 193, 0.25), 0 0 30px -4px rgba(56, 189, 248, 0.2) !important;
   border-color: rgba(56, 189, 248, 0.5) !important;
+}
+.sanad-card-hoverable:not(.sanad-gsap-tilt):hover, .sanad-services-detail__card:not(.sanad-gsap-tilt):hover, .sanad-roi__card:not(.sanad-gsap-tilt):hover, .sanad-differ__card:not(.sanad-gsap-tilt):hover, .sanad-how-process__step:not(.sanad-gsap-tilt):hover, .sanad-values__card:not(.sanad-gsap-tilt):hover, .sanad-home-services__card:not(.sanad-gsap-tilt):hover, .sanad-comparison__card:not(.sanad-gsap-tilt):hover {
+  transform: translateY(-8px) scale(1.01) !important;
 }
 .sanad-hero__globe {
   will-change: transform;
@@ -81,6 +83,11 @@ html[data-theme="dark"] .sanad-home-ai__feature-badge { color: #c4c60b; }
 }
 .sanad-hero__chip:hover {
   transform: translateY(-4px) scale(1.05);
+}
+@media (prefers-reduced-motion: reduce) {
+  .sanad-card-hoverable, .sanad-services-detail__card, .sanad-roi__card, .sanad-differ__card, .sanad-how-process__step, .sanad-systems__card, .sanad-values__card, .sanad-partnership__card, .sanad-home-services__card, .sanad-comparison__card, .sanad-btn, .sanad-hero__chip { transition: none !important; }
+  .sanad-card-hoverable:hover, .sanad-services-detail__card:hover, .sanad-roi__card:hover, .sanad-differ__card:hover, .sanad-how-process__step:hover, .sanad-values__card:hover, .sanad-home-services__card:hover, .sanad-comparison__card:hover, .sanad-btn:hover, .sanad-hero__chip:hover { transform: none !important; }
+  .sanad-card-hoverable:not(.sanad-gsap-tilt):hover, .sanad-services-detail__card:not(.sanad-gsap-tilt):hover, .sanad-roi__card:not(.sanad-gsap-tilt):hover, .sanad-differ__card:not(.sanad-gsap-tilt):hover, .sanad-how-process__step:not(.sanad-gsap-tilt):hover, .sanad-values__card:not(.sanad-gsap-tilt):hover, .sanad-home-services__card:not(.sanad-gsap-tilt):hover, .sanad-comparison__card:not(.sanad-gsap-tilt):hover { transform: none !important; }
 }
 
 /* Consultation modal & contact section: readable text in dark mode */

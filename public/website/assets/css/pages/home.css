@@ -1,10 +1,8 @@
 /* Stats slider */
 .sanad-stats__slider{display:flex;align-items:center;gap:24px}
 .sanad-stats__viewport{flex:1;overflow:hidden;min-inline-size:0}
-.sanad-stats__track{display:flex;margin:0;padding:0;list-style:none;transition:transform .45s ease}
+.sanad-stats__track{display:flex;margin:0;padding:0;list-style:none;will-change:transform}
 .sanad-stats .sanad-stats__item{box-sizing:border-box;padding-inline:24px;min-block-size:141px}
-.sanad-stats__arrow{flex:none;display:grid;place-items:center;inline-size:48px;block-size:48px;border:0;border-radius:50%;background:#1e40af;color:#fff;cursor:pointer}
-.sanad-stats__arrow:focus-visible{outline:2px solid var(--sanad-text-accent);outline-offset:2px}
 .sanad-stats__label{color:#0a192f}
 .sanad-stats__detail{color:#545454}
 .sanad-stats__value{color:#1e40af}
@@ -12,7 +10,9 @@
 [data-theme=dark] .sanad-stats__label{color:#fff}
 [data-theme=dark] .sanad-stats__detail{color:var(--sanad-text-secondary)}
 [data-theme=dark] .sanad-stats__value{color:#3b82f6}
-@media (prefers-reduced-motion:reduce){.sanad-stats__track{transition:none}}
+@media (prefers-reduced-motion:reduce){.sanad-stats__viewport{overflow:visible}.sanad-stats__track{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;transition:none}.sanad-stats .sanad-stats__item{min-inline-size:0}}
+@media (prefers-reduced-motion:reduce) and (max-width:1023px){.sanad-stats__track{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (prefers-reduced-motion:reduce) and (max-width:639px){.sanad-stats__track{grid-template-columns:1fr}}
 /* Fikr + Sanad AI sections */
 .sanad-home-fkr,.sanad-home-ai{inline-size:min(1400px,calc(100vw - 48px));margin:var(--sanad-spacing-space-24) auto;padding:56px 48px;border-radius:40px;background:linear-gradient(180deg,#0e1c33,#0b1730);border:1px solid var(--sanad-border-default)}
 .sanad-home-fkr__container{display:grid;gap:40px;align-items:center}
@@ -105,6 +105,7 @@
 .sanad-home-services .sanad-service-card__title{color:#fff}
 .sanad-home-services .sanad-service-card__desc{color:#c4c4c4}
 .sanad-home-services{min-block-size:0}
+@media (min-width:1024px){.sanad-home-services__grid{min-block-size:370px}}
 .sanad-comparison__title-accent{color:inherit}
 /* Testimonials (Figma): all cards visible, two per row, no carousel controls */
 .sanad-testimonials__controls{display:none}
@@ -119,7 +120,6 @@
 .sanad-home-steps__connector{align-self:flex-start;margin-block-start:44px}
 .sanad-home-steps__number-wrap{align-items:flex-start;inline-size:auto}
 .sanad-home-steps__number,.sanad-home-steps__stage{text-align:left}
-.sanad-home-steps__card-title::before{content:counter(sanad-step) ". "}
 /* Privacy banner: same gradient in both themes */
 .sanad-privacy-banner,[data-theme=dark] .sanad-privacy-banner{background-image:linear-gradient(90deg,#0a192f 16%,#1b3559 66%,#325a8f 100%);background-color:#0a192f}
 .sanad-privacy-banner__edge{opacity:1}
@@ -128,6 +128,11 @@
 [data-theme=dark] .sanad-testimonials__title-accent{color:#38bdf8}
 /* Hero: 1400 card with 40px radius like the other sections */
 .sanad-hero{inline-size:min(1400px,calc(100vw - 40px));margin-inline:auto;margin-block-start:24px;border-radius:40px;overflow:hidden}
+@media (min-width:1024px) {
+    main:has(> .sanad-hero) > section + section { margin-block-start: 32px; }
+    main:has(> .sanad-hero) + .sanad-footer,
+    [data-theme="dark"] main:has(> .sanad-hero) + .sanad-footer { margin-block-start: 46px; }
+}
 .sanad-home-ai__subtitle{line-height:30px}
 @media (min-width:1101px){.sanad-home-ai__container{gap:96px}}
 
@@ -205,37 +210,46 @@
 [data-theme="light"] .sanad-hero,
 [data-theme="light"] .sanad-home-services,
 [data-theme="light"] .sanad-home-fkr,
-[data-theme="light"] .sanad-comparison,
 [data-theme="light"] .sanad-home-ai,
-[data-theme="light"] .sanad-testimonials,
-[data-theme="light"] .sanad-home-steps,
-[data-theme="light"] .sanad-calculator,
-[data-theme="light"] .sanad-faq,
-[data-theme="light"] .sanad-contact {
+[data-theme="light"] .sanad-calculator {
     color: #ffffff;
 }
 [data-theme="light"] .sanad-home-services {
     background-color: #0a192f;
 }
 [data-theme="light"] .sanad-comparison {
-    background-color: #0e1e30;
+    background-color: transparent;
     border-radius: 40px;
     padding-block: 64px;
     inline-size: min(1400px, calc(100vw - 40px));
     margin-inline: auto;
 }
 [data-theme="light"] .sanad-comparison__intro {
-    color: #c4c4c4;
+    color: var(--sanad-text-secondary);
+}
+@media (min-width: 1024px) {
+    .sanad-comparison__cards {
+        direction: ltr;
+    }
+    [dir="rtl"] .sanad-comparison__card {
+        direction: rtl;
+    }
+    .sanad-comparison__card {
+        min-block-size: 818px;
+    }
+    [data-theme="light"] .sanad-comparison {
+        padding-block: 96px;
+    }
 }
 [data-theme="light"] .sanad-testimonials {
-    background-color: #0a192f;
+    background-color: transparent;
     border-radius: 40px;
     padding: 64px 40px;
     inline-size: min(1400px, calc(100vw - 40px));
     margin-inline: auto;
 }
 [data-theme="light"] .sanad-home-steps {
-    background-color: #0e1e30;
+    background-color: var(--sanad-color-light-surface-section);
     border-radius: 40px;
     padding: 64px 40px;
     inline-size: min(1400px, calc(100vw - 40px));
@@ -249,14 +263,14 @@
     margin-inline: auto;
 }
 [data-theme="light"] .sanad-faq {
-    background-color: #0e1e30;
+    background-color: transparent;
     border-radius: 40px;
     padding: 64px 40px;
     inline-size: min(1400px, calc(100vw - 40px));
     margin-inline: auto;
 }
 [data-theme="light"] .sanad-contact {
-    background-color: #0a192f;
+    background-color: transparent;
     border-radius: 40px;
     padding: 64px 40px;
     inline-size: min(1400px, calc(100vw - 40px));
@@ -270,11 +284,461 @@ body, #main {
 .sanad-hero, .sanad-home-services, .sanad-home-fkr, .sanad-home-ai, .sanad-comparison, .sanad-testimonials, .sanad-home-steps, .sanad-calculator, .sanad-faq, .sanad-contact {
     overflow-x: clip;
 }
-.sanad-hero__visual {
-    overflow: hidden;
-}
 .sanad-home-services__edge {
     overflow: hidden;
     max-inline-size: 100vw;
 }
 
+
+/* AI co-pilot composition — matches the Figma three-column section. */
+.sanad-home-ai {
+    min-block-size: 1080px;
+    display: flex;
+    padding: 56px 80px 120px;
+    background: linear-gradient(180deg, #0d1b2a 0%, #132848 50%, #0d1b2a 100%);
+}
+.sanad-home-ai__container {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    gap: 0;
+    inline-size: 100%;
+    max-inline-size: none;
+    margin-inline: auto;
+}
+.sanad-home-ai__header {
+    max-inline-size: 960px;
+    margin-inline: auto;
+    text-align: center;
+}
+.sanad-home-ai__title {
+    margin: 0 0 24px;
+    color: #fff;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.5;
+}
+.sanad-home-ai__description {
+    margin: 0;
+    color: #c4c4c4;
+    font-size: 18px;
+    line-height: 1.5;
+}
+.sanad-home-ai__layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 385px minmax(0, 1fr);
+    gap: 48px;
+    align-items: start;
+    margin-block-start: 120px;
+}
+.sanad-home-ai__outcomes {
+    min-inline-size: 0;
+}
+.sanad-home-ai__subtitle {
+    margin: 0;
+    color: #38bdf8;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.5;
+}
+.sanad-home-ai__outcome-list {
+    display: grid;
+    gap: 24px;
+    margin: 28px 0 0;
+    padding: 0;
+    list-style: none;
+}
+.sanad-home-ai__outcome {
+    min-block-size: 56px;
+    padding: 8px 0;
+    color: #c4c4c4;
+    font-size: 18px;
+    line-height: 1.6;
+}
+.sanad-home-ai__visual {
+    position: relative;
+    align-self: start;
+    justify-self: center;
+    inline-size: 385px;
+    block-size: 297px;
+    direction: ltr;
+}
+.sanad-home-ai__orb-art {
+    position: absolute;
+    inset: 0;
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: contain;
+}
+.sanad-home-ai__orb-label {
+    position: absolute;
+    inset-block-start: 50%;
+    inset-inline-start: 50%;
+    color: #f8f8f9;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.5;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+}
+.sanad-home-ai__node {
+    position: absolute;
+    inline-size: 84px;
+    color: #f8f8f9;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 20px;
+    text-align: center;
+    white-space: nowrap;
+}
+.sanad-home-ai__node--left-one,
+.sanad-home-ai__node--right-one { inset-block-start: 42px; }
+.sanad-home-ai__node--left-two,
+.sanad-home-ai__node--right-two { inset-block-start: 120px; }
+.sanad-home-ai__node--left-three,
+.sanad-home-ai__node--right-three { inset-block-start: 198px; }
+.sanad-home-ai__node--left-one,
+.sanad-home-ai__node--left-three { inset-inline-start: 0; }
+.sanad-home-ai__node--left-two { inset-inline-start: -12px; }
+.sanad-home-ai__node--right-one,
+.sanad-home-ai__node--right-three { inset-inline-end: 0; }
+.sanad-home-ai__node--right-two { inset-inline-end: -12px; }
+.sanad-home-ai__features {
+    display: grid;
+    gap: 16px;
+    margin: 54px 0 0;
+    padding: 0;
+    list-style: none;
+}
+.sanad-home-ai .sanad-home-ai__feature {
+    position: relative;
+    display: block;
+    min-block-size: 134px;
+    padding: 18px 20px 16px 48px;
+    border: 1px solid rgba(30, 64, 175, .35);
+    border-radius: 16px;
+    background: #132848;
+}
+.sanad-home-ai__check {
+    position: absolute;
+    inset-block-start: 14px;
+    inset-inline-start: auto;
+    left: 12px;
+    display: grid;
+    place-items: center;
+    inline-size: 28px;
+    block-size: 28px;
+    border: 1px solid #2d71f0;
+    border-radius: 8px;
+    background: rgba(30, 64, 175, .28);
+}
+.sanad-home-ai__check::after {
+    content: "";
+    inline-size: 6px;
+    block-size: 11px;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    transform: translateY(-1px) rotate(45deg);
+}
+.sanad-home-ai__feature-title {
+    margin: 0 0 8px;
+    color: #f2f2f2;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.5;
+    text-align: right;
+}
+.sanad-home-ai .sanad-home-ai__feature:first-child .sanad-home-ai__feature-title { color: #38bdf8; }
+.sanad-home-ai__feature-desc {
+    margin: 0;
+    color: #c4c4c4;
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: right;
+}
+.sanad-home-ai__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+    margin-block-start: 86px;
+}
+@media (max-width: 1100px) {
+    .sanad-home-ai { min-block-size: 0; padding: 48px 40px 64px; }
+    .sanad-home-ai__layout { display: flex; flex-direction: column; gap: 32px; margin-block-start: 64px; }
+    .sanad-home-ai__visual { order: -1; }
+    .sanad-home-ai__features { margin-block-start: 0; }
+    .sanad-home-ai__actions { margin-block-start: 48px; }
+}
+@media (max-width: 767px) {
+    .sanad-home-ai { inline-size: calc(100vw - 32px); padding: 40px 20px; border-radius: 28px; }
+    .sanad-home-ai__title { font-size: 26px; }
+    .sanad-home-ai__description { font-size: 16px; }
+    .sanad-home-ai__layout { gap: 28px; margin-block-start: 40px; }
+    .sanad-home-ai__visual { inline-size: min(100%, 385px); block-size: auto; aspect-ratio: 385 / 297; }
+    .sanad-home-ai__subtitle { font-size: 18px; }
+    .sanad-home-ai__outcome { font-size: 16px; }
+    .sanad-home-ai .sanad-home-ai__feature { min-block-size: 0; }
+    .sanad-home-ai__actions { margin-block-start: 32px; }
+    [data-theme="light"] .sanad-testimonials,
+    [data-theme="light"] .sanad-home-steps,
+    [data-theme="light"] .sanad-calculator { padding: 48px 20px; }
+    [data-theme="light"] .sanad-comparison,
+    [data-theme="light"] .sanad-faq,
+    [data-theme="light"] .sanad-contact { padding: 48px 0; }
+}
+@media (min-width:1024px){
+    .sanad-testimonials,[data-theme="light"] .sanad-testimonials{padding:96px 120px}
+    .sanad-testimonials__subtitle{display:none}
+    .sanad-testimonials__grid,.sanad-testimonials__track{row-gap:40px}
+    .sanad-testimonials__card{min-block-size:391px}
+    .sanad-home-steps,[data-theme="light"] .sanad-home-steps{padding:96px 120px}
+    .sanad-home-steps__card:nth-child(1){min-block-size:470px}
+    .sanad-home-steps__card:nth-child(3),.sanad-home-steps__card:nth-child(5){min-block-size:416px}
+    .sanad-home-steps__card:nth-child(7){min-block-size:390px}
+}
+.sanad-home-ai__layout { direction: ltr; }
+.sanad-home-ai__outcomes,
+.sanad-home-ai__features { direction: rtl; }
+.sanad-home-ai .sanad-home-ai__btn-primary {
+    min-block-size: 56px;
+    padding: 16px 32px;
+    border-radius: 9999px;
+    background: #1e40af;
+    color: #fff;
+}
+.sanad-home-ai .sanad-home-ai__btn-secondary {
+    min-block-size: 56px;
+    padding: 16px 32px;
+    border: 1px solid #99bffe;
+    border-radius: 9999px;
+    background: transparent;
+    color: #f8f8f9;
+}
+
+/* Fikr strategic growth section — Figma 349:8857. */
+.sanad-home-fkr {
+    position: relative;
+    min-block-size: 560px;
+    padding: 120px 0;
+    overflow: hidden;
+    border-radius: 40px;
+    background: #0e1e30;
+    color: #fff;
+}
+.sanad-home-fkr__container {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 48px;
+    align-items: start;
+    padding-inline: 88px;
+    direction: ltr;
+}
+.sanad-home-fkr__items {
+    display: grid;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    direction: rtl;
+}
+.sanad-home-fkr__item {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 48px;
+    column-gap: 8px;
+    min-inline-size: 0;
+    padding: 16px 8px;
+    border-block-end: 1px solid #162a4c;
+    direction: ltr;
+}
+.sanad-home-fkr__item:last-child { border-block-end: 0; }
+.sanad-home-fkr__item-copy { grid-column: 1; direction: rtl; text-align: right; }
+.sanad-home-fkr__item::after {
+    grid-column: 2;
+    grid-row: 1;
+    inline-size: 48px;
+    block-size: 48px;
+    border: 1px solid rgba(56, 189, 248, .32);
+    border-radius: 50%;
+    background:
+        linear-gradient(90deg, transparent 49%, rgba(56, 189, 248, .5) 49.5% 50.5%, transparent 51%),
+        linear-gradient(0deg, transparent 49%, rgba(56, 189, 248, .5) 49.5% 50.5%, transparent 51%),
+        radial-gradient(circle, #38bdf8 0 3px, transparent 3.5px),
+        radial-gradient(circle, transparent 0 16px, rgba(56, 189, 248, .32) 16.5px 17.5px, transparent 18px);
+    content: "";
+}
+.sanad-home-fkr__item-title {
+    margin: 0 0 8px;
+    color: #f2f2f2;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.5;
+}
+.sanad-home-fkr__item:first-child .sanad-home-fkr__item-title { color: #38bdf8; }
+.sanad-home-fkr__item-desc {
+    margin: 0;
+    color: #c4c4c4;
+    font-size: 16px;
+    line-height: 1.5;
+}
+.sanad-home-fkr__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    min-inline-size: 0;
+    direction: rtl;
+    text-align: right;
+}
+.sanad-home-fkr__eyebrow {
+    margin: 0;
+    color: #38bdf8;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.5;
+}
+.sanad-home-fkr__title {
+    margin: 0;
+    color: #fff;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+.sanad-home-fkr__description {
+    margin: 0;
+    color: #c4c4c4;
+    font-size: 20px;
+    line-height: 1.5;
+}
+.sanad-home-fkr__cta {
+    margin-block-start: 24px;
+    padding: 16px 32px;
+    border-radius: 9999px;
+    background: #1e40af;
+    color: #fff;
+}
+.sanad-home-fkr__logo {
+    position: absolute;
+    z-index: 1;
+    inset-block-start: 30px;
+    right: 88px;
+    display: grid;
+    inline-size: 128px;
+    block-size: 64px;
+    place-items: center;
+    margin: 0;
+    border-radius: 16px;
+    background: #132848;
+}
+.sanad-home-fkr__logo img { inline-size: 72px; block-size: 56px; object-fit: contain; }
+
+/* AI benefits and orb details from Figma nodes 408:17113–17123 / 408:17021. */
+.sanad-home-ai__container { max-inline-size: 1240px; }
+.sanad-home-ai__layout {
+    grid-template-columns: 370px 385px 370px;
+    justify-content: space-between;
+    gap: 0;
+    margin-block-start: 120px;
+}
+.sanad-home-ai__subtitle {
+    inline-size: 380px;
+    margin-inline-start: -10px;
+    margin-block-end: 28px;
+    text-align: right;
+}
+.sanad-home-ai__outcome-list { gap: 12px; margin-block-start: 0; }
+.sanad-home-ai .sanad-home-ai__outcome {
+    position: relative;
+    display: flex;
+    min-block-size: 134px;
+    align-items: flex-start;
+    padding: 20px 24px 16px 48px;
+    border: 1px solid rgba(30, 64, 175, .35);
+    border-radius: 16px;
+    background: #132848;
+}
+.sanad-home-ai__outcome p {
+    margin: 0;
+    color: #c4c4c4;
+    font-size: 18px;
+    line-height: 1.5;
+    text-align: right;
+}
+.sanad-home-ai__outcome .sanad-home-ai__check { inset-block-start: 19px; }
+.sanad-home-ai__orb-ring {
+    position: absolute;
+    inset-block-start: 7px;
+    left: 13.25%;
+    inline-size: 73.25%;
+    aspect-ratio: 1;
+    border: 1px solid rgba(48, 189, 125, .78);
+    border-radius: 50%;
+    pointer-events: none;
+}
+.sanad-home-ai__visual::before {
+    position: absolute;
+    z-index: 0;
+    inset-block-start: -.67%;
+    left: 10.9%;
+    inline-size: 77.92%;
+    aspect-ratio: 1;
+    border: 1px dashed rgba(48, 189, 125, .36);
+    border-radius: 50%;
+    content: "";
+    pointer-events: none;
+}
+.sanad-home-ai__orb-art { z-index: 1; }
+.sanad-home-ai__orb-ring { z-index: 2; }
+.sanad-home-ai__orb-dot {
+    position: absolute;
+    z-index: 3;
+    inline-size: 5.2%;
+    aspect-ratio: 1;
+    border: 1px solid rgba(48, 189, 125, .85);
+    border-radius: 50%;
+    background: #132848;
+}
+.sanad-home-ai__orb-dot::after {
+    position: absolute;
+    inset: 30%;
+    border-radius: 50%;
+    background: #30bd7d;
+    content: "";
+}
+.sanad-home-ai__orb-dot--left-one { top: 12.5%; left: 10.9%; }
+.sanad-home-ai__orb-dot--left-two { top: 38.7%; left: 7.27%; }
+.sanad-home-ai__orb-dot--left-three { top: 64.98%; left: 10.9%; }
+.sanad-home-ai__orb-dot--right-one { top: 12.5%; left: 84%; }
+.sanad-home-ai__orb-dot--right-two { top: 38.7%; left: 87.5%; }
+.sanad-home-ai__orb-dot--right-three { top: 64.98%; left: 84%; }
+.sanad-home-ai__actions { direction: ltr; }
+
+@media (max-width: 1100px) {
+    .sanad-home-fkr { min-block-size: 0; padding: 120px 0 64px; }
+    .sanad-home-fkr__container { grid-template-columns: minmax(0, 1fr); gap: 32px; padding-inline: 32px; }
+    .sanad-home-fkr__content { order: 0; }
+    .sanad-home-fkr__items { order: 1; }
+    .sanad-home-fkr__logo { right: 32px; }
+    .sanad-home-fkr__title { font-size: clamp(34px, 5vw, 48px); }
+    .sanad-home-ai__container { max-inline-size: 760px; }
+    .sanad-home-ai__layout { grid-template-columns: minmax(0, 1fr); gap: 32px; margin-block-start: 64px; }
+    .sanad-home-ai__visual { order: -1; }
+    .sanad-home-ai__subtitle { inline-size: auto; margin-inline-start: 0; }
+    .sanad-home-ai__features { margin-block-start: 0; }
+}
+@media (max-width: 767px) {
+    .sanad-home-fkr { padding: 112px 0 40px; }
+    .sanad-home-fkr__container { padding-inline: 20px; }
+    .sanad-home-fkr__logo { right: 20px; }
+    .sanad-home-fkr__title { font-size: 30px; }
+    .sanad-home-fkr__description { font-size: 16px; }
+    .sanad-home-ai__container { max-inline-size: 100%; }
+    .sanad-home-ai__layout { gap: 28px; margin-block-start: 40px; }
+    .sanad-home-ai__visual { inline-size: min(100%, 385px); block-size: auto; aspect-ratio: 385 / 297; }
+    .sanad-home-ai__subtitle { inline-size: auto; font-size: 18px; }
+    .sanad-home-ai .sanad-home-ai__outcome { min-block-size: 110px; }
+    .sanad-home-ai__outcome p { font-size: 16px; }
+    .sanad-home-ai .sanad-home-ai__feature { min-block-size: 0; }
+    .sanad-home-ai__actions { margin-block-start: 32px; }
+}

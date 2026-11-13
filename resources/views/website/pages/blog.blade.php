@@ -6,6 +6,10 @@
 @section('og_title', 'المدونة — SANAD CX')
 @section('og_description', 'مقالات وأدلة عملية حول إدارة تجربة العملاء، وتشغيل مراكز الاتصال، وتحويل كل محادثة إلى فرصة نمو حقيقية لأعمالك.')
 
+@push('styles')
+<link rel="stylesheet" href="{{ asset('website/assets/css/pages/blog.css') }}?v={{ filemtime(public_path('website/assets/css/pages/blog.css')) }}">
+@endpush
+
 @section('content')
 <section class="sanad-blog-hero" aria-labelledby="sanad-blog-hero-heading">
  <div class="sanad-blog-hero__copy">

@@ -4,3 +4,10 @@
 .sanad-how-hero__consult:hover,.sanad-how-hero__consult:focus-visible{background:var(--sanad-primitives-neutral-white)!important;color:var(--sanad-primitives-brand-navy)}
 @media(max-width:480px){.sanad-how-hero__actions{align-self:stretch}.sanad-how-hero__actions .sanad-btn{flex:1 1 auto}}
 @media(min-width:1024px){.sanad-how-hero__actions{margin-block-start:53px}.sanad-how-cta{margin-block-start:96px}main:has(>.sanad-how-cta){padding-block-end:96px}}
+
+.sanad-how-process__steps{position:relative}
+.sanad-how-process__progress{position:absolute;inset-block:0;inset-inline-end:0;width:3px;background:linear-gradient(#2d71f0,#38d39b);transform-origin:top;pointer-events:none;z-index:1}
+.sanad-how-process__step.is-active .sanad-how-process__marker{box-shadow:0 0 18px rgba(45,113,240,.35)}
+.sanad-continuity[hidden]{display:none!important}
+@media(min-width:1024px){.sanad-how-hero{box-sizing:border-box;inline-size:min(1400px,calc(100% - 40px));margin-inline:auto;border-radius:30px}}
+@media(min-width:1024px){.sanad-systems__tags{grid-template-columns:repeat(2,minmax(0,1fr))}}

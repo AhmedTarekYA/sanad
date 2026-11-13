@@ -14,6 +14,9 @@
     <dt class="col-sm-4">{{ __('auth.current_systems') }}</dt>
     <dd class="col-sm-8">{{ $obj->current_systems ?: '—' }}</dd>
 
+    <dt class="col-sm-4">{{ __('auth.service_interest') }}</dt>
+    <dd class="col-sm-8">{{ $obj->service_interest ?: '—' }}</dd>
+
     <dt class="col-sm-4">{{ __('auth.date') }}</dt>
     <dd class="col-sm-8">{{ $obj->created_at?->format('Y-m-d H:i') }}</dd>
 </dl>

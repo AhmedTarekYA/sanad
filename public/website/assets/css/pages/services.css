@@ -8,6 +8,25 @@ html[data-sanad-page="services.html"] main > section {
 .sanad-services-detail__card {
     border-inline-start: 3px solid transparent;
 }
+.sanad-services-detail {
+    position: relative;
+}
+.sanad-services-detail__progress {
+    position: absolute;
+    inset-inline-start: -24px;
+    inline-size: 2px;
+    background: var(--sanad-border-default);
+    pointer-events: none;
+}
+.sanad-services-detail__progress::after {
+    position: absolute;
+    inset: 0;
+    content: "";
+    background: var(--sanad-text-accent);
+    transform: scaleY(var(--sanad-services-progress, .25));
+    transform-origin: top;
+    transition: transform .35s ease;
+}
 .sanad-services-detail__card.is-active {
     border-inline-start-color: var(--sanad-text-accent);
 }
@@ -34,11 +53,29 @@ html[data-sanad-page="services.html"] .sanad-differ__card {
     background-color: var(--sanad-surface-card);
     color: var(--sanad-text-primary);
 }
+.sanad-differ__card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    background: radial-gradient(240px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(56, 189, 248, .16), transparent 75%);
+    transition: opacity .2s ease;
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .sanad-differ__card:hover::after { opacity: 1; }
+}
 .sanad-differ__card-title { order: 1; margin: 0; font-size: 24px; line-height: 1.5; }
 html[data-sanad-page="services.html"] .sanad-differ__badge { order: 2; color: var(--sanad-text-accent); font-size: 14px; }
 .sanad-differ__card-desc { order: 3; margin: 0; color: var(--sanad-text-secondary); font-size: 20px; line-height: 1.6; }
 .sanad-differ__icon { flex: none; }
 .sanad-differ__icon--dark { display: none; }
+.sanad-differ__title { text-align: start; font-size: 32px; line-height: 44px; margin: 0; }
+@media (min-width: 768px) {
+    .sanad-differ__container { padding-block-end: 24px; }
+    .sanad-differ__grid { margin-block-start: 60px; }
+}
 [data-theme="dark"] .sanad-differ__icon--light { display: none; }
 [data-theme="dark"] .sanad-differ__icon--dark { display: block; }
 .sanad-service-form__field { min-inline-size: 0; }
@@ -66,7 +103,19 @@ html[data-sanad-page="services.html"] .sanad-differ__badge { order: 2; color: va
 .sanad-services-cta__title, .sanad-services-cta__description { margin: 0; }
 .sanad-services-cta__description { color: var(--sanad-text-secondary); font-size: 20px; line-height: 1.6; }
 .sanad-services-cta__button { background: var(--sanad-action-primary); color: var(--sanad-text-inverse); }
+@media (max-width: 1023px) {
+    .sanad-differ, .sanad-service-form, .sanad-services-cta { margin-block-start: 48px; }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+    .sanad-differ, .sanad-service-form, .sanad-services-cta { margin-block-start: 80px; }
+}
+@media (min-width: 1024px) {
+    .sanad-differ { margin-block-start: 96px; }
+    .sanad-service-form { margin-block-start: 96px; }
+    .sanad-services-cta { margin-block-start: 96px; }
+}
 @media (max-width: 767px) {
+    .sanad-services-detail__progress { display: none; }
     .sanad-differ { margin-block-end: 48px; }
     .sanad-differ__grid { grid-template-columns: 1fr; margin-block-start: 24px; }
     .sanad-differ__card { padding: 24px; min-block-size: 0; }

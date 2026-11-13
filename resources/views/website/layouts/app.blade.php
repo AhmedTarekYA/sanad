@@ -1,8 +1,16 @@
 <!DOCTYPE html>
 <html data-sanad-page="@yield('page_key', '')" lang="{{ app()->getLocale() }}" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}" data-theme="dark">
+@php
+    $configuredWaNumber = isset($settings) ? preg_replace('/[^0-9]/', '', (string) ($settings->whatsapp ?? '')) : '';
+    $waNumber = $configuredWaNumber !== '' ? $configuredWaNumber : '201550999793';
+@endphp
 @include('website.partials.head')
 <body>
-@include('website.partials.header')
+@if(request()->routeIs('website.fkr'))
+    @include('website.partials.fkr-header')
+@else
+    @include('website.partials.header')
+@endif
 <main id="main">
     @yield('content')
 </main>
@@ -12,7 +20,6 @@
 @include('website.partials.exit-intent')
 <link rel="stylesheet" href="{{ asset('website/assets/css/pages/modals.css') }}?v={{ @filemtime(public_path('website/assets/css/pages/modals.css')) ?: '2.0.1' }}">
 <link rel="stylesheet" href="{{ asset('website/assets/css/layout.css') }}?v={{ @filemtime(public_path('website/assets/css/layout.css')) ?: '2.0.1' }}">
-@php $waNumber = isset($settings) ? preg_replace('/[^0-9]/', '', $settings->whatsapp) : ''; @endphp
 @if($waNumber)
     <button type="button" id="whatsapp-float-btn" class="whatsapp-float" aria-label="{{ __('auth.contact_via_whatsapp') }}"
             data-wa-url="https://wa.me/{{ $waNumber }}"

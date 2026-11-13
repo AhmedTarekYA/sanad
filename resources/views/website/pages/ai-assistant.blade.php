@@ -16,9 +16,9 @@
 <section class="ai-hero" aria-labelledby="ai-hero-title">
 <div class="ai-hero__in">
 <p class="ai-badge">SANAD CX AI — {{ $isAr ? 'المساعد الذكي' : 'AI Assistant' }}</p>
-<h1 id="ai-hero-title" class="ai-hero__title">{{ $isAr ? 'المساعد الذكي (Sanad AI) — الذكاء الاصطناعي في خدمة فريقك' : 'Sanad AI — Artificial intelligence at your team’s side' }}</h1>
+<h1 id="ai-hero-title" class="ai-hero__title">{{ $isAr ? 'ضاعف سرعة مبيعاتك ورضا عملائك بذكاء اصطناعي يعمل بجانب فريقك لحظة بلحظة' : 'Double your sales speed and customer satisfaction with AI that works alongside your team moment by moment' }}</h1>
 <p class="ai-hero__lead">{{ $isAr ? 'إضافة متصفح (Chrome Extension) ذكية تُدمج مباشرة فوق الواتساب ونظام الـ CRM لتزويد موظفيك بإجابات دقيقة وتقارير تحليلية لحظية.' : 'A smart browser extension (Chrome Extension) that integrates directly over WhatsApp and your CRM to provide your team with accurate answers and real-time analytical reports.' }}</p>
-<button type="button" class="ai-btn" data-consultation-open>{{ $isAr ? 'احجز استشارة مجانية' : 'Book a free consultation' }}</button>
+<button type="button" class="ai-btn" data-free-trial-open>{{ $isAr ? 'ابدأ التجربة المجانية' : 'Start your free trial' }}</button>
 <div class="ai-hcard ai-flow-node ai-hcard--1">
 <svg viewBox="0 0 28 28" width="28" height="28" aria-hidden="true">
 <rect x=".5" y=".5" width="27" height="27" rx="8" fill="rgba(30,64,175,.28)" stroke="rgba(45,113,240,.7)"/>
@@ -159,79 +159,39 @@
 @endif
 </section>
 <section class="ai-sec ai-steps ai-walkthrough" aria-labelledby="ai-steps-title">
-    <h2 id="ai-steps-title">{{ $isAr ? 'فعّل مساعد فريقك في أربع مراحل' : 'Activate your co-pilot in four stages' }}</h2>
+    <h2 id="ai-steps-title">{{ $isAr ? 'ابدأ العمل خلال 3 خطوات بسيطة:' : 'Get started in 3 simple steps:' }}</h2>
     <div class="ai-walkthrough__steps" role="group" aria-label="{{ $isAr ? 'مراحل عمل المساعد' : 'Co-pilot stages' }}">
-        <article class="ai-step ai-walkthrough__step is-active">
-            <button type="button" data-copilot-step="0" aria-pressed="true" aria-controls="copilot-stage-0">
+        <article class="ai-step ai-walkthrough__step">
 <span class="ai-step__number">01</span>
-<h3>{{ $isAr ? 'فهم اللهجة' : 'Understand the dialect' }}</h3>
-</button>
-            <p>{{ $isAr ? 'يفهم سياق المحادثة ولهجة العميل.' : 'Understand the conversation context and customer dialect.' }}</p>
+<span class="ai-step__illustration ai-step__illustration--install" aria-hidden="true"><img class="ai-install-light" src="{{ asset('website/assets/image/svg/ai-chrome-installation.svg') }}" alt="" width="120" height="88"><img class="ai-install-dark" src="{{ asset('website/assets/image/svg/ai-chrome-installation-dark.svg') }}" alt="" width="120" height="88"></span>
+<h3>{{ $isAr ? 'تثبيت الإضافة (Install)' : 'Install the extension' }}</h3>
+            <p>{{ $isAr ? 'إضافة Sanad CX لمتصفح كروم بضغطة زر.' : 'Add Sanad CX to Chrome in one click.' }}</p>
         </article>
         <article class="ai-step ai-walkthrough__step">
-            <button type="button" data-copilot-step="1" aria-pressed="false" aria-controls="copilot-stage-1">
 <span class="ai-step__number">02</span>
-<h3>{{ $isAr ? 'اقتراح الرد' : 'Suggest a reply' }}</h3>
-</button>
-            <p>{{ $isAr ? 'يقترح إجابة من قاعدة المعرفة ليراجعها الموظف.' : 'Suggest an answer from your knowledge base for the agent to review.' }}</p>
+<span class="ai-step__illustration ai-step__illustration--knowledge" aria-hidden="true"><span class="ai-doc"><i></i><i></i><i></i></span><span class="ai-doc"><i></i><i></i><i></i></span><span class="ai-doc"><i></i><i></i><i></i></span></span>
+<h3>{{ $isAr ? 'ربط قاعدة المعرفة (Connect KB)' : 'Connect your knowledge base' }}</h3>
+            <p>{{ $isAr ? 'رفع ملفات المنتجات والأسعار في لوحة التحكم.' : 'Upload your product and pricing files in the dashboard.' }}</p>
         </article>
         <article class="ai-step ai-walkthrough__step">
-            <button type="button" data-copilot-step="2" aria-pressed="false" aria-controls="copilot-stage-2">
 <span class="ai-step__number">03</span>
-<h3>{{ $isAr ? 'أتمتة الإجراء' : 'Automate the action' }}</h3>
-</button>
-            <p>{{ $isAr ? 'يساعد الموظف في تنفيذ الإجراء المناسب.' : 'Help the agent carry out the appropriate action.' }}</p>
-        </article>
-        <article class="ai-step ai-walkthrough__step">
-            <button type="button" data-copilot-step="3" aria-pressed="false" aria-controls="copilot-stage-3">
-<span class="ai-step__number">04</span>
-<h3>{{ $isAr ? 'تحديث الـ CRM' : 'Update the CRM' }}</h3>
-</button>
-            <p>{{ $isAr ? 'يلخص المحادثة ويجهز تحديث سجل العميل.' : 'Summarize the conversation and prepare the customer record update.' }}</p>
+<span class="ai-step__illustration ai-step__illustration--guidance" aria-hidden="true"><span></span><span></span><i></i></span>
+<h3>{{ $isAr ? 'التوجيه اللحظي (Co-Pilot Advantage)' : 'Real-time guidance (Co-Pilot Advantage)' }}</h3>
+            <p>{{ $isAr ? 'يبدأ الموظف في استقبال الاقتراحات والتحليلات أثناء المحادثة فوراً.' : 'Your team receives suggestions and insights during the conversation.' }}</p>
         </article>
     </div>
-    <p class="ai-steps__label">{{ $isAr ? 'معاينة توضيحية للمساعد داخل المحادثة' : 'An illustrative co-pilot conversation' }}</p>
+    <p class="ai-steps__label">{{ $isAr ? 'معاينة توضيحية للإضافة' : 'An illustrative extension preview' }}</p>
+    <p class="ai-steps__description">{{ $isAr ? 'إضافة متصفح (Chrome Extension) ذكية تدمج مباشرة فوق الواتساب ونظام الـ CRM لتزويد موظفيك بإجابات دقيقة وتقارير تحليلية لحظية.' : 'A smart Chrome extension that integrates with WhatsApp and your CRM to give your team accurate answers and real-time analytical reports.' }}</p>
     <div class="ai-demo copilot-visual">
-        <div class="ai-demo__toolbar">
-<span dir="ltr">SANAD CX / AI</span>
-<span>{{ $isAr ? 'مثال توضيحي' : 'Illustrative example' }}</span>
-</div>
-        <h3 data-copilot-caption>{{ $isAr ? 'فهم اللهجة' : 'Understand the dialect' }}</h3>
-        <div class="copilot-stage">
-            <section class="copilot-extension" id="copilot-stage-0" aria-label="{{ $isAr ? 'فهم اللهجة' : 'Understand the dialect' }}">
-                <span class="ai-demo__logo" aria-hidden="true">AI</span>
-                <p class="copilot-extension__label" dir="ltr">SANAD CX AI / 01</p>
-                <p>{{ $isAr ? 'متى يوصل طلبي؟' : 'When will my order arrive?' }}</p>
-            </section>
-            <section class="copilot-extension" id="copilot-stage-1" aria-label="{{ $isAr ? 'اقتراح الرد' : 'Suggest a reply' }}" hidden>
-                <span class="ai-demo__logo" aria-hidden="true">AI</span>
-                <p class="copilot-extension__label" dir="ltr">SANAD CX AI / 02</p>
-                <p>{{ $isAr ? 'طلبك قيد الشحن. إليك رابط تتبع الشحنة.' : 'Your order is on its way. Here is your tracking link.' }}</p>
-            </section>
-            <section class="copilot-extension" id="copilot-stage-2" aria-label="{{ $isAr ? 'أتمتة الإجراء' : 'Automate the action' }}" hidden>
-                <span class="ai-demo__logo" aria-hidden="true">AI</span>
-                <p class="copilot-extension__label" dir="ltr">SANAD CX AI / 03</p>
-                <p>{{ $isAr ? 'الإجراء المقترح: إرسال رابط التتبع.' : 'Suggested action: send the tracking link.' }}</p>
-            </section>
-            <section class="copilot-extension" id="copilot-stage-3" aria-label="{{ $isAr ? 'تحديث الـ CRM' : 'Update the CRM' }}" hidden>
-                <span class="ai-demo__logo" aria-hidden="true">AI</span>
-                <p class="copilot-extension__label" dir="ltr">SANAD CX AI / 04</p>
-                <p>{{ $isAr ? 'ملخص جاهز للمراجعة: استفسار عن الشحن، تمت مشاركة رابط التتبع.' : 'Ready for review: shipping inquiry, tracking link shared.' }}</p>
-            </section>
+        <video class="copilot-video" preload="metadata" muted playsinline loop data-src="{{ asset('website/assets/image/ai-extension-walkthrough.mp4') }}" poster="{{ asset('website/assets/image/ai-extension-walkthrough.png') }}" aria-label="{{ $isAr ? 'معاينة خطوات تثبيت المساعد وربط المعرفة واستخدامه' : 'Preview of installing, connecting and using the assistant' }}"></video>
+        <div class="copilot-controls" aria-label="{{ $isAr ? 'مراحل المعاينة' : 'Preview stages' }}">
+            <button type="button" data-copilot-step="0" aria-pressed="true">{{ $isAr ? 'تثبيت الإضافة' : 'Install the extension' }}</button>
+            <button type="button" data-copilot-step="1" aria-pressed="false">{{ $isAr ? 'ربط قاعدة المعرفة' : 'Connect the knowledge base' }}</button>
+            <button type="button" data-copilot-step="2" aria-pressed="false">{{ $isAr ? 'فتح المحادثة' : 'Open the conversation' }}</button>
+            <button type="button" data-copilot-step="3" aria-pressed="false">{{ $isAr ? 'مراجعة الاقتراح' : 'Review the suggestion' }}</button>
         </div>
-        <div class="ai-demo__prog" aria-hidden="true">
-<i class="is-active">
-</i>
-<i>
-</i>
-<i>
-</i>
-<i>
-</i>
-</div>
-        <span class="ai-demo__n" dir="ltr" data-copilot-number>01 / 04</span>
     </div>
-    <button type="button" class="ai-btn ai-steps__btn" data-consultation-open>{{ $isAr ? 'احجز استشارة مجانية' : 'Book a free consultation' }}</button>
+    <button type="button" class="ai-btn ai-steps__btn" data-free-trial-open>{{ $isAr ? 'ابدأ التجربة المجانية' : 'Start your free trial' }}</button>
 </section>
 
 <section class="ai-sec ai-ops" aria-labelledby="ai-ops-title">
@@ -372,28 +332,28 @@
 <h2 id="ai-faq-title">{{ $isAr ? 'الأسئلة الشائعة' : 'Frequently Asked Questions' }}</h2>
 <div class="ai-faq__list">
 @if($isAr)
-<details class="ai-faq__row">
+<details class="ai-faq__row" open>
 <summary>هل أحتاج لمطورين لتثبيت الأداة؟</summary>
 <p>لا، التثبيت يتم بنقرة زر واحدة من متجر كروم ويتم الإعداد خلال دقائق.</p>
 </details>
-<details class="ai-faq__row">
+<details class="ai-faq__row" open>
 <summary>هل تعمل الأداة مع اللهجة المحلية ؟</summary>
 <p>نعم، تم تدريب النموذج على فهم مختلف اللهجات العربية واللغة الإنجليزية بدقة عالية.</p>
 </details>
-<details class="ai-faq__row">
+<details class="ai-faq__row" open>
 <summary>هل بيانات محادثاتنا آمنة؟</summary>
 <p>نلتزم بأعلى معايير التشفير والخصوصية، ولا يتم مشاركة بيانات عملائك مع أي طرف ثالث.</p>
 </details>
 @else
-<details class="ai-faq__row">
+<details class="ai-faq__row" open>
 <summary>Do I need developers to install the tool?</summary>
 <p>No, installation is done with a single click from the Chrome Web Store and setup takes just minutes.</p>
 </details>
-<details class="ai-faq__row">
+<details class="ai-faq__row" open>
 <summary>Does the tool work with local dialects?</summary>
 <p>Yes, the model has been trained to understand various Arabic dialects and English with high accuracy.</p>
 </details>
-<details class="ai-faq__row">
+<details class="ai-faq__row" open>
 <summary>Is our conversation data secure?</summary>
 <p>We adhere to the highest standards of encryption and privacy, and your customer data is never shared with any third party.</p>
 </details>
@@ -413,19 +373,55 @@ document.addEventListener('DOMContentLoaded', () => {
     const section = document.querySelector('.ai-walkthrough');
     if (!section) return;
     const controls = [...section.querySelectorAll('[data-copilot-step]')];
-    const stages = [...section.querySelectorAll('.copilot-extension')];
-    const select = index => {
-        controls.forEach((control, position) => {
-            control.setAttribute('aria-pressed', String(position === index));
-            control.closest('.ai-step').classList.toggle('is-active', position === index);
-            stages[position].hidden = position !== index;
-        });
-        section.querySelector('[data-copilot-caption]').textContent = controls[index].querySelector('h3').textContent;
-        section.querySelector('[data-copilot-number]').textContent = `0${index + 1} / 04`;
-        section.querySelectorAll('.ai-demo__prog i').forEach((dot, position) => dot.classList.toggle('is-active', position === index));
-    };
-    controls.forEach((control, index) => control.addEventListener('click', () => select(index)));
+    const video = section.querySelector('.copilot-video');
+    if (!video || !video.dataset.src || !controls.length) return;
+    let videoUrl;
+    fetch(video.dataset.src, { headers: { Range: 'bytes=0-0' } }).then(response => {
+        if (!response.ok) throw new Error('Video download failed');
+        if (response.status === 206) {
+            response.body?.cancel();
+            return null;
+        }
+        return response.blob();
+    }).then(blob => {
+        if (blob) videoUrl = URL.createObjectURL(blob);
+        video.src = videoUrl || video.dataset.src;
+        video.load();
+    }).catch(() => {
+        video.src = video.dataset.src;
+        video.load();
+    });
+    window.addEventListener('pagehide', event => {
+        if (!event.persisted && videoUrl) URL.revokeObjectURL(videoUrl);
+    });
+    const select = index => controls.forEach((control, position) => {
+        control.setAttribute('aria-pressed', String(position === index));
+    });
+    controls.forEach((control, index) => control.addEventListener('click', () => {
+        select(index);
+        if (video.duration > 0 && Number.isFinite(video.duration)) video.currentTime = index * video.duration / controls.length;
+    }));
     section.addEventListener('sanad:copilot-stage', event => select(event.detail));
+    video.addEventListener('timeupdate', () => {
+        if (video.duration > 0 && Number.isFinite(video.duration)) select(Math.min(controls.length - 1, Math.floor(video.currentTime / video.duration * controls.length + 0.001)));
+    });
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let inView = false;
+    const updatePlayback = () => {
+        if (inView && window.innerWidth < 1024 && !reducedMotion.matches && !document.hidden) video.play().catch(() => {});
+        else video.pause();
+    };
+    video.addEventListener('loadedmetadata', () => {
+        updatePlayback();
+        window.ScrollTrigger?.refresh();
+    });
+    new IntersectionObserver(entries => {
+        inView = entries[0].isIntersecting;
+        updatePlayback();
+    }, { threshold: 0.25 }).observe(video);
+    window.addEventListener('resize', updatePlayback);
+    document.addEventListener('visibilitychange', updatePlayback);
+    reducedMotion.addEventListener('change', updatePlayback);
 });
 </script>
 @endpush

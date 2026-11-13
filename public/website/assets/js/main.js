@@ -254,6 +254,13 @@
   }
 
   function setupAccordions() {
+    const answerSplits = new Map();
+    const revertAnswerSplits = () => {
+      answerSplits.forEach(split => split.revert());
+      answerSplits.clear();
+    };
+    disposers.push(revertAnswerSplits);
+    listen(reduced, 'change', () => { if (reduced.matches) revertAnswerSplits(); });
     $$('.sanad-faq__trigger, .ai-faq__trigger').forEach(trigger => {
       const panel = document.getElementById(trigger.getAttribute('aria-controls'));
       if (!panel) return;
@@ -270,9 +277,22 @@
         window.gsap.killTweensOf(panel);
         const height = panel.hidden ? 0 : panel.getBoundingClientRect().height;
         panel.hidden = false;
-        track(window.gsap.fromTo(panel, { height, overflow: 'hidden' }, { height: opening ? 'auto' : 0, duration: 0.4, ease: 'power3.out', onComplete: () => {
+        let answerSplit = answerSplits.get(panel);
+        if (opening && !answerSplit) {
+          const answer = $('.sanad-faq__answer, .ai-faq__answer', panel);
+          if (answer) {
+            answerSplit = new SanadSplitText(answer, { type: 'lines' });
+            answerSplits.set(panel, answerSplit);
+            if (answerSplit.lines.length) track(window.gsap.from(answerSplit.lines, { y: 10, autoAlpha: 0, stagger: 0.03, duration: 0.35 }));
+          }
+        }
+        track(window.gsap.fromTo(panel, { height, overflow: 'hidden' }, { height: opening ? 'auto' : 0, duration: 0.45, ease: 'power3.inOut', onComplete: () => {
           panel.hidden = !opening;
           window.gsap.set(panel, { clearProps: 'height,overflow' });
+          if (!opening) {
+            answerSplits.get(panel)?.revert();
+            answerSplits.delete(panel);
+          }
           window.ScrollTrigger?.refresh();
         } }));
         if (chevron) tween(chevron, { rotation: opening ? 180 : 0, duration: 0.3 });
@@ -479,7 +499,7 @@
     if (!g || !ST) { state.destroy = () => {}; return; }
     g.registerPlugin(ST, ...[window.ScrollToPlugin, window.Flip].filter(Boolean));
     let context, motionEvents, splits = [], resizeTimer, width = window.innerWidth;
-    let stopped = false, headerIntroduced = false;
+    let stopped = false, headerIntroduced = false, headerNavigationIntroduced = false;
     const entered = new WeakSet();
     const on = (target, event, callback, options = {}) => target?.addEventListener(event, callback, { ...options, signal: motionEvents.signal });
     const cleanup = () => {
@@ -502,7 +522,7 @@
         return split;
       };
       const trigger = (element, start = 'top 80%') => ({ trigger: element, start, once: true });
-      const from = (target, vars = {}, anchor) => {
+      const from = (target, vars = {}, anchor, start = 'top 80%') => {
         const targets = typeof target === 'string' ? $$(target) : target instanceof Element ? [target] : [...(target || [])];
         if (!targets.length) return;
         const focusable = 'a[href],button,input,select,textarea,[tabindex]';
@@ -513,7 +533,7 @@
           const rect = element.getBoundingClientRect();
           return distance < 0 ? Math.max(distance, -Math.max(0, rect.left)) : Math.min(distance, Math.max(0, window.innerWidth - rect.right));
         };
-        if (anchor) return g.from(targets, { y: 40, ...fade, stagger: 0.1, duration: 0.8, ease: 'power3.out', ...safeVars, scrollTrigger: trigger(anchor) });
+        if (anchor) return g.from(targets, { y: 40, ...fade, stagger: 0.1, duration: 0.8, ease: 'power3.out', ...safeVars, scrollTrigger: trigger(anchor, start) });
         targets.forEach(element => {
           if (entered.has(element)) return;
           g.from(element, { y: 40, ...fade, duration: 0.8, ease: 'power3.out', ...safeVars, onComplete: () => entered.add(element), scrollTrigger: trigger(element) });
@@ -529,28 +549,28 @@
         const targets = $$(selector).filter(element => !entered.has(element));
         if (!targets.length) return;
         // Opacity keeps off-screen links and accordions reachable by keyboard.
-        g.set(targets, { opacity: 0, y: vars.y ?? 40 });
+        g.set(targets, { opacity: 0, y: vars.y ?? 40, scale: vars.scale ?? 1 });
         ST.batch(targets, { start: 'top 85%', once: true, batchMax: max, interval: 0.1, onEnter: elements => {
           context.add(() => {
-            g.to(elements, { autoAlpha: 1, y: 0, stagger: 0.1, duration: 0.8, ease: 'power3.out', ...vars, onComplete: () => elements.forEach(element => entered.add(element)), overwrite: 'auto' });
+            g.to(elements, { ...vars, autoAlpha: 1, y: 0, scale: 1, stagger: 0.1, duration: vars.duration ?? 0.8, ease: 'power3.out', onComplete: () => elements.forEach(element => entered.add(element)), overwrite: 'auto' });
           });
         } });
       };
       const scrub = (selector, fromVars, toVars, anchor, start = 'top bottom', end = 'bottom top') => {
         $$(selector).forEach(element => g.fromTo(element, fromVars, { ...toVars, ease: 'none', scrollTrigger: { trigger: anchor || element, start, end, scrub: toVars.scrub ?? 0.8, invalidateOnRefresh: true } }));
       };
-      const count = selector => $$(selector).forEach(element => {
+      const count = (selector, duration = 1.8) => $$(selector).forEach(element => {
         const original = element.textContent;
         // Keep ratios (24/7), response-time ranges and other compound metrics intact.
         const normalized = original.replace(/[\u0660-\u0669\u06f0-\u06f9]/g, char => String(char.charCodeAt(0) & 15));
         const matches = normalized.match(/\d[\d,]*(?:\.\d+)?/g);
-        if (!matches || matches.length !== 1 || entered.has(element)) return;
+        if (!matches?.length || entered.has(element)) return;
         const token = matches[0], final = Number(token.replaceAll(',', ''));
         if (!Number.isFinite(final)) return;
         const decimal = token.includes('.') ? token.split('.')[1].length : 0;
         const arabicDigits = /[\u0660-\u0669]/.test(original);
         const counter = { value: 0 };
-        g.to(counter, { value: final, duration: 1.8, ease: 'power2.out', scrollTrigger: trigger(element, 'top 82%'), onUpdate: () => {
+        g.to(counter, { value: final, snap: { value: 1 }, duration, ease: 'power2.out', scrollTrigger: trigger(element, 'top 82%'), onUpdate: () => {
           let number = counter.value.toFixed(decimal);
           if (token.includes(',')) number = Number(number).toLocaleString('en-US', { minimumFractionDigits: decimal, maximumFractionDigits: decimal });
           if (arabicDigits) number = number.replace(/\d/g, digit => String.fromCharCode(0x0660 + Number(digit)));
@@ -558,14 +578,16 @@
         }, onComplete: () => { element.textContent = original; entered.add(element); } });
         on(window, 'sanad:motion-reset', () => { element.textContent = original; });
       });
-      const draw = (selector, anchor, scrubbed = false) => $$(selector).forEach(path => {
+      const draw = (selector, anchor, scrubbed = false, options = {}) => $$(selector).forEach(path => {
         if (typeof path.getTotalLength !== 'function') return;
         const length = path.hasAttribute('pathLength') ? Number(path.getAttribute('pathLength')) : path.getTotalLength();
-        g.fromTo(path, { strokeDasharray: length, strokeDashoffset: length }, { strokeDashoffset: 0, duration: 1.2, ease: 'power2.inOut', scrollTrigger: { trigger: anchor || path, start: 'top 78%', ...(scrubbed ? { end: 'bottom 60%', scrub: 1 } : { once: true }) } });
+        g.fromTo(path, { strokeDasharray: length, strokeDashoffset: length }, { strokeDashoffset: 0, duration: options.duration ?? 1.2, ease: options.ease ?? 'power2.inOut', scrollTrigger: { trigger: anchor || path, start: options.start ?? 'top 78%', ...(scrubbed ? { end: 'bottom 60%', scrub: 1 } : { once: true }) } });
       });
       const tilt = selector => {
         if (!finePointer.matches) return;
         $$(selector).forEach(element => {
+          element.classList.add('sanad-gsap-tilt');
+          on(window, 'sanad:motion-reset', () => element.classList.remove('sanad-gsap-tilt'));
           const x = g.quickTo(element, 'rotationX', { duration: 0.4, ease: 'power3.out' });
           const y = g.quickTo(element, 'rotationY', { duration: 0.4, ease: 'power3.out' });
           g.set(element, { transformPerspective: 900 });
@@ -599,11 +621,26 @@
       context.add(() => {
         spec('00.header', '[data-site-header]', header => {
           if (!headerIntroduced) { g.from(header, { yPercent: -100, duration: 0.7, ease: 'expo.out' }); headerIntroduced = true; }
+          const navigation = $('[data-site-header-nav]', header);
+          const navigationLinks = navigation ? $$('a', navigation) : [];
+          if (navigation && window.matchMedia('(min-width:1024px)').matches && !headerNavigationIntroduced) {
+            const intro = g.timeline({ defaults: { ease: 'power3.out' } });
+            intro.from(navigation, { yPercent: -120, duration: 0.7, ease: 'expo.out' });
+            if (navigationLinks.length) intro.from(navigationLinks, { y: 12, autoAlpha: 0, stagger: 0.05, duration: 0.45 }, '-=0.35');
+            headerNavigationIntroduced = true;
+          }
+          if (navigation && window.matchMedia('(min-width:1024px)').matches) {
+            const headerRow = $('.sanad-header__row', header);
+            if (headerRow) g.to(headerRow, { height: 88, ease: 'none', scrollTrigger: { start: 'top -24', end: 'top -104', scrub: 0.5, invalidateOnRefresh: true } });
+            g.to(navigation, { height: 72, ease: 'none', scrollTrigger: { start: 'top -24', end: 'top -104', scrub: 0.5, invalidateOnRefresh: true } });
+            g.to(header, { backdropFilter: 'blur(16px)', ease: 'none', scrollTrigger: { start: 'top -24', end: 'top -104', scrub: 0.5 } });
+          }
           const reveal = () => g.to(header, { yPercent: 0, duration: 0.3, ease: 'power3.out', overwrite: 'auto' });
           on(header, 'focusin', reveal);
           ST.create({ start: 'top -80', end: 'max', onUpdate: self => {
             const stayVisible = window.scrollY < 80 || header.contains(document.activeElement) || $('[data-site-header-menu][aria-expanded=true]', header) || $('dialog[open]');
-            g.to(header, { yPercent: stayVisible || self.direction < 0 ? 0 : -100, duration: 0.35, ease: 'power3.out', overwrite: 'auto' });
+            if (stayVisible || self.direction < 0) reveal();
+            else if (self.getVelocity() > 400) g.to(header, { yPercent: -100, duration: 0.35, ease: 'power3.out', overwrite: 'auto' });
           } });
         });
         spec('home.01.hero', '.sanad-hero', hero => {
@@ -613,36 +650,29 @@
           const desc = $('.sanad-hero__description', hero);
           const actions = $$('.sanad-hero__actions .sanad-btn', hero);
           const trust = $$('.sanad-hero__trust-item', hero);
-          const visual = $('.sanad-hero__visual', hero);
           const globe = $('.sanad-hero__globe', hero);
-          const glow = $('.sanad-hero__glow', hero);
 
-          if (eyebrow) tl.from(eyebrow, { y: -25, autoAlpha: 0, scale: 0.9, duration: 0.6, ease: 'back.out(1.8)' });
+          if (eyebrow) tl.from(eyebrow, { y: 10, autoAlpha: 0, duration: 0.45, ease: 'power1.out' }, 0);
           if (headline) {
             const split = splitText(headline);
-            if (split.words.length) tl.from(split.words, { y: 45, autoAlpha: 0, stagger: 0.04, duration: 0.85, ease: 'power4.out' }, '-=0.4');
-            else tl.from(headline, { y: 35, autoAlpha: 0, duration: 0.8 }, '-=0.4');
+            if (split.words.length) tl.from(split.words, { yPercent: 115, rotation: 2, autoAlpha: 0, stagger: 0.04, duration: 0.9, ease: 'expo.out' }, 0.15);
+            else tl.from(headline, { y: 18, filter: 'blur(8px)', autoAlpha: 0, duration: 0.9, ease: 'power1.out' }, 0.15);
           }
-          if (desc) tl.from(desc, { y: 25, autoAlpha: 0, duration: 0.7 }, '-=0.5');
-          if (actions.length) tl.from(actions, { y: 20, autoAlpha: 0, scale: 0.9, stagger: 0.1, duration: 0.7, ease: 'back.out(2)' }, '-=0.4');
-          if (trust.length) tl.from(trust, { y: 20, autoAlpha: 0, stagger: 0.08, duration: 0.6 }, '-=0.3');
-          if (visual) tl.from(visual, { scale: 0.82, autoAlpha: 0, rotationY: -10, duration: 1.2, ease: 'power3.out' }, 0.1);
-
+          if (desc) tl.from(desc, { y: 16, autoAlpha: 0, duration: 0.5, ease: 'power1.out' }, 0.75);
+          if (actions[0]) tl.from(actions[0], { y: 12, autoAlpha: 0, duration: 0.504, ease: 'power1.out' }, 0.948);
+          if (actions[1]) tl.from(actions[1], { y: 12, autoAlpha: 0, duration: 0.498, ease: 'power1.out' }, 1.05);
+          if (trust.length) tl.from(trust, { y: 10, autoAlpha: 0, stagger: 0.12, duration: 0.45, ease: 'power1.out' }, 1.248);
           if (globe) {
-            g.to(globe, { y: -18, duration: 3.2, yoyo: true, repeat: -1, ease: 'sine.inOut' });
-          }
-          if (glow) {
-            g.to(glow, { scale: 1.35, opacity: 0.9, duration: 2.6, yoyo: true, repeat: -1, ease: 'sine.inOut' });
+            g.to(globe, { rotation: 360, duration: 40, repeat: -1, ease: 'none' });
           }
           from('.sanad-hero__chip', { y: 24, stagger: 0.12 }, hero);
-          scrub('.sanad-hero__visual', { yPercent: 0 }, { yPercent: 12 }, hero, 'top top', 'bottom top');
           if (finePointer.matches) {
-            const movers = $$('.sanad-hero__globe, .sanad-hero__chip', hero).map((element, index) => ({ x: g.quickTo(element, 'x', { duration: 0.6 }), y: g.quickTo(element, 'y', { duration: 0.6 }), depth: index ? 10 : 18 }));
+            const movers = $$('.sanad-hero__chip', hero).map(element => ({ x: g.quickTo(element, 'x', { duration: 0.6 }), y: g.quickTo(element, 'y', { duration: 0.6 }), depth: 10 }));
             on(hero, 'pointermove', event => { const rect = hero.getBoundingClientRect(); movers.forEach(move => { move.x(((event.clientX - rect.left) / rect.width - 0.5) * move.depth); move.y(((event.clientY - rect.top) / rect.height - 0.5) * move.depth); }); });
             on(hero, 'pointerleave', () => movers.forEach(move => { move.x(0); move.y(0); }));
           }
         });
-        spec('home.02.stats', '.sanad-stats', section => { count('.sanad-stats__value'); from('.sanad-stats__item', { y: 24, stagger: 0.1 }, section); });
+        spec('home.02.stats', '.sanad-stats', section => { from('.sanad-stats__item:not([data-stats-clone])', { y: 24, stagger: 0.1 }, section); });
         spec('home.03.integration-services', '.sanad-integration, .sanad-home-services', () => {
           heading('.sanad-integration__title, .sanad-home-services__title');
           $$('.sanad-integration, .sanad-home-services').forEach(section => from($$('.sanad-integration__benefit, .sanad-home-services__card', section), { y: 64, rotationX: 8, stagger: 0.12 }, section));
@@ -650,33 +680,39 @@
           draw('.sanad-home-services .service-icon path');
         });
         spec('home.04.fikr', '.sanad-home-fkr', section => {
-          scrub('.sanad-home-fkr__portal', { clipPath: 'inset(6% 4% round 32px)', scale: 0.96 }, { clipPath: 'inset(0% 0% round 24px)', scale: 1 }, section, 'top 85%', 'top 25%');
+          scrub('.sanad-home-fkr', { clipPath: 'inset(8% 5% round 32px)', scale: 0.96 }, { clipPath: 'inset(0% 0% round 24px)', scale: 1 }, section, 'top 85%', 'top 25%');
           heading('.sanad-home-fkr__title', { ease: 'power4.out', duration: 1.15 });
-          from('.sanad-home-fkr__pillar', { stagger: 0.12 }, section);
+          from('.sanad-home-fkr__item', { stagger: 0.12 }, section);
         });
         spec('home.05.comparison', '.sanad-comparison', section => {
           from('.sanad-comparison__card', { stagger: 0.12 }, section);
-          from('.sanad-comparison__criterion, .sanad-comparison__row', { x: -24, y: 0, stagger: 0.08 }, section);
+          from('.sanad-comparison__criterion, .sanad-comparison__row', { x: index => index % 2 ? -40 : 40, y: 0, stagger: 0.08 }, section);
           const featured = $('.sanad-comparison__card--sanad', section);
           if (featured) g.fromTo(featured, { scale: 0.98 }, { scale: 1.02, boxShadow: '0 0 28px rgba(56,211,155,0.12)', duration: 0.9, scrollTrigger: trigger(featured) });
         });
         spec('home.06.ai', '.sanad-home-ai', section => {
-          const timeline = g.timeline({ scrollTrigger: trigger(section, 'top 68%') });
-          const incoming = $$('.chat-incoming', section), badges = $$('.ai-copilot-badge', section), replies = $$('.ai-reply-text', section);
-          if (incoming.length) timeline.from(incoming, { y: 24, autoAlpha: 0, duration: 0.5 });
-          if (badges.length) timeline.from(badges, { scale: 0.8, autoAlpha: 0, ease: 'back.out(1.7)' });
-          replies.forEach(reply => timeline.from(splitText(reply, 'words').words, { autoAlpha: 0, y: 8, stagger: 0.025, duration: 0.4 }));
-          floatInView('.sanad-home-ai__tag', section);
+          const field = $('.sanad-home-ai__orb-art[data-node-id="408:16695"]', section);
+          if (field) {
+            const pulse = g.timeline({ repeat: -1, paused: true });
+            pulse.to(field, { rotation: 12, duration: 6, ease: 'sine.inOut' })
+              .to(field, { rotation: 0, duration: 6, ease: 'sine.inOut' })
+              .to(field, { rotation: -12, duration: 6, ease: 'sine.inOut' })
+              .to(field, { rotation: 0, duration: 6, ease: 'sine.inOut' });
+            ST.create({ trigger: section, start: 'top bottom', end: 'bottom top', onToggle: self => self.isActive && !document.hidden ? pulse.play() : pulse.pause() });
+            on(document, 'visibilitychange', () => document.hidden ? pulse.pause() : ST.isInViewport(section) && pulse.play());
+          }
         });
         spec('home.07.testimonials', '.sanad-testimonials', section => {
-          $$('.sanad-testimonials__quote', section).filter(element => element.getClientRects().length).forEach(element => { const split = splitText(element); if (split.lines.length) g.from(split.lines, { yPercent: 100, opacity: 0, stagger: 0.07, duration: 0.75, scrollTrigger: trigger(section) }); });
+          $$('.sanad-testimonials__quote', section).filter(element => element.getClientRects().length).forEach(element => { const split = splitText(element); if (split.lines.length) g.from(split.lines, { yPercent: 100, autoAlpha: 0, stagger: 0.07, duration: 0.75, ease: 'power3.out', scrollTrigger: trigger(section, 'top 75%') }); });
         });
         spec('home.08.steps', '.sanad-home-steps', section => {
-          from('.sanad-home-steps__card', { y: 40, stagger: 0.15 }, section);
-          from('.sanad-home-steps__connector', { scaleX: 0, y: 0, transformOrigin: 'right', stagger: 0.15 }, section);
           const cards = $$('.sanad-home-steps__card', section);
-          cards.forEach(card => ST.create({ trigger: card, start: 'top 65%', onEnter: () => { cards.forEach(item => item.classList.toggle('sanad-home-steps__card--active', item === card)); }, onEnterBack: () => { cards.forEach(item => item.classList.toggle('sanad-home-steps__card--active', item === card)); } }));
-          draw('.sanad-home-steps .progress-line', section, true);
+          const connectors = $$('.sanad-home-steps__connector', section);
+          const timeline = g.timeline({ scrollTrigger: { trigger: section, start: 'top 65%', end: 'bottom 55%', scrub: 1 } });
+          cards.forEach((card, index) => {
+            timeline.from(card, { y: 40, autoAlpha: 0, duration: 0.25 }, index * 0.25);
+            if (connectors[index]) timeline.from(connectors[index], { scaleX: 0, transformOrigin: 'right center', duration: 0.25 }, index * 0.25);
+          });
         });
         spec('home.09.calculator', '.sanad-calculator', section => from([section], { scale: 0.96, y: 0 }));
         spec('home.10.privacy', '.sanad-privacy-banner', section => {
@@ -685,10 +721,10 @@
           draw('.sanad-privacy-banner .shield-path', section);
           floatInView('.sanad-privacy-banner__glow', section);
         });
-        spec('home.11.faq', '.sanad-faq', () => batch('.sanad-faq__item', { duration: 0.65 }));
+        spec('home.11.faq', '.sanad-faq', section => from('.sanad-faq__item', { y: 25, stagger: 0.07, duration: 0.65 }, section));
         spec('home.12.contact-footer', '.sanad-contact, .sanad-footer, .fikr-footer, .ai-footer', () => {
           from('.sanad-contact .sanad-input', { y: 30, stagger: 0.06 }, $('.sanad-contact'));
-          magnetic('.sanad-contact__submit, .sanad-hero__cta, .magnetic-btn, .sanad-how-cta__button');
+          magnetic('.sanad-contact__submit, .sanad-hero__cta, .magnetic-btn, .sanad-how-cta__button, .fkr__btn, .fikr-button');
           $$('.sanad-footer, .fikr-footer, .ai-footer').forEach(footer => g.fromTo(footer, { yPercent: -15 }, { yPercent: 0, ease: 'none', scrollTrigger: { trigger: footer, start: 'top bottom', end: 'bottom bottom', scrub: true } }));
         });
         spec('services.01.hero', '.sanad-services-hero', hero => {
@@ -712,12 +748,30 @@
           if (tiles.length) tl.from(tiles, { scale: 0.8, autoAlpha: 0, y: 20, stagger: 0.08, duration: 0.7, ease: 'back.out(1.8)' }, '-=0.5');
           scrub('.sanad-services-hero__panel', { yPercent: -3 }, { yPercent: 3 }, hero);
         });
-        spec('services.02.disciplines', '.sanad-services-detail', () => {
-          $$('.sanad-services-detail__card').forEach(card => {
-            ST.create({ trigger: card, start: 'top 65%', end: 'bottom 40%', toggleClass: 'is-active' });
+        spec('services.02.disciplines', '.sanad-services-detail', section => {
+          const cards = $$('.sanad-services-detail__card', section);
+          const progress = $('.sanad-services-detail__progress', section);
+          const updateProgressBounds = () => {
+            if (!progress || !cards.length) return;
+            const first = cards[0], last = cards[cards.length - 1];
+            const start = first.offsetTop + first.offsetHeight / 2;
+            const end = last.offsetTop + last.offsetHeight / 2;
+            progress.style.top = `${start}px`;
+            progress.style.height = `${Math.max(0, end - start)}px`;
+          };
+          const setActiveCard = index => {
+            if (!cards.length) return;
+            cards.forEach((card, cardIndex) => card.classList.toggle('is-active', cardIndex === index));
+            if (progress) progress.style.setProperty('--sanad-services-progress', String((index + 1) / cards.length));
+          };
+          updateProgressBounds();
+          if (progress) on(window, 'resize', updateProgressBounds);
+          cards.forEach((card, index) => {
+            ST.create({ trigger: card, start: 'top 65%', onEnter: () => setActiveCard(index), onEnterBack: () => setActiveCard(index) });
             from([card]);
-            from($$('.sanad-services-detail__detail, .sanad-services-detail__tag', card), { x: -24, y: 0, stagger: 0.07 }, card);
+            from($$('.sanad-services-detail__detail', card), { x: -30, y: 0, stagger: 0.07 }, card, 'top 75%');
           });
+          setActiveCard(0);
         });
         spec('services.03.difference', '.sanad-differ', () => {
           batch('.differ-card, .sanad-differ__card', { y: 50, scale: 0.96 });
@@ -726,9 +780,9 @@
             on(card, 'pointerleave', () => { card.style.removeProperty('--mouse-x'); card.style.removeProperty('--mouse-y'); });
           });
         });
-        spec('services.04.roi', '.sanad-roi', section => { count('.sanad-roi__card-value'); from('.sanad-roi__card', { stagger: 0.1 }, section); draw('.sla-ring', section); });
+        spec('services.04.roi', '.sanad-roi', section => { count('.sanad-roi__card-value'); from('.sanad-roi__card', { stagger: 0.1 }, section); draw('.sla-ring', section, false, { duration: 1.5, ease: 'expo.out', start: 'top 75%' }); });
         spec('services.05.industries', '.sanad-industries', section => from('.sanad-industries__card, .sanad-industries__use-case', { x: 40, y: 0, stagger: 0.06 }, section));
-        spec('services.06.form-cta', '.sanad-service-form, .sanad-services-cta', () => { from('.sanad-service-form .sanad-input, .sanad-service-form .request-field', { y: 24, stagger: 0.06 }, $('.sanad-service-form')); from('.sanad-services-cta', { scale: 0.94 }); });
+        spec('services.06.form-cta', '.sanad-service-form, .sanad-services-cta', () => { from('.sanad-service-form .sanad-input, .sanad-service-form .request-field', { y: 24, stagger: 0.06 }, $('.sanad-service-form'), 'top 75%'); from('.sanad-services-cta', { scale: 0.94 }); });
         spec('how.01.hero', '.sanad-how-hero', hero => {
           const tl = g.timeline({ defaults: { ease: 'power3.out' } });
           const badge = $('.sanad-how-hero__badge', hero);
@@ -748,9 +802,11 @@
           if (milestones.length) tl.from(milestones, { scale: 0.75, autoAlpha: 0, stagger: 0.12, duration: 0.8, ease: 'back.out(1.8)' }, '-=0.4');
         });
         spec('how.02.process', '.sanad-how-process', section => {
-          from('.sanad-how-process__step', { stagger: 0.15 }, section);
           scrub('.vertical-timeline-fill, .sanad-how-process__progress', { scaleY: 0 }, { scaleY: 1, transformOrigin: 'top' }, section, 'top 55%', 'bottom 65%');
-          $$('.sanad-how-process__step', section).forEach(step => ST.create({ trigger: step, start: 'top 60%', end: 'bottom 40%', toggleClass: 'is-active' }));
+          $$('.sanad-how-process__step', section).forEach((step, index) => {
+            from([step], { x: index % 2 ? -32 : 32, y: 0 }, step);
+            ST.create({ trigger: step, start: 'top 60%', end: 'bottom 40%', toggleClass: 'is-active' });
+          });
         });
         spec('how.03.systems', '.sanad-systems', section => from('.sanad-systems__card, .sanad-systems__tag', { scale: 0.7, y: 0, stagger: { amount: 0.6, from: 'center' }, ease: 'back.out(1.6)' }, section));
         spec('how.04.security-continuity-cta', '.sanad-security, .sanad-continuity, .sanad-how-cta', () => {
@@ -777,15 +833,15 @@
           scrub('.sanad-about-hero__identity', { yPercent: -4 }, { yPercent: 8 }, hero);
         });
         spec('about.02.story', '.sanad-our-story', section => {
-          $$('.sanad-our-story__description', section).forEach(paragraph => g.fromTo(splitText(paragraph, 'words').words, { opacity: 0.25 }, { opacity: 1, stagger: 0.05, ease: 'none', scrollTrigger: { trigger: paragraph, start: 'top 75%', end: 'bottom 55%', scrub: 0.5 } }));
+          $$('.sanad-our-story__description', section).forEach(paragraph => g.fromTo(splitText(paragraph, 'words').words, { opacity: 0.2 }, { opacity: 1, stagger: 0.05, ease: 'none', scrollTrigger: { trigger: paragraph, start: 'top 75%', end: 'bottom 55%', scrub: 0.5 } }));
         });
         spec('about.03.vision', '.sanad-vision', section => from('.sanad-vision__card', { x: i => i === 0 ? 50 : -50, y: 0, stagger: 0.1 }, section));
-        spec('about.04.pillars', '.sanad-three-pillars, .sanad-about-hero__pillars', section => { from('.pillar-item, .sanad-three-pillars__item, .sanad-about-hero__pillar', { y: 48, stagger: 0.14 }, section); scrub('.sanad-three-pillars__divider', { scaleY: 0 }, { scaleY: 1, transformOrigin: 'top' }, section); });
+        spec('about.04.pillars', '.sanad-three-pillars', section => { from($$('.pillar-item, .sanad-three-pillars__item', section), { y: 48, stagger: 0.14, duration: 0.85 }, section); scrub('.sanad-three-pillars__divider', { scaleY: 0 }, { scaleY: 1, transformOrigin: 'top' }, section); });
         spec('about.05.values-partnership', '.sanad-values, .sanad-partnership', () => { batch('.sanad-values__card, .sanad-partnership__card'); tilt('.sanad-values__card, .sanad-partnership__card'); });
-        spec('blog.01.hero-featured', '.sanad-blog-hero', () => { heading('.sanad-blog-hero__headline, .sanad-blog-hero__title'); from('.sanad-blog-featured, .sanad-blog-featured__card, .sanad-blog-hero__featured', { clipPath: 'inset(100% 0 0 0)', duration: 1.1 }); });
+        spec('blog.01.hero-featured', '.sanad-blog-hero', () => { heading('.sanad-blog-hero__headline, .sanad-blog-hero__title'); from('.sanad-blog-featured, .sanad-blog-featured__card, .sanad-blog-hero__featured', { y: 40, duration: 0.85, ease: 'power3.out' }); });
         spec('blog.02.grid', '.sanad-blog-card', () => {
-          batch('.sanad-blog-card', {}, 3);
-          if (finePointer.matches) $$('.sanad-blog-card, .sanad-blog-featured').forEach(card => {
+          batch('.sanad-blog-card', { duration: 0.75 }, 3);
+          if (finePointer.matches) $$('.sanad-blog-card, .sanad-blog-featured, .sanad-blog-hero__featured').forEach(card => {
             const image = $('img', card); if (!image) return;
             const zoom = g.to(image, { scale: 1.05, duration: 0.45, paused: true });
             on(card, 'pointerenter', () => zoom.play()); on(card, 'pointerleave', () => zoom.reverse());
@@ -805,6 +861,11 @@
           links.forEach(link => {
             const clause = document.getElementById(link.hash.slice(1)); if (!clause) return;
             ST.create({ trigger: clause, start: 'top 35%', end: 'bottom 35%', onToggle: self => { link.classList.toggle('is-active', self.isActive); if (self.isActive) link.setAttribute('aria-current', 'location'); else link.removeAttribute('aria-current'); } });
+            if (page === 'terms') on(link, 'click', () => {
+              const accent = 'var(--sanad-text-accent)';
+              const resting = clause.classList.contains('sanad-terms-clause--accent') ? accent : 'var(--sanad-border-default)';
+              g.fromTo(clause, { borderColor: accent }, { borderColor: resting, delay: 0.65, duration: 0.75, ease: 'power2.out', overwrite: true });
+            });
           });
           from(`.sanad-${page}-clause, .sanad-legal-clause`, { y: 24, duration: 0.6 });
           const toc = $(`.sanad-${page}-contents, .sanad-${page}-toc, .sanad-${page}-hero__panel, .sanad-legal__toc`);
@@ -816,7 +877,12 @@
         spec('fikr.01.hero', '.fikr-hero, .fkr__hero', section => {
           heading('.fikr-hero__title, #fkr-title, .fkr__hero h1', { yPercent: 120, duration: 1.15, ease: 'power4.out', stagger: 0.05 });
           from('.editorial-img-wrap, .fkr__hero-copy p, .fkr__lead', { y: 20, stagger: 0.08, duration: 0.8 }, section);
-          from('.fikr-original-logo, .fkr__logo', { y: 0, scale: 1.15, duration: 1.3, ease: 'power4.out' }, section);
+          const logo = $('.fikr-original-logo, .fkr__logo', section);
+          if (logo) {
+            g.fromTo(logo, { clipPath: 'inset(100% 0 0 0)' }, { clipPath: 'inset(0% 0 0 0)', duration: 1.3, ease: 'expo.inOut', scrollTrigger: trigger(section, 'top 80%') });
+            const image = $('img', logo);
+            if (image) g.from(image, { scale: 1.25, duration: 1.3, ease: 'expo.inOut', scrollTrigger: trigger(section, 'top 80%') });
+          }
           from('.fkr__btn, .fikr-button', { scale: 0.9, duration: 0.7, ease: 'back.out(1.8)' }, section);
         });
         spec('fikr.02.marquee-philosophy', '.fikr-expertise, .fkr__strip', section => {
@@ -825,7 +891,7 @@
             const loop = g.fromTo(track, { xPercent: -50 }, { xPercent: 0, duration: 34, repeat: -1, ease: 'none', onReverseComplete() { this.totalTime(this.rawTime() + this.duration() * 100); } });
             const settle = g.quickTo(loop, 'timeScale', { duration: 0.8, ease: 'power2.out' });
             let idle;
-            ST.create({ onUpdate: self => { const speed = Math.min(5, 1 + Math.abs(self.getVelocity()) / 600); settle(self.direction * speed); clearTimeout(idle); idle = setTimeout(() => settle(self.direction), 180); } });
+            ST.create({ onUpdate: self => { const speed = 1 + Math.abs(self.getVelocity()) / 600; settle(self.direction * speed); clearTimeout(idle); idle = setTimeout(() => settle(self.direction), 180); } });
             on(document, 'visibilitychange', () => document.hidden ? loop.pause() : loop.play());
             on(window, 'sanad:motion-reset', () => clearTimeout(idle));
           }
@@ -845,9 +911,9 @@
         spec('fikr.04.portraits', '.fikr-industries, .fkr__inds', () => {
           heading('.fikr-industries h2, .fkr__inds h2');
           $$('.fikr-photo, .fkr__ind').forEach(photo => {
-            from([photo], { y: 24, duration: 1.2 });
+            from([photo], { y: 24, clipPath: 'inset(100% 0% 0% 0%)', duration: 1.2 });
             const inner = $('.portrait-img, img', photo);
-            if (inner) g.fromTo(inner, { yPercent: -8 }, { yPercent: 8, ease: 'none', scrollTrigger: { trigger: photo, start: 'top bottom', end: 'bottom top', scrub: true } });
+            if (inner) g.fromTo(inner, { yPercent: -12 }, { yPercent: 12, ease: 'none', scrollTrigger: { trigger: photo, start: 'top bottom', end: 'bottom top', scrub: true } });
           });
         });
         spec('fikr.05.method-consultation', '.fikr-method, .fkr__meth', section => {
@@ -855,6 +921,7 @@
           from('.method-step, .fkr__step', { y: 40, stagger: 0.15, duration: 0.9 }, section);
           draw('.growth-loop__path', section, true);
           $$('.method-step, .fkr__step', section).forEach(step => ST.create({ trigger: step, start: 'top 70%', end: 'bottom 30%', toggleClass: 'is-active' }));
+          magnetic('.fkr__cta .fkr__btn, .fikr-cta .fikr-button');
         });
         spec('ai.01.hero', '.ai-hero', section => {
           heading('.ai-hero__title, #ai-hero-title', { stagger: 0.035, duration: 0.85 });
@@ -874,19 +941,18 @@
           if (after) { const reply = $('.ai-reply-text', after); const timeline = g.timeline({ scrollTrigger: trigger(after, 'top 68%') }); timeline.from($('.chat-incoming', after), { y: 24, opacity: 0 }).from($('.ai-copilot-badge', after), { scale: 0.8, opacity: 0, ease: 'back.out(1.7)' }); if (reply) timeline.from(splitText(reply, 'words').words, { opacity: 0, stagger: 0.025, duration: 0.4 }); }
         });
         spec('ai.03.walkthrough', '.ai-walkthrough, .ai-steps', section => {
-          const steps = $$('.ai-walkthrough__step, .ai-step', section), visual = $('.copilot-visual, .ai-demo', section), stage = $('.copilot-stage', section);
+          const steps = $$('.ai-walkthrough__step, .ai-step', section), visual = $('.copilot-visual, .ai-demo', section), video = $('.copilot-video', section);
+          const controls = $$('[data-copilot-step]', section);
           from(steps, { stagger: 0.15 }, section);
-          if (visual && stage && window.innerWidth >= 1024 && visual.offsetHeight < window.innerHeight - 160) {
+          if (visual && video && controls.length && window.innerWidth >= 1024 && visual.offsetHeight < window.innerHeight - 120) {
             let previous = -1;
             ST.create({ trigger: visual, start: 'top 128px', end: '+=1400', pin: visual, pinSpacing: true, scrub: 1, invalidateOnRefresh: true, onUpdate: self => {
-              const current = Math.min(steps.length - 1, Math.floor(self.progress * steps.length));
+              if (video.duration > 0 && Number.isFinite(video.duration)) video.currentTime = Math.min(self.progress * video.duration, video.duration - 0.01);
+              const current = Math.min(controls.length - 1, Math.floor(self.progress * controls.length));
               if (current === previous) return;
               previous = current;
-              steps.forEach((step, index) => step.classList.toggle('is-active', index === current));
-              const caption = $('[data-copilot-caption]', visual); if (caption && steps[current]) caption.textContent = $('h3', steps[current]).textContent;
               section.dispatchEvent(new CustomEvent('sanad:copilot-stage', { detail: current }));
             } });
-            g.from('.copilot-extension', { rotationY: -8, scale: 0.95, duration: 1, scrollTrigger: { trigger: visual, start: 'top 70%', end: 'top 25%', scrub: 1 } });
           } else from('.copilot-visual, .ai-demo', { scale: 0.96 });
         });
         spec('ai.04.telemetry-pricing', '.ai-ops, .ai-pricing-section, .ai-plans', () => {

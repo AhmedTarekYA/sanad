@@ -16,19 +16,19 @@
 <h2 class="sanad-three-pillars__title" id="sanad-three-pillars-title">الركائز الثلاث لمنظومتنا</h2>
 <div class="sanad-three-pillars__grid">
    <article class="sanad-three-pillars__card pillar-item sanad-card-hoverable">
-       <span class="sanad-three-pillars__number" dir="ltr">01</span>
+       <img class="sanad-three-pillars__icon sanad-three-pillars__icon--light" src="{{ asset('website/assets/image/svg/reliabilityValueIcon_36x36_about-light.svg') }}" alt="" width="36" height="36"><img class="sanad-three-pillars__icon sanad-three-pillars__icon--dark" src="{{ asset('website/assets/image/svg/reliabilityValueIcon_36x36_about-dark.svg') }}" alt="" width="36" height="36">
        <h3 class="sanad-three-pillars__name">التشغيل البشري والـ BPO</h3>
        <p class="sanad-three-pillars__en" lang="en" dir="ltr">Human Operations</p>
        <p class="sanad-three-pillars__desc">كفاءات بشرية مُدرّبة بجدية على المبيعات التعامل مع الاعتراضات، الحجوزات، والدعم الفني بنظام الربط المباشر بدون تكاليف تأسيس.</p>
    </article>
    <article class="sanad-three-pillars__card pillar-item sanad-card-hoverable">
-       <span class="sanad-three-pillars__number" dir="ltr">02</span>
+       <img class="sanad-three-pillars__icon sanad-three-pillars__icon--light" src="{{ asset('website/assets/image/svg/plugAndPlayIntegrationValueIcon_36x36_about-light.svg') }}" alt="" width="36" height="36"><img class="sanad-three-pillars__icon sanad-three-pillars__icon--dark" src="{{ asset('website/assets/image/svg/plugAndPlayIntegrationValueIcon_36x36_about-dark.svg') }}" alt="" width="36" height="36">
        <h3 class="sanad-three-pillars__name">التكنولوجيا والذكاء الاصطناعي</h3>
        <p class="sanad-three-pillars__en" lang="en" dir="ltr">Sanad AI Co-Pilot</p>
        <p class="sanad-three-pillars__desc">إدماج أدوات الذكاء الاصطناعي في بيئة العمل لتحليل سلوك العميل، تسريع زمن الرد، وتزويد موظفي المبيعات بأفضل الإجابات فورياً.</p>
    </article>
    <article class="sanad-three-pillars__card pillar-item sanad-card-hoverable">
-       <span class="sanad-three-pillars__number" dir="ltr">03</span>
+       <img class="sanad-three-pillars__icon sanad-three-pillars__icon--light" src="{{ asset('website/assets/image/svg/salesTrainingValueIcon_36x36_about-light.svg') }}" alt="" width="36" height="36"><img class="sanad-three-pillars__icon sanad-three-pillars__icon--dark" src="{{ asset('website/assets/image/svg/salesTrainingValueIcon_36x36_about-dark.svg') }}" alt="" width="36" height="36">
        <h3 class="sanad-three-pillars__name">التخطيط والاستشارات التسويقية</h3>
        <p class="sanad-three-pillars__en" lang="en" dir="ltr">Fkr Strategy Unit</p>
        <p class="sanad-three-pillars__desc">ذراع استشاري هندسي يبني هويتك التجارية، يُصمّم حملات جلب العملاء الجادين (Lead Generation)، ويسد الفجوة بين الإعلان وإغلاق الصفقة.</p>

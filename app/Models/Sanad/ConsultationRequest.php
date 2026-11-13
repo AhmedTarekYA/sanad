@@ -12,6 +12,7 @@ class ConsultationRequest extends Model
         'mobile_whatsapp',
         'daily_contact_volume',
         'current_systems',
+        'service_interest',
         'is_read',
     ];
 
