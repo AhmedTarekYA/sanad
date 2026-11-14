@@ -185,6 +185,34 @@
     <div class="modal fade" id="createModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog"></div>
     </div>
+
+    <div class="col-12 mt-4">
+        <div class="card border-0 shadow-sm overflow-hidden">
+            <div class="card-body p-4">
+                <div class="row align-items-center g-4">
+                    <div class="col-md-8">
+                        <h5 class="fw-bold mb-2">تواجه صعوبة في الربط؟</h5>
+                        <p class="text-muted mb-3">تواصل مع فريق الدعم وسنساعدك في ربط حسابك بسهولة وسرعة.</p>
+                        <div class="d-flex align-items-center gap-2 mb-3">
+                            <i class="fab fa-whatsapp text-success fs-5"></i>
+                            <span class="fw-semibold">تواصل معنا:</span>
+                            <a href="https://wa.me/201099977904" target="_blank" rel="noopener" class="text-success fw-bold text-decoration-none">
+                                +20 10 99977904
+                            </a>
+                        </div>
+                        <a href="{{ route('crm.whatsapp_setup') }}" class="btn btn-outline-success">
+                            <i class="ti ti-plug me-1"></i>
+                            كيفية الربط
+                        </a>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <img src="{{ asset('admin/assets/img/think.png') }}" alt="support"
+                             class="img-fluid" style="max-height: 180px; object-fit: contain;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('js')
