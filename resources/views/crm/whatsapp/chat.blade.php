@@ -3865,6 +3865,10 @@
 
                 activeConversationId = nextId;
                 root.dataset.activeConversationId = String(nextId);
+                ['wb-tag-btn', 'wb-note-btn', 'wb-resolve-btn'].forEach(function (id) {
+                    const el = document.getElementById(id);
+                    if (el) el.removeAttribute('disabled');
+                });
                 metaCache = null;
                 messagesCache = [];
                 messagesSignature = '';
