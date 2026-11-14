@@ -4,9 +4,12 @@ namespace App\Http\Controllers\CRM;
 
 use App\Http\Controllers\Controller;
 use App\Models\CRM\WhatsappBusinessSetting;
+use App\Services\Sanad\WhatsappChatService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Log;
+use Throwable;
 
 class WhatsappWebhookController extends Controller
 {
@@ -33,9 +36,17 @@ class WhatsappWebhookController extends Controller
         abort(403);
     }
 
-    public function receive(Request $request): JsonResponse
+    public function receive(Request $request, WhatsappChatService $service): JsonResponse
     {
-        // TODO: real message handling later.
+        try {
+            $service->storeIncomingWebhookPayload($request->all());
+        } catch (Throwable $e) {
+            Log::error('whatsapp.webhook.receive.failed', [
+                'error' => $e->getMessage(),
+                'exception' => $e::class,
+            ]);
+        }
+
         return response()->json(['status' => 'received'], 200);
     }
 }
