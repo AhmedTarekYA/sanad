@@ -3,6 +3,7 @@
 use App\Http\Controllers\CRM\CrmAuthController;
 use App\Http\Controllers\CRM\CrmDashboardController;
 use App\Http\Controllers\CRM\WhatsappAnalyticsController;
+use App\Http\Controllers\CRM\WhatsappBroadcastController;
 use App\Http\Controllers\CRM\WhatsappBusinessHoursController;
 use App\Http\Controllers\CRM\WhatsappBusinessSettingController;
 use App\Http\Controllers\CRM\WhatsappChatController;
@@ -51,7 +52,12 @@ Route::domain(config('app.crm_domain'))->name('crm.')->middleware(SetCrmLocale::
         Route::get('/whatsapp-chat/tags', [WhatsappChatController::class, 'tagsIndex'])->name('whatsapp_chat.tags.index');
         Route::post('/whatsapp-chat/tags', [WhatsappChatController::class, 'tagsStore'])->name('whatsapp_chat.tags.store');
         Route::get('/whatsapp-chat/quick-replies', [WhatsappChatController::class, 'quickReplies'])->name('whatsapp_chat.quickReplies');
-        Route::get('/whatsapp-broadcasts', [CrmDashboardController::class, 'broadcasts'])->name('whatsapp_broadcasts');
+        Route::get('/whatsapp-broadcasts', [WhatsappBroadcastController::class, 'index'])->name('whatsapp_broadcasts');
+        Route::post('/whatsapp-broadcasts', [WhatsappBroadcastController::class, 'store'])->name('whatsapp_broadcasts.store');
+        Route::put('/whatsapp-broadcasts/{id}', [WhatsappBroadcastController::class, 'update'])->name('whatsapp_broadcasts.update');
+        Route::post('/whatsapp-broadcasts/{id}/send-now', [WhatsappBroadcastController::class, 'sendNow'])->name('whatsapp_broadcasts.send_now');
+        Route::post('/whatsapp-broadcasts/{id}/cancel', [WhatsappBroadcastController::class, 'cancel'])->name('whatsapp_broadcasts.cancel');
+        Route::get('/whatsapp-broadcasts/{id}/report', [WhatsappBroadcastController::class, 'report'])->name('whatsapp_broadcasts.report');
         Route::get('/whatsapp-contacts', [WhatsappContactsController::class, 'index'])->name('whatsapp_contacts');
         Route::post('/whatsapp-contacts/import', [WhatsappContactsController::class, 'import'])->name('whatsapp_contacts.import');
         Route::post('/whatsapp-contacts', [WhatsappContactsController::class, 'store'])->name('whatsapp_contacts.store');

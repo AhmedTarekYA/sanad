@@ -1259,5 +1259,14 @@
     "whatsapp_day_tuesday": "Tuesday",
     "whatsapp_day_wednesday": "Wednesday",
     "whatsapp_day_thursday": "Thursday",
-    "whatsapp_day_friday": "Friday"
+    "whatsapp_day_friday": "Friday",
+    "whatsapp_type": "Type",
+    "whatsapp_status": "Status",
+    "whatsapp_scheduled_at": "Scheduled at",
+    "whatsapp_buttons": "Quick reply buttons",
+    "whatsapp_pending": "Pending",
+    "whatsapp_failed": "Failed",
+    "whatsapp_error": "Error",
+    "whatsapp_template_language": "Template language",
+    "whatsapp_confirm": "Confirm"
 }

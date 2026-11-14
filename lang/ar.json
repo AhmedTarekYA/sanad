@@ -1259,5 +1259,14 @@
     "whatsapp_day_tuesday": "الثلاثاء",
     "whatsapp_day_wednesday": "الأربعاء",
     "whatsapp_day_thursday": "الخميس",
-    "whatsapp_day_friday": "الجمعة"
+    "whatsapp_day_friday": "الجمعة",
+    "whatsapp_type": "النوع",
+    "whatsapp_status": "الحالة",
+    "whatsapp_scheduled_at": "موعد الجدولة",
+    "whatsapp_buttons": "أزرار الرد السريع",
+    "whatsapp_pending": "قيد الانتظار",
+    "whatsapp_failed": "فشل",
+    "whatsapp_error": "الخطأ",
+    "whatsapp_template_language": "لغة القالب",
+    "whatsapp_confirm": "تأكيد"
 }

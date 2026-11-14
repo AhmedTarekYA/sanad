@@ -37,11 +37,6 @@ class CrmDashboardController extends Controller
         ]);
     }
 
-    public function broadcasts(): View
-    {
-        return $this->placeholder('whatsapp_broadcasts');
-    }
-
     private function placeholder(string $titleKey): View
     {
         return view('crm.pages.placeholder', [
