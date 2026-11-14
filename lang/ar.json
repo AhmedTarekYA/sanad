@@ -1239,5 +1239,19 @@
     "whatsapp_manage_tags": "إدارة التصنيفات",
     "whatsapp_tag_assign": "تعيين التصنيفات",
     "whatsapp_save_tags": "حفظ التصنيفات",
-    "whatsapp_import_contacts": "استيراد جهات الاتصال"
+    "whatsapp_import_contacts": "استيراد جهات الاتصال",
+    "whatsapp_business_hours_hint": "حدد أوقات العمل وأيام الدوام ورسالة خارج أوقات العمل.",
+    "whatsapp_timezone_example": "مثال: Africa/Cairo أو Asia/Riyadh",
+    "whatsapp_working_days": "أيام العمل",
+    "whatsapp_from": "من",
+    "whatsapp_to": "إلى",
+    "whatsapp_saving": "جارٍ الحفظ...",
+    "whatsapp_away_message_webhook_hint": "تُرسل هذه الرسالة تلقائيًا خارج أوقات العمل.",
+    "whatsapp_day_saturday": "السبت",
+    "whatsapp_day_sunday": "الأحد",
+    "whatsapp_day_monday": "الاثنين",
+    "whatsapp_day_tuesday": "الثلاثاء",
+    "whatsapp_day_wednesday": "الأربعاء",
+    "whatsapp_day_thursday": "الخميس",
+    "whatsapp_day_friday": "الجمعة"
 }

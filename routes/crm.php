@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CRM\CrmAuthController;
 use App\Http\Controllers\CRM\CrmDashboardController;
+use App\Http\Controllers\CRM\WhatsappBusinessHoursController;
 use App\Http\Controllers\CRM\WhatsappBusinessSettingController;
 use App\Http\Controllers\CRM\WhatsappContactsController;
 use App\Http\Controllers\CRM\WhatsappLabelsController;
@@ -54,7 +55,8 @@ Route::domain(config('app.crm_domain'))->name('crm.')->middleware(SetCrmLocale::
         Route::post('/whatsapp-quick-replies', [WhatsappQuickRepliesController::class, 'store'])->name('whatsapp_quick_replies.store');
         Route::put('/whatsapp-quick-replies/{id}', [WhatsappQuickRepliesController::class, 'update'])->name('whatsapp_quick_replies.update');
         Route::delete('/whatsapp-quick-replies/{id}', [WhatsappQuickRepliesController::class, 'destroy'])->name('whatsapp_quick_replies.destroy');
-        Route::get('/whatsapp-business-hours', [CrmDashboardController::class, 'businessHours'])->name('whatsapp_business_hours');
+        Route::get('/whatsapp-business-hours', [WhatsappBusinessHoursController::class, 'index'])->name('whatsapp_business_hours');
+        Route::put('/whatsapp-business-hours', [WhatsappBusinessHoursController::class, 'update'])->name('whatsapp_business_hours.update');
         Route::get('/whatsapp-analytics', [CrmDashboardController::class, 'analytics'])->name('whatsapp_analytics');
 
         Route::post('/logout', [CrmAuthController::class, 'logout'])->name('logout');

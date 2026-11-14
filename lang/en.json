@@ -1239,5 +1239,19 @@
     "whatsapp_manage_tags": "Manage tags",
     "whatsapp_tag_assign": "Assign tags",
     "whatsapp_save_tags": "Save tags",
-    "whatsapp_import_contacts": "Import contacts"
+    "whatsapp_import_contacts": "Import contacts",
+    "whatsapp_business_hours_hint": "Set your working hours, working days and away message.",
+    "whatsapp_timezone_example": "Example: Africa/Cairo or Asia/Riyadh",
+    "whatsapp_working_days": "Working days",
+    "whatsapp_from": "From",
+    "whatsapp_to": "To",
+    "whatsapp_saving": "Saving...",
+    "whatsapp_away_message_webhook_hint": "This message is sent automatically outside business hours.",
+    "whatsapp_day_saturday": "Saturday",
+    "whatsapp_day_sunday": "Sunday",
+    "whatsapp_day_monday": "Monday",
+    "whatsapp_day_tuesday": "Tuesday",
+    "whatsapp_day_wednesday": "Wednesday",
+    "whatsapp_day_thursday": "Thursday",
+    "whatsapp_day_friday": "Friday"
 }
