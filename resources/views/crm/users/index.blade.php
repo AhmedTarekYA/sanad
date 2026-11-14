@@ -70,43 +70,59 @@
                 });
             }
 
-            const dt = $('#dataTableObject').DataTable({
-                ajax: {
-                    url: indexUrl,
-                    headers: { 'Accept': 'application/json' },
-                    dataSrc: function (json) { return (json.data || {}).items || []; },
+            const columns = [
+                { data: 'id' },
+                {
+                    data: 'image_url', orderable: false, searchable: false,
+                    render: function (v) { return '<img src="' + esc(v) + '" class="rounded-circle" style="width:38px;height:38px;object-fit:cover;" alt="">'; },
                 },
-                columns: [
-                    { data: 'id' },
-                    {
-                        data: 'image_url', orderable: false, searchable: false,
-                        render: function (v) { return '<img src="' + esc(v) + '" class="rounded-circle" style="width:38px;height:38px;object-fit:cover;" alt="">'; },
+                { data: 'name', render: function (v) { return '<span class="fw-bold">' + esc(v) + '</span>'; } },
+                { data: 'email', render: function (v) { return '<span dir="ltr">' + esc(v) + '</span>'; } },
+                { data: 'phone', render: function (v) { return '<span dir="ltr">' + esc(v || '') + '</span>'; } },
+                { data: 'role', render: function (v) { return esc(v === 'admin' ? L.admin : L.agent); } },
+                {
+                    data: 'is_active',
+                    render: function (v) {
+                        return v ? '<span class="badge bg-success">' + esc(L.active) + '</span>'
+                                 : '<span class="badge bg-secondary">' + esc(L.inactive) + '</span>';
                     },
-                    { data: 'name', render: function (v) { return '<span class="fw-bold">' + esc(v) + '</span>'; } },
-                    { data: 'email', render: function (v) { return '<span dir="ltr">' + esc(v) + '</span>'; } },
-                    { data: 'phone', render: function (v) { return '<span dir="ltr">' + esc(v || '') + '</span>'; } },
-                    { data: 'role', render: function (v) { return esc(v === 'admin' ? L.admin : L.agent); } },
-                    {
-                        data: 'is_active',
-                        render: function (v) {
-                            return v ? '<span class="badge bg-success">' + esc(L.active) + '</span>'
-                                     : '<span class="badge bg-secondary">' + esc(L.inactive) + '</span>';
-                        },
+                },
+                {
+                    data: 'id', orderable: false, searchable: false,
+                    render: function (id) {
+                        const editUrl = root.dataset.editUrlTemplate.replace('__ID__', id);
+                        return '<div class="d-flex gap-1">'
+                            + '<a class="btn btn-sm btn-outline-secondary" href="' + esc(editUrl) + '">' + esc(L.edit) + '</a>'
+                            + '<button type="button" class="btn btn-sm btn-outline-danger" data-action="delete" data-id="' + id + '">' + esc(L.del) + '</button>'
+                            + '</div>';
                     },
-                    {
-                        data: 'id', orderable: false, searchable: false,
-                        render: function (id) {
-                            const editUrl = root.dataset.editUrlTemplate.replace('__ID__', id);
-                            return '<div class="d-flex gap-1">'
-                                + '<a class="btn btn-sm btn-outline-secondary" href="' + esc(editUrl) + '">' + esc(L.edit) + '</a>'
-                                + '<button type="button" class="btn btn-sm btn-outline-danger" data-action="delete" data-id="' + id + '">' + esc(L.del) + '</button>'
-                                + '</div>';
-                        },
+                },
+            ];
+
+            let dt;
+
+            function loadTable() {
+                $.ajax({
+                    url: indexUrl,
+                    type: 'GET',
+                    headers: { 'Accept': 'application/json', 'X-Requested-With': 'XMLHttpRequest' },
+                    success: function (response) {
+                        const items = (response.data || {}).items || [];
+                        if (dt) { dt.destroy(); }
+                        dt = $('#dataTableObject').DataTable({
+                            data: items,
+                            columns: columns,
+                            language: { emptyTable: L.noData },
+                            pageLength: 25,
+                        });
                     },
-                ],
-                language: { emptyTable: L.noData },
-                pageLength: 25,
-            });
+                    error: function () {
+                        if (window.errorToster) errorToster(L.failed);
+                    },
+                });
+            }
+
+            loadTable();
 
             document.getElementById('dataTableObject').addEventListener('click', function (e) {
                 const btn = e.target.closest('[data-action="delete"]');
@@ -117,7 +133,7 @@
                         url: root.dataset.deleteUrlTemplate.replace('__ID__', btn.dataset.id),
                         type: 'DELETE',
                         headers: { 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content, 'Accept': 'application/json' },
-                        success: function () { if (window.successToster) successToster(L.done); dt.ajax.reload(); },
+                        success: function () { if (window.successToster) successToster(L.done); loadTable(); },
                         error: function () { if (window.errorToster) errorToster(L.failed); },
                     });
                 };
