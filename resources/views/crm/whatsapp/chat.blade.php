@@ -6331,9 +6331,11 @@
                     const style = color ? ' style="background:' + escapeHtml(color) + '22;border-color:' + escapeHtml(color) + '55;"' : '';
                     html += '<label class="wb-contact-item" style="cursor:pointer;"' + style + '>';
                     html += '<input type="checkbox" class="wb-tag-check" value="' + escapeHtml(id) + '"' + checked + ' style="width:18px;height:18px;">';
-                    html += '<div class="wb-contact-main">';
+                    html += '<div class="wb-contact-main" style="display:flex;align-items:center;gap:8px;">';
+                    if (color) {
+                        html += '<span style="width:12px;height:12px;border-radius:50%;background:' + escapeHtml(color) + ';flex-shrink:0;display:inline-block;"></span>';
+                    }
                     html += '<div class="wb-contact-name">' + escapeHtml(name) + '</div>';
-                    html += '<div class="wb-contact-phone">' + escapeHtml(color) + '</div>';
                     html += '</div>';
                     html += '</label>';
                 });
@@ -6379,8 +6381,12 @@
                         loadConversations();
                         setModalOpenById('wb-tags-modal', false);
                     })
-                    .fail(function () {
-                        showInfoDialog(currentLocale.indexOf('ar') === 0 ? 'لا تملك الصلاحية لتعديل وسوم المحادثة.' : 'You do not have permission to update chat tags.');
+                    .fail(function (xhr) {
+                        const json = xhr && xhr.responseJSON ? xhr.responseJSON : {};
+                        const errors = json.errors ? Object.values(json.errors) : [];
+                        const firstError = errors.length && errors[0] && errors[0][0] ? errors[0][0] : null;
+                        const msg = firstError || json.message || (currentLocale.indexOf('ar') === 0 ? 'حدث خطأ أثناء حفظ الوسوم.' : 'An error occurred while saving tags.');
+                        if (window.errorToster) { errorToster(msg); } else { showInfoDialog(msg); }
                     });
             }
 

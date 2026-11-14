@@ -225,7 +225,7 @@ class WhatsappChatController extends Controller
     public function setTags(Request $request, int $conversationId, WhatsappChatService $service): JsonResponse
     {
         $validated = $request->validate([
-            'tag_ids' => ['required', 'array'],
+            'tag_ids' => ['present', 'array'],
             'tag_ids.*' => ['integer'],
         ]);
 
