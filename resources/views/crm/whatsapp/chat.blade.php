@@ -2556,7 +2556,7 @@
         data-selected-account-id="{{ isset($selectedAccount) && $selectedAccount ? $selectedAccount->id : '' }}"
         data-current-status-filter="{{ $statusFilter ?? '' }}" data-current-tag-filter="{{ $tagFilterId ?? '' }}"
         data-locale="{{ str_replace('_', '-', app()->getLocale()) }}"
-        data-chat-index-url="{{ route('crm.whatsapp_chat.index', [], false) }}"
+        data-chat-index-url="{{ route('crm.whatsapp_chat', [], false) }}"
         data-conversations-url="{{ route('crm.whatsapp_chat.conversations', [], false) }}"
         data-messages-url-template="{{ route('crm.whatsapp_chat.messages', ['conversationId' => '__ID__'], false) }}"
         data-message-search-url-template="{{ route('crm.whatsapp_chat.messages.search', ['conversationId' => '__ID__'], false) }}"
@@ -2610,7 +2610,7 @@
                         $accountAvatar = mb_strtoupper(mb_substr($accountName, 0, 2));
                     @endphp
                     <a class="wb-acc-item {{ isset($selectedAccount) && $selectedAccount && $selectedAccount->id === $account->id ? 'is-active' : '' }}"
-                        href="{{ route('crm.whatsapp_chat.index', array_filter(['account_id' => $account->id, 'filter' => request()->query('filter'), 'status' => $statusFilter ?? null], fn($value) => $value !== null && $value !== '')) }}"
+                        href="{{ route('crm.whatsapp_chat', array_filter(['account_id' => $account->id, 'filter' => request()->query('filter'), 'status' => $statusFilter ?? null], fn($value) => $value !== null && $value !== '')) }}"
                         title="{{ $accountName }}">
                         <span class="wb-acc-avatar">{{ $accountAvatar }}</span>
                         <span class="wb-acc-body">
@@ -2726,7 +2726,7 @@
                                     }
                                     : ($lastBody ?: '');
                             @endphp
-                            <a href="{{ route('crm.whatsapp_chat.index', array_filter(['account_id' => $selectedAccount ? $selectedAccount->id : null, 'conversation_id' => $conv->id, 'filter' => request()->query('filter'), 'status' => $statusFilter ?? null], fn($value) => $value !== null && $value !== '')) }}"
+                            <a href="{{ route('crm.whatsapp_chat', array_filter(['account_id' => $selectedAccount ? $selectedAccount->id : null, 'conversation_id' => $conv->id, 'filter' => request()->query('filter'), 'status' => $statusFilter ?? null], fn($value) => $value !== null && $value !== '')) }}"
                                 class="wb-conv-item {{ $selectedId === $conv->id ? 'is-active' : '' }}"
                                 data-conversation-id="{{ $conv->id }}" data-wa-id="{{ $conv->wa_id }}"
                                 data-display-name="{{ $conv->display_name }}" data-profile-pic="{{ $conv->profile_pic }}">
