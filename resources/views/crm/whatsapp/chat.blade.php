@@ -6437,7 +6437,9 @@
                 return $.ajax({
                     url: url,
                     type: 'PUT',
-                    data: { tag_ids: ids }
+                    contentType: 'application/json',
+                    data: JSON.stringify({ tag_ids: ids }),
+                    headers: { 'X-CSRF-TOKEN': csrfToken, 'Accept': 'application/json' },
                 });
             }
 
