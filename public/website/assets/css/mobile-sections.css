@@ -1,0 +1,154 @@
+@media (max-width: 767px) {
+    main [id] { scroll-margin-block-start: 96px; }
+
+    .sanad-home-services__grid,
+    .sanad-comparison__cards,
+    .sanad-testimonials__grid,
+    .sanad-home-steps__timeline,
+    .sanad-differ__grid,
+    .sanad-industries__list,
+    .sanad-blog-articles__grid,
+    .ai-shift__cards,
+    .ai-ops__cards,
+    .ai-walkthrough__steps,
+    .ai-panel,
+    .fkr__grid,
+    .fkr__steps {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: stretch;
+        justify-content: flex-start;
+        gap: 16px;
+        max-width: 100%;
+        overflow-x: auto;
+        overscroll-behavior-inline: contain;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding-block: 4px 16px;
+    }
+
+    .sanad-home-services__grid > *,
+    .sanad-comparison__cards > *,
+    .sanad-testimonials__grid > *,
+    .sanad-home-steps__timeline > .sanad-home-steps__card,
+    .sanad-differ__grid > *,
+    .sanad-industries__list > *,
+    .sanad-blog-articles__grid > *,
+    .ai-shift__cards > *,
+    .ai-ops__cards > *,
+    .ai-walkthrough__steps > *,
+    .ai-panel > *,
+    .fkr__grid > *,
+    .fkr__steps > * {
+        flex: 0 0 88%;
+        min-width: 0;
+        max-width: 88%;
+        scroll-snap-align: start;
+    }
+
+    .ai-shift__cards > .ai-canvas,
+    .ai-panel > .ai-plan {
+        width: 88% !important;
+    }
+
+    .ai-shift__cards > .ai-canvas { position: static !important; }
+    .ai-ops__cards > .ai-box { position: static !important; width: 88% !important; }
+    .sanad-home-steps__timeline > .sanad-home-steps__connector { display: none; }
+    .sanad-vision { flex-direction: row; }
+    .sanad-vision > .sanad-vision__card { width: 86%; min-width: 0; }
+
+    .fkr__grid > *, .fkr__steps > * { grid-column: auto; }
+
+    :is(.sanad-home-services__grid, .sanad-comparison__cards, .sanad-testimonials__grid,
+        .sanad-home-steps__timeline, .sanad-differ__grid, .sanad-industries__list,
+        .sanad-blog-articles__grid, .sanad-vision, .sanad-three-pillars__grid,
+        .sanad-values__grid, .sanad-partnership__grid, .sanad-systems__cards,
+        .sanad-security__cards, .ai-shift__cards, .ai-ops__cards,
+        .ai-walkthrough__steps, .ai-panel, .fkr__grid, .fkr__steps) {
+        overflow-y: hidden;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    :is(.sanad-home-services__grid, .sanad-comparison__cards, .sanad-testimonials__grid,
+        .sanad-home-steps__timeline, .sanad-differ__grid, .sanad-industries__list,
+        .sanad-blog-articles__grid, .sanad-vision, .sanad-three-pillars__grid,
+        .sanad-values__grid, .sanad-partnership__grid, .sanad-systems__cards,
+        .sanad-security__cards, .ai-shift__cards, .ai-ops__cards,
+        .ai-walkthrough__steps, .ai-panel, .fkr__grid, .fkr__steps)::-webkit-scrollbar {
+        display: none;
+    }
+
+    :is(.sanad-home-services__grid, .sanad-comparison__cards, .sanad-testimonials__grid,
+        .sanad-home-steps__timeline, .sanad-differ__grid, .sanad-industries__list,
+        .sanad-blog-articles__grid, .sanad-vision, .sanad-three-pillars__grid,
+        .sanad-values__grid, .sanad-partnership__grid, .sanad-systems__cards,
+        .sanad-security__cards, .ai-shift__cards, .ai-ops__cards,
+        .ai-walkthrough__steps, .ai-panel, .fkr__grid, .fkr__steps) > * {
+        transform: none !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    .sanad-hero__content { gap: 20px; }
+    .sanad-hero__message { gap: 12px; }
+    .sanad-hero__headline > .sanad-line-mask + br { display: none; }
+    .sanad-hero__actions {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+    .sanad-hero__actions .sanad-btn {
+        min-width: 0;
+        height: 100%;
+        padding-inline: 8px;
+        font-size: clamp(12px, 3.5vw, 15px);
+        text-align: center;
+    }
+
+    .ai-canvas h3, .ai-step h3, .ai-box h3 { font-size: 20px; line-height: 1.5; }
+    .ai-canvas li, .ai-step p, .ai-box p { font-size: 16px; line-height: 1.65; }
+    .sanad-home-services .sanad-service-card,
+    .sanad-comparison__card,
+    .sanad-testimonials__card { padding: 24px 20px; }
+    .sanad-comparison__card-title { font-size: 22px; line-height: 1.4; }
+    :is(.sanad-home-services__title, .sanad-comparison__title,
+        .sanad-privacy-banner__title, .sanad-faq__title,
+        .sanad-differ__title, .sanad-how-process__title) {
+        font-size: clamp(26px, 7vw, 30px);
+        line-height: 1.4;
+    }
+
+    /* Keep homepage typography and spacing in the same mobile scale as the hero. */
+    :is(.sanad-home-services__title, .sanad-home-fkr__title,
+        .sanad-comparison__title, .sanad-home-ai__title,
+        .sanad-testimonials__title, .sanad-home-steps__title,
+        .sanad-calculator__title, .sanad-privacy-banner__title,
+        .sanad-faq__title, .sanad-contact__title) {
+        font-size: clamp(24px, 6.4vw, 27px);
+        line-height: 1.35;
+    }
+
+    :is(.sanad-home-services, .sanad-testimonials,
+        .sanad-home-steps, .sanad-calculator) { gap: 24px; }
+    :is(.sanad-home-services__header, .sanad-comparison__header,
+        .sanad-home-steps__header, .sanad-calculator__header,
+        .sanad-contact__header) { gap: 12px; }
+    .sanad-testimonials__subtitle {
+        font-size: 16px;
+        line-height: 1.6;
+        margin-block: 8px 0;
+    }
+    .sanad-home-fkr__container { gap: 24px; }
+    .sanad-home-ai__title { margin-block-end: 12px; }
+    .sanad-home-ai__layout { margin-block-start: 24px; gap: 24px; }
+    .sanad-home-ai__actions { margin-block-start: 24px; gap: 12px; }
+    .sanad-calculator__body { gap: 24px; }
+    .sanad-contact__layout { gap: 24px; }
+    .sanad-faq__trigger { font-size: 16px; line-height: 1.6; }
+
+    .ai-shift__cards :is(.ai-canvas__q, .ai-canvas__a, .ai-copilot-badge) {
+        transform: none !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+}

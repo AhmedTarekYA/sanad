@@ -19,6 +19,10 @@
 html[data-theme=light] .sanad-three-pillars__card{background:#f8f8f8;color:var(--sanad-text-primary);border-color:var(--sanad-border-default)}
 html[data-theme=dark] .sanad-three-pillars__card{background:#132848;color:var(--sanad-text-primary);border-color:var(--sanad-border-default)}
 @media(max-width:767px){.sanad-three-pillars{margin-top:64px}.sanad-three-pillars__grid{grid-template-columns:1fr;margin-top:32px}.sanad-three-pillars__card:last-child{grid-column:auto}.sanad-three-pillars__card{min-height:0}.sanad-three-pillars__card:last-child{min-height:0}.sanad-three-pillars__title{font-size:28px;line-height:40px}.sanad-three-pillars__desc{font-size:18px;line-height:29px}}
+@media(max-width:767px){
+    .sanad-vision,.sanad-values__grid,.sanad-partnership__grid,.sanad-three-pillars__grid{display:flex;gap:16px;overflow-x:auto;overscroll-behavior-inline:contain;scroll-snap-type:x mandatory;scroll-padding-inline:20px;padding-block:4px 14px}
+    .sanad-vision__card,.sanad-values__card,.sanad-partnership__card,.sanad-three-pillars__card{flex:0 0 min(86%,360px);min-inline-size:0;scroll-snap-align:start}
+}
 @media(min-width:1024px){
 .sanad-about-hero__description{margin-block-start:8px}
 .sanad-about-hero__cta{margin-block-start:82px;margin-inline-start:57px}

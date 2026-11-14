@@ -20,6 +20,7 @@
 @include('website.partials.exit-intent')
 <link rel="stylesheet" href="{{ asset('website/assets/css/pages/modals.css') }}?v={{ @filemtime(public_path('website/assets/css/pages/modals.css')) ?: '2.0.1' }}">
 <link rel="stylesheet" href="{{ asset('website/assets/css/layout.css') }}?v={{ @filemtime(public_path('website/assets/css/layout.css')) ?: '2.0.1' }}">
+<link rel="stylesheet" href="{{ asset('website/assets/css/mobile-sections.css') }}?v={{ @filemtime(public_path('website/assets/css/mobile-sections.css')) ?: '1' }}">
 @if($waNumber)
     <button type="button" id="whatsapp-float-btn" class="whatsapp-float" aria-label="{{ __('auth.contact_via_whatsapp') }}"
             data-wa-url="https://wa.me/{{ $waNumber }}"

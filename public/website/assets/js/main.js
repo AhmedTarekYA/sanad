@@ -725,7 +725,9 @@
         spec('home.12.contact-footer', '.sanad-contact, .sanad-footer, .fikr-footer, .ai-footer', () => {
           from('.sanad-contact .sanad-input', { y: 30, stagger: 0.06 }, $('.sanad-contact'));
           magnetic('.sanad-contact__submit, .sanad-hero__cta, .magnetic-btn, .sanad-how-cta__button, .fkr__btn, .fikr-button');
-          $$('.sanad-footer, .fikr-footer, .ai-footer').forEach(footer => g.fromTo(footer, { yPercent: -15 }, { yPercent: 0, ease: 'none', scrollTrigger: { trigger: footer, start: 'top bottom', end: 'bottom bottom', scrub: true } }));
+          if (window.matchMedia('(min-width:768px)').matches) {
+            $$('.sanad-footer, .fikr-footer, .ai-footer').forEach(footer => g.fromTo(footer, { yPercent: -15 }, { yPercent: 0, ease: 'none', scrollTrigger: { trigger: footer, start: 'top bottom', end: 'bottom bottom', scrub: true } }));
+          }
         });
         spec('services.01.hero', '.sanad-services-hero', hero => {
           const tl = g.timeline({ defaults: { ease: 'power3.out' } });

@@ -179,3 +179,15 @@ html:not([data-theme="dark"]) .sanad-header .sanad-header__language {
     main:has(> .sanad-privacy-clauses) { padding-block-end: 96px; }
     main:has(> .sanad-terms-clauses) { padding-block-end: 0; }
 }
+
+main > :is(.sanad-hero, .sanad-services-hero, .sanad-how-hero,
+    .sanad-about-hero, .sanad-blog-hero, .sanad-article-hero,
+    .sanad-terms-hero, .sanad-privacy-hero),
+main > .ai-page > .ai-hero,
+main > .fkr > .fkr__hero {
+    box-sizing: border-box;
+    inline-size: 100%;
+    max-inline-size: none;
+    margin-inline: 0;
+    border-radius: 0;
+}

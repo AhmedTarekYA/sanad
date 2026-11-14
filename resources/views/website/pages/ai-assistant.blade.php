@@ -105,6 +105,7 @@
 </section>
 <section class="ai-sec ai-shift" aria-labelledby="ai-shift-title">
 <h2 id="ai-shift-title">{{ $isAr ? 'الفارق الذي تحدثه إضافة Sanad CX AI في عملياتك:' : 'The difference Sanad CX AI makes in your operations:' }}</h2>
+<div class="ai-shift__cards">
 @if($isAr)
 <article class="ai-canvas ai-canvas--before ai-shift__card">
 <h3>قبل استخدام Sanad CX AI</h3>
@@ -157,6 +158,7 @@
 <small>Illustrative example</small>
 </article>
 @endif
+</div>
 </section>
 <section class="ai-sec ai-steps ai-walkthrough" aria-labelledby="ai-steps-title">
     <h2 id="ai-steps-title">{{ $isAr ? 'ابدأ العمل خلال 3 خطوات بسيطة:' : 'Get started in 3 simple steps:' }}</h2>
@@ -196,6 +198,7 @@
 
 <section class="ai-sec ai-ops" aria-labelledby="ai-ops-title">
 <h2 id="ai-ops-title">{{ $isAr ? 'تحكّم كامل ورؤية شاملة لمدراء الكول سنتر والمبيعات:' : 'Full control and comprehensive visibility for call center and sales managers:' }}</h2>
+<div class="ai-ops__cards">
 <article class="ai-box ai-kpi">
 <h3>{{ $isAr ? 'مؤشرات الأداء اللحظية' : 'Real-Time Performance Indicators' }} (Agent KPIs)</h3>
 <p>{{ $isAr ? 'متابعة سرعة الرد ونسبة التزام الموظف باقتراحات الذكاء الاصطناعي.' : 'Track response speed and agent compliance rate with AI suggestions.' }}</p>
@@ -265,6 +268,7 @@
 </i>
 </div>
 </article>
+</div>
 </section>
 <section class="ai-sec ai-plans ai-pricing-section" aria-labelledby="ai-plans-title">
 <h2 id="ai-plans-title">{{ $isAr ? 'باقات مرنة تناسب حجم فريقك:' : 'Flexible plans that fit your team size:' }}</h2>

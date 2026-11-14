@@ -297,12 +297,8 @@
             <p class="sanad-testimonials__subtitle">قصص حقيقية من قادة وشركات وثقوا في سند لتشغيل وإدارة تجربة عملائهم بكفاءة استثنائية.</p>
         </div>
         @if(isset($clientReviewSlides) && $clientReviewSlides->isNotEmpty())
-        @php($slideCount = $clientReviewSlides->count())
-        <div class="sanad-testimonials__carousel" data-carousel role="region" aria-roledescription="carousel" aria-label="{{ __('auth.testimonials_carousel_label') }}" tabindex="0">
-            <div class="sanad-testimonials__viewport" data-carousel-viewport>
-                <div class="sanad-testimonials__track" data-carousel-track>
-                    @foreach($clientReviewSlides as $slideIndex => $slide)
-                    <div class="sanad-testimonials__slide" data-carousel-slide {{ $slideIndex === 0 ? 'data-carousel-active' : '' }} role="group" aria-roledescription="slide" aria-label="{{ $slideIndex + 1 }} من {{ $slideCount }}">
+        <div class="sanad-testimonials__grid">
+                    @foreach($clientReviewSlides as $slide)
                         @foreach($slide as $review)
                         <article class="sanad-testimonials__card">
                             <div class="sanad-testimonials__industry">
@@ -319,10 +315,7 @@
                             </div>
                         </article>
                         @endforeach
-                    </div>
                     @endforeach
-                </div>
-            </div>
         </div>
         @else
         <div class="sanad-testimonials__grid">
