@@ -187,27 +187,37 @@
     </div>
 
     <div class="col-12 mt-4">
-        <div class="card border-0 shadow-sm overflow-hidden">
-            <div class="card-body p-4">
-                <div class="row align-items-center g-4">
-                    <div class="col-md-8">
-                        <h5 class="fw-bold mb-2">تواجه صعوبة في الربط؟</h5>
-                        <p class="text-muted mb-3">تواصل مع فريق الدعم وسنساعدك في ربط حسابك بسهولة وسرعة.</p>
-                        <div class="d-flex align-items-center gap-2 mb-3">
-                            <i class="fab fa-whatsapp text-success fs-5"></i>
-                            <span class="fw-semibold">تواصل معنا:</span>
-                            <a href="https://wa.me/201099977904" target="_blank" rel="noopener" class="text-success fw-bold text-decoration-none">
+        <div class="card border-0 overflow-hidden" style="background: linear-gradient(135deg, #EBF3FF 0%, #F0F7FF 100%); border: 1.5px solid rgba(45,113,240,0.12) !important;">
+            <div class="card-body p-0">
+                <div class="row g-0 align-items-stretch">
+                    <div class="col-md-3 d-flex align-items-center justify-content-center p-4" style="background: rgba(45,113,240,0.07);">
+                        <img src="{{ asset('admin/assets/img/think.png') }}" alt="support"
+                             style="max-height: 160px; max-width: 160px; object-fit: contain; filter: drop-shadow(0 4px 12px rgba(45,113,240,0.18));">
+                    </div>
+                    <div class="col-md-9 p-4 p-md-5">
+                        <div class="d-flex align-items-center gap-2 mb-2">
+                            <span style="width:36px;height:36px;border-radius:10px;background:rgba(45,113,240,0.12);display:inline-flex;align-items:center;justify-content:center;">
+                                <i class="ti ti-headset" style="font-size:20px;color:#2D71F0;"></i>
+                            </span>
+                            <h5 class="fw-bold mb-0" style="color:#0A192F;">تواجه صعوبة في الربط؟</h5>
+                        </div>
+                        <p class="mb-3" style="color:#64748B;font-size:15px;">تواصل مع فريق الدعم وسنساعدك في ربط حسابك بخطوات بسيطة وسريعة.</p>
+                        <div class="d-flex align-items-center gap-2 mb-4 p-3 rounded-3" style="background:rgba(37,211,102,0.08);border:1px solid rgba(37,211,102,0.2);display:inline-flex !important;">
+                            <i class="fab fa-whatsapp" style="font-size:22px;color:#25D366;"></i>
+                            <span class="fw-semibold" style="color:#0A192F;">تواصل معنا عبر واتساب:</span>
+                            <a href="https://wa.me/201099977904" target="_blank" rel="noopener"
+                               class="fw-bold text-decoration-none" style="color:#128C7E;font-size:17px;letter-spacing:0.5px;">
                                 +20 10 99977904
                             </a>
                         </div>
-                        <a href="{{ route('crm.whatsapp_setup') }}" class="btn btn-outline-success">
-                            <i class="ti ti-plug me-1"></i>
-                            كيفية الربط
-                        </a>
-                    </div>
-                    <div class="col-md-4 text-center">
-                        <img src="{{ asset('admin/assets/img/think.png') }}" alt="support"
-                             class="img-fluid" style="max-height: 180px; object-fit: contain;">
+                        <div class="mt-3">
+                            <a href="{{ route('crm.whatsapp_setup') }}"
+                               class="btn px-4 py-2 fw-bold"
+                               style="background:#2D71F0;color:#fff;border-radius:10px;font-size:15px;box-shadow:0 4px 14px rgba(45,113,240,0.3);">
+                                <i class="ti ti-plug me-2"></i>
+                                كيفية الربط
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

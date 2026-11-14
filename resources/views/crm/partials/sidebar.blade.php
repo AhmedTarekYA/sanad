@@ -61,4 +61,17 @@
             </ul>
         </div>
     </div>
+<style>
+.pc-sidebar .pc-micon .fas,
+.pc-sidebar .pc-micon .fab,
+.pc-sidebar .pc-micon .far {
+    font-size: 20px;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+}
+</style>
 </nav>
