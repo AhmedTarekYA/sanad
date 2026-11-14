@@ -64,10 +64,7 @@
                     <button type="button" class="btn btn-primary" id="wa-add-contact">
                         <i class="fa fa-plus"></i> {{ __('whatsapp_add_contact') }}
                     </button>
-                    <button type="button" class="btn btn-outline-primary" id="wa-import-open">
-                        <i class="fa fa-upload"></i> {{ __('whatsapp_import') }}
-                    </button>
-                    <button type="button" class="btn btn-outline-secondary" id="wa-manage-tags">
+<button type="button" class="btn btn-outline-secondary" id="wa-manage-tags">
                         <i class="fa fa-tags"></i> {{ __('whatsapp_manage_tags') }}
                     </button>
                 </div>
