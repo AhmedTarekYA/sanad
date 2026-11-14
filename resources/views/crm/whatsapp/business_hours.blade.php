@@ -123,6 +123,10 @@
             </div>
         </div>
     </div>
+    @include('crm.partials.help-modal', [
+        'title' => __('crm_help_business_hours_title'),
+        'description' => __('crm_help_business_hours_desc'),
+    ])
 @endsection
 
 @section('js')

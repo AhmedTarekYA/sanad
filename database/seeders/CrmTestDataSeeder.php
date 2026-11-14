@@ -5,10 +5,14 @@ namespace Database\Seeders;
 use App\Models\CRM\CrmContactNote;
 use App\Models\CRM\CrmSale;
 use App\Models\CRM\CrmUser;
+use App\Models\CRM\WhatsappBroadcast;
+use App\Models\CRM\WhatsappBusinessHoursSetting;
 use App\Models\CRM\WhatsappBusinessSetting;
+use App\Models\CRM\WhatsappChatTag;
 use App\Models\CRM\WhatsappContact;
 use App\Models\CRM\WhatsappConversation;
 use App\Models\CRM\WhatsappMessage;
+use App\Models\CRM\WhatsappQuickReply;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -56,6 +60,13 @@ class CrmTestDataSeeder extends Seeder
             ['wa_id' => '966500000003', 'name' => 'محمد القحطاني'],
             ['wa_id' => '966500000004', 'name' => 'نورة الشمري'],
             ['wa_id' => '966500000005', 'name' => 'خالد السبيعي'],
+            ['wa_id' => '966500000006', 'name' => 'عبدالله الدوسري'],
+            ['wa_id' => '966500000007', 'name' => 'ريم الغامدي'],
+            ['wa_id' => '966500000008', 'name' => 'فهد العنزي'],
+            ['wa_id' => '966500000009', 'name' => 'لمى المطيري'],
+            ['wa_id' => '966500000010', 'name' => 'سلطان البقمي'],
+            ['wa_id' => '966500000011', 'name' => 'هند الزهراني'],
+            ['wa_id' => '966500000012', 'name' => 'ماجد الشهري'],
         ];
 
         $contacts = collect($contactsData)->map(function (array $contact) use ($admin): WhatsappContact {
@@ -123,6 +134,58 @@ class CrmTestDataSeeder extends Seeder
                     'raw' => ['seeded' => true, 'contact' => $contact?->name],
                 ]
             );
+        }
+
+        $extraConversations = $contacts->slice(3)->values()->map(function (WhatsappContact $contact, int $index) use ($admin, $business): WhatsappConversation {
+            $status = $index % 2 === 0 ? 'open' : 'resolved';
+
+            return WhatsappConversation::firstOrCreate(
+                [
+                    'crm_user_id' => $admin->id,
+                    'wa_id' => $contact->wa_id,
+                    'whatsapp_business_setting_id' => $business->id,
+                ],
+                [
+                    'display_name' => $contact->name,
+                    'status' => $status,
+                    'resolved_at' => $status === 'resolved' ? now() : null,
+                    'last_message_at' => now(),
+                    'unread_count' => $index % 3,
+                ]
+            );
+        });
+
+        $extraTexts = [
+            'السلام عليكم، لدي استفسار بسيط',
+            'أهلاً بك، تفضل كيف يمكننا مساعدتك؟',
+            'أريد معرفة تفاصيل العرض الحالي',
+            'بالتأكيد، سأرسل لك التفاصيل الآن.',
+            'شكراً لك، سأنتظر ردك.',
+        ];
+
+        foreach ($extraConversations as $conversationIndex => $conversation) {
+            $messageCount = 3 + ($conversationIndex % 3);
+
+            for ($i = 0; $i < $messageCount; $i++) {
+                $direction = $i % 2 === 0 ? 'inbound' : 'outbound';
+
+                WhatsappMessage::firstOrCreate(
+                    ['wamid' => 'seed-extra-'.$conversation->id.'-'.$i],
+                    [
+                        'conversation_id' => $conversation->id,
+                        'crm_user_id' => $admin->id,
+                        'whatsapp_business_setting_id' => $business->id,
+                        'direction' => $direction,
+                        'from_wa_id' => $direction === 'inbound' ? $conversation->wa_id : '100000000000001',
+                        'to_wa_id' => $direction === 'inbound' ? '100000000000001' : $conversation->wa_id,
+                        'type' => 'text',
+                        'message_status' => $direction === 'outbound' ? 'sent' : null,
+                        'body' => $extraTexts[$i % count($extraTexts)],
+                        'wa_timestamp' => now()->subMinutes(15 - $i),
+                        'raw' => ['seeded' => true, 'contact' => $conversation->display_name],
+                    ]
+                );
+            }
         }
 
         $salesData = [
@@ -237,6 +300,185 @@ class CrmTestDataSeeder extends Seeder
                 );
             }
         }
+
+        foreach ($conversations->take(2)->values() as $richIndex => $conversation) {
+            $richPrefix = 'seed-conv'.($richIndex + 1).'-rich';
+
+            $richConversationMessages = [
+                [
+                    'index' => 1,
+                    'type' => 'image',
+                    'direction' => 'outbound',
+                    'body' => 'تفضل صورة المنتج 🖼️',
+                    'raw' => ['seeded' => true, 'local_public_path' => 'admin/assets/img/whats.png'],
+                ],
+                [
+                    'index' => 2,
+                    'type' => 'audio',
+                    'direction' => 'inbound',
+                    'body' => null,
+                    'raw' => ['seeded' => true],
+                ],
+                [
+                    'index' => 3,
+                    'type' => 'video',
+                    'direction' => 'outbound',
+                    'body' => 'فيديو توضيحي',
+                    'raw' => ['seeded' => true],
+                ],
+                [
+                    'index' => 4,
+                    'type' => 'text',
+                    'direction' => 'inbound',
+                    'body' => 'هل يمكنني الطلب الآن؟',
+                    'raw' => ['seeded' => true],
+                ],
+                [
+                    'index' => 5,
+                    'type' => 'text',
+                    'direction' => 'outbound',
+                    'body' => 'بالتأكيد، سنساعدك في إتمام الطلب.',
+                    'raw' => ['seeded' => true],
+                ],
+            ];
+
+            foreach ($richConversationMessages as $richMessage) {
+                WhatsappMessage::firstOrCreate(
+                    ['wamid' => $richPrefix.'-'.$richMessage['index']],
+                    [
+                        'conversation_id' => $conversation->id,
+                        'crm_user_id' => $admin->id,
+                        'whatsapp_business_setting_id' => $business->id,
+                        'direction' => $richMessage['direction'],
+                        'from_wa_id' => $richMessage['direction'] === 'inbound' ? $conversation->wa_id : '100000000000001',
+                        'to_wa_id' => $richMessage['direction'] === 'inbound' ? '100000000000001' : $conversation->wa_id,
+                        'type' => $richMessage['type'],
+                        'message_status' => $richMessage['direction'] === 'outbound' ? 'sent' : null,
+                        'body' => $richMessage['body'],
+                        'wa_timestamp' => now()->subMinutes(10 - $richMessage['index']),
+                        'raw' => $richMessage['raw'],
+                    ]
+                );
+            }
+        }
+
+        $quickRepliesData = [
+            ['title' => 'ترحيب', 'shortcut' => '/hello', 'body' => 'أهلاً وسهلاً بك، كيف يمكننا مساعدتك اليوم؟'],
+            ['title' => 'الأسعار', 'shortcut' => '/price', 'body' => 'يمكنك الاطلاع على قائمة الأسعار المرفقة، ولا تتردد بطلب أي توضيح.'],
+            ['title' => 'شكر', 'shortcut' => '/thanks', 'body' => 'شكراً لتواصلك معنا، سعدنا بخدمتك.'],
+            ['title' => 'الشحن', 'shortcut' => '/shipping', 'body' => 'الشحن متوفر لجميع مدن المملكة ويستغرق من 2 إلى 5 أيام عمل.'],
+            ['title' => 'الدعم', 'shortcut' => '/support', 'body' => 'فريق الدعم جاهز لمساعدتك، يرجى إرسال تفاصيل المشكلة وسنرد عليك فوراً.'],
+        ];
+
+        foreach ($quickRepliesData as $quickReply) {
+            WhatsappQuickReply::firstOrCreate(
+                ['crm_user_id' => $admin->id, 'shortcut' => $quickReply['shortcut']],
+                [
+                    'title' => $quickReply['title'],
+                    'body' => $quickReply['body'],
+                    'is_active' => true,
+                ]
+            );
+        }
+
+        $tagsData = [
+            ['name' => 'عميل جديد', 'color' => '#ef4444'],
+            ['name' => 'مهم', 'color' => '#f59e0b'],
+            ['name' => 'يحتاج متابعة', 'color' => '#22c55e'],
+            ['name' => 'تم الإغلاق', 'color' => '#3b82f6'],
+            ['name' => 'VIP', 'color' => '#a855f7'],
+        ];
+
+        $tags = collect($tagsData)->map(function (array $tag) use ($admin): WhatsappChatTag {
+            return WhatsappChatTag::firstOrCreate(
+                ['crm_user_id' => $admin->id, 'name' => $tag['name']],
+                ['color' => $tag['color']]
+            );
+        });
+
+        $tagAssignments = [
+            0 => [0, 1],
+            1 => [1, 2, 3],
+            2 => [0, 2, 4],
+        ];
+
+        foreach ($conversations->values() as $conversationIndex => $conversation) {
+            $tagIds = collect($tagAssignments[$conversationIndex] ?? [])
+                ->map(fn (int $tagIndex): int => $tags[$tagIndex]->id)
+                ->all();
+
+            $conversation->tags()->syncWithoutDetaching($tagIds);
+        }
+
+        $broadcastsData = [
+            [
+                'title' => 'عرض نهاية الأسبوع',
+                'status' => 'sent',
+                'message_body' => 'استفد من خصم 20% على جميع المنتجات حتى نهاية الأسبوع.',
+                'audience_count' => 120,
+                'delivered_count' => 110,
+                'failed_count' => 10,
+                'scheduled_at' => null,
+                'sent_at' => now()->subDays(2),
+            ],
+            [
+                'title' => 'تذكير بالعرض القادم',
+                'status' => 'scheduled',
+                'message_body' => 'لا تفوّت عرضنا الجديد الذي ينطلق قريباً، ترقبوا التفاصيل.',
+                'audience_count' => 200,
+                'delivered_count' => 0,
+                'failed_count' => 0,
+                'scheduled_at' => now()->addDays(3),
+                'sent_at' => null,
+            ],
+            [
+                'title' => 'رسالة ترحيبية للعملاء الجدد',
+                'status' => 'draft',
+                'message_body' => 'أهلاً بك معنا، يسعدنا انضمامك ونتمنى لك تجربة رائعة.',
+                'audience_count' => 0,
+                'delivered_count' => 0,
+                'failed_count' => 0,
+                'scheduled_at' => null,
+                'sent_at' => null,
+            ],
+        ];
+
+        foreach ($broadcastsData as $broadcast) {
+            WhatsappBroadcast::firstOrCreate(
+                ['crm_user_id' => $admin->id, 'title' => $broadcast['title']],
+                [
+                    'whatsapp_business_setting_id' => $business->id,
+                    'type' => 'custom',
+                    'message_body' => $broadcast['message_body'],
+                    'status' => $broadcast['status'],
+                    'audience_count' => $broadcast['audience_count'],
+                    'delivered_count' => $broadcast['delivered_count'],
+                    'failed_count' => $broadcast['failed_count'],
+                    'scheduled_at' => $broadcast['scheduled_at'],
+                    'sent_at' => $broadcast['sent_at'],
+                ]
+            );
+        }
+
+        $businessHours = [];
+        foreach (['sat', 'sun', 'mon', 'tue', 'wed', 'thu', 'fri'] as $day) {
+            $businessHours[$day] = [
+                'enabled' => in_array($day, ['sun', 'mon', 'tue', 'wed', 'thu'], true),
+                'from' => '09:00',
+                'to' => '17:00',
+            ];
+        }
+
+        WhatsappBusinessHoursSetting::updateOrCreate(
+            ['crm_user_id' => $admin->id],
+            [
+                'timezone' => 'Asia/Riyadh',
+                'business_hours_enabled' => true,
+                'hours' => $businessHours,
+                'away_message_enabled' => true,
+                'away_message' => 'نحن خارج أوقات العمل الآن، سنتواصل معك قريباً',
+            ]
+        );
 
         $firstContact = $contacts->first();
         if ($firstContact) {

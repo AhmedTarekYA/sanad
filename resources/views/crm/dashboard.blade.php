@@ -9,4 +9,8 @@
             <p class="text-muted mb-0">{{ auth('crm')->user()?->name }}</p>
         </div>
     </div>
+    @include('crm.partials.help-modal', [
+        'title' => __('crm_help_dashboard_title'),
+        'description' => __('crm_help_dashboard_desc'),
+    ])
 @endsection

@@ -3,6 +3,38 @@
 @section('page-title', $pageTitle)
 
 @section('content')
+
+    <div class="col-12 mt-4">
+        <div class="card border-0 overflow-hidden" style="background: linear-gradient(135deg, #1a56db 0%, #2D71F0 50%, #0ea5e9 100%); box-shadow: 0 8px 32px rgba(45,113,240,0.25);">
+            <div class="card-body p-0">
+                <div class="row g-0 align-items-center">
+                    <div class="col-md-3 d-flex align-items-center justify-content-center p-4">
+                        <img src="{{ asset('admin/assets/img/think.png') }}" alt="support"
+                             style="max-height: 150px; max-width: 150px; object-fit: contain; filter: drop-shadow(0 4px 16px rgba(0,0,0,0.2));">
+                    </div>
+                    <div class="col-md-9 p-4 p-md-5">
+                        <h5 class="fw-bold mb-2 text-white">تواجه صعوبة في الربط؟</h5>
+                        <p class="mb-4" style="color:rgba(255,255,255,0.85); font-size:15px;">تواصل مع فريق الدعم وسنساعدك في ربط حسابك بخطوات بسيطة وسريعة.</p>
+                        <div class="d-flex flex-wrap gap-3">
+                            <a href="https://wa.me/201099977904" target="_blank" rel="noopener"
+                               class="btn fw-bold d-flex align-items-center gap-2"
+                               style="background:#25D366;color:#fff;border-radius:10px;font-size:15px;padding:10px 20px;box-shadow:0 4px 14px rgba(0,0,0,0.2);">
+                                <i class="fab fa-whatsapp" style="font-size:20px;"></i>
+                                +201099977904
+                            </a>
+                            <a href="{{ route('crm.whatsapp_setup') }}"
+                               class="btn fw-bold d-flex align-items-center gap-2"
+                               style="background:rgba(255,255,255,0.15);color:#fff;border:1.5px solid rgba(255,255,255,0.4);border-radius:10px;font-size:15px;padding:10px 20px;backdrop-filter:blur(4px);">
+                                <i class="ti ti-plug" style="font-size:18px;"></i>
+                                كيفية الربط
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     @php
         $hasAccounts = isset($whatsapp_settings) && $whatsapp_settings->count() > 0;
 
@@ -172,37 +204,10 @@
     <div class="modal fade" id="createModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog"></div>
     </div>
-
-    <div class="col-12 mt-4">
-        <div class="card border-0 overflow-hidden" style="background: linear-gradient(135deg, #1a56db 0%, #2D71F0 50%, #0ea5e9 100%); box-shadow: 0 8px 32px rgba(45,113,240,0.25);">
-            <div class="card-body p-0">
-                <div class="row g-0 align-items-center">
-                    <div class="col-md-3 d-flex align-items-center justify-content-center p-4">
-                        <img src="{{ asset('admin/assets/img/think.png') }}" alt="support"
-                             style="max-height: 150px; max-width: 150px; object-fit: contain; filter: drop-shadow(0 4px 16px rgba(0,0,0,0.2));">
-                    </div>
-                    <div class="col-md-9 p-4 p-md-5">
-                        <h5 class="fw-bold mb-2 text-white">تواجه صعوبة في الربط؟</h5>
-                        <p class="mb-4" style="color:rgba(255,255,255,0.85); font-size:15px;">تواصل مع فريق الدعم وسنساعدك في ربط حسابك بخطوات بسيطة وسريعة.</p>
-                        <div class="d-flex flex-wrap gap-3">
-                            <a href="https://wa.me/201099977904" target="_blank" rel="noopener"
-                               class="btn fw-bold d-flex align-items-center gap-2"
-                               style="background:#25D366;color:#fff;border-radius:10px;font-size:15px;padding:10px 20px;box-shadow:0 4px 14px rgba(0,0,0,0.2);">
-                                <i class="fab fa-whatsapp" style="font-size:20px;"></i>
-                                +201099977904
-                            </a>
-                            <a href="{{ route('crm.whatsapp_setup') }}"
-                               class="btn fw-bold d-flex align-items-center gap-2"
-                               style="background:rgba(255,255,255,0.15);color:#fff;border:1.5px solid rgba(255,255,255,0.4);border-radius:10px;font-size:15px;padding:10px 20px;backdrop-filter:blur(4px);">
-                                <i class="ti ti-plug" style="font-size:18px;"></i>
-                                كيفية الربط
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    @include('crm.partials.help-modal', [
+        'title' => __('crm_help_business_settings_title'),
+        'description' => __('crm_help_business_settings_desc'),
+    ])
 @endsection
 
 @section('js')

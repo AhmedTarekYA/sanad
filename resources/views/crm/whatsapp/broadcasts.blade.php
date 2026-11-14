@@ -228,6 +228,10 @@
             </div>
         </div>
     </div>
+    @include('crm.partials.help-modal', [
+        'title' => __('crm_help_broadcasts_title'),
+        'description' => __('crm_help_broadcasts_desc'),
+    ])
 @endsection
 
 @section('js')

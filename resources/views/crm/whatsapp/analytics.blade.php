@@ -199,6 +199,10 @@
             </div>
         </div>
     </div>
+    @include('crm.partials.help-modal', [
+        'title' => __('crm_help_analytics_title'),
+        'description' => __('crm_help_analytics_desc'),
+    ])
 @endsection
 
 @section('js')
