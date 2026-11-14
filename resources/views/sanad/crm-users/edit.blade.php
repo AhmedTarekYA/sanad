@@ -1,4 +1,4 @@
-<form class="from-submit-update-global" method="POST" action="{{ $updateRoute }}">
+<form class="from-submit-update-global" method="POST" action="{{ $updateRoute }}" enctype="multipart/form-data">
     @csrf
     @method('PUT')
 
@@ -26,6 +26,12 @@
                 <option value="1" {{ $obj->is_active ? 'selected' : '' }}>{{ __('active') }}</option>
                 <option value="0" {{ !$obj->is_active ? 'selected' : '' }}>{{ __('inactive') }}</option>
             </select>
+        </div>
+        <div class="col-12">
+            <label for="image" class="form-label fw-semibold">{{ __('auth.image') }}</label>
+            <input type="file" id="image" name="image" class="dropify"
+                   data-allowed-file-extensions="jpg jpeg png webp"
+                   data-default-file="{{ $obj->image ? showFile($obj->image) : '' }}">
         </div>
     </div>
 

@@ -26,6 +26,7 @@ class CrmUser extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'image',
         'password',
         'subscription_ends_at',
         'is_active',

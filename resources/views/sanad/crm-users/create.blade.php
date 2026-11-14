@@ -1,4 +1,4 @@
-<form class="from-submit-global" method="POST" action="{{ $storeRoute }}">
+<form class="from-submit-global" method="POST" action="{{ $storeRoute }}" enctype="multipart/form-data">
     @csrf
 
     <div class="row g-3 p-1">
@@ -24,6 +24,10 @@
                 <option value="1">{{ __('active') }}</option>
                 <option value="0">{{ __('inactive') }}</option>
             </select>
+        </div>
+        <div class="col-12">
+            <label for="image" class="form-label fw-semibold">{{ __('auth.image') }}</label>
+            <input type="file" id="image" name="image" class="dropify" data-allowed-file-extensions="jpg jpeg png webp">
         </div>
     </div>
 

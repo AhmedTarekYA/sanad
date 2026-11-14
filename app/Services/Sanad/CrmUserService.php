@@ -10,8 +10,8 @@ class CrmUserService extends MainService
     public function __construct(CrmUser $model)
     {
         $this->model = $model;
-        $this->fileFolder = null;
-        $this->files = [];
+        $this->fileFolder = 'images/crm-users/';
+        $this->files = ['image'];
     }
 
     public function getDataTable()

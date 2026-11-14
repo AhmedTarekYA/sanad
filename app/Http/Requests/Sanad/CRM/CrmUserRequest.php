@@ -22,6 +22,7 @@ class CrmUserRequest extends MainRequest
         return [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255', Rule::unique('crm_users', 'email')],
+            'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:4096'],
             'password' => ['required', 'string', 'min:6'],
             'subscription_ends_at' => ['nullable', 'date'],
             'is_active' => ['nullable', 'boolean'],
@@ -34,6 +35,7 @@ class CrmUserRequest extends MainRequest
         return [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255', Rule::unique('crm_users', 'email')->ignore($this->route('id'))],
+            'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:4096'],
             'password' => ['nullable', 'string', 'min:6'],
             'subscription_ends_at' => ['nullable', 'date'],
             'is_active' => ['nullable', 'boolean'],
