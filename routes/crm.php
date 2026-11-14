@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\CRM\CrmAuthController;
 use App\Http\Controllers\CRM\CrmDashboardController;
+use App\Http\Controllers\CRM\CrmSalesController;
+use App\Http\Controllers\CRM\CrmUsersController;
 use App\Http\Controllers\CRM\WhatsappAnalyticsController;
 use App\Http\Controllers\CRM\WhatsappBroadcastController;
 use App\Http\Controllers\CRM\WhatsappBusinessHoursController;
@@ -29,8 +31,26 @@ Route::domain(config('app.crm_domain'))->name('crm.')->middleware(SetCrmLocale::
         Route::post('/login', [CrmAuthController::class, 'login'])->name('login.attempt');
     });
 
-    Route::middleware('auth:crm')->group(function (): void {
+    Route::middleware(['auth:crm', 'crmPermission'])->group(function (): void {
         Route::get('/', [CrmDashboardController::class, 'index'])->name('dashboard');
+
+        Route::middleware('crmPermission:users')->group(function (): void {
+            Route::get('/users', [CrmUsersController::class, 'index'])->name('users.index');
+            Route::get('/users/create', [CrmUsersController::class, 'create'])->name('users.create');
+            Route::post('/users', [CrmUsersController::class, 'store'])->name('users.store');
+            Route::get('/users/{id}/edit', [CrmUsersController::class, 'edit'])->name('users.edit');
+            Route::put('/users/{id}', [CrmUsersController::class, 'update'])->name('users.update');
+            Route::delete('/users/{id}', [CrmUsersController::class, 'destroy'])->name('users.destroy');
+        });
+
+        Route::middleware('crmPermission:crm_sales')->group(function (): void {
+            Route::get('/sales', [CrmSalesController::class, 'index'])->name('crm_sales.index');
+            Route::get('/sales/create', [CrmSalesController::class, 'create'])->name('crm_sales.create');
+            Route::post('/sales', [CrmSalesController::class, 'store'])->name('crm_sales.store');
+            Route::get('/sales/{id}/edit', [CrmSalesController::class, 'edit'])->name('crm_sales.edit');
+            Route::put('/sales/{id}', [CrmSalesController::class, 'update'])->name('crm_sales.update');
+            Route::delete('/sales/{id}', [CrmSalesController::class, 'destroy'])->name('crm_sales.destroy');
+        });
 
         Route::get('/whatsapp-business-settings', [WhatsappBusinessSettingController::class, 'index'])->name('whatsapp_business_settings');
         Route::post('/whatsapp-business-settings', [WhatsappBusinessSettingController::class, 'store'])->name('whatsapp_business_settings.store');

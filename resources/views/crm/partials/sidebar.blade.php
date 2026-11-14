@@ -1,4 +1,5 @@
 @php($currentRoute = Route::currentRouteName())
+@php($crmUser = auth('crm')->user())
 @php($sidebarLogo = isset($settings) && $settings->logo_header && file_exists(public_path('/storage/' . $settings->logo_header)) ? showFile($settings->logo_header) : asset('brand/logo.svg'))
 @php($whatsappPages = [
     'whatsapp_business_settings' => 'ti ti-settings',
@@ -28,13 +29,35 @@
                     </a>
                 </li>
                 @foreach($whatsappPages as $page => $icon)
-                    <li class="pc-item {{ $currentRoute === 'crm.'.$page ? 'active' : '' }}">
-                        <a class="pc-link" href="{{ route('crm.'.$page) }}">
-                            <span class="pc-micon"><i class="{{ $icon }}" aria-hidden="true"></i></span>
-                            <span class="pc-mtext">{{ __($page) }}</span>
+                    @if($crmUser && $crmUser->canAccess($page))
+                        <li class="pc-item {{ $currentRoute === 'crm.'.$page ? 'active' : '' }}">
+                            <a class="pc-link" href="{{ route('crm.'.$page) }}">
+                                <span class="pc-micon"><i class="{{ $icon }}" aria-hidden="true"></i></span>
+                                <span class="pc-mtext">{{ __($page) }}</span>
+                            </a>
+                        </li>
+                    @endif
+                @endforeach
+
+                @if($crmUser && $crmUser->canAccess('crm_sales'))
+                    <li class="pc-item pc-caption"><label>{{ __('crm_sales') }}</label></li>
+                    <li class="pc-item {{ $currentRoute === 'crm.crm_sales.index' ? 'active' : '' }}">
+                        <a class="pc-link" href="{{ route('crm.crm_sales.index') }}">
+                            <span class="pc-micon"><i class="ti ti-shopping-cart" aria-hidden="true"></i></span>
+                            <span class="pc-mtext">{{ __('crm_sales') }}</span>
                         </a>
                     </li>
-                @endforeach
+                @endif
+
+                @if($crmUser && $crmUser->role === 'admin')
+                    <li class="pc-item pc-caption"><label>{{ __('management') }}</label></li>
+                    <li class="pc-item {{ $currentRoute === 'crm.users.index' ? 'active' : '' }}">
+                        <a class="pc-link" href="{{ route('crm.users.index') }}">
+                            <span class="pc-micon"><i class="ti ti-users" aria-hidden="true"></i></span>
+                            <span class="pc-mtext">{{ __('users') }}</span>
+                        </a>
+                    </li>
+                @endif
             </ul>
         </div>
     </div>

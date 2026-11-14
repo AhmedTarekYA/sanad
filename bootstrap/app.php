@@ -2,6 +2,7 @@
 
 use App\Http\Middleware\CheckIfAdmin;
 use App\Http\Middleware\CheckPermission;
+use App\Http\Middleware\CrmPermission;
 use App\Http\Middleware\DeveloperOnly;
 use App\Http\Middleware\LogViewerMiddleware;
 use App\Http\Middleware\RevalidateBackHistory;
@@ -60,6 +61,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'localeCookieRedirect' => LocaleCookieRedirect::class,
             'localeViewPath' => LaravelLocalizationViewPath::class,
             'checkPermission' => CheckPermission::class,
+            'crmPermission' => CrmPermission::class,
             'logviewer' => LogViewerMiddleware::class,
         ]);
     })
