@@ -1,7 +1,8 @@
 <?php
 
-use App\Models\User;
+use App\Models\CRM\CrmUser;
 use App\Models\Sanad\Admin;
+use App\Models\User;
 
 return [
 
@@ -47,6 +48,10 @@ return [
             'driver' => 'session',
             'provider' => 'admins',
         ],
+        'crm' => [
+            'driver' => 'session',
+            'provider' => 'crm_users',
+        ],
     ],
 
     /*
@@ -74,6 +79,10 @@ return [
         'admins' => [
             'driver' => 'eloquent',
             'model' => Admin::class,
+        ],
+        'crm_users' => [
+            'driver' => 'eloquent',
+            'model' => CrmUser::class,
         ],
 
         // 'users' => [

@@ -945,5 +945,16 @@
     "OK": "OK",
     "add_blog": "Add Blog Post",
     "edit_blog": "Edit Blog Post",
-    "slug": "Slug"
+    "slug": "Slug",
+    "whatsapp_menu": "WhatsApp",
+    "whatsapp_business_settings": "Business Settings",
+    "whatsapp_setup": "Setup",
+    "whatsapp_chat": "Chat",
+    "whatsapp_broadcasts": "Broadcasts",
+    "whatsapp_contacts": "Contacts",
+    "whatsapp_labels": "Labels",
+    "whatsapp_quick_replies": "Quick Replies",
+    "whatsapp_business_hours": "Business Hours",
+    "whatsapp_analytics": "Analytics",
+    "crm_users": "CRM"
 }

@@ -24,6 +24,7 @@ return [
             'client-reviews' => 'c,r,u,d',
             'consultation-requests' => 'r,d',
             'faqs' => 'c,r,u,d',
+            'crm-users' => 'c,r,u,d',
 
         ],
     ],
