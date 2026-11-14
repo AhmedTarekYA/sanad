@@ -45,7 +45,7 @@
                 @if(session('error'))<div class="sanad-login__alert" role="alert">{{ session('error') }}</div>@endif
                 @if($errors->any())<div class="sanad-login__alert" role="alert">{{ $errors->first() }}</div>@endif
 
-                <form id="loginForm" action="{{ route('crm.login.attempt') }}" method="POST">
+                <form id="loginForm" action="/login" method="POST">
                     @csrf
                     <div class="sanad-login__fields">
                         <div class="sanad-login__field">

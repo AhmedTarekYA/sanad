@@ -58,10 +58,10 @@ class CrmAuthController extends Controller
         $request->session()->regenerate();
 
         if ($request->expectsJson()) {
-            return jsonSuccess(['url' => route('crm.dashboard')], __('auth.login successful'));
+            return jsonSuccess(['url' => '/'], __('auth.login successful'));
         }
 
-        return redirect()->intended(route('crm.dashboard'));
+        return redirect()->intended('/');
     }
 
     public function logout(Request $request): RedirectResponse
@@ -71,6 +71,6 @@ class CrmAuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route('crm.login');
+        return redirect()->to('/login');
     }
 }
