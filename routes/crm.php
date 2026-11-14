@@ -28,6 +28,7 @@ Route::domain(config('app.crm_domain'))->name('crm.')->middleware(SetCrmLocale::
 
     Route::middleware('guest:crm')->group(function (): void {
         Route::get('/login', [CrmAuthController::class, 'showLogin'])->name('login');
+        Route::get('/loginn', [CrmAuthController::class, 'showLoginn'])->name('loginn');
         Route::post('/login', [CrmAuthController::class, 'login'])->name('login.attempt');
     });
 

@@ -22,6 +22,15 @@ class CrmAuthController extends Controller
         return view('crm.auth.login');
     }
 
+    public function showLoginn(): View|RedirectResponse
+    {
+        if (Auth::guard('crm')->check()) {
+            return redirect()->route('crm.dashboard');
+        }
+
+        return view('crm.auth.loginn');
+    }
+
     public function login(Request $request): JsonResponse|RedirectResponse
     {
         $credentials = $request->validate([
