@@ -5,6 +5,8 @@ namespace App\Providers;
 use App\Models\Sanad\ConsultationRequest;
 use App\Models\Sanad\MainSetting;
 use App\Models\Sanad\Setting;
+use App\Repositories\Contracts\WhatsappBusinessRepositoryInterface;
+use App\Repositories\Sanad\WhatsappBusinessCloudApiRepository;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,7 +19,13 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Register any application services.
      */
-    public function register() {}
+    public function register(): void
+    {
+        $this->app->bind(
+            WhatsappBusinessRepositoryInterface::class,
+            WhatsappBusinessCloudApiRepository::class
+        );
+    }
 
     /**
      * Bootstrap any application services.
