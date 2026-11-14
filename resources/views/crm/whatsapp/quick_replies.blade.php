@@ -2,6 +2,10 @@
 
 @section('page-title', $pageTitle)
 
+@section('style')
+    <link rel="stylesheet" href="{{ asset('admin/assets/cssbundle/dataTables.min.css') }}">
+@endsection
+
 @section('content')
     <div id="whatsapp-quick-replies-root"
          data-store-url="{{ route('crm.whatsapp_quick_replies.store') }}"
@@ -136,6 +140,7 @@
 @endsection
 
 @section('js')
+    <script src="{{ asset('admin/assets/js/bundle/dataTables.bundle.js') }}"></script>
     <script>
         (function () {
             const root = document.getElementById('whatsapp-quick-replies-root');

@@ -2,6 +2,10 @@
 
 @section('page-title', $pageTitle)
 
+@section('style')
+    <link rel="stylesheet" href="{{ asset('admin/assets/cssbundle/dataTables.min.css') }}">
+@endsection
+
 @section('content')
     <div id="crm-users-root"
          data-index-url="{{ route('crm.users.index') }}"
@@ -46,6 +50,7 @@
 @endsection
 
 @section('js')
+    <script src="{{ asset('admin/assets/js/bundle/dataTables.bundle.js') }}"></script>
     <script>
         (function () {
             const root = document.getElementById('crm-users-root');
