@@ -4,11 +4,15 @@ namespace App\Services\Sanad;
 
 use App\Models\CRM\WhatsappBusinessHoursSetting;
 use App\Models\CRM\WhatsappBusinessSetting;
+use App\Models\CRM\WhatsappChatTag;
 use App\Models\CRM\WhatsappContact;
 use App\Models\CRM\WhatsappConversation;
+use App\Models\CRM\WhatsappConversationNote;
 use App\Models\CRM\WhatsappMessage;
+use App\Models\CRM\WhatsappQuickReply;
 use App\Repositories\Contracts\WhatsappBusinessRepositoryInterface;
 use App\Services\MainService;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Log;
@@ -955,6 +959,451 @@ class WhatsappChatService extends MainService
             'path' => $relativePath,
             'mime' => $mimeType,
         ];
+    }
+
+    /**
+     * @param  array<string, mixed>  $filters
+     * @return array{items: Collection, pagination: array<string, int|null|bool>}
+     */
+    public function listConversations(int $crmUserId, array $filters = []): array
+    {
+        $limit = max(1, min((int) ($filters['limit'] ?? 50), 200));
+        $offset = max(0, (int) ($filters['offset'] ?? 0));
+        $status = trim((string) ($filters['status'] ?? ''));
+        $search = trim((string) ($filters['search'] ?? ''));
+        $tagId = isset($filters['tag_id']) && $filters['tag_id'] !== '' ? (int) $filters['tag_id'] : null;
+        $accountId = isset($filters['account_id']) && $filters['account_id'] !== '' ? (int) $filters['account_id'] : null;
+
+        $query = WhatsappConversation::query()
+            ->select([
+                'whatsapp_conversations.id',
+                'whatsapp_conversations.crm_user_id',
+                'whatsapp_conversations.whatsapp_business_setting_id',
+                'whatsapp_conversations.wa_id',
+                'whatsapp_conversations.display_name',
+                'whatsapp_conversations.status',
+                'whatsapp_conversations.resolved_at',
+                'whatsapp_conversations.last_message_at',
+                'whatsapp_conversations.unread_count',
+            ])
+            ->addSelect([
+                'profile_pic' => WhatsappContact::query()
+                    ->select('profile_pic')
+                    ->whereColumn('whatsapp_contacts.wa_id', 'whatsapp_conversations.wa_id')
+                    ->where('whatsapp_contacts.crm_user_id', $crmUserId)
+                    ->limit(1),
+            ])
+            ->where('whatsapp_conversations.crm_user_id', $crmUserId)
+            ->with(['lastMessage', 'tags:id,name,color']);
+
+        if ($status !== '' && in_array($status, ['open', 'resolved'], true)) {
+            $query->where('whatsapp_conversations.status', $status);
+        }
+
+        if ($accountId !== null) {
+            $query->where('whatsapp_conversations.whatsapp_business_setting_id', $accountId);
+        }
+
+        if ($search !== '') {
+            $like = '%'.$search.'%';
+            $query->where(function ($inner) use ($like): void {
+                $inner->where('whatsapp_conversations.wa_id', 'like', $like)
+                    ->orWhere('whatsapp_conversations.display_name', 'like', $like);
+            });
+        }
+
+        if ($tagId !== null) {
+            $ownedTagId = WhatsappChatTag::query()
+                ->where('crm_user_id', $crmUserId)
+                ->where('id', $tagId)
+                ->value('id');
+
+            if ($ownedTagId === null) {
+                $query->whereRaw('1 = 0');
+            } else {
+                $query->whereHas('tags', function ($inner) use ($ownedTagId): void {
+                    $inner->where('whatsapp_chat_tags.id', $ownedTagId);
+                });
+            }
+        }
+
+        $items = $query
+            ->orderByDesc('last_message_at')
+            ->orderByDesc('id')
+            ->offset($offset)
+            ->limit($limit + 1)
+            ->get();
+
+        $hasMore = $items->count() > $limit;
+        if ($hasMore) {
+            $items = $items->take($limit)->values();
+        }
+
+        return [
+            'items' => $items,
+            'pagination' => [
+                'limit' => $limit,
+                'offset' => $offset,
+                'next_offset' => $hasMore ? $offset + $limit : null,
+                'has_more' => $hasMore,
+            ],
+        ];
+    }
+
+    /**
+     * @return array{conversation: WhatsappConversation, items: Collection, has_more: bool, next_before_id: int|null}
+     */
+    public function conversationMessages(int $crmUserId, int $conversationId, ?int $beforeId = null, int $limit = 50): array
+    {
+        $limit = max(1, min($limit, 200));
+
+        $conversation = $this->findOwnedConversation($crmUserId, $conversationId);
+
+        if ((int) $conversation->unread_count > 0) {
+            $conversation->forceFill(['unread_count' => 0])->save();
+        }
+
+        $query = WhatsappMessage::query()
+            ->where('conversation_id', $conversation->id)
+            ->where('crm_user_id', $crmUserId)
+            ->orderByDesc('id');
+
+        if ($beforeId !== null) {
+            $query->where('id', '<', $beforeId);
+        }
+
+        $items = $query->limit($limit + 1)->get();
+
+        $hasMore = $items->count() > $limit;
+        if ($hasMore) {
+            $items = $items->take($limit)->values();
+        }
+
+        return [
+            'conversation' => $conversation,
+            'items' => $items,
+            'has_more' => $hasMore,
+            'next_before_id' => $items->last()?->id,
+        ];
+    }
+
+    /**
+     * @return array{items: Collection, query: string}
+     */
+    public function searchConversationMessages(int $crmUserId, int $conversationId, string $q, int $limit = 20): array
+    {
+        $limit = max(1, min($limit, 100));
+
+        $conversation = $this->findOwnedConversation($crmUserId, $conversationId);
+        $search = trim($q);
+
+        if ($search === '') {
+            return ['items' => new Collection, 'query' => $search];
+        }
+
+        $items = WhatsappMessage::query()
+            ->where('conversation_id', $conversation->id)
+            ->where('crm_user_id', $crmUserId)
+            ->where(function ($query) use ($search): void {
+                $query->where('body', 'like', '%'.$search.'%')
+                    ->orWhere('type', 'like', '%'.$search.'%');
+            })
+            ->orderByDesc('id')
+            ->limit($limit)
+            ->get([
+                'id',
+                'conversation_id',
+                'wamid',
+                'direction',
+                'from_wa_id',
+                'to_wa_id',
+                'type',
+                'message_status',
+                'body',
+                'wa_timestamp',
+                'created_at',
+            ]);
+
+        return ['items' => $items, 'query' => $search];
+    }
+
+    /**
+     * @return array{conversation: array<string, mixed>, account: array<string, mixed>|null, tags: Collection, notes: Collection}
+     */
+    public function conversationMeta(int $crmUserId, int $conversationId): array
+    {
+        $conversation = $this->findOwnedConversation($crmUserId, $conversationId);
+        $conversation->load(['tags:id,name,color', 'whatsappBusinessSetting:id,name,phone_number_id']);
+
+        $notes = WhatsappConversationNote::query()
+            ->with(['crmUser:id,name'])
+            ->where('conversation_id', $conversation->id)
+            ->where('crm_user_id', $crmUserId)
+            ->orderByDesc('id')
+            ->limit(20)
+            ->get()
+            ->map(fn (WhatsappConversationNote $note): array => [
+                'id' => $note->id,
+                'body' => $note->body,
+                'created_at' => $note->created_at,
+                'user' => $note->crmUser
+                    ? ['id' => $note->crmUser->id, 'name' => $note->crmUser->name]
+                    : null,
+            ])
+            ->values();
+
+        return [
+            'conversation' => [
+                'id' => $conversation->id,
+                'wa_id' => $conversation->wa_id,
+                'display_name' => $conversation->display_name,
+                'whatsapp_business_setting_id' => $conversation->whatsapp_business_setting_id,
+                'status' => $conversation->status ?: 'open',
+                'resolved_at' => $conversation->resolved_at,
+                'unread_count' => $conversation->unread_count,
+                'last_message_at' => $conversation->last_message_at,
+            ],
+            'account' => $conversation->whatsappBusinessSetting
+                ? [
+                    'id' => $conversation->whatsappBusinessSetting->id,
+                    'name' => $conversation->whatsappBusinessSetting->name,
+                    'phone_number_id' => $conversation->whatsappBusinessSetting->phone_number_id,
+                ]
+                : null,
+            'tags' => $conversation->tags->map(fn (WhatsappChatTag $tag): array => [
+                'id' => $tag->id,
+                'name' => $tag->name,
+                'color' => $tag->color,
+            ])->values(),
+            'notes' => $notes,
+        ];
+    }
+
+    /**
+     * @param  array<int, int|string>  $tagIds
+     */
+    public function setConversationTags(int $crmUserId, int $conversationId, array $tagIds): Collection
+    {
+        $conversation = $this->findOwnedConversation($crmUserId, $conversationId);
+
+        $ownedTagIds = WhatsappChatTag::query()
+            ->where('crm_user_id', $crmUserId)
+            ->whereIn('id', array_map('intval', $tagIds))
+            ->pluck('id')
+            ->all();
+
+        $conversation->tags()->sync($ownedTagIds);
+
+        return $conversation->tags()->get(['whatsapp_chat_tags.id', 'whatsapp_chat_tags.name', 'whatsapp_chat_tags.color']);
+    }
+
+    public function addConversationNote(int $crmUserId, int $conversationId, string $body): WhatsappConversationNote
+    {
+        $conversation = $this->findOwnedConversation($crmUserId, $conversationId);
+
+        return WhatsappConversationNote::query()->create([
+            'conversation_id' => $conversation->id,
+            'crm_user_id' => $crmUserId,
+            'body' => trim($body),
+        ]);
+    }
+
+    public function toggleResolve(int $crmUserId, int $conversationId): WhatsappConversation
+    {
+        $conversation = $this->findOwnedConversation($crmUserId, $conversationId);
+
+        $next = ($conversation->status ?: 'open') === 'resolved' ? 'open' : 'resolved';
+        $conversation->status = $next;
+        $conversation->resolved_at = $next === 'resolved' ? Carbon::now() : null;
+        $conversation->save();
+
+        return $conversation;
+    }
+
+    public function listChatTags(int $crmUserId, string $search = ''): Collection
+    {
+        $query = WhatsappChatTag::query()
+            ->where('crm_user_id', $crmUserId)
+            ->orderBy('name');
+
+        $search = trim($search);
+        if ($search !== '') {
+            $query->where('name', 'like', '%'.$search.'%');
+        }
+
+        return $query->get(['id', 'name', 'color']);
+    }
+
+    public function createChatTag(int $crmUserId, string $name, ?string $color = null): WhatsappChatTag
+    {
+        $tag = WhatsappChatTag::query()->firstOrCreate(
+            ['crm_user_id' => $crmUserId, 'name' => trim($name)],
+            ['color' => $color ?: null]
+        );
+
+        if ($color && ! $tag->color) {
+            $tag->color = $color;
+            $tag->save();
+        }
+
+        return $tag;
+    }
+
+    public function listQuickReplies(int $crmUserId, string $search = '', int $limit = 100): Collection
+    {
+        $limit = max(1, min($limit, 200));
+
+        $query = WhatsappQuickReply::query()
+            ->where('crm_user_id', $crmUserId)
+            ->where('is_active', true)
+            ->orderByDesc('id');
+
+        $search = trim($search);
+        if ($search !== '') {
+            $query->where(function ($inner) use ($search): void {
+                $inner->where('title', 'like', '%'.$search.'%')
+                    ->orWhere('shortcut', 'like', '%'.$search.'%')
+                    ->orWhere('body', 'like', '%'.$search.'%');
+            });
+        }
+
+        return $query->limit($limit)->get(['id', 'title', 'shortcut', 'body', 'is_active']);
+    }
+
+    public function findOrCreateConversationByWaId(int $crmUserId, string $waId, ?int $accountId = null): WhatsappConversation
+    {
+        $normalized = $this->normalizeWaId($waId) ?: trim($waId);
+        $contact = WhatsappContact::query()
+            ->where('crm_user_id', $crmUserId)
+            ->where('wa_id', $normalized)
+            ->first(['name']);
+
+        $conversation = WhatsappConversation::query()->firstOrCreate(
+            [
+                'crm_user_id' => $crmUserId,
+                'wa_id' => $normalized,
+                'whatsapp_business_setting_id' => $accountId,
+            ],
+            [
+                'display_name' => $contact?->name,
+                'last_message_at' => now(),
+            ]
+        );
+
+        if ($contact?->name && ! $conversation->display_name) {
+            $conversation->display_name = $contact->name;
+        }
+
+        if (! $conversation->last_message_at) {
+            $conversation->last_message_at = now();
+        }
+
+        if ($conversation->isDirty()) {
+            $conversation->save();
+        }
+
+        return $conversation;
+    }
+
+    public function findOwnedMessage(int $crmUserId, int $messageId): ?WhatsappMessage
+    {
+        return WhatsappMessage::query()
+            ->where('crm_user_id', $crmUserId)
+            ->find($messageId);
+    }
+
+    /**
+     * @return array{body: string, content_type: string, filename: string}
+     */
+    public function messageMediaPayload(int $crmUserId, int $messageId): array
+    {
+        $message = $this->findOwnedMessage($crmUserId, $messageId);
+        abort_if($message === null, 404);
+
+        $raw = is_array($message->raw) ? $message->raw : [];
+        $localDisk = data_get($raw, 'local_media_disk');
+        $localPath = data_get($raw, 'local_media_path');
+
+        if (is_string($localDisk) && $localDisk !== '' && is_string($localPath) && $localPath !== '') {
+            try {
+                $disk = Storage::disk($localDisk);
+                if ($disk->exists($localPath)) {
+                    return [
+                        'body' => $disk->get($localPath),
+                        'content_type' => (string) (data_get($raw, 'local_media_mime') ?: 'application/octet-stream'),
+                        'filename' => basename($localPath),
+                    ];
+                }
+            } catch (\Throwable) {
+            }
+        }
+
+        $settingId = $message->whatsapp_business_setting_id
+            ?: $message->conversation()->value('whatsapp_business_setting_id');
+        abort_if(! $settingId, 404);
+
+        $setting = WhatsappBusinessSetting::query()
+            ->where('crm_user_id', $crmUserId)
+            ->where('id', $settingId)
+            ->where('is_active', true)
+            ->first();
+        abort_if($setting === null || ! $setting->api_version || ! $setting->access_token, 404);
+
+        $mediaId = $this->extractMediaIdFromMessage($message);
+        abort_if(! $mediaId, 404);
+
+        $info = $this->repository->getMediaInfo(
+            (string) $setting->api_version,
+            (string) $setting->access_token,
+            (string) $mediaId
+        );
+        $url = (string) data_get($info, 'url', '');
+        abort_if($url === '', 404);
+
+        $body = $this->repository->downloadMedia((string) $setting->access_token, $url);
+        abort_if($body === '', 404);
+
+        return [
+            'body' => $body,
+            'content_type' => (string) (data_get($info, 'mime_type') ?: 'application/octet-stream'),
+            'filename' => 'media-'.$message->id,
+        ];
+    }
+
+    protected function findOwnedConversation(int $crmUserId, int $conversationId): WhatsappConversation
+    {
+        $conversation = WhatsappConversation::query()
+            ->where('crm_user_id', $crmUserId)
+            ->find($conversationId);
+
+        abort_if($conversation === null, 404);
+
+        return $conversation;
+    }
+
+    protected function extractMediaIdFromMessage(WhatsappMessage $message): ?string
+    {
+        $raw = is_array($message->raw) ? $message->raw : [];
+        $type = strtolower(trim((string) ($message->type ?? '')));
+
+        $candidates = [
+            data_get($raw, $type.'.id'),
+            data_get($raw, 'media_id'),
+            data_get($raw, 'uploaded_media_id'),
+            data_get($raw, 'image.id'),
+            data_get($raw, 'video.id'),
+            data_get($raw, 'audio.id'),
+            data_get($raw, 'document.id'),
+            data_get($raw, 'sticker.id'),
+        ];
+
+        foreach ($candidates as $candidate) {
+            if (is_string($candidate) && trim($candidate) !== '') {
+                return trim($candidate);
+            }
+        }
+
+        return null;
     }
 
     protected function maskValue(?string $value, int $visible = 4): ?string

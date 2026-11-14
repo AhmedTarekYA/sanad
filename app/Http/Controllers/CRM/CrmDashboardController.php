@@ -37,11 +37,6 @@ class CrmDashboardController extends Controller
         ]);
     }
 
-    public function chat(): View
-    {
-        return $this->placeholder('whatsapp_chat');
-    }
-
     public function broadcasts(): View
     {
         return $this->placeholder('whatsapp_broadcasts');

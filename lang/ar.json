@@ -1215,6 +1215,7 @@
     "whatsapp_reply_message_not_in_conversation": "الرسالة الأصلية غير موجودة ضمن هذه المحادثة",
     "whatsapp_conversation_missing": "المحادثة غير موجودة",
     "whatsapp_invalid_file": "الملف غير صالح",
+    "whatsapp_invalid_message": "الرسالة غير صالحة",
     "whatsapp_cannot_read_file": "تعذر قراءة الملف",
     "whatsapp_delete_only_outgoing": "يمكن حذف الرسائل المرسلة فقط",
     "whatsapp_delete_missing_wamid": "تعذر حذف الرسالة: معرف واتساب غير موجود",

@@ -1215,6 +1215,7 @@
     "whatsapp_reply_message_not_in_conversation": "The original message was not found in this conversation",
     "whatsapp_conversation_missing": "Conversation not found",
     "whatsapp_invalid_file": "Invalid file",
+    "whatsapp_invalid_message": "Invalid message",
     "whatsapp_cannot_read_file": "Cannot read file",
     "whatsapp_delete_only_outgoing": "Only outgoing messages can be deleted",
     "whatsapp_delete_missing_wamid": "Unable to delete message: WhatsApp ID is missing",
