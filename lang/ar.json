@@ -1233,5 +1233,11 @@
     "add_account": "إضافة حساب",
     "whatsapp_labels_hint": "أنشئ تصنيفات لجهات الاتصال والمحادثات لتنظيمها بسهولة.",
     "whatsapp_quick_replies_hint": "أضف ردودًا جاهزة لاستخدامها بسرعة في المحادثات.",
-    "whatsapp_quick_reply": "رد سريع"
+    "whatsapp_quick_reply": "رد سريع",
+    "whatsapp_contact_details": "تفاصيل جهة الاتصال",
+    "whatsapp_view": "عرض",
+    "whatsapp_manage_tags": "إدارة التصنيفات",
+    "whatsapp_tag_assign": "تعيين التصنيفات",
+    "whatsapp_save_tags": "حفظ التصنيفات",
+    "whatsapp_import_contacts": "استيراد جهات الاتصال"
 }

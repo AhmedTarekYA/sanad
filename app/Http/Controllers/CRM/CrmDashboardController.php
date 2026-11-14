@@ -47,11 +47,6 @@ class CrmDashboardController extends Controller
         return $this->placeholder('whatsapp_broadcasts');
     }
 
-    public function contacts(): View
-    {
-        return $this->placeholder('whatsapp_contacts');
-    }
-
     public function businessHours(): View
     {
         return $this->placeholder('whatsapp_business_hours');

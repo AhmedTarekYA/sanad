@@ -3,6 +3,7 @@
 use App\Http\Controllers\CRM\CrmAuthController;
 use App\Http\Controllers\CRM\CrmDashboardController;
 use App\Http\Controllers\CRM\WhatsappBusinessSettingController;
+use App\Http\Controllers\CRM\WhatsappContactsController;
 use App\Http\Controllers\CRM\WhatsappLabelsController;
 use App\Http\Controllers\CRM\WhatsappQuickRepliesController;
 use App\Http\Controllers\CRM\WhatsappWebhookController;
@@ -34,7 +35,17 @@ Route::domain(config('app.crm_domain'))->name('crm.')->middleware(SetCrmLocale::
         Route::get('/whatsapp-setup', [CrmDashboardController::class, 'setup'])->name('whatsapp_setup');
         Route::get('/whatsapp-chat', [CrmDashboardController::class, 'chat'])->name('whatsapp_chat');
         Route::get('/whatsapp-broadcasts', [CrmDashboardController::class, 'broadcasts'])->name('whatsapp_broadcasts');
-        Route::get('/whatsapp-contacts', [CrmDashboardController::class, 'contacts'])->name('whatsapp_contacts');
+        Route::get('/whatsapp-contacts', [WhatsappContactsController::class, 'index'])->name('whatsapp_contacts');
+        Route::post('/whatsapp-contacts/import', [WhatsappContactsController::class, 'import'])->name('whatsapp_contacts.import');
+        Route::post('/whatsapp-contacts', [WhatsappContactsController::class, 'store'])->name('whatsapp_contacts.store');
+        Route::get('/whatsapp-contacts/{id}', [WhatsappContactsController::class, 'show'])->name('whatsapp_contacts.show');
+        Route::put('/whatsapp-contacts/{id}', [WhatsappContactsController::class, 'update'])->name('whatsapp_contacts.update');
+        Route::put('/whatsapp-contacts/{id}/tags', [WhatsappContactsController::class, 'setTags'])->name('whatsapp_contacts.tags.set');
+        Route::delete('/whatsapp-contacts/{id}', [WhatsappContactsController::class, 'destroy'])->name('whatsapp_contacts.destroy');
+        Route::get('/whatsapp-contact-tags', [WhatsappContactsController::class, 'contactTagsIndex'])->name('contact_tags.index');
+        Route::post('/whatsapp-contact-tags', [WhatsappContactsController::class, 'contactTagsStore'])->name('contact_tags.store');
+        Route::put('/whatsapp-contact-tags/{id}', [WhatsappContactsController::class, 'contactTagsUpdate'])->name('contact_tags.update');
+        Route::delete('/whatsapp-contact-tags/{id}', [WhatsappContactsController::class, 'contactTagsDestroy'])->name('contact_tags.destroy');
         Route::get('/whatsapp-labels', [WhatsappLabelsController::class, 'index'])->name('whatsapp_labels');
         Route::post('/whatsapp-labels', [WhatsappLabelsController::class, 'store'])->name('whatsapp_labels.store');
         Route::put('/whatsapp-labels/{id}', [WhatsappLabelsController::class, 'update'])->name('whatsapp_labels.update');

@@ -1233,5 +1233,11 @@
     "add_account": "Add Account",
     "whatsapp_labels_hint": "Create tags for contacts and conversations to organise them easily.",
     "whatsapp_quick_replies_hint": "Add ready-made replies to use quickly in conversations.",
-    "whatsapp_quick_reply": "Quick reply"
+    "whatsapp_quick_reply": "Quick reply",
+    "whatsapp_contact_details": "Contact details",
+    "whatsapp_view": "View",
+    "whatsapp_manage_tags": "Manage tags",
+    "whatsapp_tag_assign": "Assign tags",
+    "whatsapp_save_tags": "Save tags",
+    "whatsapp_import_contacts": "Import contacts"
 }
