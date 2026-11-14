@@ -6,19 +6,22 @@ use App\Http\Controllers\Sanad\Authentication\ChangePasswordController;
 use App\Http\Controllers\Sanad\Authentication\ProfileController;
 use App\Http\Controllers\Sanad\Blog\BlogController;
 use App\Http\Controllers\Sanad\ClientReview\ClientReviewController;
-use App\Http\Controllers\Sanad\Faq\FaqController;
 use App\Http\Controllers\Sanad\Command\CommandController;
 use App\Http\Controllers\Sanad\Command\TerminalController;
 use App\Http\Controllers\Sanad\Command\UpdateController;
 use App\Http\Controllers\Sanad\Consultation\ConsultationController as ConsultationDashboardController;
+use App\Http\Controllers\Sanad\CRM\CrmUserController;
 use App\Http\Controllers\Sanad\DashboardController;
 use App\Http\Controllers\Sanad\Env\EnvController;
+use App\Http\Controllers\Sanad\Faq\FaqController;
 use App\Http\Controllers\Sanad\Permission\PermissionController;
 use App\Http\Controllers\Sanad\Permission\RoleController;
 use App\Http\Controllers\Sanad\Settings\MainSettingController;
 use App\Http\Controllers\Sanad\Settings\SettingController;
 use App\Http\Controllers\Sanad\Translator\TranslatorController;
 use App\Http\Controllers\Sanad\WhyChooseUs\WhyChooseUsController;
+use App\Models\Sanad\Setting;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -48,9 +51,9 @@ Route::group(
                 Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index')->middleware('admin', 'preventBack');
 
                 // ---------------------------------------------------
-                Route::patch('settings/font', function (\Illuminate\Http\Request $request) {
+                Route::patch('settings/font', function (Request $request) {
                     $font = $request->validate(['font' => ['required', 'in:ibm,thmanya']])['font'];
-                    \App\Models\Sanad\Setting::first()?->update(['font' => $font]);
+                    Setting::first()?->update(['font' => $font]);
 
                     return jsonSuccess();
                 })->name('settings.update-font');
@@ -77,6 +80,8 @@ Route::group(
                 Route::resource('client-reviews', ClientReviewController::class)->parameters(['client-reviews' => 'id']);
 
                 Route::resource('faqs', FaqController::class)->parameters(['faqs' => 'id']);
+
+                Route::resource('crm-users', CrmUserController::class)->parameters(['crm-users' => 'id']);
 
                 Route::resource('consultation-requests', ConsultationDashboardController::class)
                     ->parameters(['consultation-requests' => 'id'])

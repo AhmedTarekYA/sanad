@@ -122,6 +122,15 @@
                             </span>
                             <span class="pc-mtext">{{ __('auth.faqs') }}</span></a></li>
                 @endif
+                @if(checkIfHasPermission('crm-users-read'))
+                    <li class="pc-item {{ Str::startsWith($currentRoute, 'crm-users.') ? 'active' : '' }}"><a
+                            href="{{ route('crm-users.index') }}" class="pc-link">
+                            <span class="pc-micon">
+                                <img class="sanad-sidebar-svg" src="{{ asset('admin/assets/icons/admin.svg') }}" alt=""
+                                     aria-hidden="true">
+                            </span>
+                            <span class="pc-mtext">{{ __('auth.crm_users') }}</span></a></li>
+                @endif
                 @if(checkIfHasPermission('consultation-requests-read'))
                     <li class="pc-item {{ Str::startsWith($currentRoute, 'consultation-requests.') ? 'active' : '' }}"><a
                             href="{{ route('consultation-requests.index') }}" class="pc-link"><span class="pc-micon"><img

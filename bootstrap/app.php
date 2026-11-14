@@ -39,6 +39,14 @@ return Application::configure(basePath: dirname(__DIR__))
             TrackVisitor::class,
         ]);
 
+        $middleware->redirectGuestsTo(function (Request $request): string {
+            if ($request->getHost() === config('app.crm_domain')) {
+                return route('crm.login');
+            }
+
+            return route('admin.form.login');
+        });
+
         $middleware->alias([
             'admin' => CheckIfAdmin::class,
             'developer' => DeveloperOnly::class,

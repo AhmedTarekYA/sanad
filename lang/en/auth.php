@@ -505,4 +505,10 @@ return [
     'ai_outcome1' => 'Increase sales, reduce operating costs,',
     'ai_outcome2' => 'Boost employee productivity, improve customer experience,',
     'ai_outcome3' => 'Faster, more accurate decisions, administrative or operational',
+    'crm_users' => 'CRM Users',
+    'crm_user' => 'CRM User',
+    'subscription_ends_at' => 'Subscription Ends At',
+    'crm_account_inactive' => 'This account is inactive.',
+    'crm_subscription_expired' => 'This account subscription has expired.',
+    'sidebar' => 'Sidebar',
 ];

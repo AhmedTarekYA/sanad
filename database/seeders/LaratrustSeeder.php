@@ -73,6 +73,12 @@ class LaratrustSeeder extends Seeder
             'update' => 'تعديل سؤال شائع',
             'delete' => 'حذف سؤال شائع',
         ],
+        'crm-users' => [
+            'create' => 'إضافة مستخدم CRM',
+            'read' => 'عرض مستخدمي CRM',
+            'update' => 'تعديل مستخدم CRM',
+            'delete' => 'حذف مستخدم CRM',
+        ],
     ];
 
     public function run(): void

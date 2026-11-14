@@ -945,5 +945,16 @@
     "OK": "حسنا",
     "add_blog": "إضافة مقال",
     "edit_blog": "تعديل مقال",
-    "slug": "الرابط المختصر"
+    "slug": "الرابط المختصر",
+    "whatsapp_menu": "واتساب",
+    "whatsapp_business_settings": "اعدادات الواتس",
+    "whatsapp_setup": "طريقة الربط",
+    "whatsapp_chat": "الشات",
+    "whatsapp_broadcasts": "الرسائل الجماعية",
+    "whatsapp_contacts": "جهات الاتصال",
+    "whatsapp_labels": "التصنيفات",
+    "whatsapp_quick_replies": "الرد السريع",
+    "whatsapp_business_hours": "ساعات العمل",
+    "whatsapp_analytics": "التقارير",
+    "crm_users": "CRM"
 }
