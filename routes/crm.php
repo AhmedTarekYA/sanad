@@ -2,9 +2,19 @@
 
 use App\Http\Controllers\CRM\CrmAuthController;
 use App\Http\Controllers\CRM\CrmDashboardController;
+use App\Http\Middleware\SetCrmLocale;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::domain(config('app.crm_domain'))->name('crm.')->group(function (): void {
+Route::domain(config('app.crm_domain'))->name('crm.')->middleware(SetCrmLocale::class)->group(function (): void {
+    Route::get('/lang/{locale}', function (Request $request, string $locale) {
+        abort_unless(array_key_exists($locale, config('laravellocalization.supportedLocales', [])), 404);
+
+        $request->session()->put('crm_locale', $locale);
+
+        return redirect()->back(302, [], '/');
+    })->name('lang');
+
     Route::middleware('guest:crm')->group(function (): void {
         Route::get('/login', [CrmAuthController::class, 'showLogin'])->name('login');
         Route::post('/login', [CrmAuthController::class, 'login'])->name('login.attempt');

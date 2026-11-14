@@ -1,5 +1,5 @@
 @php($crmUser = auth('crm')->user())
-@php($crmAvatar = $crmUser?->image ? showFile($crmUser->image) : asset('admin/assets/images/user/avatar-1.jpg'))
+@php($crmAvatar = showFile($crmUser?->image, 'admin'))
 @php($supportedLocales = config('laravellocalization.supportedLocales', []))
 <header class="pc-header">
     <div class="header-wrapper">
@@ -15,7 +15,7 @@
                     <a href="#" class="pc-head-link dropdown-toggle arrow-none" id="language-toggle" aria-expanded="false" aria-label="{{ __('auth.change language') }}"><i class="ph-duotone ph-translate"></i></a>
                     <div class="dropdown-menu dropdown-menu-end pc-h-dropdown lng-dropdown" id="language-menu">
                         @foreach($supportedLocales as $localeCode => $localeData)
-                            <a href="{{ app('laravellocalization')->getLocalizedURL($localeCode, null, [], true) }}" class="dropdown-item">
+                            <a href="{{ route('crm.lang', $localeCode) }}" class="dropdown-item">
                                 <span class="language-flag" role="img" aria-label="{{ $localeCode === 'ar' ? 'السعودية' : 'English' }}">{{ $localeCode === 'ar' ? '🇸🇦' : '🇬🇧' }}</span>
                                 <span>{{ $localeData['native'] ?? strtoupper($localeCode) }} <small>({{ strtoupper($localeCode) }})</small></span>
                             </a>

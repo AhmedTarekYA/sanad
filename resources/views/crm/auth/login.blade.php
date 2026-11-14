@@ -34,7 +34,7 @@
                 <button type="button" class="sanad-login__language-toggle" aria-expanded="false" aria-controls="sanadLanguageMenu"><i class="fal fa-language" aria-hidden="true"></i><span>{{ $supportedLocales[$currentLocale]['native'] ?? strtoupper($currentLocale) }}</span><i class="fal fa-chevron-down" aria-hidden="true"></i></button>
                 <div class="sanad-login__language-menu" id="sanadLanguageMenu">
                     @foreach($supportedLocales as $localeCode => $localeData)
-                        <a href="{{ app('laravellocalization')->getLocalizedURL($localeCode, null, [], true) }}" class="{{ $currentLocale === $localeCode ? 'is-active' : '' }}"><span>{{ $localeData['native'] ?? strtoupper($localeCode) }}</span><small>{{ strtoupper($localeCode) }}</small></a>
+                        <a href="{{ route('crm.lang', $localeCode) }}" class="{{ $currentLocale === $localeCode ? 'is-active' : '' }}"><span>{{ $localeData['native'] ?? strtoupper($localeCode) }}</span><small>{{ strtoupper($localeCode) }}</small></a>
                     @endforeach
                 </div>
             </div>
