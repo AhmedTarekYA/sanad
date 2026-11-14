@@ -22,12 +22,24 @@
                         @endforeach
                     </div>
                 </li>
-                <li class="pc-h-item"><span class="pc-head-link"><img src="{{ $crmAvatar }}" alt="{{ $crmUser?->name }}" class="user-avtar"></span></li>
-                <li class="pc-h-item">
-                    <form method="POST" action="{{ route('crm.logout') }}" class="m-0">
-                        @csrf
-                        <button type="submit" class="pc-head-link border-0 bg-transparent"><i class="ph-duotone ph-power" aria-hidden="true"></i><span class="d-none d-md-inline ms-2">{{ __('auth.logout') }}</span></button>
-                    </form>
+                <li class="dropdown pc-h-item header-user-profile">
+                    <a href="#" class="pc-head-link dropdown-toggle arrow-none" id="profile-toggle" aria-expanded="false" aria-label="{{ __('auth.profile') }}"><img src="{{ $crmAvatar }}" alt="{{ $crmUser?->name }}" class="user-avtar"></a>
+                    <div class="dropdown-menu dropdown-user-profile dropdown-menu-end pc-h-dropdown crm-profile-dropdown" id="profile-menu">
+                        <div class="dropdown-body">
+                            <div class="d-flex align-items-center px-3 py-2">
+                                <img src="{{ $crmAvatar }}" alt="" class="wid-40 rounded-circle">
+                                <div class="flex-grow-1 mx-2 text-truncate">
+                                    <h6 class="mb-0 text-truncate">{{ $crmUser?->name }}</h6>
+                                    <small class="text-muted text-truncate d-block">{{ $crmUser?->email }}</small>
+                                </div>
+                            </div>
+                            <div class="dropdown-divider"></div>
+                            <form method="POST" action="{{ route('crm.logout') }}" class="m-0">
+                                @csrf
+                                <button type="submit" class="dropdown-item text-danger border-0 bg-transparent w-100 text-start"><i class="ph-duotone ph-power me-2" aria-hidden="true"></i>{{ __('auth.logout') }}</button>
+                            </form>
+                        </div>
+                    </div>
                 </li>
             </ul>
         </div>
@@ -39,11 +51,14 @@
 .pc-header .lng-dropdown .dropdown-item{display:flex;align-items:center;gap:10px}
 .pc-header .lng-dropdown .language-flag{display:inline-flex;width:25px;height:22px;align-items:center;justify-content:center;font-size:20px;line-height:1}
 .pc-header .lng-dropdown small{margin-inline-start:6px;color:var(--bs-secondary-color)}
-.pc-header .user-avtar{width:36px;height:36px;object-fit:cover;border-radius:50%;border:2px solid rgba(45,113,240,.18)}
+.pc-header .user-avtar{width:36px;height:36px;object-fit:cover;border-radius:50%;border:2px solid rgba(45,113,240,.18);cursor:pointer}
+.pc-header .crm-profile-dropdown{min-width:240px;padding:8px 0}
+.pc-header .crm-profile-dropdown .wid-40{width:40px;height:40px;object-fit:cover}
+.pc-header .crm-profile-dropdown .dropdown-item{padding:8px 16px}
 </style>
 <script>
 document.addEventListener('DOMContentLoaded',function(){
-    const ids=['language'];
+    const ids=['language','profile'];
     ids.forEach(function(name){
         const toggle=document.getElementById(name+'-toggle'),menu=document.getElementById(name+'-menu');
         if(!toggle||!menu)return;
