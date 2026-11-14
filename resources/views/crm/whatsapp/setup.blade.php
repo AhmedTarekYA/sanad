@@ -5,8 +5,8 @@
 @section('style')
     <style>
         :root {
-            --wb-green: #00a884;
-            --wb-green-dark: #008069;
+            --wb-green: #2D71F0;
+            --wb-green-dark: #1640C6;
             --wb-bg: #f0f2f5;
             --wb-border: rgba(0, 0, 0, 0.08);
         }
@@ -356,7 +356,7 @@
                             </div>
                         </div>
 
-                        <img class="wb-ill" src="{{ asset('admin/assets/ill.svg') }}" alt="{{ __('whatsapp_setup') }}">
+                        <img class="wb-ill" src="{{ asset('admin/assets/img/whats.png') }}" alt="{{ __('whatsapp_setup') }}">
                     </div>
                 </div>
             </div>

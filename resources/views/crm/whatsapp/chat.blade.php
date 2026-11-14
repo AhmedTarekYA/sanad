@@ -5,8 +5,8 @@
 @section('style')
     <style>
         :root {
-            --wb-green: #00a884;
-            --wb-green-dark: #008069;
+            --wb-green: #2D71F0;
+            --wb-green-dark: #1640C6;
             --wb-bg: #f0f2f5;
             --wb-panel: #ffffff;
             --wb-border: rgba(0, 0, 0, 0.08);
