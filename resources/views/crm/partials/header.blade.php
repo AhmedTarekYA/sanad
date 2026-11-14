@@ -14,9 +14,9 @@
                 <li class="dropdown pc-h-item">
                     <a href="#" class="pc-head-link dropdown-toggle arrow-none" id="theme-toggle" aria-expanded="false" aria-label="Theme"><i class="ph-duotone ph-sun-dim"></i></a>
                     <div class="dropdown-menu dropdown-menu-end pc-h-dropdown" id="theme-menu">
-                        <a href="#" class="dropdown-item theme-option" data-theme-value="light"><i class="ph-duotone ph-sun-dim"></i><span>Light</span></a>
-                        <a href="#" class="dropdown-item theme-option" data-theme-value="dark"><i class="ph-duotone ph-moon"></i><span>Dark</span></a>
-                        <a href="#" class="dropdown-item theme-option" data-theme-value="auto"><i class="ph-duotone ph-cpu"></i><span>Auto</span></a>
+                        <a href="#" class="dropdown-item theme-option" data-theme-value="light"><i class="ph-duotone ph-sun-dim"></i><span>{{ app()->getLocale() === 'ar' ? 'الوضع النهاري' : 'Light' }}</span></a>
+                        <a href="#" class="dropdown-item theme-option" data-theme-value="dark"><i class="ph-duotone ph-moon"></i><span>{{ app()->getLocale() === 'ar' ? 'دارك مود' : 'Dark' }}</span></a>
+                        <a href="#" class="dropdown-item theme-option" data-theme-value="auto"><i class="ph-duotone ph-cpu"></i><span>{{ app()->getLocale() === 'ar' ? 'مطابقة جهازك' : 'Auto' }}</span></a>
                     </div>
                 </li>
                 <li class="dropdown pc-h-item">

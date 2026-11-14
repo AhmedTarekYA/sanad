@@ -17,6 +17,72 @@
             --wb-out-msg: #d9fdd3;
         }
 
+        [data-pc-theme="dark"] {
+            --wb-bg: #111b21;
+            --wb-panel: #202c33;
+            --wb-border: rgba(255, 255, 255, 0.07);
+            --wb-muted: rgba(255, 255, 255, 0.45);
+            --wb-text: rgba(255, 255, 255, 0.90);
+            --wb-chat-bg: #0d1418;
+            --wb-in-msg: #202c33;
+            --wb-out-msg: #005c4b;
+        }
+
+        [data-pc-theme="dark"] .wb-text {
+            color: rgba(255, 255, 255, 0.88);
+        }
+
+        [data-pc-theme="dark"] .wb-timestamp,
+        [data-pc-theme="dark"] .wb-conv-last,
+        [data-pc-theme="dark"] .wb-conv-time {
+            color: rgba(255, 255, 255, 0.45);
+        }
+
+        [data-pc-theme="dark"] .wb-conv-name {
+            color: rgba(255, 255, 255, 0.90);
+        }
+
+        [data-pc-theme="dark"] .wb-search input,
+        [data-pc-theme="dark"] .wb-compose input,
+        [data-pc-theme="dark"] .wb-compose textarea {
+            background: #2a3942;
+            color: rgba(255, 255, 255, 0.88);
+            border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        [data-pc-theme="dark"] .wb-search input::placeholder,
+        [data-pc-theme="dark"] .wb-compose textarea::placeholder {
+            color: rgba(255, 255, 255, 0.35);
+        }
+
+        [data-pc-theme="dark"] .wb-conv-item:hover,
+        [data-pc-theme="dark"] .wb-conv-item.is-active {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        [data-pc-theme="dark"] .wb-icon-btn {
+            color: rgba(255, 255, 255, 0.65);
+        }
+
+        [data-pc-theme="dark"] .wb-icon-btn:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+        }
+
+        [data-pc-theme="dark"] .wb-modal-content,
+        [data-pc-theme="dark"] .wb-panel-right {
+            background: #202c33;
+            color: rgba(255, 255, 255, 0.88);
+        }
+
+        [data-pc-theme="dark"] .wb-settings-label {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        [data-pc-theme="dark"] .wb-settings-value {
+            color: rgba(255, 255, 255, 0.88);
+        }
+
         #whats-chat-root {
             min-height: 75vh;
         }
