@@ -168,6 +168,68 @@
             color: rgba(255, 255, 255, 0.45);
         }
 
+        /* ── Compose / input area dark mode ── */
+        [data-pc-theme="dark"] .wb-composer {
+            background: #202c33;
+            border-top-color: rgba(255, 255, 255, 0.07);
+        }
+
+        [data-pc-theme="dark"] .wb-composer-input {
+            background: #2a3942;
+            color: rgba(255, 255, 255, 0.88);
+            border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        [data-pc-theme="dark"] .wb-composer-input::placeholder {
+            color: rgba(255, 255, 255, 0.35);
+        }
+
+        [data-pc-theme="dark"] .wb-composer-input:focus {
+            background: #2a3942;
+            border-color: rgba(45, 113, 240, 0.4);
+            box-shadow: 0 0 0 3px rgba(45, 113, 240, 0.12);
+        }
+
+        [data-pc-theme="dark"] .wb-recording-indicator {
+            background: #2a3942;
+        }
+
+        [data-pc-theme="dark"] .wb-composer .wb-icon-btn {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        [data-pc-theme="dark"] .wb-composer .wb-icon-btn:hover,
+        [data-pc-theme="dark"] .wb-composer .wb-icon-btn.is-open {
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+        }
+
+        [data-pc-theme="dark"] .wb-typing {
+            background: rgba(32, 44, 51, 0.9);
+            color: rgba(255, 255, 255, 0.55);
+            border-top-color: rgba(255, 255, 255, 0.07);
+        }
+
+        [data-pc-theme="dark"] .wb-composer-tools-menu,
+        [data-pc-theme="dark"] .wb-composer-tool {
+            background: #202c33;
+            color: rgba(255, 255, 255, 0.88);
+            border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        [data-pc-theme="dark"] .wb-composer-tools-menu {
+            box-shadow: 0 18px 48px rgba(0, 0, 0, 0.5);
+        }
+
+        [data-pc-theme="dark"] .wb-composer-tool:hover {
+            background: #2a3942;
+        }
+
+        [data-pc-theme="dark"] .wb-reply-bar {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(255, 255, 255, 0.07);
+        }
+
         #whats-chat-root {
             min-height: 75vh;
         }

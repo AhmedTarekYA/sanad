@@ -140,6 +140,11 @@ class CrmTestDataSeeder extends Seeder
 
         $thirdConversation = $conversations->get(2) ?? $conversations->last();
         if ($thirdConversation) {
+            WhatsappMessage::where('conversation_id', $thirdConversation->id)
+                ->where('raw->seeded', true)
+                ->whereIn('wamid', array_map(fn ($n) => "seed-rich-{$n}", range(1, 10)))
+                ->delete();
+
             $richMessages = [
                 [
                     'wamid' => 'seed-rich-1',
