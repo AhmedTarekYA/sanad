@@ -39,6 +39,8 @@ return Application::configure(basePath: dirname(__DIR__))
             TrackVisitor::class,
         ]);
 
+        $middleware->validateCsrfTokens(except: ['whatsapp/webhook']);
+
         $middleware->redirectGuestsTo(function (Request $request): string {
             if ($request->getHost() === config('app.crm_domain')) {
                 return route('crm.login');

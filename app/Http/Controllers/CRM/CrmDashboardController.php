@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\CRM;
 
 use App\Http\Controllers\Controller;
+use App\Services\Sanad\WhatsappBusinessSettingService;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class CrmDashboardController extends Controller
@@ -19,9 +21,20 @@ class CrmDashboardController extends Controller
         return $this->placeholder('whatsapp_business_settings');
     }
 
-    public function setup(): View
+    public function setup(WhatsappBusinessSettingService $service): View
     {
-        return $this->placeholder('whatsapp_setup');
+        $user = Auth::guard('crm')->user();
+        $settings = $service->getPrimaryForUser($user);
+
+        return view('crm.whatsapp.setup', [
+            'pageTitle' => __('whatsapp_setup'),
+            'settings' => $settings,
+            'webhookUrl' => route('crm.whatsapp.webhook.receive'),
+            'verifyUrl' => route('crm.whatsapp.webhook.verify'),
+            'hasActive' => (bool) $service->allForUser($user)->contains('is_active', true),
+            'hasRequired' => $settings && $settings->api_version && $settings->phone_number_id && $settings->access_token,
+            'metaAppsUrl' => 'https://developers.facebook.com/apps/',
+        ]);
     }
 
     public function chat(): View

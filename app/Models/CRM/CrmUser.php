@@ -4,6 +4,7 @@ namespace App\Models\CRM;
 
 use Database\Factories\CrmUserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Carbon;
 
@@ -40,6 +41,11 @@ class CrmUser extends Authenticatable
         'subscription_ends_at' => 'datetime',
         'is_active' => 'boolean',
     ];
+
+    public function whatsappBusinessSettings(): HasMany
+    {
+        return $this->hasMany(WhatsappBusinessSetting::class, 'crm_user_id');
+    }
 
     protected static function newFactory(): CrmUserFactory
     {
