@@ -1106,6 +1106,7 @@
     "whatsapp_draft": "Draft",
     "whatsapp_sending": "Sending",
     "whatsapp_delivered": "Delivered",
+    "whatsapp_send": "Send",
     "whatsapp_send_now": "Send now",
     "whatsapp_resend": "Resend",
     "whatsapp_resend_failed_only": "Resend failed only",

@@ -84,17 +84,17 @@
                                         </td>
                                         <td>
                                             <div class="d-flex flex-wrap gap-2">
-                                                <button type="button" class="btn btn-sm btn-primary"
+                                                <button type="button" class="btn btn-sm btn-outline-primary"
                                                         data-scope="contact" data-action="edit"
                                                         data-id="{{ $tag->id }}"
                                                         data-name="{{ $tag->name }}"
                                                         data-color="{{ (string) $tag->color }}">
-                                                    <i class="fas fa-pen"></i>
+                                                    <i class="fas fa-pen me-1"></i>{{ __('edit') }}
                                                 </button>
-                                                <button type="button" class="btn btn-sm btn-danger"
+                                                <button type="button" class="btn btn-sm btn-outline-danger"
                                                         data-scope="contact" data-action="delete"
                                                         data-id="{{ $tag->id }}">
-                                                    <i class="fas fa-trash"></i>
+                                                    <i class="fas fa-trash me-1"></i>{{ __('delete') }}
                                                 </button>
                                             </div>
                                         </td>
@@ -138,17 +138,17 @@
                                         </td>
                                         <td>
                                             <div class="d-flex flex-wrap gap-2">
-                                                <button type="button" class="btn btn-sm btn-primary"
+                                                <button type="button" class="btn btn-sm btn-outline-primary"
                                                         data-scope="chat" data-action="edit"
                                                         data-id="{{ $tag->id }}"
                                                         data-name="{{ $tag->name }}"
                                                         data-color="{{ (string) $tag->color }}">
-                                                    <i class="fas fa-pen"></i>
+                                                    <i class="fas fa-pen me-1"></i>{{ __('edit') }}
                                                 </button>
-                                                <button type="button" class="btn btn-sm btn-danger"
+                                                <button type="button" class="btn btn-sm btn-outline-danger"
                                                         data-scope="chat" data-action="delete"
                                                         data-id="{{ $tag->id }}">
-                                                    <i class="fas fa-trash"></i>
+                                                    <i class="fas fa-trash me-1"></i>{{ __('delete') }}
                                                 </button>
                                             </div>
                                         </td>

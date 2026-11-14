@@ -90,7 +90,7 @@
                                         <td>
                                             <div class="d-flex flex-wrap gap-2">
                                                 @if (! in_array($broadcast->status, ['sent', 'canceled', 'sending'], true))
-                                                    <button type="button" class="btn btn-sm btn-primary"
+                                                    <button type="button" class="btn btn-sm btn-outline-primary"
                                                             data-action="edit"
                                                             data-id="{{ $broadcast->id }}"
                                                             data-title="{{ $broadcast->title }}"
@@ -101,22 +101,22 @@
                                                             data-template-language="{{ $broadcast->template_language }}"
                                                             data-button-ids="{{ implode(',', $broadcast->button_quick_reply_ids ?? []) }}"
                                                             data-scheduled-at="{{ $broadcast->scheduled_at?->format('Y-m-d\TH:i') }}">
-                                                        <i class="fas fa-pen"></i>
+                                                        <i class="fas fa-pen me-1"></i>{{ __('edit') }}
                                                     </button>
                                                 @endif
                                                 @if (! in_array($broadcast->status, ['sent', 'canceled', 'sending'], true))
-                                                    <button type="button" class="btn btn-sm btn-success"
+                                                    <button type="button" class="btn btn-sm btn-outline-success"
                                                             data-action="send" data-id="{{ $broadcast->id }}">
-                                                        <i class="fas fa-paper-plane"></i>
+                                                        <i class="fas fa-paper-plane me-1"></i>{{ __('whatsapp_send') }}
                                                     </button>
-                                                    <button type="button" class="btn btn-sm btn-secondary"
+                                                    <button type="button" class="btn btn-sm btn-outline-secondary"
                                                             data-action="cancel" data-id="{{ $broadcast->id }}">
-                                                        <i class="fas fa-ban"></i>
+                                                        <i class="fas fa-ban me-1"></i>{{ __('cancel') }}
                                                     </button>
                                                 @endif
-                                                <button type="button" class="btn btn-sm btn-dark"
+                                                <button type="button" class="btn btn-sm btn-outline-dark"
                                                         data-action="report" data-id="{{ $broadcast->id }}">
-                                                    <i class="fas fa-chart-bar"></i>
+                                                    <i class="fas fa-chart-bar me-1"></i>{{ __('whatsapp_report') }}
                                                 </button>
                                             </div>
                                         </td>
