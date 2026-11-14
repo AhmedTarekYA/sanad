@@ -83,6 +83,91 @@
             color: rgba(255, 255, 255, 0.88);
         }
 
+        /* ── Comprehensive dark mode: fix all hardcoded #fff backgrounds ── */
+        [data-pc-theme="dark"] .wb-sidebar-tools,
+        [data-pc-theme="dark"] .wb-sidebar-tool,
+        [data-pc-theme="dark"] .wb-search,
+        [data-pc-theme="dark"] .wb-filter-row,
+        [data-pc-theme="dark"] .wb-conversation-tabs,
+        [data-pc-theme="dark"] .wb-conversation-tab,
+        [data-pc-theme="dark"] .wb-chat-header,
+        [data-pc-theme="dark"] .wb-quick-actions,
+        [data-pc-theme="dark"] .wb-qa-btn,
+        [data-pc-theme="dark"] .wb-action-menu-toggle,
+        [data-pc-theme="dark"] .wb-action-menu-panel,
+        [data-pc-theme="dark"] .wb-icon-btn {
+            background: #202c33;
+            border-color: rgba(255, 255, 255, 0.07);
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        [data-pc-theme="dark"] .wb-qa-btn:hover {
+            background: #2a3942;
+            color: #fff;
+        }
+
+        [data-pc-theme="dark"] .wb-sidebar-tool {
+            color: rgba(255, 255, 255, 0.72);
+        }
+
+        [data-pc-theme="dark"] .wb-sidebar-tool:hover {
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.15);
+            background: #2a3942;
+        }
+
+        [data-pc-theme="dark"] .wb-conversation-tab {
+            border-color: rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.65);
+        }
+
+        [data-pc-theme="dark"] .wb-conversation-tab:hover {
+            background: #2a3942;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        [data-pc-theme="dark"] .wb-action-menu-panel {
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        [data-pc-theme="dark"] .wb-action-menu-panel .wb-qa-btn i {
+            color: rgba(45, 113, 240, 0.9);
+        }
+
+        [data-pc-theme="dark"] .wb-filter-select {
+            background: #2a3942;
+            color: rgba(255, 255, 255, 0.85);
+            border-color: rgba(255, 255, 255, 0.07);
+        }
+
+        [data-pc-theme="dark"] .wb-search-input {
+            background: #2a3942;
+            color: rgba(255, 255, 255, 0.85);
+            border-color: rgba(255, 255, 255, 0.07);
+        }
+
+        [data-pc-theme="dark"] .wb-search-input::placeholder {
+            color: rgba(255, 255, 255, 0.35);
+        }
+
+        [data-pc-theme="dark"] .wb-search-box i {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        [data-pc-theme="dark"] .wb-bubble {
+            border-color: rgba(255, 255, 255, 0.04);
+        }
+
+        [data-pc-theme="dark"] .wb-conv-badge {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.72);
+        }
+
+        [data-pc-theme="dark"] .wb-empty {
+            color: rgba(255, 255, 255, 0.45);
+        }
+
         #whats-chat-root {
             min-height: 75vh;
         }
@@ -3059,26 +3144,16 @@
                 </div>
 
                 <div class="wb-quick-actions">
-                    <div class="wb-action-menu" id="wb-action-menu">
-                        <button class="wb-action-menu-toggle" type="button" id="wb-action-menu-toggle" aria-expanded="false"
-                            aria-controls="wb-action-menu-panel">
-                            <i class="fa fa-ellipsis-v"></i>
-                            <span>{{ __('whatsapp_conversation_options') }}</span>
-                            <i class="fa fa-angle-down"></i>
-                        </button>
-                        <div class="wb-action-menu-panel" id="wb-action-menu-panel">
-                            <button class="wb-qa-btn" type="button" id="wb-tag-btn"><i class="fa fa-tag"></i>
-                                {{ __('whatsapp_tag') }}</button>
-                            <button class="wb-qa-btn" type="button" id="wb-note-btn"><i class="fa fa-sticky-note"></i>
-                                {{ __('whatsapp_note') }}</button>
-                            <button class="wb-qa-btn" type="button" id="wb-resolve-btn"><i class="fa fa-check-circle"></i>
-                                {{ __('whatsapp_resolve') }}</button>
-                            @if($snoozeUiEnabled)
-                                <button class="wb-qa-btn" type="button" disabled><i class="fa fa-clock-o"></i>
-                                    {{ __('whatsapp_snooze') }}</button>
-                            @endif
-                        </div>
-                    </div>
+                    <button class="wb-qa-btn" type="button" id="wb-tag-btn"><i class="fa fa-tag"></i>
+                        {{ __('whatsapp_tag') }}</button>
+                    <button class="wb-qa-btn" type="button" id="wb-note-btn"><i class="fa fa-sticky-note"></i>
+                        {{ __('whatsapp_note') }}</button>
+                    <button class="wb-qa-btn" type="button" id="wb-resolve-btn"><i class="fa fa-check-circle"></i>
+                        {{ __('whatsapp_resolve') }}</button>
+                    @if($snoozeUiEnabled)
+                        <button class="wb-qa-btn" type="button" disabled><i class="fa fa-clock-o"></i>
+                            {{ __('whatsapp_snooze') }}</button>
+                    @endif
                     @php
                         $initConvStatus = (isset($activeConversation) && $activeConversation) ? ($activeConversation->status ?? 'open') : null;
                         $initStatusResolved = $initConvStatus === 'resolved';
