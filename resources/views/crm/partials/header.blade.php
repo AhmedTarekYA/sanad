@@ -22,7 +22,7 @@
                         @endforeach
                     </div>
                 </li>
-                <li class="pc-h-item"><span class="pc-head-link"><img src="{{ $crmAvatar }}" alt="{{ $crmUser?->name }}" class="user-avtar"><span class="d-none d-md-inline ms-2">{{ $crmUser?->name }}</span></span></li>
+                <li class="pc-h-item"><span class="pc-head-link"><img src="{{ $crmAvatar }}" alt="{{ $crmUser?->name }}" class="user-avtar"></span></li>
                 <li class="pc-h-item">
                     <form method="POST" action="{{ route('crm.logout') }}" class="m-0">
                         @csrf
