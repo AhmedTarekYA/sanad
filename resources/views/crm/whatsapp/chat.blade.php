@@ -3283,9 +3283,9 @@
                             <i class="fa fa-expand"></i>
                             <i class="fa fa-compress"></i>
                         </button>
-                        <button class="wb-icon-btn" type="button" id="wb-contact-meta-btn"
-                            title="{{ app()->getLocale() === 'ar' ? 'بيانات العميل' : 'Customer info' }}" {{ isset($activeConversation) && $activeConversation ? '' : 'disabled' }}>
-                            <i class="fa fa-user"></i>
+                        <button class="btn btn-warning btn-sm text-white d-flex align-items-center gap-1" type="button" id="wb-contact-meta-btn" {{ isset($activeConversation) && $activeConversation ? '' : 'disabled' }} style="font-size:13px;padding:4px 10px;">
+                            <i class="fa fa-info-circle"></i>
+                            <span>{{ app()->getLocale() === 'ar' ? 'ملاحظات' : 'Notes' }}</span>
                         </button>
                     </div>
                 </div>
@@ -3737,6 +3737,19 @@
                         <div class="wb-contact-notes-list" id="wb-contact-notes-list" style="margin-top: 10px;">
                             <div class="wb-empty">{{ app()->getLocale() === 'ar' ? 'لا توجد ملاحظات' : 'No notes yet' }}</div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="wb-contact-notes-modal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header bg-warning text-white">
+                        <h5 class="modal-title"><i class="fa fa-info-circle me-2"></i>{{ app()->getLocale() === 'ar' ? 'ملاحظات العميل' : 'Customer Notes' }}</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body" id="wb-contact-notes-modal-body">
+                        <div class="text-muted text-center">{{ app()->getLocale() === 'ar' ? 'لا توجد ملاحظات' : 'No notes' }}</div>
                     </div>
                 </div>
             </div>
@@ -6004,6 +6017,18 @@
                         notesBanner.setAttribute('aria-hidden', 'false');
                     }
                 }
+
+                const metaBtnEl = document.getElementById('wb-contact-meta-btn');
+                if (metaBtnEl) {
+                    const contactNotes = meta && Array.isArray(meta.contact_notes) ? meta.contact_notes : [];
+                    if (contactNotes.length === 0) {
+                        metaBtnEl.setAttribute('disabled', 'disabled');
+                        metaBtnEl.style.opacity = '0.4';
+                    } else {
+                        metaBtnEl.removeAttribute('disabled');
+                        metaBtnEl.style.opacity = '1';
+                    }
+                }
             }
 
             function renderMessageSearchResults(items, query) {
@@ -6728,6 +6753,29 @@
                     if (!activeConversationId) return;
                     setModalOpenById('wb-contact-meta-panel', true);
                 });
+
+                const metaBtn = document.getElementById('wb-contact-meta-btn');
+                if (metaBtn) {
+                    metaBtn.addEventListener('click', function () {
+                        if (!activeConversationId) return;
+                        const notes = metaCache && Array.isArray(metaCache.contact_notes) ? metaCache.contact_notes : [];
+                        if (notes.length === 0) return;
+                        const modalBody = document.getElementById('wb-contact-notes-modal-body');
+                        if (modalBody) {
+                            modalBody.innerHTML = notes.map(function (n) {
+                                const noteText = n.note ? String(n.note) : '';
+                                const dateStr = n.created_at ? String(n.created_at).substring(0, 10) : '';
+                                return '<div class="border rounded p-3 mb-2"><p class="mb-1">' + escapeHtml(noteText) + '</p>'
+                                    + (dateStr ? '<small class="text-muted">' + escapeHtml(dateStr) + '</small>' : '') + '</div>';
+                            }).join('');
+                        }
+                        const modalEl = document.getElementById('wb-contact-notes-modal');
+                        if (modalEl && window.bootstrap) {
+                            const bsModal = bootstrap.Modal.getOrCreateInstance(modalEl);
+                            bsModal.show();
+                        }
+                    });
+                }
 
                 const closeBtn = document.getElementById('wb-contact-meta-close');
                 const backdrop = document.getElementById('wb-contact-meta-backdrop');
