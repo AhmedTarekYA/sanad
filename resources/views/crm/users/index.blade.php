@@ -16,131 +16,119 @@
             </div>
 
             <div class="col-12">
-                <div class="card shadow-sm border-0">
-                    <div class="table-responsive">
-                        <table class="table table-hover align-middle mb-0">
-                            <thead class="table-light">
-                                <tr>
-                                    <th style="width:60px;">#</th>
-                                    <th>{{ __('image') }}</th>
-                                    <th>{{ __('name') }}</th>
-                                    <th>{{ __('email') }}</th>
-                                    <th>{{ __('phone') }}</th>
-                                    <th>{{ __('role') }}</th>
-                                    <th>{{ __('status') }}</th>
-                                    <th style="width:170px;">{{ __('actions') }}</th>
-                                </tr>
-                            </thead>
-                            <tbody id="crm-users-body">
-                                <tr><td colspan="8" class="text-center text-muted">{{ __('whatsapp_loading') }}</td></tr>
-                            </tbody>
-                        </table>
+                <div class="card mb-3">
+                    <div class="card-body table-border-style">
+                        <div class="table-responsive">
+                            <table id="dataTableObject" class="table display dataTable table-hover" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>{{ __('image') }}</th>
+                                        <th>{{ __('name') }}</th>
+                                        <th>{{ __('email') }}</th>
+                                        <th>{{ __('phone') }}</th>
+                                        <th>{{ __('role') }}</th>
+                                        <th>{{ __('status') }}</th>
+                                        <th>{{ __('actions') }}</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    @include('crm.partials.help-modal', [
+        'title' => __('crm_help_users_title'),
+        'description' => __('crm_help_users_desc'),
+    ])
 @endsection
 
 @section('js')
     <script>
         (function () {
             const root = document.getElementById('crm-users-root');
-            const body = document.getElementById('crm-users-body');
             const indexUrl = root.dataset.indexUrl;
-            const labels = {
-                noUsers: '{{ __('whatsapp_no_results') }}',
+            const L = {
+                noData: '{{ __('whatsapp_no_results') }}',
                 failed: '{{ __('whatsapp_request_failed') }}',
                 edit: '{{ __('edit') }}',
-                delete: '{{ __('delete') }}',
-                confirmDelete: '{{ __('whatsapp_delete_contact_confirm') }}',
+                del: '{{ __('delete') }}',
+                cancel: '{{ __('cancel') }}',
+                confirm: '{{ __('whatsapp_delete_contact_confirm') }}',
+                done: '{{ __('auth.done successfully') }}',
+                admin: '{{ __('admin') }}',
+                agent: '{{ __('agent') }}',
+                active: '{{ __('active') }}',
+                inactive: '{{ __('inactive') }}',
             };
 
-            function escapeHtml(value) {
-                return String(value ?? '').replace(/[&<>"']/g, function (character) {
-                    return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character];
+            function esc(v) {
+                return String(v ?? '').replace(/[&<>"']/g, function (c) {
+                    return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c];
                 });
             }
 
-            function render(items) {
-                if (!items.length) {
-                    body.innerHTML = `<tr><td colspan="8" class="text-center text-muted">${escapeHtml(labels.noUsers)}</td></tr>`;
-                    return;
-                }
-
-                body.innerHTML = items.map(function (user) {
-                    const status = user.is_active
-                        ? `<span class="badge bg-success">{{ __('active') }}</span>`
-                        : `<span class="badge bg-secondary">{{ __('inactive') }}</span>`;
-                    const role = user.role === 'admin' ? '{{ __('admin') }}' : '{{ __('agent') }}';
-
-                    return `
-                        <tr>
-                            <td>${user.id}</td>
-                            <td><img src="${escapeHtml(user.image_url)}" class="rounded-circle" style="width:38px;height:38px;object-fit:cover;" alt=""></td>
-                            <td class="fw-bold">${escapeHtml(user.name)}</td>
-                            <td dir="ltr">${escapeHtml(user.email)}</td>
-                            <td dir="ltr">${escapeHtml(user.phone || '')}</td>
-                            <td>${escapeHtml(role)}</td>
-                            <td>${status}</td>
-                            <td>
-                                <div class="d-flex gap-1">
-                                    <a class="btn btn-sm btn-outline-secondary" href="${root.dataset.editUrlTemplate.replace('__ID__', user.id)}">{{ __('edit') }}</a>
-                                    <button type="button" class="btn btn-sm btn-outline-danger" data-action="delete" data-id="${user.id}">{{ __('delete') }}</button>
-                                </div>
-                            </td>
-                        </tr>
-                    `;
-                }).join('');
-            }
-
-            function load() {
-                $.ajax({
+            const dt = $('#dataTableObject').DataTable({
+                ajax: {
                     url: indexUrl,
-                    type: 'GET',
                     headers: { 'Accept': 'application/json' },
-                    success: function (response) {
-                        render((response.data || {}).items || []);
+                    dataSrc: function (json) { return (json.data || {}).items || []; },
+                },
+                columns: [
+                    { data: 'id' },
+                    {
+                        data: 'image_url', orderable: false, searchable: false,
+                        render: function (v) { return '<img src="' + esc(v) + '" class="rounded-circle" style="width:38px;height:38px;object-fit:cover;" alt="">'; },
                     },
-                    error: function () {
-                        body.innerHTML = `<tr><td colspan="8" class="text-center text-danger">${escapeHtml(labels.failed)}</td></tr>`;
-                    }
-                });
-            }
+                    { data: 'name', render: function (v) { return '<span class="fw-bold">' + esc(v) + '</span>'; } },
+                    { data: 'email', render: function (v) { return '<span dir="ltr">' + esc(v) + '</span>'; } },
+                    { data: 'phone', render: function (v) { return '<span dir="ltr">' + esc(v || '') + '</span>'; } },
+                    { data: 'role', render: function (v) { return esc(v === 'admin' ? L.admin : L.agent); } },
+                    {
+                        data: 'is_active',
+                        render: function (v) {
+                            return v ? '<span class="badge bg-success">' + esc(L.active) + '</span>'
+                                     : '<span class="badge bg-secondary">' + esc(L.inactive) + '</span>';
+                        },
+                    },
+                    {
+                        data: 'id', orderable: false, searchable: false,
+                        render: function (id) {
+                            const editUrl = root.dataset.editUrlTemplate.replace('__ID__', id);
+                            return '<div class="d-flex gap-1">'
+                                + '<a class="btn btn-sm btn-outline-secondary" href="' + esc(editUrl) + '">' + esc(L.edit) + '</a>'
+                                + '<button type="button" class="btn btn-sm btn-outline-danger" data-action="delete" data-id="' + id + '">' + esc(L.del) + '</button>'
+                                + '</div>';
+                        },
+                    },
+                ],
+                language: { emptyTable: L.noData },
+                pageLength: 25,
+            });
 
-            body.addEventListener('click', function (event) {
-                const button = event.target.closest('[data-action="delete"]');
-                if (!button) return;
+            document.getElementById('dataTableObject').addEventListener('click', function (e) {
+                const btn = e.target.closest('[data-action="delete"]');
+                if (!btn) return;
 
                 const doDelete = function () {
                     $.ajax({
-                        url: root.dataset.deleteUrlTemplate.replace('__ID__', button.dataset.id),
+                        url: root.dataset.deleteUrlTemplate.replace('__ID__', btn.dataset.id),
                         type: 'DELETE',
                         headers: { 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content, 'Accept': 'application/json' },
-                        success: function () {
-                            if (window.successToster) successToster('{{ __('auth.done successfully') }}');
-                            load();
-                        },
-                        error: function () {
-                            if (window.errorToster) errorToster(labels.failed);
-                        }
+                        success: function () { if (window.successToster) successToster(L.done); dt.ajax.reload(); },
+                        error: function () { if (window.errorToster) errorToster(L.failed); },
                     });
                 };
 
                 if (window.Swal) {
-                    Swal.fire({
-                        text: labels.confirmDelete,
-                        icon: 'warning',
-                        showCancelButton: true,
-                        confirmButtonText: '{{ __('delete') }}',
-                        cancelButtonText: '{{ __('cancel') }}',
-                    }).then(function (result) { if (result.isConfirmed) doDelete(); });
-                } else if (window.confirm(labels.confirmDelete)) {
+                    Swal.fire({ text: L.confirm, icon: 'warning', showCancelButton: true, confirmButtonText: L.del, cancelButtonText: L.cancel })
+                        .then(function (r) { if (r.isConfirmed) doDelete(); });
+                } else if (window.confirm(L.confirm)) {
                     doDelete();
                 }
             });
-
-            load();
         })();
     </script>
 @endsection
