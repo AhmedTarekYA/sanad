@@ -111,8 +111,8 @@
                             <td><small class="text-muted">${escapeHtml(createdAt)}</small></td>
                             <td>
                                 <div class="d-flex gap-1">
-                                    <a class="btn btn-sm btn-outline-secondary" href="${root.dataset.editUrlTemplate.replace('__ID__', sale.id)}">{{ __('edit') }}</a>
-                                    <button type="button" class="btn btn-sm btn-outline-danger" data-action="delete" data-id="${sale.id}">{{ __('delete') }}</button>
+                                    <a class="btn btn-sm btn-primary" href="${root.dataset.editUrlTemplate.replace('__ID__', sale.id)}"><i class="fas fa-pen"></i></a>
+                                    <button type="button" class="btn btn-sm btn-danger" data-action="delete" data-id="${sale.id}"><i class="fas fa-trash"></i></button>
                                 </div>
                             </td>
                         </tr>

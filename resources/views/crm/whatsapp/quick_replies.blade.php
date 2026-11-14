@@ -66,19 +66,19 @@
                                         </td>
                                         <td>
                                             <div class="d-flex flex-wrap gap-2">
-                                                <button type="button" class="btn btn-sm btn-outline-secondary"
+                                                <button type="button" class="btn btn-sm btn-primary"
                                                         data-action="edit"
                                                         data-id="{{ $item->id }}"
                                                         data-title="{{ $item->title }}"
                                                         data-shortcut="{{ (string) $item->shortcut }}"
                                                         data-body="{{ $item->body }}"
                                                         data-active="{{ $item->is_active ? '1' : '0' }}">
-                                                    {{ __('edit') }}
+                                                    <i class="fas fa-pen"></i>
                                                 </button>
-                                                <button type="button" class="btn btn-sm btn-outline-danger"
+                                                <button type="button" class="btn btn-sm btn-danger"
                                                         data-action="delete"
                                                         data-id="{{ $item->id }}">
-                                                    {{ __('delete') }}
+                                                    <i class="fas fa-trash"></i>
                                                 </button>
                                             </div>
                                         </td>
