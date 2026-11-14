@@ -3,6 +3,7 @@
 @section('page-title', $pageTitle)
 
 @section('style')
+    <link rel="stylesheet" href="{{ asset('admin/assets/cssbundle/dataTables.min.css') }}">
     <style>
         .wa-tag-chip {
             display: inline-flex;
@@ -54,13 +55,13 @@
             </div>
 
             <div class="col-12 col-lg-6">
-                <div class="card shadow-sm border-0 h-100">
-                    <div class="card-header bg-light">
+                <div class="card mb-3 h-100">
+                    <div class="card-header">
                         <strong>{{ __('whatsapp_contact_tags') }}</strong>
                     </div>
                     <div class="table-responsive">
-                        <table class="table table-hover align-middle mb-0">
-                            <thead class="table-light">
+                        <table id="contactTagsTable" class="table display dataTable table-hover" style="width:100%">
+                            <thead>
                                 <tr>
                                     <th style="width:60px;">#</th>
                                     <th>{{ __('whatsapp_tag') }}</th>
@@ -108,13 +109,13 @@
             </div>
 
             <div class="col-12 col-lg-6">
-                <div class="card shadow-sm border-0 h-100">
-                    <div class="card-header bg-light">
+                <div class="card mb-3 h-100">
+                    <div class="card-header">
                         <strong>{{ __('whatsapp_chat_tags') }}</strong>
                     </div>
                     <div class="table-responsive">
-                        <table class="table table-hover align-middle mb-0">
-                            <thead class="table-light">
+                        <table id="chatTagsTable" class="table display dataTable table-hover" style="width:100%">
+                            <thead>
                                 <tr>
                                     <th style="width:60px;">#</th>
                                     <th>{{ __('whatsapp_tag') }}</th>
@@ -201,11 +202,17 @@
 @endsection
 
 @section('js')
+    <script src="{{ asset('admin/assets/js/bundle/dataTables.bundle.js') }}"></script>
     <script>
         (function () {
             const root = document.getElementById('whatsapp-labels-root');
             if (!root) {
                 return;
+            }
+
+            if ($.fn && $.fn.DataTable) {
+                $('#contactTagsTable').DataTable({ pageLength: 25 });
+                $('#chatTagsTable').DataTable({ pageLength: 25 });
             }
 
             const storeUrl = root.dataset.storeUrl || '';

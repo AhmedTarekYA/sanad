@@ -3,12 +3,13 @@
 @section('page-title', $pageTitle)
 
 @section('style')
+    <link rel="stylesheet" href="{{ asset('admin/assets/cssbundle/dataTables.min.css') }}">
     <style>
         .wa-contact-tag {
             display: inline-block;
             padding: 2px 8px;
             border-radius: 999px;
-            background: rgba(0, 0, 0, 0.06);
+            background: rgba(45, 113, 240, 0.08);
             font-size: 11px;
             font-weight: 700;
             margin: 0 2px 2px 0;
@@ -19,7 +20,7 @@
             height: 38px;
             border-radius: 50%;
             object-fit: cover;
-            background: #f1f3f5;
+            background: rgba(45, 113, 240, 0.1);
         }
 
         .wa-history-item {
@@ -73,7 +74,7 @@
             </div>
 
             <div class="col-12">
-                <div class="card shadow-sm border-0">
+                <div class="card mb-3">
                     <div class="card-body py-2">
                         <div class="row g-2 align-items-end">
                             <div class="col-12 col-md-5">
@@ -104,12 +105,13 @@
             </div>
 
             <div class="col-12">
-                <div class="card shadow-sm border-0">
-                    <div class="table-responsive">
-                        <table class="table table-hover align-middle mb-0">
-                            <thead class="table-light">
-                                <tr>
-                                    <th>{{ __('name') }}</th>
+                <div class="card mb-3">
+                    <div class="card-body table-border-style">
+                        <div class="table-responsive">
+                            <table id="dataTableObject" class="table display dataTable table-hover" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>{{ __('name') }}</th>
                                     <th>{{ __('whatsapp_number') }}</th>
                                     <th>{{ __('email') }}</th>
                                     <th>{{ __('whatsapp_source') }}</th>
@@ -121,8 +123,9 @@
                                 <tr>
                                     <td colspan="6" class="text-center text-muted">{{ __('whatsapp_loading') }}</td>
                                 </tr>
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                     <div class="card-body d-flex justify-content-between align-items-center">
                         <small class="text-muted" id="wa-page-info"></small>
@@ -290,6 +293,7 @@
 @endsection
 
 @section('js')
+    <script src="{{ asset('admin/assets/js/bundle/dataTables.bundle.js') }}"></script>
     <script>
         (function () {
             const root = document.getElementById('whatsapp-contacts-root');

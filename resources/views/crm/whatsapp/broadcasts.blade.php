@@ -2,6 +2,10 @@
 
 @section('page-title', $pageTitle)
 
+@section('style')
+    <link rel="stylesheet" href="{{ asset('admin/assets/cssbundle/dataTables.min.css') }}">
+@endsection
+
 @section('content')
     <div id="whatsapp-broadcasts-root"
          data-store-url="{{ route('crm.whatsapp_broadcasts.store') }}"
@@ -29,12 +33,13 @@
             </div>
 
             <div class="col-12">
-                <div class="card shadow-sm border-0">
-                    <div class="table-responsive">
-                        <table class="table table-hover align-middle mb-0">
-                            <thead class="table-light">
-                                <tr>
-                                    <th style="width:60px;">#</th>
+                <div class="card mb-3">
+                    <div class="card-body table-border-style">
+                        <div class="table-responsive">
+                            <table id="dataTableObject" class="table display dataTable table-hover" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th style="width:60px;">#</th>
                                     <th>{{ __('whatsapp_broadcast_title') }}</th>
                                     <th style="width:120px;">{{ __('whatsapp_status') }}</th>
                                     <th style="width:90px;">{{ __('whatsapp_audience') }}</th>
@@ -119,8 +124,9 @@
                                 @empty
                                     <tr><td colspan="8" class="text-center text-muted">{{ __('whatsapp_no_broadcasts') }}</td></tr>
                                 @endforelse
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -235,11 +241,16 @@
 @endsection
 
 @section('js')
+    <script src="{{ asset('admin/assets/js/bundle/dataTables.bundle.js') }}"></script>
     <script>
         (function () {
             const root = document.getElementById('whatsapp-broadcasts-root');
             if (!root) {
                 return;
+            }
+
+            if ($.fn && $.fn.DataTable) {
+                $('#dataTableObject').DataTable({ pageLength: 25 });
             }
 
             const csrf = document.querySelector('meta[name="csrf-token"]')
