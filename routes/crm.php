@@ -3,6 +3,8 @@
 use App\Http\Controllers\CRM\CrmAuthController;
 use App\Http\Controllers\CRM\CrmDashboardController;
 use App\Http\Controllers\CRM\WhatsappBusinessSettingController;
+use App\Http\Controllers\CRM\WhatsappLabelsController;
+use App\Http\Controllers\CRM\WhatsappQuickRepliesController;
 use App\Http\Controllers\CRM\WhatsappWebhookController;
 use App\Http\Middleware\SetCrmLocale;
 use Illuminate\Http\Request;
@@ -33,8 +35,14 @@ Route::domain(config('app.crm_domain'))->name('crm.')->middleware(SetCrmLocale::
         Route::get('/whatsapp-chat', [CrmDashboardController::class, 'chat'])->name('whatsapp_chat');
         Route::get('/whatsapp-broadcasts', [CrmDashboardController::class, 'broadcasts'])->name('whatsapp_broadcasts');
         Route::get('/whatsapp-contacts', [CrmDashboardController::class, 'contacts'])->name('whatsapp_contacts');
-        Route::get('/whatsapp-labels', [CrmDashboardController::class, 'labels'])->name('whatsapp_labels');
-        Route::get('/whatsapp-quick-replies', [CrmDashboardController::class, 'quickReplies'])->name('whatsapp_quick_replies');
+        Route::get('/whatsapp-labels', [WhatsappLabelsController::class, 'index'])->name('whatsapp_labels');
+        Route::post('/whatsapp-labels', [WhatsappLabelsController::class, 'store'])->name('whatsapp_labels.store');
+        Route::put('/whatsapp-labels/{id}', [WhatsappLabelsController::class, 'update'])->name('whatsapp_labels.update');
+        Route::delete('/whatsapp-labels/{id}', [WhatsappLabelsController::class, 'destroy'])->name('whatsapp_labels.destroy');
+        Route::get('/whatsapp-quick-replies', [WhatsappQuickRepliesController::class, 'index'])->name('whatsapp_quick_replies');
+        Route::post('/whatsapp-quick-replies', [WhatsappQuickRepliesController::class, 'store'])->name('whatsapp_quick_replies.store');
+        Route::put('/whatsapp-quick-replies/{id}', [WhatsappQuickRepliesController::class, 'update'])->name('whatsapp_quick_replies.update');
+        Route::delete('/whatsapp-quick-replies/{id}', [WhatsappQuickRepliesController::class, 'destroy'])->name('whatsapp_quick_replies.destroy');
         Route::get('/whatsapp-business-hours', [CrmDashboardController::class, 'businessHours'])->name('whatsapp_business_hours');
         Route::get('/whatsapp-analytics', [CrmDashboardController::class, 'analytics'])->name('whatsapp_analytics');
 

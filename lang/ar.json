@@ -1230,5 +1230,8 @@
     "whatsapp_day_thu": "الخميس",
     "whatsapp_day_fri": "الجمعة",
     "is_active": "مفعل",
-    "add_account": "إضافة حساب"
+    "add_account": "إضافة حساب",
+    "whatsapp_labels_hint": "أنشئ تصنيفات لجهات الاتصال والمحادثات لتنظيمها بسهولة.",
+    "whatsapp_quick_replies_hint": "أضف ردودًا جاهزة لاستخدامها بسرعة في المحادثات.",
+    "whatsapp_quick_reply": "رد سريع"
 }

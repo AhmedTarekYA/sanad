@@ -52,16 +52,6 @@ class CrmDashboardController extends Controller
         return $this->placeholder('whatsapp_contacts');
     }
 
-    public function labels(): View
-    {
-        return $this->placeholder('whatsapp_labels');
-    }
-
-    public function quickReplies(): View
-    {
-        return $this->placeholder('whatsapp_quick_replies');
-    }
-
     public function businessHours(): View
     {
         return $this->placeholder('whatsapp_business_hours');

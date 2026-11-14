@@ -1230,5 +1230,8 @@
     "whatsapp_day_thu": "Thursday",
     "whatsapp_day_fri": "Friday",
     "is_active": "Active",
-    "add_account": "Add Account"
+    "add_account": "Add Account",
+    "whatsapp_labels_hint": "Create tags for contacts and conversations to organise them easily.",
+    "whatsapp_quick_replies_hint": "Add ready-made replies to use quickly in conversations.",
+    "whatsapp_quick_reply": "Quick reply"
 }
