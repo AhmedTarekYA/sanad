@@ -93,6 +93,7 @@
         [data-pc-theme="dark"] .wb-chat-header,
         [data-pc-theme="dark"] .wb-quick-actions,
         [data-pc-theme="dark"] .wb-qa-btn,
+        [data-pc-theme="dark"] .wb-quick-actions > .wb-qa-btn,
         [data-pc-theme="dark"] .wb-action-menu-toggle,
         [data-pc-theme="dark"] .wb-action-menu-panel,
         [data-pc-theme="dark"] .wb-icon-btn {
@@ -770,8 +771,20 @@
             background: #fff;
             display: flex;
             align-items: center;
-            gap: 8px;
+            flex-wrap: nowrap;
+            gap: 4px;
             min-height: 48px;
+            overflow-x: auto;
+        }
+
+        .wb-quick-actions > .wb-qa-btn {
+            width: auto;
+            flex: 0 0 auto;
+            min-height: 36px;
+            padding: 0 12px;
+            font-size: 12px;
+            border-radius: 8px;
+            border: 1px solid var(--wb-border);
         }
 
         .wb-qa-btn {
@@ -925,12 +938,32 @@
         .wb-media-img,
         .wb-media-video {
             display: block;
-            max-width: 320px;
+            max-width: 300px;
             width: 100%;
             height: auto;
             border-radius: 10px;
             margin-top: 6px;
+        }
+
+        .wb-media-video {
             background: #000;
+        }
+
+        .wb-video-placeholder {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 6px;
+            padding: 10px 14px;
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.06);
+            color: rgba(0, 0, 0, 0.5);
+            font-size: 13px;
+        }
+
+        [data-pc-theme="dark"] .wb-video-placeholder {
+            background: rgba(255, 255, 255, 0.08);
+            color: rgba(255, 255, 255, 0.45);
         }
 
         .wb-audio-message-btn {
@@ -3293,9 +3326,17 @@
                                             <img class="wb-media-img" src="{{ $mediaContentUrl }}" loading="lazy" alt="Image">
                                         @endif
                                         @if($messageType === 'video' && $mediaContentUrl)
-                                            <video class="wb-media-video" controls preload="metadata" playsinline>
-                                                <source src="{{ $mediaContentUrl }}">
-                                            </video>
+                                            @php($hasVideoFile = (bool) data_get($msg->raw, 'local_public_path') || !data_get($msg->raw, 'seeded'))
+                                            @if($hasVideoFile)
+                                                <video class="wb-media-video" controls preload="metadata" playsinline>
+                                                    <source src="{{ $mediaContentUrl }}">
+                                                </video>
+                                            @else
+                                                <div class="wb-video-placeholder">
+                                                    <i class="fa fa-film"></i>
+                                                    <span>{{ app()->getLocale() === 'ar' ? 'فيديو' : 'Video' }}</span>
+                                                </div>
+                                            @endif
                                         @endif
                                         @if($messageType === 'audio' && $mediaContentUrl)
                                             <div class="wb-audio-row">
