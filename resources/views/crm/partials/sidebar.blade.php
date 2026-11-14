@@ -6,7 +6,7 @@
     'whatsapp_setup'             => 'ti ti-plug',
     'whatsapp_chat'              => 'ti ti-message-2',
     'whatsapp_broadcasts'        => 'ti ti-speakerphone',
-    'whatsapp_contacts'          => 'ti ti-address-book',
+    'whatsapp_contacts'          => 'fas fa-address-book',
     'whatsapp_labels'            => 'ti ti-tag',
     'whatsapp_quick_replies'     => 'ti ti-bolt',
     'whatsapp_business_hours'    => 'ti ti-clock',

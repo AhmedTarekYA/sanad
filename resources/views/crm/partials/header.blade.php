@@ -12,6 +12,14 @@
         <div class="ms-auto">
             <ul class="list-unstyled d-flex align-items-center mb-0">
                 <li class="dropdown pc-h-item">
+                    <a href="#" class="pc-head-link dropdown-toggle arrow-none" id="theme-toggle" aria-expanded="false" aria-label="Theme"><i class="ph-duotone ph-sun-dim"></i></a>
+                    <div class="dropdown-menu dropdown-menu-end pc-h-dropdown" id="theme-menu">
+                        <a href="#" class="dropdown-item theme-option" data-theme-value="light"><i class="ph-duotone ph-sun-dim"></i><span>Light</span></a>
+                        <a href="#" class="dropdown-item theme-option" data-theme-value="dark"><i class="ph-duotone ph-moon"></i><span>Dark</span></a>
+                        <a href="#" class="dropdown-item theme-option" data-theme-value="auto"><i class="ph-duotone ph-cpu"></i><span>Auto</span></a>
+                    </div>
+                </li>
+                <li class="dropdown pc-h-item">
                     <a href="#" class="pc-head-link dropdown-toggle arrow-none" id="language-toggle" aria-expanded="false" aria-label="{{ __('auth.change language') }}"><i class="ph-duotone ph-translate"></i></a>
                     <div class="dropdown-menu dropdown-menu-end pc-h-dropdown lng-dropdown" id="language-menu">
                         @foreach($supportedLocales as $localeCode => $localeData)
@@ -58,7 +66,10 @@
 </style>
 <script>
 document.addEventListener('DOMContentLoaded',function(){
-    const ids=['language','profile'];
+    function applyTheme(value){var theme=value;if(theme==='auto')theme=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';if(typeof layout_change==='function')layout_change(theme);document.body.setAttribute('data-pc-theme',theme);document.body.setAttribute('data-pc-sidebar-theme',theme==='dark'?'dark':'light')}
+    document.querySelectorAll('.theme-option').forEach(function(option){option.addEventListener('click',function(e){e.preventDefault();var value=option.dataset.themeValue;applyTheme(value);localStorage.setItem('sanad-theme',value)})});
+    var savedTheme=localStorage.getItem('sanad-theme');if(savedTheme)applyTheme(savedTheme);
+    const ids=['theme','language','profile'];
     ids.forEach(function(name){
         const toggle=document.getElementById(name+'-toggle'),menu=document.getElementById(name+'-menu');
         if(!toggle||!menu)return;

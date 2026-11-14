@@ -653,9 +653,14 @@
             overflow: auto;
             padding: 14px 16px;
             background-color: var(--wb-chat-bg);
-            background-image: radial-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px);
-            background-size: 22px 22px;
-            background-position: 0 0;
+            background-image: url('/admin/assets/img/whatsapp_light.png');
+            background-size: auto;
+            background-repeat: repeat;
+        }
+
+        [data-pc-theme="dark"] .wb-messages {
+            background-color: #0d1418;
+            background-image: url('/admin/assets/img/whatsapp_dark.png');
         }
 
         .wb-empty {
@@ -697,9 +702,9 @@
 
         .wb-text {
             color: rgba(0, 0, 0, 0.85);
-            font-size: 18px;
-            font-weight: 700;
-            line-height: 1.6;
+            font-size: 14.5px;
+            font-weight: 400;
+            line-height: 1.5;
             white-space: pre-wrap;
             word-break: break-word;
         }
