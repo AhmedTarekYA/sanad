@@ -4,359 +4,571 @@
 
 @section('style')
     <style>
-        :root {
-            --wb-green: #00a884;
-            --wb-green-dark: #008069;
-            --wb-bg: #f0f2f5;
-            --wb-border: rgba(0, 0, 0, 0.08);
+        .wa-setup {
+            padding-bottom: 8px;
         }
 
-        .wb-wrap {
-            min-height: 78vh;
-            background: var(--wb-bg);
-            border: 1px solid var(--wb-border);
-            border-radius: 14px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
-            display: flex;
-            flex-direction: column;
+        .wa-intro {
+            margin-bottom: 22px;
         }
 
-        .wb-head {
-            padding: 12px 14px;
+        .wa-intro__title {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            background: linear-gradient(180deg, rgba(0, 168, 132, 0.08), rgba(0, 168, 132, 0.03));
-            border-bottom: 1px solid var(--wb-border);
+            gap: 12px;
+            margin: 0;
+            color: var(--sanad-ink);
+            font-size: clamp(1.45rem, 2vw, 1.9rem);
+            font-weight: 700;
+            line-height: 1.25;
         }
 
-        .wb-title {
+        .wa-intro__title .ph-duotone {
+            color: var(--sanad-primary);
+            font-size: 1.6rem;
+        }
+
+        .wa-intro p {
+            margin: 6px 0 0;
+            color: var(--sanad-muted);
+            font-size: .92rem;
+        }
+
+        .wa-intro__badges {
             display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 14px;
+        }
+
+        .wa-intro__actions {
+            display: flex;
+            flex-wrap: wrap;
             align-items: center;
             gap: 10px;
-            font-weight: 900;
-            color: rgba(0, 0, 0, 0.85);
         }
 
-        .wb-wa-badge {
-            width: 34px;
-            height: 34px;
-            border-radius: 10px;
-            background: var(--wb-green);
-            color: #fff;
-            display: grid;
-            place-items: center;
-            box-shadow: 0 8px 18px rgba(0, 168, 132, 0.25);
-            flex: 0 0 auto;
-        }
-
-        .wb-body {
-            padding: 14px;
-            overflow: auto;
-        }
-
-        .wb-card {
-            background: #fff;
-            border: 1px solid var(--wb-border);
-            border-radius: 14px;
-            overflow: hidden;
-            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
-        }
-
-        .wb-card-head {
-            padding: 12px 14px;
-            border-bottom: 1px solid var(--wb-border);
-            font-weight: 900;
-            color: rgba(0, 0, 0, 0.82);
-            background: linear-gradient(180deg, rgba(0, 168, 132, 0.07), rgba(0, 168, 132, 0.02));
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-        }
-
-        .wb-card-body {
-            padding: 14px;
-        }
-
-        .wb-pill {
+        .wa-intro__actions .btn {
             display: inline-flex;
             align-items: center;
-            height: 28px;
-            padding: 0 10px;
+            gap: 8px;
+            min-height: 44px;
+            padding-inline: 18px;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+
+        .wa-intro__actions .btn-primary {
+            border: 0;
+            box-shadow: 0 8px 18px color-mix(in srgb, var(--sanad-primary) 22%, transparent);
+        }
+
+        .wa-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            border: 1px solid transparent;
             border-radius: 999px;
-            border: 1px solid rgba(0, 168, 132, 0.22);
-            background: rgba(0, 168, 132, 0.08);
-            color: rgba(0, 128, 105, 0.95);
-            font-size: 12px;
-            font-weight: 900;
+            font-size: .76rem;
+            font-weight: 700;
+            line-height: 1.2;
             white-space: nowrap;
         }
 
-        .wb-pill.is-danger {
-            border-color: rgba(220, 53, 69, 0.25);
-            background: rgba(220, 53, 69, 0.08);
-            color: rgba(220, 53, 69, 0.95);
+        .wa-status__dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: currentColor;
+            box-shadow: 0 0 0 3px color-mix(in srgb, currentColor 16%, transparent);
         }
 
-        .wb-pill.is-ok {
-            border-color: rgba(0, 168, 132, 0.22);
-            background: rgba(0, 168, 132, 0.08);
-            color: rgba(0, 128, 105, 0.95);
+        .wa-status.is-ok {
+            color: #0f7a58;
+            border-color: color-mix(in srgb, var(--sanad-success) 38%, #fff);
+            background: color-mix(in srgb, var(--sanad-success) 14%, #fff);
         }
 
-        .wb-primary {
-            height: 40px;
-            padding: 0 14px;
-            border-radius: 12px;
-            border: 1px solid rgba(0, 168, 132, 0.25);
-            background: var(--wb-green);
-            color: #fff;
-            font-weight: 900;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
+        .wa-status.is-off {
+            color: var(--sanad-danger);
+            border-color: color-mix(in srgb, var(--sanad-danger) 28%, #fff);
+            background: color-mix(in srgb, var(--sanad-danger) 9%, #fff);
         }
 
-        .wb-primary:hover {
-            background: var(--wb-green-dark);
-            color: #fff;
+        .wa-panel {
+            height: 100%;
+            overflow: hidden;
+            border: 1px solid var(--sanad-border);
+            border-radius: var(--sanad-radius-md);
+            background: var(--sanad-surface);
+            box-shadow: var(--sanad-shadow-sm);
         }
 
-        .wb-secondary {
-            height: 40px;
-            padding: 0 14px;
-            border-radius: 12px;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            background: #fff;
-            color: rgba(0, 0, 0, 0.75);
-            font-weight: 900;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .wb-grid {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 12px;
-        }
-
-        @media (max-width: 1200px) {
-            .wb-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .wb-step {
-            border: 1px solid rgba(0, 0, 0, 0.08);
-            background: rgba(0, 0, 0, 0.02);
-            border-radius: 14px;
-            padding: 12px;
-        }
-
-        .wb-step-title {
-            font-weight: 900;
-            color: rgba(0, 0, 0, 0.82);
+        .wa-panel__head {
             display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .wb-step-num {
-            width: 30px;
-            height: 30px;
-            border-radius: 10px;
-            background: rgba(0, 168, 132, 0.12);
-            border: 1px solid rgba(0, 168, 132, 0.18);
-            color: rgba(0, 128, 105, 0.95);
-            display: grid;
-            place-items: center;
-            font-weight: 900;
-            flex: 0 0 auto;
-        }
-
-        .wb-step-desc {
-            margin-top: 8px;
-            font-size: 13px;
-            color: rgba(0, 0, 0, 0.62);
-            line-height: 1.6;
-        }
-
-        .wb-kv {
-            display: grid;
-            grid-template-columns: 160px 1fr;
-            gap: 10px;
-            align-items: center;
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-        }
-
-        .wb-kv:last-child {
-            border-bottom: 0;
-        }
-
-        .wb-kv-k {
-            font-weight: 900;
-            color: rgba(0, 0, 0, 0.72);
-            font-size: 12px;
-        }
-
-        .wb-kv-v {
-            display: flex;
-            gap: 8px;
-            align-items: center;
             flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 18px 20px;
+            border-bottom: 1px solid var(--sanad-border);
+            background: linear-gradient(180deg, var(--sanad-surface-subtle), var(--sanad-surface));
         }
 
-        .wb-code {
-            background: rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(0, 0, 0, 0.08);
+        .wa-panel__heading {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 0;
+        }
+
+        .wa-panel__icon {
+            display: inline-flex;
+            flex: 0 0 auto;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
             border-radius: 12px;
-            padding: 8px 10px;
-            font-size: 12px;
-            font-weight: 900;
-            color: rgba(0, 0, 0, 0.72);
-            max-width: 100%;
-            overflow: auto;
+            color: var(--sanad-primary);
+            background: var(--sanad-primary-soft);
+            font-size: 21px;
         }
 
-        .wb-copy {
-            height: 34px;
-            padding: 0 12px;
-            border-radius: 10px;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            background: #fff;
-            font-weight: 900;
-            color: rgba(0, 0, 0, 0.72);
+        .wa-panel__heading h2 {
+            margin: 0;
+            color: var(--sanad-ink);
+            font-size: 1.02rem;
+            font-weight: 700;
         }
 
-        .wb-ill {
-            width: 100%;
-            max-height: 240px;
-            object-fit: contain;
+        .wa-panel__heading p {
+            margin: 2px 0 0;
+            color: var(--sanad-muted);
+            font-size: .78rem;
+            line-height: 1.5;
+        }
+
+        .wa-panel__body {
+            padding: 20px;
+        }
+
+        .wa-steps {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .wa-step {
+            position: relative;
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding-bottom: 14px;
+        }
+
+        .wa-step:last-child {
+            padding-bottom: 0;
+        }
+
+        .wa-step:not(:last-child)::before {
+            content: '';
+            position: absolute;
+            inset-block: 40px 4px;
+            inset-inline-start: 17px;
+            width: 2px;
+            border-radius: 99px;
+            background: linear-gradient(180deg, color-mix(in srgb, var(--sanad-primary) 35%, var(--sanad-border)), var(--sanad-border));
+        }
+
+        .wa-step__num {
+            position: relative;
+            z-index: 1;
+            display: inline-flex;
+            flex: 0 0 auto;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border: 1px solid color-mix(in srgb, var(--sanad-primary) 24%, var(--sanad-border));
+            border-radius: 12px;
+            color: var(--sanad-primary);
+            background: var(--sanad-surface);
+            font-size: .84rem;
+            font-weight: 700;
+            box-shadow: 0 4px 10px color-mix(in srgb, var(--sanad-primary) 12%, transparent);
+        }
+
+        .wa-step__card {
+            flex: 1;
+            min-width: 0;
+            padding: 13px 16px;
+            border: 1px solid var(--sanad-border);
+            border-radius: 14px;
+            background: var(--sanad-surface);
+            transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease;
+        }
+
+        .wa-step__card:hover {
+            border-color: color-mix(in srgb, var(--sanad-primary) 30%, var(--sanad-border));
+            box-shadow: var(--sanad-shadow-sm);
+            transform: translateY(-1px);
+        }
+
+        .wa-step__title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 0;
+            color: var(--sanad-ink);
+            font-size: .9rem;
+            font-weight: 700;
+        }
+
+        .wa-step__title .ph-duotone {
+            color: var(--sanad-primary);
+            font-size: 1.05rem;
+        }
+
+        .wa-step__desc {
+            margin: 5px 0 0;
+            color: var(--sanad-muted);
+            font-size: .8rem;
+            line-height: 1.65;
+        }
+
+        .wa-values {
+            display: grid;
+            gap: 10px;
+        }
+
+        .wa-value {
+            padding: 13px 14px;
+            border: 1px solid var(--sanad-border);
+            border-radius: 14px;
+            background: var(--sanad-surface-subtle);
+        }
+
+        .wa-value__head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .wa-value__label {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            min-width: 0;
+            color: var(--sanad-ink);
+            font-size: .79rem;
+            font-weight: 600;
+        }
+
+        .wa-value__label .ph-duotone {
+            color: var(--sanad-primary);
+            font-size: 1rem;
+        }
+
+        .wa-copy {
+            display: inline-flex;
+            flex: 0 0 auto;
+            align-items: center;
+            gap: 5px;
+            min-height: 30px;
+            padding-inline: 10px;
+            border: 1px solid var(--sanad-border);
+            border-radius: 9px;
+            color: var(--sanad-muted);
+            background: var(--sanad-surface);
+            font-size: .72rem;
+            font-weight: 600;
+            transition: color .18s ease, border-color .18s ease, background .18s ease;
+        }
+
+        .wa-copy:hover,
+        .wa-copy:focus-visible {
+            color: var(--sanad-primary);
+            border-color: color-mix(in srgb, var(--sanad-primary) 35%, var(--sanad-border));
+            background: var(--sanad-primary-soft);
+        }
+
+        .wa-copy .ph-duotone {
+            font-size: .95rem;
+        }
+
+        .wa-value__code {
             display: block;
-            margin: 6px auto 0;
-            opacity: 0.95;
+            overflow: auto;
+            margin: 0;
+            padding: 9px 11px;
+            border: 1px solid var(--sanad-border);
+            border-radius: 10px;
+            color: #42506a;
+            background: var(--sanad-surface);
+            font-size: .76rem;
+            font-weight: 500;
+            line-height: 1.5;
+            white-space: nowrap;
+        }
+
+        .wa-value__hint {
+            margin: 0;
+            padding: 9px 11px;
+            border: 1px dashed var(--sanad-border);
+            border-radius: 10px;
+            color: var(--sanad-muted);
+            background: var(--sanad-surface);
+            font-size: .76rem;
+            line-height: 1.55;
+        }
+
+        .wa-illustration {
+            position: relative;
+            margin-top: 16px;
+            padding: 18px;
+            overflow: hidden;
+            border: 1px solid color-mix(in srgb, var(--sanad-primary) 16%, var(--sanad-border));
+            border-radius: 16px;
+            background: linear-gradient(135deg, color-mix(in srgb, var(--sanad-primary) 10%, #fff), color-mix(in srgb, var(--sanad-success) 12%, #fff));
+            text-align: center;
+        }
+
+        .wa-illustration img {
+            display: block;
+            width: 100%;
+            max-width: 210px;
+            max-height: 180px;
+            margin: 0 auto;
+            object-fit: contain;
+        }
+
+        .wa-illustration p {
+            margin: 6px 0 0;
+            color: #42506a;
+            font-size: .76rem;
+            font-weight: 600;
+            line-height: 1.55;
+        }
+
+        @media (max-width: 767.98px) {
+            .wa-panel__head,
+            .wa-panel__body {
+                padding: 16px;
+            }
+
+            .wa-intro__actions,
+            .wa-intro__actions .btn {
+                width: 100%;
+            }
+
+            .wa-intro__actions .btn {
+                justify-content: center;
+            }
+
+            .wa-step__card {
+                padding: 12px 14px;
+            }
         }
     </style>
 @endsection
 
 @section('content')
-    <div class="wb-wrap" id="whatsapp-setup-root"
-         data-t-copied="{{ __('whatsapp_copied') }}">
-        <div class="wb-head">
-            <div class="wb-title">
-                <span class="wb-wa-badge"><i class="fa fa-plug"></i></span>
-                <span>{{ __('whatsapp_setup') }}</span>
+    @php
+        $isConnected = (bool) ($hasActive ?? false);
+        $isReady = (bool) ($hasRequired ?? false);
+        $phoneNumberId = data_get($settings, 'phone_number_id');
+        $apiVersion = data_get($settings, 'api_version');
+        $verifyToken = data_get($settings, 'webhook_verify_token');
+    @endphp
+
+    <div class="wa-setup" id="whatsapp-setup-root" data-t-copied="{{ __('whatsapp_copied') }}">
+        <div class="sanad-page-intro wa-intro">
+            <div>
+                <p class="sanad-page-intro__eyebrow">{{ __('whatsapp_menu') }}</p>
+                <h1 class="wa-intro__title">
+                    <i class="ph-duotone ph-plugs-connected" aria-hidden="true"></i>
+                    {{ __('whatsapp_setup') }}
+                </h1>
+                <p>{{ __('whatsapp_setup_subtitle') }}</p>
+                <div class="wa-intro__badges">
+                    <span class="wa-status {{ $isConnected ? 'is-ok' : 'is-off' }}">
+                        <span class="wa-status__dot"></span>
+                        {{ $isConnected ? __('whatsapp_connected') : __('whatsapp_not_connected') }}
+                    </span>
+                    <span class="wa-status {{ $isReady ? 'is-ok' : 'is-off' }}">
+                        <span class="wa-status__dot"></span>
+                        {{ $isReady ? __('whatsapp_settings_ready') : __('whatsapp_settings_missing') }}
+                    </span>
+                </div>
             </div>
-            <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
-                <a class="wb-secondary" href="{{ $metaAppsUrl }}" target="_blank" rel="noopener">
-                    <i class="fa fa-external-link"></i> {{ __('whatsapp_open_meta_console') }}
+            <div class="wa-intro__actions">
+                <a class="btn btn-outline-primary" href="{{ $metaAppsUrl }}" target="_blank" rel="noopener">
+                    <i class="ph-duotone ph-arrow-square-out" aria-hidden="true"></i>
+                    {{ __('whatsapp_open_meta_console') }}
                 </a>
-                <a class="wb-primary" href="{{ route('crm.whatsapp_business_settings') }}">
-                    <i class="fa fa-cog"></i> {{ __('whatsapp_open_settings') }}
+                <a class="btn btn-primary" href="{{ route('crm.whatsapp_business_settings') }}">
+                    <i class="ph-duotone ph-gear" aria-hidden="true"></i>
+                    {{ __('whatsapp_open_settings') }}
                 </a>
             </div>
         </div>
 
-        <div class="wb-body">
-            <div class="wb-grid">
-                <div class="wb-card">
-                    <div class="wb-card-head">
-                        <span>{{ __('whatsapp_setup_steps') }}</span>
-                        <span class="wb-pill {{ ($hasActive ?? false) ? 'is-ok' : 'is-danger' }}">
-                            {{ ($hasActive ?? false) ? __('whatsapp_connected') : __('whatsapp_not_connected') }}
+        <div class="row g-4 align-items-stretch">
+            <div class="col-lg-7">
+                <div class="wa-panel">
+                    <div class="wa-panel__head">
+                        <div class="wa-panel__heading">
+                            <span class="wa-panel__icon"><i class="ph-duotone ph-list-checks" aria-hidden="true"></i></span>
+                            <div>
+                                <h2>{{ __('whatsapp_setup_steps') }}</h2>
+                                <p>{{ __('whatsapp_setup_subtitle') }}</p>
+                            </div>
+                        </div>
+                        <span class="wa-status {{ $isConnected ? 'is-ok' : 'is-off' }}">
+                            <span class="wa-status__dot"></span>
+                            {{ $isConnected ? __('whatsapp_connected') : __('whatsapp_not_connected') }}
                         </span>
                     </div>
-                    <div class="wb-card-body" style="display:grid; gap:10px;">
-                        <div class="wb-step">
-                            <div class="wb-step-title">
-                                <span class="wb-step-num">1</span>
-                                <span>{{ __('whatsapp_step_create_app') }}</span>
-                            </div>
-                            <div class="wb-step-desc">{{ __('whatsapp_step_create_app_desc') }}</div>
-                        </div>
 
-                        <div class="wb-step">
-                            <div class="wb-step-title">
-                                <span class="wb-step-num">2</span>
-                                <span>{{ __('whatsapp_step_add_product') }}</span>
-                            </div>
-                            <div class="wb-step-desc">{{ __('whatsapp_step_add_product_desc') }}</div>
-                        </div>
-
-                        <div class="wb-step">
-                            <div class="wb-step-title">
-                                <span class="wb-step-num">3</span>
-                                <span>{{ __('whatsapp_step_webhook') }}</span>
-                            </div>
-                            <div class="wb-step-desc">{{ __('whatsapp_step_webhook_desc') }}</div>
-                        </div>
-
-                        <div class="wb-step">
-                            <div class="wb-step-title">
-                                <span class="wb-step-num">4</span>
-                                <span>{{ __('whatsapp_step_tokens') }}</span>
-                            </div>
-                            <div class="wb-step-desc">{{ __('whatsapp_step_tokens_desc') }}</div>
-                        </div>
-
-                        <div class="wb-step">
-                            <div class="wb-step-title">
-                                <span class="wb-step-num">5</span>
-                                <span>{{ __('whatsapp_step_fill_settings') }}</span>
-                            </div>
-                            <div class="wb-step-desc">{{ __('whatsapp_step_fill_settings_desc') }}</div>
-                        </div>
+                    <div class="wa-panel__body">
+                        <ol class="wa-steps">
+                            @foreach([
+                                ['icon' => 'ph-app-window', 'title' => 'whatsapp_step_create_app', 'desc' => 'whatsapp_step_create_app_desc'],
+                                ['icon' => 'ph-whatsapp-logo', 'title' => 'whatsapp_step_add_product', 'desc' => 'whatsapp_step_add_product_desc'],
+                                ['icon' => 'ph-webhooks-logo', 'title' => 'whatsapp_step_webhook', 'desc' => 'whatsapp_step_webhook_desc'],
+                                ['icon' => 'ph-key', 'title' => 'whatsapp_step_tokens', 'desc' => 'whatsapp_step_tokens_desc'],
+                                ['icon' => 'ph-check-square', 'title' => 'whatsapp_step_fill_settings', 'desc' => 'whatsapp_step_fill_settings_desc'],
+                            ] as $stepIndex => $step)
+                                <li class="wa-step">
+                                    <span class="wa-step__num">{{ $stepIndex + 1 }}</span>
+                                    <div class="wa-step__card">
+                                        <h3 class="wa-step__title">
+                                            <i class="ph-duotone {{ $step['icon'] }}" aria-hidden="true"></i>
+                                            {{ __($step['title']) }}
+                                        </h3>
+                                        <p class="wa-step__desc">{{ __($step['desc']) }}</p>
+                                    </div>
+                                </li>
+                            @endforeach
+                        </ol>
                     </div>
                 </div>
+            </div>
 
-                <div class="wb-card">
-                    <div class="wb-card-head">
-                        <span>{{ __('whatsapp_setup_values') }}</span>
-                        <span class="wb-pill {{ ($hasRequired ?? false) ? 'is-ok' : 'is-danger' }}">
-                            {{ ($hasRequired ?? false) ? __('whatsapp_settings_ready') : __('whatsapp_settings_missing') }}
+            <div class="col-lg-5">
+                <div class="wa-panel">
+                    <div class="wa-panel__head">
+                        <div class="wa-panel__heading">
+                            <span class="wa-panel__icon"><i class="ph-duotone ph-plug" aria-hidden="true"></i></span>
+                            <div>
+                                <h2>{{ __('whatsapp_setup_values') }}</h2>
+                                <p>{{ __('whatsapp_verify_token_hint') }}</p>
+                            </div>
+                        </div>
+                        <span class="wa-status {{ $isReady ? 'is-ok' : 'is-off' }}">
+                            <span class="wa-status__dot"></span>
+                            {{ $isReady ? __('whatsapp_settings_ready') : __('whatsapp_settings_missing') }}
                         </span>
                     </div>
-                    <div class="wb-card-body">
-                        <div class="wb-kv">
-                            <div class="wb-kv-k">{{ __('whatsapp_webhook_callback_url') }}</div>
-                            <div class="wb-kv-v">
-                                <div class="wb-code" data-copy="{{ $webhookUrl }}">{{ $webhookUrl }}</div>
-                                <button class="wb-copy" type="button" data-copy-btn="{{ $webhookUrl }}">{{ __('whatsapp_copy') }}</button>
+
+                    <div class="wa-panel__body">
+                        <div class="wa-values">
+                            <div class="wa-value">
+                                <div class="wa-value__head">
+                                    <span class="wa-value__label">
+                                        <i class="ph-duotone ph-link" aria-hidden="true"></i>
+                                        {{ __('whatsapp_webhook_callback_url') }}
+                                    </span>
+                                    <button class="wa-copy" type="button" data-copy-btn="{{ $webhookUrl }}">
+                                        <i class="ph-duotone ph-copy" aria-hidden="true"></i>
+                                        {{ __('whatsapp_copy') }}
+                                    </button>
+                                </div>
+                                <code class="wa-value__code" dir="ltr" data-copy="{{ $webhookUrl }}">{{ $webhookUrl }}</code>
                             </div>
-                        </div>
-                        <div class="wb-kv">
-                            <div class="wb-kv-k">{{ __('whatsapp_webhook_verify_url') }}</div>
-                            <div class="wb-kv-v">
-                                <div class="wb-code" data-copy="{{ $verifyUrl }}">{{ $verifyUrl }}</div>
-                                <button class="wb-copy" type="button" data-copy-btn="{{ $verifyUrl }}">{{ __('whatsapp_copy') }}</button>
+
+                            <div class="wa-value">
+                                <div class="wa-value__head">
+                                    <span class="wa-value__label">
+                                        <i class="ph-duotone ph-plugs-connected" aria-hidden="true"></i>
+                                        {{ __('whatsapp_webhook_verify_url') }}
+                                    </span>
+                                    <button class="wa-copy" type="button" data-copy-btn="{{ $verifyUrl }}">
+                                        <i class="ph-duotone ph-copy" aria-hidden="true"></i>
+                                        {{ __('whatsapp_copy') }}
+                                    </button>
+                                </div>
+                                <code class="wa-value__code" dir="ltr" data-copy="{{ $verifyUrl }}">{{ $verifyUrl }}</code>
                             </div>
-                        </div>
-                        <div class="wb-kv">
-                            <div class="wb-kv-k">{{ __('whatsapp_verify_token') }}</div>
-                            <div class="wb-kv-v">
-                                <div class="wb-code">{{ __('whatsapp_verify_token_hint') }}</div>
+
+                            <div class="wa-value">
+                                <div class="wa-value__head">
+                                    <span class="wa-value__label">
+                                        <i class="ph-duotone ph-shield-check" aria-hidden="true"></i>
+                                        {{ __('whatsapp_verify_token') }}
+                                    </span>
+                                    @if($verifyToken)
+                                        <button class="wa-copy" type="button" data-copy-btn="{{ $verifyToken }}">
+                                            <i class="ph-duotone ph-copy" aria-hidden="true"></i>
+                                            {{ __('whatsapp_copy') }}
+                                        </button>
+                                    @endif
+                                </div>
+                                @if($verifyToken)
+                                    <code class="wa-value__code" dir="ltr" data-copy="{{ $verifyToken }}">{{ $verifyToken }}</code>
+                                @else
+                                    <p class="wa-value__hint">{{ __('whatsapp_verify_token_hint') }}</p>
+                                @endif
                             </div>
-                        </div>
-                        <div class="wb-kv">
-                            <div class="wb-kv-k">{{ __('whatsapp_phone_number_id') }}</div>
-                            <div class="wb-kv-v">
-                                <span class="wb-pill">{{ data_get($settings, 'phone_number_id') ?: '—' }}</span>
+
+                            <div class="wa-value">
+                                <div class="wa-value__head">
+                                    <span class="wa-value__label">
+                                        <i class="ph-duotone ph-phone" aria-hidden="true"></i>
+                                        {{ __('whatsapp_phone_number_id') }}
+                                    </span>
+                                    @if($phoneNumberId)
+                                        <button class="wa-copy" type="button" data-copy-btn="{{ $phoneNumberId }}">
+                                            <i class="ph-duotone ph-copy" aria-hidden="true"></i>
+                                            {{ __('whatsapp_copy') }}
+                                        </button>
+                                    @endif
+                                </div>
+                                @if($phoneNumberId)
+                                    <code class="wa-value__code" dir="ltr" data-copy="{{ $phoneNumberId }}">{{ $phoneNumberId }}</code>
+                                @else
+                                    <p class="wa-value__hint">{{ __('whatsapp_settings_missing') }}</p>
+                                @endif
                             </div>
-                        </div>
-                        <div class="wb-kv">
-                            <div class="wb-kv-k">{{ __('whatsapp_api_version') }}</div>
-                            <div class="wb-kv-v">
-                                <span class="wb-pill">{{ data_get($settings, 'api_version') ?: '—' }}</span>
+
+                            <div class="wa-value">
+                                <div class="wa-value__head">
+                                    <span class="wa-value__label">
+                                        <i class="ph-duotone ph-code" aria-hidden="true"></i>
+                                        {{ __('whatsapp_api_version') }}
+                                    </span>
+                                    @if($apiVersion)
+                                        <button class="wa-copy" type="button" data-copy-btn="{{ $apiVersion }}">
+                                            <i class="ph-duotone ph-copy" aria-hidden="true"></i>
+                                            {{ __('whatsapp_copy') }}
+                                        </button>
+                                    @endif
+                                </div>
+                                @if($apiVersion)
+                                    <code class="wa-value__code" dir="ltr" data-copy="{{ $apiVersion }}">{{ $apiVersion }}</code>
+                                @else
+                                    <p class="wa-value__hint">{{ __('whatsapp_settings_missing') }}</p>
+                                @endif
                             </div>
                         </div>
 
-                        <img class="wb-ill" src="{{ asset('admin/assets/ill.svg') }}" alt="{{ __('whatsapp_setup') }}">
+                        <div class="wa-illustration">
+                            <img src="{{ asset('admin/assets/ill.svg') }}" alt="{{ __('whatsapp_setup') }}">
+                        </div>
                     </div>
                 </div>
             </div>
