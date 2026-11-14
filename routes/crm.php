@@ -4,7 +4,7 @@ use App\Http\Controllers\CRM\CrmAuthController;
 use App\Http\Controllers\CRM\CrmDashboardController;
 use Illuminate\Support\Facades\Route;
 
-Route::domain('crm.sanadcx.com')->name('crm.')->group(function (): void {
+Route::domain(config('app.crm_domain'))->name('crm.')->group(function (): void {
     Route::middleware('guest:crm')->group(function (): void {
         Route::get('/login', [CrmAuthController::class, 'showLogin'])->name('login');
         Route::post('/login', [CrmAuthController::class, 'login'])->name('login.attempt');

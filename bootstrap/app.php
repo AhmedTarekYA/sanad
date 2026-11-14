@@ -40,7 +40,7 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
 
         $middleware->redirectGuestsTo(function (Request $request): string {
-            if ($request->getHost() === 'crm.sanadcx.com') {
+            if ($request->getHost() === config('app.crm_domain')) {
                 return route('crm.login');
             }
 
