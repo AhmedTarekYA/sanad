@@ -24,16 +24,17 @@
             </div>
 
             <div class="col-12">
-                <div class="card shadow-sm border-0">
-                    <div class="table-responsive">
-                        <table class="table table-hover align-middle mb-0">
-                            <thead class="table-light">
+                <div class="card mb-3">
+                    <div class="card-body table-border-style">
+                        <div class="table-responsive">
+                        <table id="dataTableObject" class="table display dataTable table-hover" style="width:100%">
+                            <thead>
                                 <tr>
-                                    <th style="width:60px;">#</th>
+                                    <th>#</th>
                                     <th>{{ __('whatsapp_quick_reply_title') }}</th>
-                                    <th style="width:160px;">{{ __('whatsapp_quick_reply_shortcut') }}</th>
-                                    <th style="width:110px;">{{ __('whatsapp_quick_reply_status') }}</th>
-                                    <th style="width:190px;">{{ __('actions') }}</th>
+                                    <th>{{ __('whatsapp_quick_reply_shortcut') }}</th>
+                                    <th>{{ __('whatsapp_quick_reply_status') }}</th>
+                                    <th>{{ __('actions') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -83,6 +84,7 @@
                                 @endforelse
                             </tbody>
                         </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -154,6 +156,10 @@
 
             const modalElement = document.getElementById('wa-qr-modal');
             const modal = window.bootstrap && modalElement ? new bootstrap.Modal(modalElement) : null;
+
+            if ($.fn && $.fn.DataTable) {
+                $('#dataTableObject').DataTable({ pageLength: 25 });
+            }
 
             function urlWithId(template, id) {
                 return String(template || '').replace('__ID__', encodeURIComponent(String(id)));
