@@ -787,6 +787,62 @@
             border: 1px solid var(--wb-border);
         }
 
+        .wb-contact-notes-banner {
+            display: none;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            padding: 9px 14px;
+            border: 0;
+            border-bottom: 1px solid #f2d48a;
+            background: linear-gradient(90deg, #fff8e1 0%, #ffefc2 100%);
+            color: #7a5a06;
+            font-size: 13px;
+            text-align: start;
+            cursor: pointer;
+            transition: background 0.15s ease;
+        }
+
+        .wb-contact-notes-banner.is-visible {
+            display: flex;
+        }
+
+        .wb-contact-notes-banner:hover,
+        .wb-contact-notes-banner:focus-visible {
+            background: linear-gradient(90deg, #fff2cc 0%, #ffe7a8 100%);
+            outline: none;
+        }
+
+        .wb-contact-notes-banner > i {
+            color: #d99b00;
+            font-size: 15px;
+            flex: 0 0 auto;
+        }
+
+        .wb-contact-notes-banner-text {
+            flex: 1 1 auto;
+            min-width: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-weight: 500;
+        }
+
+        .wb-contact-notes-banner-count {
+            flex: 0 0 auto;
+            min-width: 20px;
+            height: 20px;
+            padding: 0 6px;
+            border-radius: 10px;
+            background: #d99b00;
+            color: #fff;
+            font-size: 11px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
         .wb-qa-btn {
             width: 100%;
             min-height: 42px;
@@ -3227,10 +3283,6 @@
                             <i class="fa fa-expand"></i>
                             <i class="fa fa-compress"></i>
                         </button>
-                        <button class="wb-icon-btn" type="button" id="wb-chat-settings-btn"
-                            title="{{ __('whatsapp_more') }}" {{ isset($activeConversation) && $activeConversation ? '' : 'disabled' }}>
-                            <i class="fa fa-ellipsis-v"></i>
-                        </button>
                         <button class="wb-icon-btn" type="button" id="wb-contact-meta-btn"
                             title="{{ app()->getLocale() === 'ar' ? 'بيانات العميل' : 'Customer info' }}" {{ isset($activeConversation) && $activeConversation ? '' : 'disabled' }}>
                             <i class="fa fa-user"></i>
@@ -3268,6 +3320,12 @@
                         <span id="wb-tags-pills" style="display:none;"></span>
                     </div>
                 </div>
+
+                <button class="wb-contact-notes-banner" type="button" id="wb-contact-notes-banner">
+                    <i class="fa fa-sticky-note"></i>
+                    <span class="wb-contact-notes-banner-text" id="wb-contact-notes-banner-text"></span>
+                    <span class="wb-contact-notes-banner-count" id="wb-contact-notes-banner-count" style="display:none;"></span>
+                </button>
 
                 <div class="wb-messages">
                     @if(isset($activeConversation) && $activeConversation)
@@ -3787,7 +3845,6 @@
             function setConversationControlsEnabled(enabled) {
                 [
                     'wb-message-search-btn',
-                    'wb-chat-settings-btn',
                     'wb-composer-tools-btn',
                     'wb-attach-btn',
                     'wb-qr-btn',
@@ -3890,6 +3947,11 @@
                     element.style.display = 'none';
                     element.innerHTML = '';
                 });
+                const notesBanner = document.getElementById('wb-contact-notes-banner');
+                if (notesBanner) {
+                    notesBanner.classList.remove('is-visible');
+                    notesBanner.setAttribute('aria-hidden', 'true');
+                }
 
                 renderConversations(conversationsCache, $('#wb-chat-search').val());
                 if (pushHistory && chatIndexUrl && window.history && typeof window.history.pushState === 'function') {
@@ -5916,6 +5978,32 @@
                         tagsWrap.innerHTML = html;
                     }
                 }
+
+                const notesBanner = document.getElementById('wb-contact-notes-banner');
+                const notesBannerText = document.getElementById('wb-contact-notes-banner-text');
+                const notesBannerCount = document.getElementById('wb-contact-notes-banner-count');
+                if (notesBanner) {
+                    const contactNotes = meta && Array.isArray(meta.contact_notes) ? meta.contact_notes : [];
+                    if (contactNotes.length === 0) {
+                        notesBanner.classList.remove('is-visible');
+                        notesBanner.setAttribute('aria-hidden', 'true');
+                        if (notesBannerText) notesBannerText.textContent = '';
+                        if (notesBannerCount) {
+                            notesBannerCount.textContent = '';
+                            notesBannerCount.style.display = 'none';
+                        }
+                    } else {
+                        const firstNote = contactNotes[0] && contactNotes[0].note ? String(contactNotes[0].note) : '';
+                        const label = currentLocale.indexOf('ar') === 0 ? 'ملاحظات العميل' : 'Customer notes';
+                        if (notesBannerText) notesBannerText.textContent = label + (firstNote ? ': ' + firstNote : '');
+                        if (notesBannerCount) {
+                            notesBannerCount.textContent = String(contactNotes.length);
+                            notesBannerCount.style.display = contactNotes.length > 1 ? 'inline-flex' : 'none';
+                        }
+                        notesBanner.classList.add('is-visible');
+                        notesBanner.setAttribute('aria-hidden', 'false');
+                    }
+                }
             }
 
             function renderMessageSearchResults(items, query) {
@@ -6629,6 +6717,30 @@
                 });
             }
 
+            function bindContactNotesBanner() {
+                const banner = document.getElementById('wb-contact-notes-banner');
+                const panel = document.getElementById('wb-contact-meta-panel');
+                if (!banner || !panel) return;
+
+                banner.addEventListener('click', function () {
+                    if (!activeConversationId) return;
+                    setModalOpenById('wb-contact-meta-panel', true);
+                });
+
+                const closeBtn = document.getElementById('wb-contact-meta-close');
+                const backdrop = document.getElementById('wb-contact-meta-backdrop');
+                if (closeBtn) {
+                    closeBtn.addEventListener('click', function () {
+                        setModalOpenById('wb-contact-meta-panel', false);
+                    });
+                }
+                if (backdrop) {
+                    backdrop.addEventListener('click', function () {
+                        setModalOpenById('wb-contact-meta-panel', false);
+                    });
+                }
+            }
+
             setTimeout(function () {
                 bindSearch();
                 bindConversationSelection();
@@ -6651,6 +6763,7 @@
                 bindTagPills();
                 bindGlobalAudioPlayer();
                 bindMessageActions();
+                bindContactNotesBanner();
 
                 // Prevent the mobile keyboard from popping up and covering the chat on
                 // load. `pageshow` also fires on a back/forward-cache (bfcache) restore —

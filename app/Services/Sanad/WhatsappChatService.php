@@ -2,6 +2,7 @@
 
 namespace App\Services\Sanad;
 
+use App\Models\CRM\CrmContactNote;
 use App\Models\CRM\WhatsappBusinessHoursSetting;
 use App\Models\CRM\WhatsappBusinessSetting;
 use App\Models\CRM\WhatsappChatTag;
@@ -1128,12 +1129,30 @@ class WhatsappChatService extends MainService
     }
 
     /**
-     * @return array{conversation: array<string, mixed>, account: array<string, mixed>|null, tags: Collection, notes: Collection}
+     * @return array{conversation: array<string, mixed>, account: array<string, mixed>|null, tags: Collection, notes: Collection, contact_id: int|null, contact_notes: Collection}
      */
     public function conversationMeta(int $crmUserId, int $conversationId): array
     {
         $conversation = $this->findOwnedConversation($crmUserId, $conversationId);
         $conversation->load(['tags:id,name,color', 'whatsappBusinessSetting:id,name,phone_number_id']);
+
+        $contact = WhatsappContact::query()
+            ->where('wa_id', $conversation->wa_id)
+            ->where('crm_user_id', $crmUserId)
+            ->first();
+
+        $contactNotes = $contact
+            ? CrmContactNote::query()
+                ->where('whatsapp_contact_id', $contact->id)
+                ->orderByDesc('id')
+                ->limit(5)
+                ->get()
+                ->map(fn (CrmContactNote $note): array => [
+                    'id' => $note->id,
+                    'note' => $note->note,
+                ])
+                ->values()
+            : collect();
 
         $notes = WhatsappConversationNote::query()
             ->with(['crmUser:id,name'])
@@ -1176,6 +1195,8 @@ class WhatsappChatService extends MainService
                 'color' => $tag->color,
             ])->values(),
             'notes' => $notes,
+            'contact_id' => $contact?->id,
+            'contact_notes' => $contactNotes,
         ];
     }
 
