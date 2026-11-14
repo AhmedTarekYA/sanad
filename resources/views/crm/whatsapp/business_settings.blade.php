@@ -67,6 +67,7 @@
         $accountLabels = json_encode([
             'account' => __('whatsapp_account'),
             'accountName' => __('whatsapp_account_name'),
+            'namePlaceholder' => __('whatsapp_placeholder_name'),
             'active' => __('is_active'),
             'remove' => __('remove'),
             'addAccount' => __('whatsapp_add_account'),
@@ -133,7 +134,8 @@
                                 <div class="input-group">
                                     <span class="input-group-text bg-white"><i class="fa fa-tag text-muted"></i></span>
                                     <input type="text" name="accounts[{{ $index }}][name]" class="form-control border-start-0"
-                                           value="{{ $account['name'] }}" data-account-name-input>
+                                           value="{{ $account['name'] }}" data-account-name-input
+                                           placeholder="{{ __('whatsapp_placeholder_name') }}">
                                 </div>
                             </div>
 
@@ -142,7 +144,7 @@
                                 <div class="input-group">
                                     <span class="input-group-text bg-white"><i class="fa fa-code text-muted"></i></span>
                                     <input type="text" name="accounts[{{ $index }}][api_version]" class="form-control border-start-0"
-                                           value="{{ $account['api_version'] }}">
+                                           value="{{ $account['api_version'] }}" placeholder="v20.0">
                                 </div>
                             </div>
 
@@ -151,7 +153,7 @@
                                 <div class="input-group">
                                     <span class="input-group-text bg-white"><i class="fa fa-hashtag text-muted"></i></span>
                                     <input type="text" name="accounts[{{ $index }}][phone_number_id]" class="form-control border-start-0"
-                                           value="{{ $account['phone_number_id'] }}">
+                                           value="{{ $account['phone_number_id'] }}" placeholder="123456789012345">
                                 </div>
                             </div>
 
@@ -160,7 +162,7 @@
                                 <div class="input-group">
                                     <span class="input-group-text bg-white"><i class="fa fa-building text-muted"></i></span>
                                     <input type="text" name="accounts[{{ $index }}][business_account_id]" class="form-control border-start-0"
-                                           value="{{ $account['business_account_id'] }}">
+                                           value="{{ $account['business_account_id'] }}" placeholder="987654321098765">
                                 </div>
                             </div>
 
@@ -169,7 +171,7 @@
                                 <div class="input-group">
                                     <span class="input-group-text bg-white"><i class="fa fa-key text-muted"></i></span>
                                     <input type="text" name="accounts[{{ $index }}][access_token]" class="form-control border-start-0"
-                                           value="{{ $account['access_token'] }}">
+                                           value="{{ $account['access_token'] }}" placeholder="EAABsbCS1234abcdXYZabcdef1234567890ABCDEFabcd">
                                 </div>
                             </div>
 
@@ -178,7 +180,7 @@
                                 <div class="input-group">
                                     <span class="input-group-text bg-white"><i class="fa fa-key text-muted"></i></span>
                                     <input type="text" name="accounts[{{ $index }}][webhook_verify_token]" class="form-control border-start-0"
-                                           value="{{ $account['webhook_verify_token'] }}">
+                                           value="{{ $account['webhook_verify_token'] }}" placeholder="my_secure_verify_token_2024">
                                 </div>
                             </div>
 
@@ -187,7 +189,7 @@
                                 <div class="input-group">
                                     <span class="input-group-text bg-white"><i class="fa fa-lock text-muted"></i></span>
                                     <input type="text" name="accounts[{{ $index }}][app_secret]" class="form-control border-start-0"
-                                           value="{{ $account['app_secret'] }}">
+                                           value="{{ $account['app_secret'] }}" placeholder="a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4">
                                 </div>
                             </div>
                         </div>
@@ -263,7 +265,8 @@
                                     <label class="form-label">${labels.accountName}</label>
                                     <div class="input-group">
                                         <span class="input-group-text bg-white"><i class="fa fa-tag text-muted"></i></span>
-                                        <input type="text" name="accounts[${index}][name]" class="form-control border-start-0" value="" data-account-name-input>
+                                        <input type="text" name="accounts[${index}][name]" class="form-control border-start-0" value="" data-account-name-input
+                                       placeholder="${labels.namePlaceholder}">
                                     </div>
                                 </div>
 
@@ -271,7 +274,7 @@
                                     <label class="form-label">${labels.apiVersion}</label>
                                     <div class="input-group">
                                         <span class="input-group-text bg-white"><i class="fa fa-code text-muted"></i></span>
-                                        <input type="text" name="accounts[${index}][api_version]" class="form-control border-start-0" value="v20.0">
+                                        <input type="text" name="accounts[${index}][api_version]" class="form-control border-start-0" value="v20.0" placeholder="v20.0">
                                     </div>
                                 </div>
 
@@ -279,7 +282,7 @@
                                     <label class="form-label">${labels.phoneNumberId}</label>
                                     <div class="input-group">
                                         <span class="input-group-text bg-white"><i class="fa fa-hashtag text-muted"></i></span>
-                                        <input type="text" name="accounts[${index}][phone_number_id]" class="form-control border-start-0" value="">
+                                        <input type="text" name="accounts[${index}][phone_number_id]" class="form-control border-start-0" value="" placeholder="123456789012345">
                                     </div>
                                 </div>
 
@@ -287,7 +290,7 @@
                                     <label class="form-label">${labels.businessAccountId}</label>
                                     <div class="input-group">
                                         <span class="input-group-text bg-white"><i class="fa fa-building text-muted"></i></span>
-                                        <input type="text" name="accounts[${index}][business_account_id]" class="form-control border-start-0" value="">
+                                        <input type="text" name="accounts[${index}][business_account_id]" class="form-control border-start-0" value="" placeholder="987654321098765">
                                     </div>
                                 </div>
 
@@ -295,7 +298,7 @@
                                     <label class="form-label">${labels.accessToken}</label>
                                     <div class="input-group">
                                         <span class="input-group-text bg-white"><i class="fa fa-key text-muted"></i></span>
-                                        <input type="text" name="accounts[${index}][access_token]" class="form-control border-start-0" value="">
+                                        <input type="text" name="accounts[${index}][access_token]" class="form-control border-start-0" value="" placeholder="EAABsbCS1234abcdXYZabcdef1234567890ABCDEFabcd">
                                     </div>
                                 </div>
 
@@ -303,7 +306,7 @@
                                     <label class="form-label">${labels.webhookVerifyToken}</label>
                                     <div class="input-group">
                                         <span class="input-group-text bg-white"><i class="fa fa-key text-muted"></i></span>
-                                        <input type="text" name="accounts[${index}][webhook_verify_token]" class="form-control border-start-0" value="">
+                                        <input type="text" name="accounts[${index}][webhook_verify_token]" class="form-control border-start-0" value="" placeholder="my_secure_verify_token_2024">
                                     </div>
                                 </div>
 
@@ -311,7 +314,7 @@
                                     <label class="form-label">${labels.appSecret}</label>
                                     <div class="input-group">
                                         <span class="input-group-text bg-white"><i class="fa fa-lock text-muted"></i></span>
-                                        <input type="text" name="accounts[${index}][app_secret]" class="form-control border-start-0" value="">
+                                        <input type="text" name="accounts[${index}][app_secret]" class="form-control border-start-0" value="" placeholder="a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4">
                                     </div>
                                 </div>
                             </div>

@@ -1049,6 +1049,7 @@
     "whatsapp_webhook_verify_url": "Webhook Verify URL",
     "whatsapp_account": "WhatsApp account",
     "whatsapp_account_name": "Account Name",
+    "whatsapp_placeholder_name": "My WhatsApp Business",
     "whatsapp_add_account": "Add Account",
     "whatsapp_saved_placeholder": "Saved fields stay unchanged when left empty",
     "whatsapp_settings_edit_hint": "All fields are editable, and current values appear during updates.",

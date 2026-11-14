@@ -1049,6 +1049,7 @@
     "whatsapp_webhook_verify_url": "Webhook Verify URL",
     "whatsapp_account": "حساب واتساب",
     "whatsapp_account_name": "اسم الحساب",
+    "whatsapp_placeholder_name": "متجر سناد - واتساب",
     "whatsapp_add_account": "إضافة حساب",
     "whatsapp_saved_placeholder": "سيبقى الحقل المحفوظ كما هو إذا تُرك فارغًا",
     "whatsapp_settings_edit_hint": "كل الحقول قابلة للتعديل، وسيتم عرض القيم الحالية أثناء التحديث.",
