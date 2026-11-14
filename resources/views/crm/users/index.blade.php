@@ -97,8 +97,8 @@
                     render: function (id) {
                         const editUrl = root.dataset.editUrlTemplate.replace('__ID__', id);
                         return '<div class="d-flex gap-1">'
-                            + '<a class="btn btn-sm btn-outline-primary" href="' + esc(editUrl) + '"><i class="fas fa-pen me-1"></i>' + esc(L.edit) + '</a>'
-                            + '<button type="button" class="btn btn-sm btn-outline-danger" data-action="delete" data-id="' + id + '"><i class="fas fa-trash me-1"></i>' + esc(L.del) + '</button>'
+                            + '<a class="btn btn-sm btn-primary" href="' + esc(editUrl) + '" title="' + esc(L.edit) + '"><i class="fas fa-pen"></i></a>'
+                            + '<button type="button" class="btn btn-sm btn-danger" data-action="delete" data-id="' + id + '" title="' + esc(L.del) + '"><i class="fas fa-trash"></i></button>'
                             + '</div>';
                     },
                 },

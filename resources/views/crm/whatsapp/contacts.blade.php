@@ -423,10 +423,10 @@
                             <td>${renderTags(contact.tags)}</td>
                             <td>
                                 <div class="d-flex flex-wrap gap-1">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary" data-action="view" data-id="${contact.id}"><i class="fas fa-eye me-1"></i>{{ __('whatsapp_view') }}</button>
-                                    <button type="button" class="btn btn-sm btn-outline-primary" data-action="edit" data-id="${contact.id}"><i class="fas fa-pen me-1"></i>{{ __('edit') }}</button>
-                                    <button type="button" class="btn btn-sm btn-outline-info" data-action="tags" data-id="${contact.id}"><i class="fas fa-tags me-1"></i>{{ __('whatsapp_tag_assign') }}</button>
-                                    <button type="button" class="btn btn-sm btn-outline-danger" data-action="delete" data-id="${contact.id}"><i class="fas fa-trash me-1"></i>{{ __('delete') }}</button>
+                                    <button type="button" class="btn btn-sm btn-secondary" data-action="view" data-id="${contact.id}" title="{{ __('whatsapp_view') }}"><i class="fas fa-eye"></i></button>
+                                    <button type="button" class="btn btn-sm btn-primary" data-action="edit" data-id="${contact.id}" title="{{ __('edit') }}"><i class="fas fa-pen"></i></button>
+                                    <button type="button" class="btn btn-sm btn-info" data-action="tags" data-id="${contact.id}" title="{{ __('whatsapp_tag_assign') }}"><i class="fas fa-tags"></i></button>
+                                    <button type="button" class="btn btn-sm btn-danger" data-action="delete" data-id="${contact.id}" title="{{ __('delete') }}"><i class="fas fa-trash"></i></button>
                                 </div>
                             </td>
                         </tr>
@@ -689,7 +689,7 @@
                                     <td>${escapeHtml(tag.name)}</td>
                                     <td>${Number(tag.contacts_count || 0)}</td>
                                     <td>
-                                        <button type="button" class="btn btn-sm btn-outline-danger" data-tag-delete="${tag.id}"><i class="fas fa-trash me-1"></i>{{ __('delete') }}</button>
+                                        <button type="button" class="btn btn-sm btn-danger" data-tag-delete="${tag.id}" title="{{ __('delete') }}"><i class="fas fa-trash"></i></button>
                                     </td>
                                 </tr>
                             `).join('')

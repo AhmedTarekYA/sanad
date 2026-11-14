@@ -84,17 +84,19 @@
                                         </td>
                                         <td>
                                             <div class="d-flex flex-wrap gap-2">
-                                                <button type="button" class="btn btn-sm btn-outline-primary"
+                                                <button type="button" class="btn btn-sm btn-primary"
                                                         data-scope="contact" data-action="edit"
                                                         data-id="{{ $tag->id }}"
                                                         data-name="{{ $tag->name }}"
-                                                        data-color="{{ (string) $tag->color }}">
-                                                    <i class="fas fa-pen me-1"></i>{{ __('edit') }}
+                                                        data-color="{{ (string) $tag->color }}"
+                                                        title="{{ __('edit') }}">
+                                                    <i class="fas fa-pen"></i>
                                                 </button>
-                                                <button type="button" class="btn btn-sm btn-outline-danger"
+                                                <button type="button" class="btn btn-sm btn-danger"
                                                         data-scope="contact" data-action="delete"
-                                                        data-id="{{ $tag->id }}">
-                                                    <i class="fas fa-trash me-1"></i>{{ __('delete') }}
+                                                        data-id="{{ $tag->id }}"
+                                                        title="{{ __('delete') }}">
+                                                    <i class="fas fa-trash"></i>
                                                 </button>
                                             </div>
                                         </td>
@@ -138,17 +140,19 @@
                                         </td>
                                         <td>
                                             <div class="d-flex flex-wrap gap-2">
-                                                <button type="button" class="btn btn-sm btn-outline-primary"
+                                                <button type="button" class="btn btn-sm btn-primary"
                                                         data-scope="chat" data-action="edit"
                                                         data-id="{{ $tag->id }}"
                                                         data-name="{{ $tag->name }}"
-                                                        data-color="{{ (string) $tag->color }}">
-                                                    <i class="fas fa-pen me-1"></i>{{ __('edit') }}
+                                                        data-color="{{ (string) $tag->color }}"
+                                                        title="{{ __('edit') }}">
+                                                    <i class="fas fa-pen"></i>
                                                 </button>
-                                                <button type="button" class="btn btn-sm btn-outline-danger"
+                                                <button type="button" class="btn btn-sm btn-danger"
                                                         data-scope="chat" data-action="delete"
-                                                        data-id="{{ $tag->id }}">
-                                                    <i class="fas fa-trash me-1"></i>{{ __('delete') }}
+                                                        data-id="{{ $tag->id }}"
+                                                        title="{{ __('delete') }}">
+                                                    <i class="fas fa-trash"></i>
                                                 </button>
                                             </div>
                                         </td>
