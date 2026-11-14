@@ -1763,6 +1763,166 @@
             gap: 10px;
         }
 
+        .wb-contact-meta-panel {
+            position: fixed;
+            inset: 0;
+            display: none;
+            align-items: flex-end;
+            justify-content: flex-end;
+            z-index: 1900;
+        }
+
+        .wb-contact-meta-panel.is-open {
+            display: flex;
+        }
+
+        .wb-contact-meta-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.46);
+            backdrop-filter: blur(2px);
+        }
+
+        .wb-contact-meta-card {
+            position: relative;
+            width: min(420px, 92vw);
+            height: 100%;
+            background: var(--wb-panel);
+            border: 0;
+            border-radius: 0;
+            box-shadow: -18px 0 60px rgba(17, 27, 33, 0.22);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        [dir="rtl"] .wb-contact-meta-card {
+            box-shadow: 18px 0 60px rgba(17, 27, 33, 0.22);
+        }
+
+        .wb-contact-meta-header {
+            height: 64px;
+            padding: 12px 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--wb-border);
+            background: linear-gradient(180deg, rgba(0, 168, 132, 0.08), rgba(0, 168, 132, 0.02));
+        }
+
+        .wb-contact-meta-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+            color: var(--wb-text);
+        }
+
+        .wb-contact-meta-title i {
+            color: var(--wb-green-dark);
+        }
+
+        .wb-contact-meta-body {
+            padding: 12px 14px 16px;
+            overflow: auto;
+            flex: 1 1 auto;
+        }
+
+        .wb-notes-section {
+            margin-top: 4px;
+        }
+
+        .wb-notes-section-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .wb-notes-section-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 800;
+            color: var(--wb-text);
+            font-size: 14px;
+        }
+
+        .wb-notes-section-title i {
+            color: var(--wb-green-dark);
+        }
+
+        .wb-notes-section-count {
+            min-width: 22px;
+            height: 22px;
+            padding: 0 6px;
+            border-radius: 999px;
+            background: rgba(0, 168, 132, 0.12);
+            color: var(--wb-green-dark);
+            font-size: 11px;
+            font-weight: 800;
+            display: grid;
+            place-items: center;
+        }
+
+        .wb-contact-note-item {
+            padding: 10px;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            background: #fff;
+            margin-bottom: 8px;
+        }
+
+        .wb-contact-note-meta {
+            font-size: 12px;
+            color: rgba(0, 0, 0, 0.55);
+            margin-bottom: 6px;
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .wb-contact-note-author {
+            font-weight: 700;
+            color: var(--wb-green-dark);
+        }
+
+        .wb-contact-note-actions {
+            display: flex;
+            gap: 6px;
+            margin-top: 8px;
+        }
+
+        .wb-contact-note-edit {
+            flex: 1 1 auto;
+            min-width: 0;
+        }
+
+        .wb-contact-note-edit-input {
+            width: 100%;
+            min-height: 70px;
+            border-radius: 10px;
+            border: 1px solid var(--wb-border);
+            padding: 8px 10px;
+            outline: none;
+            background: rgba(0, 0, 0, 0.02);
+            resize: vertical;
+            font: inherit;
+        }
+
+        .wb-contact-note-edit-input:focus {
+            border-color: rgba(0, 168, 132, 0.35);
+            box-shadow: 0 0 0 3px rgba(0, 168, 132, 0.12);
+            background: #fff;
+        }
+
+        .wb-settings-section-divider {
+            height: 1px;
+            margin: 14px 0;
+            background: var(--wb-border);
+        }
+
         .wb-msg.is-highlighted .wb-bubble {
             border-color: rgba(0, 168, 132, 0.55);
             box-shadow: 0 0 0 4px rgba(0, 168, 132, 0.16);
@@ -2567,6 +2727,10 @@
         data-set-tags-url-template="{{ route('crm.whatsapp_chat.tags.set', ['conversationId' => '__ID__'], false) }}"
         data-add-note-url-template="{{ route('crm.whatsapp_chat.notes.store', ['conversationId' => '__ID__'], false) }}"
         data-resolve-url-template="{{ route('crm.whatsapp_chat.resolve', ['conversationId' => '__ID__'], false) }}"
+        data-contact-notes-index-url-template="{{ route('crm.whatsapp_contacts.notes.index', ['id' => '__ID__'], false) }}"
+        data-contact-notes-update-url-template="{{ route('crm.whatsapp_contacts.notes.update', ['id' => '__ID__', 'noteId' => '__NID__'], false) }}"
+        data-contact-notes-destroy-url-template="{{ route('crm.whatsapp_contacts.notes.destroy', ['id' => '__ID__', 'noteId' => '__NID__'], false) }}"
+        data-active-contact-id="{{ isset($activeContact) && $activeContact ? $activeContact->id : '' }}"
         data-send-message-url="{{ route('crm.whatsapp_chat.store', [], false) }}"
         data-quick-replies-url="{{ route('crm.whatsapp_chat.quickReplies', [], false) }}"
         data-media-url="{{ route('crm.whatsapp_chat.media', [], false) }}"
@@ -2815,6 +2979,10 @@
                         <button class="wb-icon-btn" type="button" id="wb-chat-settings-btn"
                             title="{{ __('whatsapp_more') }}" {{ isset($activeConversation) && $activeConversation ? '' : 'disabled' }}>
                             <i class="fa fa-ellipsis-v"></i>
+                        </button>
+                        <button class="wb-icon-btn" type="button" id="wb-contact-meta-btn"
+                            title="{{ app()->getLocale() === 'ar' ? 'بيانات العميل' : 'Customer info' }}" {{ isset($activeConversation) && $activeConversation ? '' : 'disabled' }}>
+                            <i class="fa fa-user"></i>
                         </button>
                     </div>
                 </div>
@@ -3220,6 +3388,48 @@
                             id="wb-settings-notes-btn">{{ __('whatsapp_note') }}</button>
                         <button class="wb-primary" type="button"
                             id="wb-settings-resolve-btn">{{ __('whatsapp_resolve') }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wb-contact-meta-panel" id="wb-contact-meta-panel" aria-hidden="true">
+            <div class="wb-contact-meta-backdrop" id="wb-contact-meta-backdrop"></div>
+            <div class="wb-contact-meta-card" role="dialog" aria-modal="true">
+                <div class="wb-contact-meta-header">
+                    <div class="wb-contact-meta-title">
+                        <i class="fa fa-user"></i>
+                        <span>{{ app()->getLocale() === 'ar' ? 'بيانات العميل' : 'Customer info' }}</span>
+                    </div>
+                    <button class="wb-icon-btn" type="button" id="wb-contact-meta-close" title="{{ __('close') }}">
+                        <i class="fa fa-times"></i>
+                    </button>
+                </div>
+                <div class="wb-contact-meta-body">
+                    <div class="wb-customer-snapshot" id="wb-contact-meta-snapshot">
+                        <div class="wb-empty">{{ __('whatsapp_loading') }}</div>
+                    </div>
+                    <div class="wb-settings-section-divider"></div>
+                    <div class="wb-notes-section">
+                        <div class="wb-notes-section-head">
+                            <div class="wb-notes-section-title">
+                                <i class="fa fa-sticky-note"></i>
+                                <span>{{ app()->getLocale() === 'ar' ? 'ملاحظات' : 'Notes' }}</span>
+                            </div>
+                            <span class="wb-notes-section-count" id="wb-contact-notes-count">0</span>
+                        </div>
+                        <textarea class="wb-textarea" id="wb-contact-note-body"
+                            placeholder="{{ app()->getLocale() === 'ar' ? 'أضف ملاحظة على العميل...' : 'Add a note about this customer...' }}"
+                            {{ isset($activeContact) && $activeContact ? '' : 'disabled' }}></textarea>
+                        <div class="wb-form-row" style="margin-top: 8px;">
+                            <button class="wb-primary" type="button" id="wb-contact-note-save"
+                                {{ isset($activeContact) && $activeContact ? '' : 'disabled' }}>
+                                {{ app()->getLocale() === 'ar' ? 'حفظ الملاحظة' : 'Save note' }}
+                            </button>
+                        </div>
+                        <div class="wb-contact-notes-list" id="wb-contact-notes-list" style="margin-top: 10px;">
+                            <div class="wb-empty">{{ app()->getLocale() === 'ar' ? 'لا توجد ملاحظات' : 'No notes yet' }}</div>
+                        </div>
                     </div>
                 </div>
             </div>

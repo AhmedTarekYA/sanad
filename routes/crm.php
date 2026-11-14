@@ -85,6 +85,9 @@ Route::domain(config('app.crm_domain'))->name('crm.')->middleware(SetCrmLocale::
         Route::get('/whatsapp-contacts/{id}', [WhatsappContactsController::class, 'show'])->name('whatsapp_contacts.show');
         Route::put('/whatsapp-contacts/{id}', [WhatsappContactsController::class, 'update'])->name('whatsapp_contacts.update');
         Route::put('/whatsapp-contacts/{id}/tags', [WhatsappContactsController::class, 'setTags'])->name('whatsapp_contacts.tags.set');
+        Route::get('/whatsapp-contacts/{id}/notes', [WhatsappContactsController::class, 'notesIndex'])->name('whatsapp_contacts.notes.index');
+        Route::put('/whatsapp-contacts/{id}/notes/{noteId}', [WhatsappContactsController::class, 'notesUpdate'])->name('whatsapp_contacts.notes.update');
+        Route::delete('/whatsapp-contacts/{id}/notes/{noteId}', [WhatsappContactsController::class, 'notesDestroy'])->name('whatsapp_contacts.notes.destroy');
         Route::delete('/whatsapp-contacts/{id}', [WhatsappContactsController::class, 'destroy'])->name('whatsapp_contacts.destroy');
         Route::get('/whatsapp-contact-tags', [WhatsappContactsController::class, 'contactTagsIndex'])->name('contact_tags.index');
         Route::post('/whatsapp-contact-tags', [WhatsappContactsController::class, 'contactTagsStore'])->name('contact_tags.store');

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\CRM\CrmContactNote;
 use App\Models\CRM\CrmSale;
 use App\Models\CRM\CrmUser;
 use App\Models\CRM\WhatsappBusinessSetting;
@@ -134,6 +135,74 @@ class CrmTestDataSeeder extends Seeder
             CrmSale::firstOrCreate(
                 ['crm_user_id' => $sale['crm_user_id'], 'phone' => $sale['phone'], 'customer_name' => $sale['customer_name']],
                 $sale
+            );
+        }
+
+        $thirdConversation = $conversations->get(2) ?? $conversations->last();
+        if ($thirdConversation) {
+            $richMessages = [
+                [
+                    'wamid' => 'seed-rich-1',
+                    'type' => 'image',
+                    'direction' => 'outbound',
+                    'body' => 'تفضل هنا صورة المنتج الجديد 🖼️',
+                    'raw' => ['seeded' => true, 'local_public_path' => 'admin/assets/img/whats.png'],
+                ],
+                [
+                    'wamid' => 'seed-rich-2',
+                    'type' => 'image',
+                    'direction' => 'inbound',
+                    'body' => 'شكراً، كيف يمكنني الطلب؟',
+                    'raw' => ['seeded' => true, 'local_public_path' => 'admin/assets/img/think.png'],
+                ],
+                [
+                    'wamid' => 'seed-rich-3',
+                    'type' => 'video',
+                    'direction' => 'outbound',
+                    'body' => 'هنا فيديو شرح المنتج 🎥',
+                    'raw' => ['seeded' => true],
+                ],
+                [
+                    'wamid' => 'seed-rich-4',
+                    'type' => 'audio',
+                    'direction' => 'inbound',
+                    'body' => null,
+                    'raw' => ['seeded' => true],
+                ],
+                [
+                    'wamid' => 'seed-rich-5',
+                    'type' => 'text',
+                    'direction' => 'outbound',
+                    'body' => 'أهلاً! سيتم التواصل معك من فريق المبيعات خلال 24 ساعة. 🚀',
+                    'raw' => ['seeded' => true],
+                ],
+            ];
+
+            foreach ($richMessages as $i => $rm) {
+                WhatsappMessage::firstOrCreate(
+                    ['wamid' => $rm['wamid']],
+                    [
+                        'conversation_id' => $thirdConversation->id,
+                        'crm_user_id' => $agent->id,
+                        'whatsapp_business_setting_id' => $business->id,
+                        'direction' => $rm['direction'],
+                        'from_wa_id' => $rm['direction'] === 'inbound' ? $thirdConversation->wa_id : '100000000000001',
+                        'to_wa_id' => $rm['direction'] === 'inbound' ? '100000000000001' : $thirdConversation->wa_id,
+                        'type' => $rm['type'],
+                        'message_status' => $rm['direction'] === 'outbound' ? 'sent' : null,
+                        'body' => $rm['body'],
+                        'wa_timestamp' => now()->subMinutes(10 - $i),
+                        'raw' => $rm['raw'],
+                    ]
+                );
+            }
+        }
+
+        $firstContact = $contacts->first();
+        if ($firstContact) {
+            CrmContactNote::firstOrCreate(
+                ['whatsapp_contact_id' => $firstContact->id, 'crm_user_id' => $agent->id],
+                ['note' => 'عميل بيستفسر كتير ومش بيشتري — يحتاج متابعة خاصة قبل أي عرض.']
             );
         }
     }

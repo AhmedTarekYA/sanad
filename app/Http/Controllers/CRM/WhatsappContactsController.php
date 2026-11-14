@@ -104,6 +104,38 @@ class WhatsappContactsController extends Controller
         return jsonSuccess($result, null, 201);
     }
 
+    public function notesIndex(int $id, Request $request, WhatsappContactService $service): JsonResponse
+    {
+        $user = Auth::guard('crm')->user();
+
+        $notes = $service->contactNotesForUser($user, $id, (int) $request->query('limit', 50));
+
+        return jsonSuccess(['items' => $notes]);
+    }
+
+    public function notesUpdate(Request $request, int $id, int $noteId, WhatsappContactService $service): JsonResponse
+    {
+        $validated = $request->validate([
+            'note' => ['required', 'string', 'max:10000'],
+        ]);
+
+        $user = Auth::guard('crm')->user();
+        $note = $service->updateContactNoteForUser($user, $id, $noteId, $validated['note']);
+
+        return jsonSuccess(['note' => $note]);
+    }
+
+    public function notesDestroy(int $id, int $noteId, WhatsappContactService $service): JsonResponse
+    {
+        $user = Auth::guard('crm')->user();
+
+        if (! $service->deleteContactNoteForUser($user, $id, $noteId)) {
+            abort(404);
+        }
+
+        return jsonSuccess();
+    }
+
     public function contactTagsIndex(WhatsappContactService $service): JsonResponse
     {
         $user = Auth::guard('crm')->user();

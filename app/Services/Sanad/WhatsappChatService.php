@@ -1321,6 +1321,21 @@ class WhatsappChatService extends MainService
         abort_if($message === null, 404);
 
         $raw = is_array($message->raw) ? $message->raw : [];
+
+        $demoPublicPath = data_get($raw, 'local_public_path');
+        if (is_string($demoPublicPath) && $demoPublicPath !== '') {
+            $fullPath = public_path($demoPublicPath);
+            if (file_exists($fullPath)) {
+                $mime = mime_content_type($fullPath) ?: 'application/octet-stream';
+
+                return [
+                    'body' => (string) file_get_contents($fullPath),
+                    'content_type' => $mime,
+                    'filename' => basename($fullPath),
+                ];
+            }
+        }
+
         $localDisk = data_get($raw, 'local_media_disk');
         $localPath = data_get($raw, 'local_media_path');
 

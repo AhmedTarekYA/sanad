@@ -2,6 +2,7 @@
 
 namespace App\Services\Sanad;
 
+use App\Models\CRM\CrmContactNote;
 use App\Models\CRM\CrmUser;
 use App\Models\CRM\WhatsappContact;
 use App\Models\CRM\WhatsappContactTag;
@@ -353,6 +354,78 @@ class WhatsappContactService extends MainService
         $tag->contacts()->detach();
 
         return (bool) $tag->delete();
+    }
+
+    /**
+     * @return array<int, array<string, mixed>>
+     */
+    public function contactNotesForUser(CrmUser $user, int $contactId, int $limit = 50): array
+    {
+        $limit = max(1, min($limit, 200));
+
+        $notes = CrmContactNote::query()
+            ->with(['crmUser:id,name'])
+            ->where('crm_user_id', $user->id)
+            ->where('whatsapp_contact_id', $contactId)
+            ->orderByDesc('id')
+            ->limit($limit)
+            ->get()
+            ->map(fn (CrmContactNote $note): array => [
+                'id' => $note->id,
+                'whatsapp_contact_id' => $note->whatsapp_contact_id,
+                'crm_user_id' => $note->crm_user_id,
+                'note' => $note->note,
+                'created_at' => $note->created_at,
+                'updated_at' => $note->updated_at,
+                'user' => $note->crmUser
+                    ? ['id' => $note->crmUser->id, 'name' => $note->crmUser->name]
+                    : null,
+            ])
+            ->values()
+            ->toArray();
+
+        return $notes;
+    }
+
+    public function storeContactNoteForUser(CrmUser $user, int $contactId, string $note): CrmContactNote
+    {
+        $contact = $this->findForUser($user, $contactId);
+        abort_if($contact === null, 404);
+
+        return CrmContactNote::query()->create([
+            'whatsapp_contact_id' => $contact->id,
+            'crm_user_id' => $user->id,
+            'note' => trim($note),
+        ]);
+    }
+
+    public function updateContactNoteForUser(CrmUser $user, int $contactId, int $noteId, string $note): CrmContactNote
+    {
+        $noteModel = CrmContactNote::query()
+            ->where('crm_user_id', $user->id)
+            ->where('whatsapp_contact_id', $contactId)
+            ->find($noteId);
+
+        abort_if($noteModel === null, 404);
+
+        $noteModel->note = trim($note);
+        $noteModel->save();
+
+        return $noteModel;
+    }
+
+    public function deleteContactNoteForUser(CrmUser $user, int $contactId, int $noteId): bool
+    {
+        $noteModel = CrmContactNote::query()
+            ->where('crm_user_id', $user->id)
+            ->where('whatsapp_contact_id', $contactId)
+            ->find($noteId);
+
+        if ($noteModel === null) {
+            return false;
+        }
+
+        return (bool) $noteModel->delete();
     }
 
     public function findTagForUser(CrmUser $user, int $id): ?WhatsappContactTag
