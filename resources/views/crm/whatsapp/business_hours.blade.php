@@ -64,21 +64,21 @@
                     <div class="card-body">
                         <div class="form-check form-switch mb-3">
                             <input class="form-check-input" type="checkbox" role="switch" id="wb-enabled"
-                                   {{ $settings->business_hours_enabled ? 'checked' : '' }}>
+                                   {{ $businessHoursSettings->business_hours_enabled ? 'checked' : '' }}>
                             <label class="form-check-label fw-bold" for="wb-enabled">{{ __('whatsapp_enable_business_hours') }}</label>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label fw-bold" for="wb-timezone">{{ __('whatsapp_timezone') }}</label>
                             <input type="text" class="form-control" id="wb-timezone" maxlength="60"
-                                   value="{{ $settings->timezone ?: config('app.timezone') }}">
+                                   value="{{ $businessHoursSettings->timezone ?: config('app.timezone') }}">
                             <div class="form-text">{{ __('whatsapp_timezone_example') }}</div>
                         </div>
 
                         <div class="fw-bold mb-2">{{ __('whatsapp_working_days') }}</div>
 
                         @foreach (['sat' => 'saturday', 'sun' => 'sunday', 'mon' => 'monday', 'tue' => 'tuesday', 'wed' => 'wednesday', 'thu' => 'thursday', 'fri' => 'friday'] as $day => $dayKey)
-                            @php $row = $settings->hours[$day] ?? ['enabled' => false, 'from' => '09:00', 'to' => '17:00']; @endphp
+                            @php $row = $businessHoursSettings->hours[$day] ?? ['enabled' => false, 'from' => '09:00', 'to' => '17:00']; @endphp
                             <div class="wb-day-row" data-day="{{ $day }}">
                                 <div class="form-check form-switch mb-0">
                                     <input class="form-check-input" type="checkbox" role="switch"
@@ -109,13 +109,13 @@
                     <div class="card-body">
                         <div class="form-check form-switch mb-3">
                             <input class="form-check-input" type="checkbox" role="switch" id="wb-away-enabled"
-                                   {{ $settings->away_message_enabled ? 'checked' : '' }}>
+                                   {{ $businessHoursSettings->away_message_enabled ? 'checked' : '' }}>
                             <label class="form-check-label fw-bold" for="wb-away-enabled">{{ __('whatsapp_enable_away_message') }}</label>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label fw-bold" for="wb-away-message">{{ __('whatsapp_message') }}</label>
-                            <textarea class="form-control" id="wb-away-message" rows="6" maxlength="5000">{{ $settings->away_message }}</textarea>
+                            <textarea class="form-control" id="wb-away-message" rows="6" maxlength="5000">{{ $businessHoursSettings->away_message }}</textarea>
                             <div class="form-text">{{ __('whatsapp_away_message_webhook_hint') }}</div>
                         </div>
                     </div>

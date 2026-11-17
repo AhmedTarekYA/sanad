@@ -2,7 +2,7 @@
 .sanad-stats__slider{display:flex;align-items:center;gap:24px}
 .sanad-stats__viewport{flex:1;overflow:hidden;min-inline-size:0}
 .sanad-stats__track{display:flex;margin:0;padding:0;list-style:none;will-change:transform}
-.sanad-stats .sanad-stats__item{box-sizing:border-box;padding-inline:24px;min-block-size:141px}
+.sanad-stats .sanad-stats__item{box-sizing:border-box;padding-inline:16px;min-block-size:141px}
 .sanad-stats__label{color:#0a192f}
 .sanad-stats__detail{color:#545454}
 .sanad-stats__value{color:#1e40af}

@@ -3,6 +3,97 @@ html, body {
     max-inline-size: 100vw;
 }
 
+/* Keep the sentiment labels in the normal flow, clear of the progress bar. */
+.ai-step__illustration--semantic {
+    display: grid;
+    place-items: center;
+    color: var(--a-blue);
+}
+.ai-step__illustration--semantic svg {
+    display: block;
+    width: min(120px, 100%);
+    height: 88px;
+}
+[data-theme="dark"] .ai-step__illustration--semantic { color: #99bffe; }
+.ai-sent {
+    display: flex;
+    flex-direction: column;
+    min-height: 292px;
+    height: auto;
+    padding: 32px;
+}
+.ai-sent > h3, .ai-sent > p {
+    position: static;
+    margin: 0;
+}
+.ai-sent > p { margin-block-start: 16px; }
+.ai-sent .ai-sent__bar {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    margin-block: 32px 12px;
+}
+.ai-sent .ai-sent__bar i { width: 72%; }
+.ai-sent .ai-sent__leg {
+    position: static;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px 20px;
+    margin: 0;
+}
+
+@media (max-width: 1023px) {
+    .sanad-header .sanad-header__row {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 44px auto;
+        grid-template-areas: "brand menu actions" "nav nav nav";
+        grid-template-rows: 80px auto;
+        column-gap: 8px;
+        row-gap: 0;
+        height: auto;
+        min-height: 80px;
+        padding: 0 20px;
+    }
+    .sanad-header .sanad-header__brand {
+        width: min(100%, 150px);
+    }
+    .sanad-header .sanad-header__actions { gap: 4px; }
+    /* An open menu takes space in the page instead of covering the hero. */
+    .sanad-header.sanad-header--menu-open {
+        position: sticky;
+        background: var(--sanad-surface-page, #0d1b2a);
+    }
+    .sanad-header.sanad-header--menu-open + main {
+        padding-block-start: 0;
+    }
+    .sanad-header .sanad-header__nav {
+        max-block-size: calc(100vh - 96px);
+        max-block-size: calc(100dvh - 96px);
+        overflow-y: auto;
+    }
+}
+
+@media (max-width: 767px) {
+    .ai-walkthrough .ai-step .ai-step__number {
+        position: static !important;
+        display: grid;
+        width: 44px !important;
+        height: 44px !important;
+        margin: 0 0 20px !important;
+        transform: none;
+        flex: none;
+    }
+    .ai-walkthrough .ai-step .ai-step__illustration {
+        position: relative !important;
+        width: min(100%, 234px) !important;
+        height: 100px !important;
+        margin: 0 auto 20px !important;
+    }
+    .ai-walkthrough .ai-step__illustration--knowledge .ai-doc:nth-child(2) { left: 35%; }
+    .ai-walkthrough .ai-step__illustration--knowledge .ai-doc:nth-child(3) { left: 70%; }
+}
+
 .sanad-footer__legal{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:.5rem 3rem;min-height:81px;padding-block:1.5rem}
 .sanad-footer__legal p{margin:0;font-size:14px;line-height:21px}
 .whatsapp-float{position:fixed;inset-block-end:36px;right:36px;left:auto;width:56px;height:56px;border:0;border-radius:9999px;background:#25d366;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(37,211,102,.4);z-index:9999;cursor:pointer;transition:transform .2s,background-color .2s}
@@ -19,7 +110,7 @@ html, body {
     inset-inline: 0;
     z-index: 100;
 }
-body:has(> .sanad-header) > main { padding-block-start: 80px; }
+.sanad-header + main { padding-block-start: 80px; }
 .sanad-header__row {
     display: flex;
     align-items: center;
@@ -29,7 +120,7 @@ body:has(> .sanad-header) > main { padding-block-start: 80px; }
     margin-inline: auto;
 }
 @media (min-width: 1024px) {
-    body:has(> .sanad-header) > main { padding-block-start: 112px; }
+    .sanad-header + main { padding-block-start: 112px; }
     .sanad-header__nav {
         background: #0d1b2a;
         border: 1px solid rgba(255, 255, 255, 0.12);

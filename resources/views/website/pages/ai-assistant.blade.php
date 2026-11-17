@@ -51,38 +51,38 @@
 </filter>
 </defs>
 <circle cx="212" cy="170" r="164" fill="#1e40af" fill-opacity=".18" filter="url(#aiBlur)"/>
-<circle cx="212" cy="169" r="155" stroke="#30bd7d" stroke-opacity=".42" stroke-width="1.1" stroke-dasharray="3.3 7.7"/>
+<circle class="ai-art__orbit" cx="212" cy="169" r="155" stroke="#30bd7d" stroke-opacity=".42" stroke-width="1.1" stroke-dasharray="3.3 7.7"/>
 <circle cx="211.5" cy="169.5" r="125.5" fill="#0e1e30" stroke="#33cc91" stroke-opacity=".8" stroke-width="1.1"/>
-<image href="{{ asset('website/assets/image/home/ai-orb.png') }}" width="424" height="327"/>
+<image class="ai-art__orb" href="{{ asset('website/assets/image/home/ai-orb.png') }}" width="424" height="327"/>
 <path transform="translate(102 216.1)" d="M0 31.3C44-9.3 73.7 61 121 25.8S187-4.9 220 17M0 36.8C44-3.8 73.7 66.5 121 31.3S187 .5 220 22.5M0 42.3C44 1.6 73.7 72 121 36.8S187 6 220 28M0 47.8C44 7.1 73.7 77.5 121 42.3S187 11.5 220 33.5M0 53.3C44 12.6 73.7 83 121 47.8S187 17 220 39" stroke="#1fc98c" stroke-opacity=".65" stroke-width="1.1" stroke-dasharray="1.1 3.3"/>
 </svg>
 <span class="ai-art__name" dir="ltr">SANAD AI</span>
-<span class="ai-tag ai-tag--l" style="left:16px;top:44px">
+<span class="ai-tag ai-tag--l" style="left:3.77%;top:13.46%">
 <i>
 </i>
 <b>{{ $isAr ? 'الردود' : 'Replies' }}</b>
 </span>
-<span class="ai-tag ai-tag--l" style="left:1px;top:130px">
+<span class="ai-tag ai-tag--l" style="left:.24%;top:39.76%">
 <i>
 </i>
 <b>{{ $isAr ? 'المحادثات' : 'Chats' }}</b>
 </span>
-<span class="ai-tag ai-tag--l" style="left:16px;top:216px">
+<span class="ai-tag ai-tag--l" style="left:3.77%;top:66.06%">
 <i>
 </i>
 <b>{{ $isAr ? 'العملاء' : 'Customers' }}</b>
 </span>
-<span class="ai-tag ai-tag--r" style="left:315px;top:44px">
+<span class="ai-tag ai-tag--r" style="left:74.29%;top:13.46%">
 <i>
 </i>
 <b>{{ $isAr ? 'التحليلات' : 'Analytics' }}</b>
 </span>
-<span class="ai-tag ai-tag--r" style="left:331px;top:130px">
+<span class="ai-tag ai-tag--r" style="left:78.07%;top:39.76%">
 <i>
 </i>
 <b>{{ $isAr ? 'الأداء' : 'Performance' }}</b>
 </span>
-<span class="ai-tag ai-tag--r" style="left:315px;top:216px">
+<span class="ai-tag ai-tag--r" style="left:74.29%;top:66.06%">
 <i>
 </i>
 <b>{{ $isAr ? 'المبيعات' : 'Sales' }}</b>
@@ -165,19 +165,19 @@
     <div class="ai-walkthrough__steps" role="group" aria-label="{{ $isAr ? 'مراحل عمل المساعد' : 'Co-pilot stages' }}">
         <article class="ai-step ai-walkthrough__step">
 <span class="ai-step__number">01</span>
-<span class="ai-step__illustration ai-step__illustration--install" aria-hidden="true"><img class="ai-install-light" src="{{ asset('website/assets/image/svg/ai-chrome-installation.svg') }}" alt="" width="120" height="88"><img class="ai-install-dark" src="{{ asset('website/assets/image/svg/ai-chrome-installation-dark.svg') }}" alt="" width="120" height="88"></span>
+<span class="ai-step__illustration ai-step__illustration--semantic" aria-hidden="true"><svg viewBox="0 0 120 88" fill="none"><rect x="15" y="13" width="90" height="62" rx="10" stroke="currentColor" stroke-width="3"/><path d="M15 29h90M25 21h2m6 0h2m6 0h2" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M60 38v22m-9-9 9 9 9-9" stroke="#38d39b" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
 <h3>{{ $isAr ? 'تثبيت الإضافة (Install)' : 'Install the extension' }}</h3>
             <p>{{ $isAr ? 'إضافة Sanad CX لمتصفح كروم بضغطة زر.' : 'Add Sanad CX to Chrome in one click.' }}</p>
         </article>
         <article class="ai-step ai-walkthrough__step">
 <span class="ai-step__number">02</span>
-<span class="ai-step__illustration ai-step__illustration--knowledge" aria-hidden="true"><span class="ai-doc"><i></i><i></i><i></i></span><span class="ai-doc"><i></i><i></i><i></i></span><span class="ai-doc"><i></i><i></i><i></i></span></span>
+<span class="ai-step__illustration ai-step__illustration--semantic" aria-hidden="true"><svg viewBox="0 0 120 88" fill="none"><path d="M18 19c14-6 28-5 42 3v49c-14-8-28-9-42-3V19Zm84 0c-14-6-28-5-42 3v49c14-8 28-9 42-3V19Z" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M27 31c8-2 16-1 24 2m-24 9c8-2 16-1 24 2m18-11c8-3 16-4 24-2m-24 13c8-3 16-4 24-2" stroke="#38d39b" stroke-width="3" stroke-linecap="round"/></svg></span>
 <h3>{{ $isAr ? 'ربط قاعدة المعرفة (Connect KB)' : 'Connect your knowledge base' }}</h3>
             <p>{{ $isAr ? 'رفع ملفات المنتجات والأسعار في لوحة التحكم.' : 'Upload your product and pricing files in the dashboard.' }}</p>
         </article>
         <article class="ai-step ai-walkthrough__step">
 <span class="ai-step__number">03</span>
-<span class="ai-step__illustration ai-step__illustration--guidance" aria-hidden="true"><span></span><span></span><i></i></span>
+<span class="ai-step__illustration ai-step__illustration--semantic" aria-hidden="true"><svg viewBox="0 0 120 88" fill="none"><path d="M20 16h64a10 10 0 0 1 10 10v29a10 10 0 0 1-10 10H52L37 76V65H20a10 10 0 0 1-10-10V26a10 10 0 0 1 10-10Z" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M26 33h31M26 43h43M26 53h25" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="m89 10 3.5 8.5L101 22l-8.5 3.5L89 34l-3.5-8.5L77 22l8.5-3.5L89 10Z" fill="#38d39b"/></svg></span>
 <h3>{{ $isAr ? 'التوجيه اللحظي (Co-Pilot Advantage)' : 'Real-time guidance (Co-Pilot Advantage)' }}</h3>
             <p>{{ $isAr ? 'يبدأ الموظف في استقبال الاقتراحات والتحليلات أثناء المحادثة فوراً.' : 'Your team receives suggestions and insights during the conversation.' }}</p>
         </article>

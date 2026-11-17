@@ -930,11 +930,12 @@
                 var root = document.querySelector('[data-stats-slider]');
                 if (!root) { return; }
                 var track = root.querySelector('[data-stats-track]');
-                var items = Array.prototype.slice.call(track.children);
-                var count = items.length, offset = 0, frameId = null, lastFrame = null, hovered = false;
                 var viewport = root.querySelector('.sanad-stats__viewport');
+                var items = Array.prototype.slice.call(track.children);
                 var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+                var current = 0, timer = null, resetTimer = null, hovered = false, visible = false;
                 var animated = new WeakMap();
+
                 function perView() { return window.innerWidth < 640 ? 1 : (window.innerWidth < 1024 ? 2 : 3); }
                 function animateValue(item) {
                     var value = item && item.querySelector('[data-stat-value]');
@@ -942,80 +943,71 @@
                     var original = value.dataset.statValue, match = original.match(/\d+/);
                     if (!match || /\d\s*\/\s*\d/.test(original)) { return; }
                     cancelAnimationFrame(animated.get(value));
-                    var target = Number(match[0]), start = target + Math.max(10, Math.ceil(target * .25));
-                    var started = performance.now();
+                    var target = Number(match[0]), started = performance.now();
                     function frame(now) {
-                        var progress = Math.min((now - started) / 1500, 1);
-                        var current = Math.round(target + (start - target) * Math.pow(1 - progress, 2));
-                        value.textContent = original.replace(match[0], String(current));
+                        var progress = Math.min((now - started) / 950, 1);
+                        value.textContent = original.replace(match[0], String(Math.round(target * (1 - Math.pow(1 - progress, 3)))));
                         if (progress < 1 && !reducedMotion.matches) { animated.set(value, requestAnimationFrame(frame)); }
                         else { value.textContent = original; }
                     }
-                    value.textContent = original.replace(match[0], String(start));
+                    value.textContent = original.replace(match[0], '0');
                     animated.set(value, requestAnimationFrame(frame));
                 }
-                function render() {
+                function render(animate) {
                     var sign = window.getComputedStyle(track).direction === 'rtl' ? 1 : -1;
-                    track.style.transform = reducedMotion.matches ? '' : 'translateX(' + (sign * offset) + 'px)';
+                    track.style.transition = animate ? 'transform 350ms ease-in-out' : 'none';
+                    track.style.transform = reducedMotion.matches ? '' : 'translateX(' + (sign * current * viewport.clientWidth / perView()) + 'px)';
                 }
-                function tick(now) {
-                    if (lastFrame !== null) {
-                        var itemWidth = viewport.clientWidth / perView();
-                        var previousItem = Math.floor(offset / itemWidth);
-                        offset += Math.min(now - lastFrame, 50) * itemWidth / 4000;
-                        var nextItem = Math.floor(offset / itemWidth);
-                        if (nextItem > previousItem) {
-                            animateValue(track.children[nextItem + perView() - 1]);
-                        }
-                        if (offset >= count * itemWidth) { offset -= count * itemWidth; }
-                        render();
-                    }
-                    lastFrame = now;
-                    frameId = requestAnimationFrame(tick);
-                }
-                function restart() {
-                    cancelAnimationFrame(frameId);
-                    frameId = null;
-                    lastFrame = null;
-                    if (!reducedMotion.matches && !hovered && !document.hidden) {
-                        frameId = requestAnimationFrame(tick);
-                    }
+                function schedule() {
+                    clearTimeout(timer);
+                    if (reducedMotion.matches || hovered || document.hidden || !visible) { return; }
+                    timer = setTimeout(function () {
+                        current += 1;
+                        animateValue(track.children[current + perView() - 1]);
+                        render(true);
+                        if (current === items.length) {
+                            resetTimer = setTimeout(function () { current = 0; render(false); schedule(); }, 350);
+                        } else { schedule(); }
+                    }, 2500);
                 }
                 function layout() {
-                    cancelAnimationFrame(frameId);
+                    clearTimeout(timer);
+                    clearTimeout(resetTimer);
                     track.querySelectorAll('[data-stats-clone]').forEach(function (clone) { clone.remove(); });
-                    offset = 0;
+                    current = 0;
                     items.forEach(function (item) {
                         var value = item.querySelector('[data-stat-value]');
                         cancelAnimationFrame(animated.get(value));
                         value.textContent = value.dataset.statValue;
                         item.style.flex = reducedMotion.matches ? '' : '0 0 ' + (100 / perView()) + '%';
                     });
-                    if (!reducedMotion.matches) items.slice(0, perView()).forEach(function (item) {
-                        var clone = item.cloneNode(true);
-                        clone.dataset.statsClone = '';
-                        clone.setAttribute('aria-hidden', 'true');
-                        track.appendChild(clone);
-                    });
-                    render();
-                    restart();
+                    if (!reducedMotion.matches) {
+                        items.slice(0, perView()).forEach(function (item) {
+                            var clone = item.cloneNode(true);
+                            clone.dataset.statsClone = '';
+                            clone.setAttribute('aria-hidden', 'true');
+                            track.appendChild(clone);
+                        });
+                    }
+                    render(false);
+                    schedule();
                 }
-                root.addEventListener('mouseover', function (event) {
-                    if (event.target.closest('.sanad-stats__item')) { hovered = true; restart(); }
-                });
-                root.addEventListener('mouseout', function (event) {
-                    if (!event.relatedTarget || !event.relatedTarget.closest('.sanad-stats__item')) {
-                        hovered = false;
-                        restart();
-                    }
-                });
-                reducedMotion.addEventListener('change', layout);
+                root.addEventListener('mouseenter', function () { hovered = true; schedule(); });
+                root.addEventListener('mouseleave', function () { hovered = false; schedule(); });
+                if (reducedMotion.addEventListener) {
+                    reducedMotion.addEventListener('change', layout);
+                } else {
+                    reducedMotion.addListener(layout);
+                }
                 window.addEventListener('resize', layout);
-                document.addEventListener('visibilitychange', restart);
+                document.addEventListener('visibilitychange', schedule);
                 new IntersectionObserver(function (entries) {
-                    if (entries[0].isIntersecting && !reducedMotion.matches) {
-                        Array.prototype.slice.call(track.children, 0, perView()).forEach(animateValue);
+                    var wasVisible = visible;
+                    visible = entries[0].isIntersecting;
+                    if (visible && !wasVisible && !reducedMotion.matches) {
+                        Array.prototype.slice.call(track.children, current, current + perView()).forEach(animateValue);
                     }
+                    schedule();
                 }, { threshold: .25 }).observe(root);
                 layout();
             })();

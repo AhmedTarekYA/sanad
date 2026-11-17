@@ -2556,7 +2556,7 @@
         data-selected-account-id="{{ isset($selectedAccount) && $selectedAccount ? $selectedAccount->id : '' }}"
         data-current-status-filter="{{ $statusFilter ?? '' }}" data-current-tag-filter="{{ $tagFilterId ?? '' }}"
         data-locale="{{ str_replace('_', '-', app()->getLocale()) }}"
-        data-chat-index-url="{{ route('crm.whatsapp_chat.index', [], false) }}"
+        data-chat-index-url="{{ route('crm.whatsapp_chat', [], false) }}"
         data-conversations-url="{{ route('crm.whatsapp_chat.conversations', [], false) }}"
         data-messages-url-template="{{ route('crm.whatsapp_chat.messages', ['conversationId' => '__ID__'], false) }}"
         data-message-search-url-template="{{ route('crm.whatsapp_chat.messages.search', ['conversationId' => '__ID__'], false) }}"

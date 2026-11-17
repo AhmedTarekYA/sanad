@@ -325,3 +325,59 @@
     .ai-hcard { min-width: 0; }
     .ai-art { flex: none; }
 }
+
+/* Hero illustration: keep labels legible and animate the individual layers. */
+.ai-art svg { width: 100%; height: 100%; }
+.ai-art__orbit { stroke-opacity: .8; stroke-dashoffset: 0; }
+.ai-tag { width: 22%; height: auto; min-height: 10.7%; font-size: clamp(10px, 3vw, 13.2px); white-space: nowrap; }
+.ai-tag i { width: clamp(20px, 7.3vw, 31px); height: clamp(20px, 7.3vw, 31px); }
+.ai-art__name { top: 40.4%; font-size: clamp(19px, 7vw, 30.8px); line-height: 1.5; }
+@media (min-width: 1251px) {
+    .ai-hero, .ai-hero__in { height: 930px; }
+    .ai-hero__cap { top: 850px; }
+}
+@media (max-width: 1250px) {
+    .ai-hero__in { gap: 16px; }
+    .ai-art { width: min(424px, 100%) !important; max-width: 424px !important; height: auto; aspect-ratio: 424 / 327; transform: none; margin: 0; }
+    .ai-hero__cap { order: 6; }
+}
+@media (prefers-reduced-motion: no-preference) {
+    .ai-art__orbit { animation: ai-orbit-dots 2.8s linear infinite; }
+    .ai-art__orb { transform-box: fill-box; transform-origin: center; animation: ai-orb-breathe 2.8s ease-in-out infinite; }
+    .ai-tag i { animation: ai-tag-pulse 1.8s ease-in-out infinite; }
+    .ai-tag:nth-of-type(3n) i { animation-delay: -.6s; }
+    .ai-tag:nth-of-type(3n + 1) i { animation-delay: -1.2s; }
+    .ai-tag--l { animation: ai-tag-float 2.8s ease-in-out infinite; }
+    .ai-tag--l:nth-of-type(2n) { animation-delay: -.9s; }
+}
+@keyframes ai-orbit-dots { to { stroke-dashoffset: -22; } }
+@keyframes ai-orb-breathe { 50% { transform: scale(1.045); opacity: .75; } }
+@keyframes ai-tag-pulse { 50% { transform: scale(1.18); box-shadow: 0 0 14px rgba(56, 211, 155, .8); } }
+@keyframes ai-tag-float { 50% { transform: translateX(-5px); } }
+
+/* Keep the labels inside the viewport and separate from the orbit on small phones. */
+@media (max-width: 600px) {
+    .ai-art .ai-tag {
+        width: 36%;
+        min-height: 22px;
+        gap: 3px;
+        font-size: clamp(9px, 2.6vw, 11px);
+        line-height: 1.15;
+        white-space: normal;
+    }
+    .ai-art .ai-tag b { min-width: 0; overflow-wrap: anywhere; }
+    .ai-art .ai-tag i { width: 20px; height: 20px; }
+    .ai-art .ai-tag--l { left: 0 !important; }
+    .ai-art .ai-tag--r { left: auto !important; right: 0; }
+    .ai-art .ai-tag--l { justify-content: flex-start; text-align: right; }
+    .ai-art .ai-tag--r { justify-content: flex-start; text-align: left; }
+}
+@media (max-width: 1250px) {
+    .ai-hero__cap { order: 5; max-width: 100%; line-height: 1.5; }
+    .ai-art { order: 6; }
+}
+@supports not (aspect-ratio: 1 / 1) {
+    @media (max-width: 1250px) {
+        .ai-art::before { content: ''; display: block; padding-top: 77.12%; }
+    }
+}

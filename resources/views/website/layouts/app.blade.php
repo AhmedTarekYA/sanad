@@ -14,14 +14,28 @@
 <main id="main">
     @yield('content')
 </main>
-@include('website.partials.footer')
+@if(request()->routeIs('website.fkr'))
+    <footer class="fkr-footer">
+        <nav aria-label="{{ app()->getLocale() === 'ar' ? 'روابط فِكر' : 'Fikr links' }}">
+            <a href="#fkr-about">{{ app()->getLocale() === 'ar' ? 'من نحن' : 'About us' }}</a>
+            <a href="#fkr-services">{{ app()->getLocale() === 'ar' ? 'خدماتنا' : 'Services' }}</a>
+            <a href="#fkr-sectors">{{ app()->getLocale() === 'ar' ? 'القطاعات' : 'Sectors' }}</a>
+            <a href="#fkr-method">{{ app()->getLocale() === 'ar' ? 'منهجيتنا' : 'Our methodology' }}</a>
+        </nav>
+        <p>© {{ date('Y') }} Fikr — Sanad CX</p>
+    </footer>
+@else
+    @include('website.partials.footer')
+@endif
 @include('website.partials.consultation')
-@include('website.partials.free-trial')
-@include('website.partials.exit-intent')
+@if(! request()->routeIs('website.fkr'))
+    @include('website.partials.free-trial')
+    @include('website.partials.exit-intent')
+@endif
 <link rel="stylesheet" href="{{ asset('website/assets/css/pages/modals.css') }}?v={{ @filemtime(public_path('website/assets/css/pages/modals.css')) ?: '2.0.1' }}">
 <link rel="stylesheet" href="{{ asset('website/assets/css/layout.css') }}?v={{ @filemtime(public_path('website/assets/css/layout.css')) ?: '2.0.1' }}">
 <link rel="stylesheet" href="{{ asset('website/assets/css/mobile-sections.css') }}?v={{ @filemtime(public_path('website/assets/css/mobile-sections.css')) ?: '1' }}">
-@if($waNumber)
+@if($waNumber && ! request()->routeIs('website.fkr'))
     <button type="button" id="whatsapp-float-btn" class="whatsapp-float" aria-label="{{ __('auth.contact_via_whatsapp') }}"
             data-wa-url="https://wa.me/{{ $waNumber }}"
             data-track-url="{{ route('website.whatsapp.click') }}">

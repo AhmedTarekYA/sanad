@@ -1,0 +1,422 @@
+- generic [active] [ref=f3e1]:
+  - link "الانتقال إلى المحتوى الرئيسي" [ref=f3e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=f3e3]:
+    - generic [ref=f3e4]:
+      - link [ref=f3e5] [cursor=pointer]:
+        - /url: http://127.0.0.1:8180/ar
+      - navigation "التنقل الرئيسي" [ref=f3e7]:
+        - list [ref=f3e8]:
+          - listitem [ref=f3e9]
+          - listitem [ref=f3e10]
+          - listitem [ref=f3e11]
+          - listitem [ref=f3e12]
+          - listitem [ref=f3e13]
+          - listitem [ref=f3e14]
+      - generic [ref=f3e15]:
+        - button "احجز استشارة مجانية" [ref=f3e16] [cursor=pointer]
+        - link "Switch to English" [ref=f3e17]:
+          - /url: http://127.0.0.1:8180/en
+          - text: EN
+        - button "تفعيل المظهر الفاتح" [pressed] [ref=f3e18] [cursor=pointer]
+  - main [ref=f3e23]:
+    - region "شّغل تجربة عملاء استثنائيةدون تغيير أنظمتك الحالية" [ref=f3e24]:
+      - generic [ref=f3e25]:
+        - heading "شّغل تجربة عملاء استثنائيةدون تغيير أنظمتك الحالية" [level=1] [ref=f3e27]
+        - list [ref=f3e32]:
+          - listitem [aria-hidden] [ref=f3e33]
+          - listitem [aria-hidden] [ref=f3e34]
+    - region "مؤشرات الأداء" [ref=f3e35]:
+      - generic [ref=f3e36]:
+        - button "السابق" [ref=f3e37] [cursor=pointer]
+        - list [ref=f3e41]
+        - button "التالي" [ref=f3e42] [cursor=pointer]
+    - region "حلول متكاملة تدمج التشغيل البشري، الذكاء الاصطناعي، وهندسة تجربة العميل (CX)" [ref=f3e45]:
+      - generic [ref=f3e46]:
+        - heading "حلول متكاملة تدمج التشغيل البشري، الذكاء الاصطناعي، وهندسة تجربة العميل (CX)" [level=2] [ref=f3e47]:
+          - generic [aria-hidden] [ref=f3e48]:
+            - generic [aria-hidden] [ref=f3e49]: حلول
+            - generic [aria-hidden] [ref=f3e50]: متكاملة
+            - generic [aria-hidden] [ref=f3e51]: تدمج
+            - generic [aria-hidden] [ref=f3e52]: التشغيل
+            - generic [aria-hidden] [ref=f3e53]: البشري،
+            - generic [aria-hidden] [ref=f3e54]: الذكاء
+            - generic [aria-hidden] [ref=f3e55]: الاصطناعي،
+            - generic [ref=f3e56]:
+              - generic [aria-hidden] [ref=f3e57]: وهندسة
+              - generic [aria-hidden] [ref=f3e58]: تجربة
+          - generic [aria-hidden] [ref=f3e60]:
+            - generic [aria-hidden] [ref=f3e61]: العميل
+            - generic [aria-hidden] [ref=f3e62]: (CX)
+        - paragraph [ref=f3e63]: نساعدك على تقديم تجربة عملاء أفضل، وتحسين كفاءة التشغيل، وتحويل كل تفاعل إلى فرصة لبناء الثقة وتحقيق النمو.
+      - list [ref=f3e64]
+    - region "لا نُطلق إعلانات عابرة.. نحن نهندس هويات تجارية وقنوات مبيعات تُحقق النمو" [ref=f3e65]:
+      - generic [ref=f3e67]:
+        - list "مزايا فِكر" [ref=f3e68]:
+          - listitem [ref=f3e69]:
+            - generic [ref=f3e70]:
+              - heading "تموضع استراتيجي حاد (Brand Positioning)" [level=3] [ref=f3e71]
+              - paragraph [ref=f3e72]: نحدد ميزتك التنافسية لنضع براندك في صدارة منافسيك ويستحيل تجاهله.
+          - listitem [ref=f3e73]:
+            - generic [ref=f3e74]:
+              - heading "حملات تسويقية عالية التحويل (High-Intent Campaigns)" [level=3] [ref=f3e75]
+              - paragraph [ref=f3e76]: تصميم وتخطيط حملات جلب العملاء المحتملين (Lead Generation) مع تصفية الزحام والعملاء غير الجادين.
+          - listitem [ref=f3e77]:
+            - generic [ref=f3e78]:
+              - heading "ربط التسويق بالمبيعات (Marketing-to-Sales Alignment)" [level=3] [ref=f3e79]
+              - paragraph [ref=f3e80]: سد الفجوة بين الإعلان وإغلاق الصفقة عبر دمج الحملات مباشرة بفرق المبيعات والمساعد الذكي في سند CX.
+        - generic [ref=f3e81]:
+          - paragraph [ref=f3e82]: فِكر | الاستشارات التسويقية وهندسة النمو
+          - heading "لا نُطلق إعلانات عابرة.. نحن نهندس هويات تجارية وقنوات مبيعات تُحقق النمو" [level=2] [ref=f3e83]:
+            - generic [aria-hidden] [ref=f3e84]:
+              - generic [aria-hidden] [ref=f3e85]: لا
+              - generic [aria-hidden] [ref=f3e86]: نُطلق
+              - generic [aria-hidden] [ref=f3e87]: إعلانات
+              - generic [aria-hidden] [ref=f3e88]: عابرة..
+              - generic [aria-hidden] [ref=f3e89]: نحن
+            - generic [aria-hidden] [ref=f3e90]:
+              - generic [aria-hidden] [ref=f3e91]: نهندس
+              - generic [aria-hidden] [ref=f3e92]: هويات
+              - generic [aria-hidden] [ref=f3e93]: تجارية
+              - generic [aria-hidden] [ref=f3e94]: وقنوات
+            - generic [aria-hidden] [ref=f3e95]:
+              - generic [aria-hidden] [ref=f3e96]: مبيعات
+              - generic [aria-hidden] [ref=f3e97]: تُحقق
+              - generic [aria-hidden] [ref=f3e98]: النمو
+          - paragraph [ref=f3e99]: تحت مظلة سند CX، يقدم ذراع "فِكر" حلولاً استشارية تسويقية موجهة لقيادات الشركات ومؤسسي الأعمال. نحن ندمج بين جماليات الهوية البصرية وعقلية الأرقام والعائد على الاستثمار (ROI)، لنضمن أن كل ما تُنفقه في التسويق يُترجم إلى نمو حقيقي ومبيعات مستدامة.
+          - link "استكشف العقلية التسويقية لـ فِكر" [ref=f3e100] [cursor=pointer]:
+            - /url: http://127.0.0.1:8180/fkr
+    - region "لماذا تختار Sanad CX بدلاً من الخيارات التقليدية؟" [ref=f3e101]:
+      - generic [ref=f3e102]:
+        - generic [ref=f3e103]:
+          - heading "لماذا تختار Sanad CX بدلاً من الخيارات التقليدية؟" [level=2] [ref=f3e104]
+          - paragraph [ref=f3e105]: قارن بين نماذج تشغيل خدمة العملاء واختر الأنسب لنمو أعمالك.
+        - list [ref=f3e106]
+    - 'region "الذكاء الاصطناعي في خدمة فريقك: إضافة المساعد الذكي Sanad CX" [ref=f3e107]':
+      - generic [ref=f3e108]:
+        - generic [ref=f3e109]:
+          - 'heading "الذكاء الاصطناعي في خدمة فريقك: إضافة المساعد الذكي Sanad CX" [level=2] [ref=f3e110]'
+          - paragraph [ref=f3e111]: مَكّن فريق المبيعات وخدمة العملاء لديك من الرد بذكاء وسرعة فائقة مباشرة من داخل الواتساب ونظام الـ CRM الخاص بك دون الحاجة لتغيير أدواتك الحالية.
+        - generic [ref=f3e112]:
+          - generic [ref=f3e113]:
+            - heading "كيف ترفع إضافة Sanad CX من كفاءة فريقك؟" [level=3] [ref=f3e114]
+            - list [ref=f3e115]:
+              - listitem [ref=f3e116]:
+                - paragraph [ref=f3e118]: زيادة المبيعات، تقليل المصاريف التشغيلية
+              - listitem [ref=f3e119]:
+                - paragraph [ref=f3e121]: رفع إنتاجية الموظفين، تحسين تجربة العملاء
+              - listitem [ref=f3e122]:
+                - paragraph [ref=f3e124]: قرارات أسرع وأدق سواء إدارية أو تشغيلية
+          - generic [aria-hidden] [ref=f3e125]:
+            - generic [ref=f3e132]: SANAD AI
+            - generic [ref=f3e133]: الردود
+            - generic [ref=f3e134]: المحادثات
+            - generic [ref=f3e135]: العملاء
+            - generic [ref=f3e136]: التحليلات
+            - generic [ref=f3e137]: الأداء
+            - generic [ref=f3e138]: المبيعات
+          - list [ref=f3e139]:
+            - listitem [ref=f3e140]:
+              - generic [ref=f3e142]:
+                - heading "اقتراحات ردود فورية" [level=4] [ref=f3e143]
+                - paragraph [ref=f3e144]: يقرأ المساعد الذكي سياق المحادثة ويولّد ردوداً دقيقة متوافقة مع هويتك وقواعد عملك بنقرة زر.
+            - listitem [ref=f3e145]:
+              - generic [ref=f3e147]:
+                - heading "تحليل نبرة العملاء (Sentiment Analysis)" [level=4] [ref=f3e148]
+                - paragraph [ref=f3e149]: كشف تلقائي لمشاعر واحتياجات العميل لحظياً لمساعدة الموظف على التفاعل الأنسب.
+            - listitem [ref=f3e150]:
+              - generic [ref=f3e152]:
+                - heading "لوحة تحكم وتحليلات للمدراء" [level=4] [ref=f3e153]
+                - paragraph [ref=f3e154]: متابعة دقيقة لأداء الموظفين، سرعة الرد، وأبرز اعتراضات العملاء عبر داشبورد إدارية متكاملة.
+        - generic [ref=f3e155]:
+          - link "اكتشف مميزات الإضافة" [ref=f3e156] [cursor=pointer]:
+            - /url: http://127.0.0.1:8180/ai-assistant
+          - button "ابدأ التجربة المجانية" [ref=f3e157] [cursor=pointer]
+    - region "ماذا يقول شركاء نمونا عن تجربة Sanad CX؟" [ref=f3e158]:
+      - generic [ref=f3e159]:
+        - heading "ماذا يقول شركاء نمونا عن تجربة Sanad CX؟" [level=2] [ref=f3e160]
+        - paragraph [ref=f3e161]: قصص حقيقية من قادة وشركات وثقوا في سند لتشغيل وإدارة تجربة عملائهم بكفاءة استثنائية.
+      - generic [ref=f3e162]:
+        - article [ref=f3e163]:
+          - generic [ref=f3e164]:
+            - generic [ref=f3e165]: شريك نمو
+            - paragraph [ref=f3e166]: منصة وصلة
+          - blockquote "\"منذ بدء شراكتنا مع سند، انخفضت نسبة الشكاوى المعلقة بأكثر من 45% وتحسنت سرعة الاستجابة بشكل ملحوظ. فريق محترف يفهم طبيعة السوق السعودي.\"" [ref=f3e168]
+          - generic [ref=f3e169]:
+            - heading "م. خالد العتيبي" [level=3] [ref=f3e171]
+            - paragraph [ref=f3e172]: شريك إداري — منصة وصلة
+        - article [ref=f3e173]:
+          - generic [ref=f3e174]:
+            - generic [ref=f3e175]: شريك نمو
+            - paragraph [ref=f3e176]: دار العافية الطبية
+          - blockquote "\"سند ليست مجرد جهة تعهيد، بل امتداد حقيقي لفريقنا الداخلي. الدقة في التعامل والالتزام بمعايير الجودة منحنا راحة بال تامة.\"" [ref=f3e178]
+          - generic [ref=f3e179]:
+            - heading "د. معاذ الدوسري" [level=3] [ref=f3e181]
+            - paragraph [ref=f3e182]: الرئيس التنفيذي — دار العافية الطبية
+        - article [ref=f3e183]:
+          - generic [ref=f3e184]:
+            - generic [ref=f3e185]: شريك نمو
+            - paragraph [ref=f3e186]: تطبيق زاجل بلس
+          - blockquote "\"التكامل السريع وسهولة الربط مع أنظمتنا ساعدنا على إطلاق الخدمة خلال 48 ساعة فقط دون أي تعطل. أنصح بشدة بالعمل معهم.\"" [ref=f3e188]
+          - generic [ref=f3e189]:
+            - heading "أ. عبدالأول الشمري" [level=3] [ref=f3e191]
+            - paragraph [ref=f3e192]: مدير العمليات — تطبيق زاجل بلس
+        - article [ref=f3e193]:
+          - generic [ref=f3e194]:
+            - generic [ref=f3e195]: شريك نمو
+            - paragraph [ref=f3e196]: متاجر أفق
+          - blockquote "\"المرونة العالية في توسيع الفريق حسب المواسم والمبيعات كانت العامل الحاسم لنمونا. سند أثبتت جدارتها في أصعب أوقات الذروة.\"" [ref=f3e198]
+          - generic [ref=f3e199]:
+            - heading "أ. فهد القحطاني" [level=3] [ref=f3e201]
+            - paragraph [ref=f3e202]: مؤسس — متاجر أفق
+    - region "كيف نبدأ العمل معاً ونطلق عملياتك خلال 48 ساعة فقط؟" [ref=f3e203]:
+      - generic [ref=f3e204]:
+        - heading "كيف نبدأ العمل معاً ونطلق عملياتك خلال 48 ساعة فقط؟" [level=2] [ref=f3e205]
+        - paragraph [ref=f3e206]: نموذج تشغيلي مرن لا يتطلب أي تعديل على أنظمتك أو تغيير في سنترالك الحالي
+      - group "خطوات العمل الأربع" [ref=f3e207]:
+        - button "01 STEP 1. التحليل والاستكشاف (Discovery) ندرس طبيعة عملك، حجم المحادثات اليومية، وقنوات التواصل المعتمدة لتحديد خطة التشغيل المثالية. فهم احتياجك" [ref=f3e208] [cursor=pointer]:
+          - generic [ref=f3e211]:
+            - generic [ref=f3e212]: "01"
+            - generic [ref=f3e213]: STEP
+          - generic [ref=f3e214]:
+            - heading "1. التحليل والاستكشاف (Discovery)" [level=3] [ref=f3e215]
+            - paragraph [ref=f3e216]: ندرس طبيعة عملك، حجم المحادثات اليومية، وقنوات التواصل المعتمدة لتحديد خطة التشغيل المثالية.
+          - generic [ref=f3e217]: فهم احتياجك
+        - button "02 STEP 2. منح صلاحيات الدخول (Plug & Play) ربط آمن وسريع عبر حسابات مستخدمين (Users) على أنظمتك الحالية تحت اتفاقية سرية معلومات صارمة (NDA). ربط آمن وسريع" [ref=f3e219] [cursor=pointer]:
+          - generic [ref=f3e222]:
+            - generic [ref=f3e223]: "02"
+            - generic [ref=f3e224]: STEP
+          - generic [ref=f3e225]:
+            - heading "2. منح صلاحيات الدخول (Plug & Play)" [level=3] [ref=f3e226]
+            - paragraph [ref=f3e227]: ربط آمن وسريع عبر حسابات مستخدمين (Users) على أنظمتك الحالية تحت اتفاقية سرية معلومات صارمة (NDA).
+          - generic [ref=f3e228]: ربط آمن وسريع
+        - button "03 STEP 3. التدريب ودليل الخدمة (Onboarding) استيعاب دليل الأسئلة الشائعة (FAQ Script) وتدريب الفريق مع محاكاة حية ودعم المساعد الذكي (Sanad AI). تدريب الفريق" [ref=f3e230] [cursor=pointer]:
+          - generic [ref=f3e233]:
+            - generic [ref=f3e234]: "03"
+            - generic [ref=f3e235]: STEP
+          - generic [ref=f3e236]:
+            - heading "3. التدريب ودليل الخدمة (Onboarding)" [level=3] [ref=f3e237]
+            - paragraph [ref=f3e238]: استيعاب دليل الأسئلة الشائعة (FAQ Script) وتدريب الفريق مع محاكاة حية ودعم المساعد الذكي (Sanad AI).
+          - generic [ref=f3e239]: تدريب الفريق
+        - button "04 MILESTONE 4. الانطلاق والنمو المستمر (Launch & Scale) يبدأ الفريق بالرد المباشر، رعاية العملاء، وإغلاق الصفقات، مع إمدادك بتقارير دورية دقيقة لمتابعة مؤشرات الأداء (KPIs)، تحويلات المبيعات، وعائد الاستثمار (ROI). تقارير دورية" [pressed] [ref=f3e241] [cursor=pointer]:
+          - generic [ref=f3e245]:
+            - generic [ref=f3e246]: "04"
+            - generic [ref=f3e247]: MILESTONE
+          - generic [ref=f3e248]:
+            - heading "4. الانطلاق والنمو المستمر (Launch & Scale)" [level=3] [ref=f3e249]
+            - paragraph [ref=f3e250]: يبدأ الفريق بالرد المباشر، رعاية العملاء، وإغلاق الصفقات، مع إمدادك بتقارير دورية دقيقة لمتابعة مؤشرات الأداء (KPIs)، تحويلات المبيعات، وعائد الاستثمار (ROI).
+          - generic [ref=f3e251]: تقارير دورية
+      - generic [ref=f3e253]:
+        - generic [ref=f3e255]:
+          - paragraph [ref=f3e256]: الانطلاق خلال 48h
+          - paragraph [ref=f3e257]: بدء التشغيل المباشر
+        - generic [ref=f3e259]:
+          - paragraph [ref=f3e260]: منح الصلاحيات
+          - paragraph [ref=f3e261]: اتفاقية سرية معلومات صارمة (NDA)
+        - generic [ref=f3e263]:
+          - paragraph [ref=f3e264]: الربط والتحليل
+          - paragraph [ref=f3e265]: دون أي تغيير في بنيتك التحتية
+    - region "احسب الحزمة المناسبة لعملياتك" [ref=f3e266]:
+      - generic [ref=f3e267]:
+        - heading "احسب الحزمة المناسبة لعملياتك" [level=2] [ref=f3e268]
+        - paragraph [ref=f3e269]: حدّد حجم المحادثات اليومية لاستكشاف احتياجك التشغيلي.
+      - generic [ref=f3e270]:
+        - generic [ref=f3e271]:
+          - generic [ref=f3e272]:
+            - paragraph [ref=f3e273]: حجم المحادثات اليومية
+            - paragraph [ref=f3e274]: "50"
+            - paragraph [ref=f3e275]: محادثة / تذكرة / مكالمة يوميًا
+            - slider "حجم المحادثات اليومية" [ref=f3e283]
+            - generic [ref=f3e285]:
+              - generic [ref=f3e286]: "50"
+              - generic [ref=f3e287]: +1,000
+            - generic [ref=f3e288]:
+              - button "50" [pressed] [ref=f3e289] [cursor=pointer]
+              - button "100" [ref=f3e291] [cursor=pointer]
+              - button "500" [ref=f3e293] [cursor=pointer]
+              - button "+1,000" [ref=f3e295] [cursor=pointer]
+          - generic [ref=f3e297]:
+            - generic [ref=f3e298]:
+              - paragraph [ref=f3e299]: الباقة المناسبة
+              - paragraph [ref=f3e300]: باقة البداية — 12 ساعة
+              - paragraph [ref=f3e301]: مناسبة تجريبياً لـ 50–99 محادثة يومياً.
+            - generic [ref=f3e302]:
+              - paragraph [ref=f3e303]: التوفير المالي المتوقع
+              - paragraph [ref=f3e304]: توفير تقديري 15%
+              - paragraph [ref=f3e305]: أرقام افتراضية للعرض وليست عرض سعر.
+        - button "اطلب تحليل كفاءة عملياتك" [ref=f3e306] [cursor=pointer]
+    - region "بيانات عملائك في أمان تام" [ref=f3e308]:
+      - generic [ref=f3e310]:
+        - heading "بيانات عملائك في أمان تام" [level=2] [ref=f3e311]:
+          - generic [aria-hidden] [ref=f3e312]:
+            - generic [aria-hidden] [ref=f3e313]: بيانات
+            - generic [aria-hidden] [ref=f3e314]: عملائك
+            - generic [aria-hidden] [ref=f3e315]: في
+            - generic [aria-hidden] [ref=f3e316]: أمان
+            - generic [aria-hidden] [ref=f3e317]: تام
+        - paragraph [ref=f3e318]: نلتزم بأعلى معايير حماية البيانات وسريتها. يتم توقيع اتفاقية عدم الإفصاح عن البيانات (NDA) رسمياً قبل بدء أي نشاط تشغيلي، لضمان حماية أسرار أعمالك وقواعد بيانات عملاء براندك.
+    - region "إجابات شفافة على أهم استفسارات الشركاء قبل الانطلاق" [ref=f3e319]:
+      - generic [ref=f3e320]:
+        - heading "إجابات شفافة على أهم استفسارات الشركاء قبل الانطلاق" [level=2] [ref=f3e322]
+        - generic [ref=f3e323]:
+          - heading [level=3] [ref=f3e325]:
+            - button "هل نحتاج لتغيير السنترال أو سيستم الواتساب أو الـ CRM الحالي لديكم؟" [ref=f3e326] [cursor=pointer]:
+              - generic [aria-hidden] [ref=f3e328]: +
+          - heading [level=3] [ref=f3e330]:
+            - button "كيف تضمنون جودة الردود ومعرفة الموظفين بمنتجاتنا أو خدماتنا الطبية/الخدمية؟" [ref=f3e331] [cursor=pointer]:
+              - generic [aria-hidden] [ref=f3e333]: +
+          - heading [level=3] [ref=f3e335]:
+            - button "هل يمكننا الاستفادة من خدمات \"فِكر\" التسويقية دون التعاقد على التشغيل، أم أنها منظومة مدمجة؟" [ref=f3e336] [cursor=pointer]:
+              - generic [aria-hidden] [ref=f3e338]: +
+          - heading [level=3] [ref=f3e340]:
+            - button "كيف تتعاملون مع سرية البيانات والقطاعات الحساسة مثل الرعاية الصحية (Medical CX)؟" [ref=f3e341] [cursor=pointer]:
+              - generic [aria-hidden] [ref=f3e343]: +
+          - heading [level=3] [ref=f3e345]:
+            - button "ما هي ضمانات جودة الأداء والـ SLA المعتمدة لديكم؟ وهل توجد تكاليف تأسيس مخفية؟" [ref=f3e346] [cursor=pointer]:
+              - generic [aria-hidden] [ref=f3e348]: +
+          - heading [level=3] [ref=f3e350]:
+            - button "هل توجد رسوم إعداد أو حد أدنى للتعاقد؟" [ref=f3e351] [cursor=pointer]:
+              - generic [aria-hidden] [ref=f3e353]: +
+    - region "جاهز للارتقاء بتجربة عملائك وتسريع نموك؟" [ref=f3e354]:
+      - generic [ref=f3e356]:
+        - generic [ref=f3e357]:
+          - heading "جاهز للارتقاء بتجربة عملائك وتسريع نموك؟" [level=2] [ref=f3e358]
+          - paragraph [ref=f3e359]: اترك بياناتك وسيتواصل معك أحد خبرائنا لتقديم تحليل مجاني وحزمة مخصصة تناسب حجم ونشاط شركتك.
+        - generic [ref=f3e361]:
+          - generic [ref=f3e362]:
+            - generic [ref=f3e363]:
+              - generic [ref=f3e364]: الاسم الكريم
+              - generic [ref=f3e366]:
+                - textbox "الاسم الكريم" [ref=f3e367]
+                - generic [aria-hidden]: الاسم الكريم
+            - generic [ref=f3e368]:
+              - generic [ref=f3e369]: اسم الشركة / البراند
+              - generic [ref=f3e371]:
+                - textbox "اسم الشركة / البراند" [ref=f3e372]
+                - generic [aria-hidden]: اسم الشركة / البراند
+            - generic [ref=f3e373]:
+              - generic [ref=f3e374]: رقم الموبايل / الواتساب
+              - generic [ref=f3e376]:
+                - textbox "رقم الموبايل / الواتساب" [ref=f3e377]
+                - generic [aria-hidden]: رقم الموبايل / الواتساب
+          - generic [ref=f3e378]:
+            - generic [ref=f3e379]: الاهتمام الأساسي أو الخدمة المطلوبة
+            - combobox "الاهتمام الأساسي أو الخدمة المطلوبة" [ref=f3e381]:
+              - option "اختر" [selected]
+              - option "تشغيل خدمة العملاء والمبيعات (BPO)"
+              - option "المساعد الذكي والتكنولوجيا (Sanad AI)"
+              - option "الاستشارات التسويقية وهندسة الهوية (فِكر)"
+              - option "منظومة النمو المتكاملة (الكل)"
+          - generic [ref=f3e382]:
+            - generic [ref=f3e383]: حجم التواصل اليومي
+            - generic [ref=f3e385]:
+              - combobox "حجم التواصل اليومي" [ref=f3e386]:
+                - option "اختر" [selected]
+                - option "أقل من 100"
+                - option "100 - 500"
+                - option "أكثر من 500"
+              - generic [aria-hidden]: اختر
+          - generic [ref=f3e388]:
+            - generic [ref=f3e389]:
+              - generic [ref=f3e390]: البرامج أو الأنظمة المستخدمة حالياً
+              - generic [ref=f3e391]: "\"اختياري\""
+            - generic [ref=f3e392]:
+              - textbox "البرامج أو الأنظمة المستخدمة حالياً \"اختياري\"" [ref=f3e393]:
+                - /placeholder: البرامج أو الأنظمة المستخدمة حالياً
+              - generic [aria-hidden]: البرامج أو الأنظمة المستخدمة حالياً
+          - button "حجز جلسة استشارية مجانية لنمو عملائك" [ref=f3e394] [cursor=pointer]
+  - contentinfo [ref=f3e395]:
+    - generic [ref=f3e396]:
+      - generic [ref=f3e397]:
+        - link [ref=f3e398] [cursor=pointer]:
+          - /url: http://127.0.0.1:8180/ar
+          - img "SANAD CX" [ref=f3e399]
+        - paragraph [ref=f3e400]: شريكك الاستراتيجي لتعهيد وإدارة خدمات رعاية العملاء والاتصالات بالتشغيل المباشر
+        - list [ref=f3e401]:
+          - listitem [ref=f3e402]:
+            - img "فيسبوك" [ref=f3e403]
+          - listitem [ref=f3e404]:
+            - img "إنستغرام" [ref=f3e405]
+          - listitem [ref=f3e406]:
+            - img "منصة X" [ref=f3e407]
+          - listitem [ref=f3e408]:
+            - img "سناب شات" [ref=f3e409]
+          - listitem [ref=f3e410]:
+            - img "لينكدإن" [ref=f3e411]
+      - navigation "روابط سريعة" [ref=f3e412]:
+        - heading "روابط سريعة" [level=2] [ref=f3e413]
+        - list [ref=f3e414]:
+          - listitem [ref=f3e415]:
+            - link "الرئيسية" [ref=f3e416] [cursor=pointer]:
+              - /url: http://127.0.0.1:8180/ar
+          - listitem [ref=f3e417]:
+            - link "حلول التشغيل" [ref=f3e418] [cursor=pointer]:
+              - /url: http://127.0.0.1:8180/ar/services
+          - listitem [ref=f3e419]:
+            - link "رحلة التشغيل" [ref=f3e420] [cursor=pointer]:
+              - /url: http://127.0.0.1:8180/ar/how-it-works
+          - listitem [ref=f3e421]:
+            - link "المساعد الذكي" [ref=f3e422] [cursor=pointer]:
+              - /url: http://127.0.0.1:8180/ar/ai-assistant
+          - listitem [ref=f3e423]:
+            - link "فِكر" [ref=f3e424] [cursor=pointer]:
+              - /url: http://127.0.0.1:8180/ar/fkr
+          - listitem [ref=f3e425]:
+            - link "المدونة" [ref=f3e426] [cursor=pointer]:
+              - /url: http://127.0.0.1:8180/ar/blog
+      - navigation "روابط هامة" [ref=f3e427]:
+        - heading "روابط هامة" [level=2] [ref=f3e428]
+        - list [ref=f3e429]:
+          - listitem [ref=f3e430]:
+            - link "عن سند" [ref=f3e431] [cursor=pointer]:
+              - /url: http://127.0.0.1:8180/ar/about
+          - listitem [ref=f3e432]:
+            - link "الشروط والأحكام" [ref=f3e433] [cursor=pointer]:
+              - /url: http://127.0.0.1:8180/ar/terms
+          - listitem [ref=f3e434]:
+            - link "سياسة الخصوصية" [ref=f3e435] [cursor=pointer]:
+              - /url: http://127.0.0.1:8180/ar/privacy-policy
+      - generic [ref=f3e436]:
+        - heading "تواصل معنا" [level=2] [ref=f3e437]
+        - list [ref=f3e438]:
+          - listitem [ref=f3e439]:
+            - link "info@sanadcx.com" [ref=f3e440] [cursor=pointer]:
+              - /url: mailto:info@sanadcx.com
+          - listitem [ref=f3e441]:
+            - link "920022379" [ref=f3e442] [cursor=pointer]:
+              - /url: tel:920022379
+          - listitem [ref=f3e443]:
+            - link "01550999793" [ref=f3e444] [cursor=pointer]:
+              - /url: tel:01550999793
+    - generic [ref=f3e445]:
+      - paragraph [ref=f3e446]: © 2026 Sanad CX. All rights reserved.
+      - paragraph [ref=f3e447]: Sanad CX is an operational brand powered by Mada CX.
+  - button "تواصل عبر واتساب" [ref=f3e448] [cursor=pointer]
+  - generic [ref=f3e453]:
+    - generic [ref=f3e454] [cursor=pointer]
+    - generic [ref=f3e455]:
+      - generic [ref=f3e456] [cursor=pointer]: Request
+      - generic [ref=f3e457] [cursor=pointer]: Timeline
+      - generic [ref=f3e458] [cursor=pointer]:
+        - generic: Views
+        - generic [ref=f3e459]: "9"
+      - generic [ref=f3e460] [cursor=pointer]:
+        - generic: Queries
+        - generic [ref=f3e461]: "31"
+      - generic [ref=f3e462] [cursor=pointer]:
+        - generic: Models
+        - generic [ref=f3e463]: "1"
+      - generic [ref=f3e464] [cursor=pointer]:
+        - generic: Http client
+        - generic [ref=f3e465]: "4"
+    - generic [ref=f3e466]:
+      - generic [ref=f3e467] [cursor=pointer]
+      - generic [ref=f3e468] [cursor=pointer]
+      - generic [ref=f3e469] [cursor=pointer]
+      - generic [ref=f3e471] [cursor=pointer]
+      - generic [ref=f3e473] [cursor=pointer]:
+        - generic [ref=f3e474]: "3"
+        - generic [ref=f3e475]: GET /ar
+      - generic [ref=f3e476] [cursor=pointer]: 1.29s
+      - generic [ref=f3e478] [cursor=pointer]: 10MB
+      - generic [ref=f3e480] [cursor=pointer]: 13.x

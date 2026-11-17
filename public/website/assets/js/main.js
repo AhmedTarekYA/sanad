@@ -140,8 +140,12 @@
     const header = $('[data-site-header]');
     const button = $('[data-site-header-menu]', header || document);
     const nav = $('[data-site-header-nav]', header || document);
-    const close = () => button?.setAttribute('aria-expanded', 'false');
-    listen(button, 'click', () => button.setAttribute('aria-expanded', String(button.getAttribute('aria-expanded') !== 'true')));
+    const setOpen = open => {
+      button?.setAttribute('aria-expanded', String(open));
+      header?.classList.toggle('sanad-header--menu-open', open);
+    };
+    const close = () => setOpen(false);
+    listen(button, 'click', () => setOpen(button.getAttribute('aria-expanded') !== 'true'));
     listen(nav, 'click', event => { if (event.target.closest('a')) close(); });
     listen(document, 'keydown', event => {
       if (event.key === 'Escape' && button?.getAttribute('aria-expanded') === 'true') { close(); button.focus(); }

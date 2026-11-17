@@ -23,7 +23,7 @@
         </button>
 
         <nav class="fkr-site-header__nav fkr-site-header__nav--desktop" aria-label="{{ __('auth.main_nav') }}">
-            <a href="{{ route('website.about') }}">{{ $isAr ? 'من نحن' : 'About us' }}</a>
+            <a href="#fkr-about">{{ $isAr ? 'من نحن' : 'About us' }}</a>
             <a href="#fkr-services">{{ $isAr ? 'خدماتنا' : 'Services' }}</a>
             <a href="#fkr-sectors">{{ $isAr ? 'القطاعات' : 'Sectors' }}</a>
             <a href="#fkr-method">{{ $isAr ? 'منهجيتنا' : 'Our methodology' }}</a>
@@ -34,14 +34,14 @@
                 <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" /></svg>
             </summary>
             <nav class="fkr-site-header__nav fkr-site-header__nav--mobile" id="fkr-mobile-navigation" aria-label="{{ __('auth.main_nav') }}">
-                <a href="{{ route('website.about') }}">{{ $isAr ? 'من نحن' : 'About us' }}</a>
+                <a href="#fkr-about">{{ $isAr ? 'من نحن' : 'About us' }}</a>
                 <a href="#fkr-services">{{ $isAr ? 'خدماتنا' : 'Services' }}</a>
                 <a href="#fkr-sectors">{{ $isAr ? 'القطاعات' : 'Sectors' }}</a>
                 <a href="#fkr-method">{{ $isAr ? 'منهجيتنا' : 'Our methodology' }}</a>
             </nav>
         </details>
 
-        <a class="fkr-site-header__brand" href="{{ route('website.fkr') }}" aria-label="{{ $isAr ? 'فِكر' : 'Fikr' }}" aria-current="page">
+        <a class="fkr-site-header__brand" href="#main" aria-label="{{ $isAr ? 'فِكر' : 'Fikr' }}" aria-current="page">
             <span><img src="{{ asset('website/assets/image/fkr/brand-logo.png') }}" alt="" width="72" height="56"></span>
         </a>
     </div>
