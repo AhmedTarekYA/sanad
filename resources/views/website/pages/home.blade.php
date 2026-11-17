@@ -68,7 +68,7 @@
             <div class="sanad-stats__viewport">
                 <ul class="sanad-stats__track" data-stats-track>
                     <li class="sanad-stats__item">
-                        <span class="sanad-stats__value" data-stat-value="&lt; 60 ثانية" dir="rtl">&lt; 60 ثانية</span>
+                        <span class="sanad-stats__value" data-stat-value="60 ثانية" dir="rtl">60 ثانية</span>
                         <span class="sanad-stats__label">سرعة الاستجابة</span>
                         <span class="sanad-stats__detail">رد فوري ومباشر على مدار الساعة</span>
                     </li>
@@ -245,21 +245,33 @@
                     </ul>
                 </div>
                 <div class="sanad-home-ai__visual" aria-hidden="true">
+                    <svg class="sanad-home-ai__svg" viewBox="0 0 424 327" width="424" height="327" fill="none" overflow="visible">
+                        <defs>
+                            <filter id="homeAiBlur" x="-50%" y="-50%" width="200%" height="200%">
+                                <feGaussianBlur stdDeviation="27.5"/>
+                            </filter>
+                        </defs>
+                        <circle cx="212" cy="170" r="164" fill="#1e40af" fill-opacity=".22" filter="url(#homeAiBlur)"/>
+                        <circle class="sanad-home-ai__orbit-ring" cx="212" cy="169" r="155" stroke="#30bd7d" stroke-opacity=".55" stroke-width="1.3" stroke-dasharray="4 8"/>
+                        <circle cx="211.5" cy="169.5" r="125.5" fill="#0e1e30" stroke="#33cc91" stroke-opacity=".85" stroke-width="1.3"/>
+                        <g class="sanad-home-ai__orbiters">
+                            <circle cx="212" cy="43.5" r="5" fill="#38d39b"/>
+                            <circle cx="337.5" cy="169" r="4.5" fill="#38d39b"/>
+                            <circle cx="212" cy="294.5" r="5" fill="#38d39b"/>
+                            <circle cx="86.5" cy="169" r="4.5" fill="#38d39b"/>
+                        </g>
+                    </svg>
                     <img class="sanad-home-ai__orb-art" data-node-id="408:16695" src="{{ asset('website/assets/image/home/ai-orb.png') }}" alt="" width="385" height="297" loading="lazy" decoding="async">
-                    <span class="sanad-home-ai__orb-ring" aria-hidden="true"></span>
-                    <span class="sanad-home-ai__orb-dot sanad-home-ai__orb-dot--left-one" aria-hidden="true"></span>
-                    <span class="sanad-home-ai__orb-dot sanad-home-ai__orb-dot--left-two" aria-hidden="true"></span>
-                    <span class="sanad-home-ai__orb-dot sanad-home-ai__orb-dot--left-three" aria-hidden="true"></span>
-                    <span class="sanad-home-ai__orb-dot sanad-home-ai__orb-dot--right-one" aria-hidden="true"></span>
-                    <span class="sanad-home-ai__orb-dot sanad-home-ai__orb-dot--right-two" aria-hidden="true"></span>
-                    <span class="sanad-home-ai__orb-dot sanad-home-ai__orb-dot--right-three" aria-hidden="true"></span>
+                    <svg class="sanad-home-ai__waves" viewBox="0 0 424 327" width="424" height="327" fill="none" overflow="visible">
+                        <path class="sanad-home-ai__wave-path" transform="translate(102 216.1)" d="M0 31.3C44-9.3 73.7 61 121 25.8S187-4.9 220 17M0 36.8C44-3.8 73.7 66.5 121 31.3S187 .5 220 22.5M0 42.3C44 1.6 73.7 72 121 36.8S187 6 220 28M0 47.8C44 7.1 73.7 77.5 121 42.3S187 11.5 220 33.5M0 53.3C44 12.6 73.7 83 121 47.8S187 17 220 39" stroke="#1fc98c" stroke-opacity=".8" stroke-width="1.3" stroke-dasharray="2 4"/>
+                    </svg>
                     <span class="sanad-home-ai__orb-label" lang="en" dir="ltr">SANAD AI</span>
-                    <span class="sanad-home-ai__node sanad-home-ai__node--left-one">الردود</span>
-                    <span class="sanad-home-ai__node sanad-home-ai__node--left-two">المحادثات</span>
-                    <span class="sanad-home-ai__node sanad-home-ai__node--left-three">العملاء</span>
-                    <span class="sanad-home-ai__node sanad-home-ai__node--right-one">التحليلات</span>
-                    <span class="sanad-home-ai__node sanad-home-ai__node--right-two">الأداء</span>
-                    <span class="sanad-home-ai__node sanad-home-ai__node--right-three">المبيعات</span>
+                    <span class="sanad-home-ai__node sanad-home-ai__node--left sanad-home-ai__node--left-one"><i></i><b>الردود</b></span>
+                    <span class="sanad-home-ai__node sanad-home-ai__node--left sanad-home-ai__node--left-two"><i></i><b>المحادثات</b></span>
+                    <span class="sanad-home-ai__node sanad-home-ai__node--left sanad-home-ai__node--left-three"><i></i><b>العملاء</b></span>
+                    <span class="sanad-home-ai__node sanad-home-ai__node--right sanad-home-ai__node--right-one"><i></i><b>التحليلات</b></span>
+                    <span class="sanad-home-ai__node sanad-home-ai__node--right sanad-home-ai__node--right-two"><i></i><b>الأداء</b></span>
+                    <span class="sanad-home-ai__node sanad-home-ai__node--right sanad-home-ai__node--right-three"><i></i><b>المبيعات</b></span>
                 </div>
                 <ul class="sanad-home-ai__features">
                     <li class="sanad-home-ai__feature" data-node-id="408:16685">
@@ -936,27 +948,33 @@
                 var current = 0, timer = null, resetTimer = null, hovered = false, visible = false;
                 var animated = new WeakMap();
 
-                function perView() { return window.innerWidth < 640 ? 1 : (window.innerWidth < 1024 ? 2 : 3); }
+                function perView() { return window.innerWidth < 640 ? 2 : (window.innerWidth < 1024 ? 3 : 4); }
                 function animateValue(item) {
                     var value = item && item.querySelector('[data-stat-value]');
                     if (!value || reducedMotion.matches) { return; }
                     var original = value.dataset.statValue, match = original.match(/\d+/);
-                    if (!match || /\d\s*\/\s*\d/.test(original)) { return; }
+                    if (!match) { return; }
                     cancelAnimationFrame(animated.get(value));
                     var target = Number(match[0]), started = performance.now();
+                    value.classList.add('is-counting');
                     function frame(now) {
-                        var progress = Math.min((now - started) / 950, 1);
-                        value.textContent = original.replace(match[0], String(Math.round(target * (1 - Math.pow(1 - progress, 3)))));
-                        if (progress < 1 && !reducedMotion.matches) { animated.set(value, requestAnimationFrame(frame)); }
-                        else { value.textContent = original; }
+                        var progress = Math.min((now - started) / 600, 1);
+                        var eased = 1 - Math.pow(1 - progress, 4);
+                        value.textContent = original.replace(match[0], String(Math.round(target * eased)));
+                        if (progress < 1 && !reducedMotion.matches) {
+                            animated.set(value, requestAnimationFrame(frame));
+                        } else {
+                            value.textContent = original;
+                            value.classList.remove('is-counting');
+                        }
                     }
                     value.textContent = original.replace(match[0], '0');
                     animated.set(value, requestAnimationFrame(frame));
                 }
                 function render(animate) {
                     var sign = window.getComputedStyle(track).direction === 'rtl' ? 1 : -1;
-                    track.style.transition = animate ? 'transform 350ms ease-in-out' : 'none';
-                    track.style.transform = reducedMotion.matches ? '' : 'translateX(' + (sign * current * viewport.clientWidth / perView()) + 'px)';
+                    track.style.transition = animate ? 'transform 380ms cubic-bezier(0.22, 1, 0.36, 1)' : 'none';
+                    track.style.transform = reducedMotion.matches ? '' : 'translate3d(' + (sign * current * (100 / perView())) + '%, 0, 0)';
                 }
                 function schedule() {
                     clearTimeout(timer);
@@ -966,9 +984,9 @@
                         animateValue(track.children[current + perView() - 1]);
                         render(true);
                         if (current === items.length) {
-                            resetTimer = setTimeout(function () { current = 0; render(false); schedule(); }, 350);
+                            resetTimer = setTimeout(function () { current = 0; render(false); schedule(); }, 380);
                         } else { schedule(); }
-                    }, 2500);
+                    }, 1650);
                 }
                 function layout() {
                     clearTimeout(timer);
@@ -979,6 +997,9 @@
                         var value = item.querySelector('[data-stat-value]');
                         cancelAnimationFrame(animated.get(value));
                         value.textContent = value.dataset.statValue;
+                        item.style.opacity = '1';
+                        item.style.visibility = 'visible';
+                        item.style.transform = 'none';
                         item.style.flex = reducedMotion.matches ? '' : '0 0 ' + (100 / perView()) + '%';
                     });
                     if (!reducedMotion.matches) {
@@ -986,6 +1007,9 @@
                             var clone = item.cloneNode(true);
                             clone.dataset.statsClone = '';
                             clone.setAttribute('aria-hidden', 'true');
+                            clone.style.opacity = '1';
+                            clone.style.visibility = 'visible';
+                            clone.style.transform = 'none';
                             track.appendChild(clone);
                         });
                     }

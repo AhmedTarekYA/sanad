@@ -634,111 +634,271 @@ body, #main {
 .sanad-home-fkr__logo img { inline-size: 72px; block-size: 56px; object-fit: contain; }
 
 /* AI benefits and orb details from Figma nodes 408:17113–17123 / 408:17021. */
+.sanad-stats {
+    min-block-size: 210px;
+    padding-block: 32px;
+}
+.sanad-stats .sanad-stats__item {
+    padding-inline: 12px;
+    min-block-size: 120px;
+}
+.sanad-stats__value {
+    font-variant-numeric: tabular-nums;
+    transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), text-shadow 0.25s ease;
+}
+.sanad-stats__value.is-counting {
+    transform: scale(1.06);
+    text-shadow: 0 0 18px rgba(59, 130, 246, 0.45);
+}
+@media (max-width: 767px) {
+    .sanad-stats {
+        min-block-size: 0;
+        padding-block: 20px;
+        padding-inline: 12px;
+    }
+    .sanad-stats .sanad-stats__item {
+        padding-inline: 8px;
+        min-block-size: 0;
+        gap: 6px;
+    }
+    .sanad-stats__value {
+        font-size: clamp(24px, 6.8vw, 32px);
+        line-height: 1.25;
+    }
+    .sanad-stats__label {
+        font-size: clamp(14px, 4vw, 17px);
+        line-height: 1.35;
+    }
+    .sanad-stats__detail {
+        font-size: clamp(12px, 3.4vw, 14px);
+        line-height: 1.45;
+    }
+}
+
+.sanad-home-ai {
+    min-block-size: 0;
+    padding: 56px 64px 72px;
+}
 .sanad-home-ai__container { max-inline-size: 1240px; }
 .sanad-home-ai__layout {
-    grid-template-columns: 370px 385px 370px;
+    grid-template-columns: 360px 424px 360px;
     justify-content: space-between;
-    gap: 0;
-    margin-block-start: 120px;
+    align-items: center;
+    gap: 24px;
+    margin-block-start: 48px;
 }
 .sanad-home-ai__subtitle {
-    inline-size: 380px;
-    margin-inline-start: -10px;
-    margin-block-end: 28px;
+    inline-size: auto;
+    margin-inline-start: 0;
+    margin-block-end: 20px;
     text-align: right;
 }
-.sanad-home-ai__outcome-list { gap: 12px; margin-block-start: 0; }
+.sanad-home-ai__outcome-list { gap: 14px; margin-block-start: 0; }
 .sanad-home-ai .sanad-home-ai__outcome {
     position: relative;
     display: flex;
-    min-block-size: 134px;
-    align-items: flex-start;
-    padding: 20px 24px 16px 48px;
-    border: 1px solid rgba(30, 64, 175, .35);
+    min-block-size: 0;
+    align-items: center;
+    padding: 18px 24px 18px 52px;
+    border: 1px solid rgba(45, 113, 240, .4);
     border-radius: 16px;
     background: #132848;
 }
 .sanad-home-ai__outcome p {
     margin: 0;
-    color: #c4c4c4;
-    font-size: 18px;
-    line-height: 1.5;
+    color: #e2e8f0;
+    font-size: 17px;
+    line-height: 1.55;
     text-align: right;
 }
-.sanad-home-ai__outcome .sanad-home-ai__check { inset-block-start: 19px; }
-.sanad-home-ai__orb-ring {
-    position: absolute;
-    inset-block-start: 7px;
-    left: 13.25%;
-    inline-size: 73.25%;
-    aspect-ratio: 1;
-    border: 1px solid rgba(48, 189, 125, .78);
-    border-radius: 50%;
-    pointer-events: none;
+.sanad-home-ai__outcome .sanad-home-ai__check {
+    inset-block-start: 50%;
+    transform: translateY(-50%);
+}
+.sanad-home-ai .sanad-home-ai__feature {
+    min-block-size: 0;
+    padding: 18px 20px 18px 52px;
+}
+.sanad-home-ai__features {
+    margin-block-start: 0;
+    gap: 14px;
+}
+.sanad-home-ai__visual {
+    position: relative;
+    inline-size: 424px;
+    max-inline-size: 100%;
+    block-size: auto;
+    aspect-ratio: 424 / 327;
+    direction: ltr;
+    align-self: center;
+    justify-self: center;
 }
 .sanad-home-ai__visual::before {
+    display: none;
+}
+.sanad-home-ai__svg,
+.sanad-home-ai__waves {
     position: absolute;
-    z-index: 0;
-    inset-block-start: -.67%;
-    left: 10.9%;
-    inline-size: 77.92%;
-    aspect-ratio: 1;
-    border: 1px dashed rgba(48, 189, 125, .36);
-    border-radius: 50%;
-    content: "";
+    inset: 0;
+    inline-size: 100%;
+    block-size: 100%;
     pointer-events: none;
+    overflow: visible;
 }
-.sanad-home-ai__orb-art { z-index: 1; }
-.sanad-home-ai__orb-ring { z-index: 2; }
-.sanad-home-ai__orb-dot {
+.sanad-home-ai__svg { z-index: 1; }
+.sanad-home-ai__orb-art {
     position: absolute;
-    z-index: 3;
-    inline-size: 5.2%;
-    aspect-ratio: 1;
-    border: 1px solid rgba(48, 189, 125, .85);
-    border-radius: 50%;
-    background: #132848;
+    inset: 4% 5%;
+    inline-size: 90%;
+    block-size: 92%;
+    object-fit: contain;
+    z-index: 2;
+    transform-origin: center;
 }
-.sanad-home-ai__orb-dot::after {
+.sanad-home-ai__waves { z-index: 3; }
+.sanad-home-ai__orb-label {
+    z-index: 4;
+    font-size: clamp(20px, 6vw, 28px);
+    text-shadow: 0 2px 16px rgba(14, 30, 48, 0.9);
+}
+.sanad-home-ai__orbiters {
+    transform-origin: 212px 169px;
+    filter: drop-shadow(0 0 8px rgba(56, 211, 155, 0.95));
+}
+.sanad-home-ai__node {
     position: absolute;
-    inset: 30%;
-    border-radius: 50%;
-    background: #30bd7d;
-    content: "";
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    inline-size: auto;
+    block-size: auto;
+    color: #f8f8f9;
+    font-size: clamp(11px, 2.8vw, 13.5px);
+    font-weight: 600;
+    line-height: 1.3;
+    white-space: nowrap;
+    direction: ltr;
 }
-.sanad-home-ai__orb-dot--left-one { top: 12.5%; left: 10.9%; }
-.sanad-home-ai__orb-dot--left-two { top: 38.7%; left: 7.27%; }
-.sanad-home-ai__orb-dot--left-three { top: 64.98%; left: 10.9%; }
-.sanad-home-ai__orb-dot--right-one { top: 12.5%; left: 84%; }
-.sanad-home-ai__orb-dot--right-two { top: 38.7%; left: 87.5%; }
-.sanad-home-ai__orb-dot--right-three { top: 64.98%; left: 84%; }
-.sanad-home-ai__actions { direction: ltr; }
+.sanad-home-ai__node i {
+    position: static;
+    flex: 0 0 auto;
+    inline-size: clamp(22px, 6vw, 28px);
+    block-size: clamp(22px, 6vw, 28px);
+    border-radius: 50%;
+    background: #132848 radial-gradient(circle, #40e8ad 0 4.5px, transparent 5px);
+    border: 1.2px solid rgba(56, 211, 155, 0.9);
+    box-shadow: 0 0 12px rgba(56, 211, 155, 0.45);
+}
+.sanad-home-ai__node b {
+    font-weight: 600;
+}
+.sanad-home-ai__node--left {
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+}
+.sanad-home-ai__node--right {
+    flex-direction: row;
+    justify-content: flex-start;
+}
+.sanad-home-ai__node--left-one   { inset-block-start: 12.5%; inset-inline-end: 74.5%; inset-inline-start: auto; }
+.sanad-home-ai__node--left-two   { inset-block-start: 39.5%; inset-inline-end: 78.5%; inset-inline-start: auto; }
+.sanad-home-ai__node--left-three { inset-block-start: 66.0%; inset-inline-end: 74.5%; inset-inline-start: auto; }
+.sanad-home-ai__node--right-one  { inset-block-start: 12.5%; inset-inline-start: 74.5%; inset-inline-end: auto; }
+.sanad-home-ai__node--right-two  { inset-block-start: 39.5%; inset-inline-start: 78.5%; inset-inline-end: auto; }
+.sanad-home-ai__node--right-three{ inset-block-start: 66.0%; inset-inline-start: 74.5%; inset-inline-end: auto; }
+.sanad-home-ai__actions {
+    direction: ltr;
+    margin-block-start: 44px;
+}
 
-@media (max-width: 1100px) {
-    .sanad-home-fkr { min-block-size: 0; padding: 120px 0 64px; }
+@media (prefers-reduced-motion: no-preference) {
+    .sanad-home-ai__orbit-ring {
+        animation: sanad-home-ai-dash 1.6s linear infinite;
+    }
+    .sanad-home-ai__orbiters {
+        animation: sanad-home-ai-orbit-spin 8s linear infinite;
+    }
+    .sanad-home-ai__orb-art {
+        animation: sanad-home-ai-orb-pulse 4.5s ease-in-out infinite;
+    }
+    .sanad-home-ai__wave-path {
+        animation: sanad-home-ai-wave-dash 1.2s linear infinite;
+    }
+    .sanad-home-ai__node i {
+        animation: sanad-home-ai-dot-pulse 1.5s ease-in-out infinite;
+    }
+    .sanad-home-ai__node--left {
+        animation: sanad-home-ai-float-left 2.2s ease-in-out infinite;
+    }
+    .sanad-home-ai__node--right {
+        animation: sanad-home-ai-float-right 2.2s ease-in-out infinite;
+    }
+    .sanad-home-ai__node--left-two,
+    .sanad-home-ai__node--right-one { animation-delay: -0.7s; }
+    .sanad-home-ai__node--left-three,
+    .sanad-home-ai__node--right-two { animation-delay: -1.4s; }
+    .sanad-home-ai__node--right-three { animation-delay: -0.35s; }
+    .sanad-home-ai__node--left-two i,
+    .sanad-home-ai__node--right-two i { animation-delay: -0.5s; }
+    .sanad-home-ai__node--left-three i,
+    .sanad-home-ai__node--right-three i { animation-delay: -1.0s; }
+}
+@keyframes sanad-home-ai-dash {
+    to { stroke-dashoffset: -24; }
+}
+@keyframes sanad-home-ai-orbit-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+@keyframes sanad-home-ai-orb-pulse {
+    0%, 100% { transform: scale(1) rotate(0deg); filter: brightness(1); }
+    50% { transform: scale(1.1) rotate(10deg); filter: brightness(1.22) drop-shadow(0 0 18px rgba(56, 211, 155, 0.45)); }
+}
+@keyframes sanad-home-ai-wave-dash {
+    to { stroke-dashoffset: -18; }
+}
+@keyframes sanad-home-ai-dot-pulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 10px rgba(56, 211, 155, 0.45); }
+    50% { transform: scale(1.26); box-shadow: 0 0 20px rgba(56, 211, 155, 0.95); }
+}
+@keyframes sanad-home-ai-float-left {
+    0%, 100% { transform: translate3d(0, 0, 0); }
+    50% { transform: translate3d(-6px, -4px, 0); color: #38d39b; }
+}
+@keyframes sanad-home-ai-float-right {
+    0%, 100% { transform: translate3d(0, 0, 0); }
+    50% { transform: translate3d(6px, -4px, 0); color: #38d39b; }
+}
+
+@media (max-width: 1180px) {
+    .sanad-home-fkr { min-block-size: 0; padding: 112px 0 56px; }
     .sanad-home-fkr__container { grid-template-columns: minmax(0, 1fr); gap: 32px; padding-inline: 32px; }
     .sanad-home-fkr__content { order: 0; }
     .sanad-home-fkr__items { order: 1; }
     .sanad-home-fkr__logo { right: 32px; }
-    .sanad-home-fkr__title { font-size: clamp(34px, 5vw, 48px); }
+    .sanad-home-fkr__title { font-size: clamp(32px, 5vw, 44px); }
+    .sanad-home-ai { padding: 48px 32px 56px; }
     .sanad-home-ai__container { max-inline-size: 760px; }
-    .sanad-home-ai__layout { grid-template-columns: minmax(0, 1fr); gap: 32px; margin-block-start: 64px; }
-    .sanad-home-ai__visual { order: -1; }
-    .sanad-home-ai__subtitle { inline-size: auto; margin-inline-start: 0; }
+    .sanad-home-ai__layout { grid-template-columns: minmax(0, 1fr); gap: 28px; margin-block-start: 32px; }
+    .sanad-home-ai__visual { order: -1; inline-size: min(100%, 424px); }
+    .sanad-home-ai__subtitle { inline-size: auto; margin-inline-start: 0; margin-block-end: 16px; }
     .sanad-home-ai__features { margin-block-start: 0; }
+    .sanad-home-ai__actions { margin-block-start: 32px; }
 }
 @media (max-width: 767px) {
-    .sanad-home-fkr { padding: 112px 0 40px; }
-    .sanad-home-fkr__container { padding-inline: 20px; }
+    .sanad-home-fkr { padding: 104px 0 36px; }
+    .sanad-home-fkr__container { padding-inline: 20px; gap: 24px; }
     .sanad-home-fkr__logo { right: 20px; }
-    .sanad-home-fkr__title { font-size: 30px; }
+    .sanad-home-fkr__title { font-size: 28px; }
     .sanad-home-fkr__description { font-size: 16px; }
+    .sanad-home-ai { padding: 36px 18px 44px; }
     .sanad-home-ai__container { max-inline-size: 100%; }
-    .sanad-home-ai__layout { gap: 28px; margin-block-start: 40px; }
-    .sanad-home-ai__visual { inline-size: min(100%, 385px); block-size: auto; aspect-ratio: 385 / 297; }
-    .sanad-home-ai__subtitle { inline-size: auto; font-size: 18px; }
-    .sanad-home-ai .sanad-home-ai__outcome { min-block-size: 110px; }
-    .sanad-home-ai__outcome p { font-size: 16px; }
-    .sanad-home-ai .sanad-home-ai__feature { min-block-size: 0; }
-    .sanad-home-ai__actions { margin-block-start: 32px; }
+    .sanad-home-ai__layout { gap: 22px; margin-block-start: 24px; }
+    .sanad-home-ai__visual { inline-size: min(100%, 380px); block-size: auto; aspect-ratio: 424 / 327; }
+    .sanad-home-ai__subtitle { inline-size: auto; font-size: 18px; margin-block-end: 14px; }
+    .sanad-home-ai .sanad-home-ai__outcome { min-block-size: 0; padding: 16px 18px 16px 46px; }
+    .sanad-home-ai__outcome p { font-size: 15.5px; }
+    .sanad-home-ai .sanad-home-ai__feature { min-block-size: 0; padding: 16px 18px 16px 46px; }
+    .sanad-home-ai__actions { margin-block-start: 24px; gap: 12px; }
 }

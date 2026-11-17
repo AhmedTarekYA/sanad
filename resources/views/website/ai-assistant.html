@@ -1,40 +1,103 @@
-﻿<!doctype html>
-<html lang="ar" dir="rtl" data-theme="dark" data-sanad-page="ai-assistant.html">
+<!DOCTYPE html>
+<html data-sanad-page="ai-assistant.html" lang="ar" dir="rtl" data-theme="dark">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>المساعد الذكي — SANAD CX AI</title>
-  <meta name="description" content="إضافة Sanad CX AI لمتصفح كروم: إجابات دقيقة وتقارير تحليلية لحظية بجانب فريقك على الواتساب ونظام CRM.">
-  <script>try{const t=localStorage.getItem('sanad-theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch{}</script>
-  <link rel="icon" href="/website/assets/image/fav.svg" type="image/svg+xml">
-  <link rel="preload" href="/website/assets/fonts/IBMPlexSansArabic-Regular.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/website/assets/css/ai-assistant.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Flip.min.js" defer></script>
-  <script src="/website/assets/js/main.js" defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="csrf-token" content="preview-token">
+    <title>المساعد الذكي — SANAD CX AI</title>
+    <meta name="description" content="إضافة متصفح (Chrome Extension) ذكية تُدمج مباشرة فوق الواتساب ونظام الـ CRM لتزويد موظفيك بإجابات دقيقة وتقارير تحليلية لحظية.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ar_SA">
+    <meta property="og:site_name" content="Sanad CX">
+    <meta property="og:title" content="المساعد الذكي — SANAD CX AI">
+    <meta property="og:description" content="المساعد الذكي (Sanad AI) — الذكاء الاصطناعي في خدمة فريقك.">
+    <meta name="twitter:card" content="summary">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Sanad CX","email":"info@sanadcx.com","telephone":["920022379","+966506591444"]}</script>
+    <script>
+      /* Resolve an explicit Light choice before paint; otherwise keep Dark. */
+      (function () {
+        try {
+          if (window.localStorage.getItem('sanad-theme') === 'light') {
+            delete document.documentElement.dataset.theme;
+          }
+        } catch (error) {
+          /* Storage unavailable: keep the default Dark appearance. */
+        }
+      })();
+    </script>
+    <link rel="icon" type="image/svg+xml" href="/website/assets/image/fav.svg">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
+    <link rel="stylesheet" href="/website/assets/css/styles.css">
+    <style>
+        .sanad-header--scrolled { background: rgba(234, 240, 249, 0.92); background: color-mix(in srgb, var(--sanad-surface-page, #eaf0f9) 92%, transparent); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); box-shadow: 0 4px 24px #00000012; }
+        [data-theme="dark"] .sanad-header--scrolled { background: rgba(13, 27, 42, 0.92); background: color-mix(in srgb, var(--sanad-surface-page, #0d1b2a) 92%, transparent); box-shadow: 0 4px 24px #00000038; }
+        .sanad-line-mask { display: block; overflow: hidden; }
+        .sanad-word { display: inline-block; }
+        .sanad-reading-progress { position: fixed; top: 0; inset-inline: 0; height: 3px; background: #38d39b; z-index: 10000; pointer-events: none; }
+        .sanad-privacy-hero__toc-link.is-active, .sanad-privacy-contents__link.is-active, .sanad-terms-contents__link.is-active, .sanad-legal__toc-link.is-active { color: var(--sanad-color-primary, #1e40af); text-decoration: underline; text-underline-offset: 6px; }
+        .differ-card, .sanad-differ__card { background-image: radial-gradient(400px circle at var(--mouse-x, -500px) var(--mouse-y, -500px), #337efc12, transparent 70%); }
+        @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto !important; } }
+    </style>
+    
+<link rel="stylesheet" href="/website/assets/css/pages/ai-assistant.css">
 
-    <link rel="stylesheet" href="/website/assets/css/pages/ai-assistant.css">
-    <link rel="stylesheet" href="/website/assets/css/pages/modals.css">
-    <link rel="stylesheet" href="/website/assets/css/layout.css">
+    
 </head>
+
 <body>
-<a class="skip-link" href="#main">انتقل إلى المحتوى</a>
-<header class="ai-nav" data-site-header>
-  <a href="/" class="ai-brand" aria-label="SANAD CX | GROWTH PARTNER"><img class="ai-logo--light" src="/website/assets/image/logo.svg" width="181" height="60" alt="SANAD CX | GROWTH PARTNER"><img class="ai-logo--dark" src="/website/assets/image/darkmode-logo.svg" width="181" height="60" alt=""></a>
-  <button class="ai-menu" type="button" data-site-header-menu aria-expanded="false" aria-controls="ai-navigation" aria-label="القائمة">☰</button>
-  <nav id="ai-navigation" data-site-header-nav aria-label="التنقل الرئيسي"><a href="/">الرئيسية</a><a href="/services">حلول التشغيل</a><a href="/ai-assistant" aria-current="page">المساعد الذكي</a><a href="/fikr">فِكر</a><a href="/how-it-works">رحلة التشغيل</a><a href="/about">عن سند</a></nav>
-  <div class="ai-nav__actions"><button class="ai-button" type="button" data-free-trial-open>احجز استشارة مجانية</button><a href="/en" lang="en" aria-label="Switch to English">EN</a><button class="ai-theme" type="button" data-theme-toggle aria-pressed="true" aria-label="تفعيل المظهر الفاتح">◐</button></div>
+<a class="sanad-skip-link" href="#main">الانتقال إلى المحتوى الرئيسي</a>
+<header class="sanad-header" data-site-header>
+ <div class="sanad-header__row">
+  <a class="sanad-header__brand" href="/">
+   <img class="sanad-header__logo sanad-header__logo--light" src="/website/assets/image/logo.svg" alt="SANAD CX" width="181" height="60">
+   <img class="sanad-header__logo sanad-header__logo--dark" src="/website/assets/image/darkmode-logo.svg" alt="" width="181" height="60" aria-hidden="true">
+  </a>
+  <button type="button" class="sanad-btn sanad-btn--md sanad-btn--outline sanad-header__menu" data-site-header-menu aria-expanded="false" aria-controls="sanad-site-navigation" aria-label="القائمة" title="القائمة">
+   <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+  </button>
+  <nav class="sanad-header__nav" data-site-header-nav id="sanad-site-navigation" aria-label="التنقل الرئيسي">
+   <ul class="sanad-header__list">
+    <li><a class="sanad-header__link " href="/">الرئيسية</a></li>
+    <li><a class="sanad-header__link " href="/services">حلول التشغيل</a></li>
+    <li><a class="sanad-header__link sanad-header__link--active" href="/ai-assistant">المساعد الذكي</a></li>
+    <li><a class="sanad-header__link " href="/fkr">فِكر</a></li>
+    <li><a class="sanad-header__link " href="/how-it-works">رحلة التشغيل</a></li>
+    <li><a class="sanad-header__link " href="/about">عن سند</a></li>
+   </ul>
+  </nav>
+  <div class="sanad-header__actions">
+   <button type="button" class="sanad-btn sanad-header__cta" data-site-header-cta>احجز استشارة مجانية</button>
+   
+   <a class="sanad-header__language" href="/en" dir="ltr" aria-label="Switch to English">EN</a>
+   <button type="button" class="sanad-theme-toggle" data-theme-toggle aria-pressed="true" aria-label="تبديل المظهر بين الفاتح والداكن">
+    <svg class="sanad-theme-toggle__icon" viewBox="0 0 48 48" width="48" height="48" aria-hidden="true">
+     <defs>
+      <mask id="sanad-theme-cutout">
+       <rect width="48" height="48" fill="white"/>
+       <circle class="sanad-theme-toggle__cutout" cx="32" cy="16" r="15" fill="black"/>
+      </mask>
+     </defs>
+     <g mask="url(#sanad-theme-cutout)" fill="currentColor">
+      <path class="sanad-theme-toggle__rays" d="M40.9751 16.9657V7.02485H31.0343L24.0095 0L16.9657 7.02485H7.02485V16.9657L0 24.0095L7.02485 31.0343V40.9751H16.9657L23.9905 48L31.0154 40.9751H40.9562V31.0343L47.9811 24.0095L40.9751 16.9657ZM24.0095 37.5479C16.5302 37.5479 10.4521 31.4888 10.4521 23.9905C10.4521 16.4923 16.5112 10.4331 24.0095 10.4331C31.4888 10.4331 37.5669 16.4923 37.5669 23.9905C37.5669 31.4888 31.4888 37.5479 24.0095 37.5479Z"/>
+      <path class="sanad-theme-toggle__disc" d="M25.7539 34.7552C31.6894 33.7925 35.7206 28.2004 34.7579 22.2649C33.7952 16.3295 28.2031 12.2983 22.2676 13.261C16.3322 14.2237 12.3009 19.8158 13.2637 25.7513C14.2264 31.6867 19.8185 35.7179 25.7539 34.7552Z"/>
+     </g>
+    </svg>
+   </button>
+  </div>
+ </div>
 </header>
+
 <main id="main">
-@php($isAr = app()->getLocale() === 'ar')
+
+
 <div class="ai-page">
 <section class="ai-hero" aria-labelledby="ai-hero-title">
 <div class="ai-hero__in">
 <p class="ai-badge">SANAD CX AI — المساعد الذكي</p>
-<h1 id="ai-hero-title" class="ai-hero__title">المساعد الذكي (Sanad AI) — الذكاء الاصطناعي في خدمة فريقك</h1>
+<h1 id="ai-hero-title" class="ai-hero__title">ضاعف سرعة مبيعاتك ورضا عملائك بذكاء اصطناعي يعمل بجانب فريقك لحظة بلحظة</h1>
 <p class="ai-hero__lead">إضافة متصفح (Chrome Extension) ذكية تُدمج مباشرة فوق الواتساب ونظام الـ CRM لتزويد موظفيك بإجابات دقيقة وتقارير تحليلية لحظية.</p>
-<button type="button" class="ai-btn" data-consultation-open>احجز استشارة مجانية</button>
+<button type="button" class="ai-btn" data-free-trial-open>ابدأ التجربة المجانية</button>
 <div class="ai-hcard ai-flow-node ai-hcard--1">
 <svg viewBox="0 0 28 28" width="28" height="28" aria-hidden="true">
 <rect x=".5" y=".5" width="27" height="27" rx="8" fill="rgba(30,64,175,.28)" stroke="rgba(45,113,240,.7)"/>
@@ -66,39 +129,45 @@
 <feGaussianBlur stdDeviation="27.5"/>
 </filter>
 </defs>
-<circle cx="212" cy="170" r="164" fill="#1e40af" fill-opacity=".18" filter="url(#aiBlur)"/>
-<circle cx="212" cy="169" r="155" stroke="#30bd7d" stroke-opacity=".42" stroke-width="1.1" stroke-dasharray="3.3 7.7"/>
-<circle cx="211.5" cy="169.5" r="125.5" fill="#0e1e30" stroke="#33cc91" stroke-opacity=".8" stroke-width="1.1"/>
-<image href="/website/assets/image/home/ai-orb.png" width="424" height="327"/>
-<path transform="translate(102 216.1)" d="M0 31.3C44-9.3 73.7 61 121 25.8S187-4.9 220 17M0 36.8C44-3.8 73.7 66.5 121 31.3S187 .5 220 22.5M0 42.3C44 1.6 73.7 72 121 36.8S187 6 220 28M0 47.8C44 7.1 73.7 77.5 121 42.3S187 11.5 220 33.5M0 53.3C44 12.6 73.7 83 121 47.8S187 17 220 39" stroke="#1fc98c" stroke-opacity=".65" stroke-width="1.1" stroke-dasharray="1.1 3.3"/>
+<circle cx="212" cy="170" r="164" fill="#1e40af" fill-opacity=".22" filter="url(#aiBlur)"/>
+<circle class="ai-art__orbit" cx="212" cy="169" r="155" stroke="#30bd7d" stroke-opacity=".55" stroke-width="1.3" stroke-dasharray="4 8"/>
+<circle cx="211.5" cy="169.5" r="125.5" fill="#0e1e30" stroke="#33cc91" stroke-opacity=".85" stroke-width="1.3"/>
+<g class="ai-art__orbiters">
+<circle cx="212" cy="43.5" r="5" fill="#38d39b"/>
+<circle cx="337.5" cy="169" r="4.5" fill="#38d39b"/>
+<circle cx="212" cy="294.5" r="5" fill="#38d39b"/>
+<circle cx="86.5" cy="169" r="4.5" fill="#38d39b"/>
+</g>
+<image class="ai-art__orb" href="/website/assets/image/home/ai-orb.png" width="424" height="327"/>
+<path class="ai-art__waves" transform="translate(102 216.1)" d="M0 31.3C44-9.3 73.7 61 121 25.8S187-4.9 220 17M0 36.8C44-3.8 73.7 66.5 121 31.3S187 .5 220 22.5M0 42.3C44 1.6 73.7 72 121 36.8S187 6 220 28M0 47.8C44 7.1 73.7 77.5 121 42.3S187 11.5 220 33.5M0 53.3C44 12.6 73.7 83 121 47.8S187 17 220 39" stroke="#1fc98c" stroke-opacity=".8" stroke-width="1.3" stroke-dasharray="2 4"/>
 </svg>
 <span class="ai-art__name" dir="ltr">SANAD AI</span>
-<span class="ai-tag ai-tag--l" style="left:16px;top:44px">
+<span class="ai-tag ai-tag--l ai-tag--l1">
 <i>
 </i>
 <b>الردود</b>
 </span>
-<span class="ai-tag ai-tag--l" style="left:1px;top:130px">
+<span class="ai-tag ai-tag--l ai-tag--l2">
 <i>
 </i>
 <b>المحادثات</b>
 </span>
-<span class="ai-tag ai-tag--l" style="left:16px;top:216px">
+<span class="ai-tag ai-tag--l ai-tag--l3">
 <i>
 </i>
 <b>العملاء</b>
 </span>
-<span class="ai-tag ai-tag--r" style="left:315px;top:44px">
+<span class="ai-tag ai-tag--r ai-tag--r1">
 <i>
 </i>
 <b>التحليلات</b>
 </span>
-<span class="ai-tag ai-tag--r" style="left:331px;top:130px">
+<span class="ai-tag ai-tag--r ai-tag--r2">
 <i>
 </i>
 <b>الأداء</b>
 </span>
-<span class="ai-tag ai-tag--r" style="left:315px;top:216px">
+<span class="ai-tag ai-tag--r ai-tag--r3">
 <i>
 </i>
 <b>المبيعات</b>
@@ -121,6 +190,7 @@
 </section>
 <section class="ai-sec ai-shift" aria-labelledby="ai-shift-title">
 <h2 id="ai-shift-title">الفارق الذي تحدثه إضافة Sanad CX AI في عملياتك:</h2>
+<div class="ai-shift__cards">
 
 <article class="ai-canvas ai-canvas--before ai-shift__card">
 <h3>قبل استخدام Sanad CX AI</h3>
@@ -147,85 +217,47 @@
 <small>مثال توضيحي</small>
 </article>
 
+</div>
 </section>
 <section class="ai-sec ai-steps ai-walkthrough" aria-labelledby="ai-steps-title">
-    <h2 id="ai-steps-title">فعّل مساعد فريقك في أربع مراحل</h2>
+    <h2 id="ai-steps-title">ابدأ العمل خلال 3 خطوات بسيطة:</h2>
     <div class="ai-walkthrough__steps" role="group" aria-label="مراحل عمل المساعد">
-        <article class="ai-step ai-walkthrough__step is-active">
-            <button type="button" data-copilot-step="0" aria-pressed="true" aria-controls="copilot-stage-0">
+        <article class="ai-step ai-walkthrough__step">
 <span class="ai-step__number">01</span>
-<h3>فهم اللهجة</h3>
-</button>
-            <p>يفهم سياق المحادثة ولهجة العميل.</p>
+<span class="ai-step__illustration ai-step__illustration--semantic" aria-hidden="true"><svg viewBox="0 0 120 88" width="120" height="88" fill="none"><rect x="15" y="13" width="90" height="62" rx="10" stroke="currentColor" stroke-width="3"/><path d="M15 29h90M25 21h2m6 0h2m6 0h2" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M60 38v22m-9-9 9 9 9-9" stroke="#38d39b" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+<h3>تثبيت الإضافة (Install)</h3>
+            <p>إضافة Sanad CX لمتصفح كروم بضغطة زر.</p>
         </article>
         <article class="ai-step ai-walkthrough__step">
-            <button type="button" data-copilot-step="1" aria-pressed="false" aria-controls="copilot-stage-1">
 <span class="ai-step__number">02</span>
-<h3>اقتراح الرد</h3>
-</button>
-            <p>يقترح إجابة من قاعدة المعرفة ليراجعها الموظف.</p>
+<span class="ai-step__illustration ai-step__illustration--semantic" aria-hidden="true"><svg viewBox="0 0 120 88" width="120" height="88" fill="none"><path d="M18 19c14-6 28-5 42 3v49c-14-8-28-9-42-3V19Zm84 0c-14-6-28-5-42 3v49c14-8 28-9 42-3V19Z" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M27 31c8-2 16-1 24 2m-24 9c8-2 16-1 24 2m18-11c8-3 16-4 24-2m-24 13c8-3 16-4 24-2" stroke="#38d39b" stroke-width="3" stroke-linecap="round"/></svg></span>
+<h3>ربط قاعدة المعرفة (Connect KB)</h3>
+            <p>رفع ملفات المنتجات والأسعار في لوحة التحكم.</p>
         </article>
         <article class="ai-step ai-walkthrough__step">
-            <button type="button" data-copilot-step="2" aria-pressed="false" aria-controls="copilot-stage-2">
 <span class="ai-step__number">03</span>
-<h3>أتمتة الإجراء</h3>
-</button>
-            <p>يساعد الموظف في تنفيذ الإجراء المناسب.</p>
-        </article>
-        <article class="ai-step ai-walkthrough__step">
-            <button type="button" data-copilot-step="3" aria-pressed="false" aria-controls="copilot-stage-3">
-<span class="ai-step__number">04</span>
-<h3>تحديث الـ CRM</h3>
-</button>
-            <p>يلخص المحادثة ويجهز تحديث سجل العميل.</p>
+<span class="ai-step__illustration ai-step__illustration--semantic" aria-hidden="true"><svg viewBox="0 0 120 88" width="120" height="88" fill="none"><path d="M20 16h64a10 10 0 0 1 10 10v29a10 10 0 0 1-10 10H52L37 76V65H20a10 10 0 0 1-10-10V26a10 10 0 0 1 10-10Z" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M26 33h31M26 43h43M26 53h25" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="m89 10 3.5 8.5L101 22l-8.5 3.5L89 34l-3.5-8.5L77 22l8.5-3.5L89 10Z" fill="#38d39b"/></svg></span>
+<h3>التوجيه اللحظي (Co-Pilot Advantage)</h3>
+            <p>يبدأ الموظف في استقبال الاقتراحات والتحليلات أثناء المحادثة فوراً.</p>
         </article>
     </div>
-    <p class="ai-steps__label">معاينة توضيحية للمساعد داخل المحادثة</p>
+    <p class="ai-steps__label">معاينة توضيحية للإضافة</p>
+    <p class="ai-steps__description">إضافة متصفح (Chrome Extension) ذكية تدمج مباشرة فوق الواتساب ونظام الـ CRM لتزويد موظفيك بإجابات دقيقة وتقارير تحليلية لحظية.</p>
     <div class="ai-demo copilot-visual">
-        <div class="ai-demo__toolbar">
-<span dir="ltr">SANAD CX / AI</span>
-<span>مثال توضيحي</span>
-</div>
-        <h3 data-copilot-caption>فهم اللهجة</h3>
-        <div class="copilot-stage">
-            <section class="copilot-extension" id="copilot-stage-0" aria-label="فهم اللهجة">
-                <span class="ai-demo__logo" aria-hidden="true">AI</span>
-                <p class="copilot-extension__label" dir="ltr">SANAD CX AI / 01</p>
-                <p>متى يوصل طلبي؟</p>
-            </section>
-            <section class="copilot-extension" id="copilot-stage-1" aria-label="اقتراح الرد" hidden>
-                <span class="ai-demo__logo" aria-hidden="true">AI</span>
-                <p class="copilot-extension__label" dir="ltr">SANAD CX AI / 02</p>
-                <p>طلبك قيد الشحن. إليك رابط تتبع الشحنة.</p>
-            </section>
-            <section class="copilot-extension" id="copilot-stage-2" aria-label="أتمتة الإجراء" hidden>
-                <span class="ai-demo__logo" aria-hidden="true">AI</span>
-                <p class="copilot-extension__label" dir="ltr">SANAD CX AI / 03</p>
-                <p>الإجراء المقترح: إرسال رابط التتبع.</p>
-            </section>
-            <section class="copilot-extension" id="copilot-stage-3" aria-label="تحديث الـ CRM" hidden>
-                <span class="ai-demo__logo" aria-hidden="true">AI</span>
-                <p class="copilot-extension__label" dir="ltr">SANAD CX AI / 04</p>
-                <p>ملخص جاهز للمراجعة: استفسار عن الشحن، تمت مشاركة رابط التتبع.</p>
-            </section>
+        <video class="copilot-video" preload="metadata" muted playsinline loop data-src="/website/assets/image/ai-extension-walkthrough.mp4" poster="/website/assets/image/ai-extension-walkthrough.png" aria-label="معاينة خطوات تثبيت المساعد وربط المعرفة واستخدامه"></video>
+        <div class="copilot-controls" aria-label="مراحل المعاينة">
+            <button type="button" data-copilot-step="0" aria-pressed="true">تثبيت الإضافة</button>
+            <button type="button" data-copilot-step="1" aria-pressed="false">ربط قاعدة المعرفة</button>
+            <button type="button" data-copilot-step="2" aria-pressed="false">فتح المحادثة</button>
+            <button type="button" data-copilot-step="3" aria-pressed="false">مراجعة الاقتراح</button>
         </div>
-        <div class="ai-demo__prog" aria-hidden="true">
-<i class="is-active">
-</i>
-<i>
-</i>
-<i>
-</i>
-<i>
-</i>
-</div>
-        <span class="ai-demo__n" dir="ltr" data-copilot-number>01 / 04</span>
     </div>
-    <button type="button" class="ai-btn ai-steps__btn" data-consultation-open>احجز استشارة مجانية</button>
+    <button type="button" class="ai-btn ai-steps__btn" data-free-trial-open>ابدأ التجربة المجانية</button>
 </section>
 
 <section class="ai-sec ai-ops" aria-labelledby="ai-ops-title">
 <h2 id="ai-ops-title">تحكّم كامل ورؤية شاملة لمدراء الكول سنتر والمبيعات:</h2>
+<div class="ai-ops__cards">
 <article class="ai-box ai-kpi">
 <h3>مؤشرات الأداء اللحظية (Agent KPIs)</h3>
 <p>متابعة سرعة الرد ونسبة التزام الموظف باقتراحات الذكاء الاصطناعي.</p>
@@ -295,6 +327,7 @@
 </i>
 </div>
 </article>
+</div>
 </section>
 <section class="ai-sec ai-plans ai-pricing-section" aria-labelledby="ai-plans-title">
 <h2 id="ai-plans-title">باقات مرنة تناسب حجم فريقك:</h2>
@@ -362,15 +395,15 @@
 <h2 id="ai-faq-title">الأسئلة الشائعة</h2>
 <div class="ai-faq__list">
 
-<details class="ai-faq__row">
+<details class="ai-faq__row" open>
 <summary>هل أحتاج لمطورين لتثبيت الأداة؟</summary>
 <p>لا، التثبيت يتم بنقرة زر واحدة من متجر كروم ويتم الإعداد خلال دقائق.</p>
 </details>
-<details class="ai-faq__row">
+<details class="ai-faq__row" open>
 <summary>هل تعمل الأداة مع اللهجة المحلية ؟</summary>
 <p>نعم، تم تدريب النموذج على فهم مختلف اللهجات العربية واللغة الإنجليزية بدقة عالية.</p>
 </details>
-<details class="ai-faq__row">
+<details class="ai-faq__row" open>
 <summary>هل بيانات محادثاتنا آمنة؟</summary>
 <p>نلتزم بأعلى معايير التشفير والخصوصية، ولا يتم مشاركة بيانات عملائك مع أي طرف ثالث.</p>
 </details>
@@ -382,25 +415,354 @@
 <button type="button" class="ai-btn" data-consultation-open>احجز استشارة مجانية</button>
 </section>
 </div>
+
 </main>
-<footer class="ai-footer"><div class="ai-shell ai-footer__grid">
-  <div class="ai-footer__brand"><a href="/" aria-label="SANAD CX | GROWTH PARTNER"><img src="/website/assets/image/darkmode-logo.svg" width="181" height="60" alt="SANAD CX | GROWTH PARTNER"></a><p>شريكك الاستراتيجي لتعهيد وإدارة خدمات رعاية العملاء والاتصالات بالتشغيل المباشر</p></div>
-  <nav aria-label="روابط سريعة"><h2>روابط سريعة</h2><a href="/">الرئيسية</a><a href="/services">حلول التشغيل</a><a href="/how-it-works">رحلة التشغيل</a><a href="/ai-assistant">المساعد الذكي</a><a href="/fikr">فِكر</a><a href="/blog">المدونة</a></nav>
-  <nav aria-label="روابط هامة"><h2>روابط هامة</h2><a href="/about">عن سند</a><a href="/terms">الشروط والأحكام</a><a href="/privacy-policy">سياسة الخصوصية</a></nav>
-  <div><h2>تواصل معنا</h2><a href="mailto:info@sanadcx.com">info@sanadcx.com</a><a href="tel:920022379" dir="ltr">920022379</a><a href="tel:01550999793" dir="ltr">01550999793</a></div>
-</div><div class="ai-shell ai-footer__legal" dir="ltr"><small>© 2026 Sanad CX. All rights reserved.</small><small>Sanad CX is an operational brand powered by Mada CX.</small></div></footer>
-<dialog id="free-trial-modal" class="ai-modal" aria-labelledby="trial-title" aria-describedby="trial-description" tabindex="-1">
-  <button type="button" class="ai-modal__close" data-modal-close aria-label="إغلاق نافذة التجربة">×</button><h2 id="trial-title">ابدأ التجربة المجانية</h2><p id="trial-description">اترك بياناتك وسيتواصل معك فريق Sanad CX لمساعدتك على بدء تجربة المساعد الذكي.</p>
-  <form data-trial-form action="/consultation" method="post">
-    <label for="trial-name">الاسم الكريم<input id="trial-name" name="full_name" autocomplete="name" maxlength="255" required></label>
-    <label for="trial-company">اسم الشركة / البراند<input id="trial-company" name="company_name" autocomplete="organization" maxlength="255" required></label>
-    <label for="trial-phone">رقم الموبايل / الواتساب<input id="trial-phone" type="tel" name="mobile_whatsapp" autocomplete="tel" inputmode="tel" maxlength="255" data-consultation-phone required></label>
-    <label for="trial-interest">الاهتمام الأساسي أو الخدمة المطلوبة<select id="trial-interest" name="service_interest" required><option value="">اختر</option><option>تشغيل فرق المبيعات والاتصالات (BPO)</option><option selected>المساعد الذكي والتحليلات (Sanad AI)</option><option>الاستشارات التسويقية وهندسة النمو (فِكر)</option><option>خدمات أخرى واستفسارات (عام)</option></select></label>
-    <label for="trial-volume">حجم التواصل اليومي<select id="trial-volume" name="daily_contact_volume" required><option value="">اختر</option><option>أقل من 100</option><option>100 - 500</option><option>أكثر من 500</option></select></label>
-    <label for="trial-systems">البرامج أو الأنظمة المستخدمة حالياً “اختياري”<input id="trial-systems" name="current_systems" maxlength="500"></label>
-    <p class="ai-form-status" role="status" aria-live="polite" data-form-status></p><button class="ai-button" type="submit">اطلب التجربة المجانية</button>
-  </form>
+
+
+<footer class="sanad-footer" data-site-footer>
+ <div class="sanad-footer__content">
+  <div class="sanad-footer__brand sanad-footer__column">
+   <a class="sanad-footer__brand-link" href="/">
+    <img class="sanad-footer__logo" src="/brand/logo_dark.png" alt="SANAD CX" width="181" height="60">
+   </a>
+   <p class="sanad-footer__description">شريكك الاستراتيجي لتعهيد وإدارة خدمات رعاية العملاء والاتصالات بالتشغيل المباشر</p>
+   <ul class="sanad-footer__social">
+    
+   </ul>
+  </div>
+  <nav class="sanad-footer__links sanad-footer__column" aria-label="روابط سريعة">
+   <h2 class="sanad-footer__title">روابط سريعة</h2>
+   <ul class="sanad-footer__link-list">
+    <li><a class="sanad-footer__link" href="/">الرئيسية</a></li>
+    <li><a class="sanad-footer__link" href="/services">حلول التشغيل</a></li>
+    <li><a class="sanad-footer__link" href="/how-it-works">رحلة التشغيل</a></li>
+    <li><a class="sanad-footer__link" href="/ai-assistant">المساعد الذكي</a></li>
+    <li><a class="sanad-footer__link" href="/fkr">فِكر</a></li>
+    <li><a class="sanad-footer__link" href="/blog">المدونة</a></li>
+   </ul>
+  </nav>
+  <nav class="sanad-footer__links sanad-footer__links--important sanad-footer__column" aria-label="روابط هامة">
+   <h2 class="sanad-footer__title">روابط هامة</h2>
+   <ul class="sanad-footer__link-list">
+    <li><a class="sanad-footer__link" href="/about">عن سند</a></li>
+    <li><a class="sanad-footer__link" href="/terms">الشروط والأحكام</a></li>
+    <li><a class="sanad-footer__link" href="/privacy-policy">سياسة الخصوصية</a></li>
+   </ul>
+  </nav>
+  <div class="sanad-footer__contact sanad-footer__column">
+   <h2 class="sanad-footer__title">تواصل معنا</h2>
+   <ul class="sanad-footer__contact-list">
+    
+    <li class="sanad-footer__contact-item">
+     <img class="sanad-footer__contact-icon" src="/website/assets/image/svg/emailContactIcon_16x16_homepage-dark.svg" alt="" width="16" height="16">
+     <a class="sanad-footer__contact-link" href="mailto:info@sanadcx.com"><bdi>info@sanadcx.com</bdi></a>
+    </li>
+    
+    
+    <li class="sanad-footer__contact-item">
+     <img class="sanad-footer__contact-icon" src="/website/assets/image/svg/hotlineContactIcon_16x16.svg" alt="" width="16" height="16">
+     <a class="sanad-footer__contact-link" href="tel:920022379"><bdi>920022379</bdi></a>
+    </li>
+    
+    
+    <li class="sanad-footer__contact-item">
+     <img class="sanad-footer__contact-icon" src="/website/assets/image/svg/mobileContactIcon_16x16.svg" alt="" width="16" height="16">
+     <a class="sanad-footer__contact-link" href="tel:01550999793"><bdi>01550999793</bdi></a>
+    </li>
+    
+   </ul>
+  </div>
+ </div>
+ <div class="sanad-footer__legal">
+  <p class="sanad-footer__copyright" lang="en" dir="ltr">© 2026 Sanad CX. All rights reserved.</p>
+  <p class="sanad-footer__powered" lang="en" dir="ltr">Sanad CX is an operational brand powered by Mada CX.</p>
+ </div>
+</footer>
+
+<dialog class="sanad-consultation" id="sanad-consultation" data-consultation-modal tabindex="-1" aria-labelledby="sanad-consultation-title" aria-describedby="sanad-consultation-description">
+ <button type="button" class="sanad-consultation__close" data-consultation-close aria-label="إغلاق نافذة الاستشارة">×</button>
+ <div class="sanad-consultation__scroll">
+  <div class="sanad-consultation__container">
+   <div class="sanad-consultation__layout">
+    <div class="sanad-consultation__header">
+     <h2 class="sanad-consultation__title" id="sanad-consultation-title">جاهز للارتقاء بتجربة عملائك <span class="sanad-consultation__title-accent">وتسريع نموك</span>؟</h2>
+     <p class="sanad-consultation__description" id="sanad-consultation-description">اترك بياناتك و سيتواصل معك أحد خبراء التشغيل في <span lang="en" dir="ltr">Sanad CX</span> <br>لتقديم استشارة مجانية وحزمة مخصصة.</p>
+    </div>
+    <form class="sanad-consultation__form" id="sanad-consultation-form" novalidate>
+     <input type="hidden" name="_token" value="preview-token">
+     <div class="sanad-consultation__group">
+      <div class="sanad-input">
+       <label class="sanad-input__label" for="sanad-consultation-full-name">الاسم الكريم</label>
+       <div class="sanad-input__field">
+        <input class="sanad-input__control" id="sanad-consultation-full-name" type="text" name="full_name" placeholder="الاسم الكريم" autocomplete="name" required>
+       </div>
+       <span class="sanad-input__status" data-field-error="full_name" aria-live="polite"></span>
+      </div>
+      <div class="sanad-input">
+       <label class="sanad-input__label" for="sanad-consultation-company-name">اسم الشركة / البراند</label>
+       <div class="sanad-input__field">
+        <input class="sanad-input__control" id="sanad-consultation-company-name" type="text" name="company_name" placeholder="اسم الشركة / البراند" autocomplete="organization" required>
+       </div>
+       <span class="sanad-input__status" data-field-error="company_name" aria-live="polite"></span>
+      </div>
+      <div class="sanad-input">
+       <label class="sanad-input__label" for="sanad-consultation-mobile">رقم الموبايل / الواتساب</label>
+       <div class="sanad-input__field">
+        <input class="sanad-input__control" id="sanad-consultation-mobile" type="tel" name="mobile_whatsapp" inputmode="tel" placeholder="رقم الموبايل / الواتساب" autocomplete="tel" data-consultation-phone required>
+       </div>
+       <span class="sanad-input__status" data-field-error="mobile_whatsapp" aria-live="polite"></span>
+      </div>
+     </div>
+     <div class="sanad-input sanad-input--select"><label class="sanad-input__label" for="sanad-consultation-interest">الاهتمام الأساسي أو الخدمة المطلوبة</label><div class="sanad-input__field"><select class="sanad-input__control" id="sanad-consultation-interest" name="service_interest"><option value="">اختر</option><option value="تشغيل خدمة العملاء والمبيعات (BPO)">تشغيل خدمة العملاء والمبيعات (BPO)</option>
+<option value="المساعد الذكي والتكنولوجيا (Sanad AI)">المساعد الذكي والتكنولوجيا (Sanad AI)</option>
+<option value="الاستشارات التسويقية وهندسة الهوية (فِكر)">الاستشارات التسويقية وهندسة الهوية (فِكر)</option>
+<option value="منظومة النمو المتكاملة (الكل)">منظومة النمو المتكاملة (الكل)</option></select></div></div>
+     <div class="sanad-input sanad-input--select">
+      <label class="sanad-input__label" for="sanad-consultation-volume">حجم التواصل اليومي</label>
+      <div class="sanad-input__field">
+       <select class="sanad-input__control" id="sanad-consultation-volume" name="daily_contact_volume" required>
+<option value="">اختر</option>
+<option value="أقل من 100">أقل من 100</option>
+<option value="100 - 500">100 - 500</option>
+<option value="أكثر من 500">أكثر من 500</option>
+</select>
+       <svg class="sanad-input__toggle" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4.18 6.13 8 9.21l3.82-3.08" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <span class="sanad-input__status" data-field-error="daily_contact_volume" aria-live="polite"></span>
+     </div>
+     <div class="sanad-input">
+      <label class="sanad-input__label" for="sanad-consultation-systems">&#160;البرامج أو الأنظمة المستخدمة حالياً <span class="sanad-input__optional">"اختياري"</span></label>
+      <div class="sanad-input__field">
+       <input class="sanad-input__control" id="sanad-consultation-systems" type="text" name="current_systems" placeholder="البرامج أو الأنظمة المستخدمة حالياً">
+      </div>
+     </div>
+     <button type="submit" class="sanad-btn sanad-btn--md sanad-btn--primary sanad-consultation__submit" id="sanad-consultation-submit">حجز جلسة استشارية مجانية لنمو عملائك</button>
+    </form>
+   </div>
+  </div>
+ </div>
 </dialog>
-<a class="whatsapp-float" href="https://wa.me/201550999793" target="_blank" rel="noopener noreferrer" aria-label="تواصل معنا عبر واتساب"><svg viewBox="0 0 32 32" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M27 15.5a11.5 11.5 0 0 1-17 10L4 28l2-6A11.5 11.5 0 1 1 27 15.5Z"/><path d="m11 9 3 4-2 2c2 3 3 4 6 5l2-2 3 2c-1 5-9 3-13-4-2-4-1-6 1-7Z"/></svg></a>
+
+
+
+<dialog class="sanad-consultation" id="sanad-free-trial" data-sanad-modal tabindex="-1" aria-labelledby="sanad-free-trial-title">
+ <button type="button" class="sanad-consultation__close" data-modal-close aria-label="إغلاق">×</button>
+ <div class="sanad-consultation__scroll"><div class="sanad-consultation__container"><div class="sanad-consultation__layout">
+  <div data-state="form">
+   <div class="sanad-consultation__header">
+    <h2 class="sanad-consultation__title" id="sanad-free-trial-title">ابدأ التجربة المجانية</h2>
+    <p class="sanad-consultation__description">اترك بياناتك وسيتواصل معك فريق <span lang="en" dir="ltr">Sanad CX</span> لمساعدتك على بدء تجربة المساعد الذكي.</p>
+   </div>
+   <form class="sanad-consultation__form" data-modal-form action="/consultation" novalidate>
+    <div class="sanad-modal-alert" data-form-alert hidden>راجع البيانات المطلوبة. أكمل الحقول المعلّمة أدناه ثم أعد إرسال طلبك.</div>
+    <div class="sanad-input"><label class="sanad-input__label" for="ft-name">الاسم الكريم</label><div class="sanad-input__field"><input class="sanad-input__control" id="ft-name" type="text" name="full_name" placeholder="الاسم الكريم" autocomplete="name" required></div><span class="sanad-input__status" data-field-error="full_name" aria-live="polite"></span></div>
+    <div class="sanad-input"><label class="sanad-input__label" for="ft-co">اسم الشركة / البراند</label><div class="sanad-input__field"><input class="sanad-input__control" id="ft-co" type="text" name="company_name" placeholder="اسم الشركة / البراند" autocomplete="organization" required></div><span class="sanad-input__status" data-field-error="company_name" aria-live="polite"></span></div>
+    <div class="sanad-input"><label class="sanad-input__label" for="ft-mob">رقم الموبايل / الواتساب</label><div class="sanad-input__field"><input class="sanad-input__control" id="ft-mob" type="tel" name="mobile_whatsapp" placeholder="رقم الموبايل / الواتساب" inputmode="tel" autocomplete="tel" required></div><span class="sanad-input__status" data-field-error="mobile_whatsapp" aria-live="polite"></span></div>
+    <div class="sanad-input"><label class="sanad-input__label" for="ft-sys">البرامج أو الأنظمة المستخدمة حالياً (اختياري)</label><div class="sanad-input__field"><input class="sanad-input__control" id="ft-sys" type="text" name="current_systems" placeholder="البرامج أو الأنظمة المستخدمة حالياً (اختياري)" ></div><span class="sanad-input__status" data-field-error="current_systems" aria-live="polite"></span></div>
+    <input type="hidden" name="daily_contact_volume" value="غير محدد">
+    <button type="submit" class="sanad-btn sanad-btn--md sanad-btn--primary sanad-consultation__submit">اطلب التجربة المجانية</button>
+   </form>
+  </div>
+  <div data-state="loading" hidden><h2 class="sanad-consultation__title" tabindex="-1">جارٍ إرسال طلبك</h2><p class="sanad-consultation__description">لحظات ونؤكد استلام بياناتك.</p></div>
+  <div data-state="success" hidden><h2 class="sanad-consultation__title" tabindex="-1">تم استلام طلب التجربة المجانية</h2><p class="sanad-consultation__description">شكرًا لتواصلك. سيتواصل معك فريق سند عبر الرقم الذي أدخلته.</p><button type="button" class="sanad-btn sanad-btn--md sanad-btn--primary" data-modal-close>تم</button></div>
+  <div data-state="error" hidden><h2 class="sanad-consultation__title" tabindex="-1">تعذّر إرسال طلبك</h2><p class="sanad-consultation__description">بياناتك محفوظة في هذه الخطوة. حاول مرة أخرى أو تواصل معنا عبر واتساب.</p><button type="button" class="sanad-btn sanad-btn--md sanad-btn--primary" data-modal-retry>إعادة المحاولة</button> <a class="sanad-btn sanad-btn--md" href="https://wa.me/201550999793" target="_blank" rel="noopener noreferrer">تواصل عبر واتساب</a></div>
+ </div></div></div>
+</dialog>
+
+<dialog class="sanad-consultation" id="sanad-exit-intent" data-sanad-modal tabindex="-1" aria-labelledby="sanad-exit-intent-title">
+ <button type="button" class="sanad-consultation__close" data-modal-close aria-label="إغلاق">×</button>
+ <div class="sanad-consultation__scroll"><div class="sanad-consultation__container"><div class="sanad-consultation__layout">
+  <div data-state="form">
+   <div class="sanad-consultation__header">
+    <h2 class="sanad-consultation__title" id="sanad-exit-intent-title">قبل أن تغادر.. احصل على تحليل مجاني لفرص تحسين خدمة عملائك وتقليل التكاليف التشغيلية.</h2>
+    <p class="sanad-consultation__description">اترك بياناتك و سيتواصل معك أحد خبراء التشغيل في <span lang="en" dir="ltr">Sanad CX</span> لتقديم استشارة مجانية وحزمة مخصصة.</p>
+   </div>
+   <form class="sanad-consultation__form" data-modal-form action="/consultation" novalidate>
+    <div class="sanad-modal-alert" data-form-alert hidden>راجع البيانات المطلوبة. أكمل الحقول المعلّمة أدناه ثم أعد إرسال طلبك.</div>
+    <div class="sanad-input"><label class="sanad-input__label" for="ex-name">الاسم الكريم</label><div class="sanad-input__field"><input class="sanad-input__control" id="ex-name" type="text" name="full_name" placeholder="الاسم الكريم" autocomplete="name" required></div><span class="sanad-input__status" data-field-error="full_name" aria-live="polite"></span></div>
+    <div class="sanad-input"><label class="sanad-input__label" for="ex-mob">رقم الموبايل / الواتساب</label><div class="sanad-input__field"><input class="sanad-input__control" id="ex-mob" type="tel" name="mobile_whatsapp" placeholder="رقم الموبايل / الواتساب" inputmode="tel" autocomplete="tel" required></div><span class="sanad-input__status" data-field-error="mobile_whatsapp" aria-live="polite"></span></div>
+    <input type="hidden" name="company_name" value="غير محدد">
+    <input type="hidden" name="daily_contact_volume" value="غير محدد">
+    <button type="submit" class="sanad-btn sanad-btn--md sanad-btn--primary sanad-consultation__submit">حجز جلسة استشارية مجانية لنمو عملائك</button>
+   </form>
+  </div>
+  <div data-state="loading" hidden><h2 class="sanad-consultation__title" tabindex="-1">جارٍ إرسال طلبك</h2><p class="sanad-consultation__description">لحظات ونؤكد استلام بياناتك.</p></div>
+  <div data-state="success" hidden><h2 class="sanad-consultation__title" tabindex="-1">وصل طلبك بنجاح</h2><p class="sanad-consultation__description">شكرًا لتواصلك. سيتواصل معك فريق سند عبر الرقم الذي أدخلته.</p><button type="button" class="sanad-btn sanad-btn--md sanad-btn--primary" data-modal-close>تم</button></div>
+  <div data-state="error" hidden><h2 class="sanad-consultation__title" tabindex="-1">تعذّر إرسال طلبك</h2><p class="sanad-consultation__description">بياناتك محفوظة في هذه الخطوة. حاول مرة أخرى أو تواصل معنا عبر واتساب.</p><button type="button" class="sanad-btn sanad-btn--md sanad-btn--primary" data-modal-retry>إعادة المحاولة</button> <a class="sanad-btn sanad-btn--md" href="https://wa.me/201550999793" target="_blank" rel="noopener noreferrer">تواصل عبر واتساب</a></div>
+ </div></div></div>
+</dialog>
+
+<link rel="stylesheet" href="/website/assets/css/pages/modals.css">
+<link rel="stylesheet" href="/website/assets/css/layout.css">
+<link rel="stylesheet" href="/website/assets/css/mobile-sections.css">
+    <button type="button" id="whatsapp-float-btn" class="whatsapp-float" aria-label="تواصل عبر واتساب"
+            data-wa-url="https://wa.me/201550999793"
+            data-track-url="/whatsapp-click">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 0C7.164 0 0 7.164 0 16c0 2.825.745 5.482 2.041 7.783L.057 31.72a.667.667 0 00.823.823l7.937-1.984A15.933 15.933 0 0016 32c8.836 0 16-7.164 16-16S24.836 0 16 0zm9.208 22.792c-.384.384-1.579 1.192-2.171 1.192-.592 0-1.133-.267-2.683-1.049-1.133-.571-2.563-1.429-4.272-3.136-1.707-1.709-2.565-3.139-3.136-4.272-.782-1.55-1.049-2.091-1.049-2.683 0-.592.808-1.787 1.192-2.171.272-.272.635-.397.981-.397.171 0 .333.029.469.085.171.072.363.2.573.381.389.336.853.859 1.363 1.531.653.861 1.115 1.779 1.115 2.096 0 .205-.027.353-.091.512-.085.208-.235.397-.477.717-.139.184-.304.397-.488.64-.048.064-.096.131-.141.2.4.848 1.0 1.717 1.781 2.5.784.784 1.653 1.381 2.5 1.781.069-.045.136-.093.2-.141.243-.184.456-.349.64-.488.32-.242.509-.392.717-.477.159-.064.307-.091.512-.091.317 0 1.235.462 2.096 1.115.672.51 1.195.974 1.531 1.363.181.21.309.402.381.573.056.136.085.298.085.469 0 .346-.125.709-.397.981z"/>
+        </svg>
+    </button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Flip.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+<script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL" crossorigin="anonymous"></script>
+<script defer src="/website/assets/js/main.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const section = document.querySelector('.ai-walkthrough');
+    if (!section) return;
+    const controls = [...section.querySelectorAll('[data-copilot-step]')];
+    const video = section.querySelector('.copilot-video');
+    if (!video || !video.dataset.src || !controls.length) return;
+    let videoUrl;
+    fetch(video.dataset.src, { headers: { Range: 'bytes=0-0' } }).then(response => {
+        if (!response.ok) throw new Error('Video download failed');
+        if (response.status === 206) {
+            response.body?.cancel();
+            return null;
+        }
+        return response.blob();
+    }).then(blob => {
+        if (blob) videoUrl = URL.createObjectURL(blob);
+        video.src = videoUrl || video.dataset.src;
+        video.load();
+    }).catch(() => {
+        video.src = video.dataset.src;
+        video.load();
+    });
+    window.addEventListener('pagehide', event => {
+        if (!event.persisted && videoUrl) URL.revokeObjectURL(videoUrl);
+    });
+    const select = index => controls.forEach((control, position) => {
+        control.setAttribute('aria-pressed', String(position === index));
+    });
+    controls.forEach((control, index) => control.addEventListener('click', () => {
+        select(index);
+        if (video.duration > 0 && Number.isFinite(video.duration)) video.currentTime = index * video.duration / controls.length;
+    }));
+    section.addEventListener('sanad:copilot-stage', event => select(event.detail));
+    video.addEventListener('timeupdate', () => {
+        if (video.duration > 0 && Number.isFinite(video.duration)) select(Math.min(controls.length - 1, Math.floor(video.currentTime / video.duration * controls.length + 0.001)));
+    });
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let inView = false;
+    const updatePlayback = () => {
+        if (inView && window.innerWidth < 1024 && !reducedMotion.matches && !document.hidden) video.play().catch(() => {});
+        else video.pause();
+    };
+    video.addEventListener('loadedmetadata', () => {
+        updatePlayback();
+        window.ScrollTrigger?.refresh();
+    });
+    new IntersectionObserver(entries => {
+        inView = entries[0].isIntersecting;
+        updatePlayback();
+    }, { threshold: 0.25 }).observe(video);
+    window.addEventListener('resize', updatePlayback);
+    document.addEventListener('visibilitychange', updatePlayback);
+    reducedMotion.addEventListener('change', updatePlayback);
+});
+</script>
+
+
+<script>
+(function () {
+    'use strict';
+
+    var form = document.getElementById('sanad-consultation-form');
+    var submitBtn = document.getElementById('sanad-consultation-submit');
+    var modal = document.getElementById('sanad-consultation');
+    if (!form || !submitBtn || !modal) return;
+
+    function clearErrors() {
+        form.querySelectorAll('[data-field-error]').forEach(function (el) {
+            el.textContent = '';
+            el.classList.remove('sanad-input__status--error');
+        });
+        form.querySelectorAll('.sanad-input__control').forEach(function (el) {
+            el.classList.remove('sanad-input__control--error');
+        });
+    }
+
+    function showFieldErrors(errors) {
+        Object.keys(errors).forEach(function (field) {
+            var errorEl = form.querySelector('[data-field-error="' + field + '"]');
+            var inputEl = form.querySelector('[name="' + field + '"]');
+            if (errorEl) {
+                errorEl.textContent = errors[field][0];
+                errorEl.classList.add('sanad-input__status--error');
+            }
+            if (inputEl) {
+                inputEl.classList.add('sanad-input__control--error');
+            }
+        });
+    }
+
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        clearErrors();
+
+        var isLoading = submitBtn.dataset.loading === 'true';
+        if (isLoading) return;
+
+        submitBtn.dataset.loading = 'true';
+        submitBtn.disabled = true;
+
+        var formData = new FormData(form);
+
+        fetch('/consultation', {
+            method: 'POST',
+            headers: { 'X-Requested-With': 'XMLHttpRequest' },
+            body: formData,
+        })
+        .then(function (res) { return res.json().then(function (data) { return { status: res.status, data: data }; }); })
+        .then(function (result) {
+            if (result.status === 200 && result.data.code === 200) {
+                modal.close();
+                form.reset();
+                Swal.fire({
+                    icon: 'success',
+                    title: 'تم الإرسال بنجاح',
+                    text: result.data.message,
+                    confirmButtonText: 'حسناً',
+                    confirmButtonColor: 'var(--sanad-color-primary, #6c5ce7)',
+                    timer: 5000,
+                    timerProgressBar: true,
+                });
+            } else if (result.status === 422 && result.data.errors) {
+                showFieldErrors(result.data.errors);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'خطأ في البيانات',
+                    text: result.data.message || 'يرجى مراجعة الحقول المطلوبة.',
+                    confirmButtonText: 'حسناً',
+                    confirmButtonColor: 'var(--sanad-color-primary, #6c5ce7)',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'حدث خطأ',
+                    text: result.data.message || 'يرجى المحاولة مرة أخرى.',
+                    confirmButtonText: 'حسناً',
+                });
+            }
+        })
+        .catch(function () {
+            Swal.fire({ icon: 'error', title: 'حدث خطأ', text: 'تعذر الاتصال بالخادم.', confirmButtonText: 'حسناً' });
+        })
+        .finally(function () {
+            submitBtn.dataset.loading = 'false';
+            submitBtn.disabled = false;
+        });
+    });
+})();
+</script>
+
+
+<script src="/website/assets/js/modals.js" defer></script>
 </body>
 </html>

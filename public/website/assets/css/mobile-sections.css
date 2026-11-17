@@ -51,8 +51,10 @@
         width: 88% !important;
     }
 
+    .sanad-home-services__grid { direction: rtl; }
+    .ai-ops__cards { align-items: flex-start; }
     .ai-shift__cards > .ai-canvas { position: static !important; }
-    .ai-ops__cards > .ai-box { position: static !important; width: 88% !important; }
+    .ai-ops__cards > .ai-box { position: static !important; width: 88% !important; min-height: 0 !important; height: auto !important; }
     .sanad-home-steps__timeline > .sanad-home-steps__connector { display: none; }
     .sanad-vision { flex-direction: row; }
     .sanad-vision > .sanad-vision__card { width: 86%; min-width: 0; }

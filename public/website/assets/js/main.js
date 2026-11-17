@@ -481,7 +481,7 @@
         activate(target);
       };
       history.pushState(null, '', url.hash);
-      if (canAnimate() && window.ScrollToPlugin) tween(window, { scrollTo: { y: target, offsetY: ($('[data-site-header]')?.offsetHeight || 0) + 24, autoKill: true }, duration: 0.7, ease: 'power3.inOut', onComplete: focus });
+      if (canAnimate() && window.ScrollToPlugin) tween(window, { scrollTo: { y: target, offsetY: ($('[data-site-header], [data-fkr-site-header]')?.offsetHeight || 0) + 24, autoKill: true }, duration: 0.55, ease: 'power3.inOut', onComplete: focus });
       else { target.scrollIntoView({ behavior: reduced.matches ? 'instant' : 'smooth' }); focus(); }
     });
   }
@@ -667,44 +667,40 @@
           if (actions[1]) tl.from(actions[1], { y: 12, autoAlpha: 0, duration: 0.498, ease: 'power1.out' }, 1.05);
           if (trust.length) tl.from(trust, { y: 10, autoAlpha: 0, stagger: 0.12, duration: 0.45, ease: 'power1.out' }, 1.248);
           if (globe) {
-            g.to(globe, { rotation: 360, duration: 40, repeat: -1, ease: 'none' });
+            g.to(globe, { rotation: 360, duration: 22, repeat: -1, ease: 'none' });
           }
-          from('.sanad-hero__chip', { y: 24, stagger: 0.12 }, hero);
+          from('.sanad-hero__chip', { y: 24, stagger: 0.08, duration: 0.6 }, hero);
+          $$('.sanad-hero__chip', hero).forEach((chip, idx) => {
+            g.to(chip, { y: idx % 2 ? -8 : 8, duration: 1.8 + (idx * 0.2), repeat: -1, yoyo: true, ease: 'sine.inOut' });
+          });
           if (finePointer.matches) {
-            const movers = $$('.sanad-hero__chip', hero).map(element => ({ x: g.quickTo(element, 'x', { duration: 0.6 }), y: g.quickTo(element, 'y', { duration: 0.6 }), depth: 10 }));
+            const movers = $$('.sanad-hero__chip', hero).map(element => ({ x: g.quickTo(element, 'x', { duration: 0.45 }), y: g.quickTo(element, 'y', { duration: 0.45 }), depth: 14 }));
             on(hero, 'pointermove', event => { const rect = hero.getBoundingClientRect(); movers.forEach(move => { move.x(((event.clientX - rect.left) / rect.width - 0.5) * move.depth); move.y(((event.clientY - rect.top) / rect.height - 0.5) * move.depth); }); });
             on(hero, 'pointerleave', () => movers.forEach(move => { move.x(0); move.y(0); }));
           }
         });
-        spec('home.02.stats', '.sanad-stats', section => { from('.sanad-stats__item:not([data-stats-clone])', { y: 24, stagger: 0.1 }, section); });
+        spec('home.02.stats', '.sanad-stats', section => { from('.sanad-stats__viewport', { y: 18, duration: 0.5 }, section); });
         spec('home.03.integration-services', '.sanad-integration, .sanad-home-services', () => {
           heading('.sanad-integration__title, .sanad-home-services__title');
-          $$('.sanad-integration, .sanad-home-services').forEach(section => from($$('.sanad-integration__benefit, .sanad-home-services__card', section), { y: 64, rotationX: 8, stagger: 0.12 }, section));
+          $$('.sanad-integration, .sanad-home-services').forEach(section => from($$('.sanad-integration__benefit, .sanad-home-services__card', section), { y: 48, rotationX: 8, stagger: 0.09, duration: 0.65 }, section));
           tilt('.sanad-integration__benefit, .sanad-home-services__card, .sanad-card-hoverable');
           draw('.sanad-home-services .service-icon path');
         });
         spec('home.04.fikr', '.sanad-home-fkr', section => {
           scrub('.sanad-home-fkr', { clipPath: 'inset(8% 5% round 32px)', scale: 0.96 }, { clipPath: 'inset(0% 0% round 24px)', scale: 1 }, section, 'top 85%', 'top 25%');
-          heading('.sanad-home-fkr__title', { ease: 'power4.out', duration: 1.15 });
-          from('.sanad-home-fkr__item', { stagger: 0.12 }, section);
+          heading('.sanad-home-fkr__title', { ease: 'power4.out', duration: 0.9 });
+          from('.sanad-home-fkr__item', { stagger: 0.09, duration: 0.6 }, section);
         });
         spec('home.05.comparison', '.sanad-comparison', section => {
-          from('.sanad-comparison__card', { stagger: 0.12 }, section);
-          from('.sanad-comparison__criterion, .sanad-comparison__row', { x: index => index % 2 ? -40 : 40, y: 0, stagger: 0.08 }, section);
+          from('.sanad-comparison__card', { stagger: 0.09, duration: 0.65 }, section);
+          from('.sanad-comparison__criterion, .sanad-comparison__row', { x: index => index % 2 ? -32 : 32, y: 0, stagger: 0.06, duration: 0.55 }, section);
           const featured = $('.sanad-comparison__card--sanad', section);
-          if (featured) g.fromTo(featured, { scale: 0.98 }, { scale: 1.02, boxShadow: '0 0 28px rgba(56,211,155,0.12)', duration: 0.9, scrollTrigger: trigger(featured) });
+          if (featured) g.fromTo(featured, { scale: 0.98 }, { scale: 1.02, boxShadow: '0 0 28px rgba(56,211,155,0.16)', duration: 0.7, scrollTrigger: trigger(featured) });
         });
         spec('home.06.ai', '.sanad-home-ai', section => {
-          const field = $('.sanad-home-ai__orb-art[data-node-id="408:16695"]', section);
-          if (field) {
-            const pulse = g.timeline({ repeat: -1, paused: true });
-            pulse.to(field, { rotation: 12, duration: 6, ease: 'sine.inOut' })
-              .to(field, { rotation: 0, duration: 6, ease: 'sine.inOut' })
-              .to(field, { rotation: -12, duration: 6, ease: 'sine.inOut' })
-              .to(field, { rotation: 0, duration: 6, ease: 'sine.inOut' });
-            ST.create({ trigger: section, start: 'top bottom', end: 'bottom top', onToggle: self => self.isActive && !document.hidden ? pulse.play() : pulse.pause() });
-            on(document, 'visibilitychange', () => document.hidden ? pulse.pause() : ST.isInViewport(section) && pulse.play());
-          }
+          heading('.sanad-home-ai__title', { duration: 0.75 });
+          from('.sanad-home-ai__outcome, .sanad-home-ai__feature', { y: 24, stagger: 0.08, duration: 0.6 }, section);
+          from('.sanad-home-ai__visual', { scale: 0.92, duration: 0.75 }, section);
         });
         spec('home.07.testimonials', '.sanad-testimonials', section => {
           $$('.sanad-testimonials__quote', section).filter(element => element.getClientRects().length).forEach(element => { const split = splitText(element); if (split.lines.length) g.from(split.lines, { yPercent: 100, autoAlpha: 0, stagger: 0.07, duration: 0.75, ease: 'power3.out', scrollTrigger: trigger(section, 'top 75%') }); });
@@ -885,9 +881,7 @@
           from('.editorial-img-wrap, .fkr__hero-copy p, .fkr__lead', { y: 20, stagger: 0.08, duration: 0.8 }, section);
           const logo = $('.fikr-original-logo, .fkr__logo', section);
           if (logo) {
-            g.fromTo(logo, { clipPath: 'inset(100% 0 0 0)' }, { clipPath: 'inset(0% 0 0 0)', duration: 1.3, ease: 'expo.inOut', scrollTrigger: trigger(section, 'top 80%') });
-            const image = $('img', logo);
-            if (image) g.from(image, { scale: 1.25, duration: 1.3, ease: 'expo.inOut', scrollTrigger: trigger(section, 'top 80%') });
+            g.fromTo(logo, { opacity: 0, y: 20, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.65, ease: 'power3.out', scrollTrigger: trigger(section, 'top 85%') });
           }
           from('.fkr__btn, .fikr-button', { scale: 0.9, duration: 0.7, ease: 'back.out(1.8)' }, section);
         });
@@ -919,7 +913,7 @@
           $$('.fikr-photo, .fkr__ind').forEach(photo => {
             from([photo], { y: 24, clipPath: 'inset(100% 0% 0% 0%)', duration: 1.2 });
             const inner = $('.portrait-img, img', photo);
-            if (inner) g.fromTo(inner, { yPercent: -12 }, { yPercent: 12, ease: 'none', scrollTrigger: { trigger: photo, start: 'top bottom', end: 'bottom top', scrub: true } });
+            if (inner) g.fromTo(inner, { yPercent: -10, scale: 1.25 }, { yPercent: 10, scale: 1.25, ease: 'none', scrollTrigger: { trigger: photo, start: 'top bottom', end: 'bottom top', scrub: true } });
           });
         });
         spec('fikr.05.method-consultation', '.fikr-method, .fkr__meth', section => {

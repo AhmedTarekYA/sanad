@@ -1,98 +1,345 @@
-﻿<!doctype html>
-<html lang="ar" dir="rtl" data-theme="light" data-sanad-page="fikr.html">
+<!DOCTYPE html>
+<html data-sanad-page="fkr.html" lang="ar" dir="rtl" data-theme="dark">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="فِكر | الاستشارات التسويقية وهندسة النمو — هندسة الهويات التجارية والتخطيط الإعلاني وصياغة استراتيجيات النمو.">
-  <title>فِكر | الاستشارات التسويقية وهندسة النمو — Sanad CX</title>
-  <script>try{const t=localStorage.getItem('sanad-theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch{}</script>
-  <link rel="icon" href="/website/assets/image/fav.svg" type="image/svg+xml">
-  <link rel="preload" href="/website/assets/fonts/IBMPlexSansArabic-Regular.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/website/assets/css/fikr.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Flip.min.js" defer></script>
-  <script src="/website/assets/js/main.js" defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="csrf-token" content="preview-token">
+    <title>فِكر — الاستشارات التسويقية وهندسة النمو | SANAD CX</title>
+    <meta name="description" content="الذراع الاستشاري والإبداعي المخصص لبناء البراندات الكبرى، هندسة العروض التسويقية، واختراق الأسواق بنمو مستدام.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ar_SA">
+    <meta property="og:site_name" content="Sanad CX">
+    <meta property="og:title" content="فِكر — الاستشارات التسويقية وهندسة النمو">
+    <meta property="og:description" content="الذراع الاستشاري والإبداعي المخصص لبناء البراندات الكبرى، هندسة العروض التسويقية، واختراق الأسواق بنمو مستدام.">
+    <meta name="twitter:card" content="summary">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Sanad CX","email":"info@sanadcx.com","telephone":["920022379","+966506591444"]}</script>
+    <script>
+      /* Resolve an explicit Light choice before paint; otherwise keep Dark. */
+      (function () {
+        try {
+          if (window.localStorage.getItem('sanad-theme') === 'light') {
+            delete document.documentElement.dataset.theme;
+          }
+        } catch (error) {
+          /* Storage unavailable: keep the default Dark appearance. */
+        }
+      })();
+    </script>
+    <link rel="icon" type="image/svg+xml" href="/website/assets/image/fav.svg">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
+    <link rel="stylesheet" href="/website/assets/css/styles.css">
+    <style>
+        .sanad-header--scrolled { background: rgba(234, 240, 249, 0.92); background: color-mix(in srgb, var(--sanad-surface-page, #eaf0f9) 92%, transparent); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); box-shadow: 0 4px 24px #00000012; }
+        [data-theme="dark"] .sanad-header--scrolled { background: rgba(13, 27, 42, 0.92); background: color-mix(in srgb, var(--sanad-surface-page, #0d1b2a) 92%, transparent); box-shadow: 0 4px 24px #00000038; }
+        .sanad-line-mask { display: block; overflow: hidden; }
+        .sanad-word { display: inline-block; }
+        .sanad-reading-progress { position: fixed; top: 0; inset-inline: 0; height: 3px; background: #38d39b; z-index: 10000; pointer-events: none; }
+        .sanad-privacy-hero__toc-link.is-active, .sanad-privacy-contents__link.is-active, .sanad-terms-contents__link.is-active, .sanad-legal__toc-link.is-active { color: var(--sanad-color-primary, #1e40af); text-decoration: underline; text-underline-offset: 6px; }
+        .differ-card, .sanad-differ__card { background-image: radial-gradient(400px circle at var(--mouse-x, -500px) var(--mouse-y, -500px), #337efc12, transparent 70%); }
+        @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto !important; } }
+    </style>
+    
+<link rel="stylesheet" href="/website/assets/css/pages/fkr.css">
 
-    <link rel="stylesheet" href="/website/assets/css/pages/modals.css">
-    <link rel="stylesheet" href="/website/assets/css/layout.css">
+    
 </head>
+
 <body>
-  <a class="skip-link" href="#main">انتقل إلى المحتوى</a>
-  <header class="fikr-nav" data-site-header>
-    <a class="fikr-nav__brand" href="#hero" aria-label="فِكر"><span class="fikr-mark">ف</span></a>
-    <nav aria-label="تنقل فِكر"><a href="#about">من نحن</a><a href="#services">خدماتنا</a><a href="#industries">القطاعات</a><a href="#method">منهجيتنا</a></nav>
-    <div class="fikr-nav__actions">
-      <a class="fikr-nav__back" href="/">
-        <span>العودة إلى Sanad CX</span>
-        <span class="fikr-nav__arrow" aria-hidden="true">←</span>
-      </a>
-      <button type="button" class="sanad-theme-toggle" data-theme-toggle aria-pressed="false" aria-label="تبديل المظهر بين الفاتح والداكن">
-        <svg class="sanad-theme-toggle__icon" viewBox="0 0 48 48" width="48" height="48" aria-hidden="true">
-          <defs>
-            <mask id="sanad-theme-cutout-fikr">
-              <rect width="48" height="48" fill="white"/>
-              <circle class="sanad-theme-toggle__cutout" cx="32" cy="16" r="15" fill="black"/>
-            </mask>
-          </defs>
-          <g mask="url(#sanad-theme-cutout-fikr)" fill="currentColor">
-            <path class="sanad-theme-toggle__rays" d="M40.9751 16.9657V7.02485H31.0343L24.0095 0L16.9657 7.02485H7.02485V16.9657L0 24.0095L7.02485 31.0343V40.9751H16.9657L23.9905 48L31.0154 40.9751H40.9562V31.0343L47.9811 24.0095L40.9751 16.9657ZM24.0095 37.5479C16.5302 37.5479 10.4521 31.4888 10.4521 23.9905C10.4521 16.4923 16.5112 10.4331 24.0095 10.4331C31.4888 10.4331 37.5669 16.4923 37.5669 23.9905C37.5669 31.4888 31.4888 37.5479 24.0095 37.5479Z"/>
-            <path class="sanad-theme-toggle__disc" d="M25.7539 34.7552C31.6894 33.7925 35.7206 28.2004 34.7579 22.2649C33.7952 16.3295 28.2031 12.2983 22.2676 13.261C16.3322 14.2237 12.3009 19.8158 13.2637 25.7513C14.2264 31.6867 19.8185 35.7179 25.7539 34.7552Z"/>
-          </g>
-        </svg>
-      </button>
+
+<a class="sanad-skip-link" href="#main">الانتقال إلى المحتوى الرئيسي</a>
+<header class="fkr-site-header" data-fkr-site-header>
+    <div class="fkr-site-header__inner">
+        <a class="fkr-site-header__back" href="/" dir="rtl" aria-label="العودة إلى SANAD CX">
+            <span aria-hidden="true">←</span>
+            <span>العودة إلى Sanad CX</span>
+        </a>
+
+        <button type="button" class="fkr-site-header__theme" data-theme-toggle aria-pressed="true" aria-label="تبديل المظهر بين الفاتح والداكن">
+            <svg viewBox="0 0 48 48" width="48" height="48" aria-hidden="true">
+                <defs>
+                    <mask id="fkr-theme-cutout">
+                        <rect width="48" height="48" fill="white" />
+                        <circle class="fkr-site-header__theme-cutout" cx="32" cy="16" r="15" fill="black" />
+                    </mask>
+                </defs>
+                <g mask="url(#fkr-theme-cutout)" fill="currentColor">
+                    <path class="fkr-site-header__theme-rays" d="M40.9751 16.9657V7.02485H31.0343L24.0095 0L16.9657 7.02485H7.02485V16.9657L0 24.0095L7.02485 31.0343V40.9751H16.9657L23.9905 48L31.0154 40.9751H40.9562V31.0343L47.9811 24.0095L40.9751 16.9657ZM24.0095 37.5479C16.5302 37.5479 10.4521 31.4888 10.4521 23.9905C10.4521 16.4923 16.5112 10.4331 24.0095 10.4331C31.4888 10.4331 37.5669 16.4923 37.5669 23.9905C37.5669 31.4888 31.4888 37.5479 24.0095 37.5479Z" />
+                    <path class="fkr-site-header__theme-disc" d="M25.7539 34.7552C31.6894 33.7925 35.7206 28.2004 34.7579 22.2649C33.7952 16.3295 28.2031 12.2983 22.2676 13.261C16.3322 14.2237 12.3009 19.8158 13.2637 25.7513C14.2264 31.6867 19.8185 35.7179 25.7539 34.7552Z" />
+                </g>
+            </svg>
+        </button>
+
+        <nav class="fkr-site-header__nav fkr-site-header__nav--desktop" aria-label="التنقل الرئيسي">
+            <a href="#fkr-about">من نحن</a>
+            <a href="#fkr-services">خدماتنا</a>
+            <a href="#fkr-sectors">القطاعات</a>
+            <a href="#fkr-method">منهجيتنا</a>
+        </nav>
+
+        <details class="fkr-site-header__menu" data-fkr-mobile-menu>
+            <summary class="fkr-site-header__menu-toggle" aria-label="القائمة" aria-controls="fkr-mobile-navigation" title="القائمة">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" /></svg>
+            </summary>
+            <nav class="fkr-site-header__nav fkr-site-header__nav--mobile" id="fkr-mobile-navigation" aria-label="التنقل الرئيسي">
+                <a href="#fkr-about">من نحن</a>
+                <a href="#fkr-services">خدماتنا</a>
+                <a href="#fkr-sectors">القطاعات</a>
+                <a href="#fkr-method">منهجيتنا</a>
+            </nav>
+        </details>
+
+        <a class="fkr-site-header__brand" href="#main" aria-label="فِكر" aria-current="page">
+            <span><img src="/website/assets/image/fkr/brand-logo.png" alt="" width="72" height="56"></span>
+        </a>
     </div>
-  </header>
-  <main id="main">
-    <section id="hero" class="fikr-hero" aria-labelledby="hero-title"><div class="fikr-hero__inner">
-      <div class="fikr-hero__copy">
-        <p class="fikr-kicker">فِكر | الاستشارات التسويقية وهندسة النمو</p>
-        <h1 id="hero-title" class="fikr-hero__title">فِكر | هندسة الهويات التجارية، التخطيط الإعلاني، وصياغة استراتيجيات النمو</h1>
-        <p class="fikr-hero__desc">الذراع الاستشاري والإبداعي المخصص لبناء البراندات الكبرى، هندسة العروض التسويقية، واختراق الأسواق بنمو مستدام.</p>
-        <a class="fikr-button" href="/#contact">احجز جلسة استشارية مع مستشاري فِكر</a>
-        <small class="fikr-hero__tags">فِكر   /   الهوية   /   الحملات   /   النمو</small>
+</header>
+<script>
+    (() => {
+        const menu = document.querySelector('[data-fkr-mobile-menu]');
+        if (!menu) {
+            return;
+        }
+
+        const toggle = menu.querySelector('summary');
+        menu.querySelectorAll('.fkr-site-header__nav--mobile a[href^="#"]').forEach((link) => {
+            link.addEventListener('click', () => {
+                menu.open = false;
+            });
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && menu.open) {
+                menu.open = false;
+                toggle.focus();
+            }
+        });
+    })();
+</script>
+
+<main id="main">
+
+
+<div class="fkr">
+<section class="fkr__hero fikr-hero" aria-labelledby="fkr-title"><div class="fkr__wrap">
+<div class="fkr__hero-copy"><p class="fkr__badge fikr-kicker">فِكر | الاستشارات التسويقية وهندسة النمو</p><h1 id="fkr-title" class="fikr-hero__title">فِكر | هندسة الهويات التجارية، التخطيط الإعلاني، وصياغة استراتيجيات النمو</h1><p class="fkr__lead fikr-hero__desc">الذراع الاستشاري والإبداعي المخصص لبناء البراندات الكبرى، هندسة العروض التسويقية، واختراق الأسواق بنمو مستدام.</p><button type="button" class="fkr__btn fikr-button" data-consultation-open>احجز جلسة استشارية مع مستشاري فِكر</button><p class="fkr__crumb fikr-hero__tags">فِكر &nbsp; / &nbsp; الهوية &nbsp; / &nbsp; الحملات &nbsp; / &nbsp; النمو</p></div>
+<div class="fkr__logo fikr-original-logo"><img src="/website/assets/image/fkr/brand-logo.png" alt="فِكر" width="528" height="528"></div>
+</div></section>
+<div class="fkr__strip fikr-expertise" aria-hidden="true"><div class="fkr__track fikr-marquee-track"><span>هندسة الهوية</span><span>استراتيجيات النمو</span><span>التخطيط الإعلاني</span><span>تكامل المبيعات والتسويق</span><span>هندسة الهوية</span><span>استراتيجيات النمو</span><span>التخطيط الإعلاني</span><span>تكامل المبيعات والتسويق</span><span>هندسة الهوية</span><span>استراتيجيات النمو</span><span>التخطيط الإعلاني</span><span>تكامل المبيعات والتسويق</span><span>هندسة الهوية</span><span>استراتيجيات النمو</span><span>التخطيط الإعلاني</span><span>تكامل المبيعات والتسويق</span><span>هندسة الهوية</span><span>استراتيجيات النمو</span><span>التخطيط الإعلاني</span><span>تكامل المبيعات والتسويق</span><span>هندسة الهوية</span><span>استراتيجيات النمو</span><span>التخطيط الإعلاني</span><span>تكامل المبيعات والتسويق</span></div></div>
+<section id="fkr-about" class="fkr__phil fikr-philosophy" aria-labelledby="fkr-phil"><div class="fkr__wrap">
+<div class="fkr__phil-copy fikr-philosophy__text"><h2 class="fkr__h2" id="fkr-phil">فلسفة وعقلية فِكر</h2>
+
+<p>في فِكر، نرى أن المشكلة الأكبر في التسويق الحديث ليست في "<b>نقص الإعلانات</b>"، بل في "<b>غياب العقلية الاستراتيجية</b>".</p><p>التسويق الحقيقي ليس مجرد تصميم جميل أو ميزانية تُحرق على المنصات؛ التسويق هو هندسة متكاملة تبدأ من دراسة عمق العميل وسلوكه، صياغة عرض لا يُقاوم، وبناء قنوات مبيعات ترفع من القيمة الممتدة للعميل وتقلل تكلفة الاستحواذ.</p>
+
+</div>
+<div class="fkr__phil-art fikr-illustration"><img class="fkr__l" src="/website/assets/image/fkr/philosophy.svg" alt="" aria-hidden="true"><img class="fkr__d" src="/website/assets/image/fkr/philosophy-dark.svg" alt="" aria-hidden="true"></div>
+</div></section>
+<section id="fkr-services" class="fkr__svcs fikr-services-section" aria-labelledby="fkr-svc"><div class="fkr__wrap"><span class="fkr__count">01 — 03</span><div class="fkr__head"><h2 id="fkr-svc">الخدمات الاستراتيجية لـ فِكر</h2><p>هندسة الهوية، التخطيط الإعلاني، والاستشارات التسويقية</p></div><div class="fkr__list"><article class="fkr__svc fkr-discipline"><div class="fkr__svc-art fikr-service-art"><img class="fkr__l" src="/website/assets/image/fkr/service-1.svg" alt="" aria-hidden="true"><img class="fkr__d" src="/website/assets/image/fkr/service-1-dark.svg" alt="" aria-hidden="true"></div><span class="fkr__num">01</span><span class="fkr__rule divider"></span><div class="fkr__svc-copy"><h3>هندسة وبناء الهويات التجارية (Brand Identity &amp; Positioning)</h3><div>
+
+<p>صياغة التموضع التنافسي (Brand Positioning): اكتشاف النقطة الفريدة التي تجعل براندك الخيار الأول والوحيد لدى عميلك المستهدف.</p><p>الهوية البصرية واللفظية: تصميم شعارات، أدلة هوية كاملة، ولغة خطاب تجارية تعكس الفخامة والموثوقية.</p><p>صياغة الملفات المؤسسية (Corporate Profiles): إعداد بروفايلات كبرى للمؤسسات والشركات بجودة تليق بالتعاقدات الضخمة.</p>
+
+</div></div></article><article class="fkr__svc fkr-discipline"><div class="fkr__svc-art fikr-service-art"><img class="fkr__l" src="/website/assets/image/fkr/service-2.svg" alt="" aria-hidden="true"><img class="fkr__d" src="/website/assets/image/fkr/service-2-dark.svg" alt="" aria-hidden="true"></div><span class="fkr__num">02</span><span class="fkr__rule divider"></span><div class="fkr__svc-copy"><h3>التخطيط الإعلاني واستراتيجيات النمو (Performance Marketing &amp; Growth)</h3><div>
+
+<p>تخطيط حملات الـ Lead Generation: إعداد حملات إعلانية عالية الدقة على مختلف المنصات تضمن الوصول للعميل الجاد فقط.</p><p>هندسة العروض و صفحات الهبوط (CRO &amp; Funnel Design): صياغة نماذج الأسئلة التأهيلية ونصوص صفحات الهبوط التي ترفع معدلات التحويل.</p><p>إدارة الميزانيات وتصحيح المسار: التحليل اللحظي لأداء الإعلانات وخفض تكلفة اكتساب العميل الجاد.</p>
+
+</div></div></article><article class="fkr__svc fkr-discipline"><div class="fkr__svc-art fikr-service-art"><img class="fkr__l" src="/website/assets/image/fkr/service-3.svg" alt="" aria-hidden="true"><img class="fkr__d" src="/website/assets/image/fkr/service-3-dark.svg" alt="" aria-hidden="true"></div><span class="fkr__num">03</span><span class="fkr__rule divider"></span><div class="fkr__svc-copy"><h3>الاستشارات التسويقية وهيكلة النمو B2B</h3><div>
+
+<p>تحليل وضبط قنوات التسويق: فحص الشرايين التسويقية لشركتك واكتشاف نقاط تسرب المبيعات.</p><p>إسناد وتكامل المبيعات والتسويق: توجيه الداتا الناتجة من الحملات مباشرة لفرق المبيعات والمساعد الذكي لضمان سرعة الإغلاق.</p>
+
+</div></div></article></div></div></section>
+<section id="fkr-sectors" class="fkr__inds fikr-industries" aria-labelledby="fkr-sec"><div class="fkr__wrap"><h2 class="fkr__h2" id="fkr-sec">القطاعات والصناعات الاستراتيجية</h2><p>نمتلك خبرة عميقة ودراية كاملة بمتطلبات وسلوك المستهلك في القطاعات التالية:</p><div class="fkr__grid"><article class="fkr__ind fikr-photo"><div class="fkr__ind-image"><img src="/website/assets/image/fkr/industry-1.jpg" alt="" loading="lazy"></div><div class="fkr__ind-copy"><h3>الرعاية الصحية والخدمات الطبية المنزلية</h3><p>صياغة عروض ثقة وأمان تحول المخاوف إلى قرارات حجز فورية.</p></div></article><article class="fkr__ind fikr-photo"><div class="fkr__ind-image"><img src="/website/assets/image/fkr/industry-2.jpg" alt="" loading="lazy"></div><div class="fkr__ind-copy"><h3>القطاعات التجارية و الصناعية</h3><p>فهم دقيق لغة B2B والعقود الكبرى ودورات المبيعات الطويلة.</p></div></article><article class="fkr__ind fikr-photo"><div class="fkr__ind-image"><img src="/website/assets/image/fkr/industry-3.jpg" alt="" loading="lazy"></div><div class="fkr__ind-copy"><h3>التجارة الإلكترونية والمنتجات الفاخرة</h3><p>إبراز القيمة والجماليات لرفع متوسط قيمة السلة.</p></div></article><article class="fkr__ind fikr-photo"><div class="fkr__ind-image"><img src="/website/assets/image/fkr/industry-4.jpg" alt="" loading="lazy"></div><div class="fkr__ind-copy"><h3>شركات الخدمات والحلول التقنية</h3><p class="fkr__en">(SaaS &amp; B2B Services)</p><p>تبسيط المنتجات المعقدة وتحويلها إلى منافع مباشرة لمتخذي القرار.</p></div></article></div></div></section>
+<section id="fkr-method" class="fkr__meth fikr-method" aria-labelledby="fkr-met"><div class="fkr__wrap"><h2 class="fkr__h2" id="fkr-met">منهجية العمل في فِكر</h2><div class="fkr__steps"><article class="fkr__step method-step"><span class="fkr__step-n">01</span><div class="fkr__step-copy"><h3>التشخيص والتحليل</h3><p class="fkr__en">(Audit &amp; Diagnosis)</p><p>نغوص في أرقامك الحالية، ندرس منافسيك، ونحدد الثغرات التسويقية.</p></div></article><article class="fkr__step method-step"><span class="fkr__step-n">02</span><div class="fkr__step-copy"><h3>الهندسة والاستراتيجية</h3><p class="fkr__en">(Strategy &amp; Blueprint)</p><p>نضع الخطة التنفيذية، نسقّل العروض التسويقية، ونرسم رحلة العميل بالكامل.</p></div></article><article class="fkr__step method-step"><span class="fkr__step-n">03</span><div class="fkr__step-copy"><h3>الإطلاق والتخطيط الإعلاني</h3><p class="fkr__en">(Execution &amp; Campaigns)</p><p>نُطلق الهويات والحملات الإعلانية الموجهة بأعلى معايير الإخراج.</p></div></article><article class="fkr__step method-step"><span class="fkr__step-n">04</span><div class="fkr__step-copy"><h3>الربط والتحسين المستمر</h3><p class="fkr__en">(Optimization &amp; Ops Alignment)</p><p>نربط النتائج بمنظومة المبيعات في سند CX لنضمن أقصى عائد على استثمارك الإعلاني.</p></div></article></div></div></section>
+<section class="fkr__cta fikr-cta" aria-labelledby="fkr-cta"><div class="fkr__wrap"><div class="fkr__cta-copy">
+
+<h2 id="fkr-cta">جاهز للانتقال ببراندك من مجرد "منافس" إلى "قائد في سوقك"؟</h2><p>لا تترك نمو شركتك للصدفة. تواصل مع مستشاري فِكر اليوم لنضع استراتيجية النمو المخصصة لنشاطك التجاري.</p>
+
+<button type="button" class="fkr__btn fikr-button" data-consultation-open>احجز جلسة استشارية استراتيجية مع فِكر</button></div><div class="fkr__orbit fikr-cta__orbit"><svg aria-hidden="true" focusable="false" width="576" height="528" viewBox="0 0 576 528" fill="none" xmlns="http://www.w3.org/2000/svg"><circle class="fkr__orbit-ring fkr__orbit-ring--1" cx="230" cy="260" r="220" stroke-width="1.5" stroke="#6B4C75" stroke-dasharray="8 8"/><circle class="fkr__orbit-ring fkr__orbit-ring--2" cx="230" cy="260" r="166" stroke-width="1.5" stroke="#6B4C75"/><circle class="fkr__orbit-ring fkr__orbit-ring--3" cx="230" cy="260" r="112" stroke-width="1.5" stroke="#6B4C75" stroke-dasharray="5 7"/><path class="fkr__orbit-cross" d="M10 260H450M230 40V480" stroke-width="1.5" stroke="#6B4C75"/><path class="fkr__orbit-arc" d="M84 408.001C86 160.001 370 128.001 416 280.001" stroke-width="48" stroke="#6B4C75"/><circle class="fkr__orbit-ball" cx="420" cy="276" r="28" fill="#C4C60B"/></svg></div></div></section>
+</div>
+
+</main>
+    <footer class="fkr-footer">
+        <nav aria-label="روابط فِكر">
+            <a href="#fkr-about">من نحن</a>
+            <a href="#fkr-services">خدماتنا</a>
+            <a href="#fkr-sectors">القطاعات</a>
+            <a href="#fkr-method">منهجيتنا</a>
+        </nav>
+        <p>© 2026 Fikr — Sanad CX</p>
+    </footer>
+<dialog class="sanad-consultation" id="sanad-consultation" data-consultation-modal tabindex="-1" aria-labelledby="sanad-consultation-title" aria-describedby="sanad-consultation-description">
+ <button type="button" class="sanad-consultation__close" data-consultation-close aria-label="إغلاق نافذة الاستشارة">×</button>
+ <div class="sanad-consultation__scroll">
+  <div class="sanad-consultation__container">
+   <div class="sanad-consultation__layout">
+    <div class="sanad-consultation__header">
+     <h2 class="sanad-consultation__title" id="sanad-consultation-title">جاهز للارتقاء بتجربة عملائك <span class="sanad-consultation__title-accent">وتسريع نموك</span>؟</h2>
+     <p class="sanad-consultation__description" id="sanad-consultation-description">اترك بياناتك و سيتواصل معك أحد خبراء التشغيل في <span lang="en" dir="ltr">Sanad CX</span> <br>لتقديم استشارة مجانية وحزمة مخصصة.</p>
+    </div>
+    <form class="sanad-consultation__form" id="sanad-consultation-form" novalidate>
+     <input type="hidden" name="_token" value="preview-token">
+     <div class="sanad-consultation__group">
+      <div class="sanad-input">
+       <label class="sanad-input__label" for="sanad-consultation-full-name">الاسم الكريم</label>
+       <div class="sanad-input__field">
+        <input class="sanad-input__control" id="sanad-consultation-full-name" type="text" name="full_name" placeholder="الاسم الكريم" autocomplete="name" required>
+       </div>
+       <span class="sanad-input__status" data-field-error="full_name" aria-live="polite"></span>
       </div>
-      <div class="fikr-hero__visual editorial-img-wrap" aria-hidden="true"><div class="fikr-orbit fikr-orbit--large"></div><div class="fikr-orbit fikr-orbit--small"></div><span class="fikr-mark fikr-mark--hero">ف</span><div class="fikr-original-logo"></div></div>
-    </div></section>
-    <div class="fikr-expertise" aria-label="هندسة الهوية، استراتيجيات النمو، التخطيط الإعلاني، تكامل المبيعات والتسويق"><div class="fikr-marquee-track" aria-hidden="true"><span>هندسة الهوية　 •　 استراتيجيات النمو　 •　 التخطيط الإعلاني　 •　 تكامل المبيعات والتسويق　 •　 </span><span>هندسة الهوية　 •　 استراتيجيات النمو　 •　 التخطيط الإعلاني　 •　 تكامل المبيعات والتسويق　 •　 </span><span>هندسة الهوية　 •　 استراتيجيات النمو　 •　 التخطيط الإعلاني　 •　 تكامل المبيعات والتسويق　 •　 </span><span>هندسة الهوية　 •　 استراتيجيات النمو　 •　 التخطيط الإعلاني　 •　 تكامل المبيعات والتسويق　 •　 </span></div></div>
-    <section id="about" class="fikr-section fikr-shell fikr-philosophy" aria-labelledby="about-title">
-      <div><h2 id="about-title">فلسفة وعقلية فِكر</h2><div class="fikr-philosophy__text"><p>في فِكر، نرى أن المشكلة الأكبر في التسويق الحديث ليست في "نقص الإعلانات"، بل في "غياب العقلية الاستراتيجية".</p><p>التسويق الحقيقي ليس مجرد تصميم جميل أو ميزانية تُحرق على المنصات؛ التسويق هو هندسة متكاملة تبدأ من دراسة عمق العميل وسلوكه، صياغة عرض لا يُقاوم، وبناء قنوات مبيعات ترفع من القيمة الممتدة للعميل وتقلل تكلفة الاستحواذ.</p></div></div><div class="fikr-illustration" aria-hidden="true"></div>
-    </section>
-    <section id="services" class="fikr-section fikr-shell fikr-services-section" aria-labelledby="services-title">
-      <div class="fikr-section__heading"><span>01 — 03</span><h2 id="services-title">الخدمات الاستراتيجية لـ فِكر</h2><p>هندسة الهوية، التخطيط الإعلاني، والاستشارات التسويقية</p></div>
-      <div class="fikr-services">
-        <article class="fkr-discipline"><div class="fikr-service-art fikr-service-art--one" aria-hidden="true"></div><b>01</b><span class="divider"></span><h3>هندسة وبناء الهويات التجارية (Brand Identity &amp; Positioning)</h3><small lang="en" dir="ltr">Brand Identity &amp; Brand Strategy</small><ul><li>صياغة التموضع التنافسي (Brand Positioning): اكتشاف النقطة الفريدة التي تجعل براندك الخيار الأول والوحيد لدى عميلك المستهدف.</li><li>الهوية البصرية واللفظية: تصميم شعارات، أدلة هوية كاملة، ولغة خطاب تجارية تعكس الفخامة والموثوقية.</li><li>صياغة الملفات المؤسسية (Corporate Profiles): إعداد بروفايلات كبرى للمؤسسات والشركات بجودة تليق بالتعاقدات الضخمة.</li></ul></article>
-        <article class="fkr-discipline fikr-card--featured"><div class="fikr-service-art fikr-service-art--two" aria-hidden="true"></div><b>02</b><span class="divider"></span><h3>التخطيط الإعلاني واستراتيجيات النمو (Performance Marketing &amp; Growth)</h3><small lang="en" dir="ltr">Performance Marketing &amp; Growth</small><ul><li>تخطيط حملات الـ Lead Generation: إعداد حملات إعلانية عالية الدقة على مختلف المنصات تضمن الوصول للعميل الجاد فقط.</li><li>هندسة العروض و صفحات الهبوط (CRO &amp; Funnel Design): صياغة نماذج الأسئلة التأهيلية ونصوص صفحات الهبوط التي ترفع معدلات التحويل.</li><li>إدارة الميزانيات وتصحيح المسار: التحليل اللحظي لأداء الإعلانات وخفض تكلفة اكتساب العميل الجاد.</li></ul></article>
-        <article class="fkr-discipline"><div class="fikr-service-art fikr-service-art--three" aria-hidden="true"></div><b>03</b><span class="divider"></span><h3>الاستشارات التسويقية وهيكلة النمو B2B</h3><small lang="en" dir="ltr">Marketing Advisory &amp; B2B Growth</small><ul><li>تحليل وضبط قنوات التسويق: فحص الشرايين التسويقية لشركتك واكتشاف نقاط تسرب المبيعات.</li><li>إسناد وتكامل المبيعات والتسويق: توجيه الداتا الناتجة من الحملات مباشرة لفرق المبيعات والمساعد الذكي لضمان سرعة الإغلاق.</li></ul></article>
+      <div class="sanad-input">
+       <label class="sanad-input__label" for="sanad-consultation-company-name">اسم الشركة / البراند</label>
+       <div class="sanad-input__field">
+        <input class="sanad-input__control" id="sanad-consultation-company-name" type="text" name="company_name" placeholder="اسم الشركة / البراند" autocomplete="organization" required>
+       </div>
+       <span class="sanad-input__status" data-field-error="company_name" aria-live="polite"></span>
       </div>
-    </section>
-    <section id="industries" class="fikr-section fikr-industries" aria-labelledby="industries-title"><div class="fikr-shell">
-      <h2 id="industries-title">القطاعات والصناعات الاستراتيجية</h2><p>نمتلك خبرة عميقة ودراية كاملة بمتطلبات وسلوك المستهلك في القطاعات التالية:</p>
-      <div class="fikr-industry-grid">
-        <article><div class="fikr-photo"><div class="portrait-img fikr-photo--health" role="img" aria-label="الرعاية الصحية المنزلية"></div></div><div class="fikr-industry-copy"><h3>الرعاية الصحية والخدمات الطبية المنزلية</h3><p>صياغة عروض ثقة وأمان تحول المخاوف إلى قرارات حجز فورية.</p></div></article>
-        <article><div class="fikr-photo"><div class="portrait-img fikr-photo--industry" role="img" aria-label="القطاعات التجارية والصناعية"></div></div><div class="fikr-industry-copy"><h3>القطاعات التجارية و الصناعية</h3><p>فهم دقيق لغة B2B والعقود الكبرى ودورات المبيعات الطويلة.</p></div></article>
-        <article><div class="fikr-photo"><div class="portrait-img fikr-photo--luxury" role="img" aria-label="المنتجات الفاخرة"></div></div><div class="fikr-industry-copy"><h3>التجارة الإلكترونية والمنتجات الفاخرة</h3><p>إبراز القيمة والجماليات لرفع متوسط قيمة السلة.</p></div></article>
-        <article><div class="fikr-photo"><div class="portrait-img fikr-photo--saas" role="img" aria-label="شركات الخدمات والحلول التقنية"></div></div><div class="fikr-industry-copy"><h3>شركات الخدمات والحلول التقنية</h3><small lang="en" dir="ltr">(SaaS &amp; B2B Services)</small><p>تبسيط المنتجات المعقدة وتحويلها إلى منافع مباشرة لمتخذي القرار.</p></div></article>
+      <div class="sanad-input">
+       <label class="sanad-input__label" for="sanad-consultation-mobile">رقم الموبايل / الواتساب</label>
+       <div class="sanad-input__field">
+        <input class="sanad-input__control" id="sanad-consultation-mobile" type="tel" name="mobile_whatsapp" inputmode="tel" placeholder="رقم الموبايل / الواتساب" autocomplete="tel" data-consultation-phone required>
+       </div>
+       <span class="sanad-input__status" data-field-error="mobile_whatsapp" aria-live="polite"></span>
       </div>
-    </div></section>
-    <section id="method" class="fikr-section fikr-shell fikr-method" aria-labelledby="method-title"><h2 id="method-title">منهجية العمل في فِكر</h2>
-      <svg class="growth-loop" viewBox="0 0 1248 600" fill="none" aria-hidden="true"><path class="growth-loop__path" d="M1135 100C1000 100 1050 210 820 210S650 320 510 320 360 430 200 430C-70 430 10 585 625 585S1330 585 1135 100" stroke="currentColor" stroke-width="1.5" pathLength="1"/></svg>
-      <div class="fikr-stages">
-        <article class="method-step"><b>01</b><h3>التشخيص والتحليل</h3><small lang="en" dir="ltr">(Audit &amp; Diagnosis)</small><p>نغوص في أرقامك الحالية، ندرس منافسيك، ونحدد الثغرات التسويقية.</p></article>
-        <article class="method-step"><b>02</b><h3>الهندسة والاستراتيجية</h3><small lang="en" dir="ltr">(Strategy &amp; Blueprint)</small><p>نضع الخطة التنفيذية، نسقّل العروض التسويقية، ونرسم رحلة العميل بالكامل.</p></article>
-        <article class="method-step"><b>03</b><h3>الإطلاق والتخطيط الإعلاني</h3><small lang="en" dir="ltr">(Execution &amp; Campaigns)</small><p>نُطلق الهويات والحملات الإعلانية الموجهة بأعلى معايير الإخراج.</p></article>
-        <article class="method-step"><b>04</b><h3>الربط والتحسين المستمر</h3><small lang="en" dir="ltr">(Optimization &amp; Ops Alignment)</small><p>نربط النتائج بمنظومة المبيعات في سند CX لنضمن أقصى عائد على استثمارك الإعلاني.</p></article>
+     </div>
+     <div class="sanad-input sanad-input--select"><label class="sanad-input__label" for="sanad-consultation-interest">الاهتمام الأساسي أو الخدمة المطلوبة</label><div class="sanad-input__field"><select class="sanad-input__control" id="sanad-consultation-interest" name="service_interest"><option value="">اختر</option><option value="تشغيل خدمة العملاء والمبيعات (BPO)">تشغيل خدمة العملاء والمبيعات (BPO)</option>
+<option value="المساعد الذكي والتكنولوجيا (Sanad AI)">المساعد الذكي والتكنولوجيا (Sanad AI)</option>
+<option value="الاستشارات التسويقية وهندسة الهوية (فِكر)">الاستشارات التسويقية وهندسة الهوية (فِكر)</option>
+<option value="منظومة النمو المتكاملة (الكل)">منظومة النمو المتكاملة (الكل)</option></select></div></div>
+     <div class="sanad-input sanad-input--select">
+      <label class="sanad-input__label" for="sanad-consultation-volume">حجم التواصل اليومي</label>
+      <div class="sanad-input__field">
+       <select class="sanad-input__control" id="sanad-consultation-volume" name="daily_contact_volume" required>
+<option value="">اختر</option>
+<option value="أقل من 100">أقل من 100</option>
+<option value="100 - 500">100 - 500</option>
+<option value="أكثر من 500">أكثر من 500</option>
+</select>
+       <svg class="sanad-input__toggle" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4.18 6.13 8 9.21l3.82-3.08" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
-    </section>
-    <section class="fikr-cta" aria-labelledby="cta-title"><div class="fikr-shell fikr-cta__inner"><div><h2 id="cta-title">جاهز للانتقال ببراندك من مجرد "منافس" إلى "قائد في سوقك"؟</h2><p>لا تترك نمو شركتك للصدفة. تواصل مع مستشاري فِكر اليوم لنضع استراتيجية النمو المخصصة لنشاطك التجاري.</p><a class="fikr-button magnetic-btn" href="/#contact">احجز جلسة استشارية استراتيجية مع فِكر</a></div><div class="fikr-cta__orbit" aria-hidden="true"></div></div></section>
-  </main>
-  <footer class="fikr-footer"><div class="fikr-shell fikr-footer__grid">
-    <div><span class="fikr-mark">ف</span><strong>فِكر | هندسة الهويات التجارية والتخطيط الإعلاني</strong></div>
-    <nav aria-label="روابط سريعة"><h2>روابط سريعة</h2><a href="/">الرئيسية</a><a href="/services">حلول التشغيل</a><a href="/how-it-works">رحلة التشغيل</a><a href="/ai-assistant">المساعد الذكي</a><a href="/fikr">فِكر</a><a href="/blog">المدونة</a></nav>
-    <nav aria-label="روابط هامة"><h2>روابط هامة</h2><a href="/about">عن سند</a><a href="/terms">الشروط والأحكام</a><a href="/privacy-policy">سياسة الخصوصية</a></nav>
-    <div><h2>تواصل معنا</h2><a href="mailto:info@sanadcx.com">info@sanadcx.com</a><a href="tel:920022379" dir="ltr">920022379</a><a href="tel:01550999793" dir="ltr">01550999793</a></div>
-  </div><p class="fikr-footer__legal">© 2026 فِكر — Sanad CX (Powered by Mada CX)</p></footer>
-  <a class="whatsapp-float" href="https://wa.me/201550999793" target="_blank" rel="noopener noreferrer" aria-label="تواصل معنا عبر واتساب"><svg viewBox="0 0 32 32" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M27 15.5a11.5 11.5 0 0 1-17 10L4 28l2-6A11.5 11.5 0 1 1 27 15.5Z"/><path d="m11 9 3 4-2 2c2 3 3 4 6 5l2-2 3 2c-1 5-9 3-13-4-2-4-1-6 1-7Z"/></svg></a>
+      <span class="sanad-input__status" data-field-error="daily_contact_volume" aria-live="polite"></span>
+     </div>
+     <div class="sanad-input">
+      <label class="sanad-input__label" for="sanad-consultation-systems">&#160;البرامج أو الأنظمة المستخدمة حالياً <span class="sanad-input__optional">"اختياري"</span></label>
+      <div class="sanad-input__field">
+       <input class="sanad-input__control" id="sanad-consultation-systems" type="text" name="current_systems" placeholder="البرامج أو الأنظمة المستخدمة حالياً">
+      </div>
+     </div>
+     <button type="submit" class="sanad-btn sanad-btn--md sanad-btn--primary sanad-consultation__submit" id="sanad-consultation-submit">حجز جلسة استشارية مجانية لنمو عملائك</button>
+    </form>
+   </div>
+  </div>
+ </div>
+</dialog>
+
+
+
+
+<link rel="stylesheet" href="/website/assets/css/pages/modals.css">
+<link rel="stylesheet" href="/website/assets/css/layout.css">
+<link rel="stylesheet" href="/website/assets/css/mobile-sections.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Flip.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+<script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL" crossorigin="anonymous"></script>
+<script defer src="/website/assets/js/main.js"></script>
+
+<script>
+(function () {
+    'use strict';
+
+    var form = document.getElementById('sanad-consultation-form');
+    var submitBtn = document.getElementById('sanad-consultation-submit');
+    var modal = document.getElementById('sanad-consultation');
+    if (!form || !submitBtn || !modal) return;
+
+    function clearErrors() {
+        form.querySelectorAll('[data-field-error]').forEach(function (el) {
+            el.textContent = '';
+            el.classList.remove('sanad-input__status--error');
+        });
+        form.querySelectorAll('.sanad-input__control').forEach(function (el) {
+            el.classList.remove('sanad-input__control--error');
+        });
+    }
+
+    function showFieldErrors(errors) {
+        Object.keys(errors).forEach(function (field) {
+            var errorEl = form.querySelector('[data-field-error="' + field + '"]');
+            var inputEl = form.querySelector('[name="' + field + '"]');
+            if (errorEl) {
+                errorEl.textContent = errors[field][0];
+                errorEl.classList.add('sanad-input__status--error');
+            }
+            if (inputEl) {
+                inputEl.classList.add('sanad-input__control--error');
+            }
+        });
+    }
+
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        clearErrors();
+
+        var isLoading = submitBtn.dataset.loading === 'true';
+        if (isLoading) return;
+
+        submitBtn.dataset.loading = 'true';
+        submitBtn.disabled = true;
+
+        var formData = new FormData(form);
+
+        fetch('/consultation', {
+            method: 'POST',
+            headers: { 'X-Requested-With': 'XMLHttpRequest' },
+            body: formData,
+        })
+        .then(function (res) { return res.json().then(function (data) { return { status: res.status, data: data }; }); })
+        .then(function (result) {
+            if (result.status === 200 && result.data.code === 200) {
+                modal.close();
+                form.reset();
+                Swal.fire({
+                    icon: 'success',
+                    title: 'تم الإرسال بنجاح',
+                    text: result.data.message,
+                    confirmButtonText: 'حسناً',
+                    confirmButtonColor: 'var(--sanad-color-primary, #6c5ce7)',
+                    timer: 5000,
+                    timerProgressBar: true,
+                });
+            } else if (result.status === 422 && result.data.errors) {
+                showFieldErrors(result.data.errors);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'خطأ في البيانات',
+                    text: result.data.message || 'يرجى مراجعة الحقول المطلوبة.',
+                    confirmButtonText: 'حسناً',
+                    confirmButtonColor: 'var(--sanad-color-primary, #6c5ce7)',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'حدث خطأ',
+                    text: result.data.message || 'يرجى المحاولة مرة أخرى.',
+                    confirmButtonText: 'حسناً',
+                });
+            }
+        })
+        .catch(function () {
+            Swal.fire({ icon: 'error', title: 'حدث خطأ', text: 'تعذر الاتصال بالخادم.', confirmButtonText: 'حسناً' });
+        })
+        .finally(function () {
+            submitBtn.dataset.loading = 'false';
+            submitBtn.disabled = false;
+        });
+    });
+})();
+</script>
+
+
+<script src="/website/assets/js/modals.js" defer></script>
 </body>
 </html>

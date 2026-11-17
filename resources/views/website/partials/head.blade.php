@@ -38,7 +38,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('website/assets/css/styles.css') }}?v={{ @filemtime(public_path('website/assets/css/styles.css')) ?: '2.0.1' }}">
     <style>
-        .sanad-header--scrolled { background: color-mix(in srgb, var(--sanad-color-background, #0e1e30) 92%, transparent); backdrop-filter: blur(16px); box-shadow: 0 4px 24px #00000012; }
+        .sanad-header--scrolled { background: rgba(234, 240, 249, 0.92); background: color-mix(in srgb, var(--sanad-surface-page, #eaf0f9) 92%, transparent); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); box-shadow: 0 4px 24px #00000012; }
+        [data-theme="dark"] .sanad-header--scrolled { background: rgba(13, 27, 42, 0.92); background: color-mix(in srgb, var(--sanad-surface-page, #0d1b2a) 92%, transparent); box-shadow: 0 4px 24px #00000038; }
         .sanad-line-mask { display: block; overflow: hidden; }
         .sanad-word { display: inline-block; }
         .sanad-reading-progress { position: fixed; top: 0; inset-inline: 0; height: 3px; background: #38d39b; z-index: 10000; pointer-events: none; }

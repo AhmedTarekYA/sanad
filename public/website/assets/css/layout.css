@@ -1,6 +1,6 @@
 html, body {
-    overflow-x: hidden;
-    max-inline-size: 100vw;
+    overflow-x: clip;
+    max-inline-size: 100%;
 }
 
 /* Keep the sentiment labels in the normal flow, clear of the progress bar. */
@@ -23,27 +23,51 @@ html, body {
     padding: 32px;
 }
 .ai-sent > h3, .ai-sent > p {
-    position: static;
-    margin: 0;
+    position: static !important;
+    margin: 0 !important;
 }
-.ai-sent > p { margin-block-start: 16px; }
+.ai-sent > p { margin-block-start: 16px !important; }
 .ai-sent .ai-sent__bar {
-    position: relative;
-    inset: auto;
-    width: 100%;
-    margin-block: 32px 12px;
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    height: 16px !important;
+    min-height: 16px !important;
+    margin-block: 24px 12px !important;
+    border-radius: 999px !important;
+    overflow: hidden !important;
+    flex: 0 0 16px !important;
 }
-.ai-sent .ai-sent__bar i { width: 72%; }
+.ai-sent .ai-sent__bar i {
+    position: absolute !important;
+    right: 0 !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    height: 100% !important;
+    width: 72% !important;
+    border-radius: 999px !important;
+}
 .ai-sent .ai-sent__leg {
-    position: static;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 8px 20px;
-    margin: 0;
+    position: static !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 8px 20px !important;
+    margin: 0 !important;
+    width: 100% !important;
 }
 
 @media (max-width: 1023px) {
+    .sanad-header {
+        position: sticky !important;
+        top: 0;
+        z-index: 1000;
+        background: var(--sanad-surface-page, #0d1b2a);
+    }
+    .sanad-header + main {
+        padding-block-start: 0 !important;
+    }
     .sanad-header .sanad-header__row {
         display: grid;
         grid-template-columns: minmax(0, 1fr) 44px auto;
@@ -59,36 +83,47 @@ html, body {
         width: min(100%, 150px);
     }
     .sanad-header .sanad-header__actions { gap: 4px; }
-    /* An open menu takes space in the page instead of covering the hero. */
     .sanad-header.sanad-header--menu-open {
-        position: sticky;
+        position: sticky !important;
         background: var(--sanad-surface-page, #0d1b2a);
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
     }
     .sanad-header.sanad-header--menu-open + main {
-        padding-block-start: 0;
+        padding-block-start: 0 !important;
     }
     .sanad-header .sanad-header__nav {
         max-block-size: calc(100vh - 96px);
         max-block-size: calc(100dvh - 96px);
         overflow-y: auto;
+        margin-block-end: 12px;
+        border: 1px solid rgba(56, 189, 248, 0.22);
+        border-radius: 20px;
+        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.32);
     }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1250px) {
+    .ai-sent {
+        min-height: 0 !important;
+        padding: 24px !important;
+    }
     .ai-walkthrough .ai-step .ai-step__number {
         position: static !important;
-        display: grid;
-        width: 44px !important;
-        height: 44px !important;
-        margin: 0 0 20px !important;
-        transform: none;
-        flex: none;
+        display: grid !important;
+        place-items: center !important;
+        width: 48px !important;
+        height: 48px !important;
+        min-width: 48px !important;
+        margin: 0 auto 16px !important;
+        border-radius: 50% !important;
+        transform: none !important;
+        flex: 0 0 48px !important;
     }
     .ai-walkthrough .ai-step .ai-step__illustration {
         position: relative !important;
         width: min(100%, 234px) !important;
-        height: 100px !important;
-        margin: 0 auto 20px !important;
+        height: 92px !important;
+        margin: 0 auto 16px !important;
     }
     .ai-walkthrough .ai-step__illustration--knowledge .ai-doc:nth-child(2) { left: 35%; }
     .ai-walkthrough .ai-step__illustration--knowledge .ai-doc:nth-child(3) { left: 70%; }
