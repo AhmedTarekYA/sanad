@@ -12,7 +12,7 @@
     'whatsapp_business_hours'    => 'ti ti-clock',
     'whatsapp_analytics'         => 'ti ti-chart-bar',
 ])
-<nav class="pc-sidebar">
+<nav class="pc-sidebar wb-crm-compact">
     <div class="navbar-wrapper">
         <div class="m-header"><a href="{{ route('crm.dashboard') }}" class="b-brand text-primary">
                 <img src="{{ $sidebarLogo }}" alt="{{ $settings->website_name ?? config('app.name') }}"
@@ -72,6 +72,88 @@
     justify-content: center;
     width: 24px;
     height: 24px;
+}
+
+/* Compact CRM sidebar: narrow rail with stacked icon + small label */
+@media (min-width: 1025px) {
+    .pc-sidebar.wb-crm-compact {
+        width: 94px;
+    }
+    .pc-sidebar.wb-crm-compact .navbar-wrapper,
+    .pc-sidebar.wb-crm-compact .navbar-content {
+        width: 94px;
+    }
+    .pc-sidebar.wb-crm-compact .m-header {
+        width: 94px;
+        padding: 16px 12px;
+        justify-content: center;
+    }
+    .pc-sidebar.wb-crm-compact .m-header .b-brand,
+    .pc-sidebar.wb-crm-compact .m-header .logo-lg {
+        max-width: 52px;
+        margin: 0 auto;
+    }
+    .pc-sidebar.wb-crm-compact .pc-navbar {
+        padding-inline: 8px;
+    }
+    .pc-sidebar.wb-crm-compact .pc-caption {
+        display: none;
+    }
+    .pc-sidebar.wb-crm-compact .pc-item {
+        margin: 4px 0;
+    }
+    .pc-sidebar.wb-crm-compact .pc-link {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        min-height: 62px;
+        padding: 9px 4px;
+        border-radius: 12px;
+        text-align: center;
+    }
+    .pc-sidebar.wb-crm-compact .pc-link:hover {
+        transform: none;
+    }
+    .pc-sidebar.wb-crm-compact .pc-micon {
+        width: auto;
+        height: auto;
+        margin: 0 !important;
+        line-height: 1;
+    }
+    .pc-sidebar.wb-crm-compact .pc-micon i {
+        font-size: 20px;
+    }
+    .pc-sidebar.wb-crm-compact .pc-mtext {
+        display: block !important;
+        max-width: 78px;
+        font-size: 10.5px;
+        font-weight: 600;
+        line-height: 1.2;
+        white-space: normal;
+        text-align: center;
+        opacity: 1 !important;
+    }
+    .pc-sidebar.wb-crm-compact .pc-arrow {
+        display: none;
+    }
+    .pc-sidebar.wb-crm-compact:not(.pc-sidebar-hide) ~ .pc-container,
+    .pc-sidebar.wb-crm-compact:not(.pc-sidebar-hide) ~ .pc-footer {
+        margin-left: 94px;
+    }
+    .pc-sidebar.wb-crm-compact:not(.pc-sidebar-hide) ~ .pc-header {
+        left: 94px;
+    }
+    .pc-sidebar.wb-crm-compact.pc-sidebar-hide {
+        width: 0;
+    }
+    .pc-sidebar.wb-crm-compact.pc-sidebar-hide ~ .pc-container,
+    .pc-sidebar.wb-crm-compact.pc-sidebar-hide ~ .pc-footer {
+        margin-left: 0;
+    }
+    .pc-sidebar.wb-crm-compact.pc-sidebar-hide ~ .pc-header {
+        left: 0;
+    }
 }
 </style>
 </nav>

@@ -1065,6 +1065,8 @@
     "whatsapp_assign_accounts_first": "Add WhatsApp accounts first before assigning permissions.",
     "whatsapp_no_phone_number_id": "No phone number ID",
     "whatsapp_inbox": "Inbox",
+    "whatsapp_online": "Online",
+    "whatsapp_emoji": "Emoji",
     "whatsapp_accounts_title": "WhatsApp Accounts",
     "whatsapp_accounts_subtitle": "Choose the account whose conversations you want to manage",
     "whatsapp_new_chat": "New Chat",

@@ -2988,6 +2988,592 @@
                 min-height: 68px;
             }
         }
+
+        /* ================= Chat redesign (mockup match) ================= */
+        #whats-chat-root .wb-account-tabs.is-single {
+            display: none;
+        }
+
+        #whats-chat-root .wb-inbox {
+            background: #f7f8fb;
+            border: 1px solid #e9edf4;
+            border-radius: 18px;
+            box-shadow: 0 20px 60px rgba(23, 32, 51, 0.08);
+        }
+
+        @media (min-width: 993px) {
+            #whats-chat-root .wb-inbox {
+                height: 84vh;
+            }
+            #whats-chat-root .wb-sidebar {
+                width: 372px;
+                max-width: 40%;
+                min-width: 330px;
+            }
+        }
+
+        #whats-chat-root .wb-sidebar {
+            background: #fff;
+            border-inline-end: 1px solid #eef1f6;
+        }
+
+        #whats-chat-root .wb-sidebar-header {
+            height: auto;
+            padding: 18px 18px 16px;
+            background: #fff;
+            border-bottom: 1px solid #eef1f6;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        #whats-chat-root .wb-profile {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 0;
+        }
+
+        #whats-chat-root .wb-profile-avatar {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #2D71F0, #7aa7ff);
+            color: #fff;
+            display: grid;
+            place-items: center;
+            font-weight: 700;
+            font-size: 16px;
+            flex: 0 0 auto;
+        }
+
+        #whats-chat-root .wb-profile-meta {
+            min-width: 0;
+        }
+
+        #whats-chat-root .wb-profile-name {
+            font-weight: 700;
+            font-size: 15px;
+            color: #1f2a3d;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        #whats-chat-root .wb-profile-mail {
+            font-size: 12px;
+            color: #8a95a8;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        #whats-chat-root .wb-sidebar-header .wb-icon-btn {
+            width: 38px;
+            height: 38px;
+            border: 0;
+            border-radius: 12px;
+            background: #f4f6fa;
+            color: #5c6b82;
+        }
+
+        #whats-chat-root .wb-sidebar-header .wb-icon-btn:hover {
+            background: #eef3ff;
+            color: #2D71F0;
+        }
+
+        #whats-chat-root .wb-search {
+            padding: 0 18px 12px;
+            border-bottom: 0;
+            background: #fff;
+        }
+
+        #whats-chat-root .wb-search-box {
+            background: #f4f6fa;
+            border: 0;
+            border-radius: 12px;
+            padding: 9px 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        #whats-chat-root .wb-search-box i {
+            color: #9aa5b8;
+        }
+
+        #whats-chat-root .wb-search-input {
+            background: transparent;
+            border: 0;
+            box-shadow: none;
+            padding: 0;
+            font-size: 13px;
+        }
+
+        #whats-chat-root .wb-search-input:focus {
+            background: transparent;
+            box-shadow: none;
+        }
+
+        #whats-chat-root .wb-conversation-tabs {
+            gap: 20px;
+            padding: 0 18px;
+            border-bottom: 1px solid #eef1f6;
+            background: #fff;
+            scrollbar-width: none;
+        }
+
+        #whats-chat-root .wb-conversation-tabs::-webkit-scrollbar {
+            display: none;
+        }
+
+        #whats-chat-root .wb-conversation-tab {
+            background: transparent;
+            border: 0;
+            border-radius: 0;
+            padding: 10px 0 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #8a95a8;
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        #whats-chat-root .wb-conversation-tab i {
+            display: none;
+        }
+
+        #whats-chat-root .wb-conversation-tab:hover {
+            background: transparent;
+            color: #2D71F0;
+        }
+
+        #whats-chat-root .wb-conversation-tab.is-active {
+            background: transparent;
+            color: #2D71F0;
+        }
+
+        #whats-chat-root .wb-conversation-tab.is-active::after {
+            content: '';
+            position: absolute;
+            inset-inline: 0;
+            bottom: 0;
+            height: 2px;
+            border-radius: 2px;
+            background: #2D71F0;
+        }
+
+        #whats-chat-root .wb-conv-list {
+            padding: 6px 10px 14px;
+            margin-top: 0;
+        }
+
+        #whats-chat-root .wb-conv-item {
+            position: relative;
+            padding: 12px;
+            border-radius: 14px;
+            border: 1px solid transparent;
+            gap: 12px;
+        }
+
+        #whats-chat-root .wb-conv-item:hover {
+            background: #f5f7fb;
+        }
+
+        #whats-chat-root .wb-conv-item.is-active {
+            background: #eef3ff;
+            border-color: transparent;
+        }
+
+        #whats-chat-root .wb-conv-item.is-active::before {
+            content: '';
+            position: absolute;
+            inset-inline-start: -10px;
+            top: 14px;
+            bottom: 14px;
+            width: 3px;
+            border-radius: 3px;
+            background: #2D71F0;
+        }
+
+        #whats-chat-root .wb-avatar {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            position: relative;
+            background: #e8eefc;
+            color: #2D71F0;
+            font-size: 14px;
+        }
+
+        #whats-chat-root .wb-avatar-dot {
+            position: absolute;
+            inset-block-end: 0;
+            inset-inline-end: 0;
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            background: #22c55e;
+            border: 2px solid #fff;
+        }
+
+        #whats-chat-root .wb-conv-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: #1f2a3d;
+        }
+
+        #whats-chat-root .wb-conv-time {
+            font-size: 11px;
+            font-weight: 500;
+            color: #9aa5b8;
+        }
+
+        #whats-chat-root .wb-conv-snippet {
+            font-size: 12.5px;
+            color: #8a95a8;
+        }
+
+        #whats-chat-root .wb-unread {
+            min-width: 18px;
+            height: 18px;
+            border-radius: 999px;
+            background: #2D71F0;
+            font-size: 10.5px;
+            font-weight: 700;
+        }
+
+        #whats-chat-root .wb-chat {
+            background: #f7f8fb;
+        }
+
+        #whats-chat-root .wb-chat-header {
+            height: 72px;
+            padding: 12px 20px;
+            background: #fff;
+            border-bottom: 1px solid #e9edf4;
+        }
+
+        #whats-chat-root .wb-chat-header .wb-avatar {
+            width: 42px;
+            height: 42px;
+        }
+
+        #whats-chat-root .wb-contact-name {
+            font-size: 15px;
+            font-weight: 700;
+            color: #1f2a3d;
+        }
+
+        #whats-chat-root .wb-contact-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 2px;
+            font-size: 12px;
+            font-weight: 500;
+            color: #22c55e;
+        }
+
+        #whats-chat-root .wb-online-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #22c55e;
+            display: inline-block;
+        }
+
+        #whats-chat-root .wb-chat-header .wb-icon-btn {
+            width: 38px;
+            height: 38px;
+            border: 0;
+            border-radius: 12px;
+            background: #f4f6fa;
+            color: #5c6b82;
+        }
+
+        #whats-chat-root .wb-chat-header .wb-icon-btn:hover {
+            background: #eef3ff;
+            color: #2D71F0;
+        }
+
+        #whats-chat-root .wb-messages {
+            background-color: #f7f8fb;
+            background-image: none;
+            padding: 22px 26px;
+        }
+
+        #whats-chat-root .wb-msg {
+            align-items: flex-start;
+            gap: 10px;
+            margin: 14px 0;
+        }
+
+        #whats-chat-root .wb-msg--out {
+            justify-content: flex-end;
+        }
+
+        #whats-chat-root .wb-msg-avatar {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: #e8eefc;
+            color: #2D71F0;
+            display: grid;
+            place-items: center;
+            font-weight: 700;
+            font-size: 13px;
+            flex: 0 0 auto;
+            overflow: hidden;
+        }
+
+        #whats-chat-root .wb-msg-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        #whats-chat-root .wb-msg-body {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            min-width: 0;
+            max-width: min(72%, 760px);
+        }
+
+        #whats-chat-root .wb-msg--out .wb-msg-avatar {
+            order: 2;
+        }
+
+        #whats-chat-root .wb-msg--out .wb-msg-body {
+            order: 1;
+            align-items: flex-end;
+        }
+
+        #whats-chat-root .wb-msg-head {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0 6px 6px;
+            flex-wrap: wrap;
+        }
+
+        #whats-chat-root .wb-msg--out .wb-msg-head {
+            flex-direction: row-reverse;
+        }
+
+        #whats-chat-root .wb-msg-sender {
+            max-width: none;
+            font-size: 13px;
+            font-weight: 700;
+            color: #1f2a3d;
+        }
+
+        #whats-chat-root .wb-msg-time {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 11.5px;
+            font-weight: 500;
+            color: #94a0b4;
+            direction: ltr;
+        }
+
+        #whats-chat-root .wb-msg-time::before {
+            content: '\f017';
+            font-family: FontAwesome;
+            font-size: 10px;
+            opacity: 0.8;
+        }
+
+        #whats-chat-root .wb-bubble {
+            max-width: 100%;
+            padding: 12px 16px;
+            border: 0;
+            border-radius: 14px;
+            box-shadow: 0 6px 18px rgba(23, 32, 51, 0.05);
+        }
+
+        #whats-chat-root .wb-msg--in .wb-bubble {
+            background: #fff;
+            border-start-start-radius: 4px;
+        }
+
+        #whats-chat-root .wb-msg--out .wb-bubble {
+            background: #2D71F0;
+            border-start-end-radius: 4px;
+            color: #fff;
+        }
+
+        #whats-chat-root .wb-text {
+            font-size: 14px;
+            line-height: 1.55;
+            color: #334155;
+        }
+
+        #whats-chat-root .wb-msg--out .wb-text {
+            color: #fff;
+        }
+
+        #whats-chat-root .wb-meta {
+            margin-top: 6px;
+            color: #9aa5b8;
+        }
+
+        #whats-chat-root .wb-msg--out .wb-meta {
+            color: rgba(255, 255, 255, 0.75);
+        }
+
+        #whats-chat-root .wb-msg .wb-bubble .wb-meta > span:first-child {
+            display: none;
+        }
+
+        #whats-chat-root .wb-msg--out .wb-status.is-read {
+            color: #cfe0ff;
+        }
+
+        #whats-chat-root .wb-msg--out .wb-msg-action {
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        #whats-chat-root .wb-msg--out .wb-msg-action.is-danger:hover {
+            color: #ffd7d7;
+        }
+
+        #whats-chat-root .wb-msg .wb-bubble:has(.wb-audio-row) {
+            background: #fff;
+            color: #334155;
+            border: 1px solid #eef1f6;
+        }
+
+        #whats-chat-root .wb-msg--out .wb-bubble:has(.wb-audio-row) .wb-text {
+            color: #334155;
+        }
+
+        #whats-chat-root .wb-composer {
+            padding: 14px 18px 18px;
+            background: #f7f8fb;
+            border-top: 0;
+        }
+
+        #whats-chat-root .wb-composer-inner {
+            gap: 10px;
+        }
+
+        #whats-chat-root .wb-composer .wb-icon-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            border: 1px solid #e9edf4;
+            background: #fff;
+            color: #64748b;
+            font-size: 17px;
+        }
+
+        #whats-chat-root .wb-composer .wb-icon-btn:hover,
+        #whats-chat-root .wb-composer .wb-icon-btn.is-open {
+            background: #eef3ff;
+            color: #2D71F0;
+        }
+
+        #whats-chat-root .wb-composer-input {
+            height: 48px;
+            border-radius: 14px;
+            border: 1px solid #e2e8f2;
+            background: #fff;
+            padding: 0 18px;
+            font-size: 14px;
+            box-shadow: 0 4px 14px rgba(23, 32, 51, 0.04);
+        }
+
+        #whats-chat-root .wb-composer-input:focus {
+            border-color: #2D71F0;
+            box-shadow: 0 0 0 3px rgba(45, 113, 240, 0.12);
+        }
+
+        #whats-chat-root .wb-send-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            background: #2D71F0;
+            color: #fff;
+            border: 0;
+        }
+
+        #whats-chat-root .wb-send-btn:hover {
+            background: #1640C6;
+        }
+
+        [data-pc-theme="dark"] #whats-chat-root .wb-inbox,
+        [data-pc-theme="dark"] #whats-chat-root .wb-chat,
+        [data-pc-theme="dark"] #whats-chat-root .wb-messages,
+        [data-pc-theme="dark"] #whats-chat-root .wb-composer {
+            background: #0f172a;
+            border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        [data-pc-theme="dark"] #whats-chat-root .wb-sidebar,
+        [data-pc-theme="dark"] #whats-chat-root .wb-sidebar-header,
+        [data-pc-theme="dark"] #whats-chat-root .wb-search,
+        [data-pc-theme="dark"] #whats-chat-root .wb-conversation-tabs,
+        [data-pc-theme="dark"] #whats-chat-root .wb-chat-header {
+            background: #16213a;
+            border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        [data-pc-theme="dark"] #whats-chat-root .wb-profile-name,
+        [data-pc-theme="dark"] #whats-chat-root .wb-conv-name,
+        [data-pc-theme="dark"] #whats-chat-root .wb-msg-sender,
+        [data-pc-theme="dark"] #whats-chat-root .wb-contact-name {
+            color: rgba(255, 255, 255, 0.92);
+        }
+
+        [data-pc-theme="dark"] #whats-chat-root .wb-conv-item.is-active {
+            background: rgba(45, 113, 240, 0.16);
+        }
+
+        [data-pc-theme="dark"] #whats-chat-root .wb-msg--in .wb-bubble,
+        [data-pc-theme="dark"] #whats-chat-root .wb-msg .wb-bubble:has(.wb-audio-row) {
+            background: #1d2b45;
+        }
+
+        [data-pc-theme="dark"] #whats-chat-root .wb-text,
+        [data-pc-theme="dark"] #whats-chat-root .wb-msg--out .wb-bubble:has(.wb-audio-row) .wb-text {
+            color: rgba(255, 255, 255, 0.88);
+        }
+
+        [data-pc-theme="dark"] #whats-chat-root .wb-composer-input,
+        [data-pc-theme="dark"] #whats-chat-root .wb-composer .wb-icon-btn {
+            background: #1d2b45;
+            border-color: rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        @media (max-width: 576px) {
+            #whats-chat-root .wb-composer {
+                padding: 10px 10px 12px;
+            }
+            #whats-chat-root .wb-composer .wb-icon-btn {
+                width: 38px;
+                height: 38px;
+            }
+            #whats-chat-root .wb-composer-input {
+                height: 42px;
+                padding: 0 12px;
+            }
+            #whats-chat-root .wb-send-btn {
+                width: 42px;
+                height: 42px;
+            }
+            #whats-chat-root .wb-msg-body {
+                max-width: 84%;
+            }
+            #whats-chat-root .wb-messages {
+                padding: 14px 12px;
+            }
+        }
     </style>
 @endsection
 
@@ -3000,6 +3586,14 @@
         $allowedAccountsCount = $accounts->count();
         $accountTabsColumns = max(1, min($allowedAccountsCount, 3));
         $snoozeUiEnabled = false;
+        $crmUser = auth('crm')->user();
+        $crmUserName = $crmUser && $crmUser->name ? $crmUser->name : __('whatsapp_inbox');
+        $crmUserEmail = $crmUser && $crmUser->email ? $crmUser->email : ($selectedAccount ? ($selectedAccount->phone_number_id ?: '') : '');
+        $crmUserInitial = mb_strtoupper(mb_substr($crmUserName, 0, 2));
+        $activeName = null;
+        if (isset($activeConversation) && $activeConversation) {
+            $activeName = $activeConversation->display_name ?: ($activeContact && $activeContact->name ? $activeContact->name : $activeConversation->wa_id);
+        }
         $selectedAccountName = $selectedAccount
             ? ($selectedAccount->name ?: (__('whatsapp_account') . ' #' . $selectedAccount->id))
             : __('whatsapp_no_account');
@@ -3038,6 +3632,9 @@
         data-contact-notes-update-url-template="{{ route('crm.whatsapp_contacts.notes.update', ['id' => '__ID__', 'noteId' => '__NID__'], false) }}"
         data-contact-notes-destroy-url-template="{{ route('crm.whatsapp_contacts.notes.destroy', ['id' => '__ID__', 'noteId' => '__NID__'], false) }}"
         data-active-contact-id="{{ isset($activeContact) && $activeContact ? $activeContact->id : '' }}"
+        data-active-contact-name="{{ isset($activeName) && $activeName ? $activeName : '' }}"
+        data-active-contact-avatar="{{ isset($activeContact) && $activeContact && $activeContact->profile_pic ? $activeContact->profile_pic : '' }}"
+        data-crm-user-name="{{ $crmUserName }}" data-crm-user-initial="{{ $crmUserInitial }}"
         data-send-message-url="{{ route('crm.whatsapp_chat.store', [], false) }}"
         data-quick-replies-url="{{ route('crm.whatsapp_chat.quickReplies', [], false) }}"
         data-media-url="{{ route('crm.whatsapp_chat.media', [], false) }}"
@@ -3059,7 +3656,7 @@
         data-t-message-not-visible="{{ __('whatsapp_search_message_not_visible') }}"
         data-t-settings-notes-empty="{{ __('whatsapp_notes_empty') }}"
         data-can-update-tags="1">
-        <div class="wb-account-tabs" style="--wb-accounts-columns: {{ $accountTabsColumns }};">
+        <div class="wb-account-tabs {{ $allowedAccountsCount <= 1 ? 'is-single' : '' }}" style="--wb-accounts-columns: {{ $accountTabsColumns }};">
             <div class="wb-account-tabs-head">
                 <div class="wb-account-tabs-title">
                     <span class="wb-wa-badge">
@@ -3102,11 +3699,12 @@
         <div class="wb-inbox">
             <div class="wb-sidebar">
                 <div class="wb-sidebar-header">
-                    <div class="wb-title">
-                        <span class="wb-wa-badge">
-                            <i class="fab fa-whatsapp"></i>
-                        </span>
-                        <span>{{ __('whatsapp_inbox') }}</span>
+                    <div class="wb-profile">
+                        <div class="wb-profile-avatar">{{ $crmUserInitial }}</div>
+                        <div class="wb-profile-meta">
+                            <div class="wb-profile-name">{{ $crmUserName }}</div>
+                            <div class="wb-profile-mail">{{ $crmUserEmail }}</div>
+                        </div>
                     </div>
                     <div class="wb-header-actions">
                         <a class="wb-icon-btn" href="{{ route('crm.whatsapp_contacts') }}"
@@ -3204,15 +3802,16 @@
                                 @if(!empty($conv->profile_pic))
                                     <div class="wb-avatar">
                                         <img src="{{ $conv->profile_pic }}" alt="avatar">
+                                        <span class="wb-avatar-dot"></span>
                                     </div>
                                 @else
-                                    <div class="wb-avatar">{{ $initial }}</div>
+                                    <div class="wb-avatar">{{ $initial }}<span class="wb-avatar-dot"></span></div>
                                 @endif
                                 <div class="wb-conv-main">
                                     <div class="wb-conv-top">
                                         <div class="wb-conv-name">{{ $name }}</div>
                                         <div class="wb-conv-time">
-                                            {{ $conv->last_message_at ? $conv->last_message_at->locale(app()->getLocale())->isoFormat('DD MMM YYYY, hh:mm A') : '' }}
+                                            {{ $conv->last_message_at ? $conv->last_message_at->locale(app()->getLocale())->isoFormat('hh:mm A') : '' }}
                                         </div>
                                     </div>
                                     <div class="wb-conv-preview">
@@ -3264,6 +3863,9 @@
                                     {{ __('whatsapp_select_conversation') }}
                                 @endif
                             </div>
+                            @if(isset($activeConversation) && $activeConversation)
+                                <div class="wb-contact-status"><span class="wb-online-dot"></span>{{ __('whatsapp_online') }}</div>
+                            @endif
                         </div>
                     </div>
                     <div class="wb-header-actions">
@@ -3334,8 +3936,13 @@
                                 @php
                                     $isOut = $msg->direction === 'out';
                                     $time = $msg->wa_timestamp
-                                        ? $msg->wa_timestamp->locale(app()->getLocale())->isoFormat('DD MMM YYYY, hh:mm A')
-                                        : ($msg->created_at ? $msg->created_at->locale(app()->getLocale())->isoFormat('DD MMM YYYY, hh:mm A') : '');
+                                        ? $msg->wa_timestamp->locale(app()->getLocale())->isoFormat('hh:mm A')
+                                        : ($msg->created_at ? $msg->created_at->locale(app()->getLocale())->isoFormat('hh:mm A') : '');
+                                    $messageSender = $isOut
+                                        ? $crmUserName
+                                        : (isset($activeName) && $activeName ? $activeName : (isset($activeContact) && $activeContact ? ($activeContact->name ?: $activeContact->wa_id) : ''));
+                                    $messageSenderInitial = mb_substr((string) $messageSender, 0, 1);
+                                    $messageAvatar = $isOut ? null : ($activeContact && $activeContact->profile_pic ? $activeContact->profile_pic : null);
                                     $messageType = (string) $msg->type;
                                     $mediaLabel = match ($messageType) {
                                         'image' => __('whatsapp_image'),
@@ -3376,6 +3983,18 @@
                                     $docDownloadUrl = ($messageType === 'document' && $mediaContentUrl) ? ($mediaContentUrl . '?download=1') : null;
                                 @endphp
                                 <div class="wb-msg {{ $isOut ? 'wb-msg--out' : 'wb-msg--in' }}" data-message-id="{{ $msg->id }}">
+                                    <div class="wb-msg-avatar">
+                                        @if($messageAvatar)
+                                            <img src="{{ $messageAvatar }}" alt="avatar">
+                                        @else
+                                            {{ $isOut ? $crmUserInitial : $messageSenderInitial }}
+                                        @endif
+                                    </div>
+                                    <div class="wb-msg-body">
+                                        <div class="wb-msg-head">
+                                            <span class="wb-msg-sender">{{ $messageSender }}</span>
+                                            <span class="wb-msg-time">{{ $time }}</span>
+                                        </div>
                                     <div class="wb-bubble">
                                         @if($mediaLabel)
                                             <div class="wb-media-label">{{ $mediaLabel }}</div>
@@ -3449,6 +4068,7 @@
                                             @endif
                                         </div>
                                     </div>
+                                    </div>
                                 </div>
                             @endforeach
                         @else
@@ -3491,7 +4111,12 @@
                             <button class="wb-icon-btn" type="button" id="wb-composer-tools-btn"
                                 title="{{ __('whatsapp_add_attachment') }}" aria-expanded="false"
                                 aria-controls="wb-composer-tools-menu" {{ isset($activeConversation) && $activeConversation ? '' : 'disabled' }}>
-                                <i class="fa fa-plus"></i>
+                                <i class="fa fa-paperclip"></i>
+                            </button>
+                            <button class="wb-icon-btn wb-emoji-btn" type="button" id="wb-emoji-btn"
+                                title="{{ __('whatsapp_emoji') }}" aria-label="{{ __('whatsapp_emoji') }}"
+                                {{ isset($activeConversation) && $activeConversation ? '' : 'disabled' }}>
+                                <i class="fa fa-smile-o"></i>
                             </button>
                             <input type="text" name="message" class="wb-composer-input" id="wb-composer-input"
                                 placeholder="{{ __('whatsapp_type_message') }}" autocomplete="off" {{ isset($activeConversation) && $activeConversation ? '' : 'disabled' }}>
@@ -3788,6 +4413,10 @@
                 return 'all';
             })();
             const currentLocale = root && root.dataset.locale ? root.dataset.locale : (document.documentElement.lang || 'en');
+            const chatOutgoingName = root && root.dataset.crmUserName ? root.dataset.crmUserName : '';
+            const chatOutgoingInitial = root && root.dataset.crmUserInitial ? root.dataset.crmUserInitial : '';
+            const chatIncomingName = root && root.dataset.activeContactName ? root.dataset.activeContactName : '';
+            const chatIncomingAvatar = root && root.dataset.activeContactAvatar ? root.dataset.activeContactAvatar : '';
             const chatIndexUrl = root ? root.dataset.chatIndexUrl : '';
             const convUrl = root ? root.dataset.conversationsUrl : '';
             const msgUrlTemplate = root ? root.dataset.messagesUrlTemplate : '';
@@ -4256,7 +4885,18 @@
             }
 
             function formatTime(value) {
-                return formatLocalizedDateTime(value);
+                if (!value) return '';
+                const d = new Date(value);
+                if (isNaN(d.getTime())) return '';
+                try {
+                    return new Intl.DateTimeFormat(currentLocale, { hour: '2-digit', minute: '2-digit', hour12: true }).format(d);
+                } catch (error) {
+                    let hours = d.getHours();
+                    const minutes = String(d.getMinutes()).padStart(2, '0');
+                    const meridiem = hours >= 12 ? 'PM' : 'AM';
+                    hours = hours % 12 || 12;
+                    return String(hours).padStart(2, '0') + ':' + minutes + ' ' + meridiem;
+                }
             }
 
             function getOutgoingStatusMeta(status) {
@@ -4327,9 +4967,9 @@
             function avatarHtml(profilePic, name) {
                 const pic = profilePic ? String(profilePic).trim() : '';
                 if (pic) {
-                    return '<div class="wb-avatar"><img src="' + escapeHtml(pic) + '" alt="avatar"></div>';
+                    return '<div class="wb-avatar"><img src="' + escapeHtml(pic) + '" alt="avatar"><span class="wb-avatar-dot"></span></div>';
                 }
-                return '<div class="wb-avatar">' + escapeHtml(initials(name)) + '</div>';
+                return '<div class="wb-avatar">' + escapeHtml(initials(name)) + '<span class="wb-avatar-dot"></span></div>';
             }
 
             function getConversationStatusDotClass(status) {
@@ -4483,7 +5123,13 @@
                                     (raw && raw.context && raw.context.message_id ? String(raw.context.message_id) : ''));
                         const replied = replyToWamid ? (byWamid[replyToWamid] || null) : null;
                         const isDeleted = msg && msg.message_status ? String(msg.message_status).trim().toLowerCase() === 'deleted' : false;
+                        const msgSender = isOut ? chatOutgoingName : chatIncomingName;
+                        const msgSenderInitial = isOut ? chatOutgoingInitial : initials(chatIncomingName);
+                        const msgAvatar = isOut ? '' : chatIncomingAvatar;
                         html += '<div class="wb-msg ' + (isOut ? 'wb-msg--out' : 'wb-msg--in') + '" data-message-id="' + escapeHtml(msg.id) + '">';
+                        html += '<div class="wb-msg-avatar">' + (msgAvatar ? '<img src="' + escapeHtml(msgAvatar) + '" alt="avatar">' : escapeHtml(msgSenderInitial)) + '</div>';
+                        html += '<div class="wb-msg-body">';
+                        html += '<div class="wb-msg-head"><span class="wb-msg-sender">' + escapeHtml(msgSender) + '</span><span class="wb-msg-time">' + escapeHtml(time) + '</span></div>';
                         html += '<div class="wb-bubble">';
                         if (replyToWamid) {
                             const title = replied
@@ -4557,6 +5203,7 @@
                             const statusMeta = getOutgoingStatusMeta(msg && msg.message_status ? msg.message_status : '');
                             html += '<span class="' + statusMeta.className + '">' + statusMeta.text + '</span>';
                         }
+                        html += '</div>';
                         html += '</div>';
                         html += '</div>';
                         html += '</div>';
@@ -5310,6 +5957,19 @@
                 if (typeof errorToster === 'function') {
                     errorToster(currentLocale.indexOf('ar') === 0 ? 'خطأ' : 'Error', text);
                 }
+            }
+
+            function bindComposerEmoji() {
+                const emojiBtn = document.getElementById('wb-emoji-btn');
+                const input = document.getElementById('wb-composer-input');
+                if (!emojiBtn || !input) return;
+                emojiBtn.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    if (input.disabled) return;
+                    input.value = (input.value || '') + '😊';
+                    input.focus();
+                    input.dispatchEvent(new Event('input', { bubbles: true }));
+                });
             }
 
             function bindComposerTools() {
@@ -6801,6 +7461,7 @@
                 bindComposerSubmit();
                 bindReplyBar();
                 bindComposerTools();
+                bindComposerEmoji();
                 bindAttachments();
                 bindQuickReplies();
                 bindHeaderActions();
