@@ -5,8 +5,8 @@
 @section('style')
     <style>
         :root {
-            --wb-green: #00a884;
-            --wb-green-dark: #008069;
+            --wb-green: #2D71F0;
+            --wb-green-dark: #1640C6;
             --wb-bg: #f0f2f5;
             --wb-panel: #ffffff;
             --wb-border: rgba(0, 0, 0, 0.08);
@@ -15,6 +15,220 @@
             --wb-chat-bg: #efeae2;
             --wb-in-msg: #ffffff;
             --wb-out-msg: #d9fdd3;
+        }
+
+        [data-pc-theme="dark"] {
+            --wb-bg: #111b21;
+            --wb-panel: #202c33;
+            --wb-border: rgba(255, 255, 255, 0.07);
+            --wb-muted: rgba(255, 255, 255, 0.45);
+            --wb-text: rgba(255, 255, 255, 0.90);
+            --wb-chat-bg: #0d1418;
+            --wb-in-msg: #202c33;
+            --wb-out-msg: #005c4b;
+        }
+
+        [data-pc-theme="dark"] .wb-text {
+            color: rgba(255, 255, 255, 0.88);
+        }
+
+        [data-pc-theme="dark"] .wb-timestamp,
+        [data-pc-theme="dark"] .wb-conv-last,
+        [data-pc-theme="dark"] .wb-conv-time {
+            color: rgba(255, 255, 255, 0.45);
+        }
+
+        [data-pc-theme="dark"] .wb-conv-name {
+            color: rgba(255, 255, 255, 0.90);
+        }
+
+        [data-pc-theme="dark"] .wb-search input,
+        [data-pc-theme="dark"] .wb-compose input,
+        [data-pc-theme="dark"] .wb-compose textarea {
+            background: #2a3942;
+            color: rgba(255, 255, 255, 0.88);
+            border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        [data-pc-theme="dark"] .wb-search input::placeholder,
+        [data-pc-theme="dark"] .wb-compose textarea::placeholder {
+            color: rgba(255, 255, 255, 0.35);
+        }
+
+        [data-pc-theme="dark"] .wb-conv-item:hover,
+        [data-pc-theme="dark"] .wb-conv-item.is-active {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        [data-pc-theme="dark"] .wb-icon-btn {
+            color: rgba(255, 255, 255, 0.65);
+        }
+
+        [data-pc-theme="dark"] .wb-icon-btn:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+        }
+
+        [data-pc-theme="dark"] .wb-modal-content,
+        [data-pc-theme="dark"] .wb-panel-right {
+            background: #202c33;
+            color: rgba(255, 255, 255, 0.88);
+        }
+
+        [data-pc-theme="dark"] .wb-settings-label {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        [data-pc-theme="dark"] .wb-settings-value {
+            color: rgba(255, 255, 255, 0.88);
+        }
+
+        /* ── Comprehensive dark mode: fix all hardcoded #fff backgrounds ── */
+        [data-pc-theme="dark"] .wb-sidebar-tools,
+        [data-pc-theme="dark"] .wb-sidebar-tool,
+        [data-pc-theme="dark"] .wb-search,
+        [data-pc-theme="dark"] .wb-filter-row,
+        [data-pc-theme="dark"] .wb-conversation-tabs,
+        [data-pc-theme="dark"] .wb-conversation-tab,
+        [data-pc-theme="dark"] .wb-chat-header,
+        [data-pc-theme="dark"] .wb-quick-actions,
+        [data-pc-theme="dark"] .wb-qa-btn,
+        [data-pc-theme="dark"] .wb-quick-actions > .wb-qa-btn,
+        [data-pc-theme="dark"] .wb-action-menu-toggle,
+        [data-pc-theme="dark"] .wb-action-menu-panel,
+        [data-pc-theme="dark"] .wb-icon-btn {
+            background: #202c33;
+            border-color: rgba(255, 255, 255, 0.07);
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        [data-pc-theme="dark"] .wb-qa-btn:hover {
+            background: #2a3942;
+            color: #fff;
+        }
+
+        [data-pc-theme="dark"] .wb-sidebar-tool {
+            color: rgba(255, 255, 255, 0.72);
+        }
+
+        [data-pc-theme="dark"] .wb-sidebar-tool:hover {
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.15);
+            background: #2a3942;
+        }
+
+        [data-pc-theme="dark"] .wb-conversation-tab {
+            border-color: rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.65);
+        }
+
+        [data-pc-theme="dark"] .wb-conversation-tab:hover {
+            background: #2a3942;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        [data-pc-theme="dark"] .wb-action-menu-panel {
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        [data-pc-theme="dark"] .wb-action-menu-panel .wb-qa-btn i {
+            color: rgba(45, 113, 240, 0.9);
+        }
+
+        [data-pc-theme="dark"] .wb-filter-select {
+            background: #2a3942;
+            color: rgba(255, 255, 255, 0.85);
+            border-color: rgba(255, 255, 255, 0.07);
+        }
+
+        [data-pc-theme="dark"] .wb-search-input {
+            background: #2a3942;
+            color: rgba(255, 255, 255, 0.85);
+            border-color: rgba(255, 255, 255, 0.07);
+        }
+
+        [data-pc-theme="dark"] .wb-search-input::placeholder {
+            color: rgba(255, 255, 255, 0.35);
+        }
+
+        [data-pc-theme="dark"] .wb-search-box i {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        [data-pc-theme="dark"] .wb-bubble {
+            border-color: rgba(255, 255, 255, 0.04);
+        }
+
+        [data-pc-theme="dark"] .wb-conv-badge {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.72);
+        }
+
+        [data-pc-theme="dark"] .wb-empty {
+            color: rgba(255, 255, 255, 0.45);
+        }
+
+        /* ── Compose / input area dark mode ── */
+        [data-pc-theme="dark"] .wb-composer {
+            background: #202c33;
+            border-top-color: rgba(255, 255, 255, 0.07);
+        }
+
+        [data-pc-theme="dark"] .wb-composer-input {
+            background: #2a3942;
+            color: rgba(255, 255, 255, 0.88);
+            border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        [data-pc-theme="dark"] .wb-composer-input::placeholder {
+            color: rgba(255, 255, 255, 0.35);
+        }
+
+        [data-pc-theme="dark"] .wb-composer-input:focus {
+            background: #2a3942;
+            border-color: rgba(45, 113, 240, 0.4);
+            box-shadow: 0 0 0 3px rgba(45, 113, 240, 0.12);
+        }
+
+        [data-pc-theme="dark"] .wb-recording-indicator {
+            background: #2a3942;
+        }
+
+        [data-pc-theme="dark"] .wb-composer .wb-icon-btn {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        [data-pc-theme="dark"] .wb-composer .wb-icon-btn:hover,
+        [data-pc-theme="dark"] .wb-composer .wb-icon-btn.is-open {
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+        }
+
+        [data-pc-theme="dark"] .wb-typing {
+            background: rgba(32, 44, 51, 0.9);
+            color: rgba(255, 255, 255, 0.55);
+            border-top-color: rgba(255, 255, 255, 0.07);
+        }
+
+        [data-pc-theme="dark"] .wb-composer-tools-menu,
+        [data-pc-theme="dark"] .wb-composer-tool {
+            background: #202c33;
+            color: rgba(255, 255, 255, 0.88);
+            border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        [data-pc-theme="dark"] .wb-composer-tools-menu {
+            box-shadow: 0 18px 48px rgba(0, 0, 0, 0.5);
+        }
+
+        [data-pc-theme="dark"] .wb-composer-tool:hover {
+            background: #2a3942;
+        }
+
+        [data-pc-theme="dark"] .wb-reply-bar {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(255, 255, 255, 0.07);
         }
 
         #whats-chat-root {
@@ -557,8 +771,76 @@
             background: #fff;
             display: flex;
             align-items: center;
-            gap: 8px;
+            flex-wrap: nowrap;
+            gap: 4px;
             min-height: 48px;
+            overflow-x: auto;
+        }
+
+        .wb-quick-actions > .wb-qa-btn {
+            width: auto;
+            flex: 0 0 auto;
+            min-height: 36px;
+            padding: 0 12px;
+            font-size: 12px;
+            border-radius: 8px;
+            border: 1px solid var(--wb-border);
+        }
+
+        .wb-contact-notes-banner {
+            display: none;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            padding: 9px 14px;
+            border: 0;
+            border-bottom: 1px solid #f2d48a;
+            background: linear-gradient(90deg, #fff8e1 0%, #ffefc2 100%);
+            color: #7a5a06;
+            font-size: 13px;
+            text-align: start;
+            cursor: pointer;
+            transition: background 0.15s ease;
+        }
+
+        .wb-contact-notes-banner.is-visible {
+            display: flex;
+        }
+
+        .wb-contact-notes-banner:hover,
+        .wb-contact-notes-banner:focus-visible {
+            background: linear-gradient(90deg, #fff2cc 0%, #ffe7a8 100%);
+            outline: none;
+        }
+
+        .wb-contact-notes-banner > i {
+            color: #d99b00;
+            font-size: 15px;
+            flex: 0 0 auto;
+        }
+
+        .wb-contact-notes-banner-text {
+            flex: 1 1 auto;
+            min-width: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-weight: 500;
+        }
+
+        .wb-contact-notes-banner-count {
+            flex: 0 0 auto;
+            min-width: 20px;
+            height: 20px;
+            padding: 0 6px;
+            border-radius: 10px;
+            background: #d99b00;
+            color: #fff;
+            font-size: 11px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .wb-qa-btn {
@@ -653,9 +935,14 @@
             overflow: auto;
             padding: 14px 16px;
             background-color: var(--wb-chat-bg);
-            background-image: radial-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px);
-            background-size: 22px 22px;
-            background-position: 0 0;
+            background-image: url('/admin/assets/img/whatsapp_light.png');
+            background-size: auto;
+            background-repeat: repeat;
+        }
+
+        [data-pc-theme="dark"] .wb-messages {
+            background-color: #0d1418;
+            background-image: url('/admin/assets/img/whatsapp_dark.png');
         }
 
         .wb-empty {
@@ -697,9 +984,9 @@
 
         .wb-text {
             color: rgba(0, 0, 0, 0.85);
-            font-size: 18px;
-            font-weight: 700;
-            line-height: 1.6;
+            font-size: 14.5px;
+            font-weight: 400;
+            line-height: 1.5;
             white-space: pre-wrap;
             word-break: break-word;
         }
@@ -707,12 +994,32 @@
         .wb-media-img,
         .wb-media-video {
             display: block;
-            max-width: 320px;
+            max-width: 300px;
             width: 100%;
             height: auto;
             border-radius: 10px;
             margin-top: 6px;
+        }
+
+        .wb-media-video {
             background: #000;
+        }
+
+        .wb-video-placeholder {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 6px;
+            padding: 10px 14px;
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.06);
+            color: rgba(0, 0, 0, 0.5);
+            font-size: 13px;
+        }
+
+        [data-pc-theme="dark"] .wb-video-placeholder {
+            background: rgba(255, 255, 255, 0.08);
+            color: rgba(255, 255, 255, 0.45);
         }
 
         .wb-audio-message-btn {
@@ -1763,6 +2070,166 @@
             gap: 10px;
         }
 
+        .wb-contact-meta-panel {
+            position: fixed;
+            inset: 0;
+            display: none;
+            align-items: flex-end;
+            justify-content: flex-end;
+            z-index: 1900;
+        }
+
+        .wb-contact-meta-panel.is-open {
+            display: flex;
+        }
+
+        .wb-contact-meta-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.46);
+            backdrop-filter: blur(2px);
+        }
+
+        .wb-contact-meta-card {
+            position: relative;
+            width: min(420px, 92vw);
+            height: 100%;
+            background: var(--wb-panel);
+            border: 0;
+            border-radius: 0;
+            box-shadow: -18px 0 60px rgba(17, 27, 33, 0.22);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        [dir="rtl"] .wb-contact-meta-card {
+            box-shadow: 18px 0 60px rgba(17, 27, 33, 0.22);
+        }
+
+        .wb-contact-meta-header {
+            height: 64px;
+            padding: 12px 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--wb-border);
+            background: linear-gradient(180deg, rgba(0, 168, 132, 0.08), rgba(0, 168, 132, 0.02));
+        }
+
+        .wb-contact-meta-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+            color: var(--wb-text);
+        }
+
+        .wb-contact-meta-title i {
+            color: var(--wb-green-dark);
+        }
+
+        .wb-contact-meta-body {
+            padding: 12px 14px 16px;
+            overflow: auto;
+            flex: 1 1 auto;
+        }
+
+        .wb-notes-section {
+            margin-top: 4px;
+        }
+
+        .wb-notes-section-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .wb-notes-section-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 800;
+            color: var(--wb-text);
+            font-size: 14px;
+        }
+
+        .wb-notes-section-title i {
+            color: var(--wb-green-dark);
+        }
+
+        .wb-notes-section-count {
+            min-width: 22px;
+            height: 22px;
+            padding: 0 6px;
+            border-radius: 999px;
+            background: rgba(0, 168, 132, 0.12);
+            color: var(--wb-green-dark);
+            font-size: 11px;
+            font-weight: 800;
+            display: grid;
+            place-items: center;
+        }
+
+        .wb-contact-note-item {
+            padding: 10px;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            background: #fff;
+            margin-bottom: 8px;
+        }
+
+        .wb-contact-note-meta {
+            font-size: 12px;
+            color: rgba(0, 0, 0, 0.55);
+            margin-bottom: 6px;
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .wb-contact-note-author {
+            font-weight: 700;
+            color: var(--wb-green-dark);
+        }
+
+        .wb-contact-note-actions {
+            display: flex;
+            gap: 6px;
+            margin-top: 8px;
+        }
+
+        .wb-contact-note-edit {
+            flex: 1 1 auto;
+            min-width: 0;
+        }
+
+        .wb-contact-note-edit-input {
+            width: 100%;
+            min-height: 70px;
+            border-radius: 10px;
+            border: 1px solid var(--wb-border);
+            padding: 8px 10px;
+            outline: none;
+            background: rgba(0, 0, 0, 0.02);
+            resize: vertical;
+            font: inherit;
+        }
+
+        .wb-contact-note-edit-input:focus {
+            border-color: rgba(0, 168, 132, 0.35);
+            box-shadow: 0 0 0 3px rgba(0, 168, 132, 0.12);
+            background: #fff;
+        }
+
+        .wb-settings-section-divider {
+            height: 1px;
+            margin: 14px 0;
+            background: var(--wb-border);
+        }
+
         .wb-msg.is-highlighted .wb-bubble {
             border-color: rgba(0, 168, 132, 0.55);
             box-shadow: 0 0 0 4px rgba(0, 168, 132, 0.16);
@@ -2567,6 +3034,10 @@
         data-set-tags-url-template="{{ route('crm.whatsapp_chat.tags.set', ['conversationId' => '__ID__'], false) }}"
         data-add-note-url-template="{{ route('crm.whatsapp_chat.notes.store', ['conversationId' => '__ID__'], false) }}"
         data-resolve-url-template="{{ route('crm.whatsapp_chat.resolve', ['conversationId' => '__ID__'], false) }}"
+        data-contact-notes-index-url-template="{{ route('crm.whatsapp_contacts.notes.index', ['id' => '__ID__'], false) }}"
+        data-contact-notes-update-url-template="{{ route('crm.whatsapp_contacts.notes.update', ['id' => '__ID__', 'noteId' => '__NID__'], false) }}"
+        data-contact-notes-destroy-url-template="{{ route('crm.whatsapp_contacts.notes.destroy', ['id' => '__ID__', 'noteId' => '__NID__'], false) }}"
+        data-active-contact-id="{{ isset($activeContact) && $activeContact ? $activeContact->id : '' }}"
         data-send-message-url="{{ route('crm.whatsapp_chat.store', [], false) }}"
         data-quick-replies-url="{{ route('crm.whatsapp_chat.quickReplies', [], false) }}"
         data-media-url="{{ route('crm.whatsapp_chat.media', [], false) }}"
@@ -2610,7 +3081,7 @@
                         $accountAvatar = mb_strtoupper(mb_substr($accountName, 0, 2));
                     @endphp
                     <a class="wb-acc-item {{ isset($selectedAccount) && $selectedAccount && $selectedAccount->id === $account->id ? 'is-active' : '' }}"
-                        href="{{ route('crm.whatsapp_chat.index', array_filter(['account_id' => $account->id, 'filter' => request()->query('filter'), 'status' => $statusFilter ?? null], fn($value) => $value !== null && $value !== '')) }}"
+                        href="{{ route('crm.whatsapp_chat', array_filter(['account_id' => $account->id, 'filter' => request()->query('filter'), 'status' => $statusFilter ?? null], fn($value) => $value !== null && $value !== '')) }}"
                         title="{{ $accountName }}">
                         <span class="wb-acc-avatar">{{ $accountAvatar }}</span>
                         <span class="wb-acc-body">
@@ -2726,7 +3197,7 @@
                                     }
                                     : ($lastBody ?: '');
                             @endphp
-                            <a href="{{ route('crm.whatsapp_chat.index', array_filter(['account_id' => $selectedAccount ? $selectedAccount->id : null, 'conversation_id' => $conv->id, 'filter' => request()->query('filter'), 'status' => $statusFilter ?? null], fn($value) => $value !== null && $value !== '')) }}"
+                            <a href="{{ route('crm.whatsapp_chat', array_filter(['account_id' => $selectedAccount ? $selectedAccount->id : null, 'conversation_id' => $conv->id, 'filter' => request()->query('filter'), 'status' => $statusFilter ?? null], fn($value) => $value !== null && $value !== '')) }}"
                                 class="wb-conv-item {{ $selectedId === $conv->id ? 'is-active' : '' }}"
                                 data-conversation-id="{{ $conv->id }}" data-wa-id="{{ $conv->wa_id }}"
                                 data-display-name="{{ $conv->display_name }}" data-profile-pic="{{ $conv->profile_pic }}">
@@ -2812,34 +3283,24 @@
                             <i class="fa fa-expand"></i>
                             <i class="fa fa-compress"></i>
                         </button>
-                        <button class="wb-icon-btn" type="button" id="wb-chat-settings-btn"
-                            title="{{ __('whatsapp_more') }}" {{ isset($activeConversation) && $activeConversation ? '' : 'disabled' }}>
-                            <i class="fa fa-ellipsis-v"></i>
+                        <button class="btn btn-warning btn-sm text-white d-flex align-items-center gap-1" type="button" id="wb-contact-meta-btn" {{ isset($activeConversation) && $activeConversation ? '' : 'disabled' }} style="font-size:13px;padding:4px 10px;">
+                            <i class="fa fa-info-circle"></i>
+                            <span>{{ app()->getLocale() === 'ar' ? 'ملاحظات' : 'Notes' }}</span>
                         </button>
                     </div>
                 </div>
 
                 <div class="wb-quick-actions">
-                    <div class="wb-action-menu" id="wb-action-menu">
-                        <button class="wb-action-menu-toggle" type="button" id="wb-action-menu-toggle" aria-expanded="false"
-                            aria-controls="wb-action-menu-panel">
-                            <i class="fa fa-ellipsis-v"></i>
-                            <span>{{ __('whatsapp_conversation_options') }}</span>
-                            <i class="fa fa-angle-down"></i>
-                        </button>
-                        <div class="wb-action-menu-panel" id="wb-action-menu-panel">
-                            <button class="wb-qa-btn" type="button" id="wb-tag-btn"><i class="fa fa-tag"></i>
-                                {{ __('whatsapp_tag') }}</button>
-                            <button class="wb-qa-btn" type="button" id="wb-note-btn"><i class="fa fa-sticky-note"></i>
-                                {{ __('whatsapp_note') }}</button>
-                            <button class="wb-qa-btn" type="button" id="wb-resolve-btn"><i class="fa fa-check-circle"></i>
-                                {{ __('whatsapp_resolve') }}</button>
-                            @if($snoozeUiEnabled)
-                                <button class="wb-qa-btn" type="button" disabled><i class="fa fa-clock-o"></i>
-                                    {{ __('whatsapp_snooze') }}</button>
-                            @endif
-                        </div>
-                    </div>
+                    <button class="wb-qa-btn" type="button" id="wb-tag-btn"><i class="fa fa-tag"></i>
+                        {{ __('whatsapp_tag') }}</button>
+                    <button class="wb-qa-btn" type="button" id="wb-note-btn"><i class="fa fa-sticky-note"></i>
+                        {{ __('whatsapp_note') }}</button>
+                    <button class="wb-qa-btn" type="button" id="wb-resolve-btn"><i class="fa fa-check-circle"></i>
+                        {{ __('whatsapp_resolve') }}</button>
+                    @if($snoozeUiEnabled)
+                        <button class="wb-qa-btn" type="button" disabled><i class="fa fa-clock-o"></i>
+                            {{ __('whatsapp_snooze') }}</button>
+                    @endif
                     @php
                         $initConvStatus = (isset($activeConversation) && $activeConversation) ? ($activeConversation->status ?? 'open') : null;
                         $initStatusResolved = $initConvStatus === 'resolved';
@@ -2859,6 +3320,12 @@
                         <span id="wb-tags-pills" style="display:none;"></span>
                     </div>
                 </div>
+
+                <button class="wb-contact-notes-banner" type="button" id="wb-contact-notes-banner">
+                    <i class="fa fa-sticky-note"></i>
+                    <span class="wb-contact-notes-banner-text" id="wb-contact-notes-banner-text"></span>
+                    <span class="wb-contact-notes-banner-count" id="wb-contact-notes-banner-count" style="display:none;"></span>
+                </button>
 
                 <div class="wb-messages">
                     @if(isset($activeConversation) && $activeConversation)
@@ -2917,9 +3384,17 @@
                                             <img class="wb-media-img" src="{{ $mediaContentUrl }}" loading="lazy" alt="Image">
                                         @endif
                                         @if($messageType === 'video' && $mediaContentUrl)
-                                            <video class="wb-media-video" controls preload="metadata" playsinline>
-                                                <source src="{{ $mediaContentUrl }}">
-                                            </video>
+                                            @php($hasVideoFile = (bool) data_get($msg->raw, 'local_public_path') || !data_get($msg->raw, 'seeded'))
+                                            @if($hasVideoFile)
+                                                <video class="wb-media-video" controls preload="metadata" playsinline>
+                                                    <source src="{{ $mediaContentUrl }}">
+                                                </video>
+                                            @else
+                                                <div class="wb-video-placeholder">
+                                                    <i class="fa fa-film"></i>
+                                                    <span>{{ app()->getLocale() === 'ar' ? 'فيديو' : 'Video' }}</span>
+                                                </div>
+                                            @endif
                                         @endif
                                         @if($messageType === 'audio' && $mediaContentUrl)
                                             <div class="wb-audio-row">
@@ -3224,7 +3699,66 @@
                 </div>
             </div>
         </div>
+
+        <div class="wb-contact-meta-panel" id="wb-contact-meta-panel" aria-hidden="true">
+            <div class="wb-contact-meta-backdrop" id="wb-contact-meta-backdrop"></div>
+            <div class="wb-contact-meta-card" role="dialog" aria-modal="true">
+                <div class="wb-contact-meta-header">
+                    <div class="wb-contact-meta-title">
+                        <i class="fa fa-user"></i>
+                        <span>{{ app()->getLocale() === 'ar' ? 'بيانات العميل' : 'Customer info' }}</span>
+                    </div>
+                    <button class="wb-icon-btn" type="button" id="wb-contact-meta-close" title="{{ __('close') }}">
+                        <i class="fa fa-times"></i>
+                    </button>
+                </div>
+                <div class="wb-contact-meta-body">
+                    <div class="wb-customer-snapshot" id="wb-contact-meta-snapshot">
+                        <div class="wb-empty">{{ __('whatsapp_loading') }}</div>
+                    </div>
+                    <div class="wb-settings-section-divider"></div>
+                    <div class="wb-notes-section">
+                        <div class="wb-notes-section-head">
+                            <div class="wb-notes-section-title">
+                                <i class="fa fa-sticky-note"></i>
+                                <span>{{ app()->getLocale() === 'ar' ? 'ملاحظات' : 'Notes' }}</span>
+                            </div>
+                            <span class="wb-notes-section-count" id="wb-contact-notes-count">0</span>
+                        </div>
+                        <textarea class="wb-textarea" id="wb-contact-note-body"
+                            placeholder="{{ app()->getLocale() === 'ar' ? 'أضف ملاحظة على العميل...' : 'Add a note about this customer...' }}"
+                            {{ isset($activeContact) && $activeContact ? '' : 'disabled' }}></textarea>
+                        <div class="wb-form-row" style="margin-top: 8px;">
+                            <button class="wb-primary" type="button" id="wb-contact-note-save"
+                                {{ isset($activeContact) && $activeContact ? '' : 'disabled' }}>
+                                {{ app()->getLocale() === 'ar' ? 'حفظ الملاحظة' : 'Save note' }}
+                            </button>
+                        </div>
+                        <div class="wb-contact-notes-list" id="wb-contact-notes-list" style="margin-top: 10px;">
+                            <div class="wb-empty">{{ app()->getLocale() === 'ar' ? 'لا توجد ملاحظات' : 'No notes yet' }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="wb-contact-notes-modal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header bg-warning text-white">
+                        <h5 class="modal-title"><i class="fa fa-info-circle me-2"></i>{{ app()->getLocale() === 'ar' ? 'ملاحظات العميل' : 'Customer Notes' }}</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body" id="wb-contact-notes-modal-body">
+                        <div class="text-muted text-center">{{ app()->getLocale() === 'ar' ? 'لا توجد ملاحظات' : 'No notes' }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+    @include('crm.partials.help-modal', [
+        'title' => __('crm_help_inbox_title'),
+        'description' => __('crm_help_inbox_desc'),
+    ])
 @endsection
 
 @section('js')
@@ -3324,7 +3858,6 @@
             function setConversationControlsEnabled(enabled) {
                 [
                     'wb-message-search-btn',
-                    'wb-chat-settings-btn',
                     'wb-composer-tools-btn',
                     'wb-attach-btn',
                     'wb-qr-btn',
@@ -3402,6 +3935,10 @@
 
                 activeConversationId = nextId;
                 root.dataset.activeConversationId = String(nextId);
+                ['wb-tag-btn', 'wb-note-btn', 'wb-resolve-btn'].forEach(function (id) {
+                    const el = document.getElementById(id);
+                    if (el) el.removeAttribute('disabled');
+                });
                 metaCache = null;
                 messagesCache = [];
                 messagesSignature = '';
@@ -3423,6 +3960,11 @@
                     element.style.display = 'none';
                     element.innerHTML = '';
                 });
+                const notesBanner = document.getElementById('wb-contact-notes-banner');
+                if (notesBanner) {
+                    notesBanner.classList.remove('is-visible');
+                    notesBanner.setAttribute('aria-hidden', 'true');
+                }
 
                 renderConversations(conversationsCache, $('#wb-chat-search').val());
                 if (pushHistory && chatIndexUrl && window.history && typeof window.history.pushState === 'function') {
@@ -5449,6 +5991,44 @@
                         tagsWrap.innerHTML = html;
                     }
                 }
+
+                const notesBanner = document.getElementById('wb-contact-notes-banner');
+                const notesBannerText = document.getElementById('wb-contact-notes-banner-text');
+                const notesBannerCount = document.getElementById('wb-contact-notes-banner-count');
+                if (notesBanner) {
+                    const contactNotes = meta && Array.isArray(meta.contact_notes) ? meta.contact_notes : [];
+                    if (contactNotes.length === 0) {
+                        notesBanner.classList.remove('is-visible');
+                        notesBanner.setAttribute('aria-hidden', 'true');
+                        if (notesBannerText) notesBannerText.textContent = '';
+                        if (notesBannerCount) {
+                            notesBannerCount.textContent = '';
+                            notesBannerCount.style.display = 'none';
+                        }
+                    } else {
+                        const firstNote = contactNotes[0] && contactNotes[0].note ? String(contactNotes[0].note) : '';
+                        const label = currentLocale.indexOf('ar') === 0 ? 'ملاحظات العميل' : 'Customer notes';
+                        if (notesBannerText) notesBannerText.textContent = label + (firstNote ? ': ' + firstNote : '');
+                        if (notesBannerCount) {
+                            notesBannerCount.textContent = String(contactNotes.length);
+                            notesBannerCount.style.display = contactNotes.length > 1 ? 'inline-flex' : 'none';
+                        }
+                        notesBanner.classList.add('is-visible');
+                        notesBanner.setAttribute('aria-hidden', 'false');
+                    }
+                }
+
+                const metaBtnEl = document.getElementById('wb-contact-meta-btn');
+                if (metaBtnEl) {
+                    const contactNotes = meta && Array.isArray(meta.contact_notes) ? meta.contact_notes : [];
+                    if (contactNotes.length === 0) {
+                        metaBtnEl.setAttribute('disabled', 'disabled');
+                        metaBtnEl.style.opacity = '0.4';
+                    } else {
+                        metaBtnEl.removeAttribute('disabled');
+                        metaBtnEl.style.opacity = '1';
+                    }
+                }
             }
 
             function renderMessageSearchResults(items, query) {
@@ -5864,9 +6444,11 @@
                     const style = color ? ' style="background:' + escapeHtml(color) + '22;border-color:' + escapeHtml(color) + '55;"' : '';
                     html += '<label class="wb-contact-item" style="cursor:pointer;"' + style + '>';
                     html += '<input type="checkbox" class="wb-tag-check" value="' + escapeHtml(id) + '"' + checked + ' style="width:18px;height:18px;">';
-                    html += '<div class="wb-contact-main">';
+                    html += '<div class="wb-contact-main" style="display:flex;align-items:center;gap:8px;">';
+                    if (color) {
+                        html += '<span style="width:12px;height:12px;border-radius:50%;background:' + escapeHtml(color) + ';flex-shrink:0;display:inline-block;"></span>';
+                    }
                     html += '<div class="wb-contact-name">' + escapeHtml(name) + '</div>';
-                    html += '<div class="wb-contact-phone">' + escapeHtml(color) + '</div>';
                     html += '</div>';
                     html += '</label>';
                 });
@@ -5880,7 +6462,9 @@
                 return $.ajax({
                     url: url,
                     type: 'PUT',
-                    data: { tag_ids: ids }
+                    contentType: 'application/json',
+                    data: JSON.stringify({ tag_ids: ids }),
+                    headers: { 'X-CSRF-TOKEN': csrfToken, 'Accept': 'application/json' },
                 });
             }
 
@@ -5912,8 +6496,12 @@
                         loadConversations();
                         setModalOpenById('wb-tags-modal', false);
                     })
-                    .fail(function () {
-                        showInfoDialog(currentLocale.indexOf('ar') === 0 ? 'لا تملك الصلاحية لتعديل وسوم المحادثة.' : 'You do not have permission to update chat tags.');
+                    .fail(function (xhr) {
+                        const json = xhr && xhr.responseJSON ? xhr.responseJSON : {};
+                        const errors = json.errors ? Object.values(json.errors) : [];
+                        const firstError = errors.length && errors[0] && errors[0][0] ? errors[0][0] : null;
+                        const msg = firstError || json.message || (currentLocale.indexOf('ar') === 0 ? 'حدث خطأ أثناء حفظ الوسوم.' : 'An error occurred while saving tags.');
+                        if (window.errorToster) { errorToster(msg); } else { showInfoDialog(msg); }
                     });
             }
 
@@ -6156,6 +6744,53 @@
                 });
             }
 
+            function bindContactNotesBanner() {
+                const banner = document.getElementById('wb-contact-notes-banner');
+                const panel = document.getElementById('wb-contact-meta-panel');
+                if (!banner || !panel) return;
+
+                banner.addEventListener('click', function () {
+                    if (!activeConversationId) return;
+                    setModalOpenById('wb-contact-meta-panel', true);
+                });
+
+                const metaBtn = document.getElementById('wb-contact-meta-btn');
+                if (metaBtn) {
+                    metaBtn.addEventListener('click', function () {
+                        if (!activeConversationId) return;
+                        const notes = metaCache && Array.isArray(metaCache.contact_notes) ? metaCache.contact_notes : [];
+                        if (notes.length === 0) return;
+                        const modalBody = document.getElementById('wb-contact-notes-modal-body');
+                        if (modalBody) {
+                            modalBody.innerHTML = notes.map(function (n) {
+                                const noteText = n.note ? String(n.note) : '';
+                                const dateStr = n.created_at ? String(n.created_at).substring(0, 10) : '';
+                                return '<div class="border rounded p-3 mb-2"><p class="mb-1">' + escapeHtml(noteText) + '</p>'
+                                    + (dateStr ? '<small class="text-muted">' + escapeHtml(dateStr) + '</small>' : '') + '</div>';
+                            }).join('');
+                        }
+                        const modalEl = document.getElementById('wb-contact-notes-modal');
+                        if (modalEl && window.bootstrap) {
+                            const bsModal = bootstrap.Modal.getOrCreateInstance(modalEl);
+                            bsModal.show();
+                        }
+                    });
+                }
+
+                const closeBtn = document.getElementById('wb-contact-meta-close');
+                const backdrop = document.getElementById('wb-contact-meta-backdrop');
+                if (closeBtn) {
+                    closeBtn.addEventListener('click', function () {
+                        setModalOpenById('wb-contact-meta-panel', false);
+                    });
+                }
+                if (backdrop) {
+                    backdrop.addEventListener('click', function () {
+                        setModalOpenById('wb-contact-meta-panel', false);
+                    });
+                }
+            }
+
             setTimeout(function () {
                 bindSearch();
                 bindConversationSelection();
@@ -6178,6 +6813,7 @@
                 bindTagPills();
                 bindGlobalAudioPlayer();
                 bindMessageActions();
+                bindContactNotesBanner();
 
                 // Prevent the mobile keyboard from popping up and covering the chat on
                 // load. `pageshow` also fires on a back/forward-cache (bfcache) restore —

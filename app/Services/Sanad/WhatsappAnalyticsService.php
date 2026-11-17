@@ -145,7 +145,7 @@ class WhatsappAnalyticsService extends MainService
             $monthStart = $start->copy()->addMonths($i)->startOfMonth();
             $monthEnd = $monthStart->copy()->endOfMonth();
 
-            $labels[] = $monthStart->format('M Y');
+            $labels[] = $monthStart->locale(app()->getLocale())->isoFormat('MMM YYYY');
             $counts[] = $this->conversation->query()
                 ->where('crm_user_id', $userId)
                 ->whereBetween('created_at', [$monthStart, $monthEnd])

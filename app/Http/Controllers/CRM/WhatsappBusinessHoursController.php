@@ -15,9 +15,12 @@ class WhatsappBusinessHoursController extends Controller
     {
         $user = Auth::guard('crm')->user();
 
+        $bh = $service->getForUser($user);
+
         return view('crm.whatsapp.business_hours', [
             'pageTitle' => __('whatsapp_business_hours'),
-            'businessHoursSettings' => $service->getForUser($user),
+            'businessHours' => $bh,
+            'businessHoursSettings' => $bh,
         ]);
     }
 

@@ -3,12 +3,13 @@
 @section('page-title', $pageTitle)
 
 @section('style')
+    <link rel="stylesheet" href="{{ asset('admin/assets/cssbundle/dataTables.min.css') }}">
     <style>
         .wa-contact-tag {
             display: inline-block;
             padding: 2px 8px;
             border-radius: 999px;
-            background: rgba(0, 0, 0, 0.06);
+            background: rgba(45, 113, 240, 0.08);
             font-size: 11px;
             font-weight: 700;
             margin: 0 2px 2px 0;
@@ -19,7 +20,7 @@
             height: 38px;
             border-radius: 50%;
             object-fit: cover;
-            background: #f1f3f5;
+            background: rgba(45, 113, 240, 0.1);
         }
 
         .wa-history-item {
@@ -63,17 +64,14 @@
                     <button type="button" class="btn btn-primary" id="wa-add-contact">
                         <i class="fa fa-plus"></i> {{ __('whatsapp_add_contact') }}
                     </button>
-                    <button type="button" class="btn btn-outline-primary" id="wa-import-open">
-                        <i class="fa fa-upload"></i> {{ __('whatsapp_import') }}
-                    </button>
-                    <button type="button" class="btn btn-outline-secondary" id="wa-manage-tags">
+<button type="button" class="btn btn-outline-secondary" id="wa-manage-tags">
                         <i class="fa fa-tags"></i> {{ __('whatsapp_manage_tags') }}
                     </button>
                 </div>
             </div>
 
             <div class="col-12">
-                <div class="card shadow-sm border-0">
+                <div class="card mb-3">
                     <div class="card-body py-2">
                         <div class="row g-2 align-items-end">
                             <div class="col-12 col-md-5">
@@ -104,12 +102,13 @@
             </div>
 
             <div class="col-12">
-                <div class="card shadow-sm border-0">
-                    <div class="table-responsive">
-                        <table class="table table-hover align-middle mb-0">
-                            <thead class="table-light">
-                                <tr>
-                                    <th>{{ __('name') }}</th>
+                <div class="card mb-3">
+                    <div class="card-body table-border-style">
+                        <div class="table-responsive">
+                            <table id="dataTableObject" class="table display dataTable table-hover" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>{{ __('name') }}</th>
                                     <th>{{ __('whatsapp_number') }}</th>
                                     <th>{{ __('email') }}</th>
                                     <th>{{ __('whatsapp_source') }}</th>
@@ -121,8 +120,9 @@
                                 <tr>
                                     <td colspan="6" class="text-center text-muted">{{ __('whatsapp_loading') }}</td>
                                 </tr>
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                     <div class="card-body d-flex justify-content-between align-items-center">
                         <small class="text-muted" id="wa-page-info"></small>
@@ -283,9 +283,14 @@
             </div>
         </div>
     </div>
+    @include('crm.partials.help-modal', [
+        'title' => __('crm_help_contacts_title'),
+        'description' => __('crm_help_contacts_desc'),
+    ])
 @endsection
 
 @section('js')
+    <script src="{{ asset('admin/assets/js/bundle/dataTables.bundle.js') }}"></script>
     <script>
         (function () {
             const root = document.getElementById('whatsapp-contacts-root');
@@ -418,10 +423,10 @@
                             <td>${renderTags(contact.tags)}</td>
                             <td>
                                 <div class="d-flex flex-wrap gap-1">
-                                    <button type="button" class="btn btn-sm btn-outline-primary" data-action="view" data-id="${contact.id}">{{ __('whatsapp_view') }}</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary" data-action="edit" data-id="${contact.id}">{{ __('edit') }}</button>
-                                    <button type="button" class="btn btn-sm btn-outline-info" data-action="tags" data-id="${contact.id}">{{ __('whatsapp_tag_assign') }}</button>
-                                    <button type="button" class="btn btn-sm btn-outline-danger" data-action="delete" data-id="${contact.id}">{{ __('delete') }}</button>
+                                    <button type="button" class="btn btn-sm btn-secondary" data-action="view" data-id="${contact.id}" title="{{ __('whatsapp_view') }}"><i class="fas fa-eye"></i></button>
+                                    <button type="button" class="btn btn-sm btn-primary" data-action="edit" data-id="${contact.id}" title="{{ __('edit') }}"><i class="fas fa-pen"></i></button>
+                                    <button type="button" class="btn btn-sm btn-info" data-action="tags" data-id="${contact.id}" title="{{ __('whatsapp_tag_assign') }}"><i class="fas fa-tags"></i></button>
+                                    <button type="button" class="btn btn-sm btn-danger" data-action="delete" data-id="${contact.id}" title="{{ __('delete') }}"><i class="fas fa-trash"></i></button>
                                 </div>
                             </td>
                         </tr>
@@ -684,7 +689,7 @@
                                     <td>${escapeHtml(tag.name)}</td>
                                     <td>${Number(tag.contacts_count || 0)}</td>
                                     <td>
-                                        <button type="button" class="btn btn-sm btn-outline-danger" data-tag-delete="${tag.id}">{{ __('delete') }}</button>
+                                        <button type="button" class="btn btn-sm btn-danger" data-tag-delete="${tag.id}" title="{{ __('delete') }}"><i class="fas fa-trash"></i></button>
                                     </td>
                                 </tr>
                             `).join('')

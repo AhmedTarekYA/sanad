@@ -3,6 +3,38 @@
 @section('page-title', $pageTitle)
 
 @section('content')
+
+    <div class="col-12 mt-4">
+        <div class="card border-0 overflow-hidden" style="background: linear-gradient(135deg, #1a56db 0%, #2D71F0 50%, #0ea5e9 100%); box-shadow: 0 8px 32px rgba(45,113,240,0.25);">
+            <div class="card-body p-0">
+                <div class="row g-0 align-items-center">
+                    <div class="col-md-3 d-flex align-items-center justify-content-center p-4">
+                        <img src="{{ asset('admin/assets/img/think.png') }}" alt="support"
+                             style="max-height: 150px; max-width: 150px; object-fit: contain; filter: drop-shadow(0 4px 16px rgba(0,0,0,0.2));">
+                    </div>
+                    <div class="col-md-9 p-4 p-md-5">
+                        <h5 class="fw-bold mb-2 text-white">تواجه صعوبة في الربط؟</h5>
+                        <p class="mb-4" style="color:rgba(255,255,255,0.85); font-size:15px;">تواصل مع فريق الدعم وسنساعدك في ربط حسابك بخطوات بسيطة وسريعة.</p>
+                        <div class="d-flex flex-wrap gap-3">
+                            <a href="https://wa.me/201099977904" target="_blank" rel="noopener"
+                               class="btn fw-bold d-flex align-items-center gap-2"
+                               style="background:#25D366;color:#fff;border-radius:10px;font-size:15px;padding:10px 20px;box-shadow:0 4px 14px rgba(0,0,0,0.2);">
+                                <i class="fab fa-whatsapp" style="font-size:20px;"></i>
+                                +201099977904
+                            </a>
+                            <a href="{{ route('crm.whatsapp_setup') }}"
+                               class="btn fw-bold d-flex align-items-center gap-2"
+                               style="background:rgba(255,255,255,0.15);color:#fff;border:1.5px solid rgba(255,255,255,0.4);border-radius:10px;font-size:15px;padding:10px 20px;backdrop-filter:blur(4px);">
+                                <i class="ti ti-plug" style="font-size:18px;"></i>
+                                كيفية الربط
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     @php
         $hasAccounts = isset($whatsapp_settings) && $whatsapp_settings->count() > 0;
 
@@ -35,6 +67,7 @@
         $accountLabels = json_encode([
             'account' => __('whatsapp_account'),
             'accountName' => __('whatsapp_account_name'),
+            'namePlaceholder' => __('whatsapp_placeholder_name'),
             'active' => __('is_active'),
             'remove' => __('remove'),
             'addAccount' => __('whatsapp_add_account'),
@@ -69,10 +102,11 @@
 
         <div class="col-12" id="whatsapp-accounts-list">
             @foreach($accounts as $index => $account)
-                <div class="card shadow-sm border-0 mb-3" data-account-item data-index="{{ $index }}"
+                <div class="card mb-3" style="border: 1px solid rgba(0,0,0,0.08); border-radius: 12px; overflow: hidden;" data-account-item data-index="{{ $index }}"
                      @if($account['id']) data-delete-url="{{ route('crm.whatsapp_business_settings.destroy', $account['id']) }}" @endif>
                     <div class="card-header bg-light d-flex flex-wrap align-items-center justify-content-between gap-2">
                         <div class="d-flex align-items-center gap-3">
+                            <i class="fab fa-whatsapp text-success"></i>
                             <strong data-account-title>{{ $account['name'] ?: __('whatsapp_account') . ' ' . ($index + 1) }}</strong>
                             <div class="form-check mb-0">
                                 <input type="hidden" name="accounts[{{ $index }}][is_active]" value="0">
@@ -97,79 +131,66 @@
                         <div class="row g-3">
                             <div class="col-md-4">
                                 <label class="form-label">{{ __('whatsapp_account_name') }}</label>
-                                <fieldset class="form-icon-group right-icon position-relative">
-                                    <div class="form-icon position-absolute">
-                                        <i class="fa fa-tag"></i>
-                                    </div>
-                                    <input type="text" name="accounts[{{ $index }}][name]" class="form-control"
-                                           value="{{ $account['name'] }}" data-account-name-input>
-                                </fieldset>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-white"><i class="fa fa-tag text-muted"></i></span>
+                                    <input type="text" name="accounts[{{ $index }}][name]" class="form-control border-start-0"
+                                           value="{{ $account['name'] }}" data-account-name-input
+                                           placeholder="{{ __('whatsapp_placeholder_name') }}">
+                                </div>
                             </div>
 
                             <div class="col-md-4">
                                 <label class="form-label">{{ __('whatsapp_api_version') }}</label>
-                                <fieldset class="form-icon-group right-icon position-relative">
-                                    <div class="form-icon position-absolute">
-                                        <i class="fa fa-code"></i>
-                                    </div>
-                                    <input type="text" name="accounts[{{ $index }}][api_version]" class="form-control"
-                                           value="{{ $account['api_version'] }}">
-                                </fieldset>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-white"><i class="fa fa-code text-muted"></i></span>
+                                    <input type="text" name="accounts[{{ $index }}][api_version]" class="form-control border-start-0"
+                                           value="{{ $account['api_version'] }}" placeholder="v20.0">
+                                </div>
                             </div>
 
                             <div class="col-md-4">
                                 <label class="form-label">{{ __('whatsapp_phone_number_id') }}</label>
-                                <fieldset class="form-icon-group right-icon position-relative">
-                                    <div class="form-icon position-absolute">
-                                        <i class="fa fa-hashtag"></i>
-                                    </div>
-                                    <input type="text" name="accounts[{{ $index }}][phone_number_id]" class="form-control"
-                                           value="{{ $account['phone_number_id'] }}">
-                                </fieldset>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-white"><i class="fa fa-hashtag text-muted"></i></span>
+                                    <input type="text" name="accounts[{{ $index }}][phone_number_id]" class="form-control border-start-0"
+                                           value="{{ $account['phone_number_id'] }}" placeholder="123456789012345">
+                                </div>
                             </div>
 
                             <div class="col-md-4">
                                 <label class="form-label">{{ __('whatsapp_business_account_id') }}</label>
-                                <fieldset class="form-icon-group right-icon position-relative">
-                                    <div class="form-icon position-absolute">
-                                        <i class="fa fa-building"></i>
-                                    </div>
-                                    <input type="text" name="accounts[{{ $index }}][business_account_id]" class="form-control"
-                                           value="{{ $account['business_account_id'] }}">
-                                </fieldset>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-white"><i class="fa fa-building text-muted"></i></span>
+                                    <input type="text" name="accounts[{{ $index }}][business_account_id]" class="form-control border-start-0"
+                                           value="{{ $account['business_account_id'] }}" placeholder="987654321098765">
+                                </div>
                             </div>
 
                             <div class="col-md-6">
                                 <label class="form-label">{{ __('whatsapp_access_token') }}</label>
-                                <fieldset class="form-icon-group right-icon position-relative">
-                                    <div class="form-icon position-absolute">
-                                        <i class="fa fa-key"></i>
-                                    </div>
-                                    <input type="text" name="accounts[{{ $index }}][access_token]" class="form-control"
-                                           value="{{ $account['access_token'] }}">
-                                </fieldset>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-white"><i class="fa fa-key text-muted"></i></span>
+                                    <input type="text" name="accounts[{{ $index }}][access_token]" class="form-control border-start-0"
+                                           value="{{ $account['access_token'] }}" placeholder="EAABsbCS1234abcdXYZabcdef1234567890ABCDEFabcd">
+                                </div>
                             </div>
 
                             <div class="col-md-6">
                                 <label class="form-label">{{ __('whatsapp_webhook_verify_token') }}</label>
-                                <fieldset class="form-icon-group right-icon position-relative">
-                                    <div class="form-icon position-absolute">
-                                        <i class="fa fa-key"></i>
-                                    </div>
-                                    <input type="text" name="accounts[{{ $index }}][webhook_verify_token]" class="form-control"
-                                           value="{{ $account['webhook_verify_token'] }}">
-                                </fieldset>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-white"><i class="fa fa-key text-muted"></i></span>
+                                    <input type="text" name="accounts[{{ $index }}][webhook_verify_token]" class="form-control border-start-0"
+                                           value="{{ $account['webhook_verify_token'] }}" placeholder="my_secure_verify_token_2024">
+                                </div>
                             </div>
 
                             <div class="col-md-6">
                                 <label class="form-label">{{ __('whatsapp_app_secret') }}</label>
-                                <fieldset class="form-icon-group right-icon position-relative">
-                                    <div class="form-icon position-absolute">
-                                        <i class="fa fa-lock"></i>
-                                    </div>
-                                    <input type="text" name="accounts[{{ $index }}][app_secret]" class="form-control"
-                                           value="{{ $account['app_secret'] }}">
-                                </fieldset>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-white"><i class="fa fa-lock text-muted"></i></span>
+                                    <input type="text" name="accounts[{{ $index }}][app_secret]" class="form-control border-start-0"
+                                           value="{{ $account['app_secret'] }}" placeholder="a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -185,6 +206,10 @@
     <div class="modal fade" id="createModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog"></div>
     </div>
+    @include('crm.partials.help-modal', [
+        'title' => __('crm_help_business_settings_title'),
+        'description' => __('crm_help_business_settings_desc'),
+    ])
 @endsection
 
 @section('js')
@@ -211,9 +236,10 @@
 
             function cardMarkup(index) {
                 return `
-                    <div class="card shadow-sm border-0 mb-3" data-account-item data-index="${index}">
+                    <div class="card mb-3" style="border: 1px solid rgba(0,0,0,0.08); border-radius: 12px; overflow: hidden;" data-account-item data-index="${index}">
                         <div class="card-header bg-light d-flex flex-wrap align-items-center justify-content-between gap-2">
                             <div class="d-flex align-items-center gap-3">
+                                <i class="fab fa-whatsapp text-success"></i>
                                 <strong data-account-title>${labels.account} ${index + 1}</strong>
                                 <div class="form-check mb-0">
                                     <input type="hidden" name="accounts[${index}][is_active]" value="0">
@@ -237,72 +263,59 @@
                             <div class="row g-3">
                                 <div class="col-md-4">
                                     <label class="form-label">${labels.accountName}</label>
-                                    <fieldset class="form-icon-group right-icon position-relative">
-                                        <div class="form-icon position-absolute">
-                                            <i class="fa fa-tag"></i>
-                                        </div>
-                                        <input type="text" name="accounts[${index}][name]" class="form-control" value="" data-account-name-input>
-                                    </fieldset>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-white"><i class="fa fa-tag text-muted"></i></span>
+                                        <input type="text" name="accounts[${index}][name]" class="form-control border-start-0" value="" data-account-name-input
+                                       placeholder="${labels.namePlaceholder}">
+                                    </div>
                                 </div>
 
                                 <div class="col-md-4">
                                     <label class="form-label">${labels.apiVersion}</label>
-                                    <fieldset class="form-icon-group right-icon position-relative">
-                                        <div class="form-icon position-absolute">
-                                            <i class="fa fa-code"></i>
-                                        </div>
-                                        <input type="text" name="accounts[${index}][api_version]" class="form-control" value="v20.0">
-                                    </fieldset>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-white"><i class="fa fa-code text-muted"></i></span>
+                                        <input type="text" name="accounts[${index}][api_version]" class="form-control border-start-0" value="v20.0" placeholder="v20.0">
+                                    </div>
                                 </div>
 
                                 <div class="col-md-4">
                                     <label class="form-label">${labels.phoneNumberId}</label>
-                                    <fieldset class="form-icon-group right-icon position-relative">
-                                        <div class="form-icon position-absolute">
-                                            <i class="fa fa-hashtag"></i>
-                                        </div>
-                                        <input type="text" name="accounts[${index}][phone_number_id]" class="form-control" value="">
-                                    </fieldset>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-white"><i class="fa fa-hashtag text-muted"></i></span>
+                                        <input type="text" name="accounts[${index}][phone_number_id]" class="form-control border-start-0" value="" placeholder="123456789012345">
+                                    </div>
                                 </div>
 
                                 <div class="col-md-4">
                                     <label class="form-label">${labels.businessAccountId}</label>
-                                    <fieldset class="form-icon-group right-icon position-relative">
-                                        <div class="form-icon position-absolute">
-                                            <i class="fa fa-building"></i>
-                                        </div>
-                                        <input type="text" name="accounts[${index}][business_account_id]" class="form-control" value="">
-                                    </fieldset>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-white"><i class="fa fa-building text-muted"></i></span>
+                                        <input type="text" name="accounts[${index}][business_account_id]" class="form-control border-start-0" value="" placeholder="987654321098765">
+                                    </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <label class="form-label">${labels.accessToken}</label>
-                                    <fieldset class="form-icon-group right-icon position-relative">
-                                        <div class="form-icon position-absolute">
-                                            <i class="fa fa-key"></i>
-                                        </div>
-                                        <input type="text" name="accounts[${index}][access_token]" class="form-control" value="">
-                                    </fieldset>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-white"><i class="fa fa-key text-muted"></i></span>
+                                        <input type="text" name="accounts[${index}][access_token]" class="form-control border-start-0" value="" placeholder="EAABsbCS1234abcdXYZabcdef1234567890ABCDEFabcd">
+                                    </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <label class="form-label">${labels.webhookVerifyToken}</label>
-                                    <fieldset class="form-icon-group right-icon position-relative">
-                                        <div class="form-icon position-absolute">
-                                            <i class="fa fa-key"></i>
-                                        </div>
-                                        <input type="text" name="accounts[${index}][webhook_verify_token]" class="form-control" value="">
-                                    </fieldset>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-white"><i class="fa fa-key text-muted"></i></span>
+                                        <input type="text" name="accounts[${index}][webhook_verify_token]" class="form-control border-start-0" value="" placeholder="my_secure_verify_token_2024">
+                                    </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <label class="form-label">${labels.appSecret}</label>
-                                    <fieldset class="form-icon-group right-icon position-relative">
-                                        <div class="form-icon position-absolute">
-                                            <i class="fa fa-lock"></i>
-                                        </div>
-                                        <input type="text" name="accounts[${index}][app_secret]" class="form-control" value="">
-                                    </fieldset>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-white"><i class="fa fa-lock text-muted"></i></span>
+                                        <input type="text" name="accounts[${index}][app_secret]" class="form-control border-start-0" value="" placeholder="a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4">
+                                    </div>
                                 </div>
                             </div>
                         </div>

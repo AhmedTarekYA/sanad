@@ -2,6 +2,10 @@
 
 @section('page-title', $pageTitle)
 
+@section('style')
+    <link rel="stylesheet" href="{{ asset('admin/assets/cssbundle/dataTables.min.css') }}">
+@endsection
+
 @section('content')
     <div id="whatsapp-quick-replies-root"
          data-store-url="{{ route('crm.whatsapp_quick_replies.store') }}"
@@ -24,16 +28,17 @@
             </div>
 
             <div class="col-12">
-                <div class="card shadow-sm border-0">
-                    <div class="table-responsive">
-                        <table class="table table-hover align-middle mb-0">
-                            <thead class="table-light">
+                <div class="card mb-3">
+                    <div class="card-body table-border-style">
+                        <div class="table-responsive">
+                        <table id="dataTableObject" class="table display dataTable table-hover" style="width:100%">
+                            <thead>
                                 <tr>
-                                    <th style="width:60px;">#</th>
+                                    <th>#</th>
                                     <th>{{ __('whatsapp_quick_reply_title') }}</th>
-                                    <th style="width:160px;">{{ __('whatsapp_quick_reply_shortcut') }}</th>
-                                    <th style="width:110px;">{{ __('whatsapp_quick_reply_status') }}</th>
-                                    <th style="width:190px;">{{ __('actions') }}</th>
+                                    <th>{{ __('whatsapp_quick_reply_shortcut') }}</th>
+                                    <th>{{ __('whatsapp_quick_reply_status') }}</th>
+                                    <th>{{ __('actions') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -61,19 +66,21 @@
                                         </td>
                                         <td>
                                             <div class="d-flex flex-wrap gap-2">
-                                                <button type="button" class="btn btn-sm btn-outline-secondary"
+                                                <button type="button" class="btn btn-sm btn-primary"
                                                         data-action="edit"
                                                         data-id="{{ $item->id }}"
                                                         data-title="{{ $item->title }}"
                                                         data-shortcut="{{ (string) $item->shortcut }}"
                                                         data-body="{{ $item->body }}"
-                                                        data-active="{{ $item->is_active ? '1' : '0' }}">
-                                                    {{ __('edit') }}
+                                                        data-active="{{ $item->is_active ? '1' : '0' }}"
+                                                        title="{{ __('edit') }}">
+                                                    <i class="fas fa-pen"></i>
                                                 </button>
-                                                <button type="button" class="btn btn-sm btn-outline-danger"
+                                                <button type="button" class="btn btn-sm btn-danger"
                                                         data-action="delete"
-                                                        data-id="{{ $item->id }}">
-                                                    {{ __('delete') }}
+                                                        data-id="{{ $item->id }}"
+                                                        title="{{ __('delete') }}">
+                                                    <i class="fas fa-trash"></i>
                                                 </button>
                                             </div>
                                         </td>
@@ -83,6 +90,7 @@
                                 @endforelse
                             </tbody>
                         </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -127,9 +135,14 @@
             </div>
         </div>
     </div>
+    @include('crm.partials.help-modal', [
+        'title' => __('crm_help_quick_replies_title'),
+        'description' => __('crm_help_quick_replies_desc'),
+    ])
 @endsection
 
 @section('js')
+    <script src="{{ asset('admin/assets/js/bundle/dataTables.bundle.js') }}"></script>
     <script>
         (function () {
             const root = document.getElementById('whatsapp-quick-replies-root');
@@ -150,6 +163,10 @@
 
             const modalElement = document.getElementById('wa-qr-modal');
             const modal = window.bootstrap && modalElement ? new bootstrap.Modal(modalElement) : null;
+
+            if ($.fn && $.fn.DataTable) {
+                $('#dataTableObject').DataTable({ pageLength: 25 });
+            }
 
             function urlWithId(template, id) {
                 return String(template || '').replace('__ID__', encodeURIComponent(String(id)));

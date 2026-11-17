@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\CRM\CrmAuthController;
 use App\Http\Controllers\CRM\CrmDashboardController;
+use App\Http\Controllers\CRM\CrmSalesController;
+use App\Http\Controllers\CRM\CrmUsersController;
 use App\Http\Controllers\CRM\WhatsappAnalyticsController;
 use App\Http\Controllers\CRM\WhatsappBroadcastController;
 use App\Http\Controllers\CRM\WhatsappBusinessHoursController;
@@ -26,11 +28,30 @@ Route::domain(config('app.crm_domain'))->name('crm.')->middleware(SetCrmLocale::
 
     Route::middleware('guest:crm')->group(function (): void {
         Route::get('/login', [CrmAuthController::class, 'showLogin'])->name('login');
+        Route::get('/loginn', [CrmAuthController::class, 'showLoginn'])->name('loginn');
         Route::post('/login', [CrmAuthController::class, 'login'])->name('login.attempt');
     });
 
-    Route::middleware('auth:crm')->group(function (): void {
+    Route::middleware(['auth:crm', 'crmPermission'])->group(function (): void {
         Route::get('/', [CrmDashboardController::class, 'index'])->name('dashboard');
+
+        Route::middleware('crmPermission:users')->group(function (): void {
+            Route::get('/users', [CrmUsersController::class, 'index'])->name('users.index');
+            Route::get('/users/create', [CrmUsersController::class, 'create'])->name('users.create');
+            Route::post('/users', [CrmUsersController::class, 'store'])->name('users.store');
+            Route::get('/users/{id}/edit', [CrmUsersController::class, 'edit'])->name('users.edit');
+            Route::put('/users/{id}', [CrmUsersController::class, 'update'])->name('users.update');
+            Route::delete('/users/{id}', [CrmUsersController::class, 'destroy'])->name('users.destroy');
+        });
+
+        Route::middleware('crmPermission:crm_sales')->group(function (): void {
+            Route::get('/sales', [CrmSalesController::class, 'index'])->name('crm_sales.index');
+            Route::get('/sales/create', [CrmSalesController::class, 'create'])->name('crm_sales.create');
+            Route::post('/sales', [CrmSalesController::class, 'store'])->name('crm_sales.store');
+            Route::get('/sales/{id}/edit', [CrmSalesController::class, 'edit'])->name('crm_sales.edit');
+            Route::put('/sales/{id}', [CrmSalesController::class, 'update'])->name('crm_sales.update');
+            Route::delete('/sales/{id}', [CrmSalesController::class, 'destroy'])->name('crm_sales.destroy');
+        });
 
         Route::get('/whatsapp-business-settings', [WhatsappBusinessSettingController::class, 'index'])->name('whatsapp_business_settings');
         Route::post('/whatsapp-business-settings', [WhatsappBusinessSettingController::class, 'store'])->name('whatsapp_business_settings.store');
@@ -64,6 +85,9 @@ Route::domain(config('app.crm_domain'))->name('crm.')->middleware(SetCrmLocale::
         Route::get('/whatsapp-contacts/{id}', [WhatsappContactsController::class, 'show'])->name('whatsapp_contacts.show');
         Route::put('/whatsapp-contacts/{id}', [WhatsappContactsController::class, 'update'])->name('whatsapp_contacts.update');
         Route::put('/whatsapp-contacts/{id}/tags', [WhatsappContactsController::class, 'setTags'])->name('whatsapp_contacts.tags.set');
+        Route::get('/whatsapp-contacts/{id}/notes', [WhatsappContactsController::class, 'notesIndex'])->name('whatsapp_contacts.notes.index');
+        Route::put('/whatsapp-contacts/{id}/notes/{noteId}', [WhatsappContactsController::class, 'notesUpdate'])->name('whatsapp_contacts.notes.update');
+        Route::delete('/whatsapp-contacts/{id}/notes/{noteId}', [WhatsappContactsController::class, 'notesDestroy'])->name('whatsapp_contacts.notes.destroy');
         Route::delete('/whatsapp-contacts/{id}', [WhatsappContactsController::class, 'destroy'])->name('whatsapp_contacts.destroy');
         Route::get('/whatsapp-contact-tags', [WhatsappContactsController::class, 'contactTagsIndex'])->name('contact_tags.index');
         Route::post('/whatsapp-contact-tags', [WhatsappContactsController::class, 'contactTagsStore'])->name('contact_tags.store');

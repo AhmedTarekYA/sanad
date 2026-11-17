@@ -23,5 +23,9 @@ class DatabaseSeeder extends Seeder
         $this->call(WhyChooseUsSeeder::class);
         $this->call(ClientReviewSeeder::class);
         $this->call(FaqSeeder::class);
+
+        if ($this->command && $this->command->confirm('Do you want to seed CRM test data?', false)) {
+            $this->call(CrmTestDataSeeder::class);
+        }
     }
 }

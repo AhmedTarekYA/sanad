@@ -5,8 +5,8 @@
 @section('style')
     <style>
         :root {
-            --wb-green: #00a884;
-            --wb-green-dark: #008069;
+            --wb-green: #2D71F0;
+            --wb-green-dark: #1640C6;
             --wb-bg: #f0f2f5;
             --wb-border: rgba(0, 0, 0, 0.08);
         }
@@ -246,23 +246,32 @@
 @endsection
 
 @section('content')
-    <div class="wb-wrap" id="whatsapp-setup-root"
-         data-t-copied="{{ __('whatsapp_copied') }}">
-        <div class="wb-head">
-            <div class="wb-title">
-                <span class="wb-wa-badge"><i class="fa fa-plug"></i></span>
-                <span>{{ __('whatsapp_setup') }}</span>
+    <div class="wb-hero mb-4"
+         style="background: linear-gradient(135deg, #1a56db 0%, #2D71F0 50%, #0ea5e9 100%); border-radius: 18px; overflow: hidden; box-shadow: 0 12px 36px rgba(45,113,240,0.28);">
+        <div class="row g-0 align-items-center">
+            <div class="col-md-8 p-4 p-md-5">
+                <h1 class="fw-bold text-white mb-3" style="font-size: 34px; line-height: 1.3;">{{ __('whatsapp_setup') }}</h1>
+                <p class="mb-4" style="color: rgba(255,255,255,0.9); font-size: 16px; max-width: 620px; line-height: 1.8;">{{ __('whatsapp_setup_subtitle') }}</p>
+                <div class="d-flex flex-wrap gap-3">
+                    <a class="btn fw-bold d-flex align-items-center gap-2" href="{{ $metaAppsUrl }}" target="_blank" rel="noopener"
+                       style="background:#fff;color:#2D71F0;border-radius:10px;font-size:15px;padding:10px 20px;box-shadow:0 4px 14px rgba(0,0,0,0.15);">
+                        <i class="fa fa-external-link"></i> {{ __('whatsapp_open_meta_console') }}
+                    </a>
+                    <a class="btn fw-bold d-flex align-items-center gap-2" href="{{ route('crm.whatsapp_business_settings') }}"
+                       style="background:rgba(255,255,255,0.15);color:#fff;border:1.5px solid rgba(255,255,255,0.4);border-radius:10px;font-size:15px;padding:10px 20px;backdrop-filter:blur(4px);">
+                        <i class="fa fa-cog"></i> {{ __('whatsapp_open_settings') }}
+                    </a>
+                </div>
             </div>
-            <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
-                <a class="wb-secondary" href="{{ $metaAppsUrl }}" target="_blank" rel="noopener">
-                    <i class="fa fa-external-link"></i> {{ __('whatsapp_open_meta_console') }}
-                </a>
-                <a class="wb-primary" href="{{ route('crm.whatsapp_business_settings') }}">
-                    <i class="fa fa-cog"></i> {{ __('whatsapp_open_settings') }}
-                </a>
+            <div class="col-md-4 text-center p-4 p-md-5">
+                <img src="{{ asset('admin/assets/img/whats.png') }}" alt="{{ __('whatsapp_setup') }}"
+                     style="max-width: 100%; max-height: 220px; object-fit: contain; filter: drop-shadow(0 8px 22px rgba(0,0,0,0.2));">
             </div>
         </div>
+    </div>
 
+    <div class="wb-wrap" id="whatsapp-setup-root"
+         data-t-copied="{{ __('whatsapp_copied') }}">
         <div class="wb-body">
             <div class="wb-grid">
                 <div class="wb-card">
@@ -356,12 +365,15 @@
                             </div>
                         </div>
 
-                        <img class="wb-ill" src="{{ asset('admin/assets/ill.svg') }}" alt="{{ __('whatsapp_setup') }}">
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    @include('crm.partials.help-modal', [
+        'title' => __('crm_help_setup_title'),
+        'description' => __('crm_help_setup_desc'),
+    ])
 @endsection
 
 @section('js')
