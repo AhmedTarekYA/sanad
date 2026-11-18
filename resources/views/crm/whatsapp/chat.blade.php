@@ -214,12 +214,6 @@
             color: #fff;
         }
 
-        [data-pc-theme="dark"] .wb-typing {
-            background: rgba(32, 35, 47, 0.92);
-            color: rgba(255, 255, 255, 0.55);
-            border-top-color: rgba(255, 255, 255, 0.07);
-        }
-
         [data-pc-theme="dark"] .wb-composer-tools-menu,
         [data-pc-theme="dark"] .wb-composer-tool {
             background: #20232f;
@@ -822,6 +816,7 @@
         }
 
         .wb-quick-actions > #wb-note-btn {
+            position: relative;
             background: rgba(217, 155, 0, 0.1);
             color: #a66d00;
         }
@@ -829,6 +824,21 @@
         .wb-quick-actions > #wb-note-btn:hover:not(:disabled) {
             background: rgba(217, 155, 0, 0.18);
             color: #8a5900;
+        }
+
+        .wb-note-count {
+            min-width: 18px;
+            height: 18px;
+            padding: 0 5px;
+            border-radius: 9px;
+            background: #d99b00;
+            color: #fff;
+            font-size: 11px;
+            font-weight: 800;
+            line-height: 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .wb-quick-actions > #wb-resolve-btn {
@@ -1361,14 +1371,6 @@
             color: #d93025;
         }
 
-        .wb-typing {
-            padding: 8px 14px;
-            background: rgba(255, 255, 255, 0.75);
-            border-top: 1px solid var(--wb-border);
-            color: rgba(0, 0, 0, 0.6);
-            font-size: 12px;
-        }
-
         .wb-composer {
             padding: 8px 10px;
             background: #f0f2f5;
@@ -1626,6 +1628,56 @@
         .wb-composer-tool:disabled {
             opacity: 0.5;
             cursor: not-allowed;
+        }
+
+        .wb-emoji-picker {
+            position: absolute;
+            inset-inline-start: 58px;
+            bottom: 62px;
+            z-index: 55;
+            width: 272px;
+            max-height: 220px;
+            overflow-y: auto;
+            padding: 8px;
+            border: 1px solid rgba(17, 27, 33, 0.1);
+            border-radius: 10px;
+            background: #fff;
+            box-shadow: 0 18px 48px rgba(17, 27, 33, 0.2);
+            display: none;
+        }
+
+        .wb-emoji-picker.is-open {
+            display: block;
+        }
+
+        .wb-emoji-picker-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 2px;
+        }
+
+        .wb-emoji-option {
+            border: 0;
+            background: transparent;
+            font-size: 20px;
+            line-height: 1;
+            padding: 6px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .wb-emoji-option:hover {
+            background: #f5f6f6;
+        }
+
+        [data-pc-theme="dark"] .wb-emoji-picker {
+            background: #20232f;
+            border-color: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 18px 48px rgba(0, 0, 0, 0.5);
+        }
+
+        [data-pc-theme="dark"] .wb-emoji-option:hover {
+            background: #262a38;
         }
 
         .wb-composer-tool-icon {
@@ -1907,58 +1959,105 @@
 
         .wb-modal-card {
             position: relative;
-            width: min(520px, 95vw);
-            max-height: 85vh;
+            width: min(560px, 96vw);
+            max-height: 90vh;
             background: #fff;
-            border-radius: 16px;
+            border-radius: 22px;
             overflow: hidden;
-            border: 1px solid var(--wb-border);
-            box-shadow: 0 22px 70px rgba(0, 0, 0, 0.22);
+            border: 1px solid rgba(15, 23, 42, 0.06);
+            font-family: 'IBM Plex Sans Arabic', 'Thmanya', sans-serif;
+            box-shadow:
+                0 8px 22px rgba(15, 23, 42, 0.07),
+                0 24px 64px rgba(15, 23, 42, 0.16);
             display: flex;
             flex-direction: column;
         }
 
         .wb-modal-header {
-            height: 64px;
-            padding: 12px 14px;
+            height: 60px;
+            padding: 0 18px;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            gap: 12px;
             border-bottom: 1px solid var(--wb-border);
-            background: linear-gradient(180deg, rgba(0, 168, 132, 0.08), rgba(0, 168, 132, 0.02));
+            background: linear-gradient(180deg, rgba(45, 113, 240, 0.07), rgba(45, 113, 240, 0.02));
+        }
+
+        .wb-modal-header .wb-icon-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            border: 1px solid var(--wb-border);
+            background: #fff;
+            color: rgba(0, 0, 0, 0.6);
+            transition: all 0.15s ease;
+        }
+
+        .wb-modal-header .wb-icon-btn:hover {
+            color: var(--bs-primary, #2D71F0);
+            border-color: rgba(45, 113, 240, 0.35);
+            background: rgba(45, 113, 240, 0.08);
         }
 
         .wb-modal-title {
             font-weight: 800;
-            color: rgba(0, 0, 0, 0.82);
+            font-size: 16px;
+            color: rgba(0, 0, 0, 0.88);
+            letter-spacing: 0.2px;
         }
 
         .wb-modal-body {
-            padding: 12px 14px 14px;
+            padding: 18px 18px 20px;
             overflow: auto;
         }
 
         .wb-contact-list {
-            margin-top: 10px;
+            margin-top: 14px;
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 8px;
         }
 
         .wb-contact-item {
             display: flex;
             align-items: center;
             gap: 12px;
-            padding: 10px 10px;
-            border-radius: 12px;
-            border: 1px solid rgba(0, 0, 0, 0.06);
+            padding: 12px 14px;
+            border-radius: 14px;
+            border: 1px solid rgba(15, 23, 42, 0.06);
             background: #fff;
             cursor: pointer;
+            transition: all 0.15s ease;
+            box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
         }
 
         .wb-contact-item:hover {
-            border-color: rgba(0, 168, 132, 0.24);
-            background: rgba(0, 168, 132, 0.05);
+            border-color: rgba(45, 113, 240, 0.28);
+            background: rgba(45, 113, 240, 0.04);
+            transform: translateY(-1px);
+        }
+
+        .wb-contact-item.is-checked {
+            border-color: rgba(45, 113, 240, 0.45);
+            background: rgba(45, 113, 240, 0.06);
+            box-shadow: 0 0 0 3px rgba(45, 113, 240, 0.08);
+        }
+
+        .wb-contact-item .wb-tag-check {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--bs-primary, #2D71F0);
+            cursor: pointer;
+            flex: 0 0 auto;
+        }
+
+        .wb-tag-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            flex: 0 0 auto;
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.9);
         }
 
         .wb-contact-main {
@@ -3058,6 +3157,12 @@
                 width: min(230px, calc(100vw - 24px));
             }
 
+            .wb-emoji-picker {
+                inset-inline: 8px auto;
+                bottom: 58px;
+                width: min(272px, calc(100vw - 24px));
+            }
+
             .wb-customer-info-grid {
                 grid-template-columns: 1fr;
             }
@@ -4103,8 +4208,8 @@
                 <div class="wb-quick-actions">
                     <button class="wb-qa-btn" type="button" id="wb-tag-btn"><i class="fal fa-tag"></i>
                         {{ __('whatsapp_tag') }}</button>
-                    <button class="wb-qa-btn" type="button" id="wb-note-btn"><i class="fal fa-sticky-note"></i>
-                        {{ __('whatsapp_note') }}</button>
+                    <button class="wb-qa-btn" type="button" id="wb-note-btn"><i class="fal fa-circle-info"></i>
+                        <span class="wb-note-count" id="wb-note-count" style="display:none;">0</span></button>
                     <button class="wb-qa-btn" type="button" id="wb-resolve-btn"><i class="fal fa-check-circle"></i>
                         {{ __('whatsapp_resolve') }}</button>
                     @if($snoozeUiEnabled)
@@ -4293,10 +4398,6 @@
                     @endif
                 </div>
 
-                <div class="wb-typing" id="wb-typing-indicator" style="display:none;">
-                    {{ __('whatsapp_typing_now') }}
-                </div>
-
                 <div class="wb-composer">
                     <form class="wb-composer-form" method="post" action="{{ route('crm.whatsapp_chat.store') }}">
                         @csrf
@@ -4323,6 +4424,7 @@
                             </button>
                             <button class="wb-icon-btn wb-emoji-btn" type="button" id="wb-emoji-btn"
                                 title="{{ __('whatsapp_emoji') }}" aria-label="{{ __('whatsapp_emoji') }}"
+                                aria-expanded="false" aria-controls="wb-emoji-picker"
                                 {{ isset($activeConversation) && $activeConversation ? '' : 'disabled' }}>
                                 <i class="fal fa-face-smile"></i>
                             </button>
@@ -4369,6 +4471,13 @@
                             <span class="wb-composer-tool-icon is-quick"><i class="fal fa-bolt"></i></span>
                             <span>{{ __('whatsapp_quick_replies') }}</span>
                         </button>
+                    </div>
+                    <div class="wb-emoji-picker" id="wb-emoji-picker" aria-hidden="true">
+                        <div class="wb-emoji-picker-grid">
+                            @foreach (['😀','😁','😂','🤣','😊','😍','😘','😜','🤔','😎','😢','😭','😡','😱','😴','🙄','🤗','🤝','👍','👎','👏','🙏','💪','👌','✌️','🤞','👋','💯','🔥','✨','🎉','❤️','🧡','💛','💚','💙','💜','🖤','🤍','💔','😇','🤩','😏','😅','😳','🥳','😤','🙂','🤤'] as $emoji)
+                                <button class="wb-emoji-option" type="button">{{ $emoji }}</button>
+                            @endforeach
+                        </div>
                     </div>
                     <div class="wb-qr-panel" id="wb-qr-panel" style="display:none;">
                         <div class="wb-qr-head">
@@ -4443,7 +4552,7 @@
             <div class="wb-modal-backdrop" id="wb-notes-backdrop"></div>
             <div class="wb-modal-card" role="dialog" aria-modal="true">
                 <div class="wb-modal-header">
-                    <div class="wb-modal-title">{{ __('whatsapp_internal_note') }}</div>
+                    <div class="wb-modal-title">{{ app()->getLocale() === 'ar' ? 'ملاحظات المحادثة' : 'Conversation Notes' }}</div>
                     <button class="wb-icon-btn" type="button" id="wb-notes-close" title="{{ __('close') }}">
                         <i class="fal fa-times"></i>
                     </button>
@@ -4454,7 +4563,7 @@
                     <div class="wb-form-row" style="margin-top: 10px;">
                         <button class="wb-primary" type="button" id="wb-add-note-btn">{{ app()->getLocale() === 'ar' ? 'حفظ الملاحظة' : 'Save note' }}</button>
                     </div>
-                    <div style="margin-top: 12px; font-weight: 800; color: rgba(0,0,0,0.7);">{{ app()->getLocale() === 'ar' ? 'آخر الملاحظات' : 'Recent notes' }}</div>
+                    <div style="margin-top: 12px; font-weight: 800; color: rgba(0,0,0,0.7);">{{ app()->getLocale() === 'ar' ? 'كل الملاحظات' : 'All notes' }}</div>
                     <div class="wb-contact-list" id="wb-notes-list" style="margin-top: 10px;">
                         <div class="wb-empty">{{ app()->getLocale() === 'ar' ? 'لا توجد ملاحظات' : 'No notes yet' }}</div>
                     </div>
@@ -4750,7 +4859,7 @@
 
                 activeConversationId = nextId;
                 root.dataset.activeConversationId = String(nextId);
-                ['wb-tag-btn', 'wb-note-btn', 'wb-resolve-btn'].forEach(function (id) {
+                ['wb-tag-btn', 'wb-note-btn', 'wb-resolve-btn', 'wb-emoji-btn', 'wb-ai-suggest-btn'].forEach(function (id) {
                     const el = document.getElementById(id);
                     if (el) el.removeAttribute('disabled');
                 });
@@ -5675,25 +5784,6 @@
                 });
             }
 
-            function bindTypingIndicator() {
-                const input = document.getElementById('wb-composer-input');
-                const typing = document.getElementById('wb-typing-indicator');
-                if (!input || !typing) return;
-
-                let t = null;
-                input.addEventListener('input', function () {
-                    if (!input.value || !input.value.trim()) {
-                        typing.style.display = 'none';
-                        return;
-                    }
-                    typing.style.display = 'block';
-                    if (t) clearTimeout(t);
-                    t = setTimeout(function () {
-                        typing.style.display = 'none';
-                    }, 900);
-                });
-            }
-
             function openQuickRepliesPanel() {
                 const panel = document.getElementById('wb-qr-panel');
                 if (!panel) return;
@@ -6226,14 +6316,42 @@
 
             function bindComposerEmoji() {
                 const emojiBtn = document.getElementById('wb-emoji-btn');
+                const picker = document.getElementById('wb-emoji-picker');
                 const input = document.getElementById('wb-composer-input');
-                if (!emojiBtn || !input) return;
+                if (!emojiBtn || !picker || !input) return;
+
+                function setOpen(open) {
+                    picker.classList.toggle('is-open', open);
+                    picker.setAttribute('aria-hidden', open ? 'false' : 'true');
+                    emojiBtn.classList.toggle('is-open', open);
+                    emojiBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+                }
+
                 emojiBtn.addEventListener('click', function (event) {
                     event.preventDefault();
-                    if (input.disabled) return;
-                    input.value = (input.value || '') + '😊';
+                    event.stopPropagation();
+                    if (emojiBtn.disabled) return;
+                    setOpen(!picker.classList.contains('is-open'));
+                });
+
+                picker.addEventListener('click', function (event) {
+                    const option = event.target && event.target.closest ? event.target.closest('.wb-emoji-option') : null;
+                    if (!option || input.disabled) return;
+                    input.value = (input.value || '') + option.textContent.trim();
                     input.focus();
                     input.dispatchEvent(new Event('input', { bubbles: true }));
+                });
+
+                document.addEventListener('click', function (event) {
+                    if (!picker.classList.contains('is-open')) return;
+                    const inside = event.target && event.target.closest
+                        ? event.target.closest('#wb-emoji-btn, #wb-emoji-picker')
+                        : null;
+                    if (!inside) setOpen(false);
+                });
+
+                document.addEventListener('keydown', function (event) {
+                    if (event.key === 'Escape') setOpen(false);
                 });
             }
 
@@ -6984,6 +7102,26 @@
                     }
                 }
 
+                const noteBtnEl = document.getElementById('wb-note-btn');
+                const noteCountEl = document.getElementById('wb-note-count');
+                const conversationNotes = meta && Array.isArray(meta.notes) ? meta.notes : [];
+                if (noteBtnEl) {
+                    if (meta && meta.conversation) {
+                        noteBtnEl.removeAttribute('disabled');
+                    } else {
+                        noteBtnEl.setAttribute('disabled', 'disabled');
+                    }
+                }
+                if (noteCountEl) {
+                    if (conversationNotes.length > 0) {
+                        noteCountEl.textContent = String(conversationNotes.length);
+                        noteCountEl.style.display = 'inline-flex';
+                    } else {
+                        noteCountEl.textContent = '';
+                        noteCountEl.style.display = 'none';
+                    }
+                }
+
                 const metaBtnEl = document.getElementById('wb-contact-meta-btn');
                 if (metaBtnEl) {
                     const contactNotes = meta && Array.isArray(meta.contact_notes) ? meta.contact_notes : [];
@@ -7609,7 +7747,6 @@
                 bindConversationsPagination();
                 bindMessagesPagination();
                 bindConversationTabs();
-                bindTypingIndicator();
                 bindComposerSubmit();
                 bindReplyBar();
                 bindComposerTools();

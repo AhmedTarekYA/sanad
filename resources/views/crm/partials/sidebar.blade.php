@@ -324,37 +324,9 @@
         display: none;
     }
 
-    /* Expanded state: overlays content, sibling offsets stay at 94px. Layout stays
-       vertical (icon over label); only width + label visibility change. */
-    .pc-sidebar.wb-crm-compact:not(.pc-sidebar-hide):hover,
-    .pc-sidebar.wb-crm-compact:not(.pc-sidebar-hide):focus-within {
-        width: 158px;
-        box-shadow: 0 18px 46px rgba(16, 35, 70, .3);
-    }
-    .pc-sidebar.wb-crm-compact:not(.pc-sidebar-hide):hover .navbar-wrapper,
-    .pc-sidebar.wb-crm-compact:not(.pc-sidebar-hide):hover .navbar-content,
-    .pc-sidebar.wb-crm-compact:not(.pc-sidebar-hide):hover .m-header,
-    .pc-sidebar.wb-crm-compact:not(.pc-sidebar-hide):focus-within .navbar-wrapper,
-    .pc-sidebar.wb-crm-compact:not(.pc-sidebar-hide):focus-within .navbar-content,
-    .pc-sidebar.wb-crm-compact:not(.pc-sidebar-hide):focus-within .m-header {
-        width: 158px;
-    }
-    .pc-sidebar.wb-crm-compact:not(.pc-sidebar-hide):hover .pc-navbar,
-    .pc-sidebar.wb-crm-compact:not(.pc-sidebar-hide):focus-within .pc-navbar {
-        padding-inline: 10px;
-    }
-    .pc-sidebar.wb-crm-compact:not(.pc-sidebar-hide):hover .pc-caption,
-    .pc-sidebar.wb-crm-compact:not(.pc-sidebar-hide):focus-within .pc-caption {
-        display: block;
-    }
-    .pc-sidebar.wb-crm-compact:not(.pc-sidebar-hide):hover .pc-mtext,
-    .pc-sidebar.wb-crm-compact:not(.pc-sidebar-hide):focus-within .pc-mtext {
-        display: block;
-    }
-    .pc-sidebar.wb-crm-compact:not(.pc-sidebar-hide):hover .wb-crm-sidebar-handle i,
-    .pc-sidebar.wb-crm-compact:not(.pc-sidebar-hide):focus-within .wb-crm-sidebar-handle i {
-        transform: rotate(180deg);
-    }
+    /* No hover-preview: the rail only expands via an explicit click/drag on the
+       handle (setPinned). This keeps the handle's position stable under the
+       cursor and guarantees content is always pushed, never overlaid. */
 
     .pc-sidebar.wb-crm-compact:not(.pc-sidebar-hide) ~ .pc-container,
     .pc-sidebar.wb-crm-compact:not(.pc-sidebar-hide) ~ .pc-footer {
@@ -392,66 +364,69 @@
         right: 0;
     }
 
-    /* Pinned (normal) mode: always expanded, hover behaviour disabled */
+    /* Pinned (normal) mode: always expanded, hover behaviour disabled.
+       !important is required here to beat the base .wb-crm-compact width
+       rule above, which otherwise wins despite lower specificity (same
+       pattern already used elsewhere in this file to beat shared CSS). */
     .pc-sidebar.wb-crm-compact.wb-crm-pinned,
     .pc-sidebar.wb-crm-compact.wb-crm-pinned:not(.pc-sidebar-hide):hover,
     .pc-sidebar.wb-crm-compact.wb-crm-pinned:not(.pc-sidebar-hide):focus-within {
-        width: 158px;
+        width: 158px !important;
         box-shadow: none;
     }
     .pc-sidebar.wb-crm-compact.wb-crm-pinned .navbar-wrapper,
     .pc-sidebar.wb-crm-compact.wb-crm-pinned .navbar-content,
     .pc-sidebar.wb-crm-compact.wb-crm-pinned .m-header {
-        width: 158px;
+        width: 158px !important;
     }
     .pc-sidebar.wb-crm-compact.wb-crm-pinned .pc-navbar {
-        padding-inline: 10px;
+        padding-inline: 10px !important;
     }
     .pc-sidebar.wb-crm-compact.wb-crm-pinned .pc-caption {
-        display: block;
+        display: block !important;
     }
     .pc-sidebar.wb-crm-compact.wb-crm-pinned .pc-mtext {
-        display: block;
+        display: block !important;
     }
     .pc-sidebar.wb-crm-compact.wb-crm-pinned .wb-crm-sidebar-handle i {
         transform: rotate(180deg);
     }
     .pc-sidebar.wb-crm-compact.wb-crm-pinned ~ .pc-container,
     .pc-sidebar.wb-crm-compact.wb-crm-pinned ~ .pc-footer {
-        margin-left: 158px;
+        margin-left: 158px !important;
     }
     .pc-sidebar.wb-crm-compact.wb-crm-pinned ~ .pc-header {
-        left: 158px;
+        left: 158px !important;
     }
     [data-pc-direction="rtl"] .pc-sidebar.wb-crm-compact.wb-crm-pinned ~ .pc-container,
     [data-pc-direction="rtl"] .pc-sidebar.wb-crm-compact.wb-crm-pinned ~ .pc-footer {
-        margin-left: 0;
-        margin-right: 158px;
+        margin-left: 0 !important;
+        margin-right: 158px !important;
     }
     [data-pc-direction="rtl"] .pc-sidebar.wb-crm-compact.wb-crm-pinned ~ .pc-header {
-        left: 0;
-        right: 158px;
+        left: 0 !important;
+        right: 158px !important;
     }
 
     /* Hidden state wins over pinned mode */
     .pc-sidebar.wb-crm-compact.wb-crm-pinned.pc-sidebar-hide {
-        width: 0;
+        width: 0 !important;
     }
     .pc-sidebar.wb-crm-compact.wb-crm-pinned.pc-sidebar-hide ~ .pc-container,
     .pc-sidebar.wb-crm-compact.wb-crm-pinned.pc-sidebar-hide ~ .pc-footer {
-        margin-left: 0;
+        margin-left: 0 !important;
     }
     .pc-sidebar.wb-crm-compact.wb-crm-pinned.pc-sidebar-hide ~ .pc-header {
-        left: 0;
+        left: 0 !important;
     }
     [data-pc-direction="rtl"] .pc-sidebar.wb-crm-compact.wb-crm-pinned.pc-sidebar-hide ~ .pc-container,
     [data-pc-direction="rtl"] .pc-sidebar.wb-crm-compact.wb-crm-pinned.pc-sidebar-hide ~ .pc-footer {
-        margin-left: 0;
-        margin-right: 0;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
     }
     [data-pc-direction="rtl"] .pc-sidebar.wb-crm-compact.wb-crm-pinned.pc-sidebar-hide ~ .pc-header {
-        left: 0;
-        right: 0;
+        left: 0 !important;
+        right: 0 !important;
     }
 }
 /* ===== Id-scoped overrides: beat shared sanad-ui.css (dark accent green, gray links) ===== */
@@ -512,9 +487,7 @@
     filter: drop-shadow(3px 0 6px rgba(10, 22, 60, .25));
 }
 #crm-sidebar .wb-crm-sidebar-handle:hover {
-    width: 30px;
-    height: 132px;
-    box-shadow: none;
+    filter: drop-shadow(3px 0 10px rgba(10, 22, 60, .4));
 }
 #crm-sidebar .wb-crm-sidebar-handle-shape {
     position: absolute;
@@ -523,27 +496,39 @@
     height: 100%;
     fill: var(--wb-crm-brand);
     z-index: -1;
-    transition: transform .25s ease;
+    transition: transform .2s ease, fill .2s ease;
     transform-origin: left center;
 }
 #crm-sidebar .wb-crm-sidebar-handle:hover .wb-crm-sidebar-handle-shape {
-    transform: scaleX(1.18);
+    transform: scale(1.05);
+    fill: #2449d6;
+}
+#crm-sidebar .wb-crm-sidebar-handle-grip,
+#crm-sidebar .wb-crm-sidebar-handle i {
+    position: relative;
+    z-index: 1;
 }
 #crm-sidebar .wb-crm-sidebar-handle-grip span {
     opacity: .7;
+}
+#crm-sidebar .wb-crm-sidebar-handle:hover .wb-crm-sidebar-handle-grip span {
+    opacity: 1;
 }
 [data-pc-direction="rtl"] #crm-sidebar .wb-crm-sidebar-handle {
     inset-inline-start: auto;
     inset-inline-end: -29px;
     filter: drop-shadow(-3px 0 6px rgba(10, 22, 60, .25));
 }
+[data-pc-direction="rtl"] #crm-sidebar .wb-crm-sidebar-handle:hover {
+    filter: drop-shadow(-3px 0 10px rgba(10, 22, 60, .4));
+}
 [data-pc-direction="rtl"] #crm-sidebar .wb-crm-sidebar-handle-shape {
     transform: scaleX(-1);
     transform-origin: center;
 }
 [data-pc-direction="rtl"] #crm-sidebar .wb-crm-sidebar-handle:hover .wb-crm-sidebar-handle-shape {
-    transform: scaleX(-1.18);
-    transform-origin: right center;
+    transform: scaleX(-1) scale(1.05);
+    transform-origin: center;
 }
 </style>
 </nav>

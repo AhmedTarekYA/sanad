@@ -1118,14 +1118,15 @@ class WhatsappChatService extends MainService
 
             if ($type !== 'text' && $type !== '') {
                 $placeholder = match ($type) {
-                    'image'    => '[image]',
-                    'video'    => '[video]',
-                    'audio'    => '[voice message]',
+                    'image' => '[image]',
+                    'video' => '[video]',
+                    'audio' => '[voice message]',
                     'document' => '[document]',
-                    'sticker'  => '[sticker]',
-                    default    => '['.$type.']',
+                    'sticker' => '[sticker]',
+                    default => '['.$type.']',
                 };
-                $lines[] = ($direction === 'out' ? 'Agent: ' : 'Customer: ') . $placeholder;
+                $lines[] = ($direction === 'out' ? 'Agent: ' : 'Customer: ').$placeholder;
+
                 continue;
             }
 
@@ -1133,7 +1134,7 @@ class WhatsappChatService extends MainService
                 continue;
             }
 
-            $lines[] = ($direction === 'out' ? 'Agent: ' : 'Customer: ') . $body;
+            $lines[] = ($direction === 'out' ? 'Agent: ' : 'Customer: ').$body;
         }
 
         if (empty($lines)) {
@@ -1142,9 +1143,9 @@ class WhatsappChatService extends MainService
 
         $conversationText = implode("\n", $lines);
 
-        $prompt = "You are a helpful customer-support agent replying in a WhatsApp chat. "
-            ."Draft a single short, natural, polite reply from the agent to the customer. "
-            ."Write the reply in the SAME language as the conversation (use Arabic if the conversation is mostly Arabic). "
+        $prompt = 'You are a helpful customer-support agent replying in a WhatsApp chat. '
+            .'Draft a single short, natural, polite reply from the agent to the customer. '
+            .'Write the reply in the SAME language as the conversation (use Arabic if the conversation is mostly Arabic). '
             ."Return ONLY the reply text: no markdown, no quotes, no labels, no explanations.\n\n"
             ."Conversation (Agent = us, Customer = the contact):\n"
             .$conversationText
@@ -1242,7 +1243,6 @@ class WhatsappChatService extends MainService
             ->where('conversation_id', $conversation->id)
             ->where('crm_user_id', $crmUserId)
             ->orderByDesc('id')
-            ->limit(20)
             ->get()
             ->map(fn (WhatsappConversationNote $note): array => [
                 'id' => $note->id,

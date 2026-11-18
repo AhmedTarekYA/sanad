@@ -136,12 +136,11 @@ document.addEventListener('DOMContentLoaded',function(){
         var crmSidebarStored='compact';
         try{crmSidebarStored=localStorage.getItem('sanad-crm-sidebar')||'compact'}catch(error){}
         applyCrmSidebarMode(crmSidebarStored);
-        crmSidebarMode.addEventListener('click',function(e){
-            e.preventDefault();
-            var next=crmSidebar.classList.contains('wb-crm-pinned')?'compact':'expanded';
-            applyCrmSidebarMode(next);
-            try{localStorage.setItem('sanad-crm-sidebar',next)}catch(error){}
-        });
+        // Click/drag-to-pin is handled by sidebar.blade.php's own mousedown/mouseup
+        // listeners on this same button (they call window.applyCrmSidebarMode above).
+        // Do not also bind a 'click' listener here: mousedown+mouseup there would
+        // toggle it open, then the native 'click' firing right after would toggle
+        // it straight back closed.
     }
 
     var clockDate=document.getElementById('crm-live-date'),clockHour=document.getElementById('crm-live-hour'),clockMinute=document.getElementById('crm-live-minute'),clockSecond=document.getElementById('crm-live-second'),clockPeriod=document.getElementById('crm-live-period');
