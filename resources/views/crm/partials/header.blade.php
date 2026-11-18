@@ -5,22 +5,27 @@
     <div class="header-wrapper">
         <div class="me-auto pc-mob-drp">
             <ul class="list-unstyled">
-                <li class="pc-h-item pc-sidebar-collapse"><a href="#" class="pc-head-link ms-0" id="sidebar-hide" aria-label="{{ __('auth.sidebar') }}"><i class="ti ti-menu-2"></i></a></li>
-                <li class="pc-h-item pc-sidebar-popup"><a href="#" class="pc-head-link ms-0" id="mobile-collapse" aria-label="{{ __('auth.sidebar') }}"><i class="ti ti-menu-2"></i></a></li>
+                <li class="pc-h-item pc-sidebar-collapse"><a href="#" class="pc-head-link ms-0" id="sidebar-hide" aria-label="{{ __('auth.sidebar') }}"><i class="fas fa-bars"></i></a></li>
+                <li class="pc-h-item pc-sidebar-popup"><a href="#" class="pc-head-link ms-0" id="mobile-collapse" aria-label="{{ __('auth.sidebar') }}"><i class="fas fa-bars"></i></a></li>
             </ul>
         </div>
         <div class="ms-auto">
             <ul class="list-unstyled d-flex align-items-center mb-0">
-                <li class="dropdown pc-h-item">
-                    <a href="#" class="pc-head-link dropdown-toggle arrow-none" id="theme-toggle" aria-expanded="false" aria-label="Theme"><i class="ph-duotone ph-sun-dim"></i></a>
-                    <div class="dropdown-menu dropdown-menu-end pc-h-dropdown" id="theme-menu">
-                        <a href="#" class="dropdown-item theme-option" data-theme-value="light"><i class="ph-duotone ph-sun-dim"></i><span>{{ app()->getLocale() === 'ar' ? 'الوضع النهاري' : 'Light' }}</span></a>
-                        <a href="#" class="dropdown-item theme-option" data-theme-value="dark"><i class="ph-duotone ph-moon"></i><span>{{ app()->getLocale() === 'ar' ? 'دارك مود' : 'Dark' }}</span></a>
-                        <a href="#" class="dropdown-item theme-option" data-theme-value="auto"><i class="ph-duotone ph-cpu"></i><span>{{ app()->getLocale() === 'ar' ? 'مطابقة جهازك' : 'Auto' }}</span></a>
+                <li class="pc-h-item crm-clock-item d-none d-md-flex">
+                    <div class="crm-clock" title="{{ __('date') }}">
+                        <div class="crm-clock-text">
+                            <span class="crm-clock-date" id="crm-live-date"></span>
+                            <span class="crm-clock-time" id="crm-live-time">
+                                <span class="crm-clock-hour" id="crm-live-hour"></span><span class="crm-clock-minute" id="crm-live-minute"></span><span class="crm-clock-second" id="crm-live-second"></span><span class="crm-clock-period" id="crm-live-period"></span>
+                            </span>
+                        </div>
                     </div>
                 </li>
+                <li class="pc-h-item">
+                    <a href="#" class="pc-head-link arrow-none" id="theme-toggle" aria-label="Theme"><i class="fal fa-sun" id="theme-toggle-icon"></i></a>
+                </li>
                 <li class="dropdown pc-h-item">
-                    <a href="#" class="pc-head-link dropdown-toggle arrow-none" id="language-toggle" aria-expanded="false" aria-label="{{ __('auth.change language') }}"><i class="ph-duotone ph-translate"></i></a>
+                    <a href="#" class="pc-head-link dropdown-toggle arrow-none" id="language-toggle" aria-expanded="false" aria-label="{{ __('auth.change language') }}"><i class="fas fa-language"></i></a>
                     <div class="dropdown-menu dropdown-menu-end pc-h-dropdown lng-dropdown" id="language-menu">
                         @foreach($supportedLocales as $localeCode => $localeData)
                             <a href="{{ route('crm.lang', $localeCode) }}" class="dropdown-item">
@@ -44,7 +49,7 @@
                             <div class="dropdown-divider"></div>
                             <form method="POST" action="{{ route('crm.logout') }}" class="m-0">
                                 @csrf
-                                <button type="submit" class="dropdown-item text-danger border-0 bg-transparent w-100 text-start"><i class="ph-duotone ph-power me-2" aria-hidden="true"></i>{{ __('auth.logout') }}</button>
+                                <button type="submit" class="dropdown-item text-danger border-0 bg-transparent w-100 text-start"><i class="fas fa-power-off me-2" aria-hidden="true"></i>{{ __('auth.logout') }}</button>
                             </form>
                         </div>
                     </div>
@@ -54,22 +59,50 @@
     </div>
 </header>
 <style>
+/* CRM header: branded gradient bar with live date/time */
+.pc-header {
+    background: linear-gradient(115deg, #122a4d 0%, #1d4278 48%, #2D71F0 100%);
+    --pc-header-color: #fff;
+    --pc-active-background: rgba(255, 255, 255, .16);
+    color: #fff;
+    box-shadow: 0 12px 30px rgba(12, 30, 62, .22);
+    border-bottom: 1px solid rgba(255, 255, 255, .12);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+}
+[data-pc-theme="dark"] .pc-header {
+    background: linear-gradient(115deg, #0a1322 0%, #102c52 52%, #1c4f9f 100%);
+}
+.pc-header .header-wrapper { align-items: center; }
+.pc-header .pc-head-link { box-shadow: none; }
 .pc-header .pc-h-item>.dropdown-menu.show{display:block}
 .pc-header .lng-dropdown{min-width:170px}
 .pc-header .lng-dropdown .dropdown-item{display:flex;align-items:center;gap:10px}
 .pc-header .lng-dropdown .language-flag{display:inline-flex;width:25px;height:22px;align-items:center;justify-content:center;font-size:20px;line-height:1}
 .pc-header .lng-dropdown small{margin-inline-start:6px;color:var(--bs-secondary-color)}
-.pc-header .user-avtar{width:36px;height:36px;object-fit:cover;border-radius:50%;border:2px solid rgba(45,113,240,.18);cursor:pointer}
+.pc-header .user-avtar{width:36px;height:36px;object-fit:cover;border-radius:50%;border:2px solid rgba(255,255,255,.72);box-shadow:0 0 0 3px rgba(255,255,255,.14);cursor:pointer}
 .pc-header .crm-profile-dropdown{min-width:240px;padding:8px 0}
 .pc-header .crm-profile-dropdown .wid-40{width:40px;height:40px;object-fit:cover}
 .pc-header .crm-profile-dropdown .dropdown-item{padding:8px 16px}
+
+/* Live clock */
+.pc-header .crm-clock-item{min-height:74px;margin-inline-end:10px}
+.pc-header .crm-clock{display:flex;align-items:center;gap:12px;color:#fff}
+.pc-header .crm-clock-text{display:flex;flex-direction:column;line-height:1.1;gap:3px}
+.pc-header .crm-clock-date{font-size:10.5px;font-weight:500;letter-spacing:.02em;opacity:.78;white-space:nowrap;text-transform:capitalize}
+.pc-header .crm-clock-time{display:flex;align-items:baseline;gap:1px;font-variant-numeric:tabular-nums;white-space:nowrap;line-height:1}
+.pc-header .crm-clock-hour{font-size:24px;font-weight:800;letter-spacing:.01em;background:linear-gradient(90deg,#fff,rgba(255,255,255,.82));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.pc-header .crm-clock-minute{font-size:14.5px;font-weight:600;opacity:.85}
+.pc-header .crm-clock-second{font-size:11px;font-weight:500;opacity:.62;margin-inline-start:2px}
+.pc-header .crm-clock-period{font-size:10.5px;font-weight:600;letter-spacing:.06em;opacity:.7;margin-inline-start:4px;text-transform:uppercase}
 </style>
 <script>
 document.addEventListener('DOMContentLoaded',function(){
-    function applyTheme(value){var theme=value;if(theme==='auto')theme=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';if(typeof layout_change==='function')layout_change(theme);document.body.setAttribute('data-pc-theme',theme);document.body.setAttribute('data-pc-sidebar-theme',theme==='dark'?'dark':'light')}
-    document.querySelectorAll('.theme-option').forEach(function(option){option.addEventListener('click',function(e){e.preventDefault();var value=option.dataset.themeValue;applyTheme(value);localStorage.setItem('sanad-theme',value)})});
-    var savedTheme=localStorage.getItem('sanad-theme');if(savedTheme)applyTheme(savedTheme);
-    const ids=['theme','language','profile'];
+    var themeToggle=document.getElementById('theme-toggle'),themeToggleIcon=document.getElementById('theme-toggle-icon');
+    function applyTheme(value){var theme=value==='dark'?'dark':'light';if(typeof layout_change==='function')layout_change(theme);document.body.setAttribute('data-pc-theme',theme);document.body.setAttribute('data-pc-sidebar-theme',theme==='dark'?'dark':'light');if(themeToggleIcon)themeToggleIcon.className=theme==='dark'?'fal fa-moon':'fal fa-sun';if(themeToggle)themeToggle.setAttribute('aria-label',theme==='dark'?'Dark':'Light')}
+    if(themeToggle){themeToggle.addEventListener('click',function(e){e.preventDefault();var next=document.body.getAttribute('data-pc-theme')==='dark'?'light':'dark';applyTheme(next);localStorage.setItem('sanad-theme',next)})}
+    var savedTheme=localStorage.getItem('sanad-theme');if(savedTheme==='auto')savedTheme=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';if(savedTheme)applyTheme(savedTheme);else applyTheme(document.body.getAttribute('data-pc-theme'));
+    const ids=['language','profile'];
     ids.forEach(function(name){
         const toggle=document.getElementById(name+'-toggle'),menu=document.getElementById(name+'-menu');
         if(!toggle||!menu)return;
@@ -83,5 +116,64 @@ document.addEventListener('DOMContentLoaded',function(){
         menu.addEventListener('click',function(e){e.stopPropagation()});
     });
     document.addEventListener('click',function(){document.querySelectorAll('.pc-header .pc-h-dropdown').forEach(function(menu){menu.classList.remove('show')})});
+
+    var crmSidebar=document.querySelector('.pc-sidebar.wb-crm-compact');
+    var crmSidebarMode=document.getElementById('crm-sidebar-mode');
+    var crmSidebarLabels={expand:"{{ __('sidebar_expand') }}",collapse:"{{ __('sidebar_collapse') }}"};
+    function applyCrmSidebarMode(mode){
+        if(!crmSidebar)return;
+        var pinned=mode==='expanded';
+        crmSidebar.classList.toggle('wb-crm-pinned',pinned);
+        if(crmSidebarMode){
+            var label=pinned?crmSidebarLabels.collapse:crmSidebarLabels.expand;
+            crmSidebarMode.setAttribute('aria-pressed',pinned?'true':'false');
+            crmSidebarMode.setAttribute('title',label);
+            crmSidebarMode.setAttribute('aria-label',label);
+        }
+    }
+    window.applyCrmSidebarMode=applyCrmSidebarMode;
+    if(crmSidebar&&crmSidebarMode){
+        var crmSidebarStored='compact';
+        try{crmSidebarStored=localStorage.getItem('sanad-crm-sidebar')||'compact'}catch(error){}
+        applyCrmSidebarMode(crmSidebarStored);
+        crmSidebarMode.addEventListener('click',function(e){
+            e.preventDefault();
+            var next=crmSidebar.classList.contains('wb-crm-pinned')?'compact':'expanded';
+            applyCrmSidebarMode(next);
+            try{localStorage.setItem('sanad-crm-sidebar',next)}catch(error){}
+        });
+    }
+
+    var clockDate=document.getElementById('crm-live-date'),clockHour=document.getElementById('crm-live-hour'),clockMinute=document.getElementById('crm-live-minute'),clockSecond=document.getElementById('crm-live-second'),clockPeriod=document.getElementById('crm-live-period');
+    if(clockDate&&clockHour&&clockMinute){
+        var clockLocale=document.documentElement.lang||'en';
+        var dateFormatter,timeFormatter;
+        try{
+            dateFormatter=new Intl.DateTimeFormat(clockLocale,{day:'numeric',month:'long',year:'numeric'});
+            timeFormatter=new Intl.DateTimeFormat(clockLocale,{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:true});
+        }catch(error){
+            dateFormatter=new Intl.DateTimeFormat('en',{day:'numeric',month:'long',year:'numeric'});
+            timeFormatter=new Intl.DateTimeFormat('en',{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:true});
+        }
+        function updateClock(){
+            var now=new Date();
+            clockDate.textContent=dateFormatter.format(now);
+            if(typeof timeFormatter.formatToParts==='function'){
+                var parts={};
+                timeFormatter.formatToParts(now).forEach(function(part){parts[part.type]=part.value});
+                clockHour.textContent=parts.hour||'';
+                clockMinute.textContent=parts.minute?':'+parts.minute:'';
+                if(clockSecond)clockSecond.textContent=parts.second?':'+parts.second:'';
+                if(clockPeriod)clockPeriod.textContent=parts.dayPeriod?parts.dayPeriod.replace(/\s/g,''):'';
+            }else{
+                clockHour.textContent=timeFormatter.format(now);
+                clockMinute.textContent='';
+                if(clockSecond)clockSecond.textContent='';
+                if(clockPeriod)clockPeriod.textContent='';
+            }
+        }
+        updateClock();
+        setInterval(updateClock,1000);
+    }
 });
 </script>

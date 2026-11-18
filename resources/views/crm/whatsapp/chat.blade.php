@@ -18,14 +18,14 @@
         }
 
         [data-pc-theme="dark"] {
-            --wb-bg: #111b21;
-            --wb-panel: #202c33;
+            --wb-bg: #1b1e2a;
+            --wb-panel: #20232f;
             --wb-border: rgba(255, 255, 255, 0.07);
             --wb-muted: rgba(255, 255, 255, 0.45);
             --wb-text: rgba(255, 255, 255, 0.90);
-            --wb-chat-bg: #0d1418;
-            --wb-in-msg: #202c33;
-            --wb-out-msg: #005c4b;
+            --wb-chat-bg: #181b26;
+            --wb-in-msg: #262a38;
+            --wb-out-msg: #3a6df0;
         }
 
         [data-pc-theme="dark"] .wb-text {
@@ -45,19 +45,23 @@
         [data-pc-theme="dark"] .wb-search input,
         [data-pc-theme="dark"] .wb-compose input,
         [data-pc-theme="dark"] .wb-compose textarea {
-            background: #2a3942;
+            background: #262a38;
             color: rgba(255, 255, 255, 0.88);
             border-color: rgba(255, 255, 255, 0.08);
         }
 
         [data-pc-theme="dark"] .wb-search input::placeholder,
         [data-pc-theme="dark"] .wb-compose textarea::placeholder {
-            color: rgba(255, 255, 255, 0.35);
+            color: rgba(255, 255, 255, 0.4);
         }
 
-        [data-pc-theme="dark"] .wb-conv-item:hover,
+        [data-pc-theme="dark"] .wb-conv-item:hover {
+            background: rgba(255, 255, 255, 0.04);
+        }
+
         [data-pc-theme="dark"] .wb-conv-item.is-active {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(58, 109, 240, 0.14);
+            border-inline-start: 3px solid #3a6df0;
         }
 
         [data-pc-theme="dark"] .wb-icon-btn {
@@ -71,7 +75,7 @@
 
         [data-pc-theme="dark"] .wb-modal-content,
         [data-pc-theme="dark"] .wb-panel-right {
-            background: #202c33;
+            background: #20232f;
             color: rgba(255, 255, 255, 0.88);
         }
 
@@ -97,13 +101,13 @@
         [data-pc-theme="dark"] .wb-action-menu-toggle,
         [data-pc-theme="dark"] .wb-action-menu-panel,
         [data-pc-theme="dark"] .wb-icon-btn {
-            background: #202c33;
+            background: #20232f;
             border-color: rgba(255, 255, 255, 0.07);
             color: rgba(255, 255, 255, 0.85);
         }
 
         [data-pc-theme="dark"] .wb-qa-btn:hover {
-            background: #2a3942;
+            background: #262a38;
             color: #fff;
         }
 
@@ -114,7 +118,7 @@
         [data-pc-theme="dark"] .wb-sidebar-tool:hover {
             color: #fff;
             border-color: rgba(255, 255, 255, 0.15);
-            background: #2a3942;
+            background: #262a38;
         }
 
         [data-pc-theme="dark"] .wb-conversation-tab {
@@ -123,7 +127,7 @@
         }
 
         [data-pc-theme="dark"] .wb-conversation-tab:hover {
-            background: #2a3942;
+            background: #262a38;
             color: rgba(255, 255, 255, 0.9);
         }
 
@@ -136,23 +140,23 @@
         }
 
         [data-pc-theme="dark"] .wb-filter-select {
-            background: #2a3942;
+            background: #262a38;
             color: rgba(255, 255, 255, 0.85);
             border-color: rgba(255, 255, 255, 0.07);
         }
 
         [data-pc-theme="dark"] .wb-search-input {
-            background: #2a3942;
+            background: #262a38;
             color: rgba(255, 255, 255, 0.85);
             border-color: rgba(255, 255, 255, 0.07);
         }
 
         [data-pc-theme="dark"] .wb-search-input::placeholder {
-            color: rgba(255, 255, 255, 0.35);
+            color: rgba(255, 255, 255, 0.4);
         }
 
         [data-pc-theme="dark"] .wb-search-box i {
-            color: rgba(255, 255, 255, 0.4);
+            color: rgba(255, 255, 255, 0.45);
         }
 
         [data-pc-theme="dark"] .wb-bubble {
@@ -165,34 +169,39 @@
             color: rgba(255, 255, 255, 0.72);
         }
 
+        [data-pc-theme="dark"] .wb-unread {
+            background: #f59e0b;
+            color: #1b1e2a;
+        }
+
         [data-pc-theme="dark"] .wb-empty {
             color: rgba(255, 255, 255, 0.45);
         }
 
         /* ── Compose / input area dark mode ── */
         [data-pc-theme="dark"] .wb-composer {
-            background: #202c33;
+            background: #20232f;
             border-top-color: rgba(255, 255, 255, 0.07);
         }
 
         [data-pc-theme="dark"] .wb-composer-input {
-            background: #2a3942;
-            color: rgba(255, 255, 255, 0.88);
+            background: #262a38;
+            color: rgba(255, 255, 255, 0.9);
             border-color: rgba(255, 255, 255, 0.08);
         }
 
         [data-pc-theme="dark"] .wb-composer-input::placeholder {
-            color: rgba(255, 255, 255, 0.35);
+            color: rgba(255, 255, 255, 0.4);
         }
 
         [data-pc-theme="dark"] .wb-composer-input:focus {
-            background: #2a3942;
-            border-color: rgba(45, 113, 240, 0.4);
-            box-shadow: 0 0 0 3px rgba(45, 113, 240, 0.12);
+            background: #262a38;
+            border-color: rgba(58, 109, 240, 0.5);
+            box-shadow: 0 0 0 3px rgba(58, 109, 240, 0.15);
         }
 
         [data-pc-theme="dark"] .wb-recording-indicator {
-            background: #2a3942;
+            background: #262a38;
         }
 
         [data-pc-theme="dark"] .wb-composer .wb-icon-btn {
@@ -206,14 +215,14 @@
         }
 
         [data-pc-theme="dark"] .wb-typing {
-            background: rgba(32, 44, 51, 0.9);
+            background: rgba(32, 35, 47, 0.92);
             color: rgba(255, 255, 255, 0.55);
             border-top-color: rgba(255, 255, 255, 0.07);
         }
 
         [data-pc-theme="dark"] .wb-composer-tools-menu,
         [data-pc-theme="dark"] .wb-composer-tool {
-            background: #202c33;
+            background: #20232f;
             color: rgba(255, 255, 255, 0.88);
             border-color: rgba(255, 255, 255, 0.08);
         }
@@ -223,7 +232,7 @@
         }
 
         [data-pc-theme="dark"] .wb-composer-tool:hover {
-            background: #2a3942;
+            background: #262a38;
         }
 
         [data-pc-theme="dark"] .wb-reply-bar {
@@ -781,10 +790,55 @@
             width: auto;
             flex: 0 0 auto;
             min-height: 36px;
-            padding: 0 12px;
-            font-size: 12px;
-            border-radius: 8px;
-            border: 1px solid var(--wb-border);
+            padding: 0 14px;
+            font-size: 12.5px;
+            font-weight: 600;
+            border-radius: 999px;
+            border: 0;
+            background: rgba(45, 113, 240, 0.08);
+            color: #2D71F0;
+            gap: 8px;
+            transition: background .18s ease, color .18s ease, box-shadow .18s ease, transform .12s ease;
+        }
+
+        .wb-quick-actions > .wb-qa-btn i {
+            font-size: 13px;
+        }
+
+        .wb-quick-actions > .wb-qa-btn:hover:not(:disabled) {
+            background: rgba(45, 113, 240, 0.16);
+            color: #1d4fb8;
+            transform: translateY(-1px);
+        }
+
+        .wb-quick-actions > #wb-tag-btn {
+            background: rgba(124, 58, 237, 0.08);
+            color: #7c3aed;
+        }
+
+        .wb-quick-actions > #wb-tag-btn:hover:not(:disabled) {
+            background: rgba(124, 58, 237, 0.16);
+            color: #6d28d9;
+        }
+
+        .wb-quick-actions > #wb-note-btn {
+            background: rgba(217, 155, 0, 0.1);
+            color: #a66d00;
+        }
+
+        .wb-quick-actions > #wb-note-btn:hover:not(:disabled) {
+            background: rgba(217, 155, 0, 0.18);
+            color: #8a5900;
+        }
+
+        .wb-quick-actions > #wb-resolve-btn {
+            background: rgba(16, 185, 129, 0.1);
+            color: #0d9488;
+        }
+
+        .wb-quick-actions > #wb-resolve-btn:hover:not(:disabled) {
+            background: rgba(16, 185, 129, 0.18);
+            color: #0b7a70;
         }
 
         .wb-contact-notes-banner {
@@ -941,7 +995,7 @@
         }
 
         [data-pc-theme="dark"] .wb-messages {
-            background-color: #0d1418;
+            background-color: #181b26;
             background-image: url('/admin/assets/img/whatsapp_dark.png');
         }
 
@@ -964,7 +1018,8 @@
         }
 
         .wb-bubble {
-            max-width: min(620px, 86%);
+            width: fit-content;
+            max-width: min(520px, 70%);
             padding: 8px 10px 6px;
             border-radius: 10px;
             border: 1px solid rgba(0, 0, 0, 0.06);
@@ -984,7 +1039,7 @@
 
         .wb-text {
             color: rgba(0, 0, 0, 0.85);
-            font-size: 14.5px;
+            font-size: 14px;
             font-weight: 400;
             line-height: 1.5;
             white-space: pre-wrap;
@@ -1681,34 +1736,57 @@
         }
 
         .wb-msg-actions {
-            display: inline-flex;
+            display: none;
+            align-items: center;
             gap: 6px;
             margin-inline-start: 10px;
+            padding: 4px 10px;
+            border-radius: 999px;
+            background: #f8f9fa;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+            flex: 0 0 auto;
+            opacity: 0;
+            transition: opacity 0.15s ease;
+            pointer-events: none;
+        }
+
+        .wb-msg-actions.is-visible {
+            display: inline-flex;
+            opacity: 1;
+            pointer-events: auto;
         }
 
         .wb-msg-action {
             border: 0;
             background: transparent;
-            color: rgba(0, 0, 0, 0.45);
-            padding: 4px 6px;
-            border-radius: 8px;
+            color: #6b7084;
+            width: 22px;
+            height: 22px;
+            padding: 0;
+            border-radius: 4px;
             cursor: pointer;
             line-height: 1;
+            font-size: 13px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.15s ease;
+            position: relative;
         }
 
         .wb-msg-action:hover {
-            background: rgba(0, 0, 0, 0.06);
-            color: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.05);
+            color: #4b5563;
         }
 
         .wb-msg-action.is-danger:hover {
-            background: rgba(198, 40, 40, 0.12);
-            color: #c62828;
+            background: rgba(220, 53, 69, 0.08);
+            color: #d93025;
         }
 
         .wb-msg-action[disabled],
         .wb-msg-action:disabled {
-            opacity: 0.35;
+            opacity: 0.4;
             cursor: not-allowed;
             pointer-events: none;
         }
@@ -2947,7 +3025,7 @@
             }
 
             .wb-text {
-                font-size: 17px;
+                font-size: 14px;
             }
 
             .wb-composer-inner {
@@ -3046,6 +3124,15 @@
             font-weight: 700;
             font-size: 16px;
             flex: 0 0 auto;
+        }
+
+        #whats-chat-root .wb-profile-avatar-img {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            object-fit: cover;
+            flex: 0 0 auto;
+            box-shadow: 0 0 0 2px rgba(45, 113, 240, 0.18);
         }
 
         #whats-chat-root .wb-profile-meta {
@@ -3389,6 +3476,7 @@
         }
 
         #whats-chat-root .wb-bubble {
+            width: fit-content;
             max-width: 100%;
             padding: 12px 16px;
             border: 0;
@@ -3434,8 +3522,9 @@
             color: #cfe0ff;
         }
 
-        #whats-chat-root .wb-msg--out .wb-msg-action {
-            color: rgba(255, 255, 255, 0.85);
+        #whats-chat-root .wb-msg--out .wb-msg-action:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
         }
 
         #whats-chat-root .wb-msg--out .wb-msg-action.is-danger:hover {
@@ -3478,6 +3567,29 @@
             color: #2D71F0;
         }
 
+        #whats-chat-root .wb-composer .wb-ai-btn {
+            color: #2D71F0;
+        }
+
+        #whats-chat-root .wb-composer .wb-ai-btn:hover {
+            background: #eef3ff;
+            color: #1640C6;
+        }
+
+        #whats-chat-root .wb-composer .wb-ai-btn.is-loading {
+            color: #2D71F0;
+            cursor: progress;
+        }
+
+        #whats-chat-root .wb-composer .wb-ai-btn.is-loading .wb-ai-icon {
+            display: inline-block;
+            animation: wb-ai-spin 0.8s linear infinite;
+        }
+
+        @keyframes wb-ai-spin {
+            to { transform: rotate(360deg); }
+        }
+
         #whats-chat-root .wb-composer-input {
             height: 48px;
             border-radius: 14px;
@@ -3508,9 +3620,13 @@
 
         [data-pc-theme="dark"] #whats-chat-root .wb-inbox,
         [data-pc-theme="dark"] #whats-chat-root .wb-chat,
-        [data-pc-theme="dark"] #whats-chat-root .wb-messages,
+        [data-pc-theme="dark"] #whats-chat-root .wb-messages {
+            background: #1b1e2a;
+            border-color: rgba(255, 255, 255, 0.08);
+        }
+
         [data-pc-theme="dark"] #whats-chat-root .wb-composer {
-            background: #0f172a;
+            background: #20232f;
             border-color: rgba(255, 255, 255, 0.08);
         }
 
@@ -3519,36 +3635,134 @@
         [data-pc-theme="dark"] #whats-chat-root .wb-search,
         [data-pc-theme="dark"] #whats-chat-root .wb-conversation-tabs,
         [data-pc-theme="dark"] #whats-chat-root .wb-chat-header {
-            background: #16213a;
+            background: #20232f;
             border-color: rgba(255, 255, 255, 0.08);
         }
 
         [data-pc-theme="dark"] #whats-chat-root .wb-profile-name,
+        [data-pc-theme="dark"] #whats-chat-root .wb-profile-mail,
         [data-pc-theme="dark"] #whats-chat-root .wb-conv-name,
         [data-pc-theme="dark"] #whats-chat-root .wb-msg-sender,
         [data-pc-theme="dark"] #whats-chat-root .wb-contact-name {
             color: rgba(255, 255, 255, 0.92);
         }
 
+        [data-pc-theme="dark"] #whats-chat-root .wb-conv-snippet,
+        [data-pc-theme="dark"] #whats-chat-root .wb-conv-time,
+        [data-pc-theme="dark"] #whats-chat-root .wb-contact-status,
+        [data-pc-theme="dark"] #whats-chat-root .wb-msg-time,
+        [data-pc-theme="dark"] #whats-chat-root .wb-meta {
+            color: #9aa5b8;
+        }
+
+        [data-pc-theme="dark"] #whats-chat-root .wb-contact-status {
+            color: #22c55e;
+        }
+
+        [data-pc-theme="dark"] #whats-chat-root .wb-conv-item:hover {
+            background: rgba(255, 255, 255, 0.04);
+        }
+
         [data-pc-theme="dark"] #whats-chat-root .wb-conv-item.is-active {
-            background: rgba(45, 113, 240, 0.16);
+            background: rgba(58, 109, 240, 0.14);
+        }
+
+        [data-pc-theme="dark"] #whats-chat-root .wb-conv-item.is-active::before {
+            background: #3a6df0;
+        }
+
+        [data-pc-theme="dark"] #whats-chat-root .wb-unread {
+            background: #f59e0b;
+            color: #1b1e2a;
+        }
+
+        [data-pc-theme="dark"] #whats-chat-root .wb-conversation-tab.is-active {
+            color: #6b8dff;
+        }
+
+        [data-pc-theme="dark"] #whats-chat-root .wb-conversation-tab.is-active::after {
+            background: #3a6df0;
+        }
+
+        [data-pc-theme="dark"] #whats-chat-root .wb-search-box {
+            background: #262a38;
+        }
+
+        [data-pc-theme="dark"] #whats-chat-root .wb-search-input {
+            background: transparent;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        [data-pc-theme="dark"] #whats-chat-root .wb-search-box i {
+            color: #9aa5b8;
         }
 
         [data-pc-theme="dark"] #whats-chat-root .wb-msg--in .wb-bubble,
         [data-pc-theme="dark"] #whats-chat-root .wb-msg .wb-bubble:has(.wb-audio-row) {
-            background: #1d2b45;
+            background: #262a38;
+        }
+
+        [data-pc-theme="dark"] #whats-chat-root .wb-msg--out .wb-bubble {
+            background: #3a6df0;
+            color: #fff;
         }
 
         [data-pc-theme="dark"] #whats-chat-root .wb-text,
         [data-pc-theme="dark"] #whats-chat-root .wb-msg--out .wb-bubble:has(.wb-audio-row) .wb-text {
-            color: rgba(255, 255, 255, 0.88);
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        [data-pc-theme="dark"] #whats-chat-root .wb-msg--out .wb-text {
+            color: #fff;
+        }
+
+        [data-pc-theme="dark"] #whats-chat-root .wb-msg--in .wb-msg-actions {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        [data-pc-theme="dark"] #whats-chat-root .wb-msg--in .wb-msg-action {
+            color: rgba(255, 255, 255, 0.55);
+        }
+
+        [data-pc-theme="dark"] #whats-chat-root .wb-msg--in .wb-msg-action:hover {
+            background: rgba(255, 255, 255, 0.14);
+            color: rgba(255, 255, 255, 0.9);
         }
 
         [data-pc-theme="dark"] #whats-chat-root .wb-composer-input,
         [data-pc-theme="dark"] #whats-chat-root .wb-composer .wb-icon-btn {
-            background: #1d2b45;
+            background: #262a38;
             border-color: rgba(255, 255, 255, 0.1);
             color: rgba(255, 255, 255, 0.8);
+        }
+
+        [data-pc-theme="dark"] #whats-chat-root .wb-composer-input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        [data-pc-theme="dark"] #whats-chat-root .wb-composer-input:focus {
+            border-color: #3a6df0;
+            box-shadow: 0 0 0 3px rgba(58, 109, 240, 0.15);
+        }
+
+        [data-pc-theme="dark"] #whats-chat-root .wb-composer .wb-icon-btn:hover {
+            background: rgba(58, 109, 240, 0.18);
+            color: #6b8dff;
+        }
+
+        [data-pc-theme="dark"] #whats-chat-root .wb-ai-btn,
+        [data-pc-theme="dark"] #whats-chat-root .wb-ai-btn:hover {
+            background: #262a38;
+            border-color: rgba(255, 255, 255, 0.1);
+            color: #6b8dff;
+        }
+
+        [data-pc-theme="dark"] #whats-chat-root .wb-send-btn {
+            background: #3a6df0;
+        }
+
+        [data-pc-theme="dark"] #whats-chat-root .wb-send-btn:hover {
+            background: #2f5cd6;
         }
 
         @media (max-width: 576px) {
@@ -3590,6 +3804,7 @@
         $crmUserName = $crmUser && $crmUser->name ? $crmUser->name : __('whatsapp_inbox');
         $crmUserEmail = $crmUser && $crmUser->email ? $crmUser->email : ($selectedAccount ? ($selectedAccount->phone_number_id ?: '') : '');
         $crmUserInitial = mb_strtoupper(mb_substr($crmUserName, 0, 2));
+        $crmUserAvatar = showFile($crmUser?->image, 'admin');
         $activeName = null;
         if (isset($activeConversation) && $activeConversation) {
             $activeName = $activeConversation->display_name ?: ($activeContact && $activeContact->name ? $activeContact->name : $activeConversation->wa_id);
@@ -3620,8 +3835,9 @@
         data-chat-index-url="{{ route('crm.whatsapp_chat', [], false) }}"
         data-conversations-url="{{ route('crm.whatsapp_chat.conversations', [], false) }}"
         data-messages-url-template="{{ route('crm.whatsapp_chat.messages', ['conversationId' => '__ID__'], false) }}"
+        data-suggest-reply-url-template="{{ route('crm.whatsapp_chat.suggestReply', ['conversationId' => '__ID__'], false) }}"
         data-message-search-url-template="{{ route('crm.whatsapp_chat.messages.search', ['conversationId' => '__ID__'], false) }}"
-        data-contacts-url="{{ route('crm.whatsapp_contacts', [], false) }}" data-csrf-token="{{ csrf_token() }}"
+        data-csrf-token="{{ csrf_token() }}"
         data-meta-url-template="{{ route('crm.whatsapp_chat.meta', ['conversationId' => '__ID__'], false) }}"
         data-tags-url="{{ route('crm.whatsapp_chat.tags.index', [], false) }}"
         data-tags-store-url="{{ route('crm.whatsapp_chat.tags.store', [], false) }}"
@@ -3669,7 +3885,7 @@
             <button class="wb-account-mobile-toggle" type="button" id="wb-account-mobile-toggle" aria-expanded="false"
                 aria-controls="wb-account-tabs-list">
                 <span>{{ $selectedAccountName }}</span>
-                <i class="fa fa-angle-down"></i>
+                <i class="fal fa-angle-down"></i>
             </button>
             <div class="wb-account-tabs-list" id="wb-account-tabs-list">
                 @forelse($allowedAccounts as $account)
@@ -3700,7 +3916,7 @@
             <div class="wb-sidebar">
                 <div class="wb-sidebar-header">
                     <div class="wb-profile">
-                        <div class="wb-profile-avatar">{{ $crmUserInitial }}</div>
+                        <img src="{{ $crmUserAvatar }}" alt="{{ $crmUserName }}" class="wb-profile-avatar-img">
                         <div class="wb-profile-meta">
                             <div class="wb-profile-name">{{ $crmUserName }}</div>
                             <div class="wb-profile-mail">{{ $crmUserEmail }}</div>
@@ -3709,33 +3925,25 @@
                     <div class="wb-header-actions">
                         <a class="wb-icon-btn" href="{{ route('crm.whatsapp_contacts') }}"
                             title="{{ __('whatsapp_contacts') }}">
-                            <i class="fa fa-address-book"></i>
+                            <i class="fal fa-address-book"></i>
                         </a>
-                        <button class="wb-icon-btn" type="button" id="wb-new-chat-btn" title="{{ __('whatsapp_new_chat') }}"
-                            {{ isset($selectedAccount) && $selectedAccount ? '' : 'disabled' }}>
-                            <i class="fa fa-edit"></i>
-                        </button>
                     </div>
                     <button class="wb-icon-btn wb-sidebar-close" type="button" id="wb-sidebar-close"
                         title="{{ __('close') }}">
-                        <i class="fa fa-times"></i>
+                        <i class="fal fa-times"></i>
                     </button>
                 </div>
 
                 <div class="wb-sidebar-tools">
                     <a class="wb-sidebar-tool" href="{{ route('crm.whatsapp_contacts') }}">
-                        <i class="fa fa-address-book"></i>
+                        <i class="fal fa-address-book"></i>
                         <span>{{ __('whatsapp_contacts') }}</span>
                     </a>
-                    <button class="wb-sidebar-tool is-primary" type="button" data-wb-new-chat-trigger {{ isset($selectedAccount) && $selectedAccount ? '' : 'disabled' }}>
-                        <i class="fa fa-edit"></i>
-                        <span>{{ __('whatsapp_new_chat') }}</span>
-                    </button>
                 </div>
 
                 <div class="wb-search">
                     <div class="wb-search-box">
-                        <i class="fa fa-search"></i>
+                        <i class="fal fa-search"></i>
                         <input type="text" class="wb-search-input" id="wb-chat-search" placeholder="{{ __('whatsapp_search_conversations') }}">
                     </div>
                 </div>
@@ -3746,28 +3954,28 @@
                         type="button" role="tab"
                         aria-selected="{{ $activeConversationFilter === 'all' ? 'true' : 'false' }}"
                         data-conversation-filter="all">
-                        <i class="fa fa-comments-o"></i>
+                        <i class="fal fa-comments"></i>
                         <span>{{ __('whatsapp_all') }}</span>
                     </button>
                     <button class="wb-conversation-tab {{ $activeConversationFilter === 'unread' ? 'is-active' : '' }}"
                         type="button" role="tab"
                         aria-selected="{{ $activeConversationFilter === 'unread' ? 'true' : 'false' }}"
                         data-conversation-filter="unread">
-                        <i class="fa fa-envelope-o"></i>
+                        <i class="fal fa-envelope"></i>
                         <span>{{ __('whatsapp_filter_unread') }}</span>
                     </button>
                     <button class="wb-conversation-tab {{ $activeConversationFilter === 'open' ? 'is-active' : '' }}"
                         type="button" role="tab"
                         aria-selected="{{ $activeConversationFilter === 'open' ? 'true' : 'false' }}"
                         data-conversation-filter="open">
-                        <i class="fa fa-circle-o"></i>
+                        <i class="fal fa-circle"></i>
                         <span>{{ __('whatsapp_filter_open') }}</span>
                     </button>
                     <button class="wb-conversation-tab {{ $activeConversationFilter === 'closed' ? 'is-active' : '' }}"
                         type="button" role="tab"
                         aria-selected="{{ $activeConversationFilter === 'closed' ? 'true' : 'false' }}"
                         data-conversation-filter="closed">
-                        <i class="fa fa-check-circle-o"></i>
+                        <i class="fal fa-check-circle"></i>
                         <span>{{ __('whatsapp_filter_closed') }}</span>
                     </button>
                 </div>
@@ -3871,36 +4079,36 @@
                     <div class="wb-header-actions">
                         @if(isset($selectedAccount) && $selectedAccount)
                             <span class="wb-pill">
-                                <i class="fa fa-id-badge"></i>
+                                <i class="fal fa-id-badge"></i>
                                 {{ $selectedAccountName }}
                             </span>
                         @endif
                         <button class="wb-icon-btn" type="button" id="wb-message-search-btn" title="{{ __('search') }}" {{ isset($activeConversation) && $activeConversation ? '' : 'disabled' }}>
-                            <i class="fa fa-search"></i>
+                            <i class="fal fa-search"></i>
                         </button>
                         <button class="wb-icon-btn wb-chat-resize-btn" type="button" id="wb-chat-resize-btn"
                             title="{{ __('whatsapp_expand_chat') }}"
                             aria-label="{{ __('whatsapp_expand_chat') }}"
                             aria-pressed="false">
-                            <i class="fa fa-expand"></i>
-                            <i class="fa fa-compress"></i>
+                            <i class="fal fa-expand"></i>
+                            <i class="fal fa-compress"></i>
                         </button>
                         <button class="btn btn-warning btn-sm text-white d-flex align-items-center gap-1" type="button" id="wb-contact-meta-btn" {{ isset($activeConversation) && $activeConversation ? '' : 'disabled' }} style="font-size:13px;padding:4px 10px;">
-                            <i class="fa fa-info-circle"></i>
+                            <i class="fal fa-info-circle"></i>
                             <span>{{ app()->getLocale() === 'ar' ? 'ملاحظات' : 'Notes' }}</span>
                         </button>
                     </div>
                 </div>
 
                 <div class="wb-quick-actions">
-                    <button class="wb-qa-btn" type="button" id="wb-tag-btn"><i class="fa fa-tag"></i>
+                    <button class="wb-qa-btn" type="button" id="wb-tag-btn"><i class="fal fa-tag"></i>
                         {{ __('whatsapp_tag') }}</button>
-                    <button class="wb-qa-btn" type="button" id="wb-note-btn"><i class="fa fa-sticky-note"></i>
+                    <button class="wb-qa-btn" type="button" id="wb-note-btn"><i class="fal fa-sticky-note"></i>
                         {{ __('whatsapp_note') }}</button>
-                    <button class="wb-qa-btn" type="button" id="wb-resolve-btn"><i class="fa fa-check-circle"></i>
+                    <button class="wb-qa-btn" type="button" id="wb-resolve-btn"><i class="fal fa-check-circle"></i>
                         {{ __('whatsapp_resolve') }}</button>
                     @if($snoozeUiEnabled)
-                        <button class="wb-qa-btn" type="button" disabled><i class="fa fa-clock-o"></i>
+                        <button class="wb-qa-btn" type="button" disabled><i class="fal fa-clock"></i>
                             {{ __('whatsapp_snooze') }}</button>
                     @endif
                     @php
@@ -3913,7 +4121,7 @@
                             <span class="wb-pill {{ $initStatusResolved ? 'is-resolved' : 'is-open' }}" id="wb-status-pill"
                                 style="display:inline-flex;">
                                 <i
-                                    class="fa {{ $initStatusResolved ? 'fa-check-circle' : ($initStatusSnoozed ? 'fa-clock-o' : 'fa-circle') }}"></i>
+                                    class="fa {{ $initStatusResolved ? 'fa-check-circle' : ($initStatusSnoozed ? 'fa-clock' : 'fa-circle') }}"></i>
                                 {{ $initStatusResolved ? __('whatsapp_resolved') : ($initStatusSnoozed ? __('whatsapp_snoozed') : __('whatsapp_open')) }}
                             </span>
                         @else
@@ -3924,7 +4132,7 @@
                 </div>
 
                 <button class="wb-contact-notes-banner" type="button" id="wb-contact-notes-banner">
-                    <i class="fa fa-sticky-note"></i>
+                    <i class="fal fa-sticky-note"></i>
                     <span class="wb-contact-notes-banner-text" id="wb-contact-notes-banner-text"></span>
                     <span class="wb-contact-notes-banner-count" id="wb-contact-notes-banner-count" style="display:none;"></span>
                 </button>
@@ -4010,7 +4218,7 @@
                                                 </video>
                                             @else
                                                 <div class="wb-video-placeholder">
-                                                    <i class="fa fa-film"></i>
+                                                    <i class="fal fa-film"></i>
                                                     <span>{{ app()->getLocale() === 'ar' ? 'فيديو' : 'Video' }}</span>
                                                 </div>
                                             @endif
@@ -4020,12 +4228,12 @@
                                                 <button class="wb-audio-message-btn" type="button" data-action="play-audio"
                                                     data-message-id="{{ $msg->id }}" data-audio-src="{{ $mediaContentUrl }}"
                                                     data-audio-title="{{ $voicePlayerTitle }}">
-                                                    <i class="fa fa-play"></i>
+                                                    <i class="fal fa-play"></i>
                                                     <span>{{ $voicePlaceholder }}</span>
                                                 </button>
                                                 <a class="wb-audio-dl-btn" href="{{ $mediaContentUrl }}?download=1" download
                                                     title="{{ app()->getLocale() === 'ar' ? 'تحميل' : 'Download' }}">
-                                                    <i class="fa fa-download"></i>
+                                                    <i class="fal fa-download"></i>
                                                 </a>
                                             </div>
                                         @endif
@@ -4044,7 +4252,7 @@
                                                 @if($docDownloadUrl)
                                                     <a class="wb-doc-action" href="{{ $docDownloadUrl }}" target="_blank" rel="noopener"
                                                         title="{{ app()->getLocale() === 'ar' ? 'تحميل' : 'Download' }}">
-                                                        <i class="fa fa-download"></i>
+                                                        <i class="fal fa-download"></i>
                                                     </a>
                                                 @endif
                                             </div>
@@ -4104,19 +4312,24 @@
                                 <div class="wb-reply-snippet" id="wb-reply-snippet"></div>
                             </div>
                             <button class="wb-reply-close" type="button" id="wb-reply-close" title="{{ __('close') }}">
-                                <i class="fa fa-times"></i>
+                                <i class="fal fa-times"></i>
                             </button>
                         </div>
                         <div class="wb-composer-inner">
                             <button class="wb-icon-btn" type="button" id="wb-composer-tools-btn"
                                 title="{{ __('whatsapp_add_attachment') }}" aria-expanded="false"
                                 aria-controls="wb-composer-tools-menu" {{ isset($activeConversation) && $activeConversation ? '' : 'disabled' }}>
-                                <i class="fa fa-paperclip"></i>
+                                <i class="fal fa-paperclip"></i>
                             </button>
                             <button class="wb-icon-btn wb-emoji-btn" type="button" id="wb-emoji-btn"
                                 title="{{ __('whatsapp_emoji') }}" aria-label="{{ __('whatsapp_emoji') }}"
                                 {{ isset($activeConversation) && $activeConversation ? '' : 'disabled' }}>
-                                <i class="fa fa-smile-o"></i>
+                                <i class="fal fa-face-smile"></i>
+                            </button>
+                            <button class="wb-icon-btn wb-ai-btn" type="button" id="wb-ai-suggest-btn"
+                                title="{{ __('whatsapp_ai_suggest_reply') }}" aria-label="{{ __('whatsapp_ai_suggest_reply') }}"
+                                {{ isset($activeConversation) && $activeConversation ? '' : 'disabled' }}>
+                                <i class="fal fa-wand-magic-sparkles wb-ai-icon"></i>
                             </button>
                             <input type="text" name="message" class="wb-composer-input" id="wb-composer-input"
                                 placeholder="{{ __('whatsapp_type_message') }}" autocomplete="off" {{ isset($activeConversation) && $activeConversation ? '' : 'disabled' }}>
@@ -4124,7 +4337,7 @@
                                 <button class="wb-icon-btn wb-recording-cancel-btn" type="button"
                                     id="wb-recording-cancel-btn"
                                     title="{{ __('whatsapp_cancel_recording') }}">
-                                    <i class="fa fa-trash-alt"></i>
+                                    <i class="fal fa-trash-alt"></i>
                                 </button>
                                 <div class="wb-recording-status">
                                     <span class="wb-recording-dot"></span>
@@ -4138,10 +4351,10 @@
                             </div>
                             <button class="wb-icon-btn" type="button" id="wb-audio-btn" title="{{ __('whatsapp_voice') }}"
                                 {{ isset($activeConversation) && $activeConversation ? '' : 'disabled' }}>
-                                <i class="fa fa-microphone"></i>
+                                <i class="fal fa-microphone"></i>
                             </button>
                             <button class="wb-send-btn" type="submit" {{ isset($activeConversation) && $activeConversation ? '' : 'disabled' }}>
-                                <i class="fa fa-paper-plane"></i>
+                                <i class="fal fa-paper-plane"></i>
                             </button>
                         </div>
                         <div class="wb-composer-error" id="wb-composer-error"></div>
@@ -4149,11 +4362,11 @@
                     <input type="file" id="wb-file-input" style="display:none;">
                     <div class="wb-composer-tools-menu" id="wb-composer-tools-menu" aria-hidden="true">
                         <button class="wb-composer-tool" type="button" id="wb-attach-btn" {{ isset($activeConversation) && $activeConversation ? '' : 'disabled' }}>
-                            <span class="wb-composer-tool-icon is-document"><i class="fa fa-paperclip"></i></span>
+                            <span class="wb-composer-tool-icon is-document"><i class="fal fa-paperclip"></i></span>
                             <span>{{ app()->getLocale() === 'ar' ? 'الصور والملفات' : 'Photos & Files' }}</span>
                         </button>
                         <button class="wb-composer-tool" type="button" id="wb-qr-btn" {{ isset($activeConversation) && $activeConversation ? '' : 'disabled' }}>
-                            <span class="wb-composer-tool-icon is-quick"><i class="fa fa-bolt"></i></span>
+                            <span class="wb-composer-tool-icon is-quick"><i class="fal fa-bolt"></i></span>
                             <span>{{ __('whatsapp_quick_replies') }}</span>
                         </button>
                     </div>
@@ -4162,7 +4375,7 @@
                             <input type="text" class="wb-qr-search" id="wb-qr-search"
                                 placeholder="{{ app()->getLocale() === 'ar' ? 'ابحث في الردود السريعة...' : 'Search quick replies...' }}">
                             <button class="wb-icon-btn" type="button" id="wb-qr-close" title="{{ __('close') }}">
-                                <i class="fa fa-times"></i>
+                                <i class="fal fa-times"></i>
                             </button>
                         </div>
                         <div class="wb-qr-list" id="wb-qr-list"></div>
@@ -4185,35 +4398,9 @@
                 </div>
             </div>
             <button class="wb-audio-player-close" type="button" id="wb-audio-player-close" title="{{ __('close') }}">
-                <i class="fa fa-times"></i>
+                <i class="fal fa-times"></i>
             </button>
         </div>
-
-        <div class="wb-modal" id="wb-new-chat-modal" aria-hidden="true">
-            <div class="wb-modal-backdrop" id="wb-new-chat-backdrop"></div>
-            <div class="wb-modal-card" role="dialog" aria-modal="true">
-                <div class="wb-modal-header">
-                    <div class="wb-modal-title">{{ __('whatsapp_choose_contact') }}</div>
-                    <button class="wb-icon-btn" type="button" id="wb-new-chat-close" title="{{ __('close') }}">
-                        <i class="fa fa-times"></i>
-                    </button>
-                </div>
-                <div class="wb-modal-body">
-                    <div class="wb-search-box">
-                        <i class="fa fa-search"></i>
-                        <input type="text" class="wb-search-input" id="wb-contact-search"
-                            placeholder="{{ app()->getLocale() === 'ar' ? 'ابحث بالاسم أو الرقم...' : 'Search by name or number...' }}">
-                    </div>
-
-                    <div class="wb-contact-list" id="wb-contact-list">
-                        <div class="wb-empty">{{ app()->getLocale() === 'ar' ? 'اكتب للبحث أو افتح القائمة' : 'Type to search or open the list' }}</div>
-                    </div>
-
-                    <button class="wb-load-more" type="button" id="wb-contact-more" style="display:none;">{{ app()->getLocale() === 'ar' ? 'تحميل المزيد' : 'Load more' }}</button>
-                </div>
-            </div>
-        </div>
-
 
         <div class="wb-modal" id="wb-tags-modal" aria-hidden="true">
             <div class="wb-modal-backdrop" id="wb-tags-backdrop"></div>
@@ -4221,12 +4408,12 @@
                 <div class="wb-modal-header">
                     <div class="wb-modal-title">{{ __('whatsapp_chat_tags') }}</div>
                     <button class="wb-icon-btn" type="button" id="wb-tags-close" title="{{ __('close') }}">
-                        <i class="fa fa-times"></i>
+                        <i class="fal fa-times"></i>
                     </button>
                 </div>
                 <div class="wb-modal-body">
                     <div class="wb-search-box">
-                        <i class="fa fa-search"></i>
+                        <i class="fal fa-search"></i>
                         <input type="text" class="wb-search-input" id="wb-tags-search" placeholder="{{ app()->getLocale() === 'ar' ? 'ابحث في الوسوم...' : 'Search tags...' }}">
                     </div>
 
@@ -4258,7 +4445,7 @@
                 <div class="wb-modal-header">
                     <div class="wb-modal-title">{{ __('whatsapp_internal_note') }}</div>
                     <button class="wb-icon-btn" type="button" id="wb-notes-close" title="{{ __('close') }}">
-                        <i class="fa fa-times"></i>
+                        <i class="fal fa-times"></i>
                     </button>
                 </div>
                 <div class="wb-modal-body">
@@ -4282,12 +4469,12 @@
                     <div class="wb-modal-title">
                         {{ app()->getLocale() === 'ar' ? 'البحث داخل المحادثة' : 'Search Conversation' }}</div>
                     <button class="wb-icon-btn" type="button" id="wb-message-search-close" title="{{ __('close') }}">
-                        <i class="fa fa-times"></i>
+                        <i class="fal fa-times"></i>
                     </button>
                 </div>
                 <div class="wb-modal-body">
                     <div class="wb-search-box">
-                        <i class="fa fa-search"></i>
+                        <i class="fal fa-search"></i>
                         <input type="text" class="wb-search-input" id="wb-message-search-input"
                             placeholder="{{ app()->getLocale() === 'ar' ? 'ابحث داخل الرسائل...' : 'Search messages...' }}">
                     </div>
@@ -4306,7 +4493,7 @@
                 <div class="wb-modal-header">
                     <div class="wb-modal-title">{{ app()->getLocale() === 'ar' ? 'إعدادات الشات' : 'Chat Settings' }}</div>
                     <button class="wb-icon-btn" type="button" id="wb-chat-settings-close" title="{{ __('close') }}">
-                        <i class="fa fa-times"></i>
+                        <i class="fal fa-times"></i>
                     </button>
                 </div>
                 <div class="wb-modal-body">
@@ -4330,11 +4517,11 @@
             <div class="wb-contact-meta-card" role="dialog" aria-modal="true">
                 <div class="wb-contact-meta-header">
                     <div class="wb-contact-meta-title">
-                        <i class="fa fa-user"></i>
+                        <i class="fal fa-user"></i>
                         <span>{{ app()->getLocale() === 'ar' ? 'بيانات العميل' : 'Customer info' }}</span>
                     </div>
                     <button class="wb-icon-btn" type="button" id="wb-contact-meta-close" title="{{ __('close') }}">
-                        <i class="fa fa-times"></i>
+                        <i class="fal fa-times"></i>
                     </button>
                 </div>
                 <div class="wb-contact-meta-body">
@@ -4345,7 +4532,7 @@
                     <div class="wb-notes-section">
                         <div class="wb-notes-section-head">
                             <div class="wb-notes-section-title">
-                                <i class="fa fa-sticky-note"></i>
+                                <i class="fal fa-sticky-note"></i>
                                 <span>{{ app()->getLocale() === 'ar' ? 'ملاحظات' : 'Notes' }}</span>
                             </div>
                             <span class="wb-notes-section-count" id="wb-contact-notes-count">0</span>
@@ -4370,7 +4557,7 @@
             <div class="modal-dialog modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header bg-warning text-white">
-                        <h5 class="modal-title"><i class="fa fa-info-circle me-2"></i>{{ app()->getLocale() === 'ar' ? 'ملاحظات العميل' : 'Customer Notes' }}</h5>
+                        <h5 class="modal-title"><i class="fal fa-info-circle me-2"></i>{{ app()->getLocale() === 'ar' ? 'ملاحظات العميل' : 'Customer Notes' }}</h5>
                         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                     </div>
                     <div class="modal-body" id="wb-contact-notes-modal-body">
@@ -4420,8 +4607,8 @@
             const chatIndexUrl = root ? root.dataset.chatIndexUrl : '';
             const convUrl = root ? root.dataset.conversationsUrl : '';
             const msgUrlTemplate = root ? root.dataset.messagesUrlTemplate : '';
+            const suggestReplyUrlTemplate = root ? root.dataset.suggestReplyUrlTemplate : '';
             const messageSearchUrlTemplate = root ? root.dataset.messageSearchUrlTemplate : '';
-            const contactsUrl = root ? root.dataset.contactsUrl : '';
             const csrfToken = root ? root.dataset.csrfToken : '';
             const metaUrlTemplate = root ? root.dataset.metaUrlTemplate : '';
             const tagsUrl = root ? root.dataset.tagsUrl : '';
@@ -4476,8 +4663,6 @@
             let messagesLoadingOlder = false;
             let isFirstMessagesRender = true;
             let currentReplyToWamid = '';
-            let contactsNextUrl = null;
-            let contactsLoading = false;
             let metaCache = null;
             let metaLoadingConversationId = null;
             let quickRepliesCache = [];
@@ -4490,7 +4675,8 @@
                     'wb-composer-tools-btn',
                     'wb-attach-btn',
                     'wb-qr-btn',
-                    'wb-audio-btn'
+                    'wb-audio-btn',
+                    'wb-ai-suggest-btn'
                 ].forEach(function (id) {
                     const element = document.getElementById(id);
                     if (!element) return;
@@ -5158,8 +5344,8 @@
                         }
                         if (normalizedType === 'audio' && mediaSrc) {
                             html += '<div class="wb-audio-row">';
-                            html += '<button class="wb-audio-message-btn" type="button" data-action="play-audio" data-message-id="' + escapeHtml(msg.id) + '" data-audio-src="' + escapeHtml(mediaSrc) + '" data-audio-title="' + escapeHtml(audioPlayerTitleForCurrentConversation()) + '"><i class="fa fa-play"></i><span>' + escapeHtml(voicePlaceholder) + '</span></button>';
-                            html += '<a class="wb-audio-dl-btn" href="' + escapeHtml(mediaSrc) + '?download=1" download title="' + (currentLocale.indexOf('ar') === 0 ? 'تحميل' : 'Download') + '"><i class="fa fa-download"></i></a>';
+                            html += '<button class="wb-audio-message-btn" type="button" data-action="play-audio" data-message-id="' + escapeHtml(msg.id) + '" data-audio-src="' + escapeHtml(mediaSrc) + '" data-audio-title="' + escapeHtml(audioPlayerTitleForCurrentConversation()) + '"><i class="fal fa-play"></i><span>' + escapeHtml(voicePlaceholder) + '</span></button>';
+                            html += '<a class="wb-audio-dl-btn" href="' + escapeHtml(mediaSrc) + '?download=1" download title="' + (currentLocale.indexOf('ar') === 0 ? 'تحميل' : 'Download') + '"><i class="fal fa-download"></i></a>';
                             html += '</div>';
                         }
                         if (normalizedType === 'document') {
@@ -5178,7 +5364,7 @@
                             html += '<div class="wb-doc-meta">' + escapeHtml(mime || ext) + '</div>';
                             html += '</div>';
                             if (dl) {
-                                html += '<a class="wb-doc-action" href="' + escapeHtml(dl) + '" target="_blank" rel="noopener"><i class="fa fa-download"></i></a>';
+                                html += '<a class="wb-doc-action" href="' + escapeHtml(dl) + '" target="_blank" rel="noopener"><i class="fal fa-download"></i></a>';
                             }
                             html += '</div>';
                         }
@@ -5194,15 +5380,20 @@
                         const replyTitle = canReply
                             ? (currentLocale.indexOf('ar') === 0 ? 'رد على هذه الرسالة' : 'Reply to this message')
                             : (currentLocale.indexOf('ar') === 0 ? 'الرد غير متاح لهذه الرسالة' : 'Reply not available for this message');
-                        html += '<button class="wb-msg-action" type="button" data-action="reply" data-message-id="' + escapeHtml(msg.id) + '" title="' + replyTitle + '"' + (canReply ? '' : ' disabled') + '><i class="fa fa-reply"></i></button>';
+                        html += '<button class="wb-msg-action" type="button" data-action="reply" data-message-id="' + escapeHtml(msg.id) + '" title="' + replyTitle + '"' + (canReply ? '' : ' disabled') + '><i class="fal fa-reply"></i></button>';
+                        html += '<button class="wb-msg-action" type="button" data-action="share" data-message-id="' + escapeHtml(msg.id) + '" title="' + (currentLocale.indexOf('ar') === 0 ? 'مشاركة' : 'Share') + '"><i class="fal fa-share-alt"></i></button>';
+                        html += '<button class="wb-msg-action" type="button" data-action="forward" data-message-id="' + escapeHtml(msg.id) + '" title="' + (currentLocale.indexOf('ar') === 0 ? 'إعادة توجيه' : 'Forward') + '"><i class="fal fa-share"></i></button>';
+                        html += '<button class="wb-msg-action" type="button" data-action="copy" data-message-id="' + escapeHtml(msg.id) + '" title="' + (currentLocale.indexOf('ar') === 0 ? 'نسخ' : 'Copy') + '"><i class="fal fa-copy"></i></button>';
+                        html += '<button class="wb-msg-action" type="button" data-action="edit" data-message-id="' + escapeHtml(msg.id) + '" title="' + (currentLocale.indexOf('ar') === 0 ? 'تعديل' : 'Edit') + '"><i class="fal fa-pencil"></i></button>';
                         if (isOut && !isDeleted) {
-                            html += '<button class="wb-msg-action is-danger" type="button" data-action="delete" data-message-id="' + escapeHtml(msg.id) + '"><i class="fa fa-trash"></i></button>';
+                            html += '<button class="wb-msg-action is-danger" type="button" data-action="delete" data-message-id="' + escapeHtml(msg.id) + '"><i class="fal fa-trash"></i></button>';
                         }
-                        html += '</span>';
+                        html += '<button class="wb-msg-action" type="button" data-action="more" data-message-id="' + escapeHtml(msg.id) + '" title="' + (currentLocale.indexOf('ar') === 0 ? 'المزيد' : 'More') + '"><i class="fal fa-ellipsis-v"></i></button>';
                         if (isOut) {
                             const statusMeta = getOutgoingStatusMeta(msg && msg.message_status ? msg.message_status : '');
                             html += '<span class="' + statusMeta.className + '">' + statusMeta.text + '</span>';
                         }
+                        html += '</span>';
                         html += '</div>';
                         html += '</div>';
                         html += '</div>';
@@ -5803,6 +5994,46 @@
                 }
             }
 
+            function showShareDialog(message) {
+                showInfoDialog(currentLocale.indexOf('ar') === 0 ? 'مشاركة الرسالة: ' + (message.body || message.mediaCaption || message.docFilename || '') : 'Share message: ' + (message.body || message.mediaCaption || message.docFilename || ''));
+            }
+
+            function showForwardDialog(message) {
+                showInfoDialog(currentLocale.indexOf('ar') === 0 ? 'إعادة توجيه الرسالة: ' + (message.body || message.mediaCaption || message.docFilename || '') : 'Forward message: ' + (message.body || message.mediaCaption || message.docFilename || ''));
+            }
+
+            function copyMessage(message) {
+                const textToCopy = message.body || message.mediaCaption || message.docFilename || '';
+                if (textToCopy) {
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        navigator.clipboard.writeText(textToCopy);
+                    } else {
+                        const textArea = document.createElement('textarea');
+                        textArea.value = textToCopy;
+                        textArea.style.position = 'absolute';
+                        textArea.style.left = '-999999px';
+                        document.body.appendChild(textArea);
+                        textArea.focus();
+                        textArea.select();
+                        try {
+                            document.execCommand('copy');
+                        } catch (err) {
+                            console.error('Failed to copy text:', err);
+                        }
+                        document.body.removeChild(textArea);
+                    }
+                    showInfoDialog(currentLocale.indexOf('ar') === 0 ? 'تم نسخ الرسالة' : 'Message copied');
+                }
+            }
+
+            function editMessage(message) {
+                showInfoDialog(currentLocale.indexOf('ar') === 0 ? 'تعديل الرسالة: ' + (message.body || message.mediaCaption || message.docFilename || '') : 'Edit message: ' + (message.body || message.mediaCaption || message.docFilename || ''));
+            }
+
+            function showMessageOptions(messageId) {
+                showInfoDialog(currentLocale.indexOf('ar') === 0 ? 'خيارات إضافية للرسالة: ' + messageId : 'Additional options for message: ' + messageId);
+            }
+
             function bindMessageActions() {
                 const box = document.querySelector('.wb-messages');
                 if (!box) return;
@@ -5825,6 +6056,40 @@
                         const msg = (messagesCache || []).find(function (m) { return m && String(m.id) === String(messageId); });
                         if (!msg) return;
                         setReplyToMessage(msg);
+                        return;
+                    }
+                    if (action === 'share') {
+                        const messageId = target.getAttribute('data-message-id');
+                        const msg = (messagesCache || []).find(function (m) { return m && String(m.id) === String(messageId); });
+                        if (!msg) return;
+                        showShareDialog(msg);
+                        return;
+                    }
+                    if (action === 'forward') {
+                        const messageId = target.getAttribute('data-message-id');
+                        const msg = (messagesCache || []).find(function (m) { return m && String(m.id) === String(messageId); });
+                        if (!msg) return;
+                        showForwardDialog(msg);
+                        return;
+                    }
+                    if (action === 'copy') {
+                        const messageId = target.getAttribute('data-message-id');
+                        const msg = (messagesCache || []).find(function (m) { return m && String(m.id) === String(messageId); });
+                        if (!msg) return;
+                        copyMessage(msg);
+                        return;
+                    }
+                    if (action === 'edit') {
+                        const messageId = target.getAttribute('data-message-id');
+                        const msg = (messagesCache || []).find(function (m) { return m && String(m.id) === String(messageId); });
+                        if (!msg) return;
+                        editMessage(msg);
+                        return;
+                    }
+                    if (action === 'more') {
+                        const messageId = target.getAttribute('data-message-id');
+                        if (!messageId) return;
+                        showMessageOptions(messageId);
                         return;
                     }
                     if (action === 'jump') {
@@ -5969,6 +6234,61 @@
                     input.value = (input.value || '') + '😊';
                     input.focus();
                     input.dispatchEvent(new Event('input', { bubbles: true }));
+                });
+            }
+
+            function bindComposerAiSuggest() {
+                const btn = document.getElementById('wb-ai-suggest-btn');
+                const input = document.getElementById('wb-composer-input');
+                if (!btn || !input) return;
+
+                btn.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    if (btn.disabled || btn.classList.contains('is-loading')) return;
+                    if (!activeConversationId || !suggestReplyUrlTemplate) {
+                        warningToster(
+                            currentLocale.indexOf('ar') === 0 ? 'تنبيه' : 'Notice',
+                            currentLocale.indexOf('ar') === 0 ? 'اختر محادثة أولاً' : 'Select a conversation first'
+                        );
+                        return;
+                    }
+
+                    const url = String(suggestReplyUrlTemplate).replace('__ID__', String(activeConversationId));
+                    const icon = btn.querySelector('.wb-ai-icon');
+                    btn.classList.add('is-loading');
+                    btn.setAttribute('disabled', 'disabled');
+                    if (icon) icon.classList.add('fa-spinner');
+
+                    $.ajax({ url: url, type: 'POST' })
+                        .done(function (res) {
+                            const suggestion = res && res.data && res.data.reply
+                                ? String(res.data.reply).trim()
+                                : '';
+                            if (suggestion) {
+                                input.value = suggestion;
+                                input.dispatchEvent(new Event('input', { bubbles: true }));
+                                input.focus();
+                                focusComposerIfDesktop(input);
+                            } else {
+                                warningToster(
+                                    currentLocale.indexOf('ar') === 0 ? 'تنبيه' : 'Notice',
+                                    currentLocale.indexOf('ar') === 0 ? 'تعذر توليد اقتراح للرد' : 'Could not generate a suggested reply'
+                                );
+                            }
+                        })
+                        .fail(function (xhr) {
+                            const msg = getAjaxErrorMessage(xhr);
+                            warningToster(
+                                currentLocale.indexOf('ar') === 0 ? 'خطأ' : 'Error',
+                                msg || (currentLocale.indexOf('ar') === 0 ? 'تعذر توليد اقتراح للرد' : 'Could not generate a suggested reply')
+                            );
+                        })
+                        .always(function () {
+                            btn.classList.remove('is-loading');
+                            if (icon) icon.classList.remove('fa-spinner');
+                            // Only re-enable if a conversation is still selected.
+                            if (activeConversationId) btn.removeAttribute('disabled');
+                        });
                 });
             }
 
@@ -6125,7 +6445,7 @@
                         audioBtn.classList.add('is-recording');
                         audioBtn.setAttribute('title', currentLocale.indexOf('ar') === 0 ? 'إيقاف وإرسال التسجيل' : 'Stop & send recording');
                         if (audioIcon) {
-                            audioIcon.className = 'fa fa-paper-plane';
+                            audioIcon.className = 'fal fa-paper-plane';
                         }
                         if (input) input.style.display = 'none';
                         if (toolsBtn) toolsBtn.style.display = 'none';
@@ -6140,7 +6460,7 @@
                     audioBtn.classList.remove('is-recording');
                     audioBtn.setAttribute('title', currentLocale.indexOf('ar') === 0 ? 'تسجيل صوتي' : 'Voice record');
                     if (audioIcon) {
-                        audioIcon.className = 'fa fa-microphone';
+                        audioIcon.className = 'fal fa-microphone';
                     }
                     if (input) input.style.display = '';
                     if (toolsBtn) toolsBtn.style.display = '';
@@ -6578,20 +6898,6 @@
                 alert(text);
             }
 
-            function setModalOpen(open) {
-                const modal = document.getElementById('wb-new-chat-modal');
-                if (!modal) return;
-                if (open) {
-                    modal.classList.add('is-open');
-                    modal.setAttribute('aria-hidden', 'false');
-                    document.body.style.overflow = 'hidden';
-                } else {
-                    modal.classList.remove('is-open');
-                    modal.setAttribute('aria-hidden', 'true');
-                    document.body.style.overflow = '';
-                }
-            }
-
             function setModalOpenById(id, open) {
                 const modal = document.getElementById(id);
                 if (!modal) return;
@@ -6620,13 +6926,13 @@
                     statusEl.classList.remove('is-open', 'is-resolved');
                     if (status === 'resolved') {
                         statusEl.classList.add('is-resolved');
-                        statusEl.innerHTML = '<i class="fa fa-check-circle"></i> ' + escapeHtml(t.resolved);
+                        statusEl.innerHTML = '<i class="fal fa-check-circle"></i> ' + escapeHtml(t.resolved);
                     } else if (status === 'snoozed') {
                         statusEl.classList.add('is-open');
-                        statusEl.innerHTML = '<i class="fa fa-clock-o"></i> ' + escapeHtml(t.snoozed);
+                        statusEl.innerHTML = '<i class="fal fa-clock"></i> ' + escapeHtml(t.snoozed);
                     } else {
                         statusEl.classList.add('is-open');
-                        statusEl.innerHTML = '<i class="fa fa-circle"></i> ' + escapeHtml(t.open);
+                        statusEl.innerHTML = '<i class="fal fa-circle"></i> ' + escapeHtml(t.open);
                     }
                 }
 
@@ -6642,9 +6948,9 @@
                         tags.forEach(function (t) {
                             const color = t.color ? String(t.color) : '';
                             const style = color ? ' style="background:' + escapeHtml(color) + '22;border-color:' + escapeHtml(color) + '55;color:' + escapeHtml(color) + ';"' : '';
-                            html += '<span class="wb-tag-pill"' + style + ' data-tag-id="' + escapeHtml(t.id) + '"><i class="fa fa-tag"></i> ' + escapeHtml(t.name);
+                            html += '<span class="wb-tag-pill"' + style + ' data-tag-id="' + escapeHtml(t.id) + '"><i class="fal fa-tag"></i> ' + escapeHtml(t.name);
                             if (canUpdateTags) {
-                                html += ' <button type="button" class="wb-tag-remove" data-tag-id="' + escapeHtml(t.id) + '" title="' + escapeHtml(currentLocale.indexOf('ar') === 0 ? 'إزالة' : 'Remove') + '"><i class="fa fa-times"></i></button>';
+                                html += ' <button type="button" class="wb-tag-remove" data-tag-id="' + escapeHtml(t.id) + '" title="' + escapeHtml(currentLocale.indexOf('ar') === 0 ? 'إزالة' : 'Remove') + '"><i class="fal fa-times"></i></button>';
                             }
                             html += '</span>';
                         });
@@ -6895,160 +7201,6 @@
                             metaLoadingConversationId = null;
                         }
                     });
-            }
-
-            function renderContacts(items, append) {
-                const list = document.getElementById('wb-contact-list');
-                if (!list) return;
-
-                let html = '';
-                if (!items || items.length === 0) {
-                    html = '<div class="wb-empty">' + escapeHtml(t.noResults) + '</div>';
-                    if (!append) {
-                        list.innerHTML = html;
-                    }
-                    return;
-                }
-
-                items.forEach(function (c) {
-                    const name = c && c.name ? String(c.name) : (c && c.wa_id ? String(c.wa_id) : '');
-                    const phone = c && c.wa_id ? String(c.wa_id) : '';
-                    html += '<div class="wb-contact-item" data-wa-id="' + escapeHtml(phone) + '">';
-                    html += '<div class="wb-avatar">' + escapeHtml(initials(name)) + '</div>';
-                    html += '<div class="wb-contact-main">';
-                    html += '<div class="wb-contact-name">' + escapeHtml(name) + '</div>';
-                    html += '<div class="wb-contact-phone">' + escapeHtml(phone) + '</div>';
-                    html += '</div>';
-                    html += '<div style="color: rgba(0,0,0,0.55);"><i class="fa fa-angle-left"></i></div>';
-                    html += '</div>';
-                });
-
-                if (append) {
-                    list.insertAdjacentHTML('beforeend', html);
-                } else {
-                    list.innerHTML = html;
-                }
-            }
-
-            function setContactsMoreVisible(visible) {
-                const btn = document.getElementById('wb-contact-more');
-                if (!btn) return;
-                btn.style.display = visible ? 'block' : 'none';
-            }
-
-            function loadContactsFirst() {
-                const search = document.getElementById('wb-contact-search');
-                const list = document.getElementById('wb-contact-list');
-                if (!list) return;
-
-                contactsNextUrl = null;
-                setContactsMoreVisible(false);
-                list.innerHTML = '<div class="wb-empty">' + escapeHtml(t.loading) + '</div>';
-
-                if (!contactsUrl) {
-                    list.innerHTML = '<div class="wb-empty">' + escapeHtml(t.contactsApiUnavailable) + '</div>';
-                    return;
-                }
-
-                const q = search && search.value ? String(search.value).trim() : '';
-                contactsLoading = true;
-                $.get(contactsUrl, { limit: 30, search: q })
-                    .done(function (res) {
-                        const items = res && res.data && res.data.items ? res.data.items : [];
-                        contactsNextUrl = res && res.data && res.data.pagination ? res.data.pagination.next_page_url : null;
-                        renderContacts(items, false);
-                        setContactsMoreVisible(!!contactsNextUrl);
-                    })
-                    .fail(function () {
-                        list.innerHTML = '<div class="wb-empty">' + escapeHtml(t.loadContactsError) + '</div>';
-                    })
-                    .always(function () {
-                        contactsLoading = false;
-                    });
-            }
-
-            function loadContactsMore() {
-                const list = document.getElementById('wb-contact-list');
-                if (!list) return;
-                if (!contactsNextUrl || contactsLoading) return;
-
-                contactsLoading = true;
-                $.get(contactsNextUrl)
-                    .done(function (res) {
-                        const items = res && res.data && res.data.items ? res.data.items : [];
-                        contactsNextUrl = res && res.data && res.data.pagination ? res.data.pagination.next_page_url : null;
-                        renderContacts(items, true);
-                        setContactsMoreVisible(!!contactsNextUrl);
-                    })
-                    .fail(function () {
-                        setContactsMoreVisible(false);
-                    })
-                    .always(function () {
-                        contactsLoading = false;
-                    });
-            }
-
-            function bindNewChat() {
-                const btn = document.getElementById('wb-new-chat-btn');
-                const mobileBtns = document.querySelectorAll('[data-wb-new-chat-trigger]');
-                const closeBtn = document.getElementById('wb-new-chat-close');
-                const backdrop = document.getElementById('wb-new-chat-backdrop');
-                const search = document.getElementById('wb-contact-search');
-                const list = document.getElementById('wb-contact-list');
-                const more = document.getElementById('wb-contact-more');
-
-                function close() {
-                    setModalOpen(false);
-                }
-
-                function open() {
-                    setModalOpen(true);
-                    if (search) {
-                        search.value = '';
-                        search.focus();
-                    }
-                    loadContactsFirst();
-                }
-
-                if (btn) {
-                    btn.addEventListener('click', open);
-                }
-                mobileBtns.forEach(function (mobileBtn) {
-                    mobileBtn.addEventListener('click', open);
-                });
-                if (closeBtn) {
-                    closeBtn.addEventListener('click', close);
-                }
-                if (backdrop) {
-                    backdrop.addEventListener('click', close);
-                }
-                if (more) {
-                    more.addEventListener('click', loadContactsMore);
-                }
-                if (search) {
-                    let t = null;
-                    search.addEventListener('input', function () {
-                        if (t) clearTimeout(t);
-                        t = setTimeout(function () {
-                            loadContactsFirst();
-                        }, 250);
-                    });
-                }
-                if (list) {
-                    list.addEventListener('click', function (e) {
-                        const item = e.target && e.target.closest ? e.target.closest('.wb-contact-item') : null;
-                        if (!item) return;
-                        const waId = item.getAttribute('data-wa-id');
-                        if (!waId) return;
-                        window.location.href = buildChatIndexUrl({ wa_id: waId });
-                    });
-                }
-
-                document.addEventListener('keydown', function (e) {
-                    if (e.key === 'Escape') {
-                        close();
-                    }
-                });
             }
 
             function bindActionMenu() {
@@ -7462,10 +7614,10 @@
                 bindReplyBar();
                 bindComposerTools();
                 bindComposerEmoji();
+                bindComposerAiSuggest();
                 bindAttachments();
                 bindQuickReplies();
                 bindHeaderActions();
-                bindNewChat();
                 bindActionMenu();
                 bindTags();
                 bindNotes();
@@ -7489,5 +7641,29 @@
                 setInterval(tick, 3000);
             }, 500);
         })();
+
+        $(document).ready(function() {
+            $(document).on('click', '.wb-msg', function(e) {
+                if (e.target.closest('.wb-msg-action, .wb-msg-actions')) {
+                    return;
+                }
+
+                var $msg = $(this);
+                var $msgActions = $msg.find('.wb-msg-actions');
+
+                if ($msgActions.hasClass('is-visible')) {
+                    $msgActions.removeClass('is-visible');
+                } else {
+                    $('.wb-msg-actions').removeClass('is-visible');
+                    $msgActions.addClass('is-visible');
+                }
+            });
+
+            $(document).on('click', function(e) {
+                if (!$(e.target).closest('.wb-msg').length) {
+                    $('.wb-msg-actions').removeClass('is-visible');
+                }
+            });
+        });
     </script>
 @endsection

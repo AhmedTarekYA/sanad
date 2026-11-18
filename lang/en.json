@@ -50,6 +50,8 @@
     "no_internet": "No internet connection. Please check your connection and try again.",
     "Clear": "Clear",
     "sidebar_text": "Sidebar Text",
+    "sidebar_expand": "Expand sidebar",
+    "sidebar_collapse": "Collapse sidebar",
     "copyright_text": "Copyright Text",
     "loading_background_color": "Loading Background Color",
     "main_settings": "Main Settings",
@@ -1067,6 +1069,8 @@
     "whatsapp_inbox": "Inbox",
     "whatsapp_online": "Online",
     "whatsapp_emoji": "Emoji",
+    "whatsapp_ai_suggest_reply": "Suggest an AI reply",
+    "whatsapp_ai_suggest_failed": "Could not generate a suggested reply",
     "whatsapp_accounts_title": "WhatsApp Accounts",
     "whatsapp_accounts_subtitle": "Choose the account whose conversations you want to manage",
     "whatsapp_new_chat": "New Chat",
@@ -1305,5 +1309,8 @@
     "crm_help_sales_desc": "Track sales orders and follow their status and prices. Linked to WhatsApp contacts.",
     "crm_help_users_title": "User management",
     "crm_help_users_desc": "Add and edit your team members' accounts and set each member's permissions.",
-    "whatsapp_setup_subtitle": "A step-by-step guide to connecting your WhatsApp Business API account to the system. Follow the steps, then enter your details in the WhatsApp settings."
+    "whatsapp_setup_subtitle": "A step-by-step guide to connecting your WhatsApp Business API account to the system. Follow the steps, then enter your details in the WhatsApp settings.",
+    "whatsapp_connection_help_title": "Having trouble connecting?",
+    "whatsapp_connection_help_desc": "Contact our support team and we'll help you connect your account in a few simple, quick steps.",
+    "whatsapp_how_to_connect": "How to connect"
 }

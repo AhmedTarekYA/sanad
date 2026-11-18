@@ -2,9 +2,7 @@
     $isAr = app()->getLocale() === 'ar';
     $supportedLocales = config('laravellocalization.supportedLocales', []);
     $currentLocale = app()->getLocale();
-    $loginLogo = isset($settings) && $settings->logo_header && file_exists(public_path('/storage/' . $settings->logo_header))
-        ? showFile($settings->logo_header)
-        : asset('brand/logo.svg');
+    $loginLogo = asset('brand/crm_logo.png');
 @endphp
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ $isAr ? 'rtl' : 'ltr' }}">

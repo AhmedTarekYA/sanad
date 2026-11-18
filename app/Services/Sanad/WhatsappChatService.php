@@ -13,6 +13,7 @@ use App\Models\CRM\WhatsappMessage;
 use App\Models\CRM\WhatsappQuickReply;
 use App\Repositories\Contracts\WhatsappBusinessRepositoryInterface;
 use App\Services\MainService;
+use Gemini\Laravel\Facades\Gemini;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Carbon;
@@ -1086,6 +1087,88 @@ class WhatsappChatService extends MainService
             'has_more' => $hasMore,
             'next_before_id' => $items->last()?->id,
         ];
+    }
+
+    /**
+     * Build a short, natural suggested reply for a conversation using Google Gemini.
+     * The reply is returned as editable plain text (never sent automatically).
+     */
+    public function suggestReply(int $crmUserId, int $conversationId, int $historyLimit = 14): string
+    {
+        $conversation = $this->findOwnedConversation($crmUserId, $conversationId);
+
+        $messages = WhatsappMessage::query()
+            ->where('conversation_id', $conversation->id)
+            ->where('crm_user_id', $crmUserId)
+            ->orderByDesc('id')
+            ->limit(max(1, min($historyLimit, 30)))
+            ->get(['id', 'direction', 'type', 'body'])
+            ->reverse()
+            ->values();
+
+        if ($messages->isEmpty()) {
+            throw new RuntimeException(__('whatsapp_ai_suggest_failed'));
+        }
+
+        $lines = [];
+        foreach ($messages as $message) {
+            $direction = strtolower(trim((string) ($message->direction ?? '')));
+            $type = strtolower(trim((string) ($message->type ?? 'text')));
+            $body = trim((string) ($message->body ?? ''));
+
+            if ($type !== 'text' && $type !== '') {
+                $placeholder = match ($type) {
+                    'image'    => '[image]',
+                    'video'    => '[video]',
+                    'audio'    => '[voice message]',
+                    'document' => '[document]',
+                    'sticker'  => '[sticker]',
+                    default    => '['.$type.']',
+                };
+                $lines[] = ($direction === 'out' ? 'Agent: ' : 'Customer: ') . $placeholder;
+                continue;
+            }
+
+            if ($body === '') {
+                continue;
+            }
+
+            $lines[] = ($direction === 'out' ? 'Agent: ' : 'Customer: ') . $body;
+        }
+
+        if (empty($lines)) {
+            throw new RuntimeException(__('whatsapp_ai_suggest_failed'));
+        }
+
+        $conversationText = implode("\n", $lines);
+
+        $prompt = "You are a helpful customer-support agent replying in a WhatsApp chat. "
+            ."Draft a single short, natural, polite reply from the agent to the customer. "
+            ."Write the reply in the SAME language as the conversation (use Arabic if the conversation is mostly Arabic). "
+            ."Return ONLY the reply text: no markdown, no quotes, no labels, no explanations.\n\n"
+            ."Conversation (Agent = us, Customer = the contact):\n"
+            .$conversationText
+            ."\n\nSuggested agent reply:";
+
+        try {
+            $result = Gemini::generativeModel(model: 'gemini-2.0-flash')
+                ->generateContent($prompt);
+
+            $text = trim((string) $result->text());
+        } catch (\Throwable $e) {
+            Log::error('Gemini suggest reply failed', [
+                'conversation_id' => $conversation->id,
+                'message' => $e->getMessage(),
+            ]);
+
+            throw new RuntimeException(__('whatsapp_ai_suggest_failed'));
+        }
+
+        if ($text === '') {
+            throw new RuntimeException(__('whatsapp_ai_suggest_failed'));
+        }
+
+        return $text;
     }
 
     /**

@@ -65,6 +65,7 @@ Route::domain(config('app.crm_domain'))->name('crm.')->middleware(SetCrmLocale::
         Route::delete('/whatsapp-chat/messages/{messageId}', [WhatsappChatController::class, 'destroyMessage'])->name('whatsapp_chat.messages.delete');
         Route::get('/whatsapp-chat/conversations', [WhatsappChatController::class, 'conversations'])->name('whatsapp_chat.conversations');
         Route::get('/whatsapp-chat/conversations/{conversationId}/messages', [WhatsappChatController::class, 'messages'])->name('whatsapp_chat.messages');
+        Route::post('/whatsapp-chat/conversations/{conversationId}/suggest-reply', [WhatsappChatController::class, 'suggestReply'])->name('whatsapp_chat.suggestReply');
         Route::get('/whatsapp-chat/conversations/{conversationId}/search', [WhatsappChatController::class, 'searchMessages'])->name('whatsapp_chat.messages.search');
         Route::get('/whatsapp-chat/conversations/{conversationId}/meta', [WhatsappChatController::class, 'meta'])->name('whatsapp_chat.meta');
         Route::put('/whatsapp-chat/conversations/{conversationId}/tags', [WhatsappChatController::class, 'setTags'])->name('whatsapp_chat.tags.set');

@@ -50,6 +50,8 @@
     "no_internet": "لا يوجد اتصال بالإنترنت. يرجى التحقق من اتصالك والمحاولة مرة أخرى.",
     "Clear": "تنظيف",
     "sidebar_text": "نص السيدبار",
+    "sidebar_expand": "توسيع القائمة الجانبية",
+    "sidebar_collapse": "تصغير القائمة الجانبية",
     "copyright_text": "نص حقوق الملكية",
     "loading_background_color": "لون خلفية التحميل",
     "main_settings": "الاعدادات الرئيسية",
@@ -1067,6 +1069,8 @@
     "whatsapp_inbox": "صندوق المحادثات",
     "whatsapp_online": "متصل الآن",
     "whatsapp_emoji": "إيموجي",
+    "whatsapp_ai_suggest_reply": "اقتراح رد بالذكاء الاصطناعي",
+    "whatsapp_ai_suggest_failed": "تعذر توليد اقتراح للرد",
     "whatsapp_accounts_title": "حسابات واتساب",
     "whatsapp_accounts_subtitle": "اختر الحساب الذي تريد متابعة محادثاته",
     "whatsapp_new_chat": "محادثة جديدة",
@@ -1305,5 +1309,8 @@
     "crm_help_sales_desc": "سجل طلبات المبيعات وتابع حالتها وأسعارها. مرتبطة بجهات الاتصال من واتساب.",
     "crm_help_users_title": "إدارة المستخدمين",
     "crm_help_users_desc": "أضف وعدّل حسابات موظفي فريقك وحدد صلاحيات كل موظف.",
-    "whatsapp_setup_subtitle": "دليل خطوة بخطوة لربط حساب واتساب Business API بالنظام. اتبع الخطوات ثم أدخل بياناتك في إعدادات الواتساب."
+    "whatsapp_setup_subtitle": "دليل خطوة بخطوة لربط حساب واتساب Business API بالنظام. اتبع الخطوات ثم أدخل بياناتك في إعدادات الواتساب.",
+    "whatsapp_connection_help_title": "تواجه صعوبة في الربط؟",
+    "whatsapp_connection_help_desc": "تواصل مع فريق الدعم وسنساعدك في ربط حسابك بخطوات بسيطة وسريعة.",
+    "whatsapp_how_to_connect": "كيفية الربط"
 }

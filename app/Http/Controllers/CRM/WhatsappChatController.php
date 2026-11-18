@@ -203,6 +203,19 @@ class WhatsappChatController extends Controller
         ]);
     }
 
+    public function suggestReply(Request $request, int $conversationId, WhatsappChatService $service): JsonResponse
+    {
+        $user = Auth::guard('crm')->user();
+
+        try {
+            $reply = $service->suggestReply($user->id, $conversationId);
+        } catch (\Throwable $e) {
+            return jsonValid(['reply' => [$e->getMessage()]], $e->getMessage());
+        }
+
+        return jsonSuccess(['reply' => $reply]);
+    }
+
     public function searchMessages(Request $request, int $conversationId, WhatsappChatService $service): JsonResponse
     {
         $user = Auth::guard('crm')->user();
