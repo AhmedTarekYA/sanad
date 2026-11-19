@@ -22,7 +22,8 @@
             <a href="#fkr-sectors">{{ app()->getLocale() === 'ar' ? 'القطاعات' : 'Sectors' }}</a>
             <a href="#fkr-method">{{ app()->getLocale() === 'ar' ? 'منهجيتنا' : 'Our methodology' }}</a>
         </nav>
-        <p>© {{ date('Y') }} Fikr — Sanad CX</p>
+        <p>© {{ date('Y') }} {{ app()->getLocale() === 'ar' ? 'جميع حقوق فكر محفوظة' : 'FKR. All rights reserved.' }}</p>
+        <p class="sanad-brand-credit" lang="en" dir="ltr">by <strong>madaCX</strong></p>
     </footer>
 @else
     @include('website.partials.footer')

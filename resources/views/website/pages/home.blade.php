@@ -152,7 +152,7 @@
     </section>
 <section class="sanad-home-fkr" id="sanad-home-fkr" data-gsap-section="home-fkr" data-node-id="349:8857" aria-labelledby="sanad-home-fkr-title">
     <div class="sanad-home-fkr__logo" aria-hidden="true">
-        <img src="{{ asset('website/assets/image/home/fkr-logo.png') }}" alt="" width="72" height="56" loading="lazy" decoding="async">
+        @include('website.partials.fikr-logo', ['logoId' => 'fikr-home'])
     </div>
     <div class="sanad-home-fkr__container" data-node-id="349:8858">
         <ul class="sanad-home-fkr__items" aria-label="مزايا فِكر">
@@ -937,105 +937,7 @@
 
 
     @push('scripts')
-        <script>
-            (function () {
-                var root = document.querySelector('[data-stats-slider]');
-                if (!root) { return; }
-                var track = root.querySelector('[data-stats-track]');
-                var viewport = root.querySelector('.sanad-stats__viewport');
-                var items = Array.prototype.slice.call(track.children);
-                var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-                var current = 0, timer = null, resetTimer = null, hovered = false, visible = false;
-                var animated = new WeakMap();
-
-                function perView() { return window.innerWidth < 640 ? 2 : (window.innerWidth < 1024 ? 3 : 4); }
-                function animateValue(item) {
-                    var value = item && item.querySelector('[data-stat-value]');
-                    if (!value || reducedMotion.matches) { return; }
-                    var original = value.dataset.statValue, match = original.match(/\d+/);
-                    if (!match) { return; }
-                    cancelAnimationFrame(animated.get(value));
-                    var target = Number(match[0]), started = performance.now();
-                    value.classList.add('is-counting');
-                    function frame(now) {
-                        var progress = Math.min((now - started) / 600, 1);
-                        var eased = 1 - Math.pow(1 - progress, 4);
-                        value.textContent = original.replace(match[0], String(Math.round(target * eased)));
-                        if (progress < 1 && !reducedMotion.matches) {
-                            animated.set(value, requestAnimationFrame(frame));
-                        } else {
-                            value.textContent = original;
-                            value.classList.remove('is-counting');
-                        }
-                    }
-                    value.textContent = original.replace(match[0], '0');
-                    animated.set(value, requestAnimationFrame(frame));
-                }
-                function render(animate) {
-                    var sign = window.getComputedStyle(track).direction === 'rtl' ? 1 : -1;
-                    track.style.transition = animate ? 'transform 380ms cubic-bezier(0.22, 1, 0.36, 1)' : 'none';
-                    track.style.transform = reducedMotion.matches ? '' : 'translate3d(' + (sign * current * (100 / perView())) + '%, 0, 0)';
-                }
-                function schedule() {
-                    clearTimeout(timer);
-                    if (reducedMotion.matches || hovered || document.hidden || !visible) { return; }
-                    timer = setTimeout(function () {
-                        current += 1;
-                        animateValue(track.children[current + perView() - 1]);
-                        render(true);
-                        if (current === items.length) {
-                            resetTimer = setTimeout(function () { current = 0; render(false); schedule(); }, 380);
-                        } else { schedule(); }
-                    }, 1650);
-                }
-                function layout() {
-                    clearTimeout(timer);
-                    clearTimeout(resetTimer);
-                    track.querySelectorAll('[data-stats-clone]').forEach(function (clone) { clone.remove(); });
-                    current = 0;
-                    items.forEach(function (item) {
-                        var value = item.querySelector('[data-stat-value]');
-                        cancelAnimationFrame(animated.get(value));
-                        value.textContent = value.dataset.statValue;
-                        item.style.opacity = '1';
-                        item.style.visibility = 'visible';
-                        item.style.transform = 'none';
-                        item.style.flex = reducedMotion.matches ? '' : '0 0 ' + (100 / perView()) + '%';
-                    });
-                    if (!reducedMotion.matches) {
-                        items.slice(0, perView()).forEach(function (item) {
-                            var clone = item.cloneNode(true);
-                            clone.dataset.statsClone = '';
-                            clone.setAttribute('aria-hidden', 'true');
-                            clone.style.opacity = '1';
-                            clone.style.visibility = 'visible';
-                            clone.style.transform = 'none';
-                            track.appendChild(clone);
-                        });
-                    }
-                    render(false);
-                    schedule();
-                }
-                root.addEventListener('mouseenter', function () { hovered = true; schedule(); });
-                root.addEventListener('mouseleave', function () { hovered = false; schedule(); });
-                if (reducedMotion.addEventListener) {
-                    reducedMotion.addEventListener('change', layout);
-                } else {
-                    reducedMotion.addListener(layout);
-                }
-                window.addEventListener('resize', layout);
-                document.addEventListener('visibilitychange', schedule);
-                new IntersectionObserver(function (entries) {
-                    var wasVisible = visible;
-                    visible = entries[0].isIntersecting;
-                    if (visible && !wasVisible && !reducedMotion.matches) {
-                        Array.prototype.slice.call(track.children, current, current + perView()).forEach(animateValue);
-                    }
-                    schedule();
-                }, { threshold: .25 }).observe(root);
-                layout();
-            })();
-        </script>
+        <script defer src="{{ asset('website/assets/js/stats-marquee.js') }}?v={{ filemtime(public_path('website/assets/js/stats-marquee.js')) }}"></script>
     @endpush
     @push('scripts')
         <script>

@@ -655,6 +655,8 @@
           const actions = $$('.sanad-hero__actions .sanad-btn', hero);
           const trust = $$('.sanad-hero__trust-item', hero);
           const globe = $('.sanad-hero__globe', hero);
+          const glow = $('.sanad-hero__glow', hero);
+          const chips = $$('.sanad-hero__chip', hero);
 
           if (eyebrow) tl.from(eyebrow, { y: 10, autoAlpha: 0, duration: 0.45, ease: 'power1.out' }, 0);
           if (headline) {
@@ -666,17 +668,67 @@
           if (actions[0]) tl.from(actions[0], { y: 12, autoAlpha: 0, duration: 0.504, ease: 'power1.out' }, 0.948);
           if (actions[1]) tl.from(actions[1], { y: 12, autoAlpha: 0, duration: 0.498, ease: 'power1.out' }, 1.05);
           if (trust.length) tl.from(trust, { y: 10, autoAlpha: 0, stagger: 0.12, duration: 0.45, ease: 'power1.out' }, 1.248);
+
+          // Coherent continuous rotation + subtle pulse breathing for globe (zero vertical travel)
           if (globe) {
-            g.to(globe, { rotation: 360, duration: 22, repeat: -1, ease: 'none' });
+            g.to(globe, { rotation: 360, duration: 24, repeat: -1, ease: 'none' });
+            g.to(globe, { scale: 1.025, duration: 3.6, repeat: -1, yoyo: true, ease: 'sine.inOut' });
           }
-          from('.sanad-hero__chip', { y: 24, stagger: 0.08, duration: 0.6 }, hero);
-          $$('.sanad-hero__chip', hero).forEach((chip, idx) => {
-            g.to(chip, { y: idx % 2 ? -8 : 8, duration: 1.8 + (idx * 0.2), repeat: -1, yoyo: true, ease: 'sine.inOut' });
+          if (glow) {
+            g.to(glow, { scale: 1.06, opacity: 0.85, duration: 3.6, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+          }
+
+          // Initial scroll reveal for chips
+          from(chips, { y: 24, stagger: 0.08, duration: 0.6 }, hero);
+
+          // Surrounding chips: subtle float, pulse, and coherent tilt/rotation (no purple path travel)
+          chips.forEach((chip, idx) => {
+            g.to(chip, {
+              y: idx % 2 ? -7 : 7,
+              scale: 1.035,
+              rotation: idx % 2 ? 2.5 : -2.5,
+              duration: 2.2 + (idx * 0.25),
+              repeat: -1,
+              yoyo: true,
+              ease: 'sine.inOut'
+            });
           });
+
+          // Pointer parallax on icon so it doesn't interrupt or conflict with chip float/pulse tweens
           if (finePointer.matches) {
-            const movers = $$('.sanad-hero__chip', hero).map(element => ({ x: g.quickTo(element, 'x', { duration: 0.45 }), y: g.quickTo(element, 'y', { duration: 0.45 }), depth: 14 }));
-            on(hero, 'pointermove', event => { const rect = hero.getBoundingClientRect(); movers.forEach(move => { move.x(((event.clientX - rect.left) / rect.width - 0.5) * move.depth); move.y(((event.clientY - rect.top) / rect.height - 0.5) * move.depth); }); });
+            const movers = chips.map(element => {
+              const icon = $('img', element) || element;
+              return { x: g.quickTo(icon, 'x', { duration: 0.45 }), y: g.quickTo(icon, 'y', { duration: 0.45 }), depth: 8 };
+            });
+            on(hero, 'pointermove', event => {
+              const rect = hero.getBoundingClientRect();
+              movers.forEach(move => {
+                move.x(((event.clientX - rect.left) / rect.width - 0.5) * move.depth);
+                move.y(((event.clientY - rect.top) / rect.height - 0.5) * move.depth);
+              });
+            });
             on(hero, 'pointerleave', () => movers.forEach(move => { move.x(0); move.y(0); }));
+          }
+
+          // Performance lifecycle: pause infinite tweens when hero is out-of-viewport or tab is hidden
+          const heroTweens = [
+            globe && g.getTweensOf(globe),
+            glow && g.getTweensOf(glow),
+            ...chips.map(chip => g.getTweensOf(chip))
+          ].flat().filter(Boolean);
+
+          if (heroTweens.length) {
+            ST.create({
+              trigger: hero,
+              start: 'top bottom',
+              end: 'bottom top',
+              onToggle: self => {
+                heroTweens.forEach(tw => self.isActive && !document.hidden ? tw.play() : tw.pause());
+              }
+            });
+            on(document, 'visibilitychange', () => {
+              heroTweens.forEach(tw => document.hidden ? tw.pause() : (ST.isInViewport(hero) && tw.play()));
+            });
           }
         });
         spec('home.02.stats', '.sanad-stats', section => { from('.sanad-stats__viewport', { y: 18, duration: 0.5 }, section); });
@@ -687,7 +739,6 @@
           draw('.sanad-home-services .service-icon path');
         });
         spec('home.04.fikr', '.sanad-home-fkr', section => {
-          scrub('.sanad-home-fkr', { clipPath: 'inset(8% 5% round 32px)', scale: 0.96 }, { clipPath: 'inset(0% 0% round 24px)', scale: 1 }, section, 'top 85%', 'top 25%');
           heading('.sanad-home-fkr__title', { ease: 'power4.out', duration: 0.9 });
           from('.sanad-home-fkr__item', { stagger: 0.09, duration: 0.6 }, section);
         });

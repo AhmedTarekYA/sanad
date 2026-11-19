@@ -1,92 +1,247 @@
 @media (max-width: 767px) {
     main [id] { scroll-margin-block-start: 96px; }
 
-    .sanad-home-services__grid,
-    .sanad-comparison__cards,
-    .sanad-testimonials__grid,
-    .sanad-home-steps__timeline,
-    .sanad-differ__grid,
-    .sanad-industries__list,
-    .sanad-blog-articles__grid,
-    .ai-shift__cards,
-    .ai-ops__cards,
-    .ai-walkthrough__steps,
-    .ai-panel,
-    .fkr__grid,
-    .fkr__steps {
+    /* Short collections (up to five cards) use two columns instead of a full-width strip. */
+    :is(
+        .sanad-home-services__grid,
+        .sanad-differ__grid,
+        .sanad-industries__list,
+        .sanad-blog-articles__grid,
+        .sanad-three-pillars__grid,
+        .sanad-values__grid,
+        .sanad-partnership__grid,
+        .sanad-systems__cards,
+        .sanad-security__cards,
+        .ai-ops__cards,
+        .ai-walkthrough__steps,
+        .fkr__grid,
+        .fkr__steps,
+        .sanad-home-steps__timeline,
+        .sanad-vision
+    ) {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        align-items: stretch;
+        gap: clamp(10px, 3vw, 16px);
+        min-block-size: 0;
+        overflow: visible;
+        padding-block: 0;
+    }
+
+    :is(
+        .sanad-home-services__grid,
+        .sanad-differ__grid,
+        .sanad-industries__list,
+        .sanad-blog-articles__grid,
+        .sanad-three-pillars__grid,
+        .sanad-values__grid,
+        .sanad-partnership__grid,
+        .sanad-systems__cards,
+        .sanad-security__cards,
+        .ai-ops__cards,
+        .ai-walkthrough__steps,
+        .fkr__grid,
+        .fkr__steps,
+        .sanad-home-steps__timeline,
+        .sanad-vision
+    ) > * {
+        min-inline-size: 0;
+        max-inline-size: none;
+    }
+
+    /* Longer collections become swipeable, snap-aligned rows. */
+    :is(
+        .sanad-home-services__grid,
+        .sanad-differ__grid,
+        .sanad-industries__list,
+        .sanad-blog-articles__grid,
+        .sanad-three-pillars__grid,
+        .sanad-values__grid,
+        .sanad-partnership__grid,
+        .sanad-systems__cards,
+        .sanad-security__cards,
+        .ai-ops__cards,
+        .ai-walkthrough__steps,
+        .fkr__grid,
+        .fkr__steps
+    ):has(> :nth-child(6)) {
         display: flex;
         flex-flow: row nowrap;
         align-items: stretch;
-        justify-content: flex-start;
-        gap: 16px;
-        max-width: 100%;
+        gap: clamp(10px, 3vw, 16px);
         overflow-x: auto;
         overscroll-behavior-inline: contain;
         scroll-snap-type: x mandatory;
         -webkit-overflow-scrolling: touch;
-        padding-block: 4px 16px;
+        padding-block: 4px clamp(10px, 3vw, 16px);
     }
 
-    .sanad-home-services__grid > *,
-    .sanad-comparison__cards > *,
-    .sanad-testimonials__grid > *,
-    .sanad-home-steps__timeline > .sanad-home-steps__card,
-    .sanad-differ__grid > *,
-    .sanad-industries__list > *,
-    .sanad-blog-articles__grid > *,
-    .ai-shift__cards > *,
-    .ai-ops__cards > *,
-    .ai-walkthrough__steps > *,
-    .ai-panel > *,
-    .fkr__grid > *,
-    .fkr__steps > * {
-        flex: 0 0 88%;
-        min-width: 0;
-        max-width: 88%;
+    :is(
+        .sanad-home-services__grid,
+        .sanad-differ__grid,
+        .sanad-industries__list,
+        .sanad-blog-articles__grid,
+        .sanad-three-pillars__grid,
+        .sanad-values__grid,
+        .sanad-partnership__grid,
+        .sanad-systems__cards,
+        .sanad-security__cards,
+        .ai-ops__cards,
+        .ai-walkthrough__steps,
+        .fkr__grid,
+        .fkr__steps
+    ):has(> :nth-child(6)) > * {
+        flex: 0 0 86%;
+        min-inline-size: 0;
+        max-inline-size: 86%;
         scroll-snap-align: start;
     }
 
-    .ai-shift__cards > .ai-canvas,
-    .ai-panel > .ai-plan {
-        width: 88% !important;
+    /* Comparison tables, pricing plans and chat canvases need wide cards to stay readable. */
+    :is(.sanad-comparison__cards, .ai-panel, .ai-shift__cards) {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: stretch;
+        gap: clamp(12px, 3.5vw, 18px);
+        overflow-x: auto;
+        overscroll-behavior-inline: contain;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding-block: 4px clamp(10px, 3vw, 16px);
     }
 
+    :is(.sanad-comparison__cards, .ai-panel, .ai-shift__cards) > * {
+        flex: 0 0 88%;
+        min-inline-size: 0;
+        max-inline-size: 88%;
+        scroll-snap-align: start;
+    }
+
+    /* Testimonials keep their own one-card carousel rather than a generic grid. */
+    .sanad-testimonials__grid {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: stretch;
+        gap: clamp(12px, 3.5vw, 18px);
+        overflow-x: auto;
+        overscroll-behavior-inline: contain;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scroll-padding-inline-end: 20px;
+        padding-block: 4px clamp(10px, 3vw, 16px);
+    }
+
+    .sanad-testimonials__grid > .sanad-testimonials__card {
+        flex: 0 0 92%;
+        min-inline-size: 0;
+        max-inline-size: 92%;
+        scroll-snap-align: start;
+    }
+
+    /* Collection-specific resets that the shared grid/slider rules cannot express. */
     .sanad-home-services__grid { direction: rtl; }
-    .ai-ops__cards { align-items: flex-start; }
-    .ai-shift__cards > .ai-canvas { position: static !important; }
-    .ai-ops__cards > .ai-box { position: static !important; width: 88% !important; min-height: 0 !important; height: auto !important; }
     .sanad-home-steps__timeline > .sanad-home-steps__connector { display: none; }
-    .sanad-vision { flex-direction: row; }
-    .sanad-vision > .sanad-vision__card { width: 86%; min-width: 0; }
+    .sanad-vision > .sanad-vision__card { inline-size: auto; }
+    .sanad-partnership__grid > .sanad-partnership__card { grid-column: auto; }
+    .sanad-home-steps__card { min-block-size: 0; }
+    .sanad-three-pillars__card { min-block-size: 0; }
+    .sanad-three-pillars__card:last-child { min-block-size: 0; }
+    .ai-walkthrough__steps > .ai-step { min-block-size: 0; }
+    .ai-ops__cards > .ai-box { position: static !important; inline-size: auto !important; min-block-size: 0; }
+    .ai-shift__cards > .ai-canvas { position: static !important; inline-size: 88% !important; }
+    .ai-panel > .ai-plan { inline-size: 88% !important; }
 
-    .fkr__grid > *, .fkr__steps > * { grid-column: auto; }
+    .fkr__grid > .fkr__ind,
+    .fkr__grid > .fkr__ind:nth-child(even),
+    .fkr__grid > .fkr__ind:nth-child(3),
+    .fkr__grid > .fkr__ind:nth-child(4) { margin-block-start: 0; }
+    .fkr__grid > .fkr__ind { min-block-size: clamp(240px, 70vw, 360px); }
+    .fkr__grid .fkr__ind-image { block-size: clamp(150px, 42vw, 220px); }
+    .fkr__steps > .fkr__step { min-block-size: 0; }
+    .fkr__ind-copy { padding: clamp(12px, 3.5vw, 18px); gap: 8px; }
+    .fkr__ind-copy h3 { font-size: clamp(16px, 4.3vw, 18px); line-height: 1.5; }
+    .fkr__ind-copy :is(p, .fkr__en) { font-size: clamp(14px, 3.7vw, 15px); line-height: 1.65; }
+    .fkr__ind-image img { height: 100%; object-fit: cover; }
+    .fkr__step { padding-inline: clamp(12px, 3.5vw, 18px); padding-block-end: 16px; }
+    .fkr__step :is(h3, h4) { font-size: clamp(16px, 4.3vw, 18px); line-height: 1.5; }
+    .fkr__step p { font-size: clamp(14px, 3.7vw, 15px); line-height: 1.65; }
+    .sanad-home-services .sanad-service-card,
+    .sanad-home-steps__card { padding: clamp(12px, 3.5vw, 18px); gap: 16px; }
+    .sanad-home-services .sanad-service-card__title { font-size: clamp(16px, 4.3vw, 18px); line-height: 1.5; }
+    .sanad-home-services .sanad-service-card__desc { font-size: clamp(14px, 3.7vw, 15px); line-height: 1.65; }
+    .ai-ops__cards > .ai-obj { grid-column: 1 / -1; }
+    .ai-ops__cards > .ai-sent { padding-inline: clamp(12px, 3.5vw, 18px); }
+    :is(.sanad-home-steps__card, .sanad-three-pillars__card, .sanad-differ__card,
+        .sanad-systems__card, .sanad-security__card, .ai-step) {
+        overflow-wrap: anywhere;
+    }
+    .sanad-home-steps__identity { flex-wrap: wrap; gap: 8px; }
+    .sanad-differ__card-title { min-inline-size: 0; inline-size: auto; max-inline-size: 100%; }
 
-    :is(.sanad-home-services__grid, .sanad-comparison__cards, .sanad-testimonials__grid,
-        .sanad-home-steps__timeline, .sanad-differ__grid, .sanad-industries__list,
-        .sanad-blog-articles__grid, .sanad-vision, .sanad-three-pillars__grid,
-        .sanad-values__grid, .sanad-partnership__grid, .sanad-systems__cards,
-        .sanad-security__cards, .ai-shift__cards, .ai-ops__cards,
-        .ai-walkthrough__steps, .ai-panel, .fkr__grid, .fkr__steps) {
-        overflow-y: hidden;
+    :is(
+        .sanad-comparison__cards,
+        .ai-panel,
+        .ai-shift__cards,
+        .sanad-testimonials__grid,
+        .sanad-blog-articles__grid,
+        .sanad-home-services__grid,
+        .sanad-differ__grid,
+        .sanad-industries__list,
+        .sanad-three-pillars__grid,
+        .sanad-values__grid,
+        .sanad-partnership__grid,
+        .sanad-systems__cards,
+        .sanad-security__cards,
+        .ai-ops__cards,
+        .ai-walkthrough__steps,
+        .fkr__grid,
+        .fkr__steps
+    ) {
         scrollbar-width: none;
         -ms-overflow-style: none;
     }
 
-    :is(.sanad-home-services__grid, .sanad-comparison__cards, .sanad-testimonials__grid,
-        .sanad-home-steps__timeline, .sanad-differ__grid, .sanad-industries__list,
-        .sanad-blog-articles__grid, .sanad-vision, .sanad-three-pillars__grid,
-        .sanad-values__grid, .sanad-partnership__grid, .sanad-systems__cards,
-        .sanad-security__cards, .ai-shift__cards, .ai-ops__cards,
-        .ai-walkthrough__steps, .ai-panel, .fkr__grid, .fkr__steps)::-webkit-scrollbar {
-        display: none;
-    }
+    :is(
+        .sanad-comparison__cards,
+        .ai-panel,
+        .ai-shift__cards,
+        .sanad-testimonials__grid,
+        .sanad-blog-articles__grid,
+        .sanad-home-services__grid,
+        .sanad-differ__grid,
+        .sanad-industries__list,
+        .sanad-three-pillars__grid,
+        .sanad-values__grid,
+        .sanad-partnership__grid,
+        .sanad-systems__cards,
+        .sanad-security__cards,
+        .ai-ops__cards,
+        .ai-walkthrough__steps,
+        .fkr__grid,
+        .fkr__steps
+    )::-webkit-scrollbar { display: none; }
 
-    :is(.sanad-home-services__grid, .sanad-comparison__cards, .sanad-testimonials__grid,
-        .sanad-home-steps__timeline, .sanad-differ__grid, .sanad-industries__list,
-        .sanad-blog-articles__grid, .sanad-vision, .sanad-three-pillars__grid,
-        .sanad-values__grid, .sanad-partnership__grid, .sanad-systems__cards,
-        .sanad-security__cards, .ai-shift__cards, .ai-ops__cards,
-        .ai-walkthrough__steps, .ai-panel, .fkr__grid, .fkr__steps) > * {
+    :is(
+        .sanad-home-services__grid,
+        .sanad-comparison__cards,
+        .sanad-testimonials__grid,
+        .sanad-home-steps__timeline,
+        .sanad-differ__grid,
+        .sanad-industries__list,
+        .sanad-blog-articles__grid,
+        .sanad-vision,
+        .sanad-three-pillars__grid,
+        .sanad-values__grid,
+        .sanad-partnership__grid,
+        .sanad-systems__cards,
+        .sanad-security__cards,
+        .ai-shift__cards,
+        .ai-ops__cards,
+        .ai-walkthrough__steps,
+        .ai-panel,
+        .fkr__grid,
+        .fkr__steps
+    ) > * {
         transform: none !important;
         opacity: 1 !important;
         visibility: visible !important;
@@ -107,12 +262,12 @@
         text-align: center;
     }
 
-    .ai-canvas h3, .ai-step h3, .ai-box h3 { font-size: 20px; line-height: 1.5; }
-    .ai-canvas li, .ai-step p, .ai-box p { font-size: 16px; line-height: 1.65; }
-    .sanad-home-services .sanad-service-card,
+    .ai-canvas h3, .ai-step h3, .ai-box h3 { font-size: clamp(17px, 4.6vw, 20px); line-height: 1.5; }
+    .ai-canvas li, .ai-step p, .ai-box p { font-size: clamp(14px, 3.9vw, 16px); line-height: 1.65; }
     .sanad-comparison__card,
-    .sanad-testimonials__card { padding: 24px 20px; }
-    .sanad-comparison__card-title { font-size: 22px; line-height: 1.4; }
+    .sanad-testimonials__card { padding: clamp(16px, 5vw, 24px); }
+    .sanad-comparison__card-title { font-size: clamp(19px, 5vw, 22px); line-height: 1.4; }
+
     :is(.sanad-home-services__title, .sanad-comparison__title,
         .sanad-privacy-banner__title, .sanad-faq__title,
         .sanad-differ__title, .sanad-how-process__title) {
@@ -120,7 +275,6 @@
         line-height: 1.4;
     }
 
-    /* Keep homepage typography and spacing in the same mobile scale as the hero. */
     :is(.sanad-home-services__title, .sanad-home-fkr__title,
         .sanad-comparison__title, .sanad-home-ai__title,
         .sanad-testimonials__title, .sanad-home-steps__title,
@@ -147,6 +301,18 @@
     .sanad-calculator__body { gap: 24px; }
     .sanad-contact__layout { gap: 24px; }
     .sanad-faq__trigger { font-size: 16px; line-height: 1.6; }
+
+    .sanad-values__card {
+        padding-inline: clamp(16px, 5vw, 24px);
+        padding-block-start: clamp(56px, 16vw, 75px);
+        padding-block-end: clamp(16px, 5vw, 24px);
+    }
+    .sanad-three-pillars__card {
+        padding-inline: clamp(16px, 5vw, 32px);
+        padding-block-start: clamp(56px, 16vw, 84px);
+        padding-block-end: clamp(16px, 5vw, 32px);
+    }
+    .sanad-three-pillars__card:last-child { padding-block-start: clamp(16px, 5vw, 32px); }
 
     .ai-shift__cards :is(.ai-canvas__q, .ai-canvas__a, .ai-copilot-badge) {
         transform: none !important;

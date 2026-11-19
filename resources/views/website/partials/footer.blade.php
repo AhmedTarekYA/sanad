@@ -38,25 +38,6 @@
     @endforeach
    </ul>
   </div>
-  <nav class="sanad-footer__links sanad-footer__column" aria-label="{{ __('auth.footer_quick_links') }}">
-   <h2 class="sanad-footer__title">{{ __('auth.footer_quick_links') }}</h2>
-   <ul class="sanad-footer__link-list">
-    <li><a class="sanad-footer__link" href="{{ route('website.home') }}">{{ __('auth.nav_home') }}</a></li>
-    <li><a class="sanad-footer__link" href="{{ route('website.services') }}">{{ app()->getLocale() === 'ar' ? 'حلول التشغيل' : 'Operations Solutions' }}</a></li>
-    <li><a class="sanad-footer__link" href="{{ route('website.how-it-works') }}">{{ app()->getLocale() === 'ar' ? 'رحلة التشغيل' : 'Operations Journey' }}</a></li>
-    <li><a class="sanad-footer__link" href="{{ route('website.ai-assistant') }}">{{ app()->getLocale() === 'ar' ? 'المساعد الذكي' : 'AI Assistant' }}</a></li>
-    <li><a class="sanad-footer__link" href="{{ route('website.fkr') }}">{{ app()->getLocale() === 'ar' ? 'فِكر' : 'Fikr' }}</a></li>
-    <li><a class="sanad-footer__link" href="{{ route('website.blog') }}">{{ __('auth.nav_blog') }}</a></li>
-   </ul>
-  </nav>
-  <nav class="sanad-footer__links sanad-footer__links--important sanad-footer__column" aria-label="{{ __('auth.footer_important_links') }}">
-   <h2 class="sanad-footer__title">{{ __('auth.footer_important_links') }}</h2>
-   <ul class="sanad-footer__link-list">
-    <li><a class="sanad-footer__link" href="{{ route('website.about') }}">{{ __('auth.nav_about') }}</a></li>
-    <li><a class="sanad-footer__link" href="{{ route('website.terms') }}">{{ __('auth.footer_terms') }}</a></li>
-    <li><a class="sanad-footer__link" href="{{ route('website.privacy') }}">{{ __('auth.footer_privacy') }}</a></li>
-   </ul>
-  </nav>
   <div class="sanad-footer__contact sanad-footer__column">
    <h2 class="sanad-footer__title">{{ __('auth.footer_contact_us') }}</h2>
    <ul class="sanad-footer__contact-list">
@@ -80,9 +61,29 @@
     @endif
    </ul>
   </div>
+  <nav class="sanad-footer__links sanad-footer__column" aria-label="{{ __('auth.footer_quick_links') }}">
+   <h2 class="sanad-footer__title">{{ __('auth.footer_quick_links') }}</h2>
+   <ul class="sanad-footer__link-list">
+    <li><a class="sanad-footer__link" href="{{ route('website.home') }}">{{ __('auth.nav_home') }}</a></li>
+    <li><a class="sanad-footer__link" href="{{ route('website.services') }}">{{ app()->getLocale() === 'ar' ? 'حلول التشغيل' : 'Operations Solutions' }}</a></li>
+    <li><a class="sanad-footer__link" href="{{ route('website.how-it-works') }}">{{ app()->getLocale() === 'ar' ? 'رحلة التشغيل' : 'Operations Journey' }}</a></li>
+    <li><a class="sanad-footer__link" href="{{ route('website.ai-assistant') }}">{{ app()->getLocale() === 'ar' ? 'المساعد الذكي' : 'AI Assistant' }}</a></li>
+    <li><a class="sanad-footer__link" href="{{ route('website.fkr') }}">{{ app()->getLocale() === 'ar' ? 'فِكر' : 'Fikr' }}</a></li>
+    <li><a class="sanad-footer__link" href="{{ route('website.blog') }}">{{ __('auth.nav_blog') }}</a></li>
+   </ul>
+  </nav>
+  <nav class="sanad-footer__links sanad-footer__links--important sanad-footer__column" aria-label="{{ __('auth.footer_important_links') }}">
+   <h2 class="sanad-footer__title">{{ __('auth.footer_important_links') }}</h2>
+   <ul class="sanad-footer__link-list">
+    <li><a class="sanad-footer__link" href="{{ route('website.about') }}">{{ __('auth.nav_about') }}</a></li>
+    <li><a class="sanad-footer__link" href="{{ route('website.terms') }}">{{ __('auth.footer_terms') }}</a></li>
+    <li><a class="sanad-footer__link" href="{{ route('website.privacy') }}">{{ __('auth.footer_privacy') }}</a></li>
+   </ul>
+  </nav>
+
  </div>
  <div class="sanad-footer__legal">
-  <p class="sanad-footer__copyright" lang="en" dir="ltr">{{ $settings?->copyright ?: '© 2026 Sanad CX. All rights reserved.' }}</p>
-  <p class="sanad-footer__powered" lang="en" dir="ltr">Sanad CX is an operational brand powered by Mada CX.</p>
+  <p class="sanad-footer__copyright">© {{ date('Y') }} {{ app()->getLocale() === 'ar' ? 'جميع الحقوق محفوظة لـ Sanad CX' : 'Sanad CX. All rights reserved.' }}</p>
+  <p class="sanad-footer__powered sanad-brand-credit" lang="en" dir="ltr">by <strong>madaCX</strong></p>
  </div>
 </footer>

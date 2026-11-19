@@ -129,7 +129,7 @@ html, body {
     .ai-walkthrough .ai-step__illustration--knowledge .ai-doc:nth-child(3) { left: 70%; }
 }
 
-.sanad-footer__legal{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:.5rem 3rem;min-height:81px;padding-block:1.5rem}
+.sanad-footer__legal{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:8px;min-height:81px;padding-block:1.5rem;text-align:center}
 .sanad-footer__legal p{margin:0;font-size:14px;line-height:21px}
 .whatsapp-float{position:fixed;inset-block-end:36px;right:36px;left:auto;width:56px;height:56px;border:0;border-radius:9999px;background:#25d366;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(37,211,102,.4);z-index:9999;cursor:pointer;transition:transform .2s,background-color .2s}
 .whatsapp-float:hover{background:#128c7e;transform:scale(1.08)}
@@ -316,4 +316,193 @@ main > .fkr > .fkr__hero {
     max-inline-size: none;
     margin-inline: 0;
     border-radius: 0;
+}
+
+.sanad-theme-toggle,
+html[data-theme="dark"] .sanad-theme-toggle {
+    color: var(--sanad-text-primary, #182c43);
+}
+.fkr-site-header__theme,
+html[data-theme="dark"] .fkr-site-header__theme {
+    color: inherit;
+}
+:is(.sanad-theme-toggle, .fkr-site-header__theme) .sanad-mode-icon {
+    display: block;
+    width: 24px;
+    height: 24px;
+}
+:is(.sanad-theme-toggle, .fkr-site-header__theme) .sanad-mode-icon--moon {
+    width: 22px;
+    height: 22px;
+}
+html:not([data-theme="dark"]) .sanad-mode-icon--sun,
+html[data-theme="dark"] .sanad-mode-icon--moon {
+    display: none;
+}
+html[data-theme="dark"] .sanad-theme-toggle { color: #dbd9de; }
+
+:is(.sanad-contact, .sanad-consultation) .sanad-input__field:has(> select) {
+    position: relative;
+}
+:is(.sanad-contact, .sanad-consultation) select.sanad-input__control {
+    appearance: none;
+    -webkit-appearance: none;
+    background: transparent;
+    padding-inline-end: 40px;
+    cursor: pointer;
+}
+:is(.sanad-contact, .sanad-consultation) .sanad-input__field:has(> select)::after {
+    content: "";
+    position: absolute;
+    inset-inline-end: 20px;
+    top: calc(50% - 5px);
+    width: 8px;
+    height: 8px;
+    border-right: 1.5px solid currentColor;
+    border-block-end: 1.5px solid currentColor;
+    transform: rotate(45deg);
+    pointer-events: none;
+}
+:is(.sanad-contact, .sanad-consultation) .sanad-input__field:has(> select) > :is(.sanad-input__toggle, .sanad-contact__placeholder) {
+    display: none;
+}
+.sanad-brand-credit { font-size: 14px; line-height: 1.5; }
+.sanad-footer__contact { order: 3; }
+.sanad-footer__links { order: 1; }
+.sanad-footer__links--important { order: 2; }
+.sanad-brand-credit strong { font-weight: 700; }
+.sanad-stats[data-stats-static] .sanad-stats__track {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 160px), 1fr));
+    gap: 20px;
+}
+.sanad-stats:focus-visible { outline: 2px solid currentColor; outline-offset: -4px; }
+.fikr-wordmark { display: block; width: 100%; height: 100%; }
+.fkr__logo.fikr-original-logo,
+.fkr-site-header .fkr-site-header__brand {
+    background: #2b2332;
+    color: #f6f4dd;
+}
+html[data-theme="dark"] .fkr__logo.fikr-original-logo,
+html[data-theme="dark"] .fkr-site-header .fkr-site-header__brand {
+    background: #f6f4dd;
+    color: #2b2332;
+}
+.sanad-home-fkr .sanad-home-fkr__logo {
+    display: block;
+    width: 96px;
+    height: 80px;
+    inline-size: 96px;
+    block-size: 80px;
+    inset-block-start: 16px;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: #f6f4dd;
+}
+.fkr-footer > p { margin: 8px 0 0; }
+
+.sanad-testimonials--slider .sanad-testimonials__grid {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 24px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: thin;
+    padding-block: 4px 12px;
+    width: 100%;
+    min-width: 0;
+}
+.sanad-testimonials--slider .sanad-testimonials__card {
+    flex: 0 0 calc((100% - 24px) / 2);
+    min-width: 0;
+    max-width: none;
+    height: auto;
+    box-sizing: border-box;
+    scroll-snap-align: start;
+}
+.sanad-testimonials__controls,
+.sanad-testimonials__dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.sanad-testimonials__controls { direction: ltr; }
+.sanad-testimonials__controls .sanad-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+.sanad-testimonials__controls[hidden] { display: none; }
+.sanad-testimonials__controls button {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid currentColor;
+    border-radius: 12px;
+    color: inherit;
+    background: transparent;
+    cursor: pointer;
+    font: inherit;
+    font-size: 28px;
+}
+.sanad-testimonials__controls button:disabled { opacity: .4; cursor: default; }
+.sanad-testimonials__dots button { border: 0; font-size: 0; }
+.sanad-testimonials__dots button::after {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: currentColor;
+    opacity: .45;
+}
+.sanad-testimonials__dots button[aria-current]::after { width: 22px; opacity: 1; }
+.sanad-testimonials--slider :is(button, .sanad-testimonials__grid):focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+}
+
+@media (max-width: 767px) {
+    .sanad-testimonials--slider .sanad-testimonials__card { flex-basis: 100%; max-width: 100%; }
+    .sanad-footer {
+        padding-block-start: clamp(24px, 6vw, 36px);
+        gap: clamp(16px, 4vw, 24px);
+    }
+    .sanad-footer__content {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-areas: "brand brand" "contact contact" "quick important";
+        gap: clamp(16px, 4vw, 24px) clamp(12px, 3vw, 20px);
+        padding-inline: clamp(20px, 5vw, 32px);
+    }
+    .sanad-footer__brand { grid-area: brand; gap: clamp(10px, 2.5vw, 14px); }
+    .sanad-footer__contact { grid-area: contact; gap: clamp(6px, 1.5vw, 8px); }
+    .sanad-footer__links { grid-area: quick; gap: 8px; }
+    .sanad-footer__links--important { grid-area: important; }
+    .sanad-footer__column { width: auto; inline-size: auto; }
+    .sanad-footer__column { order: initial; }
+    .sanad-footer__title { font-size: clamp(16px, 4.5vw, 18px); line-height: 1.5; }
+    .sanad-footer__contact-list {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        gap: 0 clamp(12px, 3.5vw, 18px);
+    }
+    .sanad-footer__contact-item { min-width: 0; }
+    .sanad-footer__link-list { gap: 0; }
+    .sanad-footer__link { font-size: clamp(14px, 3.7vw, 16px); min-block-size: 44px; }
+    .sanad-footer__legal { padding: 16px 20px 24px; min-height: 0; }
+    .fkr-footer { padding-block: 24px; }
+    .fkr-footer nav { flex-wrap: wrap; gap: 8px 20px; }
+    .fkr-footer nav a { display: inline-flex; align-items: center; min-height: 44px; }
 }

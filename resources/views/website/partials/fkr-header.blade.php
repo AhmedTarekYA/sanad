@@ -8,18 +8,7 @@
         </a>
 
         <button type="button" class="fkr-site-header__theme" data-theme-toggle aria-pressed="true" aria-label="{{ __('auth.toggle_theme') }}">
-            <svg viewBox="0 0 48 48" width="48" height="48" aria-hidden="true">
-                <defs>
-                    <mask id="fkr-theme-cutout">
-                        <rect width="48" height="48" fill="white" />
-                        <circle class="fkr-site-header__theme-cutout" cx="32" cy="16" r="15" fill="black" />
-                    </mask>
-                </defs>
-                <g mask="url(#fkr-theme-cutout)" fill="currentColor">
-                    <path class="fkr-site-header__theme-rays" d="M40.9751 16.9657V7.02485H31.0343L24.0095 0L16.9657 7.02485H7.02485V16.9657L0 24.0095L7.02485 31.0343V40.9751H16.9657L23.9905 48L31.0154 40.9751H40.9562V31.0343L47.9811 24.0095L40.9751 16.9657ZM24.0095 37.5479C16.5302 37.5479 10.4521 31.4888 10.4521 23.9905C10.4521 16.4923 16.5112 10.4331 24.0095 10.4331C31.4888 10.4331 37.5669 16.4923 37.5669 23.9905C37.5669 31.4888 31.4888 37.5479 24.0095 37.5479Z" />
-                    <path class="fkr-site-header__theme-disc" d="M25.7539 34.7552C31.6894 33.7925 35.7206 28.2004 34.7579 22.2649C33.7952 16.3295 28.2031 12.2983 22.2676 13.261C16.3322 14.2237 12.3009 19.8158 13.2637 25.7513C14.2264 31.6867 19.8185 35.7179 25.7539 34.7552Z" />
-                </g>
-            </svg>
+            @include('website.partials.theme-icon')
         </button>
 
         <nav class="fkr-site-header__nav fkr-site-header__nav--desktop" aria-label="{{ __('auth.main_nav') }}">
@@ -42,7 +31,7 @@
         </details>
 
         <a class="fkr-site-header__brand" href="#main" aria-label="{{ $isAr ? 'فِكر' : 'Fikr' }}" aria-current="page">
-            <span><img src="{{ asset('website/assets/image/fkr/brand-logo.png') }}" alt="" width="72" height="56"></span>
+            <span>@include('website.partials.fikr-logo', ['logoId' => 'fikr-header'])</span>
         </a>
     </div>
 </header>

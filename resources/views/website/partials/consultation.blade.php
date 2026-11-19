@@ -32,10 +32,20 @@
        <span class="sanad-input__status" data-field-error="mobile_whatsapp" aria-live="polite"></span>
       </div>
      </div>
-     <div class="sanad-input sanad-input--select"><label class="sanad-input__label" for="sanad-consultation-interest">الاهتمام الأساسي أو الخدمة المطلوبة</label><div class="sanad-input__field"><select class="sanad-input__control" id="sanad-consultation-interest" name="service_interest"><option value="">اختر</option><option value="تشغيل خدمة العملاء والمبيعات (BPO)">تشغيل خدمة العملاء والمبيعات (BPO)</option>
+     <div class="sanad-input sanad-input--select">
+      <label class="sanad-input__label" for="sanad-consultation-interest">الاهتمام الأساسي أو الخدمة المطلوبة</label>
+      <div class="sanad-input__field">
+       <select class="sanad-input__control" id="sanad-consultation-interest" name="service_interest">
+<option value="">اختر</option>
+<option value="تشغيل خدمة العملاء والمبيعات (BPO)">تشغيل خدمة العملاء والمبيعات (BPO)</option>
 <option value="المساعد الذكي والتكنولوجيا (Sanad AI)">المساعد الذكي والتكنولوجيا (Sanad AI)</option>
 <option value="الاستشارات التسويقية وهندسة الهوية (فِكر)">الاستشارات التسويقية وهندسة الهوية (فِكر)</option>
-<option value="منظومة النمو المتكاملة (الكل)">منظومة النمو المتكاملة (الكل)</option></select></div></div>
+<option value="منظومة النمو المتكاملة (الكل)">منظومة النمو المتكاملة (الكل)</option>
+</select>
+       <svg class="sanad-input__toggle" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4.18 6.13 8 9.21l3.82-3.08" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <span class="sanad-input__status" data-field-error="service_interest" aria-live="polite"></span>
+     </div>
      <div class="sanad-input sanad-input--select">
       <label class="sanad-input__label" for="sanad-consultation-volume">حجم التواصل اليومي</label>
       <div class="sanad-input__field">
