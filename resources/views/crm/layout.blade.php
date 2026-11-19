@@ -10,8 +10,9 @@
     {{-- Font Awesome Pro (Light/Solid/Regular/Brands) for the CRM area only --}}
     <link rel="stylesheet" href="{{ asset('admin/assets/css/fontawesome.min.css') }}">
     @yield('style')
+    @include('crm.partials.theme')
 </head>
-<body data-pc-preset="preset-1" data-pc-sidebar-theme="light" data-pc-sidebar-caption="true" data-pc-direction="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}" data-pc-theme="light"><script>(function(){var t=localStorage.getItem('sanad-theme');if(t==='auto')t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';if(t==='dark'||t==='light'){document.body.setAttribute('data-pc-theme',t);document.body.setAttribute('data-pc-sidebar-theme',t==='dark'?'dark':'light')}})();</script>
+<body class="crm-app" data-pc-preset="preset-1" data-pc-sidebar-theme="light" data-pc-sidebar-caption="true" data-pc-direction="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}" data-pc-theme="light"><script>(function(){var t=localStorage.getItem('sanad-theme');if(t==='auto')t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';if(t==='dark'||t==='light'){document.body.setAttribute('data-pc-theme',t);document.body.setAttribute('data-pc-sidebar-theme',t==='dark'?'dark':'light')}})();</script>
     <div class="loader-bg"><div class="loader-track"><div class="loader-fill"></div></div></div>
     @include('crm.partials.sidebar')
     @include('crm.partials.header')

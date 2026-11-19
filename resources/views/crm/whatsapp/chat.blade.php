@@ -5,16 +5,16 @@
 @section('style')
     <style>
         :root {
-            --wb-green: #2D71F0;
-            --wb-green-dark: #1640C6;
-            --wb-bg: #f0f2f5;
+            --wb-green: #4a5cff;
+            --wb-green-dark: #3a49d9;
+            --wb-bg: #f6f7fb;
             --wb-panel: #ffffff;
             --wb-border: rgba(0, 0, 0, 0.08);
             --wb-muted: rgba(0, 0, 0, 0.55);
             --wb-text: rgba(0, 0, 0, 0.88);
-            --wb-chat-bg: #efeae2;
+            --wb-chat-bg: #f0f1f7;
             --wb-in-msg: #ffffff;
-            --wb-out-msg: #d9fdd3;
+            --wb-out-msg: #e6e9ff;
         }
 
         [data-pc-theme="dark"] {
@@ -25,7 +25,7 @@
             --wb-text: rgba(255, 255, 255, 0.90);
             --wb-chat-bg: #181b26;
             --wb-in-msg: #262a38;
-            --wb-out-msg: #3a6df0;
+            --wb-out-msg: #2f3fd6;
         }
 
         [data-pc-theme="dark"] .wb-text {
@@ -136,7 +136,7 @@
         }
 
         [data-pc-theme="dark"] .wb-action-menu-panel .wb-qa-btn i {
-            color: rgba(45, 113, 240, 0.9);
+            color: rgba(74, 92, 255, 0.9);
         }
 
         [data-pc-theme="dark"] .wb-filter-select {
@@ -299,7 +299,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: linear-gradient(180deg, rgba(0, 168, 132, 0.08), rgba(0, 168, 132, 0.03));
+            background: linear-gradient(180deg, rgba(74, 92, 255, 0.08), rgba(74, 92, 255, 0.03));
             border-bottom: 1px solid var(--wb-border);
         }
 
@@ -332,8 +332,8 @@
 
         .wb-sidebar-tool:hover {
             color: var(--wb-green-dark);
-            border-color: rgba(0, 168, 132, 0.24);
-            background: rgba(0, 168, 132, 0.06);
+            border-color: rgba(74, 92, 255, 0.24);
+            background: rgba(74, 92, 255, 0.06);
             text-decoration: none;
         }
 
@@ -376,7 +376,7 @@
             color: #fff;
             display: grid;
             place-items: center;
-            box-shadow: 0 8px 18px rgba(0, 168, 132, 0.25);
+            box-shadow: 0 8px 18px rgba(74, 92, 255, 0.25);
             flex: 0 0 auto;
         }
 
@@ -474,8 +474,8 @@
 
         .wb-conversation-tab:hover {
             color: var(--wb-green-dark);
-            border-color: rgba(0, 168, 132, 0.25);
-            background: rgba(0, 168, 132, 0.05);
+            border-color: rgba(74, 92, 255, 0.25);
+            background: rgba(74, 92, 255, 0.05);
         }
 
         .wb-conversation-tab.is-active {
@@ -501,8 +501,8 @@
         }
 
         .wb-filter-select:focus {
-            border-color: rgba(0, 168, 132, 0.35);
-            box-shadow: 0 0 0 3px rgba(0, 168, 132, 0.12);
+            border-color: rgba(74, 92, 255, 0.35);
+            box-shadow: 0 0 0 3px rgba(74, 92, 255, 0.12);
             background: #fff;
         }
 
@@ -531,8 +531,8 @@
         }
 
         .wb-search-input:focus {
-            border-color: rgba(0, 168, 132, 0.35);
-            box-shadow: 0 0 0 3px rgba(0, 168, 132, 0.12);
+            border-color: rgba(74, 92, 255, 0.35);
+            box-shadow: 0 0 0 3px rgba(74, 92, 255, 0.12);
             background: #fff;
         }
 
@@ -558,8 +558,8 @@
         }
 
         .wb-conv-item.is-active {
-            background: rgba(0, 168, 132, 0.08);
-            border-color: rgba(0, 168, 132, 0.14);
+            background: rgba(74, 92, 255, 0.08);
+            border-color: rgba(74, 92, 255, 0.14);
         }
 
         .wb-conv-create-order-btn {
@@ -567,8 +567,8 @@
             width: 28px;
             height: 28px;
             border-radius: 8px;
-            border: 1px solid rgba(0, 168, 132, 0.22);
-            background: rgba(0, 168, 132, 0.08);
+            border: 1px solid rgba(74, 92, 255, 0.22);
+            background: rgba(74, 92, 255, 0.08);
             color: var(--wb-green-dark);
             display: inline-flex;
             align-items: center;
@@ -595,7 +595,7 @@
             width: 44px;
             height: 44px;
             border-radius: 50%;
-            background: rgba(0, 168, 132, 0.12);
+            background: rgba(74, 92, 255, 0.12);
             color: var(--wb-green-dark);
             display: grid;
             place-items: center;
@@ -789,8 +789,8 @@
             font-weight: 600;
             border-radius: 999px;
             border: 0;
-            background: rgba(45, 113, 240, 0.08);
-            color: #2D71F0;
+            background: rgba(74, 92, 255, 0.08);
+            color: #4a5cff;
             gap: 8px;
             transition: background .18s ease, color .18s ease, box-shadow .18s ease, transform .12s ease;
         }
@@ -800,7 +800,7 @@
         }
 
         .wb-quick-actions > .wb-qa-btn:hover:not(:disabled) {
-            background: rgba(45, 113, 240, 0.16);
+            background: rgba(74, 92, 255, 0.16);
             color: #1d4fb8;
             transform: translateY(-1px);
         }
@@ -953,9 +953,9 @@
 
         .wb-action-menu-toggle:hover,
         .wb-action-menu.is-open .wb-action-menu-toggle {
-            border-color: rgba(0, 168, 132, 0.24);
+            border-color: rgba(74, 92, 255, 0.24);
             color: var(--wb-green-dark);
-            background: rgba(0, 168, 132, 0.06);
+            background: rgba(74, 92, 255, 0.06);
         }
 
         .wb-action-menu-toggle .fa-angle-down {
@@ -987,7 +987,7 @@
 
         .wb-action-menu-panel .wb-qa-btn i {
             width: 16px;
-            color: rgba(0, 168, 132, 0.86);
+            color: rgba(74, 92, 255, 0.86);
         }
 
         .wb-action-menu-panel .wb-qa-btn+.wb-qa-btn {
@@ -1109,7 +1109,7 @@
 
         .wb-audio-message-btn.is-active {
             color: var(--wb-green-dark);
-            background: rgba(0, 168, 132, 0.12);
+            background: rgba(74, 92, 255, 0.12);
         }
 
         .wb-audio-message-btn i {
@@ -1210,9 +1210,9 @@
         }
 
         .wb-audio-speed-btn:hover {
-            border-color: rgba(0, 168, 132, 0.35);
+            border-color: rgba(74, 92, 255, 0.35);
             color: var(--wb-green-dark);
-            background: rgba(0, 168, 132, 0.06);
+            background: rgba(74, 92, 255, 0.06);
         }
 
         .wb-audio-speed-btn.is-active {
@@ -1412,8 +1412,8 @@
         }
 
         .wb-composer-input:focus {
-            border-color: rgba(0, 168, 132, 0.35);
-            box-shadow: 0 0 0 3px rgba(0, 168, 132, 0.12);
+            border-color: rgba(74, 92, 255, 0.35);
+            box-shadow: 0 0 0 3px rgba(74, 92, 255, 0.12);
             background: #fff;
         }
 
@@ -1878,7 +1878,7 @@
             display: flex;
             gap: 10px;
             align-items: center;
-            background: linear-gradient(180deg, rgba(0, 168, 132, 0.08), rgba(0, 168, 132, 0.02));
+            background: linear-gradient(180deg, rgba(74, 92, 255, 0.08), rgba(74, 92, 255, 0.02));
         }
 
         .wb-qr-search {
@@ -1903,7 +1903,7 @@
         }
 
         .wb-qr-item:hover {
-            background: rgba(0, 168, 132, 0.06);
+            background: rgba(74, 92, 255, 0.06);
         }
 
         .wb-qr-title {
@@ -1920,8 +1920,8 @@
             height: 22px;
             padding: 0 8px;
             border-radius: 999px;
-            border: 1px solid rgba(0, 168, 132, 0.18);
-            background: rgba(0, 168, 132, 0.08);
+            border: 1px solid rgba(74, 92, 255, 0.18);
+            background: rgba(74, 92, 255, 0.08);
             color: rgba(0, 128, 105, 0.95);
             font-size: 12px;
             font-weight: 900;
@@ -1981,7 +1981,7 @@
             justify-content: space-between;
             gap: 12px;
             border-bottom: 1px solid var(--wb-border);
-            background: linear-gradient(180deg, rgba(45, 113, 240, 0.07), rgba(45, 113, 240, 0.02));
+            background: linear-gradient(180deg, rgba(74, 92, 255, 0.07), rgba(74, 92, 255, 0.02));
         }
 
         .wb-modal-header .wb-icon-btn {
@@ -1995,9 +1995,9 @@
         }
 
         .wb-modal-header .wb-icon-btn:hover {
-            color: var(--bs-primary, #2D71F0);
-            border-color: rgba(45, 113, 240, 0.35);
-            background: rgba(45, 113, 240, 0.08);
+            color: var(--bs-primary, #4a5cff);
+            border-color: rgba(74, 92, 255, 0.35);
+            background: rgba(74, 92, 255, 0.08);
         }
 
         .wb-modal-title {
@@ -2033,21 +2033,21 @@
         }
 
         .wb-contact-item:hover {
-            border-color: rgba(45, 113, 240, 0.28);
-            background: rgba(45, 113, 240, 0.04);
+            border-color: rgba(74, 92, 255, 0.28);
+            background: rgba(74, 92, 255, 0.04);
             transform: translateY(-1px);
         }
 
         .wb-contact-item.is-checked {
-            border-color: rgba(45, 113, 240, 0.45);
-            background: rgba(45, 113, 240, 0.06);
-            box-shadow: 0 0 0 3px rgba(45, 113, 240, 0.08);
+            border-color: rgba(74, 92, 255, 0.45);
+            background: rgba(74, 92, 255, 0.06);
+            box-shadow: 0 0 0 3px rgba(74, 92, 255, 0.08);
         }
 
         .wb-contact-item .wb-tag-check {
             width: 20px;
             height: 20px;
-            accent-color: var(--bs-primary, #2D71F0);
+            accent-color: var(--bs-primary, #4a5cff);
             cursor: pointer;
             flex: 0 0 auto;
         }
@@ -2120,9 +2120,9 @@
         }
 
         .wb-pill.is-open {
-            border-color: rgba(0, 168, 132, 0.25);
+            border-color: rgba(74, 92, 255, 0.25);
             color: rgba(0, 128, 105, 0.95);
-            background: rgba(0, 168, 132, 0.07);
+            background: rgba(74, 92, 255, 0.07);
         }
 
         .wb-pill.is-resolved {
@@ -2185,8 +2185,8 @@
         }
 
         .wb-input:focus {
-            border-color: rgba(0, 168, 132, 0.35);
-            box-shadow: 0 0 0 3px rgba(0, 168, 132, 0.12);
+            border-color: rgba(74, 92, 255, 0.35);
+            box-shadow: 0 0 0 3px rgba(74, 92, 255, 0.12);
             background: #fff;
         }
 
@@ -2202,8 +2202,8 @@
         }
 
         .wb-textarea:focus {
-            border-color: rgba(0, 168, 132, 0.35);
-            box-shadow: 0 0 0 3px rgba(0, 168, 132, 0.12);
+            border-color: rgba(74, 92, 255, 0.35);
+            box-shadow: 0 0 0 3px rgba(74, 92, 255, 0.12);
             background: #fff;
         }
 
@@ -2211,7 +2211,7 @@
             height: 40px;
             padding: 0 14px;
             border-radius: 12px;
-            border: 1px solid rgba(0, 168, 132, 0.25);
+            border: 1px solid rgba(74, 92, 255, 0.25);
             background: var(--wb-green);
             color: #fff;
             font-weight: 800;
@@ -2291,7 +2291,7 @@
             align-items: center;
             justify-content: space-between;
             border-bottom: 1px solid var(--wb-border);
-            background: linear-gradient(180deg, rgba(0, 168, 132, 0.08), rgba(0, 168, 132, 0.02));
+            background: linear-gradient(180deg, rgba(74, 92, 255, 0.08), rgba(74, 92, 255, 0.02));
         }
 
         .wb-contact-meta-title {
@@ -2342,7 +2342,7 @@
             height: 22px;
             padding: 0 6px;
             border-radius: 999px;
-            background: rgba(0, 168, 132, 0.12);
+            background: rgba(74, 92, 255, 0.12);
             color: var(--wb-green-dark);
             font-size: 11px;
             font-weight: 800;
@@ -2396,8 +2396,8 @@
         }
 
         .wb-contact-note-edit-input:focus {
-            border-color: rgba(0, 168, 132, 0.35);
-            box-shadow: 0 0 0 3px rgba(0, 168, 132, 0.12);
+            border-color: rgba(74, 92, 255, 0.35);
+            box-shadow: 0 0 0 3px rgba(74, 92, 255, 0.12);
             background: #fff;
         }
 
@@ -2408,8 +2408,8 @@
         }
 
         .wb-msg.is-highlighted .wb-bubble {
-            border-color: rgba(0, 168, 132, 0.55);
-            box-shadow: 0 0 0 4px rgba(0, 168, 132, 0.16);
+            border-color: rgba(74, 92, 255, 0.55);
+            box-shadow: 0 0 0 4px rgba(74, 92, 255, 0.16);
         }
 
         .wb-search-results {
@@ -2429,8 +2429,8 @@
         }
 
         .wb-search-result:hover {
-            border-color: rgba(0, 168, 132, 0.24);
-            background: rgba(0, 168, 132, 0.04);
+            border-color: rgba(74, 92, 255, 0.24);
+            background: rgba(74, 92, 255, 0.04);
         }
 
         .wb-search-result-meta {
@@ -2510,7 +2510,7 @@
             width: 36px;
             height: 36px;
             border-radius: 8px;
-            background: rgba(0, 168, 132, 0.1);
+            background: rgba(74, 92, 255, 0.1);
             color: var(--wb-green-dark);
             display: grid;
             place-items: center;
@@ -2641,9 +2641,9 @@
         }
 
         .wb-acc-item.is-active {
-            border-color: rgba(0, 168, 132, 0.22);
-            background: linear-gradient(180deg, rgba(0, 168, 132, 0.08), rgba(0, 168, 132, 0.03));
-            box-shadow: 0 8px 20px rgba(0, 168, 132, 0.10);
+            border-color: rgba(74, 92, 255, 0.22);
+            background: linear-gradient(180deg, rgba(74, 92, 255, 0.08), rgba(74, 92, 255, 0.03));
+            box-shadow: 0 8px 20px rgba(74, 92, 255, 0.10);
         }
 
         .wb-acc-avatar {
@@ -2654,7 +2654,7 @@
             place-items: center;
             font-weight: 900;
             color: var(--wb-green-dark);
-            background: rgba(0, 168, 132, 0.10);
+            background: rgba(74, 92, 255, 0.10);
             letter-spacing: 0.5px;
             flex: 0 0 auto;
         }
@@ -2711,7 +2711,7 @@
         .wb-current-account {
             padding: 10px 12px;
             border-bottom: 1px solid var(--wb-border);
-            background: linear-gradient(180deg, rgba(0, 168, 132, 0.07), rgba(0, 168, 132, 0.02));
+            background: linear-gradient(180deg, rgba(74, 92, 255, 0.07), rgba(74, 92, 255, 0.02));
         }
 
         .wb-current-badge {
@@ -2742,7 +2742,7 @@
             display: grid;
             place-items: center;
             font-weight: 900;
-            background: rgba(0, 168, 132, 0.12);
+            background: rgba(74, 92, 255, 0.12);
             color: var(--wb-green-dark);
             flex: 0 0 auto;
         }
@@ -2978,8 +2978,8 @@
             }
 
             .wb-account-tabs.is-open .wb-account-mobile-toggle {
-                border-color: rgba(0, 168, 132, 0.35);
-                box-shadow: 0 0 0 3px rgba(0, 168, 132, 0.1);
+                border-color: rgba(74, 92, 255, 0.35);
+                box-shadow: 0 0 0 3px rgba(74, 92, 255, 0.1);
             }
 
             .wb-account-tabs.is-open .wb-account-mobile-toggle .fa-angle-down {
@@ -3222,7 +3222,7 @@
             width: 52px;
             height: 52px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #2D71F0, #7aa7ff);
+            background: linear-gradient(135deg, #4a5cff, #7aa7ff);
             color: #fff;
             display: grid;
             place-items: center;
@@ -3237,7 +3237,7 @@
             border-radius: 50%;
             object-fit: cover;
             flex: 0 0 auto;
-            box-shadow: 0 0 0 2px rgba(45, 113, 240, 0.18);
+            box-shadow: 0 0 0 2px rgba(74, 92, 255, 0.18);
         }
 
         #whats-chat-root .wb-profile-meta {
@@ -3272,7 +3272,7 @@
 
         #whats-chat-root .wb-sidebar-header .wb-icon-btn:hover {
             background: #eef3ff;
-            color: #2D71F0;
+            color: #4a5cff;
         }
 
         #whats-chat-root .wb-search {
@@ -3339,12 +3339,12 @@
 
         #whats-chat-root .wb-conversation-tab:hover {
             background: transparent;
-            color: #2D71F0;
+            color: #4a5cff;
         }
 
         #whats-chat-root .wb-conversation-tab.is-active {
             background: transparent;
-            color: #2D71F0;
+            color: #4a5cff;
         }
 
         #whats-chat-root .wb-conversation-tab.is-active::after {
@@ -3354,7 +3354,7 @@
             bottom: 0;
             height: 2px;
             border-radius: 2px;
-            background: #2D71F0;
+            background: #4a5cff;
         }
 
         #whats-chat-root .wb-conv-list {
@@ -3387,7 +3387,7 @@
             bottom: 14px;
             width: 3px;
             border-radius: 3px;
-            background: #2D71F0;
+            background: #4a5cff;
         }
 
         #whats-chat-root .wb-avatar {
@@ -3396,7 +3396,7 @@
             border-radius: 50%;
             position: relative;
             background: #e8eefc;
-            color: #2D71F0;
+            color: #4a5cff;
             font-size: 14px;
         }
 
@@ -3432,7 +3432,7 @@
             min-width: 18px;
             height: 18px;
             border-radius: 999px;
-            background: #2D71F0;
+            background: #4a5cff;
             font-size: 10.5px;
             font-weight: 700;
         }
@@ -3488,7 +3488,7 @@
 
         #whats-chat-root .wb-chat-header .wb-icon-btn:hover {
             background: #eef3ff;
-            color: #2D71F0;
+            color: #4a5cff;
         }
 
         #whats-chat-root .wb-messages {
@@ -3512,7 +3512,7 @@
             height: 38px;
             border-radius: 50%;
             background: #e8eefc;
-            color: #2D71F0;
+            color: #4a5cff;
             display: grid;
             place-items: center;
             font-weight: 700;
@@ -3595,7 +3595,7 @@
         }
 
         #whats-chat-root .wb-msg--out .wb-bubble {
-            background: #2D71F0;
+            background: #4a5cff;
             border-start-end-radius: 4px;
             color: #fff;
         }
@@ -3669,20 +3669,20 @@
         #whats-chat-root .wb-composer .wb-icon-btn:hover,
         #whats-chat-root .wb-composer .wb-icon-btn.is-open {
             background: #eef3ff;
-            color: #2D71F0;
+            color: #4a5cff;
         }
 
         #whats-chat-root .wb-composer .wb-ai-btn {
-            color: #2D71F0;
+            color: #4a5cff;
         }
 
         #whats-chat-root .wb-composer .wb-ai-btn:hover {
             background: #eef3ff;
-            color: #1640C6;
+            color: #3a49d9;
         }
 
         #whats-chat-root .wb-composer .wb-ai-btn.is-loading {
-            color: #2D71F0;
+            color: #4a5cff;
             cursor: progress;
         }
 
@@ -3706,21 +3706,21 @@
         }
 
         #whats-chat-root .wb-composer-input:focus {
-            border-color: #2D71F0;
-            box-shadow: 0 0 0 3px rgba(45, 113, 240, 0.12);
+            border-color: #4a5cff;
+            box-shadow: 0 0 0 3px rgba(74, 92, 255, 0.12);
         }
 
         #whats-chat-root .wb-send-btn {
             width: 48px;
             height: 48px;
             border-radius: 14px;
-            background: #2D71F0;
+            background: #4a5cff;
             color: #fff;
             border: 0;
         }
 
         #whats-chat-root .wb-send-btn:hover {
-            background: #1640C6;
+            background: #3a49d9;
         }
 
         [data-pc-theme="dark"] #whats-chat-root .wb-inbox,

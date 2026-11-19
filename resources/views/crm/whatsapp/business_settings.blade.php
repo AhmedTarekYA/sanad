@@ -5,7 +5,7 @@
 @section('content')
 
     <div class="col-12 mt-4">
-        <div class="card border-0 overflow-hidden" style="background: linear-gradient(135deg, #1a56db 0%, #2D71F0 50%, #0ea5e9 100%); box-shadow: 0 8px 32px rgba(45,113,240,0.25);">
+        <div class="card border-0 overflow-hidden" style="background: #0b0c10; border:1px solid rgba(255,255,255,.08);">
             <div class="card-body p-0">
                 <div class="row g-0 align-items-center">
                     <div class="col-md-3 d-flex align-items-center justify-content-center p-4">
@@ -18,7 +18,7 @@
                         <div class="d-flex flex-wrap gap-3">
                             <a href="https://wa.me/201099977904" target="_blank" rel="noopener"
                                class="btn fw-bold d-flex align-items-center gap-2"
-                               style="background:#25D366;color:#fff;border-radius:10px;font-size:15px;padding:10px 20px;box-shadow:0 4px 14px rgba(0,0,0,0.2);">
+                               style="background:#4a5cff;color:#fff;border-radius:10px;font-size:15px;padding:10px 20px;box-shadow:0 4px 14px rgba(0,0,0,0.2);">
                                 <i class="fab fa-whatsapp" style="font-size:20px;"></i>
                                 +201099977904
                             </a>

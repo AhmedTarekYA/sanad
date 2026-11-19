@@ -61,17 +61,17 @@
 <style>
 /* CRM header: branded gradient bar with live date/time */
 .pc-header {
-    background: linear-gradient(115deg, #122a4d 0%, #1d4278 48%, #2D71F0 100%);
+    background: #0b0c10;
     --pc-header-color: #fff;
-    --pc-active-background: rgba(255, 255, 255, .16);
+    --pc-active-background: rgba(255, 255, 255, .14);
     color: #fff;
-    box-shadow: 0 12px 30px rgba(12, 30, 62, .22);
-    border-bottom: 1px solid rgba(255, 255, 255, .12);
+    box-shadow: none;
+    border-bottom: 1px solid rgba(255, 255, 255, .08);
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
 }
 [data-pc-theme="dark"] .pc-header {
-    background: linear-gradient(115deg, #0a1322 0%, #102c52 52%, #1c4f9f 100%);
+    background: #0b0c10;
 }
 .pc-header .header-wrapper { align-items: center; }
 .pc-header .pc-head-link { box-shadow: none; }

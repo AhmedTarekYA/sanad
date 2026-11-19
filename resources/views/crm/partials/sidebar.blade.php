@@ -81,8 +81,8 @@
     width: 42px;
     height: 42px;
     border-radius: 12px;
-    background: #fff;
-    box-shadow: 0 4px 10px rgba(10, 22, 60, .18);
+    background: var(--wb-crm-brand);
+    box-shadow: 0 6px 16px rgba(74, 92, 255, .35);
     flex: 0 0 auto;
 }
 .crm-sidebar-logo {
@@ -93,18 +93,21 @@
     max-height: 26px;
     flex: 0 0 auto;
     object-fit: contain;
+    filter: brightness(0) invert(1);
 }
 
 /* ===== Brand-colored CRM sidebar: vertical icon-over-label cards ===== */
 :root {
-    --wb-crm-brand: #305bff;
+    --wb-crm-brand: #4a5cff;
+    --wb-crm-rail-bg: #0b0c10;
+    --wb-crm-icon: rgba(225, 228, 238, .78);
     --wb-crm-brand-tint: rgba(255, 255, 255, .14);
 }
 
 .pc-sidebar.wb-crm-compact {
-    background: var(--wb-crm-brand);
-    border-inline-end: 0;
-    --pc-sidebar-color: #fff;
+    background: var(--wb-crm-rail-bg);
+    border-inline-end: 1px solid rgba(255, 255, 255, .06);
+    --pc-sidebar-color: var(--wb-crm-icon);
     --pc-sidebar-active-color: var(--wb-crm-brand);
 }
 .pc-sidebar.wb-crm-compact .pc-navbar > .pc-item > .pc-link::after,
@@ -121,7 +124,7 @@
     border-bottom: 1px solid rgba(255, 255, 255, .14);
 }
 .pc-sidebar.wb-crm-compact .pc-caption label {
-    color: rgba(255, 255, 255, .5);
+    color: rgba(225, 228, 238, .45);
     letter-spacing: .04em;
 }
 .pc-sidebar.wb-crm-compact .pc-arrow {
@@ -151,7 +154,7 @@
     padding: 10px 6px;
     border-radius: 16px;
     text-align: center !important;
-    color: #fff !important;
+    color: var(--wb-crm-icon) !important;
     background: transparent;
     outline: none;
     box-shadow: none;
@@ -162,7 +165,7 @@
 .pc-sidebar.wb-crm-compact .pc-link:focus,
 .pc-sidebar.wb-crm-compact .pc-link:focus-visible,
 .pc-sidebar.wb-crm-compact .pc-link:active {
-    background: rgba(255, 255, 255, .12);
+    background: rgba(255, 255, 255, .06);
     color: #fff !important;
     outline: none;
     box-shadow: none;
@@ -199,15 +202,15 @@
 
 /* Active item: white rounded card + brand-blue icon badge */
 .pc-sidebar.wb-crm-compact .pc-item.active .pc-link {
-    background: #fff !important;
-    color: var(--wb-crm-brand) !important;
+    background: var(--wb-crm-brand) !important;
+    color: #fff !important;
     border: 0 !important;
     outline: none !important;
-    box-shadow: 0 10px 22px rgba(10, 22, 60, .22) !important;
+    box-shadow: 0 8px 20px rgba(74, 92, 255, .38) !important;
 }
 .pc-sidebar.wb-crm-compact .pc-item.active .pc-link:hover {
-    background: #fff !important;
-    color: var(--wb-crm-brand) !important;
+    background: var(--wb-crm-brand) !important;
+    color: #fff !important;
 }
 .pc-sidebar.wb-crm-compact .pc-item.active {
     border: 0 !important;
@@ -217,10 +220,10 @@
 .pc-sidebar.wb-crm-compact .pc-item.active .pc-micon {
     width: 38px;
     height: 38px;
-    background: rgba(48, 91, 255, .12) !important;
+    background: transparent !important;
 }
 .pc-sidebar.wb-crm-compact .pc-item.active .pc-micon i {
-    color: var(--wb-crm-brand) !important;
+    color: #fff !important;
 }
 
 /* Drag/pin handle: a curved "curtain pull" tab bulging from the sidebar edge */
@@ -235,9 +238,9 @@
     height: 76px;
     border: 0;
     border-radius: 0 50% 50% 0 / 0 40% 40% 0;
-    background: #fff;
-    color: var(--wb-crm-brand);
-    box-shadow: 4px 0 16px rgba(10, 22, 60, .28);
+    background: var(--wb-crm-brand);
+    color: #fff;
+    box-shadow: 4px 0 16px rgba(74, 92, 255, .3);
     align-items: center;
     justify-content: center;
     gap: 8px;
@@ -293,18 +296,18 @@
         display: flex;
     }
     .pc-sidebar.wb-crm-compact {
-        width: 94px;
+        width: 72px;
         transition: width .3s cubic-bezier(.4, 0, .2, 1), box-shadow .3s ease;
     }
     .pc-sidebar.wb-crm-compact .navbar-wrapper,
     .pc-sidebar.wb-crm-compact .navbar-content {
-        width: 94px;
+        width: 72px;
         transition: width .3s cubic-bezier(.4, 0, .2, 1);
         overflow-x: hidden;
     }
     .pc-sidebar.wb-crm-compact .m-header {
-        width: 94px;
-        padding: 16px 12px;
+        width: 72px;
+        padding: 16px 8px;
         justify-content: center;
         transition: width .3s cubic-bezier(.4, 0, .2, 1), padding .3s ease;
     }
@@ -323,6 +326,14 @@
     .pc-sidebar.wb-crm-compact .pc-arrow {
         display: none;
     }
+    .pc-sidebar.wb-crm-compact:not(.wb-crm-pinned) .pc-link {
+        width: 44px;
+        min-height: 44px;
+        height: 44px;
+        padding: 0;
+        margin: 4px auto;
+        border-radius: 14px;
+    }
 
     /* No hover-preview: the rail only expands via an explicit click/drag on the
        handle (setPinned). This keeps the handle's position stable under the
@@ -330,10 +341,10 @@
 
     .pc-sidebar.wb-crm-compact:not(.pc-sidebar-hide) ~ .pc-container,
     .pc-sidebar.wb-crm-compact:not(.pc-sidebar-hide) ~ .pc-footer {
-        margin-left: 94px;
+        margin-left: 72px;
     }
     .pc-sidebar.wb-crm-compact:not(.pc-sidebar-hide) ~ .pc-header {
-        left: 94px;
+        left: 72px;
     }
     .pc-sidebar.wb-crm-compact.pc-sidebar-hide {
         width: 0;
@@ -350,11 +361,11 @@
     [data-pc-direction="rtl"] .pc-sidebar.wb-crm-compact:not(.pc-sidebar-hide) ~ .pc-container,
     [data-pc-direction="rtl"] .pc-sidebar.wb-crm-compact:not(.pc-sidebar-hide) ~ .pc-footer {
         margin-left: 0;
-        margin-right: 94px;
+        margin-right: 72px;
     }
     [data-pc-direction="rtl"] .pc-sidebar.wb-crm-compact:not(.pc-sidebar-hide) ~ .pc-header {
         left: 0;
-        right: 94px;
+        right: 72px;
     }
     [data-pc-direction="rtl"] .pc-sidebar.wb-crm-compact.pc-sidebar-hide ~ .pc-container,
     [data-pc-direction="rtl"] .pc-sidebar.wb-crm-compact.pc-sidebar-hide ~ .pc-footer {
@@ -438,29 +449,27 @@
 }
 #crm-sidebar .pc-navbar > .pc-item > .pc-link,
 #crm-sidebar .pc-navbar > .pc-item:not(.active) > .pc-link:hover {
-    color: #fff !important;
+    color: var(--wb-crm-icon) !important;
     margin-inline: 0 !important;
     border: 0 !important;
     box-shadow: none !important;
 }
 #crm-sidebar .pc-navbar > .pc-item:not(.active) > .pc-link:hover {
-    background: rgba(255, 255, 255, .12) !important;
-}
-#crm-sidebar .pc-navbar > .pc-item.active {
-    margin-inline: 0 !important;
+    background: rgba(255, 255, 255, .06) !important;
+    color: #fff !important;
 }
 #crm-sidebar .pc-navbar > .pc-item.active > .pc-link,
 #crm-sidebar .pc-navbar > .pc-item.active > .pc-link:hover,
 #crm-sidebar .pc-navbar > .pc-item.active > .pc-link:focus {
-    background: #fff !important;
-    color: var(--wb-crm-brand) !important;
+    background: var(--wb-crm-brand) !important;
+    color: #fff !important;
     border: 0 !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
+    border-radius: 14px !important;
+    box-shadow: 0 8px 20px rgba(74, 92, 255, .38) !important;
 }
 #crm-sidebar .pc-navbar > .pc-item.active > .pc-link .pc-micon i,
 #crm-sidebar .pc-navbar > .pc-item.active > .pc-link .pc-mtext {
-    color: var(--wb-crm-brand) !important;
+    color: #fff !important;
 }
 #crm-sidebar .pc-navbar > .pc-item > .pc-link::before,
 #crm-sidebar .pc-navbar > .pc-item > .pc-link::after {

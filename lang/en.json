@@ -1004,6 +1004,7 @@
     "whatsapp_hours_structure_hint": "Structure example: {\"mon\":[[\"09:00\",\"17:00\"]]}",
     "whatsapp_last_30_days": "Last 30 days",
     "whatsapp_last_7_days": "Last 7 days",
+    "whatsapp_export": "Export",
     "whatsapp_last_90_days": "Last 90 days",
     "whatsapp_message": "Message",
     "whatsapp_messages": "Messages",

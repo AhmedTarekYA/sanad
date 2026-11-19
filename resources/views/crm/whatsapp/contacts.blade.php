@@ -9,7 +9,7 @@
             display: inline-block;
             padding: 2px 8px;
             border-radius: 999px;
-            background: rgba(45, 113, 240, 0.08);
+            background: rgba(74, 92, 255, 0.08);
             font-size: 11px;
             font-weight: 700;
             margin: 0 2px 2px 0;
@@ -20,7 +20,7 @@
             height: 38px;
             border-radius: 50%;
             object-fit: cover;
-            background: rgba(45, 113, 240, 0.1);
+            background: rgba(74, 92, 255, 0.1);
         }
 
         .wa-history-item {

@@ -5,8 +5,8 @@
 @section('style')
     <style>
         :root {
-            --wb-green: #2D71F0;
-            --wb-green-dark: #1640C6;
+            --wb-green: #4a5cff;
+            --wb-green-dark: #3a49d9;
             --wb-bg: #f0f2f5;
             --wb-border: rgba(0, 0, 0, 0.08);
         }
@@ -27,7 +27,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: linear-gradient(180deg, rgba(0, 168, 132, 0.08), rgba(0, 168, 132, 0.03));
+            background: linear-gradient(180deg, rgba(74, 92, 255, 0.08), rgba(74, 92, 255, 0.03));
             border-bottom: 1px solid var(--wb-border);
         }
 
@@ -47,7 +47,7 @@
             color: #fff;
             display: grid;
             place-items: center;
-            box-shadow: 0 8px 18px rgba(0, 168, 132, 0.25);
+            box-shadow: 0 8px 18px rgba(74, 92, 255, 0.25);
             flex: 0 0 auto;
         }
 
@@ -69,7 +69,7 @@
             border-bottom: 1px solid var(--wb-border);
             font-weight: 900;
             color: rgba(0, 0, 0, 0.82);
-            background: linear-gradient(180deg, rgba(0, 168, 132, 0.07), rgba(0, 168, 132, 0.02));
+            background: linear-gradient(180deg, rgba(74, 92, 255, 0.07), rgba(74, 92, 255, 0.02));
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -86,8 +86,8 @@
             height: 28px;
             padding: 0 10px;
             border-radius: 999px;
-            border: 1px solid rgba(0, 168, 132, 0.22);
-            background: rgba(0, 168, 132, 0.08);
+            border: 1px solid rgba(74, 92, 255, 0.22);
+            background: rgba(74, 92, 255, 0.08);
             color: rgba(0, 128, 105, 0.95);
             font-size: 12px;
             font-weight: 900;
@@ -101,8 +101,8 @@
         }
 
         .wb-pill.is-ok {
-            border-color: rgba(0, 168, 132, 0.22);
-            background: rgba(0, 168, 132, 0.08);
+            border-color: rgba(74, 92, 255, 0.22);
+            background: rgba(74, 92, 255, 0.08);
             color: rgba(0, 128, 105, 0.95);
         }
 
@@ -110,7 +110,7 @@
             height: 40px;
             padding: 0 14px;
             border-radius: 12px;
-            border: 1px solid rgba(0, 168, 132, 0.25);
+            border: 1px solid rgba(74, 92, 255, 0.25);
             background: var(--wb-green);
             color: #fff;
             font-weight: 900;
@@ -170,8 +170,8 @@
             width: 30px;
             height: 30px;
             border-radius: 10px;
-            background: rgba(0, 168, 132, 0.12);
-            border: 1px solid rgba(0, 168, 132, 0.18);
+            background: rgba(74, 92, 255, 0.12);
+            border: 1px solid rgba(74, 92, 255, 0.18);
             color: rgba(0, 128, 105, 0.95);
             display: grid;
             place-items: center;
@@ -247,14 +247,14 @@
 
 @section('content')
     <div class="wb-hero mb-4"
-         style="background: linear-gradient(135deg, #1a56db 0%, #2D71F0 50%, #0ea5e9 100%); border-radius: 18px; overflow: hidden; box-shadow: 0 12px 36px rgba(45,113,240,0.28);">
+         style="background: #0b0c10; border-radius: 18px; overflow: hidden; border:1px solid rgba(255,255,255,.08);">
         <div class="row g-0 align-items-center">
             <div class="col-md-8 p-4 p-md-5">
                 <h1 class="fw-bold text-white mb-3" style="font-size: 34px; line-height: 1.3;">{{ __('whatsapp_setup') }}</h1>
                 <p class="mb-4" style="color: rgba(255,255,255,0.9); font-size: 16px; max-width: 620px; line-height: 1.8;">{{ __('whatsapp_setup_subtitle') }}</p>
                 <div class="d-flex flex-wrap gap-3">
                     <a class="btn fw-bold d-flex align-items-center gap-2" href="{{ $metaAppsUrl }}" target="_blank" rel="noopener"
-                       style="background:#fff;color:#2D71F0;border-radius:10px;font-size:15px;padding:10px 20px;box-shadow:0 4px 14px rgba(0,0,0,0.15);">
+                       style="background:#fff;color:#4a5cff;border-radius:10px;font-size:15px;padding:10px 20px;box-shadow:0 4px 14px rgba(0,0,0,0.15);">
                         <i class="fa fa-external-link"></i> {{ __('whatsapp_open_meta_console') }}
                     </a>
                     <a class="btn fw-bold d-flex align-items-center gap-2" href="{{ route('crm.whatsapp_business_settings') }}"

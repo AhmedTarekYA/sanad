@@ -1004,6 +1004,7 @@
     "whatsapp_hours_structure_hint": "مثال للبنية: {\"mon\":[[\"09:00\",\"17:00\"]]}",
     "whatsapp_last_30_days": "آخر 30 يوم",
     "whatsapp_last_7_days": "آخر 7 أيام",
+    "whatsapp_export": "تصدير",
     "whatsapp_last_90_days": "آخر 90 يوم",
     "whatsapp_message": "رسالة",
     "whatsapp_messages": "الرسائل",
