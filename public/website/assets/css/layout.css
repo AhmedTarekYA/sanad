@@ -3,6 +3,10 @@ html, body {
     max-inline-size: 100%;
 }
 
+.sanad-footer__logo {
+    filter: brightness(0) invert(1);
+}
+
 /* Keep the sentiment labels in the normal flow, clear of the progress bar. */
 .ai-step__illustration--semantic {
     display: grid;

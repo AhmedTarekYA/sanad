@@ -180,6 +180,11 @@ html[data-theme=dark] .fkr-site-header__brand{background:transparent}
     object-position: center bottom;
     padding: 0;
 }
+.fkr-site-header__inner,
+.fkr-site-header__brand {
+    box-sizing: border-box;
+}
+
 .fkr-site-header__brand {
     width: 84px;
     height: 60px;
