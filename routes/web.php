@@ -30,7 +30,7 @@ Route::group(
     [
         'as' => 'website.',
         'prefix' => LaravelLocalization::setLocale(),
-        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'],
+        'middleware' => ['localizationRedirect', 'localeViewPath'],
     ], function () {
         Route::get('/', [WebsiteController::class, 'home'])->name('home');
         Route::get('/about', [WebsiteController::class, 'about'])->name('about');
