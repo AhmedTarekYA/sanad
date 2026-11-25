@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>قريباً — CRM</title>
     <style>
+        @font-face { font-family: 'Thmanya'; src: url('https://framerusercontent.com/assets/x6EBzvXf1Fi35XhsRoHxePDVo.woff2') format('woff2'); font-display: swap; font-style: normal; font-weight: 400; }
+        @font-face { font-family: 'Thmanya'; src: url('https://framerusercontent.com/assets/Lh8puxCFq405qBv7dKpg9NsHZNk.woff2') format('woff2'); font-display: swap; font-style: normal; font-weight: 300; }
+        @font-face { font-family: 'Thmanya'; src: url('https://framerusercontent.com/assets/oE98mOPE28KTzUeptOLRIaqW1I.woff2') format('woff2'); font-display: swap; font-style: normal; font-weight: 500; }
+        @font-face { font-family: 'Thmanya'; src: url('https://framerusercontent.com/assets/LZvgFRUsP7pGWYj3tKxMUrKuhSY.woff2') format('woff2'); font-display: swap; font-style: normal; font-weight: 700; }
+        @font-face { font-family: 'Thmanya'; src: url('https://framerusercontent.com/assets/ulQLGTktcl2Qq4AmD6RuVgELZKg.woff2') format('woff2'); font-display: swap; font-style: normal; font-weight: 900; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
@@ -13,7 +18,7 @@
             align-items: center;
             justify-content: center;
             background: #0f172a;
-            font-family: 'Segoe UI', system-ui, sans-serif;
+            font-family: 'Thmanya', 'IBM Plex Sans Arabic', sans-serif;
             color: #f1f5f9;
         }
 

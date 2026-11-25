@@ -2,7 +2,7 @@
     $isAr = app()->getLocale() === 'ar';
     $supportedLocales = config('laravellocalization.supportedLocales', []);
     $currentLocale = app()->getLocale();
-    $loginLogo = asset('brand/crm_logo.png');
+    $loginLogo = asset('brand/blue.png.png');
 @endphp
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ $isAr ? 'rtl' : 'ltr' }}">
@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ $settings->website_name ?? 'Sanad' }} | {{ __('auth.login') }}</title>
-    <link rel="icon" href="{{ $settings?->favicon ? showFile($settings->favicon) : asset('brand/crm_logo.png') }}" type="image/png">
+    <link rel="icon" href="{{ $settings?->favicon ? showFile($settings->favicon) : asset('brand/blue.png.png') }}" type="image/png">
     <link rel="stylesheet" href="{{ asset('admin/login/css/fontawesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/login/css/sanad-login.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/assets/cssbundle/sweetalert2.min.css') }}">
@@ -35,7 +35,7 @@
             justify-content:center;
             padding:24px;
             color:var(--crm-ink);
-            font-family:'IBM Plex Sans Arabic','Thmanya','Segoe UI',system-ui,sans-serif;
+            font-family:'Thmanya','IBM Plex Sans Arabic','Segoe UI',system-ui,sans-serif;
             background:
                 radial-gradient(900px 520px at 100% 0%, rgba(45,113,240,.20), transparent 60%),
                 radial-gradient(800px 520px at 0% 100%, rgba(56,211,155,.16), transparent 60%),
