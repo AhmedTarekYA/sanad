@@ -44,7 +44,7 @@
         --crm-bg: #14151c;
     }
 
-    body.crm-app[data-pc-theme="color"] {
+    body.crm-app[data-pc-theme="light"] {
         --crm-brand: #203df4;
     }
 
@@ -342,18 +342,18 @@
     }
 
     /* Blue sidebar mode uses the selected brand blue for primary and dark actions. */
-    body.crm-app[data-pc-theme="color"] .btn-primary,
-    body.crm-app[data-pc-theme="color"] .btn-dark {
+    body.crm-app[data-pc-theme="light"] .btn-primary,
+    body.crm-app[data-pc-theme="light"] .btn-dark {
         background: #203df4;
         border-color: #203df4;
         color: #fff;
     }
-    body.crm-app[data-pc-theme="color"] .btn-primary:hover,
-    body.crm-app[data-pc-theme="color"] .btn-primary:focus,
-    body.crm-app[data-pc-theme="color"] .btn-primary:active,
-    body.crm-app[data-pc-theme="color"] .btn-dark:hover,
-    body.crm-app[data-pc-theme="color"] .btn-dark:focus,
-    body.crm-app[data-pc-theme="color"] .btn-dark:active {
+    body.crm-app[data-pc-theme="light"] .btn-primary:hover,
+    body.crm-app[data-pc-theme="light"] .btn-primary:focus,
+    body.crm-app[data-pc-theme="light"] .btn-primary:active,
+    body.crm-app[data-pc-theme="light"] .btn-dark:hover,
+    body.crm-app[data-pc-theme="light"] .btn-dark:focus,
+    body.crm-app[data-pc-theme="light"] .btn-dark:active {
         background: #1934d8;
         border-color: #1934d8;
         color: #fff;

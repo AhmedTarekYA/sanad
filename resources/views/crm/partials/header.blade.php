@@ -24,7 +24,6 @@
                     <div class="dropdown-menu dropdown-menu-end pc-h-dropdown crm-theme-menu" id="theme-menu">
                         <button type="button" class="dropdown-item crm-theme-option" data-theme-value="dark"><i class="fal fa-moon"></i><span>{{ app()->getLocale() === 'ar' ? 'الوضع الداكن' : 'Dark mode' }}</span></button>
                         <button type="button" class="dropdown-item crm-theme-option" data-theme-value="light"><i class="fal fa-sun"></i><span>{{ app()->getLocale() === 'ar' ? 'الوضع الأبيض' : 'White mode' }}</span></button>
-                        <button type="button" class="dropdown-item crm-theme-option" data-theme-value="color"><i class="fal fa-palette"></i><span>{{ app()->getLocale() === 'ar' ? 'قائمة جانبية زرقاء' : 'Blue sidebar' }}</span></button>
                     </div>
                 </li>
                 <li class="dropdown pc-h-item">
@@ -76,8 +75,7 @@
 [data-pc-theme="dark"] .pc-header {
     background: #0b0c10;
 }
-body.crm-app[data-pc-theme="light"] .pc-header,
-body.crm-app[data-pc-theme="color"] .pc-header {
+body.crm-app[data-pc-theme="light"] .pc-header {
     background: #fff;
     --pc-header-color: #0b0c10;
     --pc-active-background: rgba(32, 61, 244, .1);
@@ -85,9 +83,7 @@ body.crm-app[data-pc-theme="color"] .pc-header {
     border-bottom-color: #e7e8ee;
 }
 body.crm-app[data-pc-theme="light"] .pc-header .pc-head-link,
-body.crm-app[data-pc-theme="color"] .pc-header .pc-head-link,
-body.crm-app[data-pc-theme="light"] .pc-header .crm-clock,
-body.crm-app[data-pc-theme="color"] .pc-header .crm-clock {
+body.crm-app[data-pc-theme="light"] .pc-header .crm-clock {
     color: #0b0c10;
 }
 .pc-header .header-wrapper { align-items: center; }
@@ -116,10 +112,10 @@ body.crm-app[data-pc-theme="color"] .pc-header .crm-clock {
 document.addEventListener('DOMContentLoaded',function(){
     var themeToggle=document.getElementById('theme-toggle'),themeToggleIcon=document.getElementById('theme-toggle-icon');
     var themeMenu=document.getElementById('theme-menu');
-    function applyTheme(value){var mode=['dark','light','color'].indexOf(value)!==-1?value:'light';var theme=mode==='dark'?'dark':'light';if(typeof layout_change==='function')layout_change(theme);document.body.setAttribute('data-pc-theme',mode);document.body.setAttribute('data-pc-sidebar-theme',theme==='dark'?'dark':'light');document.querySelectorAll('.crm-theme-option').forEach(function(option){option.classList.toggle('is-active',option.dataset.themeValue===mode)});var logo=document.querySelector('.crm-sidebar-logo');if(logo)logo.src=mode==='color'?'{{ asset('brand/white-logo.png') }}':'{{ asset('brand/blue-logo.png') }}';if(themeToggleIcon)themeToggleIcon.className=mode==='dark'?'fal fa-moon':(mode==='color'?'fal fa-palette':'fal fa-sun');if(themeToggle)themeToggle.setAttribute('aria-label',mode)}
+    function applyTheme(value){var mode=value==='dark'?'dark':'light';var theme=mode;if(typeof layout_change==='function')layout_change(theme);document.body.setAttribute('data-pc-theme',mode);document.body.setAttribute('data-pc-sidebar-theme',theme==='dark'?'dark':'light');document.querySelectorAll('.crm-theme-option').forEach(function(option){option.classList.toggle('is-active',option.dataset.themeValue===mode)});var logo=document.querySelector('.crm-sidebar-logo');if(logo)logo.src=mode==='light'?'{{ asset('brand/white-logo.png') }}':'{{ asset('brand/blue-logo.png') }}';if(themeToggleIcon)themeToggleIcon.className=mode==='dark'?'fal fa-moon':'fal fa-sun';if(themeToggle)themeToggle.setAttribute('aria-label',mode)}
     if(themeToggle){themeToggle.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();if(themeMenu)themeMenu.classList.toggle('show');themeToggle.setAttribute('aria-expanded',themeMenu&&themeMenu.classList.contains('show')?'true':'false')})}
     document.querySelectorAll('.crm-theme-option').forEach(function(option){option.addEventListener('click',function(){var mode=option.dataset.themeValue;applyTheme(mode);localStorage.setItem('sanad-theme',mode);if(themeMenu)themeMenu.classList.remove('show');if(themeToggle)themeToggle.setAttribute('aria-expanded','false')})});
-    var savedTheme=localStorage.getItem('sanad-theme');if(savedTheme==='auto')savedTheme=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';if(savedTheme)applyTheme(savedTheme);else applyTheme(document.body.getAttribute('data-pc-theme'));
+    var savedTheme=localStorage.getItem('sanad-theme');if(savedTheme==='auto')savedTheme=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';if(savedTheme==='color')savedTheme='light';if(savedTheme)applyTheme(savedTheme);else applyTheme(document.body.getAttribute('data-pc-theme'));
     const ids=['language','profile'];
     ids.forEach(function(name){
         const toggle=document.getElementById(name+'-toggle'),menu=document.getElementById(name+'-menu');

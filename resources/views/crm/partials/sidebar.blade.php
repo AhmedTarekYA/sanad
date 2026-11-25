@@ -104,7 +104,7 @@
     --wb-crm-brand-tint: rgba(255, 255, 255, .14);
 }
 
-body.crm-app[data-pc-theme="color"] .pc-sidebar.wb-crm-compact {
+body.crm-app[data-pc-theme="light"] .pc-sidebar.wb-crm-compact {
     --wb-crm-rail-bg: #203df4;
     --wb-crm-icon: #fff;
     --wb-crm-brand: #203df4;
@@ -112,18 +112,16 @@ body.crm-app[data-pc-theme="color"] .pc-sidebar.wb-crm-compact {
     background: #203df4;
     border-inline-end-color: rgba(255, 255, 255, .18);
 }
-body.crm-app[data-pc-theme="color"] .pc-sidebar.wb-crm-compact .m-header {
+body.crm-app[data-pc-theme="light"] .pc-sidebar.wb-crm-compact .m-header {
     border-bottom-color: rgba(255, 255, 255, .25);
 }
-body.crm-app[data-pc-theme="color"] .pc-sidebar.wb-crm-compact .pc-caption label {
+body.crm-app[data-pc-theme="light"] .pc-sidebar.wb-crm-compact .pc-caption label {
     color: rgba(255, 255, 255, .88);
 }
-body.crm-app[data-pc-theme="dark"] .crm-sidebar-logo,
-body.crm-app[data-pc-theme="light"] .crm-sidebar-logo,
-body.crm-app:not([data-pc-theme="color"]) .crm-sidebar-logo {
+body.crm-app[data-pc-theme="dark"] .crm-sidebar-logo {
     content: url('{{ asset('brand/blue-logo.png') }}');
 }
-body.crm-app[data-pc-theme="color"] .crm-sidebar-logo {
+body.crm-app[data-pc-theme="light"] .crm-sidebar-logo {
     content: url('{{ asset('brand/white-logo.png') }}');
 }
 
@@ -520,17 +518,17 @@ body.crm-app[data-pc-theme="color"] .crm-sidebar-logo {
 }
 
 /* Blue sidebar mode keeps the active item readable without a white tile. */
-body.crm-app[data-pc-theme="color"] #crm-sidebar .pc-navbar > .pc-item.active > .pc-link,
-body.crm-app[data-pc-theme="color"] #crm-sidebar .pc-navbar > .pc-item.active > .pc-link:hover,
-body.crm-app[data-pc-theme="color"] #crm-sidebar .pc-navbar > .pc-item.active > .pc-link:focus {
+body.crm-app[data-pc-theme="light"] #crm-sidebar .pc-navbar > .pc-item.active > .pc-link,
+body.crm-app[data-pc-theme="light"] #crm-sidebar .pc-navbar > .pc-item.active > .pc-link:hover,
+body.crm-app[data-pc-theme="light"] #crm-sidebar .pc-navbar > .pc-item.active > .pc-link:focus {
     background: rgba(255, 255, 255, .18) !important;
     color: #fff !important;
     box-shadow: none !important;
 }
-body.crm-app[data-pc-theme="color"] #crm-sidebar .pc-navbar > .pc-item:not(.active) > .pc-link:hover {
+body.crm-app[data-pc-theme="light"] #crm-sidebar .pc-navbar > .pc-item:not(.active) > .pc-link:hover {
     background: rgba(255, 255, 255, .12) !important;
 }
-body.crm-app[data-pc-theme="color"] #crm-sidebar .crm-sidebar-logo-badge {
+body.crm-app[data-pc-theme="light"] #crm-sidebar .crm-sidebar-logo-badge {
     background: transparent;
     box-shadow: none;
 }

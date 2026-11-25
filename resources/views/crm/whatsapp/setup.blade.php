@@ -16,7 +16,7 @@
             --wb-hero-text: var(--crm-ink, #171923);
         }
 
-        body.crm-app[data-pc-theme="color"] {
+        body.crm-app[data-pc-theme="light"] {
             --wb-hero-bg: #203df4;
             --wb-hero-text: #fff;
         }
@@ -31,11 +31,11 @@
         .wb-hero p { color: var(--wb-hero-text); }
         .wb-hero .wb-meta-link {
             background: var(--wb-card);
-            color: var(--wb-green);
+            color: var(--wb-green) !important;
         }
         .wb-hero .wb-settings-link {
             background: color-mix(in srgb, var(--wb-hero-text) 12%, transparent);
-            color: var(--wb-hero-text);
+            color: var(--wb-hero-text) !important;
             border: 1.5px solid color-mix(in srgb, var(--wb-hero-text) 35%, transparent);
         }
 
