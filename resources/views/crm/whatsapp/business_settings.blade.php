@@ -2,10 +2,32 @@
 
 @section('page-title', $pageTitle)
 
+@section('style')
+    <style>
+        .crm-whatsapp-help-card {
+            background: var(--crm-card);
+            border: 1px solid var(--crm-border) !important;
+            color: var(--crm-ink);
+        }
+        .crm-whatsapp-help-card h5,
+        .crm-whatsapp-help-card p { color: var(--crm-ink); }
+        .crm-whatsapp-help-card p { opacity: .82; }
+        .crm-whatsapp-help-card .crm-whatsapp-contact-link {
+            background: var(--crm-brand);
+            color: #fff !important;
+        }
+        .crm-whatsapp-help-card .crm-whatsapp-setup-link {
+            background: var(--crm-chip);
+            color: var(--crm-ink) !important;
+            border: 1px solid var(--crm-border);
+        }
+    </style>
+@endsection
+
 @section('content')
 
     <div class="col-12 mt-4">
-        <div class="card border-0 overflow-hidden" style="background: #0b0c10; border:1px solid rgba(255,255,255,.08);">
+        <div class="card crm-whatsapp-help-card border-0 overflow-hidden">
             <div class="card-body p-0">
                 <div class="row g-0 align-items-center">
                     <div class="col-md-3 d-flex align-items-center justify-content-center p-4">
@@ -13,18 +35,18 @@
                              style="max-height: 150px; max-width: 150px; object-fit: contain; filter: drop-shadow(0 4px 16px rgba(0,0,0,0.2));">
                     </div>
                     <div class="col-md-9 p-4 p-md-5">
-                        <h5 class="fw-bold mb-2 text-white">{{ __('whatsapp_connection_help_title') }}</h5>
-                        <p class="mb-4" style="color:rgba(255,255,255,0.85); font-size:15px;">{{ __('whatsapp_connection_help_desc') }}</p>
+                        <h5 class="fw-bold mb-2">{{ __('whatsapp_connection_help_title') }}</h5>
+                        <p class="mb-4" style="font-size:15px;">{{ __('whatsapp_connection_help_desc') }}</p>
                         <div class="d-flex flex-wrap gap-3">
                             <a href="https://wa.me/201099977904" target="_blank" rel="noopener"
-                               class="btn fw-bold d-flex align-items-center gap-2"
-                               style="background:#4a5cff;color:#fff;border-radius:10px;font-size:15px;padding:10px 20px;box-shadow:0 4px 14px rgba(0,0,0,0.2);">
+                               class="btn crm-whatsapp-contact-link fw-bold d-flex align-items-center gap-2"
+                               style="border-radius:10px;font-size:15px;padding:10px 20px;box-shadow:0 4px 14px rgba(0,0,0,0.2);">
                                 <i class="fab fa-whatsapp" style="font-size:20px;"></i>
                                 +201099977904
                             </a>
                             <a href="{{ route('crm.whatsapp_setup') }}"
-                               class="btn fw-bold d-flex align-items-center gap-2"
-                               style="background:rgba(255,255,255,0.15);color:#fff;border:1.5px solid rgba(255,255,255,0.4);border-radius:10px;font-size:15px;padding:10px 20px;backdrop-filter:blur(4px);">
+                               class="btn crm-whatsapp-setup-link fw-bold d-flex align-items-center gap-2"
+                               style="border-radius:10px;font-size:15px;padding:10px 20px;backdrop-filter:blur(4px);">
                                 <i class="ti ti-plug" style="font-size:18px;"></i>
                                 {{ __('whatsapp_how_to_connect') }}
                             </a>

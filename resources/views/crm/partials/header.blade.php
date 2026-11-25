@@ -22,8 +22,8 @@
                 <li class="pc-h-item">
                     <a href="#" class="pc-head-link dropdown-toggle arrow-none" id="theme-toggle" aria-label="Theme" aria-expanded="false"><i class="fal fa-palette" id="theme-toggle-icon"></i></a>
                     <div class="dropdown-menu dropdown-menu-end pc-h-dropdown crm-theme-menu" id="theme-menu">
-                        <button type="button" class="dropdown-item crm-theme-option" data-theme-value="dark"><i class="fal fa-moon"></i><span>{{ app()->getLocale() === 'ar' ? 'الوضع الداكن' : 'Dark mode' }}</span></button>
-                        <button type="button" class="dropdown-item crm-theme-option" data-theme-value="light"><i class="fal fa-sun"></i><span>{{ app()->getLocale() === 'ar' ? 'الوضع الأبيض' : 'White mode' }}</span></button>
+                        <button type="button" class="dropdown-item crm-theme-option" data-theme-value="dark"><i class="fal fa-moon"></i><span>{{ app()->getLocale() === 'ar' ? 'دارك مود' : 'Dark mode' }}</span></button>
+                        <button type="button" class="dropdown-item crm-theme-option" data-theme-value="light"><i class="fal fa-sun"></i><span>{{ app()->getLocale() === 'ar' ? 'عادي' : 'Normal' }}</span></button>
                     </div>
                 </li>
                 <li class="dropdown pc-h-item">
