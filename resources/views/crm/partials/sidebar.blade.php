@@ -93,15 +93,38 @@
     max-height: 26px;
     flex: 0 0 auto;
     object-fit: contain;
-    filter: brightness(0) invert(1);
+    filter: none;
 }
 
 /* ===== Brand-colored CRM sidebar: vertical icon-over-label cards ===== */
 :root {
-    --wb-crm-brand: #4a5cff;
+    --wb-crm-brand: #203df4;
     --wb-crm-rail-bg: #0b0c10;
     --wb-crm-icon: rgba(225, 228, 238, .78);
     --wb-crm-brand-tint: rgba(255, 255, 255, .14);
+}
+
+body.crm-app[data-pc-theme="color"] .pc-sidebar.wb-crm-compact {
+    --wb-crm-rail-bg: #203df4;
+    --wb-crm-icon: rgba(255, 255, 255, .82);
+    --wb-crm-brand: #fff;
+    --wb-crm-brand-tint: rgba(255, 255, 255, .18);
+    background: #203df4;
+    border-inline-end-color: rgba(255, 255, 255, .18);
+}
+body.crm-app[data-pc-theme="color"] .pc-sidebar.wb-crm-compact .m-header {
+    border-bottom-color: rgba(255, 255, 255, .25);
+}
+body.crm-app[data-pc-theme="color"] .pc-sidebar.wb-crm-compact .pc-caption label {
+    color: rgba(255, 255, 255, .62);
+}
+body.crm-app[data-pc-theme="dark"] .crm-sidebar-logo,
+body.crm-app[data-pc-theme="light"] .crm-sidebar-logo,
+body.crm-app:not([data-pc-theme="color"]) .crm-sidebar-logo {
+    content: url('{{ asset('brand/blue-logo.png') }}');
+}
+body.crm-app[data-pc-theme="color"] .crm-sidebar-logo {
+    content: url('{{ asset('brand/white-logo.png') }}');
 }
 
 .pc-sidebar.wb-crm-compact {

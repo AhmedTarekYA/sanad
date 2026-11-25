@@ -22,7 +22,12 @@
                     </div>
                 </li>
                 <li class="pc-h-item">
-                    <a href="#" class="pc-head-link arrow-none" id="theme-toggle" aria-label="Theme"><i class="fal fa-sun" id="theme-toggle-icon"></i></a>
+                    <a href="#" class="pc-head-link dropdown-toggle arrow-none" id="theme-toggle" aria-label="Theme" aria-expanded="false"><i class="fal fa-palette" id="theme-toggle-icon"></i></a>
+                    <div class="dropdown-menu dropdown-menu-end pc-h-dropdown crm-theme-menu" id="theme-menu">
+                        <button type="button" class="dropdown-item crm-theme-option" data-theme-value="dark"><i class="fal fa-moon"></i><span>{{ app()->getLocale() === 'ar' ? 'الوضع الداكن' : 'Dark mode' }}</span></button>
+                        <button type="button" class="dropdown-item crm-theme-option" data-theme-value="light"><i class="fal fa-sun"></i><span>{{ app()->getLocale() === 'ar' ? 'الوضع الأبيض' : 'White mode' }}</span></button>
+                        <button type="button" class="dropdown-item crm-theme-option" data-theme-value="color"><i class="fal fa-palette"></i><span>{{ app()->getLocale() === 'ar' ? 'قائمة جانبية زرقاء' : 'Blue sidebar' }}</span></button>
+                    </div>
                 </li>
                 <li class="dropdown pc-h-item">
                     <a href="#" class="pc-head-link dropdown-toggle arrow-none" id="language-toggle" aria-expanded="false" aria-label="{{ __('auth.change language') }}"><i class="fas fa-language"></i></a>
@@ -73,6 +78,24 @@
 [data-pc-theme="dark"] .pc-header {
     background: #0b0c10;
 }
+body.crm-app[data-pc-theme="light"] .pc-header,
+body.crm-app[data-pc-theme="color"] .pc-header {
+    background: #fff;
+    --pc-header-color: #0b0c10;
+    --pc-active-background: rgba(32, 61, 244, .1);
+    color: #0b0c10;
+    border-bottom-color: #e7e8ee;
+}
+body.crm-app[data-pc-theme="light"] .pc-header .pc-head-link,
+body.crm-app[data-pc-theme="color"] .pc-header .pc-head-link,
+body.crm-app[data-pc-theme="light"] .pc-header .crm-clock,
+body.crm-app[data-pc-theme="color"] .pc-header .crm-clock {
+    color: #0b0c10;
+}
+body.crm-app[data-pc-theme="light"] .crm-clock-hour,
+body.crm-app[data-pc-theme="color"] .crm-clock-hour {
+    background: linear-gradient(90deg, #0b0c10, rgba(11, 12, 16, .75));
+}
 .pc-header .header-wrapper { align-items: center; }
 .pc-header .pc-head-link { box-shadow: none; }
 .pc-header .pc-h-item>.dropdown-menu.show{display:block}
@@ -84,6 +107,9 @@
 .pc-header .crm-profile-dropdown{min-width:240px;padding:8px 0}
 .pc-header .crm-profile-dropdown .wid-40{width:40px;height:40px;object-fit:cover}
 .pc-header .crm-profile-dropdown .dropdown-item{padding:8px 16px}
+.pc-header .crm-theme-menu{min-width:190px;padding:8px}
+.pc-header .crm-theme-option{display:flex;align-items:center;gap:10px;width:100%;border:0;background:transparent;color:inherit;text-align:start}
+.pc-header .crm-theme-option.is-active{color:#203df4;background:rgba(32,61,244,.1)}
 
 /* Live clock */
 .pc-header .crm-clock-item{min-height:74px;margin-inline-end:10px}
@@ -99,8 +125,10 @@
 <script>
 document.addEventListener('DOMContentLoaded',function(){
     var themeToggle=document.getElementById('theme-toggle'),themeToggleIcon=document.getElementById('theme-toggle-icon');
-    function applyTheme(value){var theme=value==='dark'?'dark':'light';if(typeof layout_change==='function')layout_change(theme);document.body.setAttribute('data-pc-theme',theme);document.body.setAttribute('data-pc-sidebar-theme',theme==='dark'?'dark':'light');if(themeToggleIcon)themeToggleIcon.className=theme==='dark'?'fal fa-moon':'fal fa-sun';if(themeToggle)themeToggle.setAttribute('aria-label',theme==='dark'?'Dark':'Light')}
-    if(themeToggle){themeToggle.addEventListener('click',function(e){e.preventDefault();var next=document.body.getAttribute('data-pc-theme')==='dark'?'light':'dark';applyTheme(next);localStorage.setItem('sanad-theme',next)})}
+    var themeMenu=document.getElementById('theme-menu');
+    function applyTheme(value){var mode=['dark','light','color'].indexOf(value)!==-1?value:'light';var theme=mode==='dark'?'dark':'light';if(typeof layout_change==='function')layout_change(theme);document.body.setAttribute('data-pc-theme',mode);document.body.setAttribute('data-pc-sidebar-theme',theme==='dark'?'dark':'light');document.querySelectorAll('.crm-theme-option').forEach(function(option){option.classList.toggle('is-active',option.dataset.themeValue===mode)});var logo=document.querySelector('.crm-sidebar-logo');if(logo)logo.src=mode==='color'?'{{ asset('brand/white-logo.png') }}':'{{ asset('brand/blue-logo.png') }}';if(themeToggleIcon)themeToggleIcon.className=mode==='dark'?'fal fa-moon':(mode==='color'?'fal fa-palette':'fal fa-sun');if(themeToggle)themeToggle.setAttribute('aria-label',mode)}
+    if(themeToggle){themeToggle.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();if(themeMenu)themeMenu.classList.toggle('show');themeToggle.setAttribute('aria-expanded',themeMenu&&themeMenu.classList.contains('show')?'true':'false')})}
+    document.querySelectorAll('.crm-theme-option').forEach(function(option){option.addEventListener('click',function(){var mode=option.dataset.themeValue;applyTheme(mode);localStorage.setItem('sanad-theme',mode);if(themeMenu)themeMenu.classList.remove('show');if(themeToggle)themeToggle.setAttribute('aria-expanded','false')})});
     var savedTheme=localStorage.getItem('sanad-theme');if(savedTheme==='auto')savedTheme=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';if(savedTheme)applyTheme(savedTheme);else applyTheme(document.body.getAttribute('data-pc-theme'));
     const ids=['language','profile'];
     ids.forEach(function(name){
@@ -115,7 +143,7 @@ document.addEventListener('DOMContentLoaded',function(){
         });
         menu.addEventListener('click',function(e){e.stopPropagation()});
     });
-    document.addEventListener('click',function(){document.querySelectorAll('.pc-header .pc-h-dropdown').forEach(function(menu){menu.classList.remove('show')})});
+    document.addEventListener('click',function(){document.querySelectorAll('.pc-header .pc-h-dropdown').forEach(function(menu){menu.classList.remove('show')});if(themeToggle)themeToggle.setAttribute('aria-expanded','false')});
 
     var crmSidebar=document.querySelector('.pc-sidebar.wb-crm-compact');
     var crmSidebarMode=document.getElementById('crm-sidebar-mode');
