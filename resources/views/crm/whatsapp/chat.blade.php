@@ -4390,7 +4390,7 @@
                     @else
                         <div class="wb-empty">
                             <div>
-                                <div style="font-weight: 800; color: rgba(0,0,0,0.75); margin-bottom: 6px;">
+                                <div style="font-weight: 800; color: var(--wb-text); margin-bottom: 6px;">
                                     {{ __('whatsapp_inbox') }}</div>
                                 <div>{{ __('whatsapp_choose_conversation') }}</div>
                             </div>
@@ -4563,7 +4563,7 @@
                     <div class="wb-form-row" style="margin-top: 10px;">
                         <button class="wb-primary" type="button" id="wb-add-note-btn">{{ app()->getLocale() === 'ar' ? 'حفظ الملاحظة' : 'Save note' }}</button>
                     </div>
-                    <div style="margin-top: 12px; font-weight: 800; color: rgba(0,0,0,0.7);">{{ app()->getLocale() === 'ar' ? 'كل الملاحظات' : 'All notes' }}</div>
+                    <div style="margin-top: 12px; font-weight: 800; color: var(--wb-text);">{{ app()->getLocale() === 'ar' ? 'كل الملاحظات' : 'All notes' }}</div>
                     <div class="wb-contact-list" id="wb-notes-list" style="margin-top: 10px;">
                         <div class="wb-empty">{{ app()->getLocale() === 'ar' ? 'لا توجد ملاحظات' : 'No notes yet' }}</div>
                     </div>
@@ -7596,7 +7596,7 @@
                     const when = formatDateTime(n.created_at);
                     html += '<div class="wb-note-item">';
                     html += '<div class="wb-note-meta"><span>' + escapeHtml(adminName) + '</span><span>' + escapeHtml(when) + '</span></div>';
-                    html += '<div style="white-space:pre-wrap;color:rgba(0,0,0,0.8);">' + escapeHtml(n.body || '') + '</div>';
+                    html += '<div style="white-space:pre-wrap;color:var(--wb-text);">' + escapeHtml(n.body || '') + '</div>';
                     html += '</div>';
                 });
                 list.innerHTML = html;

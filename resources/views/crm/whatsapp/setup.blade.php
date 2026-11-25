@@ -4,7 +4,7 @@
 
 @section('style')
     <style>
-        :root {
+        body.crm-app {
             --wb-green: var(--crm-brand, #203df4);
             --wb-green-dark: color-mix(in srgb, var(--wb-green) 82%, #000);
             --wb-bg: var(--crm-bg, #f0f2f5);

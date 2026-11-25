@@ -60,6 +60,20 @@
     body.crm-app small.text-muted {
         color: var(--crm-muted) !important;
     }
+    body.crm-app .form-text {
+        color: var(--crm-muted);
+    }
+
+    body.crm-app[data-pc-theme="dark"] .bg-light,
+    body.crm-app[data-pc-theme="dark"] .bg-white,
+    body.crm-app[data-pc-theme="dark"] .input-group-text {
+        background-color: var(--crm-chip) !important;
+        color: var(--crm-ink);
+        border-color: var(--crm-border);
+    }
+    body.crm-app[data-pc-theme="dark"] .text-dark {
+        color: var(--crm-ink) !important;
+    }
 
     /* Page headers */
     body.crm-app .pc-content h4,
