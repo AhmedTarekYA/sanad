@@ -1,6 +1,6 @@
 @php($currentRoute = Route::currentRouteName())
 @php($crmUser = auth('crm')->user())
-@php($sidebarLogo = asset('brand/blue-logo.png'))
+@php($sidebarLogo = asset('brand/chat-icon.png'))
 @php($whatsappPages = [
     'whatsapp_business_settings' => 'fal fa-gear',
     'whatsapp_setup'             => 'fal fa-plug',
@@ -17,7 +17,7 @@
         <div class="m-header"><a href="{{ route('crm.dashboard') }}" class="b-brand text-primary crm-sidebar-logo-badge">
                 <img src="{{ $sidebarLogo }}" alt="{{ $settings->website_name ?? config('app.name') }}"
                      class="crm-sidebar-logo"
-                     onerror="this.onerror=null;this.src='{{ asset('brand/logo.svg') }}';">
+                     onerror="this.onerror=null;this.src='{{ asset('brand/chat-icon.png') }}';">
             </a></div>
         <div class="navbar-content">
             <ul class="pc-navbar">
@@ -118,13 +118,6 @@ body.crm-app[data-pc-theme="light"] .pc-sidebar.wb-crm-compact .m-header {
 body.crm-app[data-pc-theme="light"] .pc-sidebar.wb-crm-compact .pc-caption label {
     color: rgba(255, 255, 255, .88);
 }
-body.crm-app[data-pc-theme="dark"] .crm-sidebar-logo {
-    content: url('{{ asset('brand/blue-logo.png') }}');
-}
-body.crm-app[data-pc-theme="light"] .crm-sidebar-logo {
-    content: url('{{ asset('brand/white-logo.png') }}');
-}
-
 .pc-sidebar.wb-crm-compact {
     background: var(--wb-crm-rail-bg);
     border-inline-end: 1px solid rgba(255, 255, 255, .06);
