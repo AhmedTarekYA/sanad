@@ -15,9 +15,7 @@
                     <div class="crm-clock" title="{{ __('date') }}">
                         <div class="crm-clock-text">
                             <span class="crm-clock-date" id="crm-live-date"></span>
-                            <span class="crm-clock-time" id="crm-live-time">
-                                <span class="crm-clock-hour" id="crm-live-hour"></span><span class="crm-clock-minute" id="crm-live-minute"></span><span class="crm-clock-second" id="crm-live-second"></span><span class="crm-clock-period" id="crm-live-period"></span>
-                            </span>
+                            <span class="crm-clock-time" id="crm-live-time"></span>
                         </div>
                     </div>
                 </li>
@@ -92,10 +90,6 @@ body.crm-app[data-pc-theme="light"] .pc-header .crm-clock,
 body.crm-app[data-pc-theme="color"] .pc-header .crm-clock {
     color: #0b0c10;
 }
-body.crm-app[data-pc-theme="light"] .crm-clock-hour,
-body.crm-app[data-pc-theme="color"] .crm-clock-hour {
-    background: linear-gradient(90deg, #0b0c10, rgba(11, 12, 16, .75));
-}
 .pc-header .header-wrapper { align-items: center; }
 .pc-header .pc-head-link { box-shadow: none; }
 .pc-header .pc-h-item>.dropdown-menu.show{display:block}
@@ -116,11 +110,7 @@ body.crm-app[data-pc-theme="color"] .crm-clock-hour {
 .pc-header .crm-clock{display:flex;align-items:center;gap:12px;color:#fff}
 .pc-header .crm-clock-text{display:flex;flex-direction:column;line-height:1.1;gap:3px}
 .pc-header .crm-clock-date{font-size:10.5px;font-weight:500;letter-spacing:.02em;opacity:.78;white-space:nowrap;text-transform:capitalize}
-.pc-header .crm-clock-time{display:flex;align-items:baseline;gap:1px;font-variant-numeric:tabular-nums;white-space:nowrap;line-height:1}
-.pc-header .crm-clock-hour{font-size:24px;font-weight:800;letter-spacing:.01em;background:linear-gradient(90deg,#fff,rgba(255,255,255,.82));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.pc-header .crm-clock-minute{font-size:14.5px;font-weight:600;opacity:.85}
-.pc-header .crm-clock-second{font-size:11px;font-weight:500;opacity:.62;margin-inline-start:2px}
-.pc-header .crm-clock-period{font-size:10.5px;font-weight:600;letter-spacing:.06em;opacity:.7;margin-inline-start:4px;text-transform:uppercase}
+.pc-header .crm-clock-time{display:block;font-size:18px;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap;line-height:1.2;direction:ltr;unicode-bidi:isolate;color:inherit}
 </style>
 <script>
 document.addEventListener('DOMContentLoaded',function(){
@@ -171,33 +161,21 @@ document.addEventListener('DOMContentLoaded',function(){
         // it straight back closed.
     }
 
-    var clockDate=document.getElementById('crm-live-date'),clockHour=document.getElementById('crm-live-hour'),clockMinute=document.getElementById('crm-live-minute'),clockSecond=document.getElementById('crm-live-second'),clockPeriod=document.getElementById('crm-live-period');
-    if(clockDate&&clockHour&&clockMinute){
+    var clockDate=document.getElementById('crm-live-date'),clockTime=document.getElementById('crm-live-time');
+    if(clockDate&&clockTime){
         var clockLocale=document.documentElement.lang||'en';
         var dateFormatter,timeFormatter;
         try{
             dateFormatter=new Intl.DateTimeFormat(clockLocale,{day:'numeric',month:'long',year:'numeric'});
-            timeFormatter=new Intl.DateTimeFormat(clockLocale,{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:true});
+            timeFormatter=new Intl.DateTimeFormat(clockLocale,{hour:'2-digit',minute:'2-digit',hour12:true});
         }catch(error){
             dateFormatter=new Intl.DateTimeFormat('en',{day:'numeric',month:'long',year:'numeric'});
-            timeFormatter=new Intl.DateTimeFormat('en',{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:true});
+            timeFormatter=new Intl.DateTimeFormat('en',{hour:'2-digit',minute:'2-digit',hour12:true});
         }
         function updateClock(){
             var now=new Date();
             clockDate.textContent=dateFormatter.format(now);
-            if(typeof timeFormatter.formatToParts==='function'){
-                var parts={};
-                timeFormatter.formatToParts(now).forEach(function(part){parts[part.type]=part.value});
-                clockHour.textContent=parts.hour||'';
-                clockMinute.textContent=parts.minute?':'+parts.minute:'';
-                if(clockSecond)clockSecond.textContent=parts.second?':'+parts.second:'';
-                if(clockPeriod)clockPeriod.textContent=parts.dayPeriod?parts.dayPeriod.replace(/\s/g,''):'';
-            }else{
-                clockHour.textContent=timeFormatter.format(now);
-                clockMinute.textContent='';
-                if(clockSecond)clockSecond.textContent='';
-                if(clockPeriod)clockPeriod.textContent='';
-            }
+            clockTime.textContent=timeFormatter.format(now);
         }
         updateClock();
         setInterval(updateClock,1000);

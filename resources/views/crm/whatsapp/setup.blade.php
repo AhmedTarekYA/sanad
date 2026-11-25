@@ -5,10 +5,38 @@
 @section('style')
     <style>
         :root {
-            --wb-green: #4a5cff;
-            --wb-green-dark: #3a49d9;
-            --wb-bg: #f0f2f5;
-            --wb-border: rgba(0, 0, 0, 0.08);
+            --wb-green: var(--crm-brand, #203df4);
+            --wb-green-dark: color-mix(in srgb, var(--wb-green) 82%, #000);
+            --wb-bg: var(--crm-bg, #f0f2f5);
+            --wb-border: var(--crm-border, rgba(0, 0, 0, 0.08));
+            --wb-text: var(--crm-ink, #171923);
+            --wb-muted: var(--crm-muted, #6b7080);
+            --wb-card: var(--crm-card, #fff);
+            --wb-hero-bg: var(--crm-card, #fff);
+            --wb-hero-text: var(--crm-ink, #171923);
+        }
+
+        body.crm-app[data-pc-theme="color"] {
+            --wb-hero-bg: #203df4;
+            --wb-hero-text: #fff;
+        }
+
+        .wb-hero {
+            background: var(--wb-hero-bg);
+            color: var(--wb-hero-text);
+            border: 1px solid var(--wb-border);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .06);
+        }
+        .wb-hero h1,
+        .wb-hero p { color: var(--wb-hero-text); }
+        .wb-hero .wb-meta-link {
+            background: var(--wb-card);
+            color: var(--wb-green);
+        }
+        .wb-hero .wb-settings-link {
+            background: color-mix(in srgb, var(--wb-hero-text) 12%, transparent);
+            color: var(--wb-hero-text);
+            border: 1.5px solid color-mix(in srgb, var(--wb-hero-text) 35%, transparent);
         }
 
         .wb-wrap {
@@ -27,7 +55,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: linear-gradient(180deg, rgba(74, 92, 255, 0.08), rgba(74, 92, 255, 0.03));
+            background: linear-gradient(180deg, color-mix(in srgb, var(--wb-green) 8%, transparent), color-mix(in srgb, var(--wb-green) 3%, transparent));
             border-bottom: 1px solid var(--wb-border);
         }
 
@@ -36,7 +64,7 @@
             align-items: center;
             gap: 10px;
             font-weight: 900;
-            color: rgba(0, 0, 0, 0.85);
+            color: var(--wb-text);
         }
 
         .wb-wa-badge {
@@ -57,7 +85,7 @@
         }
 
         .wb-card {
-            background: #fff;
+            background: var(--wb-card);
             border: 1px solid var(--wb-border);
             border-radius: 14px;
             overflow: hidden;
@@ -68,8 +96,8 @@
             padding: 12px 14px;
             border-bottom: 1px solid var(--wb-border);
             font-weight: 900;
-            color: rgba(0, 0, 0, 0.82);
-            background: linear-gradient(180deg, rgba(74, 92, 255, 0.07), rgba(74, 92, 255, 0.02));
+            color: var(--wb-text);
+            background: linear-gradient(180deg, color-mix(in srgb, var(--wb-green) 7%, transparent), color-mix(in srgb, var(--wb-green) 2%, transparent));
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -86,8 +114,8 @@
             height: 28px;
             padding: 0 10px;
             border-radius: 999px;
-            border: 1px solid rgba(74, 92, 255, 0.22);
-            background: rgba(74, 92, 255, 0.08);
+            border: 1px solid color-mix(in srgb, var(--wb-green) 22%, transparent);
+            background: color-mix(in srgb, var(--wb-green) 8%, transparent);
             color: rgba(0, 128, 105, 0.95);
             font-size: 12px;
             font-weight: 900;
@@ -101,8 +129,8 @@
         }
 
         .wb-pill.is-ok {
-            border-color: rgba(74, 92, 255, 0.22);
-            background: rgba(74, 92, 255, 0.08);
+            border-color: color-mix(in srgb, var(--wb-green) 22%, transparent);
+            background: color-mix(in srgb, var(--wb-green) 8%, transparent);
             color: rgba(0, 128, 105, 0.95);
         }
 
@@ -110,7 +138,7 @@
             height: 40px;
             padding: 0 14px;
             border-radius: 12px;
-            border: 1px solid rgba(74, 92, 255, 0.25);
+            border: 1px solid color-mix(in srgb, var(--wb-green) 25%, transparent);
             background: var(--wb-green);
             color: #fff;
             font-weight: 900;
@@ -130,8 +158,8 @@
             padding: 0 14px;
             border-radius: 12px;
             border: 1px solid rgba(0, 0, 0, 0.1);
-            background: #fff;
-            color: rgba(0, 0, 0, 0.75);
+            background: var(--wb-card);
+            color: var(--wb-text);
             font-weight: 900;
             text-decoration: none;
             display: inline-flex;
@@ -152,15 +180,15 @@
         }
 
         .wb-step {
-            border: 1px solid rgba(0, 0, 0, 0.08);
-            background: rgba(0, 0, 0, 0.02);
+            border: 1px solid var(--wb-border);
+            background: color-mix(in srgb, var(--wb-card) 94%, var(--wb-text) 6%);
             border-radius: 14px;
             padding: 12px;
         }
 
         .wb-step-title {
             font-weight: 900;
-            color: rgba(0, 0, 0, 0.82);
+            color: var(--wb-text);
             display: flex;
             align-items: center;
             gap: 10px;
@@ -170,9 +198,9 @@
             width: 30px;
             height: 30px;
             border-radius: 10px;
-            background: rgba(74, 92, 255, 0.12);
-            border: 1px solid rgba(74, 92, 255, 0.18);
-            color: rgba(0, 128, 105, 0.95);
+            background: color-mix(in srgb, var(--wb-green) 12%, transparent);
+            border: 1px solid color-mix(in srgb, var(--wb-green) 18%, transparent);
+            color: var(--wb-green);
             display: grid;
             place-items: center;
             font-weight: 900;
@@ -182,7 +210,7 @@
         .wb-step-desc {
             margin-top: 8px;
             font-size: 13px;
-            color: rgba(0, 0, 0, 0.62);
+            color: var(--wb-muted);
             line-height: 1.6;
         }
 
@@ -192,7 +220,7 @@
             gap: 10px;
             align-items: center;
             padding: 10px 0;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+            border-bottom: 1px solid var(--wb-border);
         }
 
         .wb-kv:last-child {
@@ -201,7 +229,7 @@
 
         .wb-kv-k {
             font-weight: 900;
-            color: rgba(0, 0, 0, 0.72);
+            color: var(--wb-text);
             font-size: 12px;
         }
 
@@ -213,13 +241,13 @@
         }
 
         .wb-code {
-            background: rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(0, 0, 0, 0.08);
+            background: color-mix(in srgb, var(--wb-card) 88%, var(--wb-text) 12%);
+            border: 1px solid var(--wb-border);
             border-radius: 12px;
             padding: 8px 10px;
             font-size: 12px;
             font-weight: 900;
-            color: rgba(0, 0, 0, 0.72);
+            color: var(--wb-text);
             max-width: 100%;
             overflow: auto;
         }
@@ -228,10 +256,10 @@
             height: 34px;
             padding: 0 12px;
             border-radius: 10px;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            background: #fff;
+            border: 1px solid var(--wb-border);
+            background: var(--wb-card);
             font-weight: 900;
-            color: rgba(0, 0, 0, 0.72);
+            color: var(--wb-text);
         }
 
         .wb-ill {
@@ -247,18 +275,18 @@
 
 @section('content')
     <div class="wb-hero mb-4"
-         style="background: #0b0c10; border-radius: 18px; overflow: hidden; border:1px solid rgba(255,255,255,.08);">
+         style="border-radius: 18px; overflow: hidden;">
         <div class="row g-0 align-items-center">
             <div class="col-md-8 p-4 p-md-5">
-                <h1 class="fw-bold text-white mb-3" style="font-size: 34px; line-height: 1.3;">{{ __('whatsapp_setup') }}</h1>
-                <p class="mb-4" style="color: rgba(255,255,255,0.9); font-size: 16px; max-width: 620px; line-height: 1.8;">{{ __('whatsapp_setup_subtitle') }}</p>
+                <h1 class="fw-bold mb-3" style="font-size: 34px; line-height: 1.3;">{{ __('whatsapp_setup') }}</h1>
+                <p class="mb-4" style="font-size: 16px; max-width: 620px; line-height: 1.8;">{{ __('whatsapp_setup_subtitle') }}</p>
                 <div class="d-flex flex-wrap gap-3">
-                    <a class="btn fw-bold d-flex align-items-center gap-2" href="{{ $metaAppsUrl }}" target="_blank" rel="noopener"
-                       style="background:#fff;color:#4a5cff;border-radius:10px;font-size:15px;padding:10px 20px;box-shadow:0 4px 14px rgba(0,0,0,0.15);">
+                    <a class="btn wb-meta-link fw-bold d-flex align-items-center gap-2" href="{{ $metaAppsUrl }}" target="_blank" rel="noopener"
+                       style="border-radius:10px;font-size:15px;padding:10px 20px;box-shadow:0 4px 14px rgba(0,0,0,0.15);">
                         <i class="fa fa-external-link"></i> {{ __('whatsapp_open_meta_console') }}
                     </a>
-                    <a class="btn fw-bold d-flex align-items-center gap-2" href="{{ route('crm.whatsapp_business_settings') }}"
-                       style="background:rgba(255,255,255,0.15);color:#fff;border:1.5px solid rgba(255,255,255,0.4);border-radius:10px;font-size:15px;padding:10px 20px;backdrop-filter:blur(4px);">
+                    <a class="btn wb-settings-link fw-bold d-flex align-items-center gap-2" href="{{ route('crm.whatsapp_business_settings') }}"
+                       style="border-radius:10px;font-size:15px;padding:10px 20px;backdrop-filter:blur(4px);">
                         <i class="fa fa-cog"></i> {{ __('whatsapp_open_settings') }}
                     </a>
                 </div>
