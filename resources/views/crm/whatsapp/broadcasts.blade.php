@@ -46,7 +46,7 @@
                                     <th style="width:90px;">{{ __('whatsapp_delivered') }}</th>
                                     <th style="width:90px;">{{ __('whatsapp_failed') }}</th>
                                     <th style="width:170px;">{{ __('whatsapp_scheduled_at') }}</th>
-                                    <th style="width:260px;">{{ __('actions') }}</th>
+                                    <th style="width:290px;">{{ __('actions') }}</th>
                                 </tr>
                             </thead>
                             <tbody>

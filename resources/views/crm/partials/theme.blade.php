@@ -44,6 +44,10 @@
         --crm-bg: #14151c;
     }
 
+    body.crm-app[data-pc-theme="color"] {
+        --crm-brand: #203df4;
+    }
+
     /* Layout */
     body.crm-app .pc-container,
     body.crm-app .pc-content {
@@ -111,6 +115,22 @@
     }
     body.crm-app .btn-sm {
         border-radius: 10px;
+    }
+    /* Neutralize the bundled tiny-slider [data-action] rule leaking onto CRM action buttons */
+    body.crm-app .btn[data-action] {
+        display: inline-flex;
+        margin: 0;
+        min-width: 0;
+        border: var(--bs-btn-border-width) solid var(--bs-btn-border-color);
+    }
+    body.crm-app .btn-success,
+    body.crm-app .btn-danger,
+    body.crm-app .btn-info,
+    body.crm-app .btn-warning,
+    body.crm-app .btn-secondary {
+        background: var(--bs-btn-bg);
+        border-color: var(--bs-btn-border-color);
+        color: var(--bs-btn-color);
     }
     body.crm-app .btn-primary,
     body.crm-app .btn-dark {
@@ -319,5 +339,23 @@
     body.crm-app[data-pc-theme="dark"] .btn-dark:hover {
         background: #6272ff;
         border-color: #6272ff;
+    }
+
+    /* Blue sidebar mode uses the selected brand blue for primary and dark actions. */
+    body.crm-app[data-pc-theme="color"] .btn-primary,
+    body.crm-app[data-pc-theme="color"] .btn-dark {
+        background: #203df4;
+        border-color: #203df4;
+        color: #fff;
+    }
+    body.crm-app[data-pc-theme="color"] .btn-primary:hover,
+    body.crm-app[data-pc-theme="color"] .btn-primary:focus,
+    body.crm-app[data-pc-theme="color"] .btn-primary:active,
+    body.crm-app[data-pc-theme="color"] .btn-dark:hover,
+    body.crm-app[data-pc-theme="color"] .btn-dark:focus,
+    body.crm-app[data-pc-theme="color"] .btn-dark:active {
+        background: #1934d8;
+        border-color: #1934d8;
+        color: #fff;
     }
 </style>

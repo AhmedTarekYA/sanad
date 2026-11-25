@@ -80,17 +80,17 @@
     justify-content: center;
     width: 42px;
     height: 42px;
-    border-radius: 12px;
-    background: var(--wb-crm-brand);
-    box-shadow: 0 6px 16px rgba(74, 92, 255, .35);
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
     flex: 0 0 auto;
 }
 .crm-sidebar-logo {
     display: block;
-    width: 26px;
-    height: 26px;
-    max-width: 26px;
-    max-height: 26px;
+    width: 42px;
+    height: 42px;
+    max-width: 42px;
+    max-height: 42px;
     flex: 0 0 auto;
     object-fit: contain;
     filter: none;
@@ -106,8 +106,8 @@
 
 body.crm-app[data-pc-theme="color"] .pc-sidebar.wb-crm-compact {
     --wb-crm-rail-bg: #203df4;
-    --wb-crm-icon: rgba(255, 255, 255, .82);
-    --wb-crm-brand: #fff;
+    --wb-crm-icon: #fff;
+    --wb-crm-brand: #203df4;
     --wb-crm-brand-tint: rgba(255, 255, 255, .18);
     background: #203df4;
     border-inline-end-color: rgba(255, 255, 255, .18);
@@ -116,7 +116,7 @@ body.crm-app[data-pc-theme="color"] .pc-sidebar.wb-crm-compact .m-header {
     border-bottom-color: rgba(255, 255, 255, .25);
 }
 body.crm-app[data-pc-theme="color"] .pc-sidebar.wb-crm-compact .pc-caption label {
-    color: rgba(255, 255, 255, .62);
+    color: rgba(255, 255, 255, .88);
 }
 body.crm-app[data-pc-theme="dark"] .crm-sidebar-logo,
 body.crm-app[data-pc-theme="light"] .crm-sidebar-logo,
@@ -517,6 +517,22 @@ body.crm-app[data-pc-theme="color"] .crm-sidebar-logo {
     box-shadow: none;
     color: #fff;
     filter: drop-shadow(3px 0 6px rgba(10, 22, 60, .25));
+}
+
+/* Blue sidebar mode keeps the active item readable without a white tile. */
+body.crm-app[data-pc-theme="color"] #crm-sidebar .pc-navbar > .pc-item.active > .pc-link,
+body.crm-app[data-pc-theme="color"] #crm-sidebar .pc-navbar > .pc-item.active > .pc-link:hover,
+body.crm-app[data-pc-theme="color"] #crm-sidebar .pc-navbar > .pc-item.active > .pc-link:focus {
+    background: rgba(255, 255, 255, .18) !important;
+    color: #fff !important;
+    box-shadow: none !important;
+}
+body.crm-app[data-pc-theme="color"] #crm-sidebar .pc-navbar > .pc-item:not(.active) > .pc-link:hover {
+    background: rgba(255, 255, 255, .12) !important;
+}
+body.crm-app[data-pc-theme="color"] #crm-sidebar .crm-sidebar-logo-badge {
+    background: transparent;
+    box-shadow: none;
 }
 #crm-sidebar .wb-crm-sidebar-handle:hover {
     filter: drop-shadow(3px 0 10px rgba(10, 22, 60, .4));
