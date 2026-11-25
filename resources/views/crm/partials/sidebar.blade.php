@@ -1,6 +1,6 @@
 @php($currentRoute = Route::currentRouteName())
 @php($crmUser = auth('crm')->user())
-@php($sidebarLogo = asset('brand/blue.png.png'))
+@php($sidebarLogo = asset('brand/blue-logo.png'))
 @php($whatsappPages = [
     'whatsapp_business_settings' => 'fal fa-gear',
     'whatsapp_setup'             => 'fal fa-plug',

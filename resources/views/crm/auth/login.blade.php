@@ -2,7 +2,7 @@
     $isAr = app()->getLocale() === 'ar';
     $supportedLocales = config('laravellocalization.supportedLocales', []);
     $currentLocale = app()->getLocale();
-    $loginLogo = asset('brand/blue.png.png');
+    $loginLogo = asset('brand/blue-logo.png');
 @endphp
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ $isAr ? 'rtl' : 'ltr' }}">
@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ $settings->website_name ?? 'Sanad' }} | {{ __('auth.login') }}</title>
-    <link rel="icon" href="{{ $settings?->favicon ? showFile($settings->favicon) : asset('brand/blue.png.png') }}" type="image/png">
+    <link rel="icon" href="{{ $settings?->favicon ? showFile($settings->favicon) : asset('brand/blue-logo.png.png') }}" type="image/png">
     <link rel="stylesheet" href="{{ asset('admin/login/css/fontawesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/login/css/sanad-login.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/assets/cssbundle/sweetalert2.min.css') }}">
