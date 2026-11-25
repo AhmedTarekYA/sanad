@@ -1,5 +1,26 @@
 {{-- Shared CRM visual identity: black + brand blue (single source of truth) --}}
 <style>
+    body.crm-app,
+    body.crm-app button,
+    body.crm-app input,
+    body.crm-app select,
+    body.crm-app textarea,
+    body.crm-app h1,
+    body.crm-app h2,
+    body.crm-app h3,
+    body.crm-app h4,
+    body.crm-app h5,
+    body.crm-app h6,
+    body.crm-app p,
+    body.crm-app span,
+    body.crm-app a,
+    body.crm-app td,
+    body.crm-app th,
+    body.crm-app label,
+    body.crm-app small {
+        font-family: 'Thmanya', 'IBM Plex Sans Arabic', sans-serif !important;
+    }
+
     body.crm-app {
         --crm-brand: #4a5cff;
         --crm-ink: #0b0c10;
